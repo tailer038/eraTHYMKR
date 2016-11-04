@@ -627,6 +627,16 @@ LOCAL:22 = 0
 LOCAL:23 = 0
 ;경비대장 사쿠야의 시간정지 능력 여부(0.평상시, 1.회중시계로 시간을 멈췄다)
 LOCAL:24 = 0
+;아이아스의 거울 사용여부 변수(0. 사용 안함, 1. 사용중)
+LOCAL:25 = 0
+;아이아스의 거울방패 내구도(기본값 = 1750, 한 장당 250 대미지[7장])
+LOCAL:26 = 1750
+;아이아스의 거울방패 남은 갯수[내구도/250 (+ 1)]
+LOCAL:27 = 0
+;아이아스의 방패 도중중단 조정변수
+LOCAL:28 = 0
+;아이아스 방패 깨지는 효과반복 루프변수
+LOCAL:29 = 0
 ;침입자의 버프 상태
 LOCALS:0 = 
 ;침입자가 때릴 캐릭터의 대표명. 만약 경비대장이 있으면 경비대장명이, 아니면 그냥 '경비원' 이 된다.
@@ -748,12 +758,20 @@ DO
 	LOCAL:13 = FINDCHARA(CFLAG:4013, 2)
 	DRAWLINE
 	;턴 정보 표시
-	PRINTFORML <{LOCAL:0+1}/5 턴>
+	PRINTFORML <{LOCAL:0+1}/10 턴>
 	IF LOCAL:18 == 1
 		;시간정지 중이라는 표시
 		FONTBOLD
-		CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 1
+		CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 3
 		PRINTFORML <시간정지中>
+		RESETCOLOR
+		FONTREGULAR
+	ENDIF
+	IF LOCAL:25 == 1
+		;거울방패 사용 중이라는 표시
+		FONTBOLD
+		CALL SETCOLOR_TORIKOMODE, "PINK", 3
+		PRINTFORML <아이아스 사용中>
 		RESETCOLOR
 		FONTREGULAR
 	ENDIF
@@ -908,9 +926,9 @@ DO
 			PRINTFORML 『이 시점에서 어떻게 하면 좋을까…….』
 			FONTBOLD
 			CALL SETCOLOR_TORIKOMODE, "YELLOW", 2
-			PRINTFORML ※경과한 정지시간 {LOCAL:16}/{LOCAL:14}초
+			PRINTFORML ※경과한 정지시간 {LOCAL:16}/{LOCAL:14}(초)
 			RESETCOLOR
-			FONTREGULAR				
+			FONTREGULAR
 			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
 				;환상향의 왕이 있어야 한다
 				PRINTFORML [5] 자신이 직접 전투 : 압도적인 실력으로 때려눕힌다!
@@ -935,7 +953,14 @@ DO
 			ELSE
 				PRINTFORML "%CALLNAME:MASTER% 님. 명령을 내려주십시오!"
 			ENDIF
-			
+			IF LOCAL:25 == 1
+				FONTBOLD
+				CALL SETCOLOR_TORIKOMODE, "PINK", 3
+				PRINTFORML ※남은 거울 수 {LOCAL:27}/7(장)
+				RESETCOLOR
+				FONTREGULAR
+			ENDIF
+
 			IF LOCAL:22 == 1
 				PRINTFORML [x] 경비원 전멸상태 : 공격명령 불가!
 			ELSE
@@ -948,26 +973,57 @@ DO
 			ENDIF
 			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
 			;야채의 연금술사여야 시간정지를 발동가능!
-				IF FLAG:574 >= 3000
+				IF LOCAL:25 == 0
+				;아이아스가 발동중이 아닐 때
+					IF FLAG:574 >= 3000
 					;야채가 3000개 이상이어야 한다
-					PRINTFORML [4] 시간정지를 발동 : 야채(YASAI) 더 월드! 시간이여 멈춰라!! (야채 3000개 소비) ※야채수:{FLAG:574}
-				ELSE
+						PRINTFORML [4] 시간정지를 발동 : 야채(YASAI) 더 월드! 시간이여 멈춰라!! (야채 3000개 소비) ※야채수:{FLAG:574}
+					ELSE
 					;시간정지 불가능
-					PRINTFORML [x] 시간정지 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+						PRINTFORML [x] 시간정지 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+					ENDIF
 				ENDIF
 			ENDIF
 			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
-				;환상향의 왕이 있어야 한다
-				PRINTFORML [5] 자신이 직접 전투 : 압도적인 실력으로 때려눕힌다!
+			;환상향의 왕이 있어야 한다
+				IF LOCAL:25 == 0
+				;아이아스가 발동중이 아닐 때
+					PRINTFORML [5] 자신이 직접 전투 : 압도적인 실력으로 때려눕힌다!
+				ENDIF
 			ENDIF
 			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
-				;야채의 연금술사여야 버서커모드가 가능!
-				IF FLAG:574 >= 10000
+			;야채의 연금술사여야 버서커모드가 가능!
+				IF LOCAL:25 == 0
+				;아이아스가 발동중이 아닐 때
+					IF FLAG:574 >= 10000
 					;야채가 10000개 이상이어야 한다
-					PRINTFORML [6] 자신의 버서커모드 발동 : 압도적인 실력으로 때려눕힌다!! (야채 10000개 소비) ※야채수:{FLAG:574}
-				ELSE
+						PRINTFORML [6] 자신의 버서커모드 발동 : 압도적인 실력으로 때려눕힌다!! (야채 10000개 소비) ※야채수:{FLAG:574}
+					ELSE
 					;버서커모드 불가능
-					PRINTFORML [x] 버서커모드 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+						PRINTFORML [x] 버서커모드 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+					ENDIF
+				ENDIF
+			ENDIF
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
+			;야채의 연금술사여야 아이아스의 거울발동이 가능!
+				IF LOCAL:25 == 0
+				;아이아스가 발동중이 아닐 때
+					IF FLAG:574 >= 20000
+					;야채가 20000개 이상이어야 한다
+						PRINTFORML [8] 아이아스의 거울 : 분홍빛으로 물든 7장의 거울방패가 불타는 하늘을 뒤덮는다!
+						PRINTFORML     (야채 20000개 소비) ※야채수:{FLAG:574}
+					ELSE
+						PRINTFORML [x] 아이아스 발동 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+					ENDIF
+				ELSEIF LOCAL:25 == 1
+				;아이아스가 발동중일 때
+					PRINTFORML [9] 아이아스 발동중지 : 거울방패의 전개를 취소하고 공격테세로 복귀한다.
+				ENDIF
+			ENDIF
+			IF LOCAL:22 == 1
+				IF LOCAL:25 == 1
+				;아이아스가 발동중일때
+					PRINTFORML [10] 방패 연속전개 : 아이아스를 계속해서 유지한다!
 				ENDIF
 			ENDIF
 			IF LOCAL:22 == 1
@@ -1069,6 +1125,43 @@ DO
 			FONTREGULAR
 			LOCAL:19 = 1 ;시간정지 도중중단 조정스위치 ON
 			PRINTFORMW %CALLNAME:MASTER%는 발동주문을 크게 외치며 시간을 다시 움직였다!
+		ELSEIF RESULT == 8
+			;아이아스의 거울 발동!
+			FLAG:574 -= 20000 ;야채소비
+			LOCAL:25 = 1 ;방패 스위치 ON
+			LOCAL:26 = 1750 ;거울방패 내구도 초기화
+			LOCAL:27 = 7 ;거울방패 갯수 초기화
+			IF LOCAL:22 == 1 ;만약 수하가 다 전멸 후, 왕이 혼자 남아 끝까지 싸울 것을 결심했을 때!
+				LOCAL:7 = 0 ;우발적인 공격방지 - 에러방지
+			ELSE
+				LOCAL:7 = 2 ;방어하도록 자동명령
+			ENDIF
+			;아이아스 발동연출
+			SETBGCOLOR 255,214,255
+			SETBGCOLOR 201,124,191
+			RESETBGCOLOR
+			FONTBOLD
+			CALL SETCOLOR_TORIKOMODE, "PINK", 3
+			PRINTFORMW 『불타는 하늘을 뒤덮는 7개의 신경(神鏡)!』
+			PRINTL
+			RESETCOLOR
+			FONTREGULAR
+		ELSEIF RESULT == 9
+			;아이아스의 거울 발동중지!
+			LOCAL:25 = 0 ;방패 스위치 OFF
+			LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+			FONTBOLD
+			CALL SETCOLOR_TORIKOMODE, "PINK", 2
+			PRINTFORMW 『방패를 접고 공격으로 들어가야겠군.』
+			PRINTL
+			RESETCOLOR
+			FONTREGULAR
+			PRINTL
+			PRINTFORMW %CALLNAME:MASTER%는 전개하고 있던 거울방패를 사라지게 하고 난 뒤, 공격을 위해 경계테세로 전환했다.
+		ELSEIF RESULT == 10
+			;아이아스 연속전개
+			LOCAL:7 = 0 ;우발적인 공격방지 - 에러방지
+			PRINTFORML %CALLNAME:MASTER%는 오른손을 계속 뻗으면서 아이아스의 거울을 유지했다.
 		ELSEIF RESULT == 999
 			LOCAL:1 = 999
 			PRINTFORMW 도망쳐라!!!
@@ -1216,6 +1309,214 @@ DO
 			IF LOCAL:22 == 1
 				;왕이 마지막에 혼자 싸울 것을 결심했을 때
 				;휘하병력이 전부 소실되었기에 상대방은 전혀 왕의 휘하병력을 공격할 일이 없다
+				;허나 '아이아스의 거울'을 쓰고 있을 경우, 이 부분이 작동하여 거울 내구도 및 대미지를 계산한다.
+				IF LOCAL:25 == 1
+				;아이아스의 거울이 발동중일 때
+					;환상향의 왕이 방패에 의지하는 부분
+					;두들겨 맞을 왕의 현재 체력을 받아온다.
+					LOCAL:5 = BASE:MASTER:0
+					;침입자가 공격실행
+					CALL ATTACK_SLAVE_TORIKOMODE, ARG, LOCAL:6, CALLNAME:MASTER
+					;대미지를 저장.
+					LOCAL:3 = RESULT
+					
+					;60%의 확률로 대미지는 40~60%로 줄어든다.
+					SIF RAND:100 > 40
+						LOCAL:3 = LOCAL:3*(RAND:20+40)/100
+					
+					;대미지 표시
+					PRINTFORM %CALLNAME:MASTER%에게 {LOCAL:3}
+					FONTREGULAR
+					PRINTFORMW 대미지!!
+					RESETCOLOR
+					PRINTL
+					
+					;대미지만큼 내구도 깎기
+					LOCAL:26 = LOCAL:26 - LOCAL:3
+
+					IF LOCAL:26 > 0
+					;방어한 뒤 방패가 남아 있을 때 - 방어 성공!
+						;깨진 방패갯수 세기(전 방패갯수 - 현 방패갯수)
+						IF (LOCAL:26 % 250) == 0
+						;거울방패 내구도의 '나머지'가 0일 경우 - (가장 앞에 노출된 방패가 전혀 손상되지 않았다)
+							IF (LOCAL:27 - (LOCAL:26 / 250)) == 0
+								PRINTFORMW 적의 공격은 아이아스의 단 한 장도 돌파하지 못 했다.
+							ELSE
+								;아이아스 파괴연출 반복 - 갯수만큼!
+								LOCAL:29 = 0
+								DO
+									;아이아스 파괴연출
+									SETBGCOLOR 111,73,106
+									RESETBGCOLOR
+									FONTBOLD
+									CALL SETCOLOR_TORIKOMODE, "PINK", 2
+									SELECTCASE RAND:2
+									CASE 0
+										PRINTFORML (쨍그랑~!)
+									CASE 1
+										PRINTFORML (푸샤아~!!)
+									ENDSELECT
+									RESETCOLOR
+									FONTREGULAR
+									;루프변수 + 1
+									LOCAL:29++
+								LOOP LOCAL:29 != (LOCAL:27 - (LOCAL:26 / 250))
+								
+								PRINTL
+								PRINTFORM 적의 공격으로
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 3
+								PRINTFORM  {LOCAL:27 - (LOCAL:26 / 250)}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW  깨졌다.
+							ENDIF
+						ELSE
+						;거울방패 내구도의 '나머지'가 다른 값 - (가장 앞의 방패가 어느정도 마모됐다)
+							IF (LOCAL:27 - (LOCAL:26 / 250 + 1)) == 0
+								PRINTFORMW 적의 공격은 아이아스의 단 한 장도 돌파하지 못 했다.
+							ELSE
+								;아이아스 파괴연출 반복 - 갯수만큼!
+								LOCAL:29 = 0
+								DO
+									;아이아스 파괴연출
+									SETBGCOLOR 111,73,106
+									RESETBGCOLOR
+									FONTBOLD
+									CALL SETCOLOR_TORIKOMODE, "PINK", 2
+									SELECTCASE RAND:2
+									CASE 0
+										PRINTFORML (쨍그랑~!)
+									CASE 1
+										PRINTFORML (푸샤아~!!)
+									ENDSELECT
+									RESETCOLOR
+									FONTREGULAR
+									;루프변수 + 1
+									LOCAL:29++
+								LOOP LOCAL:29 != (LOCAL:27 - (LOCAL:26 / 250 + 1))
+								
+								PRINTL
+								PRINTFORM 적의 공격으로
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 3
+								PRINTFORM  {LOCAL:27 - (LOCAL:26 / 250 + 1)}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW  깨졌다.
+							ENDIF
+						ENDIF
+						
+						;거울방패 남은갯수 세기
+						IF (LOCAL:26 % 250) == 0
+						;거울방패 내구도의 '나머지'가 0일 경우 - (가장 앞에 노출된 방패가 전혀 손상되지 않았다)
+							LOCAL:27 = (LOCAL:26 / 250) ;깔끔히 남은 갯수가 나옴
+						ELSE
+						;거울방패 내구도의 '나머지'가 다른 값 - (가장 앞의 방패가 어느정도 마모됐다)
+							LOCAL:27 = (LOCAL:26 / 250 + 1) ;마모되어 남아있는 방패까지 포함한다
+						ENDIF
+						
+						PRINTFORM 이제
+						FONTBOLD
+						CALL SETCOLOR_TORIKOMODE, "PINK", 2
+						PRINTFORM  {LOCAL:27}장
+						RESETCOLOR
+						FONTREGULAR
+						PRINTFORMW 만이 %CALLNAME:MASTER%의 몸을 지켜주고 있다.
+					ELSEIF LOCAL:26 == 0
+					;내구도가 다 닮아 방패가 깨지긴 했지만, 공격방어는 겨우 성공 - 상쇄 성공!
+						;남아있던 아이아스 파괴연출 반복 - 갯수만큼!
+						LOCAL:29 = 0
+						DO
+							;아이아스 파괴연출
+							SETBGCOLOR 111,73,106
+							RESETBGCOLOR
+							FONTBOLD
+							CALL SETCOLOR_TORIKOMODE, "PINK", 2
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML (쨍그랑~!)
+							CASE 1
+								PRINTFORML (푸샤아~!!)
+							ENDSELECT
+							RESETCOLOR
+							FONTREGULAR
+							;루프변수 + 1
+							LOCAL:29++
+						LOOP LOCAL:29 != LOCAL:27
+						
+						PRINTL
+						PRINTFORM 적의 공격으로 남아있던
+						FONTBOLD
+						CALL SETCOLOR_TORIKOMODE, "PINK", 3
+						PRINTFORM  {LOCAL:27}장
+						RESETCOLOR
+						FONTREGULAR
+						PRINTFORMW 의 거울이 전부 깨졌다.
+						PRINTL
+						LOCAL:25 = 0 ;방패 스위치 OFF
+						LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+						PRINTFORMW %CALLNAME:MASTER%는 방패가 깨진 덕택에 망설이지 않고 공격테세로 들어갔다.
+					ELSE
+					;내구도가 바닥나고 공격이 안으로 침투! - 관통 대미지! - 즉 공격으로 인해 다 깨져서 나머지 수치만큼 왕께서 관통대미지를 입는다!
+						;남아있던 아이아스 파괴연출 반복 - 갯수만큼!
+						LOCAL:29 = 0
+						DO
+							;아이아스 파괴연출
+							SETBGCOLOR 111,73,106
+							RESETBGCOLOR
+							FONTBOLD
+							CALL SETCOLOR_TORIKOMODE, "PINK", 2
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML (쨍그랑~!)
+							CASE 1
+								PRINTFORML (푸샤아~!!)
+							ENDSELECT
+							RESETCOLOR
+							FONTREGULAR
+							;루프변수 + 1
+							LOCAL:29++
+						LOOP LOCAL:29 != LOCAL:27
+						
+						PRINTL
+						PRINTFORM 적의 공격으로 남아있던
+						FONTBOLD
+						CALL SETCOLOR_TORIKOMODE, "PINK", 3
+						PRINTFORM  {LOCAL:27}장
+						RESETCOLOR
+						FONTREGULAR
+						PRINTFORMW 의 거울이 전부 깨졌다.
+						PRINTL
+						LOCAL:25 = 0 ;방패 스위치 OFF
+						LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+						
+						;관통당한 대미지 대입
+						LOCAL:3 = -(LOCAL:26)
+						
+						PRINTFORM 아이아스가 미처 막지못한
+						FONTBOLD
+						CALL SETCOLOR_TORIKOMODE, "RED", 3
+						PRINTFORM  {LOCAL:3}
+						RESETCOLOR
+						FONTREGULAR
+						PRINTFORMW 의 대미지가 %CALLNAME:MASTER%를 덮쳐왔다!
+						
+						;왕의 체력감소.
+						BASE:MASTER:0 -= LOCAL:3
+						BASE:MASTER:0 = MAX(BASE:MASTER:0, 50)
+						;왕이 빈사
+						IF BASE:MASTER:0 == 50
+							;왕의 배틀크라이 출력.쓰러짐.
+							CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 1, CALLNAME:ARG ;왕의 죽음ㅠㅠ
+							CALL BADEND_COMMON ;배드엔드
+						;왕이 살았다
+						ELSE
+							;왕의 피격 배틀크라이. 100%확률로 발동함
+							CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 2, CALLNAME:ARG ;왕의 부상
+						ENDIF
+					ENDIF
+				ENDIF
 			ELSEIF LOCAL:24 == 1
 				;경비대장 사쿠야가 시간정지를 발동했을 때 구출자는 움직일 수가 없다
 				FONTBOLD
@@ -1224,6 +1525,8 @@ DO
 				RESETCOLOR
 				FONTREGULAR
 				PRINTFORMW 는 사쿠야의 능력으로 움직이지 못 한다.
+			ELSEIF LOCAL:28 == 1
+				;아이아스의 거울을 발동취소하는 부분, 그러니 자동스킵!
 			ELSE
 				;왕의 휘하병력이 아직 살아있을 때
 				LOCAL:99 =0
@@ -1256,34 +1559,236 @@ DO
 						;경비원들이 방어중이면 대미지는 40~60%로 줄어든다.
 						SIF LOCAL:7 == 2
 							LOCAL:3 = LOCAL:3*(RAND:20+40)/100
-						PRINTFORM %RESULTS:0%에게 {LOCAL:3}
-						FONTREGULAR
-						PRINTFORMW 대미지!!
-						RESETCOLOR
-						;경비원 체력감소.
-						LOCAL:5 -= LOCAL:3
-						;경비원이 죽었다
-						IF LOCAL:5 <= 0
-							;경비원 배틀크라이 출력
-							;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
-							SIF LOCAL:23 == 0
-								CALL BATTLECRY_GUARDSMAN_TORIKOMODE, RESULTS:0, 4
-							CALL SETCOLOR_TORIKOMODE, "RED", 3
-							FONTBOLD
-							PRINTFORMW  !!%조사처리(RESULTS:0,"는")% 쓰러졌다!
+						
+						IF LOCAL:25 == 1
+						;아이아스의 거울이 발동중일 때
+							;경비원이 방패에 보호되는 부분
+							
+							;대미지 표시
+							PRINTFORM %RESULTS:0%에게 {LOCAL:3}
 							FONTREGULAR
+							PRINTFORMW 대미지!!
 							RESETCOLOR
-							;배틀크라이
-							CALL BATTLECRY_TORIKOMODE, (NO:ARG), 4, LOCALS:1
-							;경비원 삭제
-							FLAG:(5051+LOCAL:2) = 0
-						;살았다.
+							PRINTL
+							PRINTFORMW 그러나 %CALLNAME:MASTER%의 『아이아스의 거울』이 %RESULTS:0%를 보호했다.
+							PRINTL
+							
+							;대미지만큼 내구도 깎기
+							LOCAL:26 = LOCAL:26 - LOCAL:3
+
+							IF LOCAL:26 > 0
+							;방어한 뒤 방패가 남아 있을 때 - 방어 성공!
+								;깨진 방패갯수 세기(전 방패갯수 - 현 방패갯수)
+								IF (LOCAL:26 % 250) == 0
+								;거울방패 내구도의 '나머지'가 0일 경우 - (가장 앞에 노출된 방패가 전혀 손상되지 않았다)
+									IF (LOCAL:27 - (LOCAL:26 / 250)) == 0
+										PRINTFORMW 적의 공격은 아이아스의 단 한 장도 돌파하지 못 했다.
+									ELSE
+										;아이아스 파괴연출 반복 - 갯수만큼!
+										LOCAL:29 = 0
+										DO
+											;아이아스 파괴연출
+											SETBGCOLOR 111,73,106
+											RESETBGCOLOR
+											FONTBOLD
+											CALL SETCOLOR_TORIKOMODE, "PINK", 2
+											SELECTCASE RAND:2
+											CASE 0
+												PRINTFORML (쨍그랑~!)
+											CASE 1
+												PRINTFORML (푸샤아~!!)
+											ENDSELECT
+											RESETCOLOR
+											FONTREGULAR
+											;루프변수 + 1
+											LOCAL:29++
+										LOOP LOCAL:29 != (LOCAL:27 - (LOCAL:26 / 250))
+										
+										PRINTL
+										PRINTFORM 적의 공격으로
+										FONTBOLD
+										CALL SETCOLOR_TORIKOMODE, "PINK", 3
+										PRINTFORM  {LOCAL:27 - (LOCAL:26 / 250)}장
+										RESETCOLOR
+										FONTREGULAR
+										PRINTFORMW  깨졌다.
+									ENDIF
+								ELSE
+								;거울방패 내구도의 '나머지'가 다른 값 - (가장 앞의 방패가 어느정도 마모됐다)
+									IF (LOCAL:27 - (LOCAL:26 / 250 + 1)) == 0
+										PRINTFORMW 적의 공격은 아이아스의 단 한 장도 돌파하지 못 했다.
+									ELSE
+										;아이아스 파괴연출 반복 - 갯수만큼!
+										LOCAL:29 = 0
+										DO
+											;아이아스 파괴연출
+											SETBGCOLOR 111,73,106
+											RESETBGCOLOR
+											FONTBOLD
+											CALL SETCOLOR_TORIKOMODE, "PINK", 2
+											SELECTCASE RAND:2
+											CASE 0
+												PRINTFORML (쨍그랑~!)
+											CASE 1
+												PRINTFORML (푸샤아~!!)
+											ENDSELECT
+											RESETCOLOR
+											FONTREGULAR
+											;루프변수 + 1
+											LOCAL:29++
+										LOOP LOCAL:29 != (LOCAL:27 - (LOCAL:26 / 250 + 1))
+										
+										PRINTL
+										PRINTFORM 적의 공격으로
+										FONTBOLD
+										CALL SETCOLOR_TORIKOMODE, "PINK", 3
+										PRINTFORM  {LOCAL:27 - (LOCAL:26 / 250 + 1)}장
+										RESETCOLOR
+										FONTREGULAR
+										PRINTFORMW  깨졌다.
+									ENDIF
+								ENDIF
+								
+								;거울방패 남은갯수 세기
+								IF (LOCAL:26 % 250) == 0
+								;거울방패 내구도의 '나머지'가 0일 경우 - (가장 앞에 노출된 방패가 전혀 손상되지 않았다)
+									LOCAL:27 = (LOCAL:26 / 250) ;깔끔히 남은 갯수가 나옴
+								ELSE
+								;거울방패 내구도의 '나머지'가 다른 값 - (가장 앞의 방패가 어느정도 마모됐다)
+									LOCAL:27 = (LOCAL:26 / 250 + 1) ;마모되어 남아있는 방패까지 포함한다
+								ENDIF
+								
+								PRINTFORM 이제
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 2
+								PRINTFORM  {LOCAL:27}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 만이 %CALLNAME:MASTER%와 %RESULTS:0%의 몸을 지켜주고 있다.
+							ELSEIF LOCAL:26 == 0
+							;내구도가 다 닮아 방패가 깨지긴 했지만, 공격방어는 겨우 성공 - 상쇄 성공!
+								;남아있던 아이아스 파괴연출 반복 - 갯수만큼!
+								LOCAL:29 = 0
+								DO
+									;아이아스 파괴연출
+									SETBGCOLOR 111,73,106
+									RESETBGCOLOR
+									FONTBOLD
+									CALL SETCOLOR_TORIKOMODE, "PINK", 2
+									SELECTCASE RAND:2
+									CASE 0
+										PRINTFORML (쨍그랑~!)
+									CASE 1
+										PRINTFORML (푸샤아~!!)
+									ENDSELECT
+									RESETCOLOR
+									FONTREGULAR
+									;루프변수 + 1
+									LOCAL:29++
+								LOOP LOCAL:29 != LOCAL:27
+								
+								PRINTL
+								PRINTFORM 적의 공격으로 남아있던
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 3
+								PRINTFORM  {LOCAL:27}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 의 거울이 전부 깨졌다.
+								PRINTL
+								LOCAL:25 = 0 ;방패 스위치 OFF
+								LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+								PRINTFORMW %CALLNAME:MASTER%는 방패가 깨진 덕택에 망설이지 않고 공격테세로 들어갔다.
+							ELSE
+							;내구도가 바닥나고 공격이 안으로 침투! - 관통 대미지! - 즉 공격으로 인해 다 깨져서 나머지 수치만큼 왕께서 관통대미지를 입는다!
+								;남아있던 아이아스 파괴연출 반복 - 갯수만큼!
+								LOCAL:29 = 0
+								DO
+									;아이아스 파괴연출
+									SETBGCOLOR 111,73,106
+									RESETBGCOLOR
+									FONTBOLD
+									CALL SETCOLOR_TORIKOMODE, "PINK", 2
+									SELECTCASE RAND:2
+									CASE 0
+										PRINTFORML (쨍그랑~!)
+									CASE 1
+										PRINTFORML (푸샤아~!!)
+									ENDSELECT
+									RESETCOLOR
+									FONTREGULAR
+									;루프변수 + 1
+									LOCAL:29++
+								LOOP LOCAL:29 != LOCAL:27
+								
+								PRINTL
+								PRINTFORM 적의 공격으로 남아있던
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 3
+								PRINTFORM  {LOCAL:27}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 의 거울이 전부 깨졌다.
+								PRINTL
+								LOCAL:25 = 0 ;방패 스위치 OFF
+								LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+								
+								;관통당한 대미지 대입
+								LOCAL:3 = -(LOCAL:26)
+								
+								PRINTFORM 아이아스가 미처 막지못한
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "RED", 3
+								PRINTFORM  {LOCAL:3}
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 의 대미지가 %CALLNAME:MASTER%를 덮쳐왔다!
+								
+								;왕의 체력감소.
+								BASE:MASTER:0 -= LOCAL:3
+								BASE:MASTER:0 = MAX(BASE:MASTER:0, 50)
+								;왕이 빈사
+								IF BASE:MASTER:0 == 50
+									;왕의 배틀크라이 출력.쓰러짐.
+									CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 1, CALLNAME:ARG ;왕의 죽음ㅠㅠ
+									CALL BADEND_COMMON ;배드엔드
+								;왕이 살았다
+								ELSE
+									;왕의 피격 배틀크라이. 100%확률로 발동함
+									CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 2, CALLNAME:ARG ;왕의 부상
+								ENDIF
+							ENDIF
 						ELSE
-							CALL CALC_DATA_GUARDSMAN_TORIKOMODE, FLAG:(5051+LOCAL:2)
-							;체력감소.
-							FLAG:(5051+LOCAL:2) += - (RESULT:4*100000) + (LOCAL:5*100000)
-							;경비원 경험치 획득. 랜덤 200 +100을 획득한다.
-							CALL GETEXP_GUARDSMAN_TORIKOMODE, (5051+LOCAL:2), (200+RAND:100)
+						;(방패없이)평상시대로 공격을 받을 때
+							PRINTFORM %RESULTS:0%에게 {LOCAL:3}
+							FONTREGULAR
+							PRINTFORMW 대미지!!
+							RESETCOLOR
+							;경비원 체력감소.
+							LOCAL:5 -= LOCAL:3
+							;경비원이 죽었다
+							IF LOCAL:5 <= 0
+								;경비원 배틀크라이 출력
+								;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
+								SIF LOCAL:23 == 0
+									CALL BATTLECRY_GUARDSMAN_TORIKOMODE, RESULTS:0, 4
+								CALL SETCOLOR_TORIKOMODE, "RED", 3
+								FONTBOLD
+								PRINTFORMW  !!%조사처리(RESULTS:0,"는")% 쓰러졌다!
+								FONTREGULAR
+								RESETCOLOR
+								;배틀크라이
+								CALL BATTLECRY_TORIKOMODE, (NO:ARG), 4, LOCALS:1
+								;경비원 삭제
+								FLAG:(5051+LOCAL:2) = 0
+							;살았다.
+							ELSE
+								CALL CALC_DATA_GUARDSMAN_TORIKOMODE, FLAG:(5051+LOCAL:2)
+								;체력감소.
+								FLAG:(5051+LOCAL:2) += - (RESULT:4*100000) + (LOCAL:5*100000)
+								;경비원 경험치 획득. 랜덤 200 +100을 획득한다.
+								CALL GETEXP_GUARDSMAN_TORIKOMODE, (5051+LOCAL:2), (200+RAND:100)
+							ENDIF
 						ENDIF
 						;그만 돌린다.
 						LOCAL:99 ++
@@ -1305,37 +1810,240 @@ DO
 						;작전이 방어중이면 대미지는 40~60%로 줄어든다.
 						SIF LOCAL:7 == 2
 							LOCAL:3 = LOCAL:3*(RAND:20+40)/100
-						PRINTFORM %CALLNAME:(LOCAL:13)%에게 {LOCAL:3}
-						FONTREGULAR
-						PRINTFORMW 대미지!!
-						RESETCOLOR
-						;경비대장 체력감소.
-						BASE:(LOCAL:13):0 -= LOCAL:3
-						BASE:(LOCAL:13):0 = MAX(BASE:(LOCAL:13):0, 50)
-						;경비대장이 빈사
-						IF BASE:(LOCAL:13):0 == 50
-							;경비대장 배틀크라이 출력.쓰러짐.
-							;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
-							SIF LOCAL:23 == 0
-								CALL BATTLECRY_GUARDSMAN_TORIKOMODE, NO:(LOCAL:13), 6
-							;쓰러지기
-							CALL SETCOLOR_TORIKOMODE, "RED", 3
-							FONTBOLD
-							PRINTFORMW !!%조사처리(CALLNAME:(LOCAL:13),"는")% 쓰러졌다!!
+						
+						
+						IF LOCAL:25 == 1
+						;아이아스의 거울이 발동중일 때
+							;경비대장이 방패에 보호되는 부분
+														
+							;대미지 표시
+							PRINTFORM %CALLNAME:(LOCAL:13)%에게 {LOCAL:3}
 							FONTREGULAR
+							PRINTFORMW 대미지!!
 							RESETCOLOR
-							PRINTFORMW (%조사처리(CALLNAME:(LOCAL:13),"는")% 퇴각했습니다)
-							;경비대장 해임
-							PRINTFORMW (%조사처리(CALLNAME:(LOCAL:13),"는")% 경비대장에서 해임 되었습니다)
-							CFLAG:(LOCAL:13):4013 = 0
-							;경비대장 정보 갱신.
-							LOCAL:13 = FINDCHARA(CFLAG:4013, 2)
-						;경비대장이 살았다.
+							PRINTL
+							PRINTFORMW 그러나 %CALLNAME:MASTER%의 『아이아스의 거울』이 %CALLNAME:(LOCAL:13)%를 보호했다.
+							PRINTL
+							
+							;대미지만큼 내구도 깎기
+							LOCAL:26 = LOCAL:26 - LOCAL:3
+
+							IF LOCAL:26 > 0
+							;방어한 뒤 방패가 남아 있을 때 - 방어 성공!
+								;깨진 방패갯수 세기(전 방패갯수 - 현 방패갯수)
+								IF (LOCAL:26 % 250) == 0
+								;거울방패 내구도의 '나머지'가 0일 경우 - (가장 앞에 노출된 방패가 전혀 손상되지 않았다)
+									IF (LOCAL:27 - (LOCAL:26 / 250)) == 0
+										PRINTFORMW 적의 공격은 아이아스의 단 한 장도 돌파하지 못 했다.
+									ELSE
+										;아이아스 파괴연출 반복 - 갯수만큼!
+										LOCAL:29 = 0
+										DO
+											;아이아스 파괴연출
+											SETBGCOLOR 111,73,106
+											RESETBGCOLOR
+											FONTBOLD
+											CALL SETCOLOR_TORIKOMODE, "PINK", 2
+											SELECTCASE RAND:2
+											CASE 0
+												PRINTFORML (쨍그랑~!)
+											CASE 1
+												PRINTFORML (푸샤아~!!)
+											ENDSELECT
+											RESETCOLOR
+											FONTREGULAR
+											;루프변수 + 1
+											LOCAL:29++
+										LOOP LOCAL:29 != (LOCAL:27 - (LOCAL:26 / 250))
+										
+										PRINTL
+										PRINTFORM 적의 공격으로
+										FONTBOLD
+										CALL SETCOLOR_TORIKOMODE, "PINK", 3
+										PRINTFORM  {LOCAL:27 - (LOCAL:26 / 250)}장
+										RESETCOLOR
+										FONTREGULAR
+										PRINTFORMW  깨졌다.
+									ENDIF
+								ELSE
+								;거울방패 내구도의 '나머지'가 다른 값 - (가장 앞의 방패가 어느정도 마모됐다)
+									IF (LOCAL:27 - (LOCAL:26 / 250 + 1)) == 0
+										PRINTFORMW 적의 공격은 아이아스의 단 한 장도 돌파하지 못 했다.
+									ELSE
+										;아이아스 파괴연출 반복 - 갯수만큼!
+										LOCAL:29 = 0
+										DO
+											;아이아스 파괴연출
+											SETBGCOLOR 111,73,106
+											RESETBGCOLOR
+											FONTBOLD
+											CALL SETCOLOR_TORIKOMODE, "PINK", 2
+											SELECTCASE RAND:2
+											CASE 0
+												PRINTFORML (쨍그랑~!)
+											CASE 1
+												PRINTFORML (푸샤아~!!)
+											ENDSELECT
+											RESETCOLOR
+											FONTREGULAR
+											;루프변수 + 1
+											LOCAL:29++
+										LOOP LOCAL:29 != (LOCAL:27 - (LOCAL:26 / 250 + 1))
+										
+										PRINTL
+										PRINTFORM 적의 공격으로
+										FONTBOLD
+										CALL SETCOLOR_TORIKOMODE, "PINK", 3
+										PRINTFORM  {LOCAL:27 - (LOCAL:26 / 250 + 1)}장
+										RESETCOLOR
+										FONTREGULAR
+										PRINTFORMW  깨졌다.
+									ENDIF
+								ENDIF
+								
+								;거울방패 남은갯수 세기
+								IF (LOCAL:26 % 250) == 0
+								;거울방패 내구도의 '나머지'가 0일 경우 - (가장 앞에 노출된 방패가 전혀 손상되지 않았다)
+									LOCAL:27 = (LOCAL:26 / 250) ;깔끔히 남은 갯수가 나옴
+								ELSE
+								;거울방패 내구도의 '나머지'가 다른 값 - (가장 앞의 방패가 어느정도 마모됐다)
+									LOCAL:27 = (LOCAL:26 / 250 + 1) ;마모되어 남아있는 방패까지 포함한다
+								ENDIF
+								
+								PRINTFORM 이제
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 2
+								PRINTFORM  {LOCAL:27}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 만이 %CALLNAME:MASTER%와 %CALLNAME:(LOCAL:13)%의 몸을 지켜주고 있다.
+							ELSEIF LOCAL:26 == 0
+							;내구도가 다 닮아 방패가 깨지긴 했지만, 공격방어는 겨우 성공 - 상쇄 성공!
+								;남아있던 아이아스 파괴연출 반복 - 갯수만큼!
+								LOCAL:29 = 0
+								DO
+									;아이아스 파괴연출
+									SETBGCOLOR 111,73,106
+									RESETBGCOLOR
+									FONTBOLD
+									CALL SETCOLOR_TORIKOMODE, "PINK", 2
+									SELECTCASE RAND:2
+									CASE 0
+										PRINTFORML (쨍그랑~!)
+									CASE 1
+										PRINTFORML (푸샤아~!!)
+									ENDSELECT
+									RESETCOLOR
+									FONTREGULAR
+									;루프변수 + 1
+									LOCAL:29++
+								LOOP LOCAL:29 != LOCAL:27
+								
+								PRINTL
+								PRINTFORM 적의 공격으로 남아있던
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 3
+								PRINTFORM  {LOCAL:27}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 의 거울이 전부 깨졌다.
+								PRINTL
+								LOCAL:25 = 0 ;방패 스위치 OFF
+								LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+								PRINTFORMW %CALLNAME:MASTER%는 방패가 깨진 덕택에 망설이지 않고 공격테세로 들어갔다.
+							ELSE
+							;내구도가 바닥나고 공격이 안으로 침투! - 관통 대미지! - 즉 공격으로 인해 다 깨져서 나머지 수치만큼 왕께서 관통대미지를 입는다!
+								;남아있던 아이아스 파괴연출 반복 - 갯수만큼!
+								LOCAL:29 = 0
+								DO
+									;아이아스 파괴연출
+									SETBGCOLOR 111,73,106
+									RESETBGCOLOR
+									FONTBOLD
+									CALL SETCOLOR_TORIKOMODE, "PINK", 2
+									SELECTCASE RAND:2
+									CASE 0
+										PRINTFORML (쨍그랑~!)
+									CASE 1
+										PRINTFORML (푸샤아~!!)
+									ENDSELECT
+									RESETCOLOR
+									FONTREGULAR
+									;루프변수 + 1
+									LOCAL:29++
+								LOOP LOCAL:29 != LOCAL:27
+								
+								PRINTL
+								PRINTFORM 적의 공격으로 남아있던
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "PINK", 3
+								PRINTFORM  {LOCAL:27}장
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 의 거울이 전부 깨졌다.
+								PRINTL
+								LOCAL:25 = 0 ;방패 스위치 OFF
+								LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
+								
+								;관통당한 대미지 대입
+								LOCAL:3 = -(LOCAL:26)
+								
+								PRINTFORM 아이아스가 미처 막지못한
+								FONTBOLD
+								CALL SETCOLOR_TORIKOMODE, "RED", 3
+								PRINTFORM  {LOCAL:3}
+								RESETCOLOR
+								FONTREGULAR
+								PRINTFORMW 의 대미지가 %CALLNAME:MASTER%를 덮쳐왔다!
+								
+								;왕의 체력감소.
+								BASE:MASTER:0 -= LOCAL:3
+								BASE:MASTER:0 = MAX(BASE:MASTER:0, 50)
+								;왕이 빈사
+								IF BASE:MASTER:0 == 50
+									;왕의 배틀크라이 출력.쓰러짐.
+									CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 1, CALLNAME:ARG ;왕의 죽음ㅠㅠ
+									CALL BADEND_COMMON ;배드엔드
+								;왕이 살았다
+								ELSE
+									;왕의 피격 배틀크라이. 100%확률로 발동함
+									CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 2, CALLNAME:ARG ;왕의 부상
+								ENDIF
+							ENDIF
 						ELSE
-							;경비대장 피격 배틀크라이. 100%확률로 발동함
-							;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
-							SIF LOCAL:23 == 0
-								CALL BATTLECRY_TORIKOMODE, NO:(LOCAL:13), 3, CALLNAME:ARG
+						;(방패없이)평상시대로 공격받을 때
+							PRINTFORM %CALLNAME:(LOCAL:13)%에게 {LOCAL:3}
+							FONTREGULAR
+							PRINTFORMW 대미지!!
+							RESETCOLOR
+							;경비대장 체력감소.
+							BASE:(LOCAL:13):0 -= LOCAL:3
+							BASE:(LOCAL:13):0 = MAX(BASE:(LOCAL:13):0, 50)
+							;경비대장이 빈사
+							IF BASE:(LOCAL:13):0 == 50
+								;경비대장 배틀크라이 출력.쓰러짐.
+								;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
+								SIF LOCAL:23 == 0
+									CALL BATTLECRY_GUARDSMAN_TORIKOMODE, NO:(LOCAL:13), 6
+								;쓰러지기
+								CALL SETCOLOR_TORIKOMODE, "RED", 3
+								FONTBOLD
+								PRINTFORMW !!%조사처리(CALLNAME:(LOCAL:13),"는")% 쓰러졌다!!
+								FONTREGULAR
+								RESETCOLOR
+								PRINTFORMW (%조사처리(CALLNAME:(LOCAL:13),"는")% 퇴각했습니다)
+								;경비대장 해임
+								PRINTFORMW (%조사처리(CALLNAME:(LOCAL:13),"는")% 경비대장에서 해임 되었습니다)
+								CFLAG:(LOCAL:13):4013 = 0
+								;경비대장 정보 갱신.
+								LOCAL:13 = FINDCHARA(CFLAG:4013, 2)
+							;경비대장이 살았다.
+							ELSE
+								;경비대장 피격 배틀크라이. 100%확률로 발동함
+								;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
+								SIF LOCAL:23 == 0
+									CALL BATTLECRY_TORIKOMODE, NO:(LOCAL:13), 3, CALLNAME:ARG
+							ENDIF
 						ENDIF
 						;그만 돌린다.
 						LOCAL:99 ++
@@ -1381,11 +2089,57 @@ DO
 					PRINTL
 					PRINTFORML %CALLNAME:MASTER%는 전투를 포기하고 %CALLNAME:ARG%에게 길을 비켜주었다.
 					IF CALLNAME:ARG == "치르노"
+						PRINTFORMW 『이봐, 얼음요정.』
+						PRINTFORMW 「잇…! 난 치르노라는 제대로된 이름이 있다구! 좀 제대로 불러달란 말야, 코린!」
+						PRINTFORMW 『네 이름이 무엇인지는 제대로 알고 있다. 허나 중요한 건 그게 아니야.』
+						PRINTFORMW 「중요한 거? 중요한 거는 싸우는 거잖아? 그거 말고 또 다른 게 있어?」
+						PRINTFORMW 『너는 나의 수하들을 모두 쓰러트렸다. 그래서 나는 이만 항복한다.』
+						PRINTFORMW 「항복? 그게 뭐야? 먹는거야?」
+						PRINTFORMW 『……, 바보인 너라도 제대로 이해할 수 있게 설명해주마. '내가 졌고 네가 이겼다'. 너는 그만큼 강하다는 것을 내가 인정하지.』
+						PRINTFORMW 「……, 바보같이 뭔 소리를 하고 있는거야, 코린?」
+						PRINTFORMW 『뭣?! 바보라고? 바보는 너겠지, 꼬맹이 얼음요정!』
+						PRINTFORMW 「우씨! 나는 '치르노'야!」
+						PRINTFORMW 『암튼 치르노, 너는 이겼다. 그러니 얼른 여길 지나가서 네 친구를 찾든가 말든가 마음대로 하란 말이다!』
+						PRINTFORMW 「싫어! 코린과 좀 더 놀고 싶어! 이렇게 강한 코린을 패고 내가 강하다는 걸 증명하고 싶다구!!」
+						PRINTFORMW 『얼른 지나가라. 네가 너를 어찌하기 전에!』
+						PRINTFORMW 「어? 싸우자는 거야? 놀이를 계속하겠다는 거지? 얏호!」
+						PRINTFORMW 『……, 으이구…, 말을 말아야지.』
+						PRINTFORMW 『(이 녀석의 【최강을 향한 병신같은 도전】은 아마 계속될 것으로 예상한다.)』
+						PRINTFORMW 『(그리고 이번에 그 대상이, 운 안 좋게도 내가 되었다는 거겠지.)』
+						PRINTFORMW 『(녀석은 실질적으로 나를 이기기 전까지는 아마, 포기하지 않을 거다.)』
+						PRINTFORMW 『(그렇기에, 나는 이 바보 얼음보숭이를 아무도 모르게 따돌릴 필요가 있다.)』
+						PRINTFORMW 『(그러기 위해서는…….)』
+						PRINTL
+						FONTBOLD
+						CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 2
+						PRINTFORMW 『야채(YASAI) 더 월드! 시간이여 멈춰라!!』
+						RESETCOLOR
+						FONTREGULAR
+						PRINTL
+						SETBGCOLOR 0,0,111 ; 시간정지(야채 더 월드) 적합배경바탕 변경
 						PRINTFORMW %CALLNAME:ARG%는 '바보'라서 린노스케의 행동을 전혀 이해하지 못 했다.
-						PRINTFORMW 그 사실을 깨달은 %CALLNAME:MASTER%는 %CALLNAME:ARG%에게 '보내줄 테니 얼른 가라'고 제대로 설명했다.
-						PRINTFORMW 그런데도 %CALLNAME:ARG%는 그 의미를 이해하지 못 한 채 고개만 갸우뚱거렸다.
-						PRINTFORMW 알아들어먹지 못 하자 %CALLNAME:MASTER%는 답답해하며 %CALLNAME:ARG%에게 얼른 꺼지라고 소리쳤다!
-						PRINTFORMW 그랬더니 이제서야 %CALLNAME:ARG%는 그 의미를 이해하고 %CALLNAME:MASTER%를 손쌀같이 지나갔다.
+						PRINTFORMW 그렇기에 그는 은밀하게 이 바보를 따돌리기로 결심하고 시간을 정지했다.
+						PRINTFORMW 『(이제 빨리 숨도록 할까…….)』
+						PRINTFORMW 그리고 %CALLNAME:ARG%는 재빨리 날아 아무도 모르는 곳에 자신의 몸을 숨겼다.
+						PRINTFORMW 그리고...
+						PRINTL
+						FONTBOLD
+						CALL SETCOLOR_TORIKOMODE, "YELLOW", 2
+						PRINTFORMW 『시간은 다시 움직인다.』
+						RESETCOLOR
+						FONTREGULAR
+						PRINTL
+						RESETBGCOLOR ;검은화면 배경바탕 복구
+						PRINTFORMW 「그럼 결정한 거다! 내가 제대로 이길 수 있도록 힘껏 싸워주라고 코…린?」
+						PRINTFORMW 「…? 어라?」
+						PRINTFORMW 「어라라?」
+						PRINTFORMW 「코린…? 코린? 어디갔어? 코…린!」
+						PRINTFORMW 「난 아직 널 못 이겼다구! 우씨! 언제 도망갔지?」
+						PRINTFORMW 「우으으……!! 반드시 찾아낼꺼야! 찾아내서 엄청 패준 뒤에, 그 위에 보기좋게 깔고앉아 내가 최강이라는 걸 보여줄꺼얏!」
+						PRINTFORMW 「절대로 놓치지 않을꺼야, 코린! 각오해!!」
+						PRINTFORMW 치르노는 %CALLNAME:ARG%를 찾아 향림당 주변과 조교관 내부를 이리저리 뒤졌다.
+						PRINTFORMW 하지만 나오는 것은 아무것도 없었다.
+						PRINTFORMW 그렇게 찾다찾다 나오는 건 단 한 가지, 자신이 애초에 구하려고 한 %CALLNAME:(ARG:1)%뿐이었다!
 					ELSE
 						PRINTFORMW %CALLNAME:ARG%는 %CALLNAME:MASTER%의 눈이 '얼른 지나가라'고 말하는 것을 깨달았다.
 						PRINTFORMW 어째서 비켜주는지 그 이유를 몰라서 의아해하는 %CALLNAME:ARG%였지만……
@@ -1483,6 +2237,8 @@ DO
 				CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 6, CALLNAME:ARG 
 			ENDIF
 		ENDIF
+	ELSEIF LOCAL:28 == 1
+		;아이아스의 거울을 발동취소하는 부분, 그러니 자동스킵!
 	ELSE
 		;평상시대로의 전투
 		;경비원 공격 턴
@@ -1994,13 +2750,23 @@ DO
 				LOCAL:0 ++ ;데미지를 주는 데 성공하면 턴이 증가
 			ENDIF
 		ENDIF
+	ELSEIF LOCAL:28 == 1
+		;아이아스의 거울을 접거나 파괴되어 없어졌을 경우
+		IF LOCAL:26 > 0
+		;내구도가 남아있을 경우 - 도중에 접었다 - 턴이 증가하지 않는다(자동스킵)
+			LOCAL:28 = 0 ;아이아스 도중중단 스위치 OFF
+		ELSE
+		;내구도가 없을 경우 - 방패가 파괴되었다	 - 턴이 증가한다
+			LOCAL:28 = 0 ;아이아스 도중중단 스위치 OFF
+			LOCAL:0 ++
+		ENDIF
 	ELSE
 		;평상시에는 턴이 증가한다
 		LOCAL:0 ++
 	ENDIF
 
 
-LOOP LOCAL:0 < 5
+LOOP LOCAL:0 < 10
 ;전투종료.무승부
 RESULT:1 = 2
 RETURN RESULT:1
