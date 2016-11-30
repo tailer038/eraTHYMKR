@@ -146,28 +146,47 @@ PRINTW
 ;프롤로그를 볼까의 선택
 ;--------------------------------------------------
 @PROLOGUE_SELECT_EXTRA
-DRAWLINE
-PRINTL EXTRA의 프롤로그입니다. 보시겠습니까?
-PRINTL [0] 필요 없어!
-PRINTL [1] 예
-TRYCALLFORM EXIST_PROLOGUE_EXTRA_{NO:MASTER}
-IF RESULT == 1
-	PRINTFORML [2] %조사처리(CALLNAME:MASTER,"가")% 조교사가 된 경위를 배운다.
-	LOCAL:2 = 1
-ENDIF
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-	RETURN 0
-ELSEIF RESULT == 1
-	CALL EXE_PROLOGUE_EXTRA_0
-ELSEIF RESULT == 2 && LOCAL:2 == 1
-	CALLFORM EXE_PROLOGUE_EXTRA_{NO:MASTER}
+IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+	DRAWLINE
+	PRINTL 천하패도를 노리는 그의 프롤로그는 스킵이 불가능합니다.
+	PRINTL [0] 필요 없어! 귀찮아! 안 볼 거야!
+	PRINTL [1] 그런 거라면 당연히 봐야지!
+	INPUT
+	IF RESULT == 0
+		PRINTL 저항은 소용없습니다. 이분의 프롤로그는 꼭 감상하세요.
+		CALL EXE_PROLOGUE_EXTRA_0
+	ELSEIF RESULT == 1
+		CALL EXE_PROLOGUE_EXTRA_0
+	ELSE
+		PRINTL 저항은 소용없습니다. 이분의 프롤로그는 꼭 감상하세요.
+		CALL EXE_PROLOGUE_EXTRA_0
+	ENDIF
+	FLAG:994 |= 2
+	FLAG:995 = NO:MASTER
 ELSE
-	GOTO INPUT_LOOP
+	DRAWLINE
+	PRINTL EXTRA의 프롤로그입니다. 보시겠습니까?
+	PRINTL [0] 필요 없어!
+	PRINTL [1] 예
+	TRYCALLFORM EXIST_PROLOGUE_EXTRA_{NO:MASTER}
+	IF RESULT == 1
+		PRINTFORML [2] %조사처리(CALLNAME:MASTER,"가")% 조교사가 된 경위를 배운다.
+		LOCAL:2 = 1
+	ENDIF
+	$INPUT_LOOP
+	INPUT
+	IF RESULT == 0
+		RETURN 0
+	ELSEIF RESULT == 1
+		CALL EXE_PROLOGUE_EXTRA_0
+	ELSEIF RESULT == 2 && LOCAL:2 == 1
+		CALLFORM EXE_PROLOGUE_EXTRA_{NO:MASTER}
+	ELSE
+		GOTO INPUT_LOOP
+	ENDIF
+	FLAG:994 |= 2
+	FLAG:995 = NO:MASTER
 ENDIF
-FLAG:994 |= 2
-FLAG:995 = NO:MASTER
 
 ;--------------------------------------------------
 ;EXTRA용 프롤로그(통상)
@@ -263,6 +282,11 @@ IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTE
 	;최대기력 5배 상승(삼신기 흡수버프)
 	MAXBASE:MASTER:1 = (MAXBASE:MASTER:1 * 5)
 	BASE:MASTER:1 = (BASE:MASTER:1 * 5)
+	
+	;향림당 기본물품 비치(비매품만)
+	FLAG:8010 = 10 ;히히이로카네
+	FLAG:8012 = 1  ;난로(스토브) - 겨울나기 필수품!
+	FLAG:8013 = 15 ;등유(1L짜리) - 유카리가 조달함(거래로)
 
 	PRINTW  
 	PRINTW 　　　　　　　　―― EXTRA Prologue No. 000

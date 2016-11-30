@@ -8,16 +8,103 @@
 ;YM 타입 플래그(CFLAG:7900)가 켜져 있으면 YM 타입으로
 @K2_START_YM
 IF CFLAG:5001 == 0
-	DRAWLINE
-	PRINTFORMW (미니 팔괘로도 빗자루도 매직 아이템도 빼앗겼다라)
-	PRINTFORMW (마법도 쓸 수 없어……. 자, 어떻게 할지 생각하라고, 키리사메 마리사)
-	PRINTFORMW (이게 이변이라면, 레이무나 다른 누가 알아차리고 움직이기 시작했을 거야)
-	PRINTFORMW (하지만 이게 이변이라고 아무도 인식하지 못했다면……)
-	PRINTFORMW 마리사는 방금 방에 들어온 상대를 지그시 바라보며 생각한다.
-	PRINTFORMW (구조는 기대할 수 없나. 나 혼자서…… 무슨 수를 내야겠군)
-	CFLAG:5001 = 1
-	RETURN 1
-
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「으윽, 대체 누구야… 숨어있다가 갑자기 뒤에서 기습이라니…」
+		PRINTFORMW 「게다가 순간 눈 앞이 암전되서…」
+		PRINTFORMW 「……여긴 대체, 어디……?」
+		PRINTFORMW 「……응? 나, 여기………알고 있…어?」
+		PRINTFORMW 『눈치가 꽤나 빠르군, 마리사. 역시 너야.』
+		PRINTFORMW 「이 목소린, 호…혹시…코-린?」
+		PRINTFORMW 『맞아. 바로 나다. 너에게 항상 팔괘로의 수리를 해주고 있는 이몸이라고.』
+		PRINTL
+		PRINTFORMW 마리사는 여기가 향림당의 창고 내라는 것을 순식간에 눈치챘다.
+		PRINTFORMW 어두워서 아무리 그녀라고 해도 쉽게 알아내지는 못했을거라 예상했다만, 보기좋게 빗나갔다.
+		PRINTL
+		PRINTFORMW 「설마, 코린이 날…납치한 거…야?」
+		PRINTFORMW 『아니, 그건 노예상인이다. 내가 아니지.』
+		PRINTFORMW 「그럼 왜 내가 여기에 있는 건데? 들어올 필요도 없는 창고에 내가 왜 들어와 있는거냐고오!」
+		PRINTFORMW 『물론… 널 조교하기 위해서지.』
+		PRINTFORMW 「으...응..! 코린.. 그만!」
+		PRINTL
+		PRINTFORMW %CALLNAME:MASTER%는 마리사의 뒤편에서 그의 얼굴을 마리사의 어깨에 들이댄 채 혀로 뺨을 애무했다.
+		PRINTL
+		PRINTFORMW 『난 또다시 '환상향의 왕'을 목표로 할 거야.』
+		PRINTFORMW 「코린, 대체 그건 무슨 소리야?」
+		PRINTFORMW 『왜 그래, 마리사? 뭔가 이상한 거라도 있나?』
+		PRINTFORMW 「……그 쓸데없는 망상, 코린, 저번에 삼신기에 홀린 것 때문에 그렇게 됐었잖아!」
+		PRINTFORMW 『난 그 때 제대로 말했어. '난 정상이다'고.』
+		PRINTFORMW 「아냐! 그때나 지금이나 코린은 이상했고, 또 이상하다고!」
+		PRINTL
+		PRINTFORMW 마리사는 두 손을 %CALLNAME:MASTER%에게 붙잡힌 채 이리저리 발버둥을 치면서 계속해서 소리쳤다.
+		PRINTL
+		PRINTFORMW 「정신차려, 코린! 삼신기는 이미 부서졌고, 코린은 이제 다시 정신이 이상하게 될 이유가 없다고!」
+		PRINTFORMW 『미안하지만, 마리사. 이제는 내(%CALLNAME:MASTER%)가 바로…… 삼신기다.』
+		PRINTFORMW 「……뭐?」
+		PRINTL
+		PRINTFORMW %CALLNAME:MASTER%는 자신이 삼신기의 파편을 흡수했다고 말해주었다.
+		PRINTL
+		PRINTFORMW 「……그럼, 코린은 이제………」
+		PRINTFORMW 『그래, 이제 단순한 반요가 아니게 되었어.』
+		PRINTFORMW 「아, 아무리 그래도 코린은… 그럴 사람이 아니야.. 아닌데...」
+		PRINTFORMW 『물론 그 당시의 난장판과는 전혀 다른 목적이 있지.』
+		PRINTFORMW 「전혀 다른 목적?」
+		PRINTFORMW 『첫째, 나 자신의 힘을 '용'에게 인정받는 것.』
+		PRINTFORMW 『둘째, 그렇게 해서 환상향과 바깥세계를 왕래할 수 있는 자격과 힘을 갖는 것.』
+		PRINTFORMW 『셋째, 환상향에 태어난 남자로서의 로망을 누리는 것.』
+		PRINTFORMW 「예전처럼 환상향도 모자라 바깥세계까지 점령하겠다는 허무맹랑한 망상은 없네……」
+		PRINTFORMW 『그러니까 마리사. 나를 좀…… 도와주지 않겠어?』
+		PRINTFORMW 「첫번째와 두번째는 몰라도, 세번째는 대체 뭐야?! 무지 수상한데?!」
+		PRINTFORMW 『걱정할 건 없어, 네가 우려하는 일은 절대로, 없을거야.』
+		PRINTFORMW 「아무리 코린이라도, 지금 이 상황에서 말하는 건 설득력이 제로라고!」
+		PRINTFORMW 『부디…… 이번만큼은 날 믿어줘, 마리사. 절대로 널, 실망시키지 않겠다고 멩세하겠어.』
+		PRINTFORMW 「코, 코린, 갑자기…… 치사해……응! 읏!!」
+		PRINTL
+		PRINTFORMW %CALLNAME:MASTER%는 마리사의 귓가에 대고 속삭이듯이 말하면서 그녀의 목덜미를 애무했다.
+		PRINTL
+		PRINTFORMW 「아, 알았어.」
+		PRINTFORMW 「그, 그럼.. 어떻게 도와주면…… 되는건데?」
+		PRINTFORMW 『그러니까 이제부터 널 조교할거야. 네가 진심으로 날 사랑한 채로 마주볼 수 있게 말이지.』
+		PRINTFORMW 「..코...코린..」
+		PRINTFORMW 『이제부터 나와 너, 그리고 레이무, 우리 모두 행복해지기 위한 '대업'을 위해 앞으로 나아갈 거야.』
+		PRINTFORMW 『그러니, 부디 날 거부하지 말아줬으면 좋겠어.』
+		PRINTL
+		PRINTFORMW 마리사는 %CALLNAME:MASTER%의 말을 거의 듣지 않았다.
+		PRINTFORMW 왜냐하면 그가 말한 '사랑'이라는 단어가 그녀의 머릿속에서 크게 울렸기 때문이다.
+		PRINTL
+		PRINTFORMW 「…………(덥석!)」
+		PRINTFORMW 『마…마리사?』
+		PRINTL
+		PRINTFORMW 마리사는 순간 아무말도 하지 않은 채 %CALLNAME:MASTER%를 강렬하게 끌어안았다.
+		PRINTFORMW 그리고…………
+		PRINTL
+		PRINTFORMW 「…………(츄♥)」
+		PRINTL
+		PRINTFORMW %CALLNAME:MASTER%의 뺨에 입술을 갖다대었다.
+		PRINTL
+		PRINTFORMW 「나, 난…… 예전부터 코-린을……」
+		PRINTFORMW 『그런가 마리사, 난 기뻐. 이미 나를 그렇게나 사랑해주고 있었다니.』
+		PRINTFORMW 「……나………………믿어도 되는거지? 이번만큼은…… 코-린을 믿어도……되는……거…지?」
+		PRINTFORMW 『물론이지, 마리사. 예전처럼 흉폭하거나 나쁜 일은 전혀 없을거야. 다 함께, 행복을 누리기 위해서 움직일 뿐이야.』
+		PRINTFORMW 「코린, 코린, 정말…좋아…해…… 그러니까…… 나, 코린을 따라갈거다제!」
+		PRINTFORMW 『기뻐. 마리사. 정말, 정말 고마워!』
+		;린노스케 EXTRA 보정, 연모, 호감도1200 순종3로 스타트!
+		CFLAG:2 = 1200
+		TALENT:150 = 1
+		ABL:10 = 3
+		CFLAG:5001 = 1
+		RETURN 1
+	ELSE
+		DRAWLINE
+		PRINTFORMW (미니 팔괘로도 빗자루도 매직 아이템도 빼앗겼다라)
+		PRINTFORMW (마법도 쓸 수 없어……. 자, 어떻게 할지 생각하라고, 키리사메 마리사)
+		PRINTFORMW (이게 이변이라면, 레이무나 다른 누가 알아차리고 움직이기 시작했을 거야)
+		PRINTFORMW (하지만 이게 이변이라고 아무도 인식하지 못했다면……)
+		PRINTFORMW 마리사는 방금 방에 들어온 상대를 지그시 바라보며 생각한다.
+		PRINTFORMW (구조는 기대할 수 없나. 나 혼자서…… 무슨 수를 내야겠군)
+		CFLAG:5001 = 1
+		RETURN 1
+	ENDIF
 ;-------------------------------------------------
 ;조교 개시시(1회만) CFLAG:5001
 ;-------------------------------------------------
@@ -57,134 +144,138 @@ ELSEIF CFLAG:5001 < 6 && TEQUIP:1 == 1
 
 ;연모
 ELSEIF CFLAG:5001 < 7 && TALENT:150 == 1
-	DRAWLINE
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 마리사는 옷을 입은 채로 얌전한 얼굴로 기다리고 있었다
-	PRINTFORMW 「……. 하기 전에, 1개만 질문에 답해 주지 않을래」
-	PRINTFORMW 평상시와 다른 진지한 표정의 마리사에 대해, %조사처리(CALLNAME:MASTER,"는")% 마리사의 근처에 앉으면서 무언으로 질문을 재촉한다
-	PRINTFORMW 「……어째서, 나였어?」
-	PRINTFORMW 웬지 모르게 질문의 의미는 헤아렸지만, %조사처리(CALLNAME:MASTER,"는")% 마리사에 무언으로 시선을 보낸다
-	PRINTFORMW 「환상향에는, 그 밖에 얼마든지 좋은 여자는 있겠지? 물론, 나 대신에 다른 녀석이 잡혔으면 좋았다든가 하는 의미가 아니고」
-	PRINTFORMW 「나같은, 여장부라 귀엽지도 않고 가슴도 작은데다 손버릇도 나쁘고, 다른 녀석보다 사랑스럽지 않은 나를, 어째서 조교하려고 생각한 거야?」
-
-	PRINTL [0] 사랑스럽다고 생각했기 때문에
-	PRINTL [1] 한눈에 반했기 때문에
-	PRINTL [2] 도움이 될 것 같다고 생각했기 때문에
-	PRINTL [3] 비싸게 팔린다고 생각했기 때문에
-	PRINTL [4] 웬지 모르게
-	$INPUT_LOOP
-	INPUT
-	;사랑스럽다고 생각했기 때문에
-	IF RESULT == 0
-		PRINTFORMW 「……에엣?」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 그렇게 생각하고 있는 것은 마리사 자신뿐이며,
-		PRINTFORMW 옆에서 보면 그 활발함, 자신감으로 가득 찬 웃는 얼굴, 무심코 정신없이 볼 만큼 훌륭한 금발, 사실은 어느 소녀보다 아가씨다운 마음 등,
-		PRINTFORMW 사랑스러운 곳은 얼마든지 있기 때문에 선택했던 것이다라고 정직하게 대답했다
-		PRINTFORMW 「사, 사랑스럽다니, 그런……그렇게 말하면, 그, 너무, 부끄럽잖아」
-		PRINTFORMW 마리사는 깍지를 끼며 잠시 머뭇거리고 있었다
-		PRINTFORMW 「……지금도, 나, 사랑스럽다고 생각해주고 있는 거야?」
-		PRINTFORMW 당연하다. 오히려 처음 만났을 때 보다 더 사랑스러워져, 더욱 좋아하게 되었다, 라고 %조사처리(CALLNAME:MASTER,"는")% 대답했다
-		PRINTFORMW 「……기쁘네. 나, 그렇게 대놓고 말하는 것에 익숙하지 않아서, 지금, 제대로 마주보진 못하겠지만」
-		PRINTFORMW 「좋아하는 사람으로부터, 그렇게 사랑스럽다든가, 좋아한다는 말을 들어서, 지금 나, 몹시 두근두근거린다구」
-		PRINTFORMW 마리사는 가슴에 양손을 대면서, 열기를 띤 풋풋한 눈동자로 %조사처리(CALLNAME:MASTER,"를")% 응시해 왔다
-		PRINTFORMW 「사실은, 내가 먼저 말할 생각이었지만, 너에게 추월당해 버렸다제」
-		PRINTFORMW 마리사는 침대 위에서 질질 끌며 다가와, %CALLNAME:MASTER%에 밀착했다
-		PRINTFORMW 「너의 「좋아」가, 어떤 「좋아」인가는 모르겠지만……」
-		PRINTFORMW 「나도 너를 좋아한다. 라이크가 아니고 러브다. 나는 지금, 너를 사랑하고 있어」
-		PRINTFORMW 「내가 너의 노예인 건 물론 알고 있어. 하지만, 이제 참을 수가 없어. 너를 좋아하는 이 기분이」
-		PRINTFORMW 「지금, 너의 입으로부터 「사랑스럽다」라고 말을 들어서, 이제 한계야. 사랑하고 있어. 환상향의 중심에서 외치고 싶어질 정도로 사랑하고 있어」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 대답 대신에 마리사를 살그머니 꼭 껴안으며, 답례에 귓전으로 사랑을 속삭였다
-		PRINTFORMW 「괜찮은 거야……? 나, 너의 노예인데, 너를 좋아하게 되어도 괜찮은 거야……?」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 이번에는 대답 대신에 마리사에 키스를 하며, 상냥하게 그 신체를 침대에 눕혔다……
-		CFLAG:5989 = 1
-	;한 눈 반했기 때문에
-	ELSEIF RESULT == 1
-		PRINTFORMW 「…………미안. 나 아무래도 귀가 이상해진 것 같아. 다시 한번만 말해 줘」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 예전에 빗자루를 타 하늘을 날고 있는 마법사를 보았을 때,
-		PRINTFORMW 그 유성과 같은 빛을 두른 그 소녀에게 한눈에 반해 버려,
-		PRINTFORMW 잘못됐다고는 알고 있어도 이런 수단으로밖에 자신의 물건으로 할 수 없었던 것을 정직하게 대답했다
-		PRINTFORMW 「~~~~!」
-		PRINTFORMW 마리사는 쓰고 있던 검은 모자를 눈가로 내려, %CALLNAME:MASTER%로부터 눈을 돌렸다
-		PRINTFORMW ……역시, 미움받는 것이 당연한가. 미안하다, 라고 %조사처리(CALLNAME:MASTER,"는")% 사과한다
-		PRINTFORMW 「……아, 사과하지 말아줘, 괜찮다제」
-		PRINTFORMW 마리사가 크웃, 이라고 중얼거렸다. 조용히 감싼 모자에 숨겨져 어떤 표정인가는 짐작할 수 없다.
-		PRINTFORMW 「아, 그런데 말이야. 그, 그거, 한 눈에 반하다는 것은, 즉, 그……아우우」
-		PRINTFORMW 마리사는 양손으로 자신의 뺨을 살짝 착착 두드린다. 그 때 모자가 조금 올라 마리사의 표정이 보였는데,
-		PRINTFORMW 마리사의 얼굴은 사과와 같이 새빨갛게 되어 있는 것이 보였다
-		PRINTFORMW 「나, 나는, 지금, 너에게 고백받고 있는 거야?」
-		PRINTFORMW 그렇다, 라고 %조사처리(CALLNAME:MASTER,"는")% 긍정한다
-		PRINTFORMW 「그런가……고백받고 있는건가, 나」
-		PRINTFORMW 한동안 모자나 머리카락을 의미없이 만지면서 무언으로 있던 마리사였지만, 이윽고 심호흡을 몇 번인가 하면서
-		PRINTFORMW 힘차게 일어서 모자를 벗었다
-		PRINTFORMW 「좋아! 자 분명하게 대답하지 않으면! 좋아, 하, 한번 밖에 말하지 않으니깐, 분명하게 들어둬!」
-		PRINTFORMW 마리사는 들이마시고, 또 숨을 들이마신다
-		PRINTFORMW 「나, 나도 너를 좋아해! 처음으로 만났을 때는 싫었지만, 지금은, 너를 아주 좋아해!」
-		PRINTFORMW 「이런 나를 좋아한다고 말해 주어 기뻤어! 그러니까, 내가 괜찮았으면 받아줘! 나도, 너를 사랑하게 해줘!」
-		PRINTFORMW ……이 저택 안에 다 들리지 않았을까라고 생각할 정도의 큰 소리였다
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 지금의 마리사의 선언을 머릿속에서 몇 번인가 반복하고 있었지만……이윽고, 일어서면서
-		PRINTFORMW 마리사를 꼭 껴안아 방의 중앙에서 빙글빙글 춤추었다
-		PRINTFORMW 「히끅……기뻐……훌쩍, 좋아한다고 말해줘서, 정말로, 기뻤어……」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"과")% 마리사는, 돌면서 몇 번이나 키스를 주고 받았고, 이윽고 2명은 함께 침대 위에 쓰러졌다.
-		PRINTFORMW 「……. 나 너를 좋아해도 괜찮아? 나 쭉쭉, 너와 함께 있어도 괜찮아?」
-		PRINTFORMW 응, 이라고 %조사처리(CALLNAME:MASTER,"는")% 긍정하면서, 쭉 함께 있자, 라고 귓전으로 속삭였다
-		PRINTFORMW 「……! 응……! 아아……! 으아아아아앙……」
-		PRINTFORMW 마리사는 흘러넘치는 눈물을 닦을려고도 하지 않고, %CALLNAME:MASTER%의 가슴에 얼굴을 계속 문질렀다……
-		PRINTFORMW 
-		PRINTFORMW 마리사가 조금 침착해진 뒤에, %조사처리(CALLNAME:MASTER,"는")% 하나 신경이 쓰여 물어 보았다
-		PRINTFORMW 소녀를 감금해 억지로 심한 일을 해온 자신 따위를, 어째서 마리사는 좋아하게 되어 주었는지, 라고
-		PRINTFORMW 마리사는 손가락을 입가에 대고, 음- 이라고 잠깐 생각하고 있었지만, 이윽고 아하하, 라고 웃으면서 대답했다
-		PRINTFORMW 「모르겠어. 어째서인가 나도 전혀 모르겠어」
-		PRINTFORMW 주르륵, 하고 탈진해 침대 위에서 미끄러지는 당신을 보고, 또 이상한 듯이 웃으면서 마리사는 가슴을 펴며 말했다
-		PRINTFORMW 「좋아하게 될 이유는 없어」
-		PRINTFORMW 「그래도 좋아해, 그런거다제」
-		CFLAG:5989 = 1
-	;도움이 될 것 같다고 생각했기 때문에
-	ELSEIF RESULT == 2
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 마리사는 전부터 이변 해결사라고 소문을 듣고 있던 점,
-		PRINTFORMW 마법이나 약의 취급에 뛰어나며, 인간이면서 요괴와 맞서 싸울 수 있는 실력과 담력이 있고,
-		PRINTFORMW 요괴들로부터도 경의를 받는 존재인 것을 알아서, 꼭 조수로서 수중에 두고 싶다고 생각하고 있던 것을 정직하게 이야기했다
-		PRINTFORMW 「그런가. 너도 꽤 눈썰미가 좋잖아」
-		PRINTFORMW 칭찬받아 나쁜 기분은 아닐 거다. 마리사는 사람을 끌어당기는 것 같은, 자신감으로 가득찬 미소를 띄웠다
-		PRINTFORMW 「아무튼, 노예 조교의 심부름은, 분명히 제대로 부탁받아도 할 생각은 없었으니까」
-		PRINTFORMW 「나를 납치해 조교한다는 것은 수단으로서는 좋을지도. 「장수를 쏘려면 우선은 말부터」라는 놈이다」
-		PRINTFORMW ……? 사용법 맞는 말인가 그거?
-		PRINTFORMW 「상관 없어. 당신이 거기까지 나를 평가해 주고 있다면, 내 힘, 얼마든지 빌려준다제」
-		PRINTFORMW 「앞으로 한번만 말할게. 나는 아무래도 너를 사랑해 버린 것 같아. 그러니까 다른 여자를 조교하는 것도 좋지만, 나의 조교도 잊지 말아줘!」
-		PRINTFORMW 마리사는 그렇게 말하며, 힘차게 옷을 벗었다……
-	;비싸게 팔린다고 생각했기 때문에
-	ELSEIF RESULT == 3
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 마리사는 전부터 소문을 듣고 있던 점,
-		PRINTFORMW 마법이나 약의 취급에 뛰어나며, 인간이면서 요괴와 맞서 싸울 수 있는 실력과 담력이 있고,
-		PRINTFORMW 요괴들로부터도 경의를 받는 존재인 것을 알아서, 노예로서는 비싸게 팔린다고 생각하고 있던 것을 정직하게 이야기했다
-		PRINTFORMW 「그런……건가」
-		PRINTFORMW 마리사는 역시 쇼크를 받은 것 같지만, 적어도 %조사처리(CALLNAME:MASTER,"를")% 향해 보이는 표정은 바꾸지 않고 있었다
-		PRINTFORMW 「그렇다면, 나는 언젠가 팔리는구나」
-		PRINTFORMW 「그러면, 저기, 팔리기 전에 말할게」
-		PRINTFORMW 「나는 너를 좋아하게 됐어. 말하자면, 너를 사랑하게 됐어」
-		PRINTFORMW 「자신을 팔려 하고 있는 놈을 사랑을 하다니 이상한 이야기이지만, 좋아하게 되었으니까 어쩔 수 없어」
-		PRINTFORMW 「너에게 팔려도, 나는 쭉 너를 좋아할 거야. 아, 그렇다고 이상하게 신경쓰지 마? 팔고 싶으면 팔아줘」
-		PRINTFORMW 「너에게……팔려도, 나는……나는……, 쭉, 팔린 뒤에도……너와의, 일, 생각하며…………」
-		PRINTFORMW ……마리사의 제방은, 여기서 무너졌다
-		PRINTFORMW 「……싫어」
-		PRINTFORMW 「싫어……역시, 팔리고 싶지 않아……떨어지고 싶지 않아……」
-		PRINTFORMW 「좋아하게 되었는데……처음, 사랑을 했는데……함께 있을 수 없고 떨어져 버리는, 그런 것, 싫어……」
-		PRINTFORMW 「으……훌쩍……우아……으아아아아----」
-		PRINTFORMW 마리사가 울음을 그칠 때까지, %조사처리(CALLNAME:MASTER,"는")% 쭉 마리사를 꼭 껴안고 머리를 계속 어루만졌다……
-	;웬지 모르게
-	ELSEIF RESULT == 4
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 그 밖에도 후보는 있었지만, 왠지 모르게 마리사를 선택한 것일 뿐이며 특별한 이유는 없다고 정직하게 대답했다
-		PRINTFORMW 「……왠지 모르게로 소녀를 감금하는 것인가. 아휴, 제대로 된 놈이 아니다제」
-		PRINTFORMW 「뭐, 하지만, 그런 우연이 없었으면, 나는 너를 일생 만나지 않았던 것일지도 몰라」
-		PRINTFORMW 「사실, 운명이라고 해도 잘 몰라」
-		PRINTFORMW 「그러면 나, 왠지 모르게란 이유로 팔리기 전에 말할께」
-		PRINTFORMW 「나는 너를 좋아하게 됐어. 말하자면, 너를 사랑하게 됐어」
-		PRINTFORMW 「왠지 모르게로부터 시작되는 사랑도 이상한 이야기이지만, 나는 확실히 말했으니깐」
-		PRINTFORMW 「너가, 나에게 질려 나를 팔더라도, 나는 쭉 너를 좋아하고 있을 거야」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		CFLAG:5001 = 7
+		RETURN 1
 	ELSE
-		GOTO INPUT_LOOP
-	ENDIF
-	CFLAG:5001 = 7
-	RETURN 1
+		DRAWLINE
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 마리사는 옷을 입은 채로 얌전한 얼굴로 기다리고 있었다
+		PRINTFORMW 「……. 하기 전에, 1개만 질문에 답해 주지 않을래」
+		PRINTFORMW 평상시와 다른 진지한 표정의 마리사에 대해, %조사처리(CALLNAME:MASTER,"는")% 마리사의 근처에 앉으면서 무언으로 질문을 재촉한다
+		PRINTFORMW 「……어째서, 나였어?」
+		PRINTFORMW 웬지 모르게 질문의 의미는 헤아렸지만, %조사처리(CALLNAME:MASTER,"는")% 마리사에 무언으로 시선을 보낸다
+		PRINTFORMW 「환상향에는, 그 밖에 얼마든지 좋은 여자는 있겠지? 물론, 나 대신에 다른 녀석이 잡혔으면 좋았다든가 하는 의미가 아니고」
+		PRINTFORMW 「나같은, 여장부라 귀엽지도 않고 가슴도 작은데다 손버릇도 나쁘고, 다른 녀석보다 사랑스럽지 않은 나를, 어째서 조교하려고 생각한 거야?」
 
+		PRINTL [0] 사랑스럽다고 생각했기 때문에
+		PRINTL [1] 한눈에 반했기 때문에
+		PRINTL [2] 도움이 될 것 같다고 생각했기 때문에
+		PRINTL [3] 비싸게 팔린다고 생각했기 때문에
+		PRINTL [4] 웬지 모르게
+		$INPUT_LOOP
+		INPUT
+		;사랑스럽다고 생각했기 때문에
+		IF RESULT == 0
+			PRINTFORMW 「……에엣?」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 그렇게 생각하고 있는 것은 마리사 자신뿐이며,
+			PRINTFORMW 옆에서 보면 그 활발함, 자신감으로 가득 찬 웃는 얼굴, 무심코 정신없이 볼 만큼 훌륭한 금발, 사실은 어느 소녀보다 아가씨다운 마음 등,
+			PRINTFORMW 사랑스러운 곳은 얼마든지 있기 때문에 선택했던 것이다라고 정직하게 대답했다
+			PRINTFORMW 「사, 사랑스럽다니, 그런……그렇게 말하면, 그, 너무, 부끄럽잖아」
+			PRINTFORMW 마리사는 깍지를 끼며 잠시 머뭇거리고 있었다
+			PRINTFORMW 「……지금도, 나, 사랑스럽다고 생각해주고 있는 거야?」
+			PRINTFORMW 당연하다. 오히려 처음 만났을 때 보다 더 사랑스러워져, 더욱 좋아하게 되었다, 라고 %조사처리(CALLNAME:MASTER,"는")% 대답했다
+			PRINTFORMW 「……기쁘네. 나, 그렇게 대놓고 말하는 것에 익숙하지 않아서, 지금, 제대로 마주보진 못하겠지만」
+			PRINTFORMW 「좋아하는 사람으로부터, 그렇게 사랑스럽다든가, 좋아한다는 말을 들어서, 지금 나, 몹시 두근두근거린다구」
+			PRINTFORMW 마리사는 가슴에 양손을 대면서, 열기를 띤 풋풋한 눈동자로 %조사처리(CALLNAME:MASTER,"를")% 응시해 왔다
+			PRINTFORMW 「사실은, 내가 먼저 말할 생각이었지만, 너에게 추월당해 버렸다제」
+			PRINTFORMW 마리사는 침대 위에서 질질 끌며 다가와, %CALLNAME:MASTER%에 밀착했다
+			PRINTFORMW 「너의 「좋아」가, 어떤 「좋아」인가는 모르겠지만……」
+			PRINTFORMW 「나도 너를 좋아한다. 라이크가 아니고 러브다. 나는 지금, 너를 사랑하고 있어」
+			PRINTFORMW 「내가 너의 노예인 건 물론 알고 있어. 하지만, 이제 참을 수가 없어. 너를 좋아하는 이 기분이」
+			PRINTFORMW 「지금, 너의 입으로부터 「사랑스럽다」라고 말을 들어서, 이제 한계야. 사랑하고 있어. 환상향의 중심에서 외치고 싶어질 정도로 사랑하고 있어」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 대답 대신에 마리사를 살그머니 꼭 껴안으며, 답례에 귓전으로 사랑을 속삭였다
+			PRINTFORMW 「괜찮은 거야……? 나, 너의 노예인데, 너를 좋아하게 되어도 괜찮은 거야……?」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 이번에는 대답 대신에 마리사에 키스를 하며, 상냥하게 그 신체를 침대에 눕혔다……
+			CFLAG:5989 = 1
+		;한 눈 반했기 때문에
+		ELSEIF RESULT == 1
+			PRINTFORMW 「…………미안. 나 아무래도 귀가 이상해진 것 같아. 다시 한번만 말해 줘」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 예전에 빗자루를 타 하늘을 날고 있는 마법사를 보았을 때,
+			PRINTFORMW 그 유성과 같은 빛을 두른 그 소녀에게 한눈에 반해 버려,
+			PRINTFORMW 잘못됐다고는 알고 있어도 이런 수단으로밖에 자신의 물건으로 할 수 없었던 것을 정직하게 대답했다
+			PRINTFORMW 「~~~~!」
+			PRINTFORMW 마리사는 쓰고 있던 검은 모자를 눈가로 내려, %CALLNAME:MASTER%로부터 눈을 돌렸다
+			PRINTFORMW ……역시, 미움받는 것이 당연한가. 미안하다, 라고 %조사처리(CALLNAME:MASTER,"는")% 사과한다
+			PRINTFORMW 「……아, 사과하지 말아줘, 괜찮다제」
+			PRINTFORMW 마리사가 크웃, 이라고 중얼거렸다. 조용히 감싼 모자에 숨겨져 어떤 표정인가는 짐작할 수 없다.
+			PRINTFORMW 「아, 그런데 말이야. 그, 그거, 한 눈에 반하다는 것은, 즉, 그……아우우」
+			PRINTFORMW 마리사는 양손으로 자신의 뺨을 살짝 착착 두드린다. 그 때 모자가 조금 올라 마리사의 표정이 보였는데,
+			PRINTFORMW 마리사의 얼굴은 사과와 같이 새빨갛게 되어 있는 것이 보였다
+			PRINTFORMW 「나, 나는, 지금, 너에게 고백받고 있는 거야?」
+			PRINTFORMW 그렇다, 라고 %조사처리(CALLNAME:MASTER,"는")% 긍정한다
+			PRINTFORMW 「그런가……고백받고 있는건가, 나」
+			PRINTFORMW 한동안 모자나 머리카락을 의미없이 만지면서 무언으로 있던 마리사였지만, 이윽고 심호흡을 몇 번인가 하면서
+			PRINTFORMW 힘차게 일어서 모자를 벗었다
+			PRINTFORMW 「좋아! 자 분명하게 대답하지 않으면! 좋아, 하, 한번 밖에 말하지 않으니깐, 분명하게 들어둬!」
+			PRINTFORMW 마리사는 들이마시고, 또 숨을 들이마신다
+			PRINTFORMW 「나, 나도 너를 좋아해! 처음으로 만났을 때는 싫었지만, 지금은, 너를 아주 좋아해!」
+			PRINTFORMW 「이런 나를 좋아한다고 말해 주어 기뻤어! 그러니까, 내가 괜찮았으면 받아줘! 나도, 너를 사랑하게 해줘!」
+			PRINTFORMW ……이 저택 안에 다 들리지 않았을까라고 생각할 정도의 큰 소리였다
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 지금의 마리사의 선언을 머릿속에서 몇 번인가 반복하고 있었지만……이윽고, 일어서면서
+			PRINTFORMW 마리사를 꼭 껴안아 방의 중앙에서 빙글빙글 춤추었다
+			PRINTFORMW 「히끅……기뻐……훌쩍, 좋아한다고 말해줘서, 정말로, 기뻤어……」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"과")% 마리사는, 돌면서 몇 번이나 키스를 주고 받았고, 이윽고 2명은 함께 침대 위에 쓰러졌다.
+			PRINTFORMW 「……. 나 너를 좋아해도 괜찮아? 나 쭉쭉, 너와 함께 있어도 괜찮아?」
+			PRINTFORMW 응, 이라고 %조사처리(CALLNAME:MASTER,"는")% 긍정하면서, 쭉 함께 있자, 라고 귓전으로 속삭였다
+			PRINTFORMW 「……! 응……! 아아……! 으아아아아앙……」
+			PRINTFORMW 마리사는 흘러넘치는 눈물을 닦을려고도 하지 않고, %CALLNAME:MASTER%의 가슴에 얼굴을 계속 문질렀다……
+			PRINTFORMW 
+			PRINTFORMW 마리사가 조금 침착해진 뒤에, %조사처리(CALLNAME:MASTER,"는")% 하나 신경이 쓰여 물어 보았다
+			PRINTFORMW 소녀를 감금해 억지로 심한 일을 해온 자신 따위를, 어째서 마리사는 좋아하게 되어 주었는지, 라고
+			PRINTFORMW 마리사는 손가락을 입가에 대고, 음- 이라고 잠깐 생각하고 있었지만, 이윽고 아하하, 라고 웃으면서 대답했다
+			PRINTFORMW 「모르겠어. 어째서인가 나도 전혀 모르겠어」
+			PRINTFORMW 주르륵, 하고 탈진해 침대 위에서 미끄러지는 당신을 보고, 또 이상한 듯이 웃으면서 마리사는 가슴을 펴며 말했다
+			PRINTFORMW 「좋아하게 될 이유는 없어」
+			PRINTFORMW 「그래도 좋아해, 그런거다제」
+			CFLAG:5989 = 1
+		;도움이 될 것 같다고 생각했기 때문에
+		ELSEIF RESULT == 2
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 마리사는 전부터 이변 해결사라고 소문을 듣고 있던 점,
+			PRINTFORMW 마법이나 약의 취급에 뛰어나며, 인간이면서 요괴와 맞서 싸울 수 있는 실력과 담력이 있고,
+			PRINTFORMW 요괴들로부터도 경의를 받는 존재인 것을 알아서, 꼭 조수로서 수중에 두고 싶다고 생각하고 있던 것을 정직하게 이야기했다
+			PRINTFORMW 「그런가. 너도 꽤 눈썰미가 좋잖아」
+			PRINTFORMW 칭찬받아 나쁜 기분은 아닐 거다. 마리사는 사람을 끌어당기는 것 같은, 자신감으로 가득찬 미소를 띄웠다
+			PRINTFORMW 「아무튼, 노예 조교의 심부름은, 분명히 제대로 부탁받아도 할 생각은 없었으니까」
+			PRINTFORMW 「나를 납치해 조교한다는 것은 수단으로서는 좋을지도. 「장수를 쏘려면 우선은 말부터」라는 놈이다」
+			PRINTFORMW ……? 사용법 맞는 말인가 그거?
+			PRINTFORMW 「상관 없어. 당신이 거기까지 나를 평가해 주고 있다면, 내 힘, 얼마든지 빌려준다제」
+			PRINTFORMW 「앞으로 한번만 말할게. 나는 아무래도 너를 사랑해 버린 것 같아. 그러니까 다른 여자를 조교하는 것도 좋지만, 나의 조교도 잊지 말아줘!」
+			PRINTFORMW 마리사는 그렇게 말하며, 힘차게 옷을 벗었다……
+		;비싸게 팔린다고 생각했기 때문에
+		ELSEIF RESULT == 3
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 마리사는 전부터 소문을 듣고 있던 점,
+			PRINTFORMW 마법이나 약의 취급에 뛰어나며, 인간이면서 요괴와 맞서 싸울 수 있는 실력과 담력이 있고,
+			PRINTFORMW 요괴들로부터도 경의를 받는 존재인 것을 알아서, 노예로서는 비싸게 팔린다고 생각하고 있던 것을 정직하게 이야기했다
+			PRINTFORMW 「그런……건가」
+			PRINTFORMW 마리사는 역시 쇼크를 받은 것 같지만, 적어도 %조사처리(CALLNAME:MASTER,"를")% 향해 보이는 표정은 바꾸지 않고 있었다
+			PRINTFORMW 「그렇다면, 나는 언젠가 팔리는구나」
+			PRINTFORMW 「그러면, 저기, 팔리기 전에 말할게」
+			PRINTFORMW 「나는 너를 좋아하게 됐어. 말하자면, 너를 사랑하게 됐어」
+			PRINTFORMW 「자신을 팔려 하고 있는 놈을 사랑을 하다니 이상한 이야기이지만, 좋아하게 되었으니까 어쩔 수 없어」
+			PRINTFORMW 「너에게 팔려도, 나는 쭉 너를 좋아할 거야. 아, 그렇다고 이상하게 신경쓰지 마? 팔고 싶으면 팔아줘」
+			PRINTFORMW 「너에게……팔려도, 나는……나는……, 쭉, 팔린 뒤에도……너와의, 일, 생각하며…………」
+			PRINTFORMW ……마리사의 제방은, 여기서 무너졌다
+			PRINTFORMW 「……싫어」
+			PRINTFORMW 「싫어……역시, 팔리고 싶지 않아……떨어지고 싶지 않아……」
+			PRINTFORMW 「좋아하게 되었는데……처음, 사랑을 했는데……함께 있을 수 없고 떨어져 버리는, 그런 것, 싫어……」
+			PRINTFORMW 「으……훌쩍……우아……으아아아아----」
+			PRINTFORMW 마리사가 울음을 그칠 때까지, %조사처리(CALLNAME:MASTER,"는")% 쭉 마리사를 꼭 껴안고 머리를 계속 어루만졌다……
+		;웬지 모르게
+		ELSEIF RESULT == 4
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%, 그 밖에도 후보는 있었지만, 왠지 모르게 마리사를 선택한 것일 뿐이며 특별한 이유는 없다고 정직하게 대답했다
+			PRINTFORMW 「……왠지 모르게로 소녀를 감금하는 것인가. 아휴, 제대로 된 놈이 아니다제」
+			PRINTFORMW 「뭐, 하지만, 그런 우연이 없었으면, 나는 너를 일생 만나지 않았던 것일지도 몰라」
+			PRINTFORMW 「사실, 운명이라고 해도 잘 몰라」
+			PRINTFORMW 「그러면 나, 왠지 모르게란 이유로 팔리기 전에 말할께」
+			PRINTFORMW 「나는 너를 좋아하게 됐어. 말하자면, 너를 사랑하게 됐어」
+			PRINTFORMW 「왠지 모르게로부터 시작되는 사랑도 이상한 이야기이지만, 나는 확실히 말했으니깐」
+			PRINTFORMW 「너가, 나에게 질려 나를 팔더라도, 나는 쭉 너를 좋아하고 있을 거야」
+		ELSE
+			GOTO INPUT_LOOP
+		ENDIF
+		CFLAG:5001 = 7
+		RETURN 1
+	ENDIF
 ;조수의 유무를 체크(없는 경우는 2회째 이후에 난다)
 ELSEIF ASSI < 0
 	CALL K2_KOJO2_YM
@@ -205,11 +296,19 @@ ELSEIF ASSINO() == 1
 		IF TALENT:150 == 1
 			PRINTFORMW 「레, 레이무?!」
 			PRINTFORMW 『어머 마리사잖아. 오래간만이네』
-			PRINTFORMW 「잠깐 주인님, 무슨 일이야」
-			PRINTFORMW 『……후-응. 「주인님」이라 부르고 있다는 것은, 마리사도 저속해진 거네』
-			PRINTFORMW 「도……라고 하는 것은 설마 레이무도인가」
-			PRINTFORMW 『예. 오래간만에 만날 수 있어 기쁘지만, 유감스럽게도 지금의 나는 주인님의 조수로서 마리사를 조교하는 입장이야』
-			PRINTFORMW 「뭐야. 그렇다면 문제 없는거야. 주인님을 좋아하게 된 여자끼리, 또 레이무라면 대등한 입장에서 싸우니깐」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「잠깐 코린, 이게 대체 어떻게 된 일일까나?」
+				PRINTFORMW 『마리사, 얘기하지 않았던가?』
+				PRINTFORMW 「전혀 안 했어!」
+				PRINTFORMW 『린노스케 씨는 안 줄거야, 설령, 그게 너라고 해도 말이지.』
+				PRINTFORMW 「우으, 절대로 코린을 빼앗기지 않을거다제!」
+			ELSE
+				PRINTFORMW 「잠깐 주인님, 무슨 일이야」
+				PRINTFORMW 『……후-응. 「주인님」이라 부르고 있다는 것은, 마리사도 저속해진 거네』
+				PRINTFORMW 「도……라고 하는 것은 설마 레이무도인가」
+				PRINTFORMW 『예. 오래간만에 만날 수 있어 기쁘지만, 유감스럽게도 지금의 나는 주인님의 조수로서 마리사를 조교하는 입장이야』
+				PRINTFORMW 「뭐야. 그렇다면 문제 없는거야. 주인님을 좋아하게 된 여자끼리, 또 레이무라면 대등한 입장에서 싸우니깐」
+			ENDIF			
 		ELSE
 			PRINTFORMW 「레, 레이무!?」
 			PRINTFORMW 『어머 마리사잖아. 오래간만이네』
@@ -227,7 +326,11 @@ ELSEIF ASSINO() == 1
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「자, 오늘은 무엇으로 승부할까?」
-			PRINTFORMW 『뭐든지 좋아. 주인님을 사정시킨 수에서도, 절정한 회수에서도, 주인님에게 질내사정된 회수에서도』
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 『뭐든지 좋아. 린노스케 씨를 사정시킨 수에서도, 절정한 회수에서도, 그에게 질내사정된 회수에서도』
+			ELSE
+				PRINTFORMW 『뭐든지 좋아. 주인님을 사정시킨 수에서도, 절정한 회수에서도, 주인님에게 질내사정된 회수에서도』
+			ENDIF
 			PRINTFORMW 「어떻게 할까……우선, 진 쪽이 반찬 한가지 내놓기」
 		;그 외
 		ELSE
@@ -346,7 +449,11 @@ ELSEIF ASSINO() == 71
 	ELSEIF CFLAG:7070 == 1
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「주인님의 노예가 되었으면, 그 로드랑 펜듈럼은 이제 필요 없을 테지? 다음에 안 빌려주겠냐?」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린의 노예가 되었으면, 그 로드랑 펜듈럼은 이제 필요 없을 테지? 다음에 안 빌려주겠냐?」
+			ELSE
+				PRINTFORMW 「주인님의 노예가 되었으면, 그 로드랑 펜듈럼은 이제 필요 없을 테지? 다음에 안 빌려주겠냐?」
+			ENDIF
 			PRINTFORMW 『거절해. 다우저로서의 일을 잃든 말든 저건 내 소중한 장사 밑천이야. 너한테 날름 삼켜질까봐』
 		;그 외
 		ELSE
@@ -368,9 +475,20 @@ ENDIF
 @K2_KOJO2_YM
 ;반발 각인 Lv3
 IF MARK:9 == 3
-	DRAWLINE
-	PRINTFORMW 「네가 어떻게 나의 마법을 봉하고 있는지는 모르겠지만」
-	PRINTFORMW 「수수께끼가 풀리면, 맨 먼저 환상향의 끝까지 날려버려줄 거야」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「아무리 코린이라도, 싫어.」
+		PRINTFORMW 『거부하는 건가, 마리사.』
+		PRINTFORMW 「그치만 코린은 참아내기 힘든 고통스러운 걸 시키잖아!」
+		PRINTFORMW 『음, 다음번엔 좀 더 상냥하게 할 테니 화 좀 풀어.』
+		PRINTFORMW 「흥이다! 됐네요!」
+		PRINTFORMW 「…………뭐, ………코린이 상냥하게 하되, 날 좀 더 만족시켜줄 수 있다면 ……생각해볼게.」
+		PRINTFORMW 『알았다. 주의하지.』
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「네가 어떻게 나의 마법을 봉하고 있는지는 모르겠지만」
+		PRINTFORMW 「수수께끼가 풀리면, 맨 먼저 환상향의 끝까지 날려버려줄 거야」
+	ENDIF
 	RETURN 1
 	
 ;EX화
@@ -388,14 +506,25 @@ ELSEIF TALENT:140 == 1
 ;굴복각인 Lv1
 ;何も出ないパターンがあるとさびしいので1以下
 ELSEIF MARK:2 <= 1
-	DRAWLINE
-	PRINTFORMW 「내, 내가, 너한테 뭘 했다고 그러는 거야아……」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「코린, 조금 힘들지만, 나 힘낼게!」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「내, 내가, 너한테 뭘 했다고 그러는 거야아……」
+	ENDIF
 	RETURN 1
 
 ;굴복 각인 Lv2
 ELSEIF MARK:2 == 2
-	DRAWLINE
-	PRINTFORMW 「내, 내 사전에, 포기라는 말은 없다구……」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「조금 익숙해졌다구!」
+		PRINTFORMW 「이정도라면 코린을 기쁘게 할 수 있을까?」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「내, 내 사전에, 포기라는 말은 없다구……」
+	ENDIF
 	RETURN 1
 
 ;굴복 각인 Lv3＋연모 없음
@@ -410,16 +539,31 @@ ELSEIF TALENT:150 == 1
 	DRAWLINE
 	;난수 분기:3
 	IF RAND:3 == 0
-		PRINTFORMW 「오늘도 와 주었군. 기다리고 있었어」
-		PRINTFORMW 「오늘은 뭐할 거야? 뭐든지 말해줘」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「와주었구나, 코린!」
+			PRINTFORMW 「오늘도 잔뜩 즐거운 거 하자구♥」
+		ELSE
+			PRINTFORMW 「오늘도 와 주었군. 기다리고 있었어」
+			PRINTFORMW 「오늘은 뭐할 거야? 뭐든지 말해줘」
+		ENDIF
 	;난수 분기:2
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 마리사는 알몸에 모자만 쓴 모습으로 침대에 걸터앉고 있었다
-		PRINTFORMW 「여어. 기다릴 수 없어서 옷은 벗어 버렸다구」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 마리사는 알몸에 모자만 쓴 모습으로 침대에 걸터앉고 있었다
+			PRINTFORMW 「여어,코린. 기다릴 수 없어서 옷은 벗어 버렸다제!」
+		ELSE
+			PRINTFORMW 마리사는 알몸에 모자만 쓴 모습으로 침대에 걸터앉고 있었다
+			PRINTFORMW 「여어. 기다릴 수 없어서 옷은 벗어 버렸다구」
+		ENDIF
 	;그 외의 경우
 	ELSE
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 마리사는 당황하며 빗으로 머리카락을 정돈했다
-		PRINTFORMW 「오, 오늘은 평소보다 빠른데. 기쁘지만, 준비가 아직이라 부끄럽다구」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 마리사는 당황하며 빗으로 머리카락을 정돈했다.
+			PRINTFORMW 「오, 꽤나 빨리왔네, 코린? 마음은 기쁘지만, 준비가 아직이라 부끄럽다구.」
+		ELSE
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 마리사는 당황하며 빗으로 머리카락을 정돈했다
+			PRINTFORMW 「오, 오늘은 평소보다 빠른데. 기쁘지만, 준비가 아직이라 부끄럽다구」
+		ENDIF
 	ENDIF
 	RETURN 1
 ENDIF
@@ -431,8 +575,14 @@ RETURN 0
 @K2_END_YM
 ;반발 각인 Lv3
 IF MARK:9 == 3
-	DRAWLINE
-	PRINTFORMW 「언제까지나, 마음대로 할 수 있다고 생각하지 마……」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「나 아직 화 안풀렸다제.」
+		PRINTFORMW 「그러니 날 확실히 만족시켜달라구, 코린!」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「언제까지나, 마음대로 할 수 있다고 생각하지 마……」
+	ENDIF
 	RETURN 1
 
 ;EX화
@@ -452,16 +602,27 @@ ELSEIF TALENT:150 == 1
 			PRINTFORMW 마리사는 숨을 헐떡이면서 눈을 붙이고, 배를 상냥하게 문지르고 있다……
 		;그 외의 경우
 		ELSE
-			PRINTFORMW 「……므으, 내 체력 부족이 원망스럽다제」
-			PRINTFORMW 「나에게 좀 더 체력이 있으면, 좀더 많이 너와 서로 사랑할 수 있을텐데」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「……므으, 내 체력 부족이 원망스럽다제.」
+				PRINTFORMW 「나에게 좀 더 체력이 있으면, 좀 더 많이 코린과 서로 사랑할 수 있을텐데.」
+				PRINTFORMW 『다음번엔 주의할게, 마리사.』
+			ELSE
+				PRINTFORMW 「……므으, 내 체력 부족이 원망스럽다제」
+				PRINTFORMW 「나에게 좀 더 체력이 있으면, 좀더 많이 너와 서로 사랑할 수 있을텐데」
+			ENDIF
 		ENDIF
 	;난수 분기:3
 	ELSEIF RAND:3 == 0
-		PRINTFORMW 「아직 부족하다구」
-		PRINTFORMW 「시간이 있으면, 나중에 내가 갈지도 모르니까, 잘 부탁해」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「아직 부족하다구, 코린.」
+			PRINTFORMW 「만약 기회가 생기면, 코린을 덮치러갈지도 몰라. 그땐 잘 부탁한다구♥」
+		ELSE
+			PRINTFORMW 「아직 부족하다구」
+			PRINTFORMW 「시간이 있으면, 나중에 내가 갈지도 모르니까, 잘 부탁해」
+		ENDIF
 	;난수 분기:2
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 「오늘도 많이 사랑했구나」
+		PRINTFORMW 「오늘도 많이 사랑했구나.」
 		PRINTFORMW 「나는, 행운아라구」
 	;그 외의 경우
 	ELSE
@@ -469,7 +630,7 @@ ELSEIF TALENT:150 == 1
 		PRINTFORMW 「가, 가기 전에 앞으로 1회만, 키스해줬으면 해……」
 		PRINTFORMW 「……안 될, 까나?」
 		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 마리사의 이마에 가볍게 키스를 하면서, 상냥하게 머리를 어루만져 주었다
-		PRINTFORMW 「고마워……이것으로 오늘도, 안심하고 잘 수 있다구」
+		PRINTFORMW 「고마워……이것으로 오늘도, 안심하고 잘 수 있다구.」
 	ENDIF
 	RETURN 1
 
@@ -482,15 +643,27 @@ ELSEIF BASE:0 < 500 && RAND:3 < 2
 	
 ;굴복 각인 Lv1 이하
 ELSEIF MARK:2 <= 1
-	DRAWLINE
-	PRINTFORMW 「이 정도의 위기는, 몇 번이나 넘어 왔다구」
-	PRINTFORMW 「……절대, 단념하지 않는다제」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「난 괜찮다구, 코린.」
+		PRINTFORMW 「얼른 익숙해져서, 코린을 기분좋게 하고싶다제.」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「이 정도의 위기는, 몇 번이나 넘어 왔다구」
+		PRINTFORMW 「……절대, 단념하지 않는다제」
+	ENDIF
 	RETURN 1
 
 ;굴복 각인 Lv2
 ELSEIF MARK:2 == 2
-	DRAWLINE
-	PRINTFORMW 「이봐, 언제까지 이런 일을 계속할 생각이야?」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「수고했어, 코린.」
+		PRINTFORMW 「코린도 많이 힘들었지?」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「이봐, 언제까지 이런 일을 계속할 생각이야?」
+	ENDIF
 	RETURN 1
 
 ;굴복 각인 Lv3
@@ -635,8 +808,13 @@ IF SELECTCOM == 1
 			CFLAG:9001 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9001 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「대댠해, %CALLNAME:MASTER%의 혀, 기분 좋아!」
-			PRINTFORMW 「내 보지, %CALLNAME:MASTER%의 혀로, 풀어져!」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「대댠해, 코린의 혀, 기분 좋아!」
+				PRINTFORMW 「내 보지, 코린의 혀로, 풀어져!」
+			ELSE
+				PRINTFORMW 「대댠해, %CALLNAME:MASTER%의 혀, 기분 좋아!」
+				PRINTFORMW 「내 보지, %CALLNAME:MASTER%의 혀로, 풀어져!」
+			ENDIF
 			CFLAG:9001 = 4
 		;굴복 각인 Lv3
 		ELSEIF TALENT:170 == 1 && (CFLAG:9001 <= 2 || FLAG:11 == 2)
@@ -697,7 +875,11 @@ IF SELECTCOM == 2
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「아! 들어 온다……」
-				PRINTFORMW 「%CALLNAME:MASTER%의 손가락이, 나의 엉덩이 안에……」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「코린의 손가락이, 나의 엉덩이 안에……」
+				ELSE
+					PRINTFORMW 「%CALLNAME:MASTER%의 손가락이, 나의 엉덩이 안에……」
+				ENDIF
 			ENDIF
 			CFLAG:9002 = 4
 		;음란하다
@@ -738,8 +920,13 @@ IF SELECTCOM == 3
 			PRINTFORMW 「……어디를 비비면서 그 발언이 나왔는지, 조금 들을까」
 		;연모
 		ELSEIF TALENT:150 == 1
-			PRINTFORMW 「변함 없이 손놀림이 불쾌하다제」
-			PRINTFORMW 「게다가 나의 가슴의 약한 곳을 확실히 공격해 오고, 정말로 불쾌한 놈이다제」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 『마리사. 그러니까 버섯뿐이면 영양이 치우친다고 전에 말했을 것이다』
+				PRINTFORMW 「……어디를 비비면서 그 발언이 나왔는지, 조금 들을까」
+			ELSE
+				PRINTFORMW 「변함 없이 손놀림이 불쾌하다제」
+				PRINTFORMW 「게다가 나의 가슴의 약한 곳을 확실히 공격해 오고, 정말로 불쾌한 놈이다제」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「뭣……! 그만둬, 그만둬줘……」
@@ -846,9 +1033,14 @@ IF SELECTCOM == 5
 	IF CFLAG:9005 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「네? 너가 해 주는지?」
-			PRINTFORMW 바로 그때 마리사의 페니스가 쿵하고 크게 섰다
-			PRINTFORMW 「아하하……아직 만지지도 않았는데, 기대되서 이렇게 되어 버렸다」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린의 자지, 내가 봉사해줄게.」
+				PRINTFORMW 「정말 크고 아름다워.」
+			ELSE
+				PRINTFORMW 「네? 너가 해 주는지?」
+				PRINTFORMW 바로 그때 마리사의 페니스가 쿵하고 크게 섰다
+				PRINTFORMW 「아하하……아직 만지지도 않았는데, 기대되서 이렇게 되어 버렸다」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「네? 너가 해 주는지?」
@@ -909,11 +1101,16 @@ IF SELECTCOM == 6
 			ENDIF				
 		;연모
 		ELSEIF TALENT:150== 1
-			PRINTFORMW 「겨우……키스 해 주었군」
-			PRINTFORMW 입술을 사랑스러운 듯이  어루만지면서, 마리사가 중얼거린다
-			PRINTFORMW 「너는 신경쓰지 않았을 것이다하지만, 지금까지 다양하게 되어 온 중에서, 제대로 된 키스는 이것이 처음이었다」
-			PRINTFORMW 그렇게 말하면 그랬던인가……그렇다 치더라도, 마리사는 자주(잘) 그런 일을 기억하고 있던 것이다
-			PRINTFORMW 「당연하겠지. 아가씨에게 있어 퍼스트 키스는 놈은, 일생의 추억이 되기 때문에」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「아휴, 설마 퍼스트 키스의 상대가 코린이 되다니」
+				PRINTFORMW 『그랬던가? 어쩐지 미안한데. 나따위가 처음의 상대로』
+			ELSE
+				PRINTFORMW 「겨우……키스 해 주었군」
+				PRINTFORMW 입술을 사랑스러운 듯이  어루만지면서, 마리사가 중얼거린다
+				PRINTFORMW 「너는 신경쓰지 않았을 것이다하지만, 지금까지 다양하게 되어 온 중에서, 제대로 된 키스는 이것이 처음이었다」
+				PRINTFORMW 그렇게 말하면 그랬던인가……그렇다 치더라도, 마리사는 자주(잘) 그런 일을 기억하고 있던 것이다
+				PRINTFORMW 「당연하겠지. 아가씨에게 있어 퍼스트 키스는 놈은, 일생의 추억이 되기 때문에」
+			ENDIF
 		;그 외
 		ELSE
 			PRINTFORMW 「――――! !」
@@ -973,7 +1170,11 @@ IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUI
 		;연모
 		ELSEIF TALENT:150 == 1
 			PRINTFORMW 「어, 어쩔 수 없네……」
-			PRINTFORMW 「너이니까 보여주는거지　다른 놈의 앞에선 절대로 하지 않않는다구?」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린 앞이니까 보여주는거지, 다른 놈의 앞에선 절대로 하지 않는다구?」
+			ELSE
+				PRINTFORMW 「너이니까 보여주는거지　다른 놈의 앞에선 절대로 하지 않는다구?」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「자, 자위……?」
@@ -1002,7 +1203,11 @@ IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUI
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9007 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 「응응……아……기분이 좋아……」
-			PRINTFORMW 「%CALLNAME:MASTER%로 보여지면서 하는 것, 기분이 좋아 ……」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린에게 보여지면서 하는 것, 기분이 좋아 ……」
+			ELSE
+				PRINTFORMW 「%CALLNAME:MASTER%로 보여지면서 하는 것, 기분이 좋아 ……」
+			ENDIF
 			CFLAG:9007 = 5
 		;노출버릇 Lv4 이상
 		ELSEIF ABL:14 >= 4 && (CFLAG:9007 <= 3 || FLAG:11 == 2)
@@ -1145,7 +1350,7 @@ IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:20 == 0 && TEQUIP:25 == 0
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:9704 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「아……하……나, 나, 키리사메마리사는……」
+			PRINTFORMW 「아……하……나, 나, 키리사메 마리사는……」
 			PRINTFORMW 「주인님의 명령으로, 누가 보는지 모르는 비디오의 앞에서, 자위하고 있습니다 ……, 하아!」
 			CFLAG:9704 = 4
 		;노출버릇 Lv4 이상
@@ -1172,8 +1377,13 @@ IF SELECTCOM == 9
 	IF CFLAG:9009 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「……　어떻게 했다」
-			PRINTFORMW 「갑자기 아무것도 되지 않으면 조금 불안하게 되군」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「……갑자기 어떻게 된거야, 코린?」
+				PRINTFORMW 「갑자기 아무것도 하지 않으니까 뭔가 불안해.」
+			ELSE
+				PRINTFORMW 「……　어떻게 했다」
+				PRINTFORMW 「갑자기 아무것도 되지 않으면 조금 불안하게 되군」
+			ENDIF
 		;그 외
 		ELSE
 			PRINTFORMW 「뭐야　휴게인가」
@@ -1191,7 +1401,7 @@ IF SELECTCOM == 9
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9009 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「　나 무엇인가 안되는 일 했는지」
-			PRINTFORMW 「잠자코모르는이겠지. 아무것도 되지 않으면 반대로 불안하구나」
+			PRINTFORMW 「잠자코 모르는이겠지. 아무것도 되지 않으면 반대로 불안하구나」
 			CFLAG:9009 = 3
 		;그 외
 		ELSEIF CFLAG:9009 <= 1 || FLAG:11 == 2
@@ -1549,13 +1759,23 @@ IF SELECTCOM == 20
 				ENDIF
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는 크게 다리를 열면, 지금부터 남자를 받아들이는 미통의 비소를 노골적으로 나타냈다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「이 몸의 자세라고, 너의 얼굴을 제대로 볼 수 있기 때문에 안심한데……에에」
-				PRINTFORMW 「응……좋아……구……응…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
+					PRINTFORMW 「그런가. 코린, 드디어 나의 처녀를 받아주는거구나.」
+					PRINTFORMW 마리사는 크게 다리를 열면, 지금부터 남자를 받아들이는 미통의 비소를 노골적으로 나타냈다
+					PRINTFORMW 「웃을지도 모르지만……나도 나 나름대로, 처음은 좋아하는 사람이 받았으면 좋겠다고 생각하고 있었거든.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린이 나의 처음을 받는 이 순간을.」
+					PRINTFORMW 「이 몸의 자세라고, 코린의 얼굴을 제대로 볼 수 있기 때문에 안심한데……에에」
+					PRINTFORMW 「응……좋아……읏……응…………!」
+				ELSE
+					PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는 크게 다리를 열면, 지금부터 남자를 받아들이는 미통의 비소를 노골적으로 나타냈다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「이 몸의 자세라고, 너의 얼굴을 제대로 볼 수 있기 때문에 안심한데……에에」
+					PRINTFORMW 「응……좋아……구……응…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -1625,11 +1845,11 @@ IF SELECTCOM == 20
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「하아! 아우우! 와, 기분이 좋은,!」
-				PRINTFORMW 「좀 더, 좀 더 빨리 해도 좋으니까! 좀 더, 좀 더 격렬하고, 다!」
+				PRINTFORMW 「좀 더, 좀 더 빨리 해도 좋으니까! 좀 더, 좀 더 격렬하게, 앙!」
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「아, 그런데 말이야……손을 잡아 주고 있어, 좋은가……」
-				PRINTFORMW 「고마워요……아! 있고, 갑자기 격렬하고 ……아 , 좋아! 좋아해 좋아!」
+				PRINTFORMW 「고마워……아! 있고, 갑자기 격렬하게 ……아 , 좋아! 좋아해! 좋아!」
 			ENDIF
 			CFLAG:9020 = 5
 		;음란하다
@@ -1687,15 +1907,25 @@ IF SELECTCOM == 21
 					PRINTFORMW 『아……가……힘을 빼, 마리사』
 					PRINTFORMW 「아…………코린……들어가, 와 ……」
 				ENDIF
-				;연모
+			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 삽, 라고 고한 순간, 납죽 엎드림이 된 마리사의 얼굴은 안보이지만, 신체는 민감하게 반응하고 있었다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는 되돌아 보고 웃는 얼굴을 이쪽으로 향하면, 엉덩이를 쑥 내밀어 다리를 가볍게 열었다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「이 몸의 자세라고, 너의 얼굴이 안보여 불안하다. 그 만큼 상냥하게 해 줘……」
-				PRINTFORMW 「응……입구, 들어가……구……응…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
+					PRINTFORMW 「그런가. 코린, 드디어 나의 처녀를 받아주는거구나.」
+					PRINTFORMW 마리사는 되돌아 보고 웃는 얼굴을 이쪽으로 향하면서, 엉덩이를 쑥 내밀어 다리를 가볍게 열었다.
+					PRINTFORMW 「웃을지도 모르지만……나도 나 나름대로, 처음은 좋아하는 사람이 받았으면 좋겠다고 생각하고 있었거든.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린이 나의 처음을 받는 이 순간을.」
+					PRINTFORMW 「이 자세니까, 코린의 얼굴이 안 보여 불안해. 뭐, 그 만큼 상냥하게 해 줘……」
+					PRINTFORMW 「응……입구, 들어가……읏……응…………!」
+				ELSE
+					PRINTFORMW 삽, 라고 고한 순간, 납죽 엎드림이 된 마리사의 얼굴은 안보이지만, 신체는 민감하게 반응하고 있었다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는 되돌아 보고 웃는 얼굴을 이쪽으로 향하면, 엉덩이를 쑥 내밀어 다리를 가볍게 열었다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「이 몸의 자세라고, 너의 얼굴이 안보여 불안하다. 그 만큼 상냥하게 해 줘……」
+					PRINTFORMW 「응……입구, 들어가……읏……응…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 삽, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -1723,7 +1953,7 @@ IF SELECTCOM == 21
 		ELSE
 			;연모
 			IF TALENT:150 == 1
-				PRINTFORMW 「이번은 이 모습으로 하는지」
+				PRINTFORMW 「이번은 이 모습으로 하는」
 				PRINTFORMW 「동물같고 부끄러운데. 어차피라면, 아주 격렬하고 개같이 찔러 주어라」
 			;그 외의 경우
 			ELSE
@@ -1759,7 +1989,7 @@ IF SELECTCOM == 21
 		ELSEIF TALENT:150 == 1 && (CFLAG:9021 <= 4 || FLAG:11 == 2)
 			;V감각 Lv4 이상
 			IF ABL:1 >= 4
-				PRINTFORMW 「이나……들 째, 그런 , 격렬하게 뒤로부터 찔리면, 안된!」
+				PRINTFORMW 「이나……들 째, 그런 , 격렬하게 뒤로부터 찔리면, 안돼!」
 				PRINTFORMW 「나의 가장 둔다, 꾸준히는 노크 되고에! 그렇게 노크 되면 입구히!」
 			;그 외의 경우
 			ELSE
@@ -1777,7 +2007,7 @@ IF SELECTCOM == 21
 		;음란하다
 		ELSEIF TALENT:170 == 1 && (CFLAG:9021 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「! 좀 더, 좀 더 격렬하게 해!」
-			PRINTFORMW 「내, 나는, 키리사메마리사는 인 메스고양이이니까, 망가져버릴 정도 자지로 괴롭혔으면 좋아!」
+			PRINTFORMW 「내, 나는, 키리사메 마리사는 인 암고양이니까, 망가져버릴 정도 자지로 괴롭혔으면 좋아!」
 			CFLAG:9021 = 4
 		;굴복 각인 Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9021 <= 2 || FLAG:11 == 2)
@@ -1832,15 +2062,27 @@ IF SELECTCOM == 22
 				ENDIF
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 삽, 라고 고한 순간, 포옹되어 눈앞에 있는 마리사의 얼굴이 기쁨과 불안에 가득 찬 표정이 되었다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는%CALLNAME:MASTER%의 어깨에 두고 있던 손을 뻗어 목의 뒤로 안아 붙도록(듯이) 하면,
-				PRINTFORMW 조금 허리를 띄워 페니스가 들어오기 쉬운 몸의 자세를 취했다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「이 몸의 자세라고, 너가 꼭 껴안을 수 있고 있기 때문에 안심할 수 있군. 혹시, 너의 등에 발돋움해버릴까도 모르지만……좋은가」
-				PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 작게 수긍하면, 한 번 마리사의 이마에 키스를 하고 나서, 천천히 마리사의 허리를 가라앉히게 해 갔다
-				PRINTFORMW 「응……조금씩, 들어가……구……응…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
+					PRINTFORMW 「그런가. 코린, 드디어 나의 처녀를 받아주는거구나.」
+					PRINTFORMW 마리사는%CALLNAME:MASTER%의 어깨에 두고 있던 손을 뻗어 목의 뒤로 안아 붙도록(듯이) 하면,
+					PRINTFORMW 조금 허리를 띄워 페니스가 들어오기 쉬운 몸의 자세를 취했다
+					PRINTFORMW 「웃을지도 모르지만……나도 나 나름대로, 처음은 좋아하는 사람이 받았으면 좋겠다고 생각하고 있었거든.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린이 나의 처음을 받는 이 순간을.」		
+					PRINTFORMW 「이 몸의 자세니까, 코린이 꼭 껴안을 수 있고 있기 때문에 안심할 수 있어. 혹시, 코린의 등에 발돋움해버릴까도 모르지만……좋은가」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 작게 수긍하면, 한 번 마리사의 이마에 키스를 하고 나서, 천천히 마리사의 허리를 가라앉히게 해 갔다
+					PRINTFORMW 「응……조금씩, 들어가……읏……응…………!」
+				ELSE
+					PRINTFORMW 삽, 라고 고한 순간, 포옹되어 눈앞에 있는 마리사의 얼굴이 기쁨과 불안에 가득 찬 표정이 되었다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는%CALLNAME:MASTER%의 어깨에 두고 있던 손을 뻗어 목의 뒤로 안아 붙도록(듯이) 하면,
+					PRINTFORMW 조금 허리를 띄워 페니스가 들어오기 쉬운 몸의 자세를 취했다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「이 몸의 자세라고, 너가 꼭 껴안을 수 있고 있기 때문에 안심할 수 있군. 혹시, 너의 등에 발돋움해버릴까도 모르지만……좋은가」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 작게 수긍하면, 한 번 마리사의 이마에 키스를 하고 나서, 천천히 마리사의 허리를 가라앉히게 해 갔다
+					PRINTFORMW 「응……조금씩, 들어가……구……응…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 삽, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -1983,15 +2225,27 @@ IF SELECTCOM == 23
 				ENDIF
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 삽, 라고 고한 순간, 포옹되어 눈앞에 있는 마리사의 얼굴이 기쁨과 불안에 가득 찬 표정이 되었다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는%CALLNAME:MASTER%의 무릎 위에 앉는 것 같은 자세로부터, 조금 허리를 띄우면,
-				PRINTFORMW 페니스의 첨단을 자신의 것 아직 미개발의 비소의 입구로 이끌었다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「역시, 처음은 아플지도 모르기 때문에……여유가 있으면, 가슴이라든지, 클리토리스라든지도 많이 있고 글자는, 기분 좋고해 주었으면 한거야」
-				PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 작게 수긍하면, 한 번 마리사의 머리카락에 키스를 하고 나서, 천천히 마리사의 허리를 가라앉히게 해 갔다
-				PRINTFORMW 「응……조금씩, 들어가……구……응…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
+					PRINTFORMW 「그런가. 코린, 드디어 나의 처녀를 받아주는거구나.」
+					PRINTFORMW 마리사는 %CALLNAME:MASTER%의 무릎 위에 앉는 것 같은 자세로부터, 조금 허리를 띄우면서,
+					PRINTFORMW 페니스의 끝을 자신의 미개발된 비소의 입구로 이끌었다
+					PRINTFORMW 「웃을지도 모르지만……나도 나 나름대로, 처음은 좋아하는 사람이 받았으면 좋겠다고 생각하고 있었거든.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린이 나의 처음을 받는 이 순간을.」		
+					PRINTFORMW 「이 몸의 자세니까, 코린이 꼭 껴안을 수 있고 있기 때문에 안심할 수 있어. 혹시, 코린의 등에 발돋움해버릴까도 모르지만……좋은가」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 작게 수긍하면, 한 번 마리사의 이마에 키스를 하고 나서, 천천히 마리사의 허리를 가라앉히게 해 갔다
+					PRINTFORMW 「응……조금씩, 들어가……읏……응…………!」
+				ELSE
+					PRINTFORMW 삽, 라고 고한 순간, 포옹되어 눈앞에 있는 마리사의 얼굴이 기쁨과 불안에 가득 찬 표정이 되었다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는%CALLNAME:MASTER%의 무릎 위에 앉는 것 같은 자세로부터, 조금 허리를 띄우면,
+					PRINTFORMW 페니스의 첨단을 자신의 것 아직 미개발의 비소의 입구로 이끌었다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「역시, 처음은 아플지도 모르기 때문에……여유가 있으면, 가슴이라든지, 클리토리스라든지도 많이 있고 글자는, 기분 좋고해 주었으면 한거야」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 작게 수긍하면, 한 번 마리사의 머리카락에 키스를 하고 나서, 천천히 마리사의 허리를 가라앉히게 해 갔다
+					PRINTFORMW 「응……조금씩, 들어가……구……응…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 삽, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -2137,14 +2391,26 @@ IF SELECTCOM == 24
 				ENDIF
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 스스로 들어갈 수 있어 봐라, 라고 고한 순간, 말타기가 된 마리사의 얼굴에 기쁨과 긴장이 달렸다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는 조금 허리를 띄우면, 무릎으로 이동해 페니스의 첨단과 자신의 보지의 위치를 맞추었다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「처음이니까, 처음은 너를 기분 좋고 시킬 수 없을지도 모르는데……」
-				PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 『무리하지 않고 자신의 페이스로 움직이면 되는』이라고 말하면, 마리사는 결의한 것처럼 수긍했다
-				PRINTFORMW 「응……넣군……구……끝(쪽)이…………들어가 간다…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 스스로 넣어라고 말한 순간, 마리사는 매우 기뻐하면서 %CALLNAME:MASTER%의 위에 올라탔다.
+					PRINTFORMW 「코린, 내 처녀, 부디 받아줘.」
+					PRINTFORMW 『마, 마리사..』
+					PRINTFORMW 마리사는 %CALLNAME:MASTER%의 자지(음경) 바로위에 허리를 띄운 채, 그의 페니스를 손으로 잡았다.
+					PRINTFORMW 그리고 천천히 허리를 내린 후, 페니스의 끝을 자신의 비밀의 입술로 이끌었다.
+					PRINTFORMW 「내 스스로, 좋아하는 사람에게 처녀를 바칠 수가 있어서 정말로 행복해, 코린.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린과 하나가 되는 이 순간을!」		
+					PRINTFORMW 「그, 그럼 넣을게.」
+					PRINTFORMW 「응……조금씩, 들어가……읏……응…………!」
+				ELSE
+					PRINTFORMW 스스로 들어갈 수 있어 봐라, 라고 고한 순간, 말타기가 된 마리사의 얼굴에 기쁨과 긴장이 달렸다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는 조금 허리를 띄우면, 무릎으로 이동해 페니스의 첨단과 자신의 보지의 위치를 맞추었다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「처음이니까, 처음은 너를 기분 좋고 시킬 수 없을지도 모르는데……」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 『무리하지 않고 자신의 페이스로 움직이면 되는』이라고 말하면, 마리사는 결의한 것처럼 수긍했다
+					PRINTFORMW 「응……넣군……구……끝(쪽)이…………들어가 간다…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 상에 걸쳐 스스로 삽, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -2220,17 +2486,17 @@ IF SELECTCOM == 24
 		ELSEIF TALENT:150 == 1 && (CFLAG:9024 <= 4 || FLAG:11 == 2)
 			;V감각 Lv4 이상
 			IF ABL:1 >= 4
-				PRINTFORMW 「이나다……멈추지 않는, 허리, 멈추고히야 ……」
-				PRINTFORMW 「아래로부터 보지의 안쪽까지 찔려, 이제(벌써), 이있을 것 같은데, 자꾸자꾸 빨리 움직여버린다의 ……」
-				PRINTFORMW 「부탁해요, 라고라고 잡아에 ……나, 이제(벌써), 이, 당신의 히응히응으로, 날아버리니까……」
+				PRINTFORMW 「안돼……멈추지 않아, 허리, 멈추지가 않아……」
+				PRINTFORMW 「아래로부터 보지의 안쪽까지 찔려, 이제(벌써), 가버릴 것 같은데, 자꾸자꾸 빨리 움직여버려……」
+				PRINTFORMW 「부탁해, 상냥히……나, 이제(벌써), 가버릴 것 같으니까……!」
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「아! , 이거 참, 그러니까 움직이면 찌른데, 는 말. 지금은 내가 움직이는 차례니까」
-				PRINTFORMW 「정말로……나도, 분명하게 너를 기분 좋게 시키고 싶다」
+				PRINTFORMW 「아! 이거 참, 그러니까 그렇게 움직이 말라고! 지금은 내가 움직이는 차례니까.」
+				PRINTFORMW 「정말로……나도, 분명하게 너를 기분 좋게 시키고 싶어!」
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「이봐요 이봐요, 페이스를 올리군」
-				PRINTFORMW 「오늘은 비위를 잘 맞추다. 너에게 이인가 되기 전에 이나 키라고 하기 때문에, 각오 해라」
+				PRINTFORMW 「이봐 이봐, 페이스를 올릴게.」
+				PRINTFORMW 「오늘은 리듬을 잘 맞춰야 해. 너에게 지지 않을 것이기 때문에, 각오 해라」
 			ENDIF
 			CFLAG:9024 = 5
 		;V감각 Lv4 이상
@@ -2263,10 +2529,17 @@ IF SELECTCOM == 25
 		IF TALENT:150 == 1
 			;처녀이다
 			IF TALENT:0 == 1
-				PRINTFORMW 「너가 전혀 나의 처녀를 빼앗아 주지 않는 것은, 아마 너나름의 생각이 있을까가」
-				PRINTFORMW 「나는 이제 기다릴 수 없는거야　미안하지만, 나는 손에 넣고 싶은 것은 자신 힘으로 손에 넣는 인간이야」
-				PRINTFORMW 「너도 이렇게 자지 발기시켜……사실은 나의 처녀를 개찢고 싶지 않은 것인지」
-				PRINTFORMW 「그만두라고 해도 쓸데없기 때문에……가군…………통……!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「코린이 정녕 나의 처녀를 빼앗아주지 않겠다면, 나에게도 생각이라는 게 있다구!」
+					PRINTFORMW 「나는 더 이상 못 참아! 코린의 것을 얼른 가질거다제!」
+					PRINTFORMW 「코린, 이렇게나 자지를 발기시켜놓고…… 내 처녀는 빼앗지 않는다니, 이상하잖아.」
+					PRINTFORMW 「만약 그만두라고 말한다고 해도, 듣지 않을거니까. 그리 알라구.」
+				ELSE
+					PRINTFORMW 「너가 전혀 나의 처녀를 빼앗아 주지 않는 것은, 아마 너나름의 생각이 있을까가」
+					PRINTFORMW 「나는 이제 기다릴 수 없는거야　미안하지만, 나는 손에 넣고 싶은 것은 자신 힘으로 손에 넣는 인간이야」
+					PRINTFORMW 「너도 이렇게 자지 발기시켜……사실은 나의 처녀를 개찢고 싶지 않은 것인지」
+					PRINTFORMW 「그만두라고 해도 쓸데없기 때문에……가군…………통……!」
+				ENDIF				
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「당하고 있을 뿐은 적이다」
@@ -2284,8 +2557,13 @@ IF SELECTCOM == 25
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:9025 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「주도권악없음인 것은, 나답지 않기 때문에」
-			PRINTFORMW 「확실히 자지발 더할 수 있어 주어라　주인님(하아와)」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「주도권은 내 거야, 코린.」
+				PRINTFORMW 「제대로 해주지 않는 코린이 나쁜 거라구!」
+			ELSE
+				PRINTFORMW 「주도권악없음인 것은, 나답지 않기 때문에」
+				PRINTFORMW 「확실히 자지발 더할 수 있어 주어라　주인님(하아와)」
+			ENDIF
 			CFLAG:9025 = 3
 		;그 외의 경우
 		ELSEIF CFLAG:9025 <= 1 || FLAG:11 == 2
@@ -2307,9 +2585,9 @@ IF SELECTCOM == 26
 		IF TALENT:150 == 1
 			;조수가 레이무
 			IF ASSINO() == 1
-				PRINTFORMW 「, 두어 지금은 나의 조교의 차례가 아니었던 것일까」
-				PRINTFORMW 『나쁘네요 마리사. 조금 그를 빌려요……앙』
-				PRINTFORMW 「구……반죽임이다」
+				PRINTFORMW 「이봐 지금은 내 차례잖아.」
+				PRINTFORMW 『미안 마리사. 조금 그를 빌릴게……앙!』
+				PRINTFORMW 「크……젠장..」
 			;조수가 린노스케
 			ELSEIF ASSINO() == 69
 				PRINTFORMW 「, 두어 지금은 나의 조교의 차례가 아니었던 것일까」
@@ -2317,8 +2595,7 @@ IF SELECTCOM == 26
 				PRINTFORMW 「이봐 이봐……어째서 그렇게 말하면서 적극적으로 그 녀석에게 당하고 있어 코린」
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「어이. 나는 방치인가」
-				PRINTFORMW 「……과연, 눈앞에서 되면 패이군」
+				PRINTFORMW 「어이. 나를 그냥 두다니.」
 			ENDIF
 		;그 외의 경우
 		ELSE
@@ -2346,8 +2623,8 @@ IF SELECTCOM == 26
 		IF TALENT:150 == 1 && (CFLAG:9026 <= 2 || FLAG:11 == 2)
 			;조수가 레이무
 			IF ASSINO() == 1
-				PRINTFORMW 『아……안 돼……마리사가, 그렇게 차분히 봐 , 그런, 격렬하고……』
-				PRINTFORMW 「∼, 레이무뿐 간사한거야」
+				PRINTFORMW 『아……안 돼……마리사, 확실히 보도록 해 , 그런, 격렬하고……앙!』
+				PRINTFORMW 「∼, 레이무, 치사해!」
 			;조수가 린노스케
 			ELSEIF ASSINO() == 69
 				PRINTFORMW 「위……언제 봐도, 남자끼리의 그 거 생생한데. 남자의 엉덩이에도 들어오는지, 저런 것」
@@ -2416,13 +2693,23 @@ IF SELECTCOM == 27
 				ENDIF
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 넣겠어, 라고 고한 순간, 마리사의 얼굴에 기대와 불안의 표정이 떠올랐다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는 %CALLNAME:MASTER%에 다리를 껴안을 수 있으면, 손을 %CALLNAME:MASTER%의 등에 돌려 안아 붙었다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「처음을 받아지려면  조금 이상한 몸의 자세이지만……나는 행복하구나」
-				PRINTFORMW 「응……들어가 간다…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 넣겠다고 말한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다.
+					PRINTFORMW 「그런가. 코린, 드디어 나의 처녀를 받아주는거구나.」
+					PRINTFORMW 마리사는 %CALLNAME:MASTER%를 다리로 껴안고, 두 손으로 %CALLNAME:MASTER%를 있는 힘껏 안았다.
+					PRINTFORMW 「웃을지도 모르지만……나도 나 나름대로, 처음은 좋아하는 사람이 받았으면 좋겠다고 생각하고 있었거든.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린이 나의 처음을 받는 이 순간을.」
+					PRINTFORMW 「처음을 주기에는 조금 이상한 자세이기는 하지만……나는 행복해.」
+					PRINTFORMW 「응……조금씩, 들어가……읏……응…………!」
+				ELSE
+					PRINTFORMW 넣겠어, 라고 고한 순간, 마리사의 얼굴에 기대와 불안의 표정이 떠올랐다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는 %CALLNAME:MASTER%에 다리를 껴안을 수 있으면, 손을 %CALLNAME:MASTER%의 등에 돌려 안아 붙었다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「처음을 받아지려면  조금 이상한 몸의 자세이지만……나는 행복하구나」
+					PRINTFORMW 「응……들어가 간다…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 삽, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -2480,9 +2767,9 @@ IF SELECTCOM == 27
 			CFLAG:9027 = 6
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9027 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아……격렬해졌군……」
-			PRINTFORMW 「나는, 이만큼 자지로 격렬하게 찔려 이제(벌써) 사지에 치카라는 들어오지 않아. 후는 너에게 맡겼다」
-			PRINTFORMW 「내가 떨어지지 않게, 확실히 지지해 두어 주어라　믿고 있으니」
+			PRINTFORMW 「아……격렬해!」
+			PRINTFORMW 「나는, 이만큼 자지로 격렬하게 찔려 이제(벌써) 몸에 힘이 없어. 뒤는 너에게 맡길게.」
+			PRINTFORMW 「내가 떨어지지 않게, 확실히 잡아줘. 믿고 있을 테니까.」
 			CFLAG:9027 = 5
 		;음란하다
 		ELSEIF TALENT:170 == 1 && (CFLAG:9027 <= 3 || FLAG:11 == 2)
@@ -2539,13 +2826,23 @@ IF SELECTCOM == 28
 				ENDIF
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 넣겠어, 라고 고한 순간, 마리사는 되돌아 보고 기대와 불안에 가득 찬 표정을 향하여 왔다
-				PRINTFORMW 「그런가. 겨우 받아 주는구나」
-				PRINTFORMW 마리사는 흠칫흠칫 양손을 펴 벽에 붙이면, 엉덩이를 조금 쑥 내밀어 다리를 열었다
-				PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
-				PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
-				PRINTFORMW 「처음을 받아지려면  조금 이상한 몸의 자세이지만……나는 행복하구나」
-				PRINTFORMW 「응……들어가 간다…………!」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 넣는다, 라고 고한 순간, 마리사의 얼굴이 기대와 불안의 색에 물들었다
+					PRINTFORMW 「그런가. 코린, 드디어 나의 처녀를 받아주는거구나.」	
+					PRINTFORMW 마리사는 흠칫흠칫 양손을 펴 벽에 붙이면서, 엉덩이를 조금 쑥 내밀어 다리를 열었다.
+					PRINTFORMW 「웃을지도 모르지만……나도 나 나름대로, 처음은 좋아하는 사람이 받았으면 좋겠다고 생각하고 있었거든.」
+					PRINTFORMW 「항상, 꿈에도 그렸었어. 코린이 나의 처음을 받는 이 순간을.」
+					PRINTFORMW 「처음을 주기에는 조금 이상한 자세이지만……나는 행복하다구.」
+					PRINTFORMW 「응……조금씩, 들어가……읏……응…………!」
+				ELSE
+					PRINTFORMW 넣겠어, 라고 고한 순간, 마리사는 되돌아 보고 기대와 불안에 가득 찬 표정을 향하여 왔다
+					PRINTFORMW 「그런가. 겨우 받아 주는구나」
+					PRINTFORMW 마리사는 흠칫흠칫 양손을 펴 벽에 붙이면, 엉덩이를 조금 쑥 내밀어 다리를 열었다
+					PRINTFORMW 「웃어질지도 모르지만……나도 나나름대로, 처음은 좋아하는 사람이 받았으면 좋은, 이라고 생각하고 있었어」
+					PRINTFORMW 「여기까지 오는데 여러가지 있었지만. 지금, 나는 너에게 바칠 수가 있어 행복하구나」
+					PRINTFORMW 「처음을 받아지려면  조금 이상한 몸의 자세이지만……나는 행복하구나」
+					PRINTFORMW 「응……들어가 간다…………!」
+				ENDIF
 			;굴복 각인 Lv3
 			ELSEIF MARK:2 == 3
 				PRINTFORMW 삽, 라고 고한 순간, 마리사의 신체구, 라고 반응했다
@@ -2604,8 +2901,8 @@ IF SELECTCOM == 28
 			CFLAG:9028 = 6
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9028 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아……격렬해졌군……」
-			PRINTFORMW 「나는, 이만큼 자지로 격렬하게 찔려 이제(벌써) 사지에 치카라는 들어오지 않아. 후는 너에게 맡겼다」
+			PRINTFORMW 「아……격렬해……!」
+			PRINTFORMW 「나는, 이만큼 자지로 격렬하게 찔렸으니, 이제(벌써) 몸에 힘이 들어오지 않아. 뒤는 너에게 맡길게.」
 			PRINTFORMW 「내가 넘어지지 않게, 확실히 손을 잡아 떼어 놓지 말아줘　믿고 있으니」
 			CFLAG:9028 = 5
 		;음란하다
@@ -3488,11 +3785,20 @@ IF SELECTCOM == 40
 			PRINTFORMW 『……뭐,마리사. 처음으로으로서는, 꽤……』
 		;연모
 		ELSEIF TALENT:150 == 1
-			PRINTFORMW 「손으로　알았다구」
-			PRINTFORMW 마리사는 페니스의 정면에 위치 잡으면, 꼭 좋은 강함으로 페니스를 잡아 습기찬다
-			PRINTFORMW 「처음은 무서워서 그로테스크라고 생각했지만, 너의 제일 소중한 부분이라고 생각하면」
-			PRINTFORMW 「무슨, 매우 소중히 하고 싶어지지 말아라」
-			PRINTFORMW 마리사는 페니스의 근원을 양손으로 고리를 만들어 잡아, 귀두로부터 리근에 걸친 부분을 자신의 뺨에 뺨 질질 꺼 시켰다……
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린의 자지를, 만지라고?」
+				PRINTFORMW 「응, 알았다제.」
+				PRINTFORMW 마리사는 페니스의 정면으로 와서, 적당한 손놀림으로 페니스를 잡아 문지르기 시작했다.
+				PRINTFORMW 「나, 코린의 자지, 처음으로 잡아봐. 조금 그로테스틱 하지만, 코린의 제일 소중한 부분이라고 생각하면..」
+				PRINTFORMW 「정말 귀엽게 만지고 싶어.」
+				PRINTFORMW 마리사는 페니스의 근원을 양손으로 고리를 만들어 잡아, 귀두로부터 뿌리에 걸친 부분을 부드럽고 힘차게 문질렀다.
+			ELSE
+				PRINTFORMW 「손으로　알았다구」
+				PRINTFORMW 마리사는 페니스의 정면에 위치 잡으면, 꼭 좋은 강함으로 페니스를 잡아 습기찬다
+				PRINTFORMW 「처음은 무서워서 그로테스크라고 생각했지만, 너의 제일 소중한 부분이라고 생각하면」
+				PRINTFORMW 「무슨, 매우 소중히 하고 싶어지지 말아라」
+				PRINTFORMW 마리사는 페니스의 근원을 양손으로 고리를 만들어 잡아, 귀두로부터 리근에 걸친 부분을 자신의 뺨에 뺨 질질 꺼 시켰다……
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 손으로 페니스를 잡도록(듯이) 마리사에 명령하면, 마리사는 수십초 주저한 후, 흠칫흠칫 페니스에 손을 뻗어 접했다
@@ -3512,15 +3818,15 @@ IF SELECTCOM == 40
 			CFLAG:9040 = 5
 		;연모 또한 봉사정신 Lv3
 		ELSEIF TALENT:150 == 1 && ABL:13 >= 3 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「변함 없이 단단하고 훌륭한 자지다……손만으로 만족할 수 있는지」
-			PRINTFORMW 「입이나 가슴 야 거기도 사용했으면 좋았으면, 언제라도 말해 주고」
-			PRINTFORMW 「그것까지는 손만으로 이 자지, 이인가 다투어지도록(듯이) 노력하기 때문에」
+			PRINTFORMW 「변함 없이 단단하고 훌륭한 자지다……손만으로 만족할 수 있어?」
+			PRINTFORMW 「입이나 가슴, 또한 거기도 사용하고 싶다면, 언제라도 말해줘.」
+			PRINTFORMW 「그러기 전까지는 손놀림만으로 이 자지, 만족시킬 테니까.」
 			CFLAG:9040 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9040 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「팔아. 기분이 좋은 것은 여기인가　그렇지 않으면 여기인가」
-			PRINTFORMW 마리사는 마음에 드는 장난감으로 놀도록(듯이), 귀두나 리근으로부터 페니스의 근내, 끝은 옥대까지,
-			PRINTFORMW 한 손으로 페니스를 해 말투면서 이제(벌써) 다른 한쪽의 손으로 페니스의 여기저기를 정중하게 애무해 나간다……
+			PRINTFORMW 「여기 기분좋아?　그렇지 않으면 여기인가?」
+			PRINTFORMW 마리사는 마음에 드는 장난감으로 놀도록(듯이), 귀두나 뿌리로부터 페니스의 끝에서 끝까지
+			PRINTFORMW 한 손으로 페니스를 어루만지면서 이제(벌써) 다른 한쪽의 손으로 페니스의 여기저기를 정중하게 애무해 나간다……
 			CFLAG:9040 = 3
 		;그 외의 경우
 		ELSEIF CFLAG:9040 <= 1 || FLAG:11 == 2
@@ -3550,9 +3856,16 @@ IF SELECTCOM == 41
 			PRINTFORMW 『나야말로, 마리사에 나의 남성기를 빨게 하는 것은 절대로 없다고 생각해 있었다지만』
 		;연모
 		ELSEIF TALENT:150 == 1
-			PRINTFORMW 「처음은, 이것을 구에 넣다니 싫고 어쩔 수 없었지만」
-			PRINTFORMW 「너의 소중한 부분이라고 생각하면, 이것도 사랑 아깝게 느끼군」
-			PRINTFORMW 「그러면, 오늘도 입으로 봉사하기 때문……」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「그럼, 코린의 자지, 빨아볼게.」
+				PRINTFORMW 『……응, 부탁할게. 마리사……』
+				PRINTFORMW 「아암.. 쩝.. 쩝..!」
+				PRINTFORMW 「정말 굉쟝훼…… 이거.. 코린.. 대단해.. 크고 아름돠워..아음...」
+			ELSE
+				PRINTFORMW 「처음은, 이것을 구에 넣다니 싫고 어쩔 수 없었지만」
+				PRINTFORMW 「너의 소중한 부분이라고 생각하면, 이것도 사랑 아깝게 느끼군」
+				PRINTFORMW 「그러면, 오늘도 입으로 봉사하기 때문……」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「개, 이것을 입으로!」
@@ -3580,16 +3893,16 @@ IF SELECTCOM == 41
 		ELSEIF TALENT:150 == 1 && (CFLAG:9041 <= 2 || FLAG:11 == 2)
 			;난수 분기:3
 			IF RAND:3 == 0
-				PRINTFORMW 「변함 없이 크다……나의 입은 전부 정말로 해결되지 않는거야」
-				PRINTFORMW 「그렇지만, 그 만큼혀라든지 사용해, 가득 사랑해 주기 때문……」
+				PRINTFORMW 「변함 없이 크네……내 입으로는 감당이 안돼.」
+				PRINTFORMW 「그렇지만, 그 만큼 혀라든지 사용해, 가득 사랑해줄게.」
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「응……. , ……짠다……」
-				PRINTFORMW 「응……지금까지 먹은 어떤 버섯보다, 너의 버섯이 제일 맛있다……」
+				PRINTFORMW 「응……, ……맛있어……」
+				PRINTFORMW 「응…… 지금까지 먹은 어떤 버섯보다, 너의 버섯이 제일 맛있다……」
 			;그 외의 경우
 			ELSE
-				PRINTFORMW ( 나의 입속, 자지로 정복 되고 있다……)
-				PRINTFORMW (이대로 입속에 나오는 것일까, 그렇지 않으면, 얼굴에 걸칠 수 있는 것일까……)
+				PRINTFORMW ( 나의 입속, 자지로 정복되고 있다……)
+				PRINTFORMW (이대로 입속에 나오는 것일까, 그렇지 않으면, 얼굴에 뿌려지는 것일까……)
 			ENDIF
 			CFLAG:9041 = 3
 		;그 외의 경우
@@ -3629,15 +3942,28 @@ IF SELECTCOM == 42
 			PRINTFORMW 「말해 주었군 코린. 그렇게 까지 말해지면, 고집에서도 나의 가슴으로 코린을 기분 좋게 시켜 주군」
 		;연모
 		ELSEIF TALENT:150 == 1
-			PRINTFORMW 「가슴으로　그렇게 나의 가슴이 기분에 말했는지」
-			;빈유거나 절벽이다
-			IF TALENT:111 || TALENT:110
-				PRINTFORMW 「변함 없이, 만족에 할 수 있는 가슴이 아닐지도 모르겠지만」
-				PRINTFORMW 「이런 가슴이라도 좋아면, 얼마든지 하고 주군」
-			;그 외의 경우
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「그렇게나 나의 가슴으로 느끼고 싶은거야?」
+				;빈유거나 절벽이다
+				IF TALENT:111 || TALENT:110
+					PRINTFORMW 「이런 작은 가슴으로 코린을 만족시켜줄 수 있을거라고는 생각하지 않지만」
+					PRINTFORMW 「그래도 원한다면, 얼마든지 코린을 기분좋게 만들어준다제!」
+				;그 외의 경우
+				ELSE
+					PRINTFORMW 「코린 덕분에 이렇게 커졌다구.」
+					PRINTFORMW 「코린의 사랑 덕분이야. 그 답례로 얼마든지 만족시켜줄게.」
+				ENDIF
 			ELSE
-				PRINTFORMW 「그때 부터 조금은 커졌다」
-				PRINTFORMW 「너 사랑이 키워 주었던가. 지금이라면 너를 만족 당하군」
+				PRINTFORMW 「가슴으로　그렇게 나의 가슴이 기분에 말했는지」
+				;빈유거나 절벽이다
+				IF TALENT:111 || TALENT:110
+					PRINTFORMW 「변함 없이, 만족에 할 수 있는 가슴이 아닐지도 모르겠지만」
+					PRINTFORMW 「이런 가슴이라도 좋아면, 얼마든지 하고 주군」
+				;그 외의 경우
+				ELSE
+					PRINTFORMW 「그때 부터 조금은 커졌다」
+					PRINTFORMW 「너 사랑이 키워 주었던가. 지금이라면 너를 만족 당하군」
+				ENDIF
 			ENDIF
 		;그 외의 경우
 		ELSE
@@ -3664,8 +3990,13 @@ IF SELECTCOM == 42
 			CFLAG:9042 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9042 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「너가 기분 좋아져 주고 있는 것이, 나의 가슴을 통해 심장까지 전해져 오군」
-			PRINTFORMW 「알까　너의 자지를 가슴으로 사랑키라고, 나의 심장도 몹시 두근두근 말하고 있어」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린이 느껴주고 있다는 것이, 내 가슴을 통해 심장까지 전해져오고 있어.」
+				PRINTFORMW 「코린의 자지를 가슴으로 사랑해줄 수록, 내 심장도 몹시 두근두근거려.」
+			ELSE
+				PRINTFORMW 「너가 기분 좋아져 주고 있는 것이, 나의 가슴을 통해 심장까지 전해져 오군」
+				PRINTFORMW 「알까　너의 자지를 가슴으로 사랑키라고, 나의 심장도 몹시 두근두근 말하고 있어」
+			ENDIF
 			CFLAG:9042 = 3
 		;그 외의 경우
 		ELSEIF CFLAG:9042 <= 1 || FLAG:11 == 2
@@ -3695,16 +4026,30 @@ IF SELECTCOM == 43
 		IF TALENT:150 == 1
 			;처녀
 			IF TALENT:0 == 1
-				PRINTFORMW 「아……마침내, 넣는지」
-				PRINTFORMW 삽입된다고 생각했을 것이다. 마리사는 부끄러운 듯이  입가를 숨기면서 다리를 연다
-				PRINTFORMW 지금부터 하는 행위에 대해 설명하면, 마리사는 조금 실망했는지 신체의 힘이 빠지는 것 같았다
-				PRINTFORMW 「넣어도 괜찮은데……는, 무엇 말하게 한다, 정말로」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「아……마침내, 넣는거야?」
+					PRINTFORMW 삽입된다고 생각했던 그녀는, 부끄러운 듯이 입가를 숨기면서 다리를 열었다.
+					PRINTFORMW 『아직은 아니야, 마리사. 이건 스마타라고 해서, 너의 음순으로 나의 이것을 애무하는 동작이다.』
+					PRINTFORMW 「칫, 내 처녀를 코린에게 바칠 순간이라서 엄청 기대했는데.. 뭐, 곧 바칠거지만.」
+				ELSE
+					PRINTFORMW 「아……마침내, 넣는지」
+					PRINTFORMW 삽입된다고 생각했을 것이다. 마리사는 부끄러운 듯이  입가를 숨기면서 다리를 연다
+					PRINTFORMW 지금부터 하는 행위에 대해 설명하면, 마리사는 조금 실망했는지 신체의 힘이 빠지는 것 같았다
+					PRINTFORMW 「넣어도 괜찮은데……는, 무엇 말하게 한다, 정말로」
+				ENDIF
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「또」
-				PRINTFORMW 그 말의 의미를 모르는 것인지, 머리에 마크를 띄우면서 마리 모래가 찾는다
-				PRINTFORMW 지금부터 하는 행위에 대해 설명하면, 마리사는 납득한 것처럼 다리를 열었다
-				PRINTFORMW 「무슨 일도 챌린지다. 이봐요, 나는 언제라도 준비할 수 있고 있는」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「뭘 하라는 거야?」
+					PRINTFORMW 『마리사. 이건 스마타라고 해서, 너의 음순으로 나의 이것을 애무하는 동작이다.』
+					PRINTFORMW 『어떻게 하는지 가르쳐줄테니, 부탁한다.』
+					PRINTFORMW 「얼마든지, 코린!」
+				ELSE
+					PRINTFORMW 「또」
+					PRINTFORMW 그 말의 의미를 모르는 것인지, 머리에 마크를 띄우면서 마리 모래가 찾는다
+					PRINTFORMW 지금부터 하는 행위에 대해 설명하면, 마리사는 납득한 것처럼 다리를 열었다
+					PRINTFORMW 「무슨 일도 챌린지다. 이봐요, 나는 언제라도 준비할 수 있고 있는」
+				ENDIF
 			ENDIF
 		;그 외의 경우
 		ELSE
@@ -3730,18 +4075,34 @@ IF SELECTCOM == 43
 		IF TALENT:150 == 1 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
 			;처녀
 			IF TALENT:0 == 1
-				PRINTFORMW 「, 하아, 응구……, 하아……앙!」
-				PRINTFORMW 페니스가 마리사의 균열을 켜거나 돌아오거나 할 때마다 주어지는, 입구나 클리토리스에의 자극에
-				PRINTFORMW 마리사는 몇 번이나 사랑스러운 비명을 올린다
-				PRINTFORMW 「하아……하아……너는, 기분이 좋은 것인지」
-				PRINTFORMW 「무리하지 않아도, 넣고 싶어지면 언제라도 나의 처녀를 빼앗아 주어도 좋기 때문에」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「, 하아, 응……, 하아……앙!」
+					PRINTFORMW 페니스가 마리사의 균열을 비벼서 돌아오거나 할 때마다 주어지는, 음순이나 클리토리스에의 자극에
+					PRINTFORMW 마리사는 몇 번이나 사랑스러운 비명을 질렀다.
+					PRINTFORMW 「하아……하아…… 기분좋아, 코린?」
+					PRINTFORMW 「천천히 코린이 원한다면 내 처녀, 언제든지 줄게.」
+				ELSE
+					PRINTFORMW 「, 하아, 응구……, 하아……앙!」
+					PRINTFORMW 페니스가 마리사의 균열을 켜거나 돌아오거나 할 때마다 주어지는, 입구나 클리토리스에의 자극에
+					PRINTFORMW 마리사는 몇 번이나 사랑스러운 비명을 올린다
+					PRINTFORMW 「하아……하아……너는, 기분이 좋은 것인지」
+					PRINTFORMW 「무리하지 않아도, 넣고 싶어지면 언제라도 나의 처녀를 빼앗아 주어도 좋기 때문에」
+				ENDIF
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「, 하아, 응구……, 하아……앙!」
-				PRINTFORMW 페니스가 마리사의 균열을 켜거나 돌아오거나 할 때마다 주어지는, 입구나 클리토리스에의 자극에
-				PRINTFORMW 마리사는 몇 번이나 사랑스러운 비명을 올린다
-				PRINTFORMW 「하아……하아……너는, 기분이 좋은 것인지」
-				PRINTFORMW 「무리하지 않아도, 넣고 싶어지면 언제라도 나중에 넣어도 좋기 때문에」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「, 하아, 응……, 하아……앙!」
+					PRINTFORMW 페니스가 마리사의 균열을 비벼서 돌아오거나 할 때마다 주어지는, 음순이나 클리토리스에의 자극에
+					PRINTFORMW 마리사는 몇 번이나 사랑스러운 비명을 질렀다.
+					PRINTFORMW 「하아……하아…… 기분좋아, 코린?」
+					PRINTFORMW 「천천히 코린이 원한다면 언제든지 넣고 기분좋아지자.」
+				ELSE
+					PRINTFORMW 「, 하아, 응구……, 하아……앙!」
+					PRINTFORMW 페니스가 마리사의 균열을 켜거나 돌아오거나 할 때마다 주어지는, 입구나 클리토리스에의 자극에
+					PRINTFORMW 마리사는 몇 번이나 사랑스러운 비명을 올린다
+					PRINTFORMW 「하아……하아……너는, 기분이 좋은 것인지」
+					PRINTFORMW 「무리하지 않아도, 넣고 싶어지면 언제라도 나중에 넣어도 좋기 때문에」
+				ENDIF
 			ENDIF
 			CFLAG:9043 = 3
 		;그 외의 경우
@@ -3808,9 +4169,15 @@ IF SELECTCOM == 47
 	IF CFLAG:9047 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「다리로? 어쩔 수 없는 놈이다……」
-			PRINTFORMW 「정말로 그 중에서 나의 신체로 너를 기분 좋게 시키지 않는 장소는 없어져 버릴지도 모르는데」
-			PRINTFORMW 「그렇지만, 그렇게 되면 기쁜데. 이번은 다리로 하고 들지만, 그 밖에 사용했으면 좋은 곳이 있으면 사양말고 말해 주고」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「다리로? 어쩔 수 없구나, 코린은……」
+				PRINTFORMW 「으음, 읏! 이렇게 하는 거 맞..지?」
+				PRINTFORMW 「설마, 내 다리로 느껴주고 있는거야? 정말로 기쁘다제.」
+			ELSE
+				PRINTFORMW 「다리로? 어쩔 수 없구나……」
+				PRINTFORMW 「정말로 그 중에서 나의 신체로 너를 기분 좋게 시키지 않는 장소는 없어져 버릴지도 모르는데」
+				PRINTFORMW 「그렇지만, 그렇게 되면 기쁜데. 이번은 다리로 하고 들지만, 그 밖에 사용했으면 좋은 곳이 있으면 사양말고 말해 주고」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「……모르는. 너라고 하는 인간이 이번 만은 진심으로 모르는」
@@ -3826,12 +4193,22 @@ IF SELECTCOM == 47
 		IF TALENT:150 == 1 && (CFLAG:9047 <= 2 || FLAG:11 == 2)
 			;새디즘기분 Lv4 이상
 			IF ABL:20 >= 4
-				PRINTFORMW 「팔아. 여기인가　여기가 기분이 좋은 것인지」
-				PRINTFORMW 「에에. 다리같은 걸로 밟혀 게다가 딱딱하고 완만한 응이라고, 정말로 당신은 어쩔 수 없는 변태다」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「정말로 내 발로 기분이 좋아지는 거야?」
+					PRINTFORMW 「에에. 코린은 정말 변태네♥」
+				ELSE
+					PRINTFORMW 「팔아. 여기인가　여기가 기분이 좋은 것인지」
+					PRINTFORMW 「에에. 다리같은 걸로 밟혀 게다가 딱딱하고 완만한 응이라고, 정말로 당신은 어쩔 수 없는 변태다」
+				ENDIF
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「무슨, 다리로 너의 자지 만지는 것은, 즐거운데」
-				PRINTFORMW 「다리로 이렇게, 때굴때굴 해, 너가 기분이야 유혹한데 얼굴 하는 것을 보는 것도 나쁘지 않은거야. 」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「내 다리로, 발로 느껴줘, 코린!」
+					PRINTFORMW 「나도 기분좋아질 테니까. 응?」
+				ELSE
+					PRINTFORMW 「무슨, 다리로 너의 자지 만지는 것은, 즐거운데」
+					PRINTFORMW 「다리로 이렇게, 때굴때굴 해, 너가 기분이야 유혹한데 얼굴 하는 것을 보는 것도 나쁘지 않은거야. 」
+				ENDIF
 			ENDIF
 			CFLAG:9047 = 3
 		;그 외의 경우
@@ -3854,8 +4231,8 @@ IF SELECTCOM == 48
 		IF TALENT:150 == 1
 			PRINTFORMW 마리사의 머리카락은 둥실둥실로, 졸졸 하고 있어, 매우 기분이 좋아
 			PRINTFORMW 그 감상을 솔직하게 말하면, 마리사는 기쁜듯이 페니스와 머리카락을 함께 어루만졌다
-			PRINTFORMW 「황상향이라고, 나보다 예쁜 머리카락의 녀석은 얼마든지 있었기 때문에」
-			PRINTFORMW 「머리카락을 칭찬해 주는 것은, 나는 그다지 없었다」
+			PRINTFORMW 「환상향이라고, 나보다 예쁜 머리카락의 녀석은 얼마든지 있었기 때문에」
+			PRINTFORMW 「머리카락을 칭찬해 주는 것은, 나는 그다지 없었어.」
 			PRINTFORMW 「그러니까……자지를 기분 좋게 하는 것으로 칭찬할 수 있었다고 해도, 솔직하게 기쁜거야」
 		;그 외의 경우
 		ELSE
@@ -3897,7 +4274,7 @@ IF SELECTCOM == 49
 			PRINTFORMW 「……당신의 취미는 조금씩 이해해 온 생각이었지만」
 			PRINTFORMW 「지금의로, 또 전혀 모르게 되었다구」
 			PRINTFORMW 는 적에 방해되었으므로, 조금 억지로 마리사의 겨드랑이에 페니스를 비집어 틀고 넣어 잡아당기기 시작한다
-			PRINTFORMW 「! , 조금 기다려 줘. 그것, 조금 낯간지러운……」
+			PRINTFORMW 「! , 조금 기다려 줘. 그것, 조금 부끄러워……」
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 지금부터 하는 것을 선언하면, 마리사는 혐오보다 의문을 띄운 표정으로%조사처리(CALLNAME:MASTER,"를")% 보았다
@@ -3913,7 +4290,7 @@ IF SELECTCOM == 49
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:9049 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「이대로 계속하고 있으면, 그 중 나도 겨드랑이에서도 이괴롭고들 있고 기분 좋아지는 것일까」
-			PRINTFORMW 「그렇다면 그것으로 좋은가. 나의 전신 남기는 곳(중) 없고, 너에게 기분 좋게 해 줄 수 있는 것」
+			PRINTFORMW 「그렇다면 그것으로 좋은가. 나의 전신 남김없이, 너에게 기분 좋게 해 줄 수 있어.」
 			CFLAG:9049 = 3
 		;그 외의 경우
 		ELSEIF CFLAG:9049 <= 1 || FLAG:11 == 2
@@ -4072,8 +4449,8 @@ IF SELECTCOM == 61
 	IF CFLAG:9061 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「미약은 사용하지 않아도, 지금이라면 나는 너에게 라고 해 주지만」
-			PRINTFORMW 「아무튼, 준다 라고 한다면 고맙게 받아 두군」
+			PRINTFORMW 「미약을 사용하지 않아도, 지금이라면 너와 기분좋아질 수 있는데.」
+			PRINTFORMW 「아무튼, 해준다면 고맙게 호의를 받아둘게.」
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「! 있고, 지금 먹인 것은야」
@@ -4121,8 +4498,13 @@ IF SELECTCOM == 62
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:9062 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「또 그 약인가」
-			PRINTFORMW 「당신, 그렇게 내가 오줌누고 있는 곳을 보고 싶은 것인지　네응다」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「또 그 약이야?」
+				PRINTFORMW 「코린, 그렇게 내가 오줌누는 장면을 보고 싶은 거구나?」
+			ELSE
+				PRINTFORMW 「또 그 약인가」
+				PRINTFORMW 「당신, 그렇게 내가 오줌누고 있는 곳을 보고 싶은 것인지　네응다」
+			ENDIF
 			CFLAG:9062 = 4
 		;주되들 해 버릇이다
 		ELSEIF TALENT:45 == 1 && (CFLAG:9062 <= 2 || FLAG:11 == 2)
@@ -4147,8 +4529,8 @@ IF SELECTCOM == 63
 	IF CFLAG:9063 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「좌약　별로 나는 어디도 나쁘지 않은거야」
-			PRINTFORMW 「이것도 조교를 위해　조금 대…………랭……!」
+			PRINTFORMW 「좌약, 별로 나는 어디도 나쁘지 않은거야」
+			PRINTFORMW 「이것도 조교를 위해 조금 대…………응……!」
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「좌약　……조금 대라고, 나는 별로 어디도 나쁘지 않은거야」
@@ -4181,10 +4563,20 @@ IF SELECTCOM == 66
 	IF CFLAG:9066 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「(들)물은 적 없는 약이다　무슨 유익의 약이야」
-			PRINTFORMW 용도를 설명하면, 마리사는 일순간 놀란 것 같지만, 곧바로 입가에 손을 대어 수치않다 기울 수 있는에 시선을 일등 했다
-			PRINTFORMW 「너……나와의 아기, 만들 생각인가……」
-			PRINTFORMW 「응……좋은거야. 너의 아이라면, 임신해도 된다……」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「본 적 없는 약이네?　뭐야 이거?」
+				PRINTFORMW 『나와 너의 아기를 만들 때 유용하게 쓰는 약이지. 이걸 쓰면, 마리사의 난자가 난소로부터 나와, 자궁에 정착할 거야.』
+				PRINTFORMW 「그럼 이걸 먹고 안에 싸면..」
+				PRINTFORMW 「그럼 얼른 먹을게. 그리고 반드시 안에 싸줘야 해!」
+				PRINTFORMW 「나, 코린의 아이, 반드시 가질 거니까.」
+				PRINTFORMW 『마리사, 그렇게 무리하지 않아도...』
+				PRINTFORMW 「아니, 무리할 거야. 난 코린의 아이를 원한다제!」
+			ELSE
+				PRINTFORMW 「(들)물은 적 없는 약이다　무슨 유익의 약이야」
+				PRINTFORMW 용도를 설명하면, 마리사는 일순간 놀란 것 같지만, 곧바로 입가에 손을 대어 수치않다 기울 수 있는에 시선을 일등 했다
+				PRINTFORMW 「너……나와의 아기, 만들 생각인가……」
+				PRINTFORMW 「응……좋은거야. 너의 아이라면, 임신해도 된다……」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「(들)물은 적 없는 약이다　무슨 유익의 약이야」
@@ -4205,8 +4597,13 @@ IF SELECTCOM == 66
 			CFLAG:9066 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:9066 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「오늘이야말로 임신할 수 있도록, 와」
-			PRINTFORMW 마리사는 정제를 앞에 두고 손을 모아 비고 나서, 단번에 삼켰다
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「오늘이야말로 코린의 아이를 가지고야 말겠어!」
+				PRINTFORMW 마리사는 배란유도제를 망설임없이 힘껏 삼켰다!
+			ELSE
+				PRINTFORMW 「오늘이야말로 임신할 수 있도록, 와」
+				PRINTFORMW 마리사는 정제를 앞에 두고 손을 모아 비고 나서, 단번에 삼켰다
+			ENDIF
 			CFLAG:9066 = 3
 		;그 외의 경우
 		ELSEIF CFLAG:9066 <= 1 || FLAG:11 == 2
@@ -4232,10 +4629,17 @@ IF SELECTCOM == 90
 		IF CFLAG:9090 == 0
 			;연모
 			IF TALENT:150 == 1
-				PRINTFORMW 「에이프런? 뭐야, 무엇인가 만들기를 원하는 것인지」
-				PRINTFORMW 「……에? 결혼한 아내가 하는 정장이다?」
-				PRINTFORMW 「……에? 그 거…… 에? 에?」
-				PRINTFORMW 마리사는 에이프런을 꼭 껴안으면서, 얼굴을 새빨갛게 해%조사처리(CALLNAME:MASTER,"를")% 눈을 치켜 뜨고 봄에 응시하고 있다……
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「에이프런? 뭐야? 왜 그런 걸 입는 거야?」
+					PRINTFORMW 「……에? 결혼한 아내가 하는 정장이라고?」
+					PRINTFORMW 「……좋아, 나는 코린의 신부, 제대로 입고 코린을 봉사할게.」
+					PRINTFORMW 마리사는 에이프런을 꼭 껴안으면서, 얼굴을 새빨갛게 해 %조사처리(CALLNAME:MASTER,"를")% 눈을 치켜 뜨고 봄에 응시하고 있다……
+				ELSE
+					PRINTFORMW 「에이프런? 뭐야, 무엇인가 만들기를 원하는 것인지」
+					PRINTFORMW 「……에? 결혼한 아내가 하는 정장이다?」
+					PRINTFORMW 「……에? 그 거…… 에? 에?」
+					PRINTFORMW 마리사는 에이프런을 꼭 껴안으면서, 얼굴을 새빨갛게 해%조사처리(CALLNAME:MASTER,"를")% 눈을 치켜 뜨고 봄에 응시하고 있다……
+				ENDIF
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「에이프런? 뭐야, 무엇인가 만들기를 원하는 것인지」
@@ -4248,11 +4652,17 @@ IF SELECTCOM == 90
 		ELSE
 			;연모
 			IF TALENT:150 == 1 && (CFLAG:9090 <= 2 || FLAG:11 == 2)
-				PRINTFORMW 「……아, 그런데 말이야……당신」
-				PRINTFORMW 에이프런을 입은 마리사가 눈을 치켜 뜨고 봄에 부르지만, 곧바로 머리로부터 김을 꺼내 침대에 얼굴로부터 돌진했다
-				PRINTFORMW 「……아―, 안된다! 무리이다 이것! 역시 너무 부끄럽다!」
-				PRINTFORMW 「이다, 래, 너, 남편으로서 보다니 그 거, 즉, 결혼으로, 서로 사랑해, 부부로……우우」
-				PRINTFORMW 마리사의 신부 수업은 전도다난 그렇다……
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「자, 코린을 위해서 알몸 에이프런을 걸쳤다제.」
+					PRINTFORMW 「이제 서로, 사랑하는 거야. 크크큿!」
+					PRINTFORMW 마리사는 기쁜 얼굴로 에이프런을 입은 뒤, %CALLNAME:MASTER%를 황홀한 표정으로 껴안았다.
+				ELSE
+					PRINTFORMW 「……아, 그런데 말이야……당신」
+					PRINTFORMW 에이프런을 입은 마리사가 눈을 치켜 뜨고 봄에 부르지만, 곧바로 머리로부터 김을 꺼내 침대에 얼굴로부터 돌진했다
+					PRINTFORMW 「……아―, 안된다! 무리이다 이것! 역시 너무 부끄럽다!」
+					PRINTFORMW 「이다, 래, 너, 남편으로서 보다니 그 거, 즉, 결혼으로, 서로 사랑해, 부부로……우우」
+					PRINTFORMW 마리사의 신부 수업은 전도다난 그렇다……
+				ENDIF
 				CFLAG:9090 = 3
 			;그 외의 경우
 			ELSEIF CFLAG:9090 <= 1 || FLAG:11 == 2
@@ -4324,7 +4734,7 @@ IF SELECTCOM == 100
 				PRINTFORMW 「나의 수치심이 잘라 팔기되는 것에는 언급 없음이야」
 			;연모
 			ELSEIF TALENT:150 == 1
-				PRINTFORMW 「그 비디오, 어떻게 하지　다음에 보는지　그렇지 않으면 파는지」
+				PRINTFORMW 「그 비디오, 어떻게 할 거야?」
 				PRINTFORMW 「할 수 있으면 팔았으면 좋지는 않지만. 너와 2명만의 비밀로 하고 싶은거야, 이런 것은」
 			;그 외의 경우
 			ELSE
@@ -4350,7 +4760,7 @@ IF SELECTCOM == 100
 				;노출버릇 Lv4 이상
 				IF ABL:14 >= 4
 					PRINTFORMW 「그러면 오늘도, 찍습니까」
-					PRINTFORMW 「황상향중의 놈등에, 우리가 서로 사랑하고 있는 곳을 과시해 주자구」
+					PRINTFORMW 「환상향중의 놈등에, 우리가 서로 사랑하고 있는 곳을 과시해 주자구」
 				;그 외의 경우
 				ELSE
 					PRINTFORMW 「, 너는, 나와의 가 다른 놈으로 보여져도 아무렇지도 않은가」
@@ -4550,8 +4960,8 @@ IF SELECTCOM == 111
 	IF CFLAG:9111 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「있고……혐……본데……」
-			PRINTFORMW 「, 가 ……나, 이런 , 주되들 이바지하는 것 같은 상스러운 딸(아가씨)도 아니면서 ……」
+			PRINTFORMW 「읏……싫어……보여져……」
+			PRINTFORMW 「……나, 이런, 추태를 보이는 데 쾌감을 느끼는 치녀도 아닌데……」
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「이나……그만두어라 ……본데……」
@@ -4565,9 +4975,15 @@ IF SELECTCOM == 111
 		IF TALENT:150 == 1 && (CFLAG:9111 <= 2 || FLAG:11 == 2)
 			;주되들 해 버릇이다
 			IF TALENT:45 == 1
-				PRINTFORMW 「은…………후와……」
-				PRINTFORMW 「너의 탓으로……정말로, 주되들 해가 멈추지 않게 되어 버렸다구」
-				PRINTFORMW 「너의 탓이니까　분명하게 책임져 나의 오줌을 돌봐 주어라」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「읏…………하아……」
+					PRINTFORMW 「코린의 앞에서라면, 이런 추태, 얼마든지 보여줄..게.」
+					PRINTFORMW 「이걸로 코린이 기분좋아진다면... 읏... 나.. 나온다...!!(쪼로로록!)」
+				ELSE
+					PRINTFORMW 「읏…………하아……」
+					PRINTFORMW 「너의 탓으로……정말로, 주되들 해가 멈추지 않게 되어 버렸다구」
+					PRINTFORMW 「너의 탓이니까　분명하게 책임져 나의 오줌을 돌봐 주어라」
+				ENDIF
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「있고, 좋은 것인지　너의 눈앞에서, 오줌이 나와버릴 같은 보기 흉한 여자 아이라도, 좋은 것인지」
@@ -6117,8 +6533,13 @@ IF SELECTCOM == 309
 		IF TALENT:150 == 1
 			;조수가 레이무
 			IF ASSINO() == 1
-				PRINTFORMW 「아-! 레이무! 나를 그대로 두어 뭐 하고 있어」
-				PRINTFORMW 『무엇은, 나도 주인님에 키스 받고 싶은 것』
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「야-! 레이무! 나를 그대로 방치한 채 뭐 하고 있는거야!」
+					PRINTFORMW 『뭐하긴, 나도 린노스케 씨와 키스하고 싶다구!』
+				ELSE
+					PRINTFORMW 「아-! 레이무! 나를 그대로 두어 뭐 하고 있어」
+					PRINTFORMW 『무엇은, 나도 주인님에 키스 받고 싶은 것』
+				ENDIF
 			;조수가 린노스케
 			ELSEIF ASSINO() == 69
 				PRINTFORMW 「다른 여자라면 아직 하지도, 나보다 코린 쪽에 키스 되는 것은 납득 가지 않은거야」
@@ -6148,8 +6569,13 @@ IF SELECTCOM == 309
 		IF TALENT:150 == 1 && (CFLAG:9309 <= 2 || FLAG:11 == 2)
 			;조수가 레이무
 			IF ASSINO() == 1
-				PRINTFORMW 「레이무, 다음은 나에 대신해 주어라」
-				PRINTFORMW 『내가 아니어서 주인님에 말해. 주인님은 키스의 능숙한 여자 아이를 좋아하니까』
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「레이무, 다음은 내 차례야!」
+					PRINTFORMW 『내가 아니라 린노스케 씨에게 말하지 그래? 린노스케 씨는 키스가 능숙한 여자 아이를 좋아하니까.』
+				ELSE
+					PRINTFORMW 「레이무, 다음은 나에 대신해 주어라」
+					PRINTFORMW 『내가 아니어서 주인님에 말해. 주인님은 키스의 능숙한 여자 아이를 좋아하니까』
+				ENDIF
 			;조수가 린노스케
 			ELSEIF ASSINO() == 69
 				PRINTFORMW 「코린(뿐)만 간사한거야. 나의 입술이 반드시 부드러운거야」
@@ -6233,7 +6659,13 @@ IF SELECTCOM == 347
 	IF CFLAG:9347 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「, 신부나……짓거리라고 알고 있어도 수줍지 말아라」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「헤헤헤.. 코린, 우리 꼭 부부같아.」
+				PRINTFORMW 『예전엔 여동생으로밖에 보이지 않았지만, 지금은 너를 사랑해.』
+				PRINTFORMW 「헤헤, 정말 기쁘다구?」
+			ELSE
+				PRINTFORMW 「, 신부나……짓거리라고 알고 있어도 수줍지 말아라」
+			ENDIF
 		;그 외의 경우
 		ELSE
 		ENDIF
@@ -6243,8 +6675,14 @@ IF SELECTCOM == 347
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:9347 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「……언젠가 짓거리가 아니고, 정말로……」
-			PRINTFORMW 「아, 아니, 아무것도 아닌……아무것도 아닌거야」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「이거 정말 좋아.」
+				PRINTFORMW 『동감이다.』
+				PRINTFORMW 「헤헤, 정말 기쁘다구?」
+			ELSE
+				PRINTFORMW 「……언젠가 짓거리가 아니고, 정말로……」
+				PRINTFORMW 「아, 아니, 아무것도 아닌……아무것도 아닌거야」
+			ENDIF
 			CFLAG:9347 = 3
 		;그 외의 경우
 		ELSEIF CFLAG:9347 <= 1 || FLAG:11 == 2
@@ -9701,15 +10139,29 @@ ENDIF
 IF TFLAG:0 > 0 && CFLAG:8009 == 0
 	;연모 또한 주인의 섹스에 의한 처녀 상실
 	IF TALENT:150 == 1 && TFLAG:2
-		PRINTFORMW 「――――히끅! …………우……우, 우우……」
-		PRINTFORMW 처녀를 상실한 순간, 마리사는 입술을 꽉 깨물고 전신을 진동시켰다
-		PRINTFORMW 잠시 뒤, 마리사의 어린 보지로부터 순결의 증거가 한 줄기 흐르는 것과 함께,
-		PRINTFORMW 마리사의 두 눈으로부터 눈물이 한 방울 흐르고 떨어졌다
-		PRINTFORMW 「…………괘, 괜찮아……아프지만, 괜찮, 다구」
-		PRINTFORMW 넘어져 무릎을 찰과상 입었는데 아픔을 참는 아이와 같이, 마리사는 무리하게 억지 웃음을 지으며 %조사처리(CALLNAME:MASTER,"를")% 향한다
-		PRINTFORMW 「주어도 괜찮다, 라고 생각하고 있었던 놈에게 처녀를 준 거다. 아프지만……기쁘고, 행복하니까, 좋다구」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 손을 마리사의 얼굴에 뻗어, 눈초리에 떠오르는 눈물을 손가락 끝으로 살그머니 닦았다
-		PRINTFORMW 「헤헤……상냥하구나. 나는 괜찮으니까, 네가 원하는 대로 해줘」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「――――히끅! …………우……우, 우우……」
+			PRINTFORMW 처녀를 상실한 순간, 마리사는 입술을 꽉 깨물고 전신을 진동시켰다.
+			PRINTFORMW 잠시 뒤, 마리사의 어린 보지로부터 순결의 증거가 한 줄기 흐르는 것과 함께,
+			PRINTFORMW 마리사의 두 눈으로부터 눈물이 한 방울 흘러 떨어졌다.
+			PRINTFORMW 동시에 그녀는 기쁨의 미소를 지었으며, 눈동자에 애욕의 표시인 하트마크가 강렬히 떠올랐다.
+			PRINTFORMW 「…………정말…행복해……아프지만, 넘쳐흐르는 행복감과 황홀함이 고통을 진정시켜주고 있어, 코린.」
+			PRINTFORMW 「그렇기에 이 아픔도 약간 따가울 정도로밖에 느껴지지 않아.」
+			PRINTFORMW 『그건 다행이다. 마리사.』
+			PRINTFORMW 『나도 너의 처녀를 받을 수 있어서 정말 기뻐.』
+			PRINTFORMW 「고마워, 코린. 이제 뒤돌아볼 필요없어. 함께 기분좋자지자구.」
+			PRINTFORMW 『응.』
+		ELSE
+			PRINTFORMW 「――――히끅! …………우……우, 우우……」
+			PRINTFORMW 처녀를 상실한 순간, 마리사는 입술을 꽉 깨물고 전신을 진동시켰다
+			PRINTFORMW 잠시 뒤, 마리사의 어린 보지로부터 순결의 증거가 한 줄기 흐르는 것과 함께,
+			PRINTFORMW 마리사의 두 눈으로부터 눈물이 한 방울 흐르고 떨어졌다
+			PRINTFORMW 「…………괘, 괜찮아……아프지만, 괜찮, 다구」
+			PRINTFORMW 넘어져 무릎을 찰과상 입었는데 아픔을 참는 아이와 같이, 마리사는 무리하게 억지 웃음을 지으며 %조사처리(CALLNAME:MASTER,"를")% 향한다
+			PRINTFORMW 「주어도 괜찮다, 라고 생각하고 있었던 놈에게 처녀를 준 거다. 아프지만……기쁘고, 행복하니까, 좋다구」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 손을 마리사의 얼굴에 뻗어, 눈초리에 떠오르는 눈물을 손가락 끝으로 살그머니 닦았다
+			PRINTFORMW 「헤헤……상냥하구나. 나는 괜찮으니까, 네가 원하는 대로 해줘」
+		ENDIF
 	;조수가 린노스케고 조수가 조교
 	ELSEIF ASSIPLAY && ASSINO() == 69
 		PRINTFORMW 「――――히끅! …………우……우, 우우……」
@@ -9808,16 +10260,31 @@ ELSEIF TFLAG:10 > 0
 				PRINTFORMW 「우후후♪ 이렇게 안에 내면, 아기 가질지도 몰라♥」
 			;난수 분기:3
 			ELSEIF RAND:3 == 0
-				PRINTFORMW 「아……자궁에……들어 오고 있다……」
-				PRINTFORMW 「에헤헤……임신할까……」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「읏, 응! 코린의 것이, 내 안에 들어오고 있어!」
+					PRINTFORMW 「에헤헤……코린의 아이, 임신할까……」
+				ELSE
+					PRINTFORMW 「아……자궁에……들어 오고 있다……」
+					PRINTFORMW 「에헤헤……임신할까……」
+				ENDIF
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「가득, 나오고 있어……」
-				PRINTFORMW 「응……행복해……」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「코린의 씨앗이 내 뱃속에 한가득♥」
+					PRINTFORMW 「응……정말 행복해……」
+				ELSE
+					PRINTFORMW 「가득, 나오고 있어……」
+					PRINTFORMW 「응……행복해……」
+				ENDIF
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「응……잠깐 기다려줘」
-				PRINTFORMW 「잠깐이라도 좋으니까, 이대로 있게 해줬으면 좋겠어……」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「더 싸줘! 코린!」
+					PRINTFORMW 「임신해도 좋으니까! 내 안을 코린의 색으로 물들여 줘!!」
+				ELSE
+					PRINTFORMW 「응……잠깐 기다려줘」
+					PRINTFORMW 「잠깐이라도 좋으니까, 이대로 있게 해줬으면 좋겠어……」
+				ENDIF
 			ENDIF
 			CFLAG:8010 = 4
 		;굴복 각인 Lv3
@@ -9871,8 +10338,13 @@ IF TFLAG:12 > 0
 	IF TALENT:150 == 1 && (CFLAG:8012 <= 1 || FLAG:11 == 2)
 		;정액중독 Lv3 이상
 		IF ABL:31 >= 3
-			PRINTFORMW 「응……하음, 낼름, 쮸웁……」
-			PRINTFORMW 「너가 내 준 정액이다. 손에 묻은 한 방울까지도 버리지는 않을 거야」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「응……하음, 낼름, 쮸웁……」
+				PRINTFORMW 「코린의 것, 맛있어. 손에 묻은 한 방울까지도 절대로 버리지 않을 거다제!」
+			ELSE
+				PRINTFORMW 「응……하음, 낼름, 쮸웁……」
+				PRINTFORMW 「너가 내 준 정액이다. 손에 묻은 한 방울까지도 버리지는 않을 거야」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			;난수 분기:3
@@ -9880,12 +10352,12 @@ IF TFLAG:12 > 0
 				PRINTFORMW 「정-액……따뜻해……」
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「손만으로 이렇게 내준 건가」
+				PRINTFORMW 「손만으로 이렇게 내준 건가.」
 				PRINTFORMW 「그럼 입이나 가슴도 사용하면 얼마나 내 주는지, 기대해도 돼?」
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「므으, 손도 얼굴도 너의 정액으로 가득하구나」
-				PRINTFORMW 「이렇게 되면 가슴이나 배나 등까지 묻혀서, 온몸을 너의 정액 투성이로 할까나」
+				PRINTFORMW 「이렇게 되면 가슴이나 배나 등까지 묻혀서, 온몸을 너의 정액 투성이로 할까나.」
 			ENDIF
 		ENDIF
 		CFLAG:8012 = 2
@@ -9926,17 +10398,32 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
 		IF TALENT:150 == 1 && (CFLAG:8013 < 5 || FLAG:11 == 2)
 			;난수 분기:3
 			IF RAND:3 == 0
-				PRINTFORMW 「응……꿀꺽……」
-				PRINTFORMW 「에헤헤. 너의 정액이니까. 노력해서 전부 마셨다구」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「응……꿀꺽……」
+					PRINTFORMW 「에헤헤. 코린의 정액이니까. 정성을 들여 맛있게 마셨다구.」
+				ELSE
+					PRINTFORMW 「응……꿀꺽……」
+					PRINTFORMW 「에헤헤. 너의 정액이니까. 노력해서 전부 마셨다구.」
+				ENDIF
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「응……응구……읏응……하아」
-				PRINTFORMW 「정직하게 말하면, 역시 맛있다는 감상은 가질 수 없지만」
-				PRINTFORMW 「그렇지만, 너가 내 준 것을 마실 수 있기 때문에, 행복하다구」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「응……응구……읏응……하아」
+					PRINTFORMW 「코린의 정액, 너무 맛있어. 꿀꺽!」
+				ELSE
+					PRINTFORMW 「응……응구……읏응……하아」
+					PRINTFORMW 「정직하게 말하면, 역시 맛있다는 감상은 가질 수 없지만」
+					PRINTFORMW 「그렇지만, 너가 내 준 것을 마실 수 있기 때문에, 행복하다구.」
+				ENDIF
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「응----응구, 응크응……후우」
-				PRINTFORMW 「많이 내 주었군. 나의 입, 기분 좋았어? 기쁘네」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「응----으음, 응,앗……후우」
+					PRINTFORMW 「날 위해서 이렇게나 많이 내주다니, 정말 기뻐.」
+				ELSE
+					PRINTFORMW 「응----응구, 응크응……후우」
+					PRINTFORMW 「많이 내 주었군. 나의 입, 기분 좋았어? 기쁘네.」
+				ENDIF
 			ENDIF
 			CFLAG:8013 = 5
 		;정액중독 Lv3
@@ -9946,23 +10433,23 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
 			CFLAG:8013 = 3
 		;봉사정신 Lv3 이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:8013 < 2 || FLAG:11 == 2)
-			PRINTFORMW 「마셔 주는 것이 그렇게 기쁜 건가? 어쩔 수 없구만……응구, 쿨럭……」
+			PRINTFORMW 「마셔 주는 것이 그렇게 기쁜거야? 어쩔 수 없구만……응구, 쿨럭……」
 			CFLAG:8013 = 2
 		;그 외
 		ELSEIF CFLAG:8013 < 1 || FLAG:11 == 2
 			;난수 분기:3
 			IF RAND:3 == 0
 				PRINTFORMW 「으……쿨럭,――우엑」
-				PRINTFORMW 「……마시라고? 터무니없는 말 하지마」
+				PRINTFORMW 「……마시라고? 터무니없는 말 하지마.」
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「으음----우엑」
-				PRINTFORMW 「우에에……입속이 끈적끈적하고 기분 나빠」
+				PRINTFORMW 「우에에……입속이 끈적끈적하고 기분 나빠.」
 			;그 외의 경우
 			ELSE
 				PRINTFORMW 「켈록, 켈록……」
 				PRINTFORMW 「우우∼, 조금 마셔 버렸다……」
-				PRINTFORMW 「목에 뭔가 걸리고 있는 느낌이 들어 싫은 느낌이다」
+				PRINTFORMW 「목에 뭔가 걸리고 있는 느낌이 들어 싫은 느낌이다.」
 			ENDIF
 			CFLAG:8013 = 1
 		ENDIF
@@ -9972,24 +10459,46 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
 		IF TALENT:150 == 1 && (CFLAG:8014 < 3 || FLAG:11 == 2)
 			;정액중독 Lv3 이상
 			IF ABL:31 >= 3
-				PRINTFORMW 「응읏, 응믓, 꿀꺽……낼름, 으음……프하앗」
-				PRINTFORMW 마리사는 입속에 나온 정액을 다 마신 후, 가슴을 강하게 꽉 눌러 훑고,
-				PRINTFORMW %CALLNAME:MASTER%의 요도 안에 남은 정액도 짜내듯이 해 빨아 올렸다
-				PRINTFORMW 「맛있었다구?　너의 정액」
-				PRINTFORMW 「아, 그렇지만 물론, 가장 좋아하는 것은 정액이 아니고 너 자신이라구? 에헤헤」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「응읏, 응믓, 꿀꺽……낼름, 으음……프하앗」
+					PRINTFORMW 마리사는 입속에 나온 정액을 다 마신 후, 가슴을 강하게 꽉 눌러 훑고,
+					PRINTFORMW %CALLNAME:MASTER%의 요도 안에 남은 정액도 짜내듯이 해 빨아 올렸다.
+					PRINTFORMW 「정말 맛있었어, 코린의 정액.」
+					PRINTFORMW 「물론 내가 좋아하는 것은 코린의 정액이 아니라 코린이라제!」
+				ELSE
+					PRINTFORMW 「응읏, 응믓, 꿀꺽……낼름, 으음……프하앗」
+					PRINTFORMW 마리사는 입속에 나온 정액을 다 마신 후, 가슴을 강하게 꽉 눌러 훑고,
+					PRINTFORMW %CALLNAME:MASTER%의 요도 안에 남은 정액도 짜내듯이 해 빨아 올렸다
+					PRINTFORMW 「맛있었다구?　너의 정액」
+					PRINTFORMW 「아, 그렇지만 물론, 가장 좋아하는 것은 정액이 아니고 너 자신이라구? 에헤헤」
+				ENDIF
 			;그 외의 경우
 			ELSE
 				;난수 분기:3
 				IF RAND:3 == 0
-					PRINTFORMW 「나의 가슴으로 내 주었는가. 여자로써의 기쁨이 넘치네. 에헤헤」
+					IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+						PRINTFORMW 「나의 가슴에 흥분해 주었구나, 여자로서 정말로 기뻐, 코린!」
+					ELSE
+						PRINTFORMW 「나의 가슴으로 내 주었는가. 여자로써의 기쁨이 넘치네. 에헤헤」
+					ENDIF
 				;난수 분기:2
 				ELSEIF RAND:2 == 0
-					PRINTFORMW 「대단한 양의 정액이다……이상한 냄새다」
-					PRINTFORMW 「……가슴에 바르면, 조금은 젖가슴 성장하지 않을까」
+					IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+						PRINTFORMW 「대단한 양의 정액이네……냄새도 이상하지만.」
+						PRINTFORMW 「……코린의 것이니 싫지 않아.」
+					ELSE
+						PRINTFORMW 「대단한 양의 정액이다……이상한 냄새다.」
+						PRINTFORMW 「……가슴에 바르면, 조금은 젖가슴 성장하지 않을까.」
+					ENDIF
 				;그 외의 경우
 				ELSE
-					PRINTFORMW 「므∼. 가슴이 없기 때문에 너의 정액이 흘러버리는군」
-					PRINTFORMW 「나의 가슴이 좀 더 크면, 전부 받아들여 줄 수 있는데」
+					IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+						PRINTFORMW 「므∼. 가슴이 없기 때문에 코린의 정액이 다 흘러버리고 말았어!」
+						PRINTFORMW 「만약 나의 가슴이 좀 더 크다면, 코린을 기쁘게 만들어줄 수 있는데 말이야.」
+					ELSE
+						PRINTFORMW 「므∼. 가슴이 없기 때문에 너의 정액이 흘러버리는군.」
+						PRINTFORMW 「나의 가슴이 좀 더 크면, 전부 받아들여 줄 수 있는데.」
+					ENDIF
 				ENDIF
 			ENDIF
 			CFLAG:8014 = 3
@@ -10238,10 +10747,18 @@ ENDIF
 IF TFLAG:44 == 3 
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「저 녀석은 좋아하지만……」
-		PRINTFORMW 「그런데도, 도저히 용서할 수 없는 게 있구나」
-		PRINTFORMW 「……이것도 사랑이란 녀석에게는 자주 있는 것인가?」
-		PRINTFORMW 「사랑이란 어렵다……아무튼, 저 녀석을 용서할 수 있는 건 사실이지만」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「나는 코린을 좋아한다제.」
+			PRINTFORMW 「하지만 이건 정말 너무하잖아.」
+			PRINTFORMW 「난, 이런 코린이라도 정말로 용서하고 싶어.」
+			PRINTFORMW 「코린이잖아. 무슨 특별한 이유가 있어서 이러는 거, 맞지?」
+			PRINTFORMW 「제발 그렇다고 말해줘, 응, 코린!?」
+		ELSE
+			PRINTFORMW 「저 녀석은 좋아하지만……」
+			PRINTFORMW 「그런데도, 도저히 용서할 수 없는 게 있구나」
+			PRINTFORMW 「……이것도 사랑이란 녀석에게는 자주 있는 것인가?」
+			PRINTFORMW 「사랑이란 어렵다……아무튼, 저 녀석을 용서할 수 있는 건 사실이지만」
+		ENDIF		
 		RETURN 0
 	;그 외의 경우
 	ELSE	
@@ -10261,8 +10778,13 @@ ENDIF
 IF TFLAG:200 == 102
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW (이, 이 나이 먹고 지도를 그린 건가 나?)
-		PRINTFORMW (나, 위험한데. 저녀석에게 알려지면라고 말해질까)
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW (이, 이 나이 먹고 지도를 그린 건가, 나?)
+			PRINTFORMW (나, 위험한데. 코린에게 알려지면, 평생 흑역사로 놀림당한다구!)
+		ELSE
+			PRINTFORMW (이, 이 나이 먹고 지도를 그린 건가 나?)
+			PRINTFORMW (나, 위험한데. 저녀석에게 알려지면라고 말해질까)
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10280,12 +10802,22 @@ IF TFLAG:200 == 140
 	IF TALENT:150 == 1
 		;정액중독 Lv2 이상
 		IF ABL:31 >= 2
-			PRINTFORMW 「응……일어났는지. 안녕이다」
-			PRINTFORMW 「아침 제일의 너의 밀크는 진한데. 나의 아침 식사는 이것으로 좋은거야」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「응……일어났어, 코린?」
+				PRINTFORMW 「아침의 코린의 밀크는 찐하네? 정말 맛있어♬」
+			ELSE
+				PRINTFORMW 「응……일어났는지. 안녕이다」
+				PRINTFORMW 「아침 제일의 너의 밀크는 진한데. 나의 아침 식사는 이것으로 좋은거야」
+			ENDIF
 		;그 외의 경우
 		ELSE
-			PRINTFORMW 「응……일어났는지. 안녕이다」
-			PRINTFORMW 「……이라고에. 일으키러 오면, 너의 자지, 아침부터 건강했기 때문에, 무심코, 」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「응……일어났어, 코린?」
+				PRINTFORMW 「……평소처럼 코린을 일으키러 오면, 코린의 자지, 아침부터 건강하게 발기했기에 무심코.. 헤헤...」
+			ELSE
+				PRINTFORMW 「응……일어났는지. 안녕이다」
+				PRINTFORMW 「……이라고에. 일으키러 오면, 너의 자지, 아침부터 건강했기 때문에, 무심코, 」
+			ENDIF
 		ENDIF
 		RETURN 0
 	;그 외의 경우
@@ -10309,21 +10841,40 @@ ENDIF
 IF TFLAG:200 == 141
 	;연모
 	IF TALENT:150 == 1
-		;빈유 및 절벽은 아니다
-		IF TALENT:111 == 0 && TALENT:110 == 0
-			PRINTFORMW 「모처럼 너가 크게 해 주었다」
-			PRINTFORMW 「그 만큼, 답례라고 말하면이지만 너를 기분 좋게시켜 줘」
-		;봉사정신 Lv3 이상
-		ELSEIF ABL:13 >= 3
-			PRINTFORMW 「, 일어나고 있었는지……아하하, 안녕이다」
-			PRINTFORMW 「개, 이것은……이다, 래 나의 가슴이라면 파이즈리 어려우니까……」
-			PRINTFORMW 「너가 자고 있는 동안에 몰래 연습하려고……」
-			PRINTFORMW 가슴을 숨기면서 부끄러워하는 마리사가 사랑스러웠기 때문에 우선 머리를 쓰다듬고 있고 두었다
-		;그 외의 경우
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			;빈유 및 절벽은 아니다
+			IF TALENT:111 == 0 && TALENT:110 == 0
+				PRINTFORMW 「모처럼 코린이 만져줘서 크게 되었다구.」
+				PRINTFORMW 「그만큼, 코린에게 답례로써 기분좋게 해줄게.」
+			;봉사정신 Lv3 이상
+			ELSEIF ABL:13 >= 3
+				PRINTFORMW 「깨어 있었어? 아하하, 안녕, 코린?」
+				PRINTFORMW 「하아하아.. 나의 가슴으로는 파이즈리가 어려우니까……」
+				PRINTFORMW 「코린이 자고 있는 동안에 몰래 연습하려고……」
+				PRINTFORMW 가슴을 숨기면서 부끄러워하는 마리사가 사랑스러웠기 때문에 우선 머리를 쓰다듬었다.
+			;그 외의 경우
+			ELSE
+				PRINTFORMW 「안녕, 코린.」
+				PRINTFORMW 「내 가슴으로 기분좋게 해줄게.」
+				PRINTFORMW 마리사는 입의 주위의 정액을 빨고 취하면, 아침해와 같이 상쾌한 웃는 얼굴로 힘이 빠졌다
+			ENDIF
 		ELSE
-			PRINTFORMW 「안녕씨」
-			PRINTFORMW 「이것인가　그렇다면, 좋아하는 놈에게는 기분 좋아지기를 원하기 때문에」
-			PRINTFORMW 마리사는 입의 주위의 정액을 빨고 취하면, 아침해와 같이 상쾌한 웃는 얼굴로 힘이 빠졌다
+			;빈유 및 절벽은 아니다
+			IF TALENT:111 == 0 && TALENT:110 == 0
+				PRINTFORMW 「모처럼 너가 크게 해 주었다」
+				PRINTFORMW 「그 만큼, 답례라고 말하면이지만 너를 기분 좋게시켜 줘」
+			;봉사정신 Lv3 이상
+			ELSEIF ABL:13 >= 3
+				PRINTFORMW 「, 일어나고 있었는지……아하하, 안녕이다」
+				PRINTFORMW 「개, 이것은……이다, 래 나의 가슴이라면 파이즈리 어려우니까……」
+				PRINTFORMW 「너가 자고 있는 동안에 몰래 연습하려고……」
+				PRINTFORMW 가슴을 숨기면서 부끄러워하는 마리사가 사랑스러웠기 때문에 우선 머리를 쓰다듬고 있고 두었다
+			;그 외의 경우
+			ELSE
+				PRINTFORMW 「안녕씨」
+				PRINTFORMW 「이것인가　그렇다면, 좋아하는 놈에게는 기분 좋아지기를 원하기 때문에」
+				PRINTFORMW 마리사는 입의 주위의 정액을 빨고 취하면, 아침해와 같이 상쾌한 웃는 얼굴로 힘이 빠졌다
+			ENDIF
 		ENDIF
 		RETURN 0
 	;그 외의 경우
@@ -10351,13 +10902,24 @@ ENDIF
 IF TFLAG:200 == 142
 	;연모
 	IF TALENT:150 == 1
-		;음란하다
-		IF TALENT:170 == 1
-			PRINTFORMW 「야　일어났는지」
-			PRINTFORMW 「……이다, 래……아침부터 이런 건강한 자지 보여지면, 참을 수 없었으니까……응구, 앙」
-		;그 외의 경우
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			;음란하다
+			IF TALENT:170 == 1
+				PRINTFORMW 「일어났어, 코린?」
+				PRINTFORMW 「……아침부터 이런 건강한 자지 보여지면, 참을 수 없었으니까……응구, 앙」
+			;그 외의 경우
+			ELSE
+				PRINTFORMW 「이렇게 매일아침마다 코린을 덮치면... 응! 앗! 아앙!! 코린의 아이, 가질 확률이 오를까?」
+			ENDIF
 		ELSE
-			PRINTFORMW 「아침 제일의 진한 키-역이라면, 임신하는 확률 오를까」
+			;음란하다
+			IF TALENT:170 == 1
+				PRINTFORMW 「야　일어났는지」
+				PRINTFORMW 「……이다, 래……아침부터 이런 건강한 자지 보여지면, 참을 수 없었으니까……응구, 앙」
+			;그 외의 경우
+			ELSE
+				PRINTFORMW 「아침 제일의 진한 키-역이라면, 임신하는 확률 오를까」
+			ENDIF
 		ENDIF
 		RETURN 0
 	;그 외의 경우
@@ -10383,12 +10945,17 @@ ENDIF
 IF TFLAG:200 == 143
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「, 안녕―, (이)다」
-		PRINTFORMW 「……또, 해도 될까」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「으응..쪽... 아, 일어났다.」
+			PRINTFORMW 「……잘 잤어, 코린?」
+		ELSE
+			PRINTFORMW 「, 안녕―, (이)다」
+			PRINTFORMW 「……또, 해도 될까」
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
-		PRINTFORMW 「……스스로도 모르는. 어째서 나는, 진한 개에 눈을 뜨고의 키스라든지 하려고 생각했다」
+		PRINTFORMW 「……스스로도 모르는. 어째서 나는, 이 녀석의 눈을 뜨게 하려고 키스라든지 하려고 생각했지?」
 	ENDIF
 ENDIF
 
@@ -10413,7 +10980,7 @@ ENDIF
 IF TFLAG:200 == 145
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「, 그……당신, 안녕하세요……다」
+		PRINTFORMW 「, 그……당신, 안녕하세요……야」
 		PRINTFORMW 마리사는 에이프런의 옷자락을 손으로 누르면서 모지모지 하고 있었다……
 		RETURN 0
 	;그 외의 경우
@@ -10431,13 +10998,24 @@ IF TFLAG:200 == 150
 	IF TALENT:150 == 1
 		;음란하다
 		IF TALENT:170 == 1
-			PRINTFORMW 「이나다……아직 떨어지고 싶지 않다……」
-			PRINTFORMW 「나는 아직 괜찮기 때문에, 너의 자지로, 좀더 좀더 사랑했으면 좋아……」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「싫어……아직 떨어지고 싶지 않아……」
+				PRINTFORMW 「나는 아직 괜찮으니까, 코린의 자지로, 좀더 좀더 사랑해줘!」
+			ELSE
+				PRINTFORMW 「이나다……아직 떨어지고 싶지 않다……」
+				PRINTFORMW 「나는 아직 괜찮기 때문에, 너의 자지로, 좀더 좀더 사랑했으면 좋아……」
+			ENDIF
 		;그 외의 경우
 		ELSE
-			PRINTFORMW 「……좀 더라면 괜찮겠지」
-			PRINTFORMW 「아, 앞으로 조금. 그리고 약간 사랑했으면 좋아……는……안 됨, 인가」
-			PRINTFORMW 그런 눈을 치켜 뜨고 봄으로 애원 되어, 귀여워하지 않는 놈이 어디에 있다는 것이다
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「……좀 더 해줘, 코린.」
+				PRINTFORMW 「…난 코린의 사랑이 필요해. 응, 좀 더 기분좋게 되고 싶어.」
+				PRINTFORMW 『알았어, 마리사. 그럼 너를 만족시켜줄게.』
+			ELSE
+				PRINTFORMW 「……좀 더라면 괜찮겠지」
+				PRINTFORMW 「아, 앞으로 조금. 그리고 약간 사랑했으면 좋아……는……안 됨, 인가」
+				PRINTFORMW 그런 눈을 치켜 뜨고 봄으로 애원 되어, 귀여워하지 않는 놈이 어디에 있다는 것이다
+			ENDIF
 		ENDIF
 		RETURN 0
 	;그 외의 경우
@@ -10463,13 +11041,24 @@ IF TFLAG:200 == 151
 	IF TALENT:150 == 1
 		;자위중독 Lv3 이상
 		IF ABL:30 >= 3
-			PRINTFORMW 「응……손가락……멈추지 않는……저녀석……생각해 내는 것만으로, 이렇게 흘러넘쳐…………응응응……」
-			PRINTFORMW 「개, 이렇게 한사람 어 통치하는 여자 아이, 저녀석은 어떻게 생각할까……」
-			PRINTFORMW 「미움받지 않을까……응……, 발각되지 않게……소리 세우지 않게……하지 않고……」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「응……손가락이 멈추지가 않아……코린을 생각하는 것만으로, 이렇게 흘러넘쳐…………응응응……!!」
+				PRINTFORMW 「코린, 코린, 코린, 코린, 코린!!」
+				PRINTFORMW 「응, 간다, 간다앗! 코-린!! 으아아아앗!!」
+			ELSE
+				PRINTFORMW 「응……손가락……멈추지 않는……저녀석……생각해 내는 것만으로, 이렇게 흘러넘쳐…………응응응……」
+				PRINTFORMW 「개, 이렇게 한사람 어 통치하는 여자 아이, 저녀석은 어떻게 생각할까……」
+				PRINTFORMW 「미움받지 않을까……응……, 발각되지 않게……소리 세우지 않게……하지 않고……」
+			ENDIF
 		;그 외의 경우
 		ELSE
-			PRINTFORMW 「응……손가락……멈추지 않는다……」
-			PRINTFORMW 「저녀석……생각해 내는 것만으로, 이렇게 흘러넘쳐…………응응응……」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「응……손가락이 멈추지가 않아……」
+				PRINTFORMW 「코린……생각하는 것만으로, 이렇게 흘러넘쳐…………응응응……」
+			ELSE
+				PRINTFORMW 「응……손가락……멈추지 않는다……」
+				PRINTFORMW 「저녀석……생각해 내는 것만으로, 이렇게 흘러넘쳐…………응응응……」
+			ENDIF
 		ENDIF
 		RETURN 0
 	;그 외의 경우
@@ -10541,8 +11130,13 @@ ENDIF
 IF TFLAG:200 == 154
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「저녀석의 도움이 되기 위해서(때문에)도, 다른 놈은 어디가 약한 것인지 연구해 두지 않으면」
-		PRINTFORMW 「이것은 저녀석에게는 비밀이다」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「코린의 도움이 되기 위해서라도, 다른 놈이 어디가 약한 것인지 연구해 두지 않으면 안돼.」
+			PRINTFORMW 「이것은 코린에게는 비밀로 해야지.」
+		ELSE
+			PRINTFORMW 「저녀석의 도움이 되기 위해서(때문에)도, 다른 놈은 어디가 약한 것인지 연구해 두지 않으면」
+			PRINTFORMW 「이것은 저녀석에게는 비밀이다」
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10557,8 +11151,13 @@ ENDIF
 IF TFLAG:200 == 155
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「저녀석의 도움이 되기 위해서(때문에)도, 다른 놈은 어디가 약한 것인지 연구해 두지 않으면」
-		PRINTFORMW 「이것은 저녀석에게는 비밀이다」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「코린의 도움이 되기 위해서라도, 다른 놈이 어디가 약한 것인지 연구해 두지 않으면 안돼.」
+			PRINTFORMW 「이것은 코린에게는 비밀로 해야지.」
+		ELSE
+			PRINTFORMW 「저녀석의 도움이 되기 위해서(때문에)도, 다른 놈은 어디가 약한 것인지 연구해 두지 않으면」
+			PRINTFORMW 「이것은 저녀석에게는 비밀이다」
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10649,8 +11248,19 @@ ENDIF
 IF TFLAG:200 == 170
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「그런가! 할 수 있었는가!」
-		PRINTFORMW 「낳아도 좋아　안된다고 말해도 절대 낳기 때문!」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「봐! 코린. 나도 할 수 있다구! 코린의 아이를 가졌다구!」
+			PRINTFORMW 『으, 음, 경사로군.』 
+			PRINTFORMW 『(이거 일 났다! 내가 아무리 '환상향의 왕'이라는 최강자라도 스승의 자녀에게 이런 오점을!)』
+			PRINTFORMW 『(이거 사람으로서 정말 해서는 안 되는 짓을! 이거 어쩐다!?)』 
+			PRINTFORMW 「마리사, 근데 말이야. 우리, 이 아이를 기르는 건 무리가 아닐까 생각하는데?」
+			PRINTFORMW 「무슨 소리를 하는거야? 난 낳을거야. 꼭, 코린과의 핏줄을 기를거라구!」
+			PRINTFORMW 『아, 알았다.』
+			PRINTFORMW 『(이미 돌이킬 수는 없는건가!? 죄송합니다, 키리사메 씨...)』 
+		ELSE
+			PRINTFORMW 「그런가! 할 수 있었는가!」
+			PRINTFORMW 「낳아도 좋아　안된다고 말해도 절대 낳기 때문!」
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10666,9 +11276,15 @@ ENDIF
 IF TFLAG:200 == 400
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「응……주인님……」
-		PRINTFORMW 잔 채로의 마리사가 옷의 옷자락을 잡는다. 자신의 꿈에서도 보고 있는 것일까……
-		PRINTFORMW 살그머니 머리를 어루만져 주면, 마리사는 안심한 것처럼 소매치기 모여 왔다……
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「응……코린……」
+			PRINTFORMW 잠에 빠져든 채 마리사가 옷의 옷자락을 잡는다. 자신의 꿈에서도 보고 있는 것일까……
+			PRINTFORMW 살그머니 머리를 어루만져주자, 마리사는 안심한 얼굴로 %CALLNAME:MASTER%를 껴안았다.
+		ELSE
+			PRINTFORMW 「응……주인님……」
+			PRINTFORMW 잔 채로의 마리사가 옷의 옷자락을 잡는다. 자신의 꿈에서도 보고 있는 것일까……
+			PRINTFORMW 살그머니 머리를 어루만져 주면, 마리사는 안심한 것처럼 소매치기 모여 왔다……
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10693,12 +11309,22 @@ IF (TFLAG:200 == 401 && R == 1)
 	IF TALENT:150 == 1
 		;처녀
 		IF TALENT:0 == 1
-			PRINTFORMW 「우우……오늘도 처녀는 줄 수 없었는지」
-			PRINTFORMW 「무슨. 키리사메마리사씨는 체념이 나쁜 것이다. 또 다음번 챌린지다」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「우우……오늘도 코린에게 처녀를 줄 수가 없었다니..」
+				PRINTFORMW 「무슨. 이 마리사 씨는 근성 하나만큼은 좋다구! 또 다음번엔 실패하지 않는다제!」
+			ELSE
+				PRINTFORMW 「우우……오늘도 처녀는 줄 수 없었는지」
+				PRINTFORMW 「무슨. 키리사메마리사씨는 체념이 나쁜 것이다. 또 다음번 챌린지다」
+			ENDIF
 		;그 외의 경우
 		ELSE
-			PRINTFORMW 「, 너무 젖을 것이다 , 나」
-			PRINTFORMW 「아무튼, 그 만큼 진한 개를 좋아한다고 하는 것이지만」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「코린을 덮치는 데 실패했다제.」
+				PRINTFORMW 「하지만 다음번에는 어림없다제!」
+			ELSE
+				PRINTFORMW 「, 너무 젖을 것이다 , 나」
+				PRINTFORMW 「아무튼, 그 만큼 진한 개를 좋아한다고 하는 것이지만」
+			ENDIF
 		ENDIF
 		RETURN 0
 	;그 외의 경우
@@ -10713,8 +11339,13 @@ ENDIF
 IF (TFLAG:200 == 401 && R == 2)
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「안돼. 너를 갖고 싶고 갖고 싶어서 어쩔 수 없다」
-		PRINTFORMW 「지쳐 있다고(면) 개 미안하지만, 아직도 건강한 자지만 빌리군」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「안돼. 코린을 갖고 싶어서 어쩔 수가 없어.」
+			PRINTFORMW 「피곤한데 미안하지만 코린, 오늘밤은 날 만족시켜줘.」
+		ELSE
+			PRINTFORMW 「안돼. 너를 갖고 싶고 갖고 싶어서 어쩔 수 없다」
+			PRINTFORMW 「지쳐 있다고(면) 개 미안하지만, 아직도 건강한 자지만 빌리군」
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10728,8 +11359,13 @@ ENDIF
 IF (TFLAG:200 == 401 && R == 3)
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW (기분이야 유혹하는에 자고 있는……)
-		PRINTFORMW (내일도 여러가지 바쁘겠지. 쉬게 해 줄까……)
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW (기껏 유혹하려고 왔건만, 자고 있다니……)
+			PRINTFORMW (후우. 코린을 덮치고 싶은 마음은 굴뚝같지만, 이번만큼은 쉬게 해 줄까……)
+		ELSE
+			PRINTFORMW (기분이야 유혹하는에 자고 있는……)
+			PRINTFORMW (내일도 여러가지 바쁘겠지. 쉬게 해 줄까……)
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10742,7 +11378,11 @@ ENDIF
 IF (TFLAG:200 == 401 && R == 4)
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW (응……이렇게 하고 와 개의 것으로 켜고 있을 뿐에서도, 행복하구나……)
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW (응……이렇게 코린 곁에서 자위를 하는 것만으로도 난, 행복하다제……!)
+		ELSE
+			PRINTFORMW (응……이렇게 하고 와 개의 것으로 켜고 있을 뿐에서도, 행복하구나……)
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10755,8 +11395,13 @@ ENDIF
 IF TFLAG:200 == 402
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW (, 위-위-위―! )
-		PRINTFORMW (개, 이렇게 근처에서……! 그런데, 숨소리가 귀에……)
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW (, 쿠-쿠-쿠울―! )
+			PRINTFORMW 「(코린의 숨소리가, 이렇게 근처에서 들리고 있어...)」
+		ELSE
+			PRINTFORMW (, 위-위-위―! )
+			PRINTFORMW (개, 이렇게 근처에서……! 그런데, 숨소리가 귀에……)
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10784,8 +11429,13 @@ ENDIF
 IF TFLAG:200 == 404
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW ( 나, 너의, 신부……야 )
-		PRINTFORMW (이니까, 그, 오늘 밤도 부부로 하는 것, 해 주었으면 한다, 는……)
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「나, 코린의 신부니까..」
+			PRINTFORMW 「오늘밤도 부부로서 마음껏 사랑해주었으면 해♥」
+		ELSE
+			PRINTFORMW ( 나, 너의, 신부……야 )
+			PRINTFORMW (이니까, 그, 오늘 밤도 부부로 하는 것, 해 주었으면 한다, 는……)
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -10851,26 +11501,39 @@ ENDIF
 ;약혼 반지 사용	CFLAG:9198
 ;-------------------------------------------------
 IF TFLAG:200 == 200
-	PRINTFORMW 「반지? 무엇인가의 매직 아이템인가」
-	PRINTFORMW %CALLNAME:MASTER%로부터 감반지를 불가사의 그렇게 여러가지 각도로부터 보는 마리사에,
-	PRINTFORMW 그 반지의 의미를 전했다
-	PRINTFORMW 「――――, 감색」
-	PRINTFORMW 마리사는 머릿속에서 이해가 따라잡지 않는 것인지, 반지와%CALLNAME:MASTER%의 얼굴을 몇 번이나 교대로 응시한다
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 재차, 결혼해 주었으면 한다, 라고 마리사의 눈을 봐 전했다
-	PRINTFORMW 「……네, 래, 나는 노예로, 너는 주인님으로」
-	PRINTFORMW 「……좋은 것인지　나, 너의 신부가 되어, 좋은 것인지」
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 상냥하게 수긍하면, 마리사는 반지를 강하게 잡아 닫아 %CALLNAME:MASTER%의 가슴에 뛰어들어 왔다
-	PRINTFORMW 「이식하고 응……하고 싶었던……쭉 쭉, 결혼하고 싶었던……신부로 했으면 좋았어요 ……」
-	PRINTFORMW 마리사의 눈동자로부터는 보석과 같은 눈물이 너덜너덜넘쳐 흐름, %CALLNAME:MASTER%의 옷을 적셔 간다
-	PRINTFORMW 「그렇지만, 나, 노예니까……언젠가 팔리지 않은가는, 쭉, 무섭고, 불안해, 안타까워서」
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 마리사의 등에 양손을 돌려 꼭 껴안으면, 마리사도%조사처리(CALLNAME:MASTER,"를")% 강하게 꼭 껴안았다
-	PRINTFORMW 「나, 이제 떼어 놓지 않기 때문에……! 나는, 사랑의 마법사이니까, 이 마법, 절대로 절대로, 풀지 않기 때문에」
-	PRINTFORMW 당분간 2명은 그렇게 해서 얼싸안은 채로--10분이나 지나, 간신히 마리사는 침착한 모습을 보였다
-	PRINTFORMW 아직 %CALLNAME:MASTER%의 눈앞에서, 조금 전의 일을 생각해 내 울거나 웃거나 바쁜 마리사에 키스를 하면,
-	PRINTFORMW 마리사는 간신히 침착성을 되찾았다
-	PRINTFORMW 「그러면 아, 주인님……아니, %CALLNAME:MASTER%……」
-	PRINTFORMW 마리사는 진심으로의 웃는 얼굴을 띄워 그 반지를 사랑 아까운 듯이  바라보았다
-	PRINTFORMW 「――――지금부터, 오래도록 아무쪼록 부탁하군」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「반지? 무엇인가의 매직 아이템이야?」
+		PRINTFORMW 『아니야, 마리사. 이것은 결혼반지라는 물건이다.』
+		PRINTFORMW 「결혼!? 그렇다면 코린, 지금 너는 나에게 결혼하자고 말하는 거야?」
+		PRINTFORMW 『그렇다고 할 수가 있지. 혹시... 싫어?』
+		PRINTFORMW 「싫을..리가... 없..잖아.. 이 벽창호!」
+		PRINTFORMW 『그런가. 그렇다면 다행이다.』
+		PRINTFORMW 「정말! 늦다구 이 바보! 그렇게나 사랑을 나눴으면, 우린 이미 부부라구!」
+		PRINTFORMW 「근데, 왜 이렇게 늦은거야? 벌써 지금쯤이면 반지를 끼고 있어야 정상이었다고!」
+		PRINTFORMW 『지금이라도 늦지 않았어. 부디, 나를 남편으로 받아주었으면 한다, 마리사.』
+		PRINTFORMW 「응, 기뻐. 행복해 죽을 것 같아, 코린!」
+	ELSE
+		PRINTFORMW 「반지? 무엇인가의 매직 아이템인가」
+		PRINTFORMW %CALLNAME:MASTER%로부터 감반지를 불가사의 그렇게 여러가지 각도로부터 보는 마리사에,
+		PRINTFORMW 그 반지의 의미를 전했다
+		PRINTFORMW 「――――, 감색」
+		PRINTFORMW 마리사는 머릿속에서 이해가 따라잡지 않는 것인지, 반지와%CALLNAME:MASTER%의 얼굴을 몇 번이나 교대로 응시한다
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 재차, 결혼해 주었으면 한다, 라고 마리사의 눈을 봐 전했다
+		PRINTFORMW 「……네, 래, 나는 노예로, 너는 주인님으로」
+		PRINTFORMW 「……좋은 것인지　나, 너의 신부가 되어, 좋은 것인지」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 상냥하게 수긍하면, 마리사는 반지를 강하게 잡아 닫아 %CALLNAME:MASTER%의 가슴에 뛰어들어 왔다
+		PRINTFORMW 「이식하고 응……하고 싶었던……쭉 쭉, 결혼하고 싶었던……신부로 했으면 좋았어요 ……」
+		PRINTFORMW 마리사의 눈동자로부터는 보석과 같은 눈물이 너덜너덜넘쳐 흐름, %CALLNAME:MASTER%의 옷을 적셔 간다
+		PRINTFORMW 「그렇지만, 나, 노예니까……언젠가 팔리지 않은가는, 쭉, 무섭고, 불안해, 안타까워서」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 마리사의 등에 양손을 돌려 꼭 껴안으면, 마리사도%조사처리(CALLNAME:MASTER,"를")% 강하게 꼭 껴안았다
+		PRINTFORMW 「나, 이제 떼어 놓지 않기 때문에……! 나는, 사랑의 마법사이니까, 이 마법, 절대로 절대로, 풀지 않기 때문에」
+		PRINTFORMW 당분간 2명은 그렇게 해서 얼싸안은 채로--10분이나 지나, 간신히 마리사는 침착한 모습을 보였다
+		PRINTFORMW 아직 %CALLNAME:MASTER%의 눈앞에서, 조금 전의 일을 생각해 내 울거나 웃거나 바쁜 마리사에 키스를 하면,
+		PRINTFORMW 마리사는 간신히 침착성을 되찾았다
+		PRINTFORMW 「그러면 아, 주인님……아니, %CALLNAME:MASTER%……」
+		PRINTFORMW 마리사는 진심으로의 웃는 얼굴을 띄워 그 반지를 사랑 아까운 듯이  바라보았다
+		PRINTFORMW 「――――지금부터, 오래도록 아무쪼록 부탁하군」
+	ENDIF
 ENDIF
 ;-------------------------------------------------
 ;붉은 목걸이 사용	CFLAG:9199

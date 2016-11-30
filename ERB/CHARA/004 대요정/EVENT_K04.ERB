@@ -62,15 +62,48 @@ ENDIF
 ;初調教時 CFLAG201
 ;-------------------------------------------------
 IF CFLAG:5201 == 0
-	DRAWLINE
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 대요정은 방구석에 웅크려 앉아 있었다.
-	PRINTFORMW 「……훌쩍, 히끅……」
-	PRINTFORMW 「모두가 있는 곳으로…… 돌려보내, 주세…… 흐흑」
-	PRINTFORMW 대요정은 그렇게 울면서 애원하지만, %조사처리(CALLNAME:MASTER,"는")% 이를 무시하고 대요정을 공주님 안기로 들어올리더니, 난폭하게 침대 위에다 내려놓았다.
-	PRINTFORMW 「싫어……. 싫어어!」
-	PRINTFORMW 대요정은 저항하려고 했지만, %조사처리(CALLNAME:MASTER,"는")% 억지로 옷을 벗겨내고는 조교를 개시했다.
-	CFLAG:5201 = 1
-	RETURN 1
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		CSTR:80 = %CALLNAME:MASTER% 씨
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 대요정은 방구석에 웅크려 앉아 있었다.
+		PRINTFORMW 「……훌쩍, 히끅……」
+		PRINTFORMW 「모두가 있는 곳으로…… 돌려보내, 주세…… 흐흑」
+		PRINTFORMW 『걱정하지마, 대요정. 나야 나, %CALLNAME:MASTER%라고.』
+		PRINTFORMW 「호, 혹시 %CSTR:80%?」
+		PRINTFORMW 『그래, 네가 보고싶어서 이렇게 데려올 수밖에 없었어.』
+		PRINTFORMW 「%CSTR:80%, 어째서 제가 여기에 오게 된 건가요? 대체 여기가 어딘가요? ……훌쩍!」
+		PRINTFORMW 『여긴 다름아닌 향림당이야. 예전 그대로의 모습은 아니지만.』
+		PRINTFORMW 「예?! 설마 여기가?」
+		PRINTFORMW 『그러니까 걱정말고 울음을 그치도록 해.』
+		PRINTFORMW 「……근데 %CSTR:80%, 아까 하신 말씀은 무슨 뜻인가요!?」
+		PRINTFORMW 『응? 네가 보고싶어서 데려왔다고..』
+		PRINTFORMW 「……보, 보고싶... 아와와와! %CSTR:80%! 대체 무슨 말씀을!」
+		PRINTL
+		PRINTFORMW 대요정은 얼굴을 붉히고 고개를 이리저리 흔들며 어쩔 줄 몰라했다.
+		PRINTL
+		PRINTFORMW 「……그, 그럼.. 자, 잘 부탁드려요!!」
+		PRINTFORMW 『응, 그래...』
+		PRINTL
+		PRINTFORMW 대요정은 뭔가 준비되었다는 듯 각오를 굳혔다.
+		;린노스케 EXTRA 보정, 호감도1000 순종3으로 스타트!
+		CFLAG:2 = 1000
+		TALENT:150 = 1
+		ABL:10 = 3
+		CFLAG:5201 = 1
+		RETURN 1
+	ELSE
+		DRAWLINE
+		CSTR:80 = 주인님
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 대요정은 방구석에 웅크려 앉아 있었다.
+		PRINTFORMW 「……훌쩍, 히끅……」
+		PRINTFORMW 「모두가 있는 곳으로…… 돌려보내, 주세…… 흐흑」
+		PRINTFORMW 대요정은 그렇게 울면서 애원하지만, %조사처리(CALLNAME:MASTER,"는")% 이를 무시하고 대요정을 공주님 안기로 들어올리더니, 난폭하게 침대 위에다 내려놓았다.
+		PRINTFORMW 「싫어……. 싫어어!」
+		PRINTFORMW 대요정은 저항하려고 했지만, %조사처리(CALLNAME:MASTER,"는")% 억지로 옷을 벗겨내고는 조교를 개시했다.
+		CFLAG:5201 = 1
+		RETURN 1
+	ENDIF
+	
 
 ;-------------------------------------------------
 ;調教開始時(一回のみ) CFLAG201
@@ -78,112 +111,165 @@ IF CFLAG:5201 == 0
 
 ;굴복각인Lv1
 ELSEIF CFLAG:5201 < 2 && MARK:2 == 1
-	DRAWLINE
-	PRINTFORMW 「아……」
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 대요정은 붉게 충혈된 눈으로 이쪽을 보았다
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「아…… %CSTR:80%」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 대요정은 붉게 물든 얼굴로 이쪽을 보았다.
+		PRINTFORMW 「오늘도 자,자,잘 부탁드려요!」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「아……」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 대요정은 붉게 충혈된 눈으로 이쪽을 보았다
+	ENDIF
 	CFLAG:5201 = 2
 	RETURN 1
-
+	
 ;굴복각인Lv2
 ELSEIF CFLAG:5201 < 3 && MARK:2 == 2
-	DRAWLINE
-	PRINTFORMW 「…………」
-	PRINTFORMW 대요정은 벌써 우는 일에도 지쳤는지, 방의 구석에서 웅크리고 있었다
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어오면 멍한 모습으로 이쪽에 관심을 가졌다
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「아…… %CSTR:80%」
+		PRINTFORMW 「오늘도 잘 부탁드려요. 얼른 시, 시작하자고요.」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「…………」
+		PRINTFORMW 대요정은 벌써 우는 일에도 지쳤는지, 방의 구석에서 웅크리고 있었다
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어오면 멍한 모습으로 이쪽에 관심을 가졌다
+	ENDIF
 	CFLAG:5201 = 3
 	RETURN 1
 
 ;굴복각인Lv3
 ELSEIF CFLAG:5201 < 4 && MARK:2 == 3 && TALENT:150 == 0
-	DRAWLINE
-	PRINTFORMW 대요정은 %조사처리(CALLNAME:MASTER,"가")% 방에 들어온걸 깨달으면
-	PRINTFORMW 「……오늘도 잘 부탁드립니다」
-	PRINTFORMW 그렇게 말하고 옷을 벗기 시작한 대요정의 눈으로부터 눈물이 떨어졌다
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 대요정은 %조사처리(CALLNAME:MASTER,"가")% 방에 들어온걸 깨닫자
+		PRINTFORMW 「……오늘은 어떻게 봉사해 드릴까요? 헤헤...」
+		PRINTFORMW 그렇게 말하고 옷을 벗기 시작한 대요정의 얼굴은 기쁨과 애욕으로 물들어 있었다.
+	ELSE
+		DRAWLINE
+		PRINTFORMW 대요정은 %조사처리(CALLNAME:MASTER,"가")% 방에 들어온걸 깨달으면
+		PRINTFORMW 「……오늘도 잘 부탁드립니다」
+		PRINTFORMW 그렇게 말하고 옷을 벗기 시작한 대요정의 눈으로부터 눈물이 떨어졌다
+	ENDIF
 	CFLAG:5201 = 4
 	RETURN 1
 
 ;굴복각인Lv3+연모
 ELSEIF CFLAG:5201 < 5 && MARK:2 == 3 && TALENT:150 == 1
-	DRAWLINE
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가도 대요정은 침대에 앉은 채로 움직이려고 하지 않는다.
-	PRINTFORMW 아무리 말을 건네도 반응이 없었기 때문에 할 수 없이 %CALLNAME:MASTER%도 대요정 근처에 앉았다.
-	PRINTFORMW 어느정도 시간이 지나자 대요정이 중얼거리듯이 말하기 시작했다.
-	PRINTFORMW 「……나 어떻게 된건지 모르겠어요」
-	PRINTFORMW 「분명 싫어했는데, 당신 같은 건 싫어했는데도」
-	PRINTFORMW 「어느 순간부터 생각하고 있는 건 언제나 당신뿐……」
-	PRINTFORMW 그리고 심호흡을 한 뒤에,
-	PRINTFORMW 「……좋아, 해요」
-	PRINTFORMW 그렇게 말한 순간 그녀의 눈에서 눈물이 흘러넘쳤다.
-	PRINTFORMW 「좋아, 좋아해요. 좋아합니다!」
-	PRINTFORMW 「이런…… 이런 이상한 관계인데도!」
-	PRINTFORMW 「……좋아하게, 되버렸어요……」
-	PRINTFORMW 대요정은 넘어지듯이 %CALLNAME:MASTER%에게 달라붙고는 소리 높여 울기 시작했다.
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그녀가 안정될 때까지 등을 쓰다듬어 주었다…….
-	DRAWLINE
-	PRINTFORMW 「……울어서 미안해요……. 이제 괜찮아요」
-	PRINTFORMW 이윽고 울음을 그친 대요정은 %CALLNAME:MASTER%의 눈을 보면서 말했다.
-	PRINTFORMW 「저, 당신에게…… 그, 고백한 겁니다만……」
-	PRINTFORMW 「대답은…… 하지 말아주세요」
-	PRINTFORMW 「만약, 차이거나 하면…… 그 때는 참을 수 있는 자신이 없기 때문에」
-	PRINTFORMW 「……그리고 언제 제가 어딘가에 팔려가버릴지도 모르는 일이기 때문에……」
-	PRINTFORMW 「적어도 그때까지는…… 당신 곁에 있게 해주세요. 주인님……」
-	PRINTFORMW 그렇게 말하고 대요정은 %CALLNAME:MASTER%에게 키스를 했다….
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 대요정은 침대에 앉은 채로 움직이려고 하지 않는다.
+		PRINTFORMW 아무리 말을 건네도 반응이 없었기 때문에 할 수 없이 %CALLNAME:MASTER%도 대요정 근처에 앉았다.
+		PRINTFORMW 어느정도 시간이 지나자 대요정이 중얼거리듯이 말하기 시작했다.
+		PRINTFORMW 「……저, 예전부터 %CSTR:80%를 좋아했어요.」
+		PRINTFORMW 「그런데 이렇게 되고나서부터는 더욱 더 좋아져 버렸어요.」
+		PRINTFORMW 「이건 분명, 신께서 저에게 주신 최대의 행복이에요.」
+		PRINTFORMW 「이것은 분명 '운명'이에요.」
+		PRINTFORMW 「그렇기에 저는 운명에 따라, %CSTR:80% 곁에 있겠어요.」
+		PRINTFORMW 「제발.. 곁에 있게 해주세요, %CSTR:80%..」
+		PRINTFORMW 그렇게 말하고 대요정은 %CALLNAME:MASTER%에게 키스를 했다….
+	ELSE
+		DRAWLINE
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가도 대요정은 침대에 앉은 채로 움직이려고 하지 않는다.
+		PRINTFORMW 아무리 말을 건네도 반응이 없었기 때문에 할 수 없이 %CALLNAME:MASTER%도 대요정 근처에 앉았다.
+		PRINTFORMW 어느정도 시간이 지나자 대요정이 중얼거리듯이 말하기 시작했다.
+		PRINTFORMW 「……나 어떻게 된건지 모르겠어요」
+		PRINTFORMW 「분명 싫어했는데, 당신 같은 건 싫어했는데도」
+		PRINTFORMW 「어느 순간부터 생각하고 있는 건 언제나 당신뿐……」
+		PRINTFORMW 그리고 심호흡을 한 뒤에,
+		PRINTFORMW 「……좋아, 해요」
+		PRINTFORMW 그렇게 말한 순간 그녀의 눈에서 눈물이 흘러넘쳤다.
+		PRINTFORMW 「좋아, 좋아해요. 좋아합니다!」
+		PRINTFORMW 「이런…… 이런 이상한 관계인데도!」
+		PRINTFORMW 「……좋아하게, 되버렸어요……」
+		PRINTFORMW 대요정은 넘어지듯이 %CALLNAME:MASTER%에게 달라붙고는 소리 높여 울기 시작했다.
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그녀가 안정될 때까지 등을 쓰다듬어 주었다…….
+		DRAWLINE
+		PRINTFORMW 「……울어서 미안해요……. 이제 괜찮아요」
+		PRINTFORMW 이윽고 울음을 그친 대요정은 %CALLNAME:MASTER%의 눈을 보면서 말했다.
+		PRINTFORMW 「저, 당신에게…… 그, 고백한 겁니다만……」
+		PRINTFORMW 「대답은…… 하지 말아주세요」
+		PRINTFORMW 「만약, 차이거나 하면…… 그 때는 참을 수 있는 자신이 없기 때문에」
+		PRINTFORMW 「……그리고 언제 제가 어딘가에 팔려가버릴지도 모르는 일이기 때문에……」
+		PRINTFORMW 「적어도 그때까지는…… 당신 곁에 있게 해주세요. %CSTR:80%……」
+		PRINTFORMW 그렇게 말하고 대요정은 %CALLNAME:MASTER%에게 키스를 했다….
+	ENDIF
 	CFLAG:5201 = 5
 	RETURN 1
 
 ;연모+호감도3000以上+(굴복각인Lv3+연모)口上が発生済み
 ELSEIF CFLAG:5201 == 5 && CFLAG:2 >= 3000 && TALENT:150 == 1
-	DRAWLINE
-	PRINTFORMW 「주인님…… 조금, 시간 있나요?」
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 대요정의 방에 가려고 했을 때, 갑자기 그녀가 방에 찾아왔다.
-	PRINTFORMW 조금 당황했지만 우선 자신의 침대에 앉게 한 뒤에 %CALLNAME:MASTER%도 그 옆에 앉았다.
-	PRINTFORMW 왜인지 물어봐도 좀처럼 입을 열려고 하지 않는 대요정이었지만 이윽고 결심한 듯이 말을 하기 시작했다.
-	PRINTFORMW 「주인님…… 전에 그, 저는 당신을…… 좋아한다고 말했었죠」
-	PRINTFORMW 「그리고…… 차이는 것이 무섭기 때문에 대답은 묻지 않았었죠」
-	PRINTFORMW 「……하지만」
-	PRINTFORMW 대요정은 가만히 %CALLNAME:MASTER%의 눈을 보고 말했다
-	PRINTFORMW 「저는, 제가 스스로 생각했던 것보다 훨씬 제멋대로인거 같아서……」
-	PRINTFORMW 「더 이상 참을 수 없게 되었어요」
-	PRINTFORMW 「그러니…… 가르쳐 주세요. 당신은…… 저를, 어떻게 생각하나요?」
-	DRAWLINE
-	PRINTL [0] 「……좋아해」
-	PRINTL [1] 「……미안」
-	$INPUT_LOOP2
-	INPUT
-	SIF RESULT != 0 && RESULT != 1
-		GOTO INPUT_LOOP2
-	DRAWLINE
-	SIF RESULT == 0
-		GOTO BECOME_LOVER
-	PRINTFORMW 「…………」
-	PRINTFORMW 대요정은 아무것도 말하지 않고 얼굴을 숙이고 있다가 시간이 지나자 중얼거렸다.
-	PRINTFORMW 「……그래, 그렇네요……」
-	PRINTFORMW 「생각해 보면 당연한 일인데…… 주인님과 노예 관계니까……」
-	PRINTFORMW 「그래도 혹시……라고 생각했었는데, 저」
-	PRINTFORMW 대요정은 얼굴을 들었다. 그 눈에 눈물은 없었다.
-	PRINTFORMW 「그럼…… 빨리 야한 일 해요!」
-	PRINTFORMW 「기분 좋아지면…… 분명히 이런 기분도 잊을 수 있을테니까,, 그러니까」
-	PRINTFORMW 「잊을 수 있도록 망가져버릴 정도로 기분 좋은 일…… 해주세요……」
-	PRINTFORMW 그렇게 말하고 대요정은 %조사처리(CALLNAME:MASTER,"를")% 침대에 밀어 넘어뜨렸다…….
-	CFLAG:5201 = 6
-	RETURN 1
-	$BECOME_LOVER
-	PRINTFORMW 「……에?」
-	PRINTFORMW 「정말……이요?」
-	PRINTFORMW 믿을 수 없다는 표정의 대요정의 눈에서 굵은 눈물이 방울방울 흘러넘쳐 떨어지기 시작했다.
-	PRINTFORMW 「아…… 미안해요. 저…… 또 울어버렸네요……」
-	PRINTFORMW 「매우…… 매우 행복해서……」
-	PRINTFORMW 「아……」
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 대요정의 머리를 자신의 가슴팍에 껴안자 그녀는 작게 놀라는 소리를 낸 뒤
-	PRINTFORMW 「우으…… 우아아아아아아앙!!! 주인님, 주인님!!!」
-	PRINTFORMW %CALLNAME:MASTER%의 가슴에서 큰 소리로 울기 시작했다. 그런 그녀의 머리를 %조사처리(CALLNAME:MASTER,"는")% 계속 어루만지고 있었다…….
-	DRAWLINE
-	PRINTFORMW 「……주인님에게는 나의 부끄러운 것을 보여줄 수 있어요……」
-	PRINTFORMW 간신히 안정된 것 같은 대요정은 붉어진 얼굴을 부끄러운 듯이 가리고 있었다.
-	PRINTFORMW 행복한 표정을 띄우면서도 무엇인가를 생각하고 있던 그녀는 이윽고 얼굴을 들면서
-	PRINTFORMW 「아……저기!」
-	PRINTFORMW 「마, 많이 부족합니다만 앞으로도 잘 부탁드립니다! ……주인님」
-	PRINTFORMW 그렇게 말하고 더욱 더 얼굴을 새빨갛게 물들이는 그녀를 %조사처리(CALLNAME:MASTER,"는")% 한 번 더 강하게 꼭 껴안았다.
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「%CSTR:80%…… 조금, 시간 있나요?」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 대요정의 방에 가려고 했을 때, 갑자기 그녀가 방에 찾아왔다.
+		PRINTFORMW 조금 당황했지만 우선 자신의 침대에 앉게 한 뒤에 %CALLNAME:MASTER%도 그 옆에 앉았다.
+		PRINTFORMW 왜인지 물어봐도 좀처럼 입을 열려고 하지 않는 대요정이었지만 이윽고 결심한 듯이 말을 하기 시작했다.
+		PRINTFORMW 「%CSTR:80%…… 전에 그, 저는 당신을…… 좋아한다고 말했었죠」
+		PRINTFORMW 『응, 그랬었지.』
+		PRINTFORMW 「그리고…… 차이는 것이 무섭기 때문에 대답은 묻지 않았었죠」
+		PRINTFORMW 「……하지만」
+		PRINTFORMW 대요정은 가만히 %CALLNAME:MASTER%의 눈을 보고 말했다
+		PRINTFORMW 「저는, 제가 스스로 생각했던 것보다 훨씬 제멋대로인거 같아서……」
+		PRINTFORMW 「더 이상 참을 수 없게 되었어요」
+		PRINTFORMW 「그러니…… 가르쳐 주세요. 당신은…… 저를, 어떻게 생각하나요?」
+		PRINTFORMW 『너무 좋아, 그리고 너무 귀여워서, 가지고 싶을 정도야.』
+		PRINTFORMW 「……(쪽♥) 감사해요... 그렇게 말씀해주셔서 고마워요. 그리고 정말로 좋아해요, %CSTR:80%.」
+		PRINTFORMW 『나를 좋아해줘서 정말 고마워.』
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「%CSTR:80%…… 조금, 시간 있나요?」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 대요정의 방에 가려고 했을 때, 갑자기 그녀가 방에 찾아왔다.
+		PRINTFORMW 조금 당황했지만 우선 자신의 침대에 앉게 한 뒤에 %CALLNAME:MASTER%도 그 옆에 앉았다.
+		PRINTFORMW 왜인지 물어봐도 좀처럼 입을 열려고 하지 않는 대요정이었지만 이윽고 결심한 듯이 말을 하기 시작했다.
+		PRINTFORMW 「%CSTR:80%…… 전에 그, 저는 당신을…… 좋아한다고 말했었죠」
+		PRINTFORMW 「그리고…… 차이는 것이 무섭기 때문에 대답은 묻지 않았었죠」
+		PRINTFORMW 「……하지만」
+		PRINTFORMW 대요정은 가만히 %CALLNAME:MASTER%의 눈을 보고 말했다
+		PRINTFORMW 「저는, 제가 스스로 생각했던 것보다 훨씬 제멋대로인거 같아서……」
+		PRINTFORMW 「더 이상 참을 수 없게 되었어요」
+		PRINTFORMW 「그러니…… 가르쳐 주세요. 당신은…… 저를, 어떻게 생각하나요?」
+		DRAWLINE
+		PRINTL [0] 「……좋아해」
+		PRINTL [1] 「……미안」
+		$INPUT_LOOP2
+		INPUT
+		SIF RESULT != 0 && RESULT != 1
+			GOTO INPUT_LOOP2
+		DRAWLINE
+		SIF RESULT == 0
+			GOTO BECOME_LOVER
+		PRINTFORMW 「…………」
+		PRINTFORMW 대요정은 아무것도 말하지 않고 얼굴을 숙이고 있다가 시간이 지나자 중얼거렸다.
+		PRINTFORMW 「……그래, 그렇네요……」
+		PRINTFORMW 「생각해 보면 당연한 일인데…… %CSTR:80%과 노예 관계니까……」
+		PRINTFORMW 「그래도 혹시……라고 생각했었는데, 저」
+		PRINTFORMW 대요정은 얼굴을 들었다. 그 눈에 눈물은 없었다.
+		PRINTFORMW 「그럼…… 빨리 야한 일 해요!」
+		PRINTFORMW 「기분 좋아지면…… 분명히 이런 기분도 잊을 수 있을테니까,, 그러니까」
+		PRINTFORMW 「잊을 수 있도록 망가져버릴 정도로 기분 좋은 일…… 해주세요……」
+		PRINTFORMW 그렇게 말하고 대요정은 %조사처리(CALLNAME:MASTER,"를")% 침대에 밀어 넘어뜨렸다…….
+		CFLAG:5201 = 6
+		RETURN 1
+		$BECOME_LOVER
+		PRINTFORMW 「……에?」
+		PRINTFORMW 「정말……이요?」
+		PRINTFORMW 믿을 수 없다는 표정의 대요정의 눈에서 굵은 눈물이 방울방울 흘러넘쳐 떨어지기 시작했다.
+		PRINTFORMW 「아…… 미안해요. 저…… 또 울어버렸네요……」
+		PRINTFORMW 「매우…… 매우 행복해서……」
+		PRINTFORMW 「아……」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 대요정의 머리를 자신의 가슴팍에 껴안자 그녀는 작게 놀라는 소리를 낸 뒤
+		PRINTFORMW 「우으…… 우아아아아아아앙!!! %CSTR:80%, %CSTR:80%!!!」
+		PRINTFORMW %CALLNAME:MASTER%의 가슴에서 큰 소리로 울기 시작했다. 그런 그녀의 머리를 %조사처리(CALLNAME:MASTER,"는")% 계속 어루만지고 있었다…….
+		DRAWLINE
+		PRINTFORMW 「……%CSTR:80%에게는 나의 부끄러운 것을 보여줄 수 있어요……」
+		PRINTFORMW 간신히 안정된 것 같은 대요정은 붉어진 얼굴을 부끄러운 듯이 가리고 있었다.
+		PRINTFORMW 행복한 표정을 띄우면서도 무엇인가를 생각하고 있던 그녀는 이윽고 얼굴을 들면서
+		PRINTFORMW 「아……저기!」
+		PRINTFORMW 「마, 많이 부족합니다만 앞으로도 잘 부탁드립니다! ……%CSTR:80%」
+		PRINTFORMW 그렇게 말하고 더욱 더 얼굴을 새빨갛게 물들이는 그녀를 %조사처리(CALLNAME:MASTER,"는")% 한 번 더 강하게 꼭 껴안았다.
+	ENDIF
 	CFLAG:5201 = 7
 	RETURN 1
 
@@ -205,12 +291,12 @@ ELSEIF ASSINO() == 5
 			PRINTFORMW 『다이쨩―!』
 			PRINTFORMW 「아……치르노쨩! 치르노쨩도 여기에……?」
 			PRINTFORMW 『그래! 오늘은 이몸이 다이쨩을 기분 좋게 해줄게!』
-			PRINTFORMW 「후훗……. 그렇구나. 잘 부탁해, 치르노쨩. 그리고 %K04CN()%도」
+			PRINTFORMW 「후훗……. 그렇구나. 잘 부탁해, 치르노쨩. 그리고 %CSTR:80%도」
 		;それ以外
 		ELSE
 			PRINTFORMW 『다이쨩, 건강해?』
 			PRINTFORMW 「에……! 치, 치르노쨩!? 어째서!?」
-			PRINTFORMW 『다이쨩이 있다고 들었기 때문에 주인님에게 부탁해서 왔어』
+			PRINTFORMW 『다이쨩이 있다고 들었기 때문에 %CSTR:80%에게 부탁해서 왔어』
 			PRINTFORMW 『다시 일어난 내가 반드시 기분 좋게 해줄테니까, 각오해!』
 			PRINTFORMW 「치르노쨩…… 그럴 수가, 어째서……」
 		ENDIF
@@ -222,7 +308,7 @@ ELSEIF ASSINO() == 5
 		IF TALENT:150 == 1
 			PRINTFORMW 『오늘도 이몸이 마음껏 기분 좋게 해줄게!』
 			PRINTFORML 「후훗…… 잘 부탁해, 치르노쨩」
-			PRINTFORMW 「%K04CN()%도, 오늘도 잘 부탁드립니다」
+			PRINTFORMW 「%CSTR:80%도, 오늘도 잘 부탁드립니다」
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3
 			PRINTFORMW 『오늘도 이몸이 마음껏 기분 좋게 해줄게, 다이쨩!』
@@ -242,7 +328,7 @@ ELSEIF ASSINO() == 12
 		;연모＋연모時初口上(陥落イベント)が発生済み
 		IF TALENT:150 == 1 && CFLAG:5201 >= 5
 			PRINTFORMW 『오래간만이네. 건강해?』
-			PRINTFORMW 「에……아, 레티 씨!? 레티 씨도 %K04CN()%께……?」
+			PRINTFORMW 「에……아, 레티 씨!? 레티 씨도 %CSTR:80%께……?」
 			PRINTFORMW 『응. 언제나 부드럽게 해주고 있어』
 			PRINTFORMW 『자, 함께 즐겨볼까……?』
 		;それ以外
@@ -262,7 +348,7 @@ ELSEIF ASSINO() == 12
 		;연모+チルノと対面済み
 		IF TALENT:150 == 1 && CFLAG:5202 == 1
 			PRINTFORMW 『이번에는 치르노도 함께 네 명이서 해보고 싶어』
-			PRINTFORMW 「그러게요. ……어떠세요? %K04CN()%」
+			PRINTFORMW 「그러게요. ……어떠세요? %CSTR:80%」
 		;연모
 		ELSEIF TALENT:150 == 1
 			PRINTFORMW 「치르노쨩 건강하려나……」
@@ -349,10 +435,10 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 1 && FLAG:11 == 2
 		ELSEIF CFLAG:5201 == 6
 			PRINTFORMW 대요정은 침대 위에 멍하니 앉아있었다
 			PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어온지도 깨닫지 못한 그녀에게 말을 건다
-			PRINTFORMW 「에……앗! 죄, 죄송해요. 주인님! 잠깐 멍하게 있어서……」
+			PRINTFORMW 「에……앗! 죄, 죄송해요. %CSTR:80%! 잠깐 멍하게 있어서……」
 			PRINTFORMW 「그럼, 시작할까요?」
 		ELSEIF CFLAG:5201 == 5
-			PRINTFORM 「주, 주인님……그, 
+			PRINTFORM 「%CSTR:80%……그, 
 				IF TIME == 0
 					PRINTFORM 점심밥
 				ELSE
@@ -384,7 +470,7 @@ SIF NO:TARGET != 4
 IF CFLAG:5201 >= 6 && CFLAG:5211 == 0
 	DRAWLINE
 	IF CFLAG:5201 == 6
-		PRINTFORMW 「……주인니임, 아직…… 아직 부족해요……」
+		PRINTFORMW 「……%CSTR:80%, 아직…… 아직 부족해요……」
 		PRINTFORMW 「부탁합니다……. 좀 더 기분 좋은걸 해주세요……」
 		PRINTFORMW 대요정은 침대에서 일어나려고 하는 %조사처리(CALLNAME:MASTER,"를")% 당겨서 넘어뜨리고 억지로 입술을 맞추었다. 
 		PRINTFORMW 아무래도 %CALLNAME:MASTER%에게라면 망가져 버려도 상관없다고 생각하고 있는거 같다….
@@ -409,13 +495,13 @@ ELSEIF ASSI > 0
 			DRAWLINE
 			PRINTFORMW 『쿨…… 새액……』
 			PRINTFORMW 「후훗 치르노쨩도 참……. 지친 걸까요?」
-			PRINTFORMW 「……저, %K04CN()%……? 저는, 그…… 아직……」
+			PRINTFORMW 「……저, %CSTR:80%……? 저는, 그…… 아직……」
 			RETURN 1
 		;연모＋体力500未満
 		ELSEIF TALENT:150 == 1 && BASE:0 < 500
 			DRAWLINE
 			PRINTFORMW 『쿨…… 새액……』
-			PRINTFORMW 「……응…… %K04CL()%…… 새근……」
+			PRINTFORMW 「……응…… %CSTR:80%…… 새근……」
 			PRINTFORMW 일을 끝낸 후, 대요정과 치르노는 %조사처리(CALLNAME:MASTER,"를")% 사이에 두고 잠이 들었다
 			RETURN 1
 		;굴복각인Lv3
@@ -443,8 +529,8 @@ ELSEIF ASSI > 0
 		;굴복각인Lv3＋연모＋体力500未満(この条件を消すには、ELSEIFから四行に;をつけて、上の&& BASE:0 >= 500 を削除)
 		ELSEIF MARK:2 == 3 && BASE:0 < 500 && TALENT:150 == 1
 			DRAWLINE
-			PRINTFORMW 「아, 아아… %K04CN()%…… 몹시, 기분이 좋아……요……」
-			PRINTFORML 「%K04CN()%… %K04CL()%……」
+			PRINTFORMW 「아, 아아… %CSTR:80%…… 몹시, 기분이 좋아……요……」
+			PRINTFORML 「%CSTR:80%… %CSTR:80%……」
 			PRINTFORMW 대요정은 %CALLNAME:MASTER%의 가슴팍에서 행복하게 미소짓고 있다
 			RETURN 1
 		;굴복각인Lv3
@@ -482,8 +568,8 @@ ELSEIF MARK:2 == 3 && BASE:0 >= 500 && TALENT:150 == 1
 ;굴복각인Lv3＋연모＋体力500未満(この条件を消すには、ELSEIFから四行に;をつけて、上の&& BASE:0 >= 500 を削除)
 ELSEIF MARK:2 == 3 && BASE:0 < 500 && TALENT:150 == 1
 	DRAWLINE
-	PRINTFORMW 「아, 아아… %K04CN()%…… 매우 기분이 좋아……요……」
-	PRINTFORML 「%K04CN()%… %K04CL()%……」
+	PRINTFORMW 「아, 아아… %CSTR:80%…… 매우 기분이 좋아……요……」
+	PRINTFORML 「%CSTR:80%… %CSTR:80%……」
 	PRINTFORMW 대요정은 %CALLNAME:MASTER%의 가슴팍에서 행복하게 미소짓고 있다
 	RETURN 1
 ;굴복각인Lv3
@@ -580,7 +666,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 	IF CFLAG:5222 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「에……앗! %K04CN()%, 안 돼요! 거기는 더러운…… 하응」
+			PRINTFORMW 「에……앗! %CSTR:80%, 안 돼요! 거기는 더러운…… 하응」
 		;それ以外
 		ELSE
 			PRINTFORMW 「시, 싫어! 그런 곳 핥지 말아주세요」
@@ -591,7 +677,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5222 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「흐아…… %K04CL()%, 기분 좋아……하아」
+			PRINTFORMW 「흐아…… %CSTR:80%, 기분 좋아……하아」
 			CFLAG:5222 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:5222 <= 2 || FLAG:11 == 2)
@@ -610,13 +696,13 @@ ENDIF
 IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	;연모+露出癖Lv3以上+C感覚Lv3以上
 	IF TALENT:150 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:5328 <= 4 || FLAG:11 == 2)
-		PRINTFORMW 「아, 아앗! %K04CN()%의 혀, 대단……하앙」
+		PRINTFORMW 「아, 아앗! %CSTR:80%의 혀, 대단……하앙」
 		CFLAG:5328 = 5
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5328 <= 3 || FLAG:11 == 2)
 		PRINTFORM 「아, 아…… 
 		IF CFLAG:5201 <= 6
-			PRINTFORM 주, 주인님
+			PRINTFORM %CSTR:80%
 		ELSEIF CFLAG:5201 == 7
 			PRINTFORM 서, 서방님
 		ENDIF
@@ -643,7 +729,7 @@ IF SELECTCOM == 2
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「에…… 어, 엉덩이……요?」
-			PRINTFORMW 「아, 알겠어요……. %K04CN()%께서 그렇게 말씀하신다면…… 자요」
+			PRINTFORMW 「아, 알겠어요……. %CSTR:80%께서 그렇게 말씀하신다면…… 자요」
 		;それ以外
 		ELSE
 			PRINTFORMW 「싫어! 안 돼, 그쪽은 안 돼요!」
@@ -660,7 +746,7 @@ IF SELECTCOM == 2
 			CFLAG:5223 = 6
 		;연모+潤滑Lv2以上
 		ELSEIF TALENT:150 == 1 && P >= PALAMLV:2 && (CFLAG:5223 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아…… %K04CN()%의 손가락이 내 안에……」
+			PRINTFORMW 「아…… %CSTR:80%의 손가락이 내 안에……」
 			CFLAG:5223 = 5
 		;연모+潤滑Lv2未満
 		ELSEIF TALENT:150 == 1 && P < PALAMLV:2 && (CFLAG:5223 <= 3 || FLAG:11 == 2)
@@ -693,7 +779,7 @@ IF SELECTCOM == 7
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「에…… 혼자서요?」
-			PRINTFORMW 「부, 부끄럽지만, %K04CN()%께서 그렇게 말씀하신다면야……」
+			PRINTFORMW 「부, 부끄럽지만, %CSTR:80%께서 그렇게 말씀하신다면야……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「스, 스스로!? 그런 짓을……」
@@ -705,15 +791,15 @@ IF SELECTCOM == 7
 		;연모＋自慰中毒Lv3以上＋欲情50000以上
 		IF TALENT:150 == 1 && ABL:30 >= 3 && PALAM:13 >= 50000 && (CFLAG:5224 <= 6 || FLAG:11 == 2)
 			PRINTFORMW 「아앙! 손가락이, 손가락이 멈추질 않아!」
-			PRINTFORMW 「봐줘요, %K04CN()%, 더, 좀 더 나의 부끄러운 면을 봐주세요!」
+			PRINTFORMW 「봐줘요, %CSTR:80%, 더, 좀 더 나의 부끄러운 면을 봐주세요!」
 			CFLAG:5224 = 7
 		;연모＋自慰中毒Lv3以上＋欲情50000未満
 		ELSEIF TALENT:150 == 1 && ABL:30 >= 3 && PALAM:13 < 50000 && (CFLAG:5224 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 「아아…… %K04CN()%께, 보여지다니……응, 아앗!」
+			PRINTFORMW 「아아…… %CSTR:80%께, 보여지다니……응, 아앗!」
 			CFLAG:5224 = 6
 		;연모＋自慰中毒Lv3未満＋欲情50000以上
 		ELSEIF TALENT:150 == 1 && ABL:30 < 3 && PALAM:13 >= 50000 && (CFLAG:5224 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아아…… %K04CN()%, 봐요! 나의 부끄러운 면을 봐주세요!」
+			PRINTFORMW 「아아…… %CSTR:80%, 봐요! 나의 부끄러운 면을 봐주세요!」
 			CFLAG:5224 = 5
 		;연모＋自慰中毒Lv3未満＋欲情50000未満
 		ELSEIF TALENT:150 == 1 && ABL:30 < 3 && PALAM:13 < 50000 && (CFLAG:5224 <= 3 || FLAG:11 == 2)
@@ -768,10 +854,10 @@ IF SELECTCOM == 5
 	IF CFLAG:5225 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「……네? %K04CN()%께서, 제 것을?」
+			PRINTFORMW 「……네? %CSTR:80%께서, 제 것을?」
 			PRINTFORM 「그, 그럴 수가! 죄송스럽기도 하고, 저는 별로……, 
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -787,7 +873,7 @@ IF SELECTCOM == 5
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5225 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「아……」
-			PRINTFORMW 「……네, 넷……. 부탁드립니다, %K04CN()%……」
+			PRINTFORMW 「……네, 넷……. 부탁드립니다, %CSTR:80%……」
 			CFLAG:5225 = 3
 		;それ以外
 		ELSEIF CFLAG:5225 <= 1 || FLAG:11 == 2
@@ -806,7 +892,7 @@ IF SELECTCOM == 3
 	IF CFLAG:5226 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「후아…… %K04CL()%, 기분 좋아요……」
+			PRINTFORMW 「후아…… %CSTR:80%, 기분 좋아요……」
 		;それ以外(연모無し)
 		ELSE
 			PRINTFORMW 「아, 안 돼! 만지지 말아주세요!」
@@ -817,11 +903,11 @@ IF SELECTCOM == 3
 	ELSE
 		;연모＋欲情50000以上
 		IF TALENT:150 == 1 && PALAM:13 >= 50000 && (CFLAG:5226 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아앗! %K04CN()%, 더! 좀 더 가슴 만져주세요……!」
+			PRINTFORMW 「아앗! %CSTR:80%, 더! 좀 더 가슴 만져주세요……!」
 			CFLAG:5226 = 5
 		;연모＋欲情50000未満
 		ELSEIF TALENT:150 == 1 && PALAM:13 < 50000 && (CFLAG:5226 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CL()%…… 굉장히 기분 좋아요…… 햐앙!」
+			PRINTFORMW 「%CSTR:80%…… 굉장히 기분 좋아요…… 햐앙!」
 			CFLAG:5226 = 4
 		;B感覚Lv3以上
 		ELSEIF ABL:3 >= 3 && (CFLAG:5226 <= 2 || FLAG:11 == 2)
@@ -846,7 +932,7 @@ IF SELECTCOM == 6
 		IF TALENT:150 == 1
 			PRINTFORMW 「아……」
 			PRINTFORMW 입술을 닿게 하자 대요정은 순간 놀란 표정으로 %조사처리(CALLNAME:MASTER,"를")% 봤다.
-			PRINTFORMW 「%K04CN()%……」
+			PRINTFORMW 「%CSTR:80%……」
 			PRINTFORMW 「……저…… 히끅…… 행복, 해요…… 응」
 			PRINTFORMW 그렇게 말하면서 대요정은 눈물을 머금고 이번엔 자신이 %CALLNAME:MASTER%에게 입술을 포개어 왔다.
 		;それ以外
@@ -859,7 +945,7 @@ IF SELECTCOM == 6
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5227 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CL()%……」
+			PRINTFORMW 「%CSTR:80%……」
 			PRINTFORMW 대요정은 물기를 띤 눈동자로 %조사처리(CALLNAME:MASTER,"를")% 응시하면서 혀를 섞었다.
 			CFLAG:5227 = 4
 		;従順Lv2以上
@@ -885,7 +971,7 @@ IF SELECTCOM == 9
 	IF CFLAG:5228 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「앗, 저기…… %K04CN()%?」
+			PRINTFORMW 「앗, 저기…… %CSTR:80%?」
 			PRINTFORMW 「그…… 만져주시지 않는 거예요……?」
 		;それ以外
 		ELSE
@@ -897,14 +983,14 @@ IF SELECTCOM == 9
 	ELSE
 		;연모＋欲情50000以上
 		IF TALENT:150 == 1 && PALAM:13 >= 50000 && (CFLAG:5228 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CL()%…… 부탁, 드려요……」
+			PRINTFORMW 「%CSTR:80%…… 부탁, 드려요……」
 			PRINTFORMW 「더는, 참을 수 없어……」
 			CFLAG:5228 = 4
 		;연모＋欲情50000未満
 		ELSEIF TALENT:150 == 1 && PALAM:13 < 50000 && (CFLAG:5228 <= 2 || FLAG:11 == 2)
 			PRINTFORM 「
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORMW %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -938,11 +1024,11 @@ IF SELECTCOM == 10
 	ELSE
 		;연모＋굴복각인Lv3＋欲情50000以上
 		IF TALENT:150 == 1 && MARK:2 == 3 && PALAM:13 >= 50000 && (CFLAG:5229 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「응, 아앗! %K04CN()%, 기분 좋아요!」
+			PRINTFORMW 「응, 아앗! %CSTR:80%, 기분 좋아요!」
 			CFLAG:5229 = 5
 		;연모＋굴복각인Lv3＋欲情50000未満
 		ELSEIF TALENT:150 == 1 && MARK:2 == 3 && PALAM:13 < 50000 && (CFLAG:5229 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「아, 아앗…… %K04CL()%……」
+			PRINTFORMW 「아, 아앗…… %CSTR:80%……」
 			PRINTFORMW 대요정은 풀린 눈으로 %조사처리(CALLNAME:MASTER,"를")% 응시하고 있다.
 			CFLAG:5229 = 4
 		;굴복각인Lv3
@@ -982,10 +1068,10 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 			PRINTFORMW 「이것도 싫진 않은데……」
 			;欲情50000以上
 			IF PALAM:13 >= 50000
-				PRINTFORMW 「%K04CN()%의 자지가…… 사실 더 기뻐요……」
+				PRINTFORMW 「%CSTR:80%의 자지가…… 사실 더 기뻐요……」
 			;欲情50000未満
 			ELSEIF PALAM:13 < 50000
-				PRINTFORMW 「그…… %K04CN()%의 것 쪽이 좋다고나 할까요……」
+				PRINTFORMW 「그…… %CSTR:80%의 것 쪽이 좋다고나 할까요……」
 			ENDIF
 			CFLAG:5230 = 4
 		;V感覚Lv3以上
@@ -1003,7 +1089,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:5301 < 3 || FLAG:11 == 2)
-		PRINTFORM 「%K04CL()%, 다음은…… 다음은 %K04CN()%의 
+		PRINTFORM 「%CSTR:80%, 다음은…… 다음은 %CSTR:80%의 
 		;欲情50000以上
 		IF PALAM:13 >= 50000
 			PRINTFORM 자지를 
@@ -1081,13 +1167,13 @@ IF SELECTCOM == 13
 	ELSE
 		;연모＋A感覚Lv3以上
 		IF TALENT:150 == 1 && ABL:2 >= 3 && (CFLAG:5232 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아…… 엉덩이에 넣어주시는 거예요? %K04CN()%」
+			PRINTFORMW 「아…… 엉덩이에 넣어주시는 거예요? %CSTR:80%」
 			PRINTFORMW 「네……아무쪼록 부탁합니다」
 			CFLAG:5232 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5232 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「에……아, 엉덩이요……?」
-			PRINTFORMW 「아, 알겠습니다…… 잘 해주세요, %K04CN()%」
+			PRINTFORMW 「아, 알겠습니다…… 잘 해주세요, %CSTR:80%」
 			CFLAG:5232 = 4
 		;A感覚Lv3以上
 		ELSEIF ABL:2 >= 3 && (CFLAG:5232 <= 2 || FLAG:11 == 2)
@@ -1105,7 +1191,7 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 	;연모+A感覚Lv3以上
 	IF TALENT:150 == 1 && ABL:2 >= 3 && (CFLAG:5302 < 4 || FLAG:11 == 2)
 		PRINTFORMW 「앗, 아아…… 끝난, 겁니까?」
-		PRINTFORMW 「저기! ……다음은, %K04CN()%의
+		PRINTFORMW 「저기! ……다음은, %CSTR:80%의
 		;欲情50000以上
 		IF PALAM:13 >= 50000
 			PRINTFORM 자지를 
@@ -1312,7 +1398,7 @@ IF SELECTCOM == 20
 	IF CFLAG:5237 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「아…… %K04CN()%……」
+			PRINTFORMW 「아…… %CSTR:80%……」
 			PRINTFORMW 「……네, 여기요……. 와주세요」
 		;それ以外
 		ELSE
@@ -1324,7 +1410,7 @@ IF SELECTCOM == 20
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5237 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CN()%…… 자, 움직여주세요……」
+			PRINTFORMW 「%CSTR:80%…… 자, 움직여주세요……」
 			CFLAG:5237 = 5
 		;굴복각인Lv3＋V感覚Lv3以上
 		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:5237 <= 3 || FLAG:11 == 2)
@@ -1354,7 +1440,7 @@ IF SELECTCOM == 21
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「에? 뒤, 뒤에서…… 해요?」
-			PRINTFORMW 「이러면…… %K04CN()%의 얼굴이 보이지 않아요……」
+			PRINTFORMW 「이러면…… %CSTR:80%의 얼굴이 보이지 않아요……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「싫어엇! 그만, 그만둬 주세요……!」
@@ -1367,7 +1453,7 @@ IF SELECTCOM == 21
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5238 <= 4 || FLAG:11 == 2)
 			PRINTL 「저, 저기!」
-			PRINTFORMW 「%K04CN()%의 얼굴이 보이지 않으면 외로우니까…… 꼭 해주세요」
+			PRINTFORMW 「%CSTR:80%의 얼굴이 보이지 않으면 외로우니까…… 꼭 해주세요」
 			CFLAG:5238 = 5
 		;굴복각인Lv3＋V感覚Lv3以上
 		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:5238 <= 3 || FLAG:11 == 2)
@@ -1396,8 +1482,8 @@ IF SELECTCOM == 30
 	IF CFLAG:5239 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「아…… %K04CN()% 것, 겨우…… 넣어주시는 거군요」
-			PRINTFORMW 「네……. 자요, %K04CN()%. 부탁드려요……」
+			PRINTFORMW 「아…… %CSTR:80% 것, 겨우…… 넣어주시는 거군요」
+			PRINTFORMW 「네……. 자요, %CSTR:80%. 부탁드려요……」
 		;それ以外(연모無し)
 		ELSE
 			PRINTFORMW 「에……자, 잠깐 무엇을……」
@@ -1409,11 +1495,11 @@ IF SELECTCOM == 30
 	ELSE
 		;연모＋A感覚Lv3以上
 		IF TALENT:150 == 1 && ABL:2 >= 3 && (CFLAG:5239 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아앗! %K04CN()%, 엉덩이가! 엉덩이가 매우 기분이 좋아요!」
+			PRINTFORMW 「아앗! %CSTR:80%, 엉덩이가! 엉덩이가 매우 기분이 좋아요!」
 			CFLAG:5239 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5239 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「아…… %K04CN()% 것, 매우…… 따뜻해요」
+			PRINTFORMW 「아…… %CSTR:80% 것, 매우…… 따뜻해요」
 			PRINTFORMW 「자……. 네, 좋아요. 움직여 주세요……」
 			CFLAG:5239 = 4
 		;A感覚Lv3以上
@@ -1513,7 +1599,7 @@ IF SELECTCOM == 40
 	ELSE
 		;연모＋奉仕精神Lv3以上
 		IF TALENT:150 == 1 && ABL:13 >= 3 && (CFLAG:5241 <= 4 || FLAG:11 == 2)
-			PRINTFORM 「하아…… %K04CN()%의 
+			PRINTFORM 「하아…… %CSTR:80%의 
 			;欲情50000以上
 			IF PALAM:13 >= 50000
 				PRINTFORM 자지
@@ -1525,7 +1611,7 @@ IF SELECTCOM == 40
 			CFLAG:5241 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5241 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「응…… %K04CN()%, 여기가… 기분이 좋으세요?」
+			PRINTFORMW 「응…… %CSTR:80%, 여기가… 기분이 좋으세요?」
 			CFLAG:5241 = 4
 		;奉仕精神Lv3以上
 		ELSEIF ABL:13 >= 3 && (CFLAG:5241 <= 2 || FLAG:11 == 2)
@@ -1575,7 +1661,7 @@ IF SELECTCOM == 41
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5242 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「음, 응, 아앙……하앗」
-			PRINTFORM 「후훗, %K04CN()%의
+			PRINTFORM 「후훗, %CSTR:80%의
 			;欲情50000以上
 			IF PALAM:13 >= 50000
 				PRINTFORM 자지
@@ -1630,18 +1716,18 @@ IF SELECTCOM == 42
 		;연모＋巨乳でのパイズリ初回
 		IF TALENT:150 == 1 && TALENT:112 && CFLAG:5291 == 0
 			PRINTFORMW 「……아」
-			PRINTFORMW 「%K04CN()%…… 잘, 끼웠어요……」
+			PRINTFORMW 「%CSTR:80%…… 잘, 끼웠어요……」
 			PRINTFORMW 「우와아…… 뭔가, 매우 기쁘네요……」
 			PRINTFORMW 「에, 그러면……움직여 볼게요?」
 		;연모＋奉仕精神Lv5以上
 		ELSEIF TALENT:150 == 1 && ABL:13 >= 5 && (CFLAG:5243 <= 6 || FLAG:11 == 2)
-			PRINTFORM 「……%K04CN()%
+			PRINTFORM 「……%CSTR:80%
 			;欲情50000以上
 			IF PALAM:13 >= 50000
 				PRINTFORM  자지
 			ENDIF
 			PRINTFORMW , 제 가슴 안에서…… 엄청 떨고 있어요……」
-			PRINTFORMW 「%K04CN()%…… 좀 더 기분 좋아지게 해줄게요……응」
+			PRINTFORMW 「%CSTR:80%…… 좀 더 기분 좋아지게 해줄게요……응」
 			CFLAG:5243 = 7
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5243 <= 5 || FLAG:11 == 2)
@@ -1666,7 +1752,7 @@ IF SELECTCOM == 42
 	ELSE
 		;연모＋奉仕精神Lv5以上
 		IF TALENT:150 == 1 && ABL:13 >= 5 && (CFLAG:5243 <= 4 || FLAG:11 == 2)
-			PRINTFORM 「응…… %K04CN()%의 
+			PRINTFORM 「응…… %CSTR:80%의 
 			IF PALAM:13 >= 50000
 				PRINTFORM 자지
 			ENDIF
@@ -1675,7 +1761,7 @@ IF SELECTCOM == 42
 			CFLAG:5243 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5243 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「죄송합니다, %K04CN()%…… 잘 껴지지는 않네요……」
+			PRINTFORMW 「죄송합니다, %CSTR:80%…… 잘 껴지지는 않네요……」
 			CFLAG:5243 = 4
 		;奉仕精神Lv3以上
 		ELSEIF ABL:13 >= 3 && (CFLAG:5243 <= 2 || FLAG:11 == 2)
@@ -1709,7 +1795,7 @@ IF SELECTCOM == 43
 	ELSE
 		;연모有り
 		IF TALENT:150 == 1 && (CFLAG:5244 <= 2 || FLAG:11 == 2)
-			PRINTFORM 「아, 아아…… %K04CN()%의 
+			PRINTFORM 「아, 아아…… %CSTR:80%의 
 			;欲情50000以上
 			IF PALAM:13 >= 50000
 				PRINTFORM 자지가 
@@ -1740,7 +1826,7 @@ IF SELECTCOM == 24
 			;연모
 			IF TALENT:150 == 1
 				PRINTFORMW 「에……제가 위에……요?」
-				PRINTFORMW 「……알겠습니다. %K04CN()%, 제 처음을…… 받아주세요」
+				PRINTFORMW 「……알겠습니다. %CSTR:80%, 제 처음을…… 받아주세요」
 			;それ以外
 			ELSE
 				PRINTFORMW 「시, 싫어…… 제발! 뭐든지, 뭐든지 할테니까! 그것만은……」
@@ -1765,7 +1851,7 @@ IF SELECTCOM == 24
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5245 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「이 자세, %K04CN()%을 억지로 범하고 있는 거 같아……」
+			PRINTFORMW 「이 자세, %CSTR:80%을 억지로 범하고 있는 거 같아……」
 			PRINTFORMW 「굉장히 야한 기분이 되어버리네요……후훗」
 			CFLAG:5245 = 4
 		;V感覚Lv3以上
@@ -1791,7 +1877,7 @@ IF SELECTCOM == 220
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「엣!? 때, 때리는…… 거예요?」
-			PRINTFORMW 「우, 우으…… 알겠습니다……. %K04CN()%께서 그렇게 말씀하신다면야……」
+			PRINTFORMW 「우, 우으…… 알겠습니다……. %CSTR:80%께서 그렇게 말씀하신다면야……」
 			PRINTFORMW 「처, 처음은 부드럽게, 부탁드릴게요……?」
 		;それ以外
 		ELSE
@@ -1834,7 +1920,7 @@ IF SELECTCOM == 221
 		IF TALENT:150 == 1
 			PRINTFORM 「
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -1881,7 +1967,7 @@ IF SELECTCOM == 222
 		IF TALENT:150 == 1
 			PRINTFORM 「
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -1902,7 +1988,7 @@ IF SELECTCOM == 222
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5248 <= 4 || FLAG:11 == 2)
 			PRINTFORM 「읏, 그읏……아앗! 
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -1912,7 +1998,7 @@ IF SELECTCOM == 222
 		ELSEIF TALENT:150 == 1 && (CFLAG:5248 <= 3 || FLAG:11 == 2)
 			PRINTFORM 「읏, 그읏……아앗! 
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -1959,7 +2045,7 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
 			CFLAG:5250 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5250 <= 2 || FLAG:11 == 2)
-			PRINTFORM 「저…… %K04CN()%?」
+			PRINTFORM 「저…… %CSTR:80%?」
 			PRINTFORMW 「그, 부탁이니까…… 두고 가거나 하지 말아주세요……?」
 			CFLAG:5250 = 3
 		;それ以外
@@ -1974,7 +2060,7 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 	;연모+マゾっ気Lv3以上
 	IF TALENT:150 == 1 && ABL:21 >= 3 && (CFLAG:5307 < 3 || FLAG:11 == 2)
 		PRINTFORMW 「이걸 끼고 있으면 왠지 야한 기분이 들지만요……」
-		PRINTFORMW 「%K04CN()%의 얼굴이 안보여서 굉장히 외로워요……」
+		PRINTFORMW 「%CSTR:80%의 얼굴이 안보여서 굉장히 외로워요……」
 		CFLAG:5307 = 3
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5307 < 2 || FLAG:11 == 2)
@@ -2016,16 +2102,16 @@ IF SELECTCOM == 224 && TEQUIP:40
 	ELSE
 		;연모＋マゾっ気Lv5以上
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5251 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 「아, 아아…… %K04CL()%……」
+			PRINTFORMW 「아, 아아…… %CSTR:80%……」
 			PRINTFORMW 대요정은 속박되면서, 넋을 잃은 모습으로 %조사처리(CALLNAME:MASTER,"를")% 보고 있다.
 			CFLAG:5251 = 5
 		;연모＋マゾっ気Lv3以上
 		ELSEIF TALENT:150 == 1 && ABL:21 >= 3 && (CFLAG:5251 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아, %K04CN()%…… 좀 더 세게 묶어도 괜찮아요」
+			PRINTFORMW 「아, %CSTR:80%…… 좀 더 세게 묶어도 괜찮아요」
 			CFLAG:5251 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5251 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「응…… %K04CN()%, 조금 답답해요……」
+			PRINTFORMW 「응…… %CSTR:80%, 조금 답답해요……」
 			CFLAG:5251 = 4
 		;マゾっ気Lv3以上
 		ELSEIF ABL:21 >= 3 && (CFLAG:5251 <= 2 || FLAG:11 == 2)
@@ -2175,8 +2261,8 @@ IF SELECTCOM == 60
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5255 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「곧바로, 그…… %K04CN()% 것을 받으면 좋겠는데요……」
-			PRINTFORMW 「가능하면 %K04CN()%께서 적셔주셨으면 좋겠다―랄까…… 죄송해요. 제 생각만 하는 소리겠죠」
+			PRINTFORML 「곧바로, 그…… %CSTR:80% 것을 받으면 좋겠는데요……」
+			PRINTFORMW 「가능하면 %CSTR:80%께서 적셔주셨으면 좋겠다―랄까…… 죄송해요. 제 생각만 하는 소리겠죠」
 			CFLAG:5255 = 3
 		;それ以外(연모無し)
 		ELSEIF CFLAG:5255 <= 1 || FLAG:11 == 2
@@ -2195,7 +2281,7 @@ IF SELECTCOM == 61
 	IF CFLAG:5256 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「아, 아아…… %K04CN()%……」
+			PRINTFORMW 「아, 아아…… %CSTR:80%……」
 			PRINTFORMW 「이거 대단해……」
 		;それ以外(연모無し)
 		ELSE
@@ -2208,12 +2294,12 @@ IF SELECTCOM == 61
 	ELSE
 		;연모＋欲情50000以上
 		IF TALENT:150 == 1 && PALAM:13 >= 50000 && (CFLAG:5256 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「아, 아아…… %K04CN()%……!」
-			PRINTFORMW 「빨리…… 빨리, %K04CN()% 것을…… 제게……」
+			PRINTFORMW 「아, 아아…… %CSTR:80%……!」
+			PRINTFORMW 「빨리…… 빨리, %CSTR:80% 것을…… 제게……」
 			CFLAG:5256 = 4
 		;연모＋欲情50000未満
 		ELSEIF TALENT:150 == 1 && PALAM:13 < 50000 && (CFLAG:5256 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「응…… %K04CL()%……」
+			PRINTFORMW 「응…… %CSTR:80%……」
 			PRINTFORMW 「빨리, 만져주세요……」
 			CFLAG:5256 = 3
 		;それ以外(연모無し)
@@ -2235,7 +2321,7 @@ IF SELECTCOM == 100 && TEQUIP:50
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「에…… 기, 기록하는 거예요?」
-			PRINTFORMW 「……아, 알겠습니다. %K04CN()%께서 그렇게 말씀하신다면야…… 부끄럽지만 참을게요」
+			PRINTFORMW 「……아, 알겠습니다. %CSTR:80%께서 그렇게 말씀하신다면야…… 부끄럽지만 참을게요」
 		;それ以外(연모無し)
 		ELSE
 			PRINTFORMW 「에!? 기, 기록하는 거예요!?」
@@ -2269,7 +2355,7 @@ IF SELECTCOM == 104 && TEQUIP:52
 		IF TALENT:150 == 1
 			PRINTFORMW 「저기…… 어디에 쓰는 거죠? 그 목걸이……」
 			PRINTFORMW 「에!? 바, 밖에서…… 하는 건가요?」
-			PRINTFORMW 「……아, 알겠습니다. ……부끄럽지만, %K04CN()%께서 하고 싶다고 말씀하신다면야……」
+			PRINTFORMW 「……아, 알겠습니다. ……부끄럽지만, %CSTR:80%께서 하고 싶다고 말씀하신다면야……」
 		;それ以外(연모無し)
 		ELSE
 			PRINTFORMW 「뭐, 뭐죠? 그 목걸이는……」
@@ -2281,8 +2367,8 @@ IF SELECTCOM == 104 && TEQUIP:52
 	ELSE
 		;연모＋露出癖Lv3以上
 		IF TALENT:150 == 1 && ABL:14 >= 3 && (CFLAG:5258 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「이 목걸이를 차면, 제가 %K04CN()%의 소유물이구나……라는 사실을 실감할 수 있어서 매우 기뻐져요」
-			PRINTFORMW 「정말로 저, %K04CN()%께 몸도 마음도 조교되어 버렸네요…… 후훗」
+			PRINTFORMW 「이 목걸이를 차면, 제가 %CSTR:80%의 소유물이구나……라는 사실을 실감할 수 있어서 매우 기뻐져요」
+			PRINTFORMW 「정말로 저, %CSTR:80%께 몸도 마음도 조교되어 버렸네요…… 후훗」
 			CFLAG:5258 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5258 <= 3 || FLAG:11 == 2)
@@ -2305,12 +2391,12 @@ IF SELECTCOM == 104 && TEQUIP:52
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 	;연모＋露出癖Lv3以上
 	IF TALENT:150 == 1 && ABL:14 >= 3 && (CFLAG:5310 < 3 || FLAG:11 == 2)
-		PRINTFORMW 「%K04CN()%…… 저, 그…… 밖에서 하니까 흥분해버린 거 같아요……」
+		PRINTFORMW 「%CSTR:80%…… 저, 그…… 밖에서 하니까 흥분해버린 거 같아요……」
 		PRINTFORMW 「……또 가주실거죠?」
 		CFLAG:5310 = 3
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5310 < 2 || FLAG:11 == 2)
-		PRINTFORMW 「으, 우읏…… %K04CN()%…… 부끄러웠어요…… 훌쩍」
+		PRINTFORMW 「으, 우읏…… %CSTR:80%…… 부끄러웠어요…… 훌쩍」
 		CFLAG:5310 = 2
 	;それ以外(연모無し)
 	ELSEIF CFLAG:5310 < 1 || FLAG:11 == 2
@@ -2328,11 +2414,11 @@ IF SELECTCOM == 26
 	IF CFLAG:5259 == 0
 		;연모+助手がチルノ
 		IF TALENT:150 == 1 && ASSINO() == 5
-			PRINTFORMW 「아…… %K04CN()% 것이 치르노쨩 안에 들어가서……」
+			PRINTFORMW 「아…… %CSTR:80% 것이 치르노쨩 안에 들어가서……」
 			PRINTFORMW 「굉장히, 기분 좋아보여……. 좋겠다아……」
 		;연모
 		ELSEIF TALENT:150 == 1
-			PRINTFORMW 「%K04CN()%…… 기다리는 건 괴로워요……」
+			PRINTFORMW 「%CSTR:80%…… 기다리는 건 괴로워요……」
 		;それ以外(연모無し)
 		ELSE
 			IF ASSINO() == 5
@@ -2350,11 +2436,11 @@ IF SELECTCOM == 26
 		;연모+助手がチルノ
 		IF TALENT:150 == 1 && ASSINO() == 5 && (CFLAG:5259 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「아, 아아…… 치르노쨩, 좋겠다아……」
-			PRINTFORMW 「%K04CL()%…… 치르노쨩 말고 저도……」
+			PRINTFORMW 「%CSTR:80%…… 치르노쨩 말고 저도……」
 			CFLAG:5259 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5259 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CL()%…… 저도, 만져주세요……!」
+			PRINTFORMW 「%CSTR:80%…… 저도, 만져주세요……!」
 			CFLAG:5259 = 3
 		;それ以外(연모無し)
 		ELSEIF CFLAG:5259 <= 1 || FLAG:11 == 2
@@ -2380,7 +2466,7 @@ IF SELECTCOM == 602
 		IF TALENT:150 == 1
 			PRINTFORM 「
 			IF CFLAG:5201 == 5 && CFLAG:5201 == 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -2398,12 +2484,12 @@ IF SELECTCOM == 602
 		;연모＋奉仕精神Lv5以上
 		IF TALENT:150 == 1 && ABL:13 >= 5 && (CFLAG:5282 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 「하응…… 응, 후앗! 응, 츄릅…… 응읏」
-			PRINTFORMW 「츄, %K04CN()%…… 어때요…… 아앗!」
+			PRINTFORMW 「츄, %CSTR:80%…… 어때요…… 아앗!」
 			CFLAG:5282 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5282 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「츄읍…… 이런 자세, 조금 부끄럽지만……」
-			PRINTFORMW 「저도, %K04CN()%도 기분 좋게…… 응앗」
+			PRINTFORMW 「저도, %CSTR:80%도 기분 좋게…… 응앗」
 			CFLAG:5282 = 4
 		;奉仕精神Lv3以上
 		ELSEIF ABL:13 >= 3 && (CFLAG:5282 <= 2 || FLAG:11 == 2)
@@ -2426,8 +2512,8 @@ IF SELECTCOM == 230
 	IF CFLAG:5260 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「……자, 잠깐 기다려주세요, %K04CN()%……. 그, 마음의 준비를……」
-			PRINTFORMW 「……후우. 그럼 %K04CN()%, 자요……」
+			PRINTFORMW 「……자, 잠깐 기다려주세요, %CSTR:80%……. 그, 마음의 준비를……」
+			PRINTFORMW 「……후우. 그럼 %CSTR:80%, 자요……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「읍!? 응! 응읏! ……콜록! 콜록!」
@@ -2444,7 +2530,7 @@ IF SELECTCOM == 230
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5260 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「응! 응읏……어해효……? 츄릅……응!? ……콜록!」
-			PRINTFORMW 「죄, 죄송해요, %K04CN()%……. 아직 조금 괴롭네요…… 콜록」
+			PRINTFORMW 「죄, 죄송해요, %CSTR:80%……. 아직 조금 괴롭네요…… 콜록」
 			CFLAG:5260 = 4
 		;奉仕精神Lv3以上
 		ELSEIF ABL:13 >= 3 && (CFLAG:5260 <= 2 || FLAG:11 == 2)
@@ -2497,7 +2583,7 @@ IF SELECTCOM == 500 && TEQUIP:90
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「꺄악!? ……이, 이거랑……하는 겁니까?」
-			PRINTFORMW 「저, 저기, %K04CN()%? 여, 옆에 있어주세요……」
+			PRINTFORMW 「저, 저기, %CSTR:80%? 여, 옆에 있어주세요……」
 		;それ以外(연모無し)
 		ELSE
 			PRINTFORMW 「아…… 아아……」
@@ -2510,7 +2596,7 @@ IF SELECTCOM == 500 && TEQUIP:90
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5262 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「윽……!」
-			PRINTFORMW 「이건 좀… 좋아하지 않지만…… %K04CN()%께서 바란다면……」
+			PRINTFORMW 「이건 좀… 좋아하지 않지만…… %CSTR:80%께서 바란다면……」
 			CFLAG:5262 = 3
 		;それ以外(연모無し)
 		ELSEIF CFLAG:5262 <= 1 || FLAG:11 == 2
@@ -2524,7 +2610,7 @@ IF SELECTCOM == 500 && TEQUIP:90
 ELSEIF SELECTCOM == 90 && TEQUIP:90 == 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:5311 < 2 || FLAG:11 == 2)
-		PRINTFORMW 「우, 우읏…… %K04CN()%, 너무해요……」
+		PRINTFORMW 「우, 우읏…… %CSTR:80%, 너무해요……」
 		CFLAG:5311 = 2
 	;それ以外(연모無し)
 	ELSEIF CFLAG:5311 < 1 || FLAG:11 == 2
@@ -2568,7 +2654,7 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 			IF TALENT:0 == 1
 				;연모
 				IF TALENT:150 == 1
-					PRINTFORMW 「앗! %K04CN()%, 안 돼요! 저, 아직 %K04CN()% 것으로……아, 아앗!」
+					PRINTFORMW 「앗! %CSTR:80%, 안 돼요! 저, 아직 %CSTR:80% 것으로……아, 아앗!」
 				;それ以外
 				ELSE
 					PRINTFORMW 「엣……앗! 그거는, 그것만큼은 안 돼!」
@@ -2580,7 +2666,7 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 			ELSE
 				;연모
 				IF TALENT:150 == 1
-					PRINTFORMW 「아…… %K04CN()%의 손가락이 내 안에서 움직여……」
+					PRINTFORMW 「아…… %CSTR:80%의 손가락이 내 안에서 움직여……」
 					PRINTFORMW 「아아…… 기분 좋아요……」
 				;V感覚Lv3以上
 				ELSEIF ABL:1 >= 3
@@ -2598,7 +2684,7 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 		ELSE
 			;연모
 			IF TALENT:150 == 1 && (CFLAG:5313 <= 3 || FLAG:11 == 2)
-				PRINTFORMW 「후와…… %K04CN()%의 손가락이…… 기분 좋아요……」
+				PRINTFORMW 「후와…… %CSTR:80%의 손가락이…… 기분 좋아요……」
 				CFLAG:5313 = 4
 			;V感覚Lv3以上
 			ELSEIF ABL:1 >= 3 && (CFLAG:5313 <= 2 || FLAG:11 == 2)
@@ -2622,7 +2708,7 @@ IF SELECTCOM == 351 && TEQUIP:54
 	IF CFLAG:5314 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「%K04CN()%과 함께 샤워하기는…… 처음이네요」
+			PRINTFORMW 「%CSTR:80%과 함께 샤워하기는…… 처음이네요」
 			PRINTFORMW 「후훗…… 어쩐지 기뻐요」
 		;それ以外(연모無し)
 		ELSE
@@ -2636,7 +2722,7 @@ IF SELECTCOM == 351 && TEQUIP:54
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5314 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「후아― ……기분 좋네요, %K04CL()%……」
+			PRINTFORMW 「후아― ……기분 좋네요, %CSTR:80%……」
 			CFLAG:5314 = 3
 		;それ以外(연모無し)
 		ELSEIF CFLAG:5314 <= 1 || FLAG:11 == 2
@@ -2655,7 +2741,7 @@ IF SELECTCOM == 22
 	IF CFLAG:5315 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「이 자세…… %K04CN()%의 얼굴 근처여서 어쩐지…… 기쁘네요」
+			PRINTFORMW 「이 자세…… %CSTR:80%의 얼굴 근처여서 어쩐지…… 기쁘네요」
 		;それ以外
 		ELSE
 			PRINTFORMW 「싫어……읏!? 응, 응읏……」
@@ -2667,7 +2753,7 @@ IF SELECTCOM == 22
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5315 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CL()%…… 음」
+			PRINTFORMW 「%CSTR:80%…… 음」
 			PRINTFORMW 「후훗…… 잔뜩 키스할 수 있네요. ……좋아해요」
 			CFLAG:5315 = 5
 		;굴복각인Lv3＋V感覚Lv3以上
@@ -2697,7 +2783,7 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 	IF CFLAG:5316 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「아……뒤에서라면, %K04CN()%의 얼굴이……」
+			PRINTFORMW 「아……뒤에서라면, %CSTR:80%의 얼굴이……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「시, 싫어! 이런……아앗!」
@@ -2708,7 +2794,7 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5316 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아, 아앗! %K04CL()%! 굉장히 기분 좋아요…… 흐아앗!」
+			PRINTFORMW 「아, 아앗! %CSTR:80%! 굉장히 기분 좋아요…… 흐아앗!」
 			CFLAG:5316 = 5
 		;굴복각인Lv3＋V感覚Lv3以上
 		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:5316 <= 3 || FLAG:11 == 2)
@@ -2774,7 +2860,7 @@ IF SELECTCOM == 352
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「그러니까…… 이, 이렇게……요?」
-			PRINTFORMW 「응…… 어때요, %K04CN()%……?」
+			PRINTFORMW 「응…… 어때요, %CSTR:80%……?」
 		;それ以外
 		ELSE
 			PRINTFORMW 「……또, 이상한 짓만……」
@@ -2785,17 +2871,17 @@ IF SELECTCOM == 352
 	ELSE
 		;연모＋奉仕精神Lv5以上
 		IF TALENT:150 == 1 && ABL:13 >= 5 && (CFLAG:5318 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CN()%…… 기분 좋은 얼굴 하고 있네요……」
+			PRINTFORMW 「%CSTR:80%…… 기분 좋은 얼굴 하고 있네요……」
 			PRINTFORMW 「더, 좀 더 기분 좋게 해줄게요……」
 			CFLAG:5318 = 6
 		;연모＋巨乳
 		ELSEIF TALENT:150 == 1 && TALENT:112 && (CFLAG:5318 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「응…… 어때요? %K04CN()%. 제 가슴, 기분 좋나요?」
-			PRINTFORMW 「가슴이 크면, %K04CN()%도 기분 좋고, 또…… 저 역시 굉장히 기뻐요. 후훗」
+			PRINTFORMW 「응…… 어때요? %CSTR:80%. 제 가슴, 기분 좋나요?」
+			PRINTFORMW 「가슴이 크면, %CSTR:80%도 기분 좋고, 또…… 저 역시 굉장히 기뻐요. 후훗」
 			CFLAG:5318 = 5
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5318 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「응…… %K04CN()%이 기분 좋다고 말해주는 건 좋지만……」
+			PRINTFORMW 「응…… %CSTR:80%이 기분 좋다고 말해주는 건 좋지만……」
 			PRINTFORMW 「……좀 더 가슴이 있으면 더 기분 좋게 해줄 수 있을텐데 라는 생각을 하게 되면…… 조금 제 자신이 답답하네요……」
 			CFLAG:5318 = 4
 		;奉仕精神Lv3以上
@@ -2859,7 +2945,7 @@ IF SELECTCOM == 103 && TEQUIP:56
 	ELSE
 		;연모+露出癖Lv3以上
 		IF TALENT:150 == 1 && ABL:14 >= 3 && (CFLAG:5320 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「이 거울이 있으면 %K04CN()%과 연결되어 있는 곳이 잘 보이네요……」
+			PRINTFORMW 「이 거울이 있으면 %CSTR:80%과 연결되어 있는 곳이 잘 보이네요……」
 			PRINTFORMW 「……부끄럽지만…… 매우 흥분되네요」
 			CFLAG:5320 = 5
 		;연모
@@ -2927,7 +3013,7 @@ IF SELECTCOM == 350 && TEQUIP:53
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5322 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「아, 목욕탕에서 합니까?」
-			PRINTFORMW 「알겠습니다……등 밀어드릴게요, %K04CN()%. 후훗」
+			PRINTFORMW 「알겠습니다……등 밀어드릴게요, %CSTR:80%. 후훗」
 			CFLAG:5322 = 3
 		;それ以外
 		ELSEIF CFLAG:5322 <= 1 || FLAG:11 == 2
@@ -2943,7 +3029,7 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「하아―……기분 좋았어요……」
-			PRINTFORMW 「……나중에 또 들어갈거죠? %K04CN()%……」
+			PRINTFORMW 「……나중에 또 들어갈거죠? %CSTR:80%……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「……목욕탕은 편안해질 수 있는 장소일텐데……」
@@ -2955,7 +3041,7 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5323 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「후훗…… %K04CN()%, 기분 좋았어요」
+			PRINTFORMW 「후훗…… %CSTR:80%, 기분 좋았어요」
 			CFLAG:5323 = 3
 		;それ以外
 		ELSEIF CFLAG:5323 <= 1 || FLAG:11 == 2
@@ -2975,19 +3061,19 @@ IF SELECTCOM == 90 && TEQUIP:59
 	IF CFLAG:5324 == 0
 		;연모陥落2後A
 		IF CFLAG:5201 == 6
-			PRINTFORMW 「아……주인님……」
+			PRINTFORMW 「아……%CSTR:80%……」
 			PRINTFORMW 「……심하네요」
 			PRINTFORMW 대요정에게서 불쑥 튀어 나온 말은 %CALLNAME:MASTER%에게는 들리지 않았다
 		;연모陥落2後B
 		ELSEIF CFLAG:5201 == 7
 			PRINTFORMW 「저, 이것……좋습니까?」
-			PRINTFORMW 「……기뻐요. 주인님……!」
+			PRINTFORMW 「……기뻐요. %CSTR:80%……!」
 			PRINTFORMW 대요정은 기쁜듯이 미소지으면서 콧노래를 부르며 허겁지겁 에이프런을 몸에 걸쳤다
 		;연모
 		ELSEIF TALENT:150 == 1
 			PRINTFORMW 「……에?」
-			PRINTFORMW 「……주인님, 이거……정말로……좋습니까?」
-			PRINTFORMW 「우와아……감사합니다. 주인님!」
+			PRINTFORMW 「……%CSTR:80%, 이거……정말로……좋습니까?」
+			PRINTFORMW 「우와아……감사합니다. %CSTR:80%!」
 		;それ以外
 		ELSE
 			PRINTFORMW 「에……이것을 입어야 해요?」
@@ -3007,7 +3093,7 @@ IF SELECTCOM == 90 && TEQUIP:59
 			CFLAG:5324 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5324 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「주인님……」
+			PRINTFORMW 「%CSTR:80%……」
 			PRINTFORMW 에이프런을 입은 대요정은 무엇인가를 기대하는 시선으로 %조사처리(CALLNAME:MASTER,"를")% 보고 있다
 			CFLAG:5324 = 3
 		;それ以外
@@ -3075,7 +3161,7 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 			CFLAG:5327 = 4
 		;연모+おもらし癖
 		ELSEIF TALENT:150 && TALENT:45 && (CFLAG:5327 < 3 || FLAG:11 == 2)
-			PRINTFORM 「아, 아…… %K04CL()%, 저……」
+			PRINTFORM 「아, 아…… %CSTR:80%, 저……」
 			CFLAG:5327 = 3
 		;露出癖Lv5以上
 		ELSEIF ABL:14 >= 5 && (CFLAG:5327 < 2 || FLAG:11 == 2)
@@ -3090,12 +3176,12 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 	ELSE
 		;연모+おもらし癖+野外プレイ
 		IF TALENT:150 && TALENT:45 && TEQUIP:52 && (CFLAG:5326 < 4 || FLAG:11 == 2)
-			PRINTFORMW 「밖에서는 부끄럽지만…… %K04CN()%이 보고 싶다고 말씀하신다면야……응……」
+			PRINTFORMW 「밖에서는 부끄럽지만…… %CSTR:80%이 보고 싶다고 말씀하신다면야……응……」
 			CFLAG:5326 = 4
 		;연모+おもらし癖
 		ELSEIF TALENT:150 && TALENT:45 && (CFLAG:5326 < 3 || FLAG:11 == 2)
 			PRINTFORMW 「우…… 아, 알겠습니다……」
-			PRINTFORMW 「%K04CN()%이 보고 싶다고 말씀하시니까, 그…… 할게요……」
+			PRINTFORMW 「%CSTR:80%이 보고 싶다고 말씀하시니까, 그…… 할게요……」
 			CFLAG:5326 = 3
 		;露出癖Lv5
 		ELSEIF ABL:14 >= 5 && (CFLAG:5326 < 2 || FLAG:11 == 2)
@@ -3237,8 +3323,8 @@ IF TFLAG:0 > 0
 		IF GROUPMATCH(SELECTCOM, 20, 21, 24) && (ASSIPLAY == 0)
 			;연모
 			IF TALENT:150 == 1
-				PRINTFORMW 「아…… 저, %K04CN()%께… 처음을……」
-				PRINTFORMW 「우, 아앗… %K04CN()%…… 정말 좋아해요, %K04CL()%……」
+				PRINTFORMW 「아…… 저, %CSTR:80%께… 처음을……」
+				PRINTFORMW 「우, 아앗… %CSTR:80%…… 정말 좋아해요, %CSTR:80%……」
 				PRINTFORMW 대요정은 처음의 아픔을 견디면서 %CALLNAME:MASTER%의 가슴에 붙어서 눈물을 흘리고 있다.
 				IF CFLAG:5201 == 7
 					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그런 그녀에게 입을 맞췄다.
@@ -3252,7 +3338,7 @@ IF TFLAG:0 > 0
 		ELSEIF SELECTCOM == 4
 			;연모
 			IF TALENT:150 == 1
-				PRINTFORMW 「%K04CN()%…… 어째서……」
+				PRINTFORMW 「%CSTR:80%…… 어째서……」
 			;それ以外
 			ELSE
 				PRINTFORMW 「어째서…… 어째서 당신 같은 사람이랑…… 읏」
@@ -3262,7 +3348,7 @@ IF TFLAG:0 > 0
 		ELSE
 			;연모
 			IF TALENT:150 == 1
-				PRINTFORMW 「아…… %K04CN()%… 그럴 수가, 어째서……」
+				PRINTFORMW 「아…… %CSTR:80%… 그럴 수가, 어째서……」
 			;それ以外
 			ELSE
 				PRINTFORMW 「이런…… 이런 일은…… 으, 아앗……」
@@ -3279,8 +3365,8 @@ ENDIF
 IF TFLAG:9 > 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:5290 <= 3 || FLAG:11 == 2)
-		PRINTFORMW 「아, 아아…… %K04CN()%의 정액이…… 엉덩이 안에…두근거려……」
-		PRINTFORMW 「%K04CL()%…… 다음엔, 질에다……」
+		PRINTFORMW 「아, 아아…… %CSTR:80%의 정액이…… 엉덩이 안에…두근거려……」
+		PRINTFORMW 「%CSTR:80%…… 다음엔, 질에다……」
 		CFLAG:5290 = 4
 	;굴복각인Lv3
 	ELSEIF MARK:2 == 3 && (CFLAG:5290 <= 2 || FLAG:11 == 2)
@@ -3302,8 +3388,8 @@ IF TFLAG:10 > 0
 			PRINTFORMW 대요정은 자신의 배를 어루만지면서 그렇게 중얼거렸다.
 			CFLAG:5280 = 5
 		ELSEIF CFLAG:5280 <= 3 || FLAG:11 == 2
-			PRINTFORML 「후아…… %K04CN()%의 정액이… 내… 안에……」
-			PRINTFORMW 「%K04CL()%…… 저…… 굉장히 행복해요……」
+			PRINTFORML 「후아…… %CSTR:80%의 정액이… 내… 안에……」
+			PRINTFORMW 「%CSTR:80%…… 저…… 굉장히 행복해요……」
 			CFLAG:5280 = 4
 		ENDIF
 	;굴복각인Lv3
@@ -3326,7 +3412,7 @@ ENDIF
 IF TFLAG:12 > 0
 	;연모＋奉仕精神Lv5以上
 	IF TALENT:150 && ABL:13 >= 5 && (CFLAG:5281 <= 3 || FLAG:11 == 2)
-		PRINTFORM 「%K04CN()% 
+		PRINTFORM 「%CSTR:80% 
 		;欲情50000以上
 		IF PALAM:13 >= 50000
 			PRINTFORM 자지
@@ -3342,8 +3428,8 @@ IF TFLAG:12 > 0
 		CFLAG:5281 = 4
 	;연모
 	ELSEIF TALENT:150
-		PRINTFORMW 「아…… %K04CN()%, 기분 좋았……나요?」
-		PRINTFORMW 「%K04CN()%이 기뻐해준다면…… 저, 노력할게요」
+		PRINTFORMW 「아…… %CSTR:80%, 기분 좋았……나요?」
+		PRINTFORMW 「%CSTR:80%이 기뻐해준다면…… 저, 노력할게요」
 		CFLAG:5281 = 3
 	;奉仕精神Lv3
 	ELSEIF ABL:13 >= 3 && (CFLAG:5281 <= 1 || FLAG:11 == 2)
@@ -3364,17 +3450,17 @@ IF TFLAG:11 > 0
 	IF SELECTCOM == 41 || SELECTCOM == 230
 			;연모+精液中毒Lv5以上+欲情50000以上
 			IF TALENT:150 && ABL:31 >= 5 && PALAM:13 >= 50000 && (CFLAG:5282 <= 6 || FLAG:11 == 2)
-				PRINTFORMW 「아, 아아…… %K04CL()%…… 정액…… %K04CN()%의 정액, 좀 더어…… 응」
+				PRINTFORMW 「아, 아아…… %CSTR:80%…… 정액…… %CSTR:80%의 정액, 좀 더어…… 응」
 				PRINTFORMW 입에 가득찬 정액을 모두 마셔버린 대요정은 다시 %CALLNAME:MASTER%의 페니스를 혀로 애무하기 시작했다.
 				CFLAG:5282 = 7
 			;연모+精液中毒Lv5以上+欲情50000未満
 			ELSEIF TALENT:150 && ABL:31 >= 5 && PALAM:13 < 50000 && (CFLAG:5282 <= 5 || FLAG:11 == 2)
-				PRINTFORMW 「아, 아아…… %K04CN()% 것…… 굉장해…… 응」
+				PRINTFORMW 「아, 아아…… %CSTR:80% 것…… 굉장해…… 응」
 				CFLAG:5282 = 6
 			;연모＋欲情50000以上
 			ELSEIF TALENT:150 && PALAM:13 >= 50000 && (CFLAG:5282 <= 4 || FLAG:11 == 2)
 				PRINTFORMW 「응, 콜록…… 하아……」
-				PRINTFORMW 「%K04CN()%의 정액…… 맛있어…… 쪽」
+				PRINTFORMW 「%CSTR:80%의 정액…… 맛있어…… 쪽」
 				CFLAG:5282 = 5
 			;연모＋欲情50000未満
 			ELSEIF TALENT:150 && PALAM:13 < 50000 && (CFLAG:5282 <= 3 || FLAG:11 == 2)
@@ -3400,12 +3486,12 @@ IF TFLAG:11 > 0
 	ELSEIF SELECTCOM == 42
 		;연모+奉仕精神Lv5以上
 		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:5289 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아아…… %K04CN()%, 굉장히… 기분 좋아보여……」
+			PRINTFORMW 「아아…… %CSTR:80%, 굉장히… 기분 좋아보여……」
 			PRINTFORMW 「더…… 더 기분 좋아져 주세요……응」
 			CFLAG:5289 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:5289 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CN()%…… 그렇게 기분 좋았나요?」
+			PRINTFORMW 「%CSTR:80%…… 그렇게 기분 좋았나요?」
 			PRINTFORMW 「그, 그러면…… 저, 좀 더 노력할게요……응」
 			CFLAG:5289 = 4
 		;奉仕精神Lv5以上
@@ -3435,7 +3521,7 @@ IF TFLAG:30 > 0
 	IF CFLAG:5283 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「앗, 앗! %K04CN()%, 저, 무엇인가, 이상하…… 아, 아아아아앗!!」
+			PRINTFORMW 「앗, 앗! %CSTR:80%, 저, 무엇인가, 이상하…… 아, 아아아아앗!!」
 			PRINTFORMW 「하아, 하아…… 아… 이것이, 내……」
 		;それ以外
 		ELSE
@@ -3448,7 +3534,7 @@ IF TFLAG:30 > 0
 	ELSE
 		;연모
 		IF TALENT:150 == 1 && (CFLAG:5283 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「%K04CN()%! 저, 또…… 읏, 아앗!」
+			PRINTFORMW 「%CSTR:80%! 저, 또…… 읏, 아앗!」
 			CFLAG:5283 = 3
 		;それ以外
 		ELSEIF CFLAG:5283 <= 1 || FLAG:11 == 2
@@ -3497,7 +3583,7 @@ IF ABL:0 >= 5 && EX:0 >= 50
 	IF CFLAG:5285 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「%K04CN()%! 저, 또 가버려…… 아, 아앗!」
+			PRINTFORMW 「%CSTR:80%! 저, 또 가버려…… 아, 아앗!」
 		;それ以外
 		ELSE
 			PRINTFORMW 「싫어…… 나 또…… 아, 아앗!」
@@ -3527,7 +3613,7 @@ IF ABL:1 >= 5 && EX:1 >= 50
 	IF CFLAG:5286 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「%K04CN()%! 보지, 너무 기분 좋아!」
+			PRINTFORMW 「%CSTR:80%! 보지, 너무 기분 좋아!」
 			PRINTFORMW 「또! 또, 간다…… 아, 아아앗!!」
 		;それ以外
 		ELSE
@@ -3558,7 +3644,7 @@ IF ABL:2 >= 5 && EX:2 >= 50
 	IF CFLAG:5287 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「%K04CN()%! 저, 또, 엉덩이로……」
+			PRINTFORMW 「%CSTR:80%! 저, 또, 엉덩이로……」
 			PRINTFORMW 「아…… 아, 아아아앗!!」
 		;それ以外
 		ELSE
@@ -3590,7 +3676,7 @@ IF ABL:3 >= 5 && EX:3 >= 50
 	IF CFLAG:5288 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「아, 아앗! %K04CN()%! 가슴이, 가슴이 기분 좋앗…… 아, 아앗!」
+			PRINTFORMW 「아, 아앗! %CSTR:80%! 가슴이, 가슴이 기분 좋앗…… 아, 아앗!」
 		;それ以外
 		ELSE
 			PRINTFORMW 「가슴이…… 가슴이, 또 뜨거워져…… 후아……」
@@ -3633,7 +3719,7 @@ IF TFLAG:40 == 3
 		IF TALENT:150 == 1
 			PRINTFORM 「
 			IF CFLAG:5201 <= 6
-				PRINTFORM 주, 주인님
+				PRINTFORM %CSTR:80%
 			ELSEIF CFLAG:5201 == 7
 				PRINTFORM 서, 서방님
 			ENDIF
@@ -3654,7 +3740,7 @@ IF TFLAG:41 == 3
 	IF CFLAG:5298 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「아, 아아…… %K04CL()%, 더……」
+			PRINTFORMW 「아, 아아…… %CSTR:80%, 더……」
 		;それ以外
 		ELSE
 			PRINTFORMW (싫어……안 돼, 너무 기분 좋아서……)
@@ -3719,18 +3805,18 @@ IF TFLAG:200 == 130
 			PRINTFORMW 「저, 절 파신다고요?」
 			PRINTFORML 대요정은 매우 놀란 듯 눈을 휘둥그레 뜨며 다시 물어봤다
 			PRINTFORMW 대요정이 팔린다는 것을 다시 한번 확인시켜주자 대요정은 씁쓸한 표정을 지으며 고개를 숙였다
-			PRINTFORML 「…그, 그렇네요…… 전 주인님의 노예니까…… 언제 팔려도 이상하지 않은 위치였죠……」
+			PRINTFORML 「…그, 그렇네요…… 전 %CSTR:80%의 노예니까…… 언제 팔려도 이상하지 않은 위치였죠……」
 			PRINTFORMW 애써 납득하고 받아들이려는 대요정이었지만 그 눈엔 이미 눈물이 흘러내리고 있었다
-			PRINTFORMW 「저…… 비록 전 변변치 않은 노예였지만 주인님의 노예여서 다행이었다고 생각해요……」
-			PRINTFORMW 「팔려간 뒤에도 주인님에 대한 걸 잊지 않을게요…… 설령 주인님이 절 잊어버리시더라도……」
+			PRINTFORMW 「저…… 비록 전 변변치 않은 노예였지만 %CSTR:80%의 노예여서 다행이었다고 생각해요……」
+			PRINTFORMW 「팔려간 뒤에도 %CSTR:80%에 대한 걸 잊지 않을게요…… 설령 %CSTR:80%이 절 잊어버리시더라도……」
 			PRINTFORML 대요정의 이야길 다 들었으니 이제 그녀를 보낼 때가 왔다
 			PRINTFORMW 이제 그녀는 이곳을 떠나 낯선 새 주인에게 팔려가게 되겠지
 			PRINTFORMW ……
 			PRINTFORMW ………
 			PRINTFORMW …………
 			PRINTFORML 대요정이 이쪽을 돌아보며 말했다
-			PRINTFORMW 「마지막으로…… 비록 주인님은 거절하셨었지만……」
-			PRINTFORMW 「저, 주인님을 정말 좋아했어요」
+			PRINTFORMW 「마지막으로…… 비록 %CSTR:80%은 거절하셨었지만……」
+			PRINTFORMW 「저, %CSTR:80%을 정말 좋아했어요」
 			PRINTFORMW 「안녕히 계세요, 부디 건강하세요……」
 		;고백에 대해 아직 대답하지 않았다
 		ELSEIF CFLAG:5201 == 5
@@ -3773,12 +3859,12 @@ ENDIF
 IF TFLAG:200 == 151
 	;연모＋淫乱＋自慰中毒Lv5以上
 	IF TALENT:150 == 1 && TALENT:170 == 1 && ABL:30 >= 5 && (CFLAG:5400 < 4 || FLAG:11 == 2)
-		PRINTFORMW 「아앗, %K04CN()%, 더! 좀 더어!」
+		PRINTFORMW 「아앗, %CSTR:80%, 더! 좀 더어!」
 		PRINTFORMW 대요정은 아직도 뭔가 부족해서 망상 속의 %조사처리(CALLNAME:MASTER,"과")% 격렬하게 살을 섞고 있는 것 같다.
 		CFLAG:5400 = 4
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5400 < 3 || FLAG:11 == 2)
-		PRINTFORMW 「응…… 아앗, %K04CL()%……!」
+		PRINTFORMW 「응…… 아앗, %CSTR:80%……!」
 		PRINTFORMW 대요정은 %조사처리(CALLNAME:MASTER,"를")% 생각하면서 자위에 빠지고 있는 거 같다.
 		CFLAG:5400 = 3
 	;自慰中毒Lv3以上
@@ -3800,13 +3886,13 @@ IF TFLAG:200 == 140
 	;연모＋淫乱＋奉仕精神Lv5以上
 	IF TALENT:150 == 1 && TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:5402 < 4 || FLAG:11 == 2)
 		PRINTFORMW 「츄읍, 읍, 츄릅……후아?」
-		PRINTFORMW 「아…… 잘 주무셨어요? %K04CN()%. ……후훗」
+		PRINTFORMW 「아…… 잘 주무셨어요? %CSTR:80%. ……후훗」
 		PRINTFORMW 「아침 청소예요……. 가득 싸도 좋아요. 츄읍」
 		CFLAG:5402 = 4
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5402 < 3 || FLAG:11 == 2)
 		PRINTFORMW 「응, 쮸웁…… 훔?」
-		PRINTFORMW 「앗…… 자, 잘 주무셨어요? %K04CN()%. ……그, 기분 좋나요……? 츄읍」
+		PRINTFORMW 「앗…… 자, 잘 주무셨어요? %CSTR:80%. ……그, 기분 좋나요……? 츄읍」
 		PRINTFORMW 대요정은 얼굴을 새빨갛게 물들이면서도 %CALLNAME:MASTER%의 페니스를 계속 열심히 빨고 있다.
 		CFLAG:5402 = 3
 	;奉仕精神Lv5以上
@@ -3828,11 +3914,11 @@ ENDIF
 IF TFLAG:200 == 150
 	;淫乱＋V感覚Lv5以上
 	IF TALENT:170 == 1 && ABL:1 >= 5 && (CFLAG:5403 < 2 || FLAG:11 == 2)
-		PRINTFORMW 「아앗! %K04CN()%, 좋아해요! 정말 좋앗! 더, 좀 더 기분 좋게 해줘요!」
+		PRINTFORMW 「아앗! %CSTR:80%, 좋아해요! 정말 좋앗! 더, 좀 더 기분 좋게 해줘요!」
 		CFLAG:5403 = 2
 	;それ以外
 	ELSEIF CFLAG:5403 < 1 || FLAG:11 == 2
-		PRINTFORM 「응, 아앗! %K04CL()%…… 기분 좋아요…… 응앗!」
+		PRINTFORM 「응, 아앗! %CSTR:80%…… 기분 좋아요…… 응앗!」
 		CFLAG:5403 = 1
 	ENDIF
 ENDIF
@@ -3843,12 +3929,12 @@ ENDIF
 IF TFLAG:200 == 158
 	;V感覚Lv5以上
 	IF ABL:1 >= 5 && (CFLAG:5404 < 2 || FLAG:11 == 2)
-		PRINTFORMW 「%K04CN()%…… 저, 몸이 원해서…… 참을 수 없어요……」
+		PRINTFORMW 「%CSTR:80%…… 저, 몸이 원해서…… 참을 수 없어요……」
 		PRINTFORMW 「더, 좀 더 기분 좋은 일…… 해주세요……」
 		CFLAG:5404 = 2
 	;それ以外
 	ELSEIF CFLAG:5404 < 1 || FLAG:11 == 2
-		PRINTFORMW 「%K04CL()%…… 더, 좀 더 기분 좋은 일 해주세요……」
+		PRINTFORMW 「%CSTR:80%…… 더, 좀 더 기분 좋은 일 해주세요……」
 		CFLAG:5404 = 1
 	ENDIF
 ENDIF
@@ -3864,7 +3950,7 @@ RETURN 0
 #FUNCTIONS
 ;연애 이벤트 후
 IF CFLAG:5201 <= 6
-	RETURNF "주인님"
+	RETURNF "%CSTR:80%"
 ;연모 이벤트 2 후
 ELSEIF CFLAG:5201 == 7
 	RETURNF "서방님"
@@ -3875,7 +3961,7 @@ ENDIF
 #FUNCTIONS
 ;연애 이벤트 후
 IF CFLAG:5201 <= 6
-	RETURNF "주인니임"
+	RETURNF "%CSTR:80%"
 ;연모 이벤트 2 후
 ELSEIF CFLAG:5201 == 7
 	RETURNF "서방니임"
@@ -3934,7 +4020,7 @@ ENDIF
 		PRINTFORMW 언제 버림받을지 모르는 상황에서 이야기를 하려고 하면 그렇게 생각하는 것도 무리는 아니었다
 		PRINTFORMW 당황하면서 %조사처리(CALLNAME:MASTER,"는")% 주머니로부터 작은 상자를 꺼내고 그녀에게 전한 뒤, 뚜껑을 열도록 재촉했다
 		PRINTFORMW 「……에……?」
-		PRINTFORMW 「저, 저기……주인님?」
+		PRINTFORMW 「저, 저기……%CSTR:80%?」
 		PRINTFORMW 대요정은 알 수 없는 표정으로 %조사처리(CALLNAME:MASTER,"과")% 작은 상자의 내용을 교대로 보고 있었다
 		PRINTFORMW 「……농담 인건가요……? 저기……」
 		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 아직도 반신반의하는 모습의 그녀의 왼손을 잡아서 그 약지에 반지를 끼었다

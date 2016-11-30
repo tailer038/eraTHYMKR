@@ -1453,6 +1453,8 @@ ELSEIF RESULT == 99
 		DO
 			IF LOCAL:99 == 0
 				;주인은 패스
+			ELSEIF CALLNAME:(LOCAL:99) == "아큐" || CALLNAME:(LOCAL:99) == "코스즈"
+				;아큐와 코스즈는 전투능력이 없음
 			;노예 리스트
 			ELSE
 				;번호, 이름
@@ -1522,11 +1524,12 @@ ELSEIF RESULT == 100
 				PRINTFORMW 도장에 설치된 과녁을 이용해 탄막사격을 연습했다.
 				PRINTL
 				IF LOCAL:7 > 0
-					PRINTFORMW 마침 경비원들도 도장에서 일일단련을 하고 있었기에
-					PRINTFORMW %CALLNAME:MASTER%는 그들과 함께 단련을 할 수가 있었다.
+					PRINTFORMW 마침 경비원들도 도장에서 일일단련을 하고 있었기에 %CALLNAME:MASTER%는 그들과 함께 단련을 할 수가 있었다.
 					PRINTFORMW 마침 체술단련을 위해 %CALLNAME:MASTER%는 경비원들과 함께 수박투를 즐겼다.
-					PRINTFORMW 그들은 %CALLNAME:MASTER%를 조금이라도 이겨보고자 떼로 덤벼들었지만
-					PRINTFORMW %CALLNAME:MASTER%는 그들을 너무나도 가볍게 제압했다.
+					PRINTFORMW 그들은 %CALLNAME:MASTER%를 조금이라도 이겨보고자 떼로 덤벼들었지만, %CALLNAME:MASTER%는 그들을 너무나도 가볍게 제압했다.
+					PRINTFORMW 결과적으로 경비원들은 언젠가 그를 이기고 말겠다고 말하면서 각자의 단련에 열심히 임했다.
+					;경험치 획득 > 레벨업. 왕께서 훈련에 함께 임하셨기에 훈련효과에 시너지 효과가 발휘되었다! (100~300정도 줌)
+					CALL GETEXP_GUARDSMAN_TORIKOMODE, LOCAL:99+5051, 100 + RAND:200
 				ENDIF
 			CASE 1
 				PRINTFORMW %CALLNAME:MASTER%는 밖에서 준비운동을 했다.
@@ -1537,9 +1540,10 @@ ELSEIF RESULT == 100
 					PRINTFORMW 마침 경비원들도 %CALLNAME:MASTER%를 따라 달리고 있었다.
 					PRINTFORMW 허나 %CALLNAME:MASTER%가 지나치게 빨라서 그들은 결코 따라잡을 수가 없었다.
 					PRINTFORMW 애석하게도 도중에 낙오하는 자들이 속출했다.
-					PRINTFORMW %CALLNAME:MASTER%는 하는 수 없이 낙오자들은 쉬게 하고
-					PRINTFORMW 따라올 수 있는 자들만 데리고 유카의 밭까지 달렸다.
+					PRINTFORMW %CALLNAME:MASTER%는 하는 수 없이 낙오자들은 쉬게하고, 따라올 수 있는 자들만 데리고 태양의 밭까지 달렸다.
 					PRINTFORMW 물론 거기에 들어가지는 않았지만…….
+					;경험치 획득 > 레벨업. 왕께서 훈련에 함께 임하셨기에 훈련효과에 시너지 효과가 발휘되었다! (100~300정도 줌)
+					CALL GETEXP_GUARDSMAN_TORIKOMODE, LOCAL:99+5051, 100 + RAND:200
 				ENDIF
 			ENDSELECT
 			;훈련효과 - 최대체력 상승
@@ -1621,6 +1625,23 @@ ELSEIF RESULT == 100
 		;CALL BADEND_COMMON ;배드엔드
 	ENDIF
 ELSEIF RESULT == 101
+	;IF GETCHARA(0) >= 0
+	;	PRINTFORMW 아나타가 캐릭에 포함되어 있습니다
+	;ELSE
+	;	PRINTFORMW 아나타가 여기엔 없습니다.
+	;ENDIF
+	;IF GETCHARA(69) >= 0
+	;	PRINTFORMW 린노가 캐릭에 포함되어 있습니다.
+	;ELSE
+	;	PRINTFORMW 린노가 여기엔 없습니다.
+	;ENDIF
+	;FLAG:8017 = 1
+	;FLAG:8021 = 5
+	;FLAG:8014 = 7
+	;FLAG:8006 = 1
+	;FLAG:8007 = 1
+	;FLAG:8025 = 11
+	;FLAG:8032 = 27
 	RETURN 0
 ELSE
 	GOTO SELECT_GUARDSMAN

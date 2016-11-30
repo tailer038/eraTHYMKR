@@ -139,24 +139,128 @@ ENDIF
 ;첫조교시	CFLAG:8002
 ;-------------------------------------------------
 IF CFLAG:8002 == 0
-	PRINTFORMW 「……?」
-	PRINTFORMW 「뭐, 지…여기는…?」
-	PRINTFORMW 케이네는 주위를 바라본다.
-	PRINTFORMW 처음 보는 장소, 어제밤까지는 자택에 있었을 텐데…
-	PRINTFORMW 그 때, 방문이 열렸다.
-	PRINTFORMW 「!」
-	PRINTFORMW 케이네는 여기를 본다. 그 순간, 그 긴 머리카락이 하늘에 흩날렸다.
-	PRINTFORMW 「음, 잠깐? 너는 누구지? 여기는 어디야?」
-	PRINTFORMW 케이네는 지금의 상황을 이해하지 못하고, 그저 혼란스러워 할 뿐이었다.
-	PRINTFORMW 「그럼 이만, 나는 돌아가겠어…」
-	PRINTFORMW 이 방에 1개 밖에 없는 출구, %TSTR:303% 그 출구로, 케이네는 걷기 시작한다.
-	PRINTFORMW 「미안하지만, 비켜 주지 않을래…?」
-	PRINTFORMW 불안한 표정으로 그녀는 간절히 부탁하고 있다
-	PRINTFORMW 하지만 모처럼 산 노예를, 여기서 놓칠 수는 없다. %CALLNAME:MASTER%은, 케이네의 어깨를 붙잡았다
-	PRINTFORMW 「…뭐야…?　빨리, 비켜주지 않을…으, 읏!」
-	PRINTFORMW 그대로, 케이네를 침대로 밀어 넘어뜨린다.
-	PRINTFORMW 「무, 무슨 생각이야! 떼어 놔!」
-	PRINTFORMW 날뛰는 케이네의 옷을, %조사처리(CALLNAME:MASTER,"는")% 억지로 벗겨 갔다…
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「……?」
+		PRINTFORMW 「뭐, 지…여기는…?」
+		PRINTFORMW 케이네는 주위를 바라본다.
+		PRINTFORMW 처음 보는 장소, 어제밤까지는 자택에 있었을 텐데…
+		PRINTFORMW 그 때, 방문이 열렸다.
+		PRINTFORMW 「!」
+		PRINTFORMW 케이네는 여기를 본다. 그 순간, 그 긴 머리카락이 하늘에 흩날렸다.
+		PRINTFORMW 『안녕, 케이네?』
+		PRINTFORMW 「리, 린노스케?」
+		PRINTFORMW 『오늘, 내 인생에서 중요한 고백을 하러 여기에 왔어.』
+		PRINTFORMW 「고, 고고고고, 고백? 왜, 왠일로 네가..?」
+		PRINTFORMW 「근데 그걸 하기에 여기에는 적합한 장소가 아닌 것 같은데?」
+		PRINTFORMW 『걱정마. 여기는 향림당의 특별한 장소니까.』
+		PRINTFORMW 「여기가, 향림당이라고? 믿기지가 않아.」
+		PRINTFORMW 『얼마 전에 증축을 했거든.』
+		PRINTFORMW 「헤에, 그럴 돈 정도는 있었구나.. 아.. 그게 중요한 게 아니었지 참!」
+		PRINTFORMW 『난, 널 좋아하고 있어. 소꿉친구로서가 아니라, 진정한 한 명의 남자로서.』
+		PRINTFORMW 「린노스케.. 정말..?」
+		PRINTFORMW 『게다가 우리라면 제대로 함께할 수 있을거라 생각한다.』
+		PRINTFORMW 『나는 반요, 너는 반수, 그러니까 수명이 비슷해.』
+		PRINTFORMW 「...그렇지, 함께 비슷한 시간을 공유할 수 있어.」
+		PRINTFORMW 『그래, 그러니까, 나를 받아주지 않을래?』
+		PRINTFORMW 「...」
+		PRINTFORMW 「......」
+		PRINTFORMW 「.........」
+		PRINTFORMW 「............」
+		PRINTFORMW 「그런데 린노스케.」
+		PRINTFORMW 『응?』
+		PRINTFORMW 「도대체 어떻게 된 거야?」
+		PRINTFORMW 『뭐가?』
+		PRINTFORMW 「너... 연애에는 관심이 없는 거 아니었어?」
+		PRINTFORMW 『예전에는 그랬지.』
+		PRINTFORMW 「게다가 이상해. 너는 원래 이런 고백같은 건 하지 않는 사람이었잖아.」
+		PRINTFORMW 「내가 아는 모리치카 린노스케는, 주변 여자들이 대시를 해와도 꿈쩍않는 고목이야.」
+		PRINTFORMW 「근데 뜬금없이 이곳에서, 갑자기 좋아한다고 말하다니, 너 머리가... 이상하게 된 거 아냐?」
+		PRINTFORMW 『.....』
+		PRINTFORMW 『생각해봤어.』
+		PRINTFORMW 『지금까지 너와 보낸 시간의 추억을.』
+		PRINTFORMW 『물론 추억만이 아니라 안 좋은 일들도 많았어.』
+		PRINTFORMW 『그 순간순간마다 네가 나에게 느꼈을 감정, 그리고 그 마음에 대답해주지 않아서 생기는 답답함.』
+		PRINTFORMW 『그게 얼마나 괴로웠을지… 생각해봤어.』
+		PRINTFORMW 「린노스케……」
+		PRINTFORMW 『물론 얼마전까지는 깨닫지도 못 했어.』
+		PRINTFORMW 『최근에 뭔가의 계기로 나 자신의 사고방식이 조금 달라졌다고 생각해.』
+		PRINTFORMW 「최근이라면, 혹시..」
+		PRINTFORMW 『(케이네는 모른다. 내가 《동방조교전》의 힘으로 상대방의 능력을 전부 봉인하고 있다는 사실을.)』
+		PRINTFORMW 『(게다가 만약 이 책의 주인이 일반 인간이었다면, 책의 능력이 상시 발동되는 것을 제어하지 못 했을 거다.)』
+		PRINTFORMW 『(하지만 나는 다르다. 나는 반요. 게다가 이제는 '삼신기' 자체이기도 하다.)』
+		PRINTFORMW 『(요력과 영력, 그리고 신력까지 가진 이 내가, 책의 능력을 ON/OFF하는 것을 못 할 리가 없다.)』
+		PRINTFORMW 『(이 타이밍에 나는 책의 '힘의 봉인'의 능력을 일부 OFF한다.)』
+		PRINTFORMW 『(즉 책의 능력이 일부 비발동되기에, 케이네는 자신의 '역사를 없애는 정도의 능력'을 일부 사용할 수 있지.)』
+		PRINTFORMW 『(하지만 '역사를 지우는 짓'은 못 할 것이다. 가능해야 고작 '역사를 읽는 정도'다.)』
+		PRINTFORMW 『(그걸로 좋다. 케이네는 순간적으로 가능해졌지만, 제한되기도 한 능력을 사용해 내가 '환상향의 왕'이 되고자 얼마전에 날뛴 이변을 읽겠지.)』
+		PRINTFORMW 『(하지만 내가 최근에 《동방조교전》을 구했다는 사실, '삼신기'가 되었다는 사실 등은 절대로 읽지 못 한다.)』
+		PRINTFORMW 『(왜냐하면 거기까지 읽는 행위는 내 힘과 책의 힘으로 강력하게 막고있기 때문이지.)』
+		PRINTFORMW 『(그래도 역시나, 책의 능력을 이렇게까지 미세하게 조정하는 것은 정말 피곤하다. 정신력이 소모되지.)』
+		PRINTFORMW 「...」
+		PRINTFORMW 「......」
+		PRINTFORMW 「.........」
+		PRINTFORMW 「............」
+		PRINTFORMW 「역시 린노스케, 너는 이변을 일으킨 것 때문에 충격을 받은 거구나.」
+		PRINTFORMW 『역사를, 읽은 거야?』
+		PRINTFORMW 「응, 능력을 좀 사용했어. 그래서 알게 되었어.」
+		PRINTFORMW 『그때는... 내가 나 자신이 아니었지. 삼신기의 힘에 조종당했었어. 부끄럽군.』
+		PRINTFORMW 「...설마 이변때문에 너의 '벽창호'기질이 고쳐지다니, 살다가 이런 일은 처음 봐.」
+		PRINTFORMW 『그래, 나도 이런 건 처음이군.』
+		PRINTFORMW 「원인이 이변이라서 좀 그렇지만, 그래도 결과적으로는 다행이야.」
+		PRINTFORMW 「………그리고,」
+		PRINTFORMW 『응? 왜 그러는데?』
+		PRINTFORMW 「좋...아...」
+		PRINTFORMW 『………? ……뭐가 좋다느…………(우읍!)』
+		PRINTFORMW 「…………(쪽♥)」
+		PRINTFORMW 『우웁…… 하아! 케이네, 너 갑자기 뭐………』
+		PRINTFORMW 「나, 카미시라사와 케이네는, 린노스케 군의 고백을 수락합니다!」
+		PRINTFORMW 『………그런가, 결국 받아주는거군.』
+		PRINTFORMW 「아까까지는 이러저러한 위화감이 여럿 있었지만, 이제는 없어.」
+		PRINTFORMW 「게다가 나, 아주 오래 전부터 너를 좋아했어.」
+		PRINTFORMW 『너도? 대체 언제부터!?』
+		PRINTFORMW 「아마 네가 짐작하는 시점보다 훨씬 더 오래됐을걸?」
+		PRINTFORMW 『그런가……』
+		PRINTFORMW 「그러니까 린노스케, 이제 너는 내꺼야.」
+		PRINTFORMW 『뭐, 그렇게 말해주니 꽤나 쑥스럽고 부담스럽다만.』
+		PRINTFORMW 「지난 시간동안 다른 여자들이 너에게 꼬리치는 것을 보고 얼마나 속상했다구!」
+		PRINTFORMW 「게다가 내가 아무리 대시해도 거들떠보지도 않았던 주제에!」
+		PRINTFORMW 「정말 걱정했다구. 설마, 내게 여자로서의 매력이 없는 게 아닌가하고.」
+		PRINTFORMW 『마음고생 시켰다면 정말 미안해.』
+		PRINTFORMW 「그러니까 너는 더 이상 나에게서 벗어날 수 없을 줄 알아!」
+		PRINTFORMW 「내가 마음고생한 것의 백배, 아니, 천배 만배 이상으로 갚아줄 거야!」
+		PRINTFORMW 「…………영원……히…」
+		PRINTFORMW 『읏……!』
+		PRINTFORMW 『(어째 내가 고백한 행위가 '지뢰를 밟았다'는 느낌인데……!?)』
+		PRINTFORMW 『(어쩐지 그녀의 눈동자에 초점이 없다!?)』
+		PRINTFORMW 「내게 고백한 것을, 이제부터 후회하게 해 주겠어<●><●>」
+		PRINTFORMW 『(케이네의 마음이 설마 부셔진 건가!? 뭔가 이상해. 뭔가 이상해. 나의 고백이 스위치가 되어서 무언가가 일어났어!)』
+		PRINTFORMW 「이제부터 기대하라구, 린노스케?」
+		PRINTFORMW 『(마음 속으로 '계획대로'라고 외치고 싶었지만, 이건…… 이건 아니라고!!)』
+		;린노스케 EXTRA 보정, 연모, 호감도2000 순종4로 스타트!
+		CFLAG:2 = 2000
+		TALENT:150 = 1
+		ABL:10 = 4
+		CFLAG:5001 = 1
+	ELSE
+		PRINTFORMW 「……?」
+		PRINTFORMW 「뭐, 지…여기는…?」
+		PRINTFORMW 케이네는 주위를 바라본다.
+		PRINTFORMW 처음 보는 장소, 어제밤까지는 자택에 있었을 텐데…
+		PRINTFORMW 그 때, 방문이 열렸다.
+		PRINTFORMW 「!」
+		PRINTFORMW 케이네는 여기를 본다. 그 순간, 그 긴 머리카락이 하늘에 흩날렸다.
+		PRINTFORMW 「음, 잠깐? 너는 누구지? 여기는 어디야?」
+		PRINTFORMW 케이네는 지금의 상황을 이해하지 못하고, 그저 혼란스러워 할 뿐이었다.
+		PRINTFORMW 「그럼 이만, 나는 돌아가겠어…」
+		PRINTFORMW 이 방에 1개 밖에 없는 출구, %TSTR:303% 그 출구로, 케이네는 걷기 시작한다.
+		PRINTFORMW 「미안하지만, 비켜 주지 않을래…?」
+		PRINTFORMW 불안한 표정으로 그녀는 간절히 부탁하고 있다
+		PRINTFORMW 하지만 모처럼 산 노예를, 여기서 놓칠 수는 없다. %CALLNAME:MASTER%은, 케이네의 어깨를 붙잡았다
+		PRINTFORMW 「…뭐야…?　빨리, 비켜주지 않을…으, 읏!」
+		PRINTFORMW 그대로, 케이네를 침대로 밀어 넘어뜨린다.
+		PRINTFORMW 「무, 무슨 생각이야! 떼어 놔!」
+		PRINTFORMW 날뛰는 케이네의 옷을, %조사처리(CALLNAME:MASTER,"는")% 억지로 벗겨 갔다…
+	ENDIF
 	CFLAG:8002 = 1
 	RETURN 1
 ;-------------------------------------------------
@@ -181,14 +285,20 @@ ENDIF
 IF TALENT:150 == 1 && FLAG:11 == 2
 	;난수 분기:3
 	IF RAND:3 == 0
-		PRINTFORMW 「아, 와 준건가…」
-		PRINTFORMW 「아니, 딱히…기다리고 있었다거나 한 건 아니야!」
-		PRINTFORMW 「뭐, 아무튼… 오늘 만나러 와 준 건 기쁜걸…」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「아, 와줬구나… 린노스케!」
+			PRINTFORMW 「아니, 딱히…기다리고 있었다거나 한 건 아니거든!」
+			PRINTFORMW 「뭐, 아무튼… 오늘 만나러 와 준 건 기쁜걸…」
+		ELSE
+			PRINTFORMW 「아, 와 준건가…」
+			PRINTFORMW 「아니, 딱히…기다리고 있었다거나 한 건 아니야!」
+			PRINTFORMW 「뭐, 아무튼… 오늘 만나러 와 준 건 기쁜걸…」
+		ENDIF
 		PRINTFORMW 케이네는 스스로, 침대위로 누웠다
 	;난수 분기:2
 	ELSEIF RAND:2 == 0
 		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 그걸 눈치 챈 케이네는 조금 얼굴이 빨개졌다
-		PRINTFORMW 「그럼, 오늘도 노력할까. 쾌감은 좋은 것이다」
+		PRINTFORMW 「그럼, 오늘도 노력해볼까? 쾌감은 좋은 것이야.」
 		PRINTFORMW 그렇게 말하면서, 케이네는 옷을 벗기 시작했다.
 	;그 외의 경우
 	ELSE
@@ -202,9 +312,15 @@ IF TALENT:150 == 1 && FLAG:11 == 2
 ELSEIF MARK:9 == 3 && FLAG:11 == 2
 	;난수 분기:3
 	IF RAND:3 == 0
-		PRINTFORMW 「안ㄷ!　그만둬!」
-		PRINTFORMW 그렇게 말하면서, 머리카락이 흩날릴정도로 날뛰는 케이네를, %조사처리(CALLNAME:MASTER,"는")% 억지로 쓰러뜨린다.
-		PRINTFORMW 「그만두어 줘…나를… 돌려보내 줘…」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「안ㄷ!　그만둬줘! 린노스케!」
+			PRINTFORMW 그렇게 말하면서, 머리카락이 흩날릴정도로 날뛰는 케이네를, %조사처리(CALLNAME:MASTER,"는")% 억지로 쓰러뜨린다.
+			PRINTFORMW 「그만두어 줘… 나를… 마을로 돌려보내 줘… 제바알..」
+		ELSE
+			PRINTFORMW 「안ㄷ!　그만둬!」
+			PRINTFORMW 그렇게 말하면서, 머리카락이 흩날릴정도로 날뛰는 케이네를, %조사처리(CALLNAME:MASTER,"는")% 억지로 쓰러뜨린다.
+			PRINTFORMW 「그만두어 줘…나를… 돌려보내 줘…」
+		ENDIF
 		PRINTFORMW 필사적으로 간절히 애원 하는 그 모습으로부터는, 이미 교사일 때의 굳센 모습은 흔적도 없었다.
 	;난수 분기:2
 	ELSEIF RAND:2 == 0
@@ -213,14 +329,23 @@ ELSEIF MARK:9 == 3 && FLAG:11 == 2
 		PRINTFORMW 케이네가 많이 저항한 것은, 말할 필요도 없다.
 	;그 외의 경우
 	ELSE
-		PRINTFORMW 「너를, 너를…!」
-		PRINTFORMW 「없었던 것으로… 모든 역사로부터 완전하게 지워 없애 준다!」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「너만은, 너만은 믿었는데..!」
+			PRINTFORMW 「(훌쩍!)너를 처음부터 없었던 것으로… 모든 역사로부터 완전하게 지워 없애줄거야!」
+		ELSE
+			PRINTFORMW 「너를, 너를…!」
+			PRINTFORMW 「없었던 것으로… 모든 역사로부터 완전하게 지워 없애 준다!」
+		ENDIF
 		PRINTFORMW 그런 케이네를 비웃으면서, %조사처리(CALLNAME:MASTER,"는")% 케이네를 범하기 시작했다.
 	ENDIF
 	RETURN 1
 ;굴복 각인 Lv1
 ELSEIF MARK:2 == 1 && FLAG:11 == 2
-	PRINTFORMW 「…어째서 나야…」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「…너무해, 린노스케.」
+	ELSE
+		PRINTFORMW 「…어째서 나야…」
+	ENDIF
 	PRINTFORMW 케이네는 머리를 움켜 쥐고 있다.
 	RETURN 1
 ;굴복 각인 Lv2
@@ -236,21 +361,41 @@ ELSEIF MARK:2 == 3 && FLAG:11 == 2
 		PRINTFORMW 그렇게 말하면서 케이네는, 마지 못해 옷을 벗기 시작했다.
 	;난수 분기:2
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 「이, 이게 …발정이라는 것인가…」
-		PRINTFORMW 「지금까지도 몇회인가 스스로 해 왔지만…이런 일을 하면…」
-		PRINTFORMW 「또…응…」
-		PRINTFORMW 스스로 비소에 손가락을 댄 그 때, 방문이 열렸다.
-		PRINTFORMW 「앗…」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 케이네를 가만히 응시하고 있다.
-		PRINTFORMW 「이런, 아냐… 이건…조금…」
-		PRINTFORMW 아무 말도 하지 않고 %조사처리(CALLNAME:MASTER,"가")% 침대에 가자, 케이네는 얼굴이 빨개진 채로 침대에 누웠다.
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「이, 이게 …발정이라는 거구나…」
+			PRINTFORMW 『의외로군. 내가 아는 케이네는 그런 이미지가 아니었을 텐데 말이지.』
+			PRINTFORMW 「대체 누가 날 이렇게 만들었다고 생각해!」
+			PRINTFORMW 『음, 미안해.』
+			PRINTFORMW 「뭐, 아니.. 딱히 널 나쁘게 말하는 건 절대로 아니라고!?」
+			PRINTFORMW 「자, 얼른 시작하자. 얼른 내게 너의 사랑을 나눠줘.」
+			PRINTFORMW 『분부하신 대로.』
+		ELSE
+			PRINTFORMW 「이, 이게 …발정이라는 것인가…」
+			PRINTFORMW 「지금까지도 몇회인가 스스로 해 왔지만…이런 일을 하면…」
+			PRINTFORMW 「또…응…」
+			PRINTFORMW 스스로 비소에 손가락을 댄 그 때, 방문이 열렸다.
+			PRINTFORMW 「앗…」
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 케이네를 가만히 응시하고 있다.
+			PRINTFORMW 「이런, 아냐… 이건…조금…」
+			PRINTFORMW 아무 말도 하지 않고 %조사처리(CALLNAME:MASTER,"가")% 침대에 가자, 케이네는 얼굴이 빨개진 채로 침대에 누웠다.
+		ENDIF
 	;그 외의 경우
 	ELSE
-		PRINTFORMW 「잠깐만, 머리가 삐쳤어」
-		PRINTFORMW 방에 들어가니, 케이네는 갑자기 그렇게 말하면서, 머리카락을 다듬어 주기 시작했다.
-		PRINTFORMW 「좋아, 이 정도면 좋은데」
-		PRINTFORMW 미소짓는 케이네에게, %조사처리(CALLNAME:MASTER,"는")% 일단 인사를 한다.
-		PRINTFORMW 「아무튼, 몸가짐에는 신경을 써 줘. 나도…불결한 인간과 사귀는 것은 싫기 때문에」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「잠깐만, 머리가 삐쳤어, 린노스케.」
+			PRINTFORMW 방에 들어가니, 케이네는 갑자기 그렇게 말하면서, 머리카락을 다듬어 주기 시작했다.
+			PRINTFORMW 『아.. 됐어. 이런건 나 혼자서라도..』
+			PRINTFORMW 「내가 해주는게... 싫어..?」
+			PRINTFORMW 『아니, 딱히 그런 건 아냐.』
+			PRINTFORMW 『케이네가 날 신경써준 거는 정말로 기뻐.』
+			PRINTFORMW 「그거 다행이네.」
+		ELSE
+			PRINTFORMW 「잠깐만, 머리가 삐쳤어」
+			PRINTFORMW 방에 들어가니, 케이네는 갑자기 그렇게 말하면서, 머리카락을 다듬어 주기 시작했다.
+			PRINTFORMW 「좋아, 이 정도면 좋은데」
+			PRINTFORMW 미소짓는 케이네에게, %조사처리(CALLNAME:MASTER,"는")% 일단 인사를 한다.
+			PRINTFORMW 「아무튼, 몸가짐에는 신경을 써 줘. 나도…불결한 인간과 사귀는 것은 싫기 때문에」
+		ENDIF
 	ENDIF
 	RETURN 1
 ;그 외의 경우
@@ -286,7 +431,11 @@ IF TALENT:150 == 1
 	IF BASE:0 < 500
 		;난수 분기:2
 		IF RAND:2 == 0
-			PRINTFORMW 「상당히… 힘들구나…」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「상당히… 지치네, 너도 그렇지 않아?」
+			ELSE
+				PRINTFORMW 「상당히… 힘들구나…」
+			ENDIF
 			PRINTFORMW 지치고 자른 케이네에, %조사처리(CALLNAME:MASTER,"는")% 살그머니 키스를 해 주었다.
 		;그 외의 경우
 		ELSE
@@ -299,6 +448,9 @@ IF TALENT:150 == 1
 		;난수 분기:3
 		IF RAND:3 == 0
 			PRINTFORMW 「기분은 좋았어?」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 『어딘가의 누군가가 즐겁게 허리를 흔들어대는 바람에 말이지.』
+			ENDIF
 			PRINTFORMW 「그런가 …후후…」
 		;난수 분기:2
 		ELSEIF RAND:2 == 0
@@ -316,23 +468,46 @@ IF TALENT:150 == 1
 ELSEIF MARK:9 == 3
 	;체력 500 미만
 	IF BASE:0 < 500
-		PRINTFORMW 「죽여… 버릴테다…!」
-		PRINTFORMW 케이네는 축 늘어져 있지만, 그 눈에서는 강한 시선이 보내져왔다.
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「정말… 린노스케 이 바보!」
+			PRINTFORMW 케이네는 축 늘어져 있지만, 그 눈에서는 강한 시선이 보내져왔다.
+		ELSE
+			PRINTFORMW 「죽여… 버릴테다…!」
+			PRINTFORMW 케이네는 축 늘어져 있지만, 그 눈에서는 강한 시선이 보내져왔다.
+		ENDIF
 	;그 외의 경우
 	ELSE
-		PRINTFORMW 「이런 장소가 아니었으면… 이런 상황이 아니었으면…」
-		PRINTFORMW 「%CALLNAME:MASTER% 따위는…!」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「아무리 린노스케 너라고 해도, 이건 너무하잖아.」
+			PRINTFORMW 『미안해. 어떻게 사과해야 할지..』
+			PRINTFORMW 「그럼, 좀 더 상냥히..」
+			PRINTFORMW 『……알았다.』
+		ELSE
+			PRINTFORMW 「이런 장소가 아니었으면… 이런 상황이 아니었으면…」
+			PRINTFORMW 「%CALLNAME:MASTER% 따위는…!」
+		ENDIF
 	ENDIF
 	RETURN 1
 ;굴복 각인 Lv1
 ELSEIF MARK:2 == 1
-	PRINTFORMW 「…이제 오지 말아 줘」
-	PRINTFORMW 그 것만을 말하고 나서, 케이네는 이불을 얼굴까지 덮었다.
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「…좀 더... 해 줘..」
+		PRINTFORMW 그 것만을 말하고 나서, 케이네는 이불을 얼굴까지 덮었다.
+	ELSE
+		PRINTFORMW 「…이제 오지 말아 줘」
+		PRINTFORMW 그 것만을 말하고 나서, 케이네는 이불을 얼굴까지 덮었다.
+	ENDIF
 	RETURN 1
 ;굴복 각인 Lv2
 ELSEIF MARK:2 == 2
-	PRINTFORMW 「아… 끝인가…」
-	PRINTFORMW 케이네는 안타까운 듯이, 말하며 고개를 돌렸다.
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「정말, 뭐하고 있는거야?」
+		PRINTFORMW 「엄청 기다렸다고?」
+		PRINTFORMW 케이네는 안타까운 듯이 말하며 %CALLNAME:MASTER%를 안았다.
+	ELSE
+		PRINTFORMW 「아… 끝인가…」
+		PRINTFORMW 케이네는 안타까운 듯이, 말하며 고개를 돌렸다.
+	ENDIF
 	RETURN 1
 ;굴복 각인 Lv3
 ELSEIF MARK:2 == 3
@@ -411,7 +586,11 @@ SIF TEQUIP:42 == 4 && SELECTCOM != 583
 IF SELECTCOM == 0
 	;처음
 	IF CFLAG:8200 == 0
-		PRINTFORMW 「…손대지 마라」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「…린, 린노스케.. 아앗! 응!」
+		ELSE
+			PRINTFORMW 「…손대지 마라」
+		ENDIF
 		PRINTFORMW 케이네는 %CALLNAME:MASTER%의 손을 뿌리쳤지만, %조사처리(CALLNAME:MASTER,"는")% 억지로 케이네의 몸을 만졌다.
 		CFLAG:8200= 1
 		RETURN 0
@@ -452,7 +631,11 @@ ENDIF
 IF SELECTCOM == 1
 	;처음
 	IF CFLAG:8201 == 0
-		PRINTFORMW 「거긴… 핥는 곳이 아냐」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「거긴… 안됏!」
+		ELSE
+			PRINTFORMW 「거긴… 핥는 곳이 아냐」
+		ENDIF
 		CFLAG:8201= 1
 		RETURN 0
 	;2번째 이후
@@ -2159,7 +2342,7 @@ IF SELECTCOM == 24
 		IF TALENT:150 == 1
 			PRINTFORMW 「이… 몸의 자세는…」
 			PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 누워, 케이네를 우뚝 솟은 페니스로 당긴다.
-			PRINTFORMW 「알았어, 노력하지」
+			PRINTFORMW 「알았어, 노력해볼게.」
 			PRINTFORMW 케이네는 %CALLNAME:MASTER%에 걸쳐, 페니스를 잡는다.
 			PRINTFORMW 벌써 다른 한쪽 손으로 스스로의 비부를 열고 작은 기합 소리와 함께 %CALLNAME:MASTER%의 페니스를 넣었다.
 			PRINTFORMW 도중에 조금 움직임이 멈추었지만, %조사처리(CALLNAME:MASTER,"는")% 상냥하게 가슴을 애무해 주었다.
@@ -2911,15 +3094,15 @@ IF SELECTCOM == 42
 	IF CFLAG:8272 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「가슴으로…안, 해 본다」
-			PRINTFORMW 「응, 좀 더, 대어 주지 않는가?」
+			PRINTFORMW 「가슴으로… 한다고?」
+			PRINTFORMW 「응, 좀 더, 가르쳐주지 않겠어?」
 			PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 허리를 움직이면(자), 거기라면 곧 말할 듯이, 케이네는 가슴으로 페니스를 잡아당기기 시작한다.
-			PRINTFORMW 「, 응…은, 복잡한 기분이다…」
+			PRINTFORMW 「앗, 으응…! 복잡한 기분이네…」
 		;그 외의 경우
 		ELSE
-			PRINTFORMW 「가슴으로…켠다…」
-			PRINTFORMW 「…사실 의미를 모르는 것(뿐)만…」
-			PRINTFORMW 「아무튼…어차피 거역해도 헛됨일 것이다」
+			PRINTFORMW 「가슴으로… 문지른다라…」
+			PRINTFORMW 「…사실 의미를 모르는 건 아니지만…」
+			PRINTFORMW 「아무튼…어차피 거역할 필요는 없지.」
 			PRINTFORMW 케이네는 반 단념하도록(듯이), 가슴으로 페니스를 켜기 시작했다.
 		ENDIF
 		CFLAG:8272= 1
@@ -2932,29 +3115,63 @@ IF SELECTCOM == 42
 			IF RAND:3 == 0
 				;B감각 Lv3 이상
 				IF ABL:3 >= 3
-					PRINTFORMW 「응, 구…가슴이 스치며…느낌…」
-					PRINTFORMW 파이즈리로 가슴이 느껴 버리고 있는지, 케이네는 안타까운 듯이  가슴을 계속 움직인다.
-					PRINTFORMW 가, 지치고 태우고 감자 있는지, 속도는 점차 떨어져 간다.
-					PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 머리에 손을 실으면(자), 케이네는 이쪽을 시선을 돌림 해, 버릴 수 있던 것처럼 가슴을 크게 움직이기 시작했다.
+					IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+						PRINTFORMW 「응, 앙…! 가슴이 스쳐져서… 느껴버려…」
+						PRINTFORMW 「내 가슴 어때? 기분좋아?」
+						PRINTFORMW 파이즈리로 가슴이 느껴버리고 있는건지, 케이네는 안타까운 듯이 가슴을 계속 움직였다.
+						PRINTFORMW 허나 점차 지쳐가고 있는건지 속도는 점차 떨어져 갔다.
+						PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 머리에 손을 얹자 케이네는 이쪽을 시선을 돌린 후 가슴을 크게 움직이기 시작했다.
+					ELSE
+						PRINTFORMW 「응, 구…가슴이 스치며…느낌…」
+						PRINTFORMW 파이즈리로 가슴이 느껴 버리고 있는지, 케이네는 안타까운 듯이  가슴을 계속 움직인다.
+						PRINTFORMW 가, 지치고 태우고 감자 있는지, 속도는 점차 떨어져 간다.
+						PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 머리에 손을 실으면(자), 케이네는 이쪽을 시선을 돌림 해, 버릴 수 있던 것처럼 가슴을 크게 움직이기 시작했다.
+					ENDIF
 				;그 외의 경우
 				ELSE
-					PRINTFORMW 「, …가슴은…큰 편이라고는 생각하기 때문…」
-					PRINTFORMW 케이네는 풍만한 가슴으로 페니스를 싼다.
-					PRINTFORMW 그 감촉은, 질이라고도 입이라고도 말할 수 없는, 이상한 쾌감을 주었다.
-					PRINTFORMW 「이렇게 진동시켜…선생님에게는 전망이다♪」
+					IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+						PRINTFORMW 「린노스케는 큰 게 좋은거지?」
+						PRINTFORMW 『말하자면... 읏! 큰게 좋지! 어엇!』
+						PRINTFORMW 「헤헷! 나의 가슴으로, 느껴주고 있는거구나?」
+						PRINTFORMW 『무슨 소리..! 읏!』
+						PRINTFORMW 「...부끄러워할 거 없어. 다 알고 있으니까.」
+						PRINTFORMW 「그나저나 정말 기뻐. 나의 것으로 느껴주다니.」
+					ELSE
+						PRINTFORMW 「, …가슴은…큰 편이라고는 생각하기 때문…」
+						PRINTFORMW 케이네는 풍만한 가슴으로 페니스를 싼다.
+						PRINTFORMW 그 감촉은, 질이라고도 입이라고도 말할 수 없는, 이상한 쾌감을 주었다.
+						PRINTFORMW 「이렇게 진동시켜…선생님에게는 전망이다♪」
+					ENDIF
 				ENDIF
 			;난수 분기:2
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「, …가슴은…큰 편이라고는 생각하기 때문…」
-				PRINTFORMW 케이네는 풍만한 가슴으로 페니스를 싼다.
-				PRINTFORMW 그 감촉은, 질이라고도 입이라고도 말할 수 없는, 이상한 쾌감을 주었다.
-				PRINTFORMW 「이렇게 진동시켜…선생님에게는 전망이다♪」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+						PRINTFORMW 「린노스케는 큰 게 좋은거지?」
+						PRINTFORMW 『말하자면... 읏! 큰게 좋지! 어엇!』
+						PRINTFORMW 「헤헷! 나의 가슴으로, 느껴주고 있는거구나?」
+						PRINTFORMW 『무슨 소리..! 읏!』
+						PRINTFORMW 「...부끄러워할 거 없어. 다 알고 있으니까.」
+						PRINTFORMW 「그나저나 정말 기뻐. 나의 것으로 느껴주다니.」
+					ELSE
+						PRINTFORMW 「, …가슴은…큰 편이라고는 생각하기 때문…」
+						PRINTFORMW 케이네는 풍만한 가슴으로 페니스를 싼다.
+						PRINTFORMW 그 감촉은, 질이라고도 입이라고도 말할 수 없는, 이상한 쾌감을 주었다.
+						PRINTFORMW 「이렇게 진동시켜…선생님에게는 전망이다♪」
+					ENDIF
 			;그 외의 경우
 			ELSE
-				PRINTFORMW 「이런 것은…어떻겠는가…」
-				PRINTFORMW 케이네는 %CALLNAME:MASTER%의 페니스를 사이에 두는 것이 아니라, 유두로 귀두를 켜 왔다.
-				PRINTFORMW 「후~응♪　이것은…대단해…」
-				PRINTFORMW 얼굴은 황홀해, %조사처리(CALLNAME:MASTER,"는")% 귀두를 유두로 켜졌을 뿐의 쾌감에, 페니스를 벌벌진동시켰다.
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「이런 건 어때?」
+					PRINTFORMW 케이네는 %CALLNAME:MASTER%의 페니스를 가슴사이에 두는 것이 아니라, 유두로 귀두를 문질렀다.
+					PRINTFORMW 「후~응♪　이것은…대단해… 린노스케, 어때?」
+					PRINTFORMW 『나쁘진... 않군... 음! 읏!』
+					PRINTFORMW 그녀는 황홀한 표정으로 %조사처리(CALLNAME:MASTER,"의")% 발기된 자지의 귀두를 유두로 마구 문질렀다.
+				ELSE
+					PRINTFORMW 「이런 것은…어떻겠는가…」
+					PRINTFORMW 케이네는 %CALLNAME:MASTER%의 페니스를 사이에 두는 것이 아니라, 유두로 귀두를 켜 왔다.
+					PRINTFORMW 「후~응♪　이것은…대단해…」
+					PRINTFORMW 얼굴은 황홀해, %조사처리(CALLNAME:MASTER,"는")% 귀두를 유두로 켜졌을 뿐의 쾌감에, 페니스를 벌벌진동시켰다.
+				ENDIF
 			ENDIF
 			CFLAG:8272 = 3
 		;그 외의 경우
@@ -2972,9 +3189,9 @@ IF SELECTCOM == 43
 	IF CFLAG:8273 == 0
 		;연모
 		IF TALENT:150 == 1
-			PRINTFORMW 「가랑이로…켠다…」
-			PRINTFORMW 「삽한편이…빨리 없는가?」
-			PRINTFORMW 그렇게 말하면서도, 케이네는 %CALLNAME:MASTER% 위에 걸쳐, 음렬로 페니스를 켜기 시작했다.
+			PRINTFORMW 「가랑이로… 문지른다니…」
+			PRINTFORMW 「넣는 건… 아직이지?」
+			PRINTFORMW 그렇게 말하면서도, 케이네는 %CALLNAME:MASTER% 위에 걸쳐, 음순으로 페니스를 문지르기 시작했다.
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「…삽등…말소다」
@@ -16587,41 +16804,109 @@ IF TFLAG:9 > 0 || TFLAG:10 > 0
 	ELSEIF TALENT:150 == 1 && (CFLAG:9010 <= 3|| FLAG:11 == 2)
 		;난수 분기:3
 		IF RAND:3 == 0
-			PRINTFORMW 「, 후~…너도…이 나무 그런가…?」
-			PRINTFORMW 「함께…함께 기분 좋아져!　이는…!」
-			PRINTFORMW 케이네의 질내가, 그것을 바라는것 같이 일순간 수축한다.
-			PRINTFORMW 그 자극에, %조사처리(CALLNAME:MASTER,"는")% 사정을 억제하는 것 등 할 수 없었다.
-			PRINTFORMW 「후~!　안, 뜨거운 것이!　많이 나와……」
-			PRINTFORMW 「후~, 후~…아이…할 수 있으면 좋은데♪」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「벌써 가는거야…?」
+				PRINTFORMW 「좋아 린노스케! 얼른 싸줘!」
+				PRINTFORMW 「안에! 안에! 안에 싸줘어!!」
+				PRINTFORMW 「린노스케의 사랑을 전부 갖고싶어!」
+				PRINTFORMW 『네, 네가 그렇게까지 말한다면.. 읏! 더 이상 참을 수가... 끄아아아!!』
+				PRINTFORMW 케이네의 자궁은 %CALLNAME:MASTER%의 씨앗을 바라는 것 같이 일순간 수축했다.
+				PRINTFORMW 그 자극에 %조사처리(CALLNAME:MASTER,"는")% 사정을 억제하는 것 등 할 수 없었다.
+				PRINTFORMW 「후~! 따뜻해... 나의 안에, 뜨거운 것이… 잔뜩!」
+				PRINTFORMW 「정말 기뻐 린노스케, 너의 사랑, 듬뿍 받아버렸어.」
+				PRINTFORMW 「후후... 너의 아이, 생길까나?」
+			ELSE
+				PRINTFORMW 「, 후~…너도…이 나무 그런가…?」
+				PRINTFORMW 「함께…함께 기분 좋아져!　이는…!」
+				PRINTFORMW 케이네의 질내가, 그것을 바라는것 같이 일순간 수축한다.
+				PRINTFORMW 그 자극에, %조사처리(CALLNAME:MASTER,"는")% 사정을 억제하는 것 등 할 수 없었다.
+				PRINTFORMW 「후~!　안, 뜨거운 것이!　많이 나와……」
+				PRINTFORMW 「후~, 후~…아이…할 수 있으면 좋은데♪」
+			ENDIF
 			PRINTFORMW 케이네는 기특하게 미소지었다.
 		;난수 분기:2
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「안에…낸다면, 안에 내 간다, …후~, 후~」
-			PRINTFORMW 「하…!　자궁에 …뜨거운 것이 …따라지고…!」
-			PRINTFORMW 「…, 이것으로…임신, 할까…」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「함께! 함께 가는거야!」
+				PRINTFORMW 「망설이지 말고 안에 싸줘, 린노스케!」
+				PRINTFORMW 『진정해, 케이네! 난 아직!』
+				PRINTFORMW 「좀 더! 좀 더! 좀 더어!!」
+				PRINTFORMW 『...안 돼... 더 이상..... 재촉하면..!』
+				PRINTFORMW 「아항..! 아흥! 다메메에에에!!!!!!!」
+				PRINTFORMW 케이네의 자궁은 %CALLNAME:MASTER%의 씨앗을 바라는 것 같이 일순간 수축했다.
+				PRINTFORMW 그 자극에 %조사처리(CALLNAME:MASTER,"는")% 사정을 억제하는 것 등 할 수 없었다.
+				PRINTFORMW 「린노스케의 것이, 나의 안에 들어오고 있어.」
+				PRINTFORMW 「정말 기뻐, 너의 것을 잔뜩 받아버렸어.」
+				PRINTFORMW 「이제 조금만 더 싸면, 나도 너의 아이를 가질 수가 있겠지?」
+				PRINTFORMW 『...안 돼... 제발 아이만은..』
+			ELSE
+				PRINTFORMW 「안에…낸다면, 안에 내 간다, …후~, 후~」
+				PRINTFORMW 「하…!　자궁에 …뜨거운 것이 …따라지고…!」
+				PRINTFORMW 「…, 이것으로…임신, 할까…」
+			ENDIF
 		;그 외의 경우
 		ELSE
 			;전커멘드 대면자리정도
 			IF PREVCOM == 22
-				PRINTFORMW 「하, 그런 오쿠까지 들어와…그대로 사정…하는지…?」
-				PRINTFORMW 그렇게 (들)물어 오는 케이네에, %조사처리(CALLNAME:MASTER,"는")% 승낙한다.
-				PRINTFORMW 「…응, 안…많이 내…후~응!　(은)는, 잉키라고 줘…」
-				PRINTFORMW 그렇게 말하면서 케이네는, %조사처리(CALLNAME:MASTER,"를")% 꼭 껴안는 팔에 힘을 집중했다.
-				PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 거기에 대답하도록(듯이), 한층 더 강하고 케이네를 꼭 껴안아 질내에 힘차게 사정했다.
-				PRINTFORMW 「후~!　안에…나와 …!　많이 내!」
-				PRINTFORMW 케이네는 교성을 올리면서, %CALLNAME:MASTER%의 등에 손톱을 세운다.
-				PRINTFORMW 눈앞에는 황홀로서 환희가 눈물을 머금은 케이네의 얼굴이 있었다.
-				PRINTFORMW 「후~, 하하하…기분 좋았던…이것으로 아이도 할 수 있으면…우리…사랑의 형태가…」
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 「하, 안까지 들어오고 있어… 그대로 사정할꺼지?」
+					PRINTFORMW 『젠장! 이럴 줄 알았으면 콘돔이라도 끼는 건데!』
+					PRINTFORMW 「으읏! 싫어. 콘돔의 느낌은 싫단 말야. 하아..하아...」
+					PRINTFORMW 『어쨌든 피임을...』
+					PRINTFORMW 그렇게 묻고있는 케이네를 보며 %조사처리(CALLNAME:MASTER,"는")% 어떻게든 체외사정을 할 타이밍을 생각한다.
+					PRINTFORMW 「…응, 알았지, 린노스케? 반드시 안에 싸는거야.」
+					PRINTFORMW 『절대로 그럴 수는...』
+					PRINTFORMW 「…읏, 거의 다 왔어. 아항! 응! 읏!」
+					PRINTFORMW 그렇게 말하면서 케이네는, %조사처리(CALLNAME:MASTER,"를")% 꼭 껴안는 팔에 힘을 집중했다.
+					PRINTFORMW 『...밖에! 밖에 내야..!』
+					PRINTFORMW 「…마음대로는 안돼!」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 어떻게든 사정하는 타이밍을 잡아 체외사정을 노리려고 했지만, 케이네는 그걸 예상했듯이 그의 자지를 질내에서 해방시켜주지 않았고, 결국 그녀에게 꼭 껴안긴 채 질내에 힘차게 사정당했다.
+					PRINTFORMW 「후~!　안에…나와 …!　더 많이 싸줘.」
+					PRINTFORMW 『이것만은 피하고 싶었건만, 너무하는군...』
+					PRINTFORMW 케이네는 교성을 내지르며 %CALLNAME:MASTER%의 등을 껴안았다.
+					PRINTFORMW 눈앞에는 황홀로서 환희가 눈물을 머금은 케이네의 얼굴이 있었다.
+					PRINTFORMW 「후~, 헤헤… 기분 좋았어… 이것으로 만약 아이가 생긴다면… 우리의…사랑의 형태가…」
+				ELSE
+					PRINTFORMW 「하, 그런 오쿠까지 들어와…그대로 사정…하는지…?」
+					PRINTFORMW 그렇게 (들)물어 오는 케이네에, %조사처리(CALLNAME:MASTER,"는")% 승낙한다.
+					PRINTFORMW 「…응, 안…많이 내…후~응!　(은)는, 잉키라고 줘…」
+					PRINTFORMW 그렇게 말하면서 케이네는, %조사처리(CALLNAME:MASTER,"를")% 꼭 껴안는 팔에 힘을 집중했다.
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 거기에 대답하도록(듯이), 한층 더 강하고 케이네를 꼭 껴안아 질내에 힘차게 사정했다.
+					PRINTFORMW 「후~!　안에…나와 …!　많이 내!」
+					PRINTFORMW 케이네는 교성을 올리면서, %CALLNAME:MASTER%의 등에 손톱을 세운다.
+					PRINTFORMW 눈앞에는 황홀로서 환희가 눈물을 머금은 케이네의 얼굴이 있었다.
+					PRINTFORMW 「후~, 하하하…기분 좋았던…이것으로 아이도 할 수 있으면…우리…사랑의 형태가…」
+				ENDIF
 			;전커멘드 승마정도
 			ELSEIF PREVCOM == 24
-				PRINTFORMW 「그렇게…밀어 올려 …나(뿐)만 기분 좋게…아, 어…?」
-				PRINTFORMW 「대 와, 구…!　너의 것이 커져…아…」
-				PRINTFORMW 「후~♪　나오고 있는 , 안에 나오고 있는!」
-				PRINTFORMW 「…구응…기분 좋았는지…?」
-				PRINTFORMW 「후후…따뜻한…좀 더 내…아이, 만들지 않겠니」
-				PRINTFORMW 케이네는 %조사처리(CALLNAME:MASTER,"는")% 업신여겨, 상냥하게 미소짓는다.
-				PRINTFORMW 흩뜨려진 그 긴 머리카락이, 역광을 받아 빛난다.
-				PRINTFORMW 그 모습은 아름답고, 마치 여신과 같았다.
+				IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+					PRINTFORMW 『허리를 흔들어대는 모습이 매우 아름답군.』
+					PRINTFORMW 「바, 바보! 뭐라고 말하는 거야? 으읏! 응!」
+					PRINTFORMW 케이네는 %조사처리(CALLNAME:MASTER,"의")% 위에 올라탄 채, 세로로 리드미컬하게 허리를 흔들어댔다.
+					PRINTFORMW 『읏, 위험해. 이제 더 이상 못 참겠...』
+					PRINTFORMW 「으응.. 하아하아... 싫어. 절대로 안 놔줄 거야. 절대로 밖에다 싸도록 놔두지 않을거야!」
+					PRINTFORMW 『제발, 케이네. 아이가 생기면 너도 더 이상은...!』
+					PRINTFORMW 「하아하아... 조금만 더! 조금만.. 조금만 더어!」
+					PRINTFORMW 『...끄..끄아앗!』
+					PRINTFORMW 「후~♪　나의 안에... 너의 것이 들어오고 있어. 그것도 잔뜩..」
+					PRINTFORMW 『이건.. 아니야..』
+					PRINTFORMW 「…후훗… 기분, 좋았었어?」
+					PRINTFORMW 『좋지 않다고 말하면 거짓말이 되는군.』
+					PRINTFORMW 「그럼 좀 더 하자. 그리고 나와의 아이, 얼른 만들자.」
+					PRINTFORMW 『아이만큼은 좀 봐줘...』
+					PRINTFORMW 케이네는 %조사처리(CALLNAME:MASTER,"를")% 업신여기면서 상냥하게 미소짓는다.
+					PRINTFORMW 흩뜨려진 그 긴 머리카락이 역광을 받아 빛난다.
+					PRINTFORMW 그 모습은 아름답고, 마치 여신과 같았다.
+				ELSE
+					PRINTFORMW 「그렇게…밀어 올려 …나(뿐)만 기분 좋게…아, 어…?」
+					PRINTFORMW 「대 와, 구…!　너의 것이 커져…아…」
+					PRINTFORMW 「후~♪　나오고 있는 , 안에 나오고 있는!」
+					PRINTFORMW 「…구응…기분 좋았는지…?」
+					PRINTFORMW 「후후…따뜻한…좀 더 내…아이, 만들지 않겠니」
+					PRINTFORMW 케이네는 %조사처리(CALLNAME:MASTER,"는")% 업신여겨, 상냥하게 미소짓는다.
+					PRINTFORMW 흩뜨려진 그 긴 머리카락이, 역광을 받아 빛난다.
+					PRINTFORMW 그 모습은 아름답고, 마치 여신과 같았다.
+				ENDIF
 			;그 외의 경우
 			ELSE
 			ENDIF
@@ -16684,14 +16969,14 @@ IF TFLAG:11 > 0
 	IF TALENT:150 == 1 && (CFLAG:9012 <= 3|| FLAG:11 == 2)
 		;난수 분기:2
 		IF RAND:2 == 0
-			PRINTFORMW 「후~, 내고 싶은 것인지?」
-			PRINTFORMW 「……출이마라면…내가 말해…기분 좋아져 주고」
+			PRINTFORMW 「후~, 싸고싶은 거야?」
+			PRINTFORMW 「……싸고싶다면…내게 말해… 기분좋게 해줄게.」
 		;그 외의 경우
 		ELSE
 			PRINTFORMW 「…말하지 않아도 알겠어…이렇게 앞질러 하며…」
-			PRINTFORMW 「입으로 받아 들여 주는…내 주고…」
-			PRINTFORMW 「응!　진하고 진하고 , 후~」
-			PRINTFORMW 「너무 내고 …에서도, 그 만큼 기분 좋았다는 일이다…기뻐」
+			PRINTFORMW 「입으로 받아줄 테니 마음것 싸도 돼.」
+			PRINTFORMW 「응!　맛있어 , 후~」
+			PRINTFORMW 「너무 쌌잖아. …뭐, 그 만큼 기분 좋았다는 거겠지. …정말 기뻐.」
 		ENDIF
 		CFLAG:9012 = 4
 	;굴복 각인 Lv3
@@ -17046,9 +17331,15 @@ ENDIF
 IF TFLAG:200 == 140
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「, …일어났는지…기분, 좋은가…?」
-		PRINTFORMW 「………응, 이렇게…앞질러 하며…」
-		PRINTFORMW 「다음에……나도, 기분 좋게 해…줄래…?」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「좋은 아침, 린노스케.」
+			PRINTFORMW 「………응, 이렇게 봉사하면 기분좋아?」
+			PRINTFORMW 「다음에……나도, 기분 좋게 해…줄래…?」
+		ELSE
+			PRINTFORMW 「, …일어났는지…기분, 좋은가…?」
+			PRINTFORMW 「………응, 이렇게…앞질러 하며…」
+			PRINTFORMW 「다음에……나도, 기분 좋게 해…줄래…?」
+		ENDIF
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -17060,24 +17351,47 @@ ENDIF
 ;아침 파이즈리	CFLAG:9165
 ;-------------------------------------------------
 IF TFLAG:200 == 141
-	PRINTFORMW 「응, 실마리, 아, 일어났는지…그…기분 좋은가?」
-	PRINTFORMW 「가슴이라면 조금은…, 앞으로부터 무엇인가 나왔군…」
-	PRINTFORMW 「기분 좋아지고 있는지…기뻐」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「응, 아, 일어났어?」
+		PRINTFORMW 『너, 가슴으로 뭐하는...』
+		PRINTFORMW 「뭐하고 있냐니, 아침부터 건강해보이길래 봉사해주고 있었다고.」
+		PRINTFORMW 『이.. 느낌은..』
+		PRINTFORMW 「역시나 내 가슴이 좋은거구나. 좋아. 더 기분좋게..」
+	ELSE
+		PRINTFORMW 「응, 실마리, 아, 일어났는지…그…기분 좋은가?」
+		PRINTFORMW 「가슴이라면 조금은…, 앞으로부터 무엇인가 나왔군…」
+		PRINTFORMW 「기분 좋아지고 있는지…기뻐」
+	ENDIF
 ENDIF
 ;-------------------------------------------------
 ;아침 승마정도	CFLAG:9166
 ;-------------------------------------------------
 IF TFLAG:200 == 142
-	PRINTFORMW 「후~, 후~…, 일어났는지…후~」
-	PRINTFORMW 「너의 것이…아침부터 건강하기 때문에…보고 있으면(자) 무심코…하고 싶어지며…」
-	PRINTFORMW 「기다려 줘…곧 끝나기 때문에, 는, 꺄아!」
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 케이네의 허리를 가져, 격렬하게 밀어 올렸다.
-	PRINTFORMW 「아, 아, , 응아, 격렬하고…응!」
-	PRINTFORMW %CALLNAME:MASTER%의 허리와 함께, 케이네의 허리도 움직인다.
-	PRINTFORMW 「하, …함께…이는…!　(이)나 , 후~♪」
-	PRINTFORMW 
-	PRINTFORMW 「후~, 후~…아침부터…격렬한데…」
-	PRINTFORMW 그렇게 말해, 케이네는 숨을 황면서도, %CALLNAME:MASTER%에게 미소지었다.
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 『케이...네?』
+		PRINTFORMW 「후~, 후~…, 좋은아침, 린노스케.」
+		PRINTFORMW 「너의 것이… 아침부터 건강해 보여서 …보고 있으면 무심코…하고 싶어져…」
+		PRINTFORMW 「기다려… 곧 너를 기분좋게 해줄게.」
+		PRINTFORMW 케이네는 %조사처리(CALLNAME:MASTER,"의")% 위에 올라타 신나게 허리를 흔들었다.
+		PRINTFORMW 「아, 앗, 앙! 으읏, 매우 격렬하게 하는거야! 응!」
+		PRINTFORMW 『읏, 더 이상...』
+		PRINTFORMW 「좋아, 힘껏 쏴!」
+		PRINTFORMW 『끄으읏!』
+		PRINTFORMW %CALLNAME:MASTER%는 케이네의 허리놀림과 그녀의 요염함에 흥분을 감추지 못 했고, 결국 그녀의 자궁 안에 싸버리고 말았다.
+		PRINTFORMW 「후후후.. 오늘도 너의 사랑, 잘 받았어♥」
+		PRINTFORMW 『오늘의 시작도 아주.. 좋군...(후우..)』
+	ELSE
+		PRINTFORMW 「후~, 후~…, 일어났는지…후~」
+		PRINTFORMW 「너의 것이…아침부터 건강하기 때문에…보고 있으면(자) 무심코…하고 싶어지며…」
+		PRINTFORMW 「기다려 줘…곧 끝나기 때문에, 는, 꺄아!」
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 케이네의 허리를 가져, 격렬하게 밀어 올렸다.
+		PRINTFORMW 「아, 아, , 응아, 격렬하고…응!」
+		PRINTFORMW %CALLNAME:MASTER%의 허리와 함께, 케이네의 허리도 움직인다.
+		PRINTFORMW 「하, …함께…이는…!　(이)나 , 후~♪」
+		PRINTFORMW 
+		PRINTFORMW 「후~, 후~…아침부터…격렬한데…」
+		PRINTFORMW 그렇게 말해, 케이네는 숨을 황면서도, %CALLNAME:MASTER%에게 미소지었다.
+	ENDIF
 ENDIF
 ;-------------------------------------------------
 ;아침 키스	CFLAG:9167
@@ -17111,7 +17425,7 @@ IF TFLAG:200 == 151
 	;연모
 	IF TALENT:150 == 1
 		PRINTFORMW 「 이제(벌써) 마지막이나…응…한 사람입니다 의 것도…외롭고…안타까워서…」
-		PRINTFORMW 스커트의 옷자락을 질네, %CALLNAME:MASTER%의 이름을 부르면서, 케이네는 스스로의 손가락으로 절정으로 앙인 체하며 갔다.
+		PRINTFORMW 스커트의 옷자락을 움켜쥔 채 %CALLNAME:MASTER%의 이름을 부르면서, 케이네는 스스로의 손가락으로 자위하면서 큰 교성과 동시에 절정에 달했다.
 		RETURN 0
 	;그 외의 경우
 	ELSE
@@ -17196,7 +17510,7 @@ ENDIF
 IF TFLAG:200 == 400
 	PRINTFORMW 「후후… 잠자는 얼굴이 사랑스럽다…」
 	PRINTFORMW 한 이불에 들어가, %CALLNAME:MASTER%의 팔에 안겨든다.
-	PRINTFORMW 「잘 자요… 내일도 잘 부탁드립니다…」
+	PRINTFORMW 「잘 자… 내일도 잘 부탁해…」
 ENDIF
 ;-------------------------------------------------
 ;밤에 겨 승마정도(실패)	CFLAG:9183
@@ -17207,8 +17521,13 @@ ENDIF
 ;밤에 겨 승마정도(승마정도)	CFLAG:9184
 ;-------------------------------------------------
 IF (TFLAG:200 == 401 && R == 2)
-	PRINTFORMW 「하앙, 미안하군… 후응~ 흣, 일으켜 버려서…」
-	PRINTFORMW 「아무튼…… 나를… 봐 줘…」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「하앙, 안녕 린노스케.」
+		PRINTFORMW 「이거 상당히 기분좋아.」
+	ELSE
+		PRINTFORMW 「하앙, 미안하군… 후응~ 흣, 일으켜 버려서…」
+		PRINTFORMW 「아무튼…… 나를… 봐 줘…」
+	ENDIF
 ENDIF
 ;-------------------------------------------------
 ;밤에 겨 승마정도(단념한다)	CFLAG:9185
@@ -17283,9 +17602,21 @@ ENDIF
 IF TFLAG:200 == 170
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「…」
-		PRINTFORMW (그런가… 나도… 아이를 내려 주셨구나…)
-		PRINTFORMW 케이네는 스스로의 복부를 상냥하게 어루만지면서, 미소지었다.
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「드디어... 해냈어...」
+			PRINTFORMW 『손나.. 바카나!』
+			PRINTFORMW 「...생겨버렸어, 린노스케.」
+			PRINTFORMW 『아냐 이건, 소레와 우소다!!』
+			PRINTFORMW 「거짓말이 아냐.」
+			PRINTFORMW 「너와의 사랑의 결정, 결국 이루어졌어. 기뻐해줘, 린노스케. 헤헤헷!」
+			PRINTFORMW 『안돼에에에에에에에!!!』
+			PRINTFORMW 「(이건 하늘의 뜻이요, 역사에서 가장 중요하면서 소중하기도한 순간이야.)」
+			PRINTFORMW 케이네는 스스로의 복부를 상냥하게 어루만지면서, 미소지었다.
+		ELSE
+			PRINTFORMW 「…」
+			PRINTFORMW (그런가… 나도… 아이를 내려 주셨구나…)
+			PRINTFORMW 케이네는 스스로의 복부를 상냥하게 어루만지면서, 미소지었다.
+		ENDIF
 		RETURN 0
 	;굴복 각인 Lv3
 	ELSEIF MARK:2 == 3

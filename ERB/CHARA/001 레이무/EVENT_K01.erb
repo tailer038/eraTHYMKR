@@ -289,24 +289,130 @@ SIF NO:TARGET != 1
 ;첫조교시 CFLAG5001
 ;-------------------------------------------------
 IF CFLAG:5001 == 0
-	DRAWLINE
-	PRINTFORMW 「응, 왜 이런 곳에 있는 거지?」
-	PRINTFORMW 「헤―, 날 조교하신다라…. 어, 어라? 에잇!」
-	PRINTFORMW (이상한데, 도약도 할 수 없고, 스펠 카드도 사용할 수 없는 것 같아)
-	PRINTFORMW (……하아, 조만간 어떻게든 되겠지)
-	PRINTFORMW 「뭐어, 하쿠레이의 무녀를 간단히 농락할 수 있다고 생각하지는 마」
-	CFLAG:5001 = 1
-	RETURN 1
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 「응, 왜 이런 곳에 있는 거지?」
+		PRINTFORMW 『정신이 드나?』
+		
+		;원작 및 동인설정에서 그녀가 린노를 부르는 호칭 
+		CSTR:90 = %CALLNAME:MASTER% 씨
+		PRINTFORMW 「%CSTR:90%!? 어째서 여기에…?」
+		PRINTFORMW 『어째서라니…… 여긴 바로 나의 집이자 가게다만…?』
+		PRINTFORMW 「그럼 여기가 향림당이라는 거야? 그건 그렇고 여기는 향림당의..」
+		PRINTFORMW 『조교실이라는 곳이다. 이번에 향림당이 개편되면서 이러한 곳도 생겼지.』
+		PRINTFORMW 「햐, 향림당에 이런 곳이 있었어? 그, 근데 뭐? 조..조교?!?!」
+		PRINTFORMW 『뭔가 이상한가?』
+		PRINTL
+		PRINTFORMW 레이무는 놀라는 기색을 보였다가 이에 손으로 관자놀이를 부여잡으면서 고개를 설레설레 흔들었다.
+		PRINTFORMW 그러면서 한숨소리까지 들린 건 설마.. 기분 탓일 거다.
+		PRINTL
+		PRINTFORMW 「%CSTR:90%! 어떻게 했길래 이렇게까지 타락하게 된 거야? 분명 예전까지는 정상이었잖아?」
+		PRINTFORMW 『나는 전혀 타락하지 않았어. 그때도 말했지. '나는 정상이다'고.』
+		PRINTFORMW 「그, 그말.. 어디선가 들은 적이 있는데…?」
+		PRINTFORMW 『설마 얼마 전 일을 잊어먹지는 앉았겠지, 레이무?』
+		PRINTFORMW 「맞다! 그때!」
+		PRINTFORMW 「%CSTR:90%, 설마 또!?」
+		PRINTFORMW 『아니야, 지금 난 그때와는 달리 더더욱 정상이다. 오해하지 말도록.』
+		PRINTFORMW 「지금 무슨 말도 안되는 소리를 하는 거야!? '조교'라고! 조교! %CSTR:90%, 그건 저속한 짓거리라고!」
+		PRINTFORMW 「……으으, %CSTR:90%가 뭔가 이상해졌어.」
+		PRINTFORMW 「분명 삼신기는 그 때 확실히 파괴했는데. 그렇기에 %CSTR:90%가 또다시 이렇게 변해버릴 리가 없는데.」
+		PRINTFORMW 『……저기, 레이무?』
+		PRINTFORMW 「대체 왜?!」
+		PRINTFORMW 『그 삼신기 말이다만……』
+		PRINTFORMW 「???」
+		PRINTFORMW 『내(%CALLNAME:MASTER%)가 바로, '삼신기'다.』
+		PRINTL
+		PRINTFORMW 순간, 레이무의 눈동자가 작아졌다.
+		PRINTFORMW 뭔가 충격을 크게 받아 얼이빠진 것 같아보인다.
+		PRINTFORMW 하지만 1분쯤 지나자 진정을 하고 %CALLNAME:MASTER%에게 말을 꺼냈다.
+		PRINTL
+		PRINTFORMW 「그래서……지금은 %CSTR:90%가 '삼신기'라는 거야?」
+		PRINTFORMW 『바로 그렇다.』
+		PRINTFORMW 「어떻게 그런게 가능한 거야? 살아 움직이는 %CSTR:90%가 설마 삼신기일 리가 없잖아!」
+		PRINTFORMW 『예전에 부셔졌던 그것들의 파편을, 내가 흡수했지.』
+		PRINTFORMW 「……」
+		PRINTFORMW 「…………」
+		PRINTFORMW 「………………」
+		PRINTFORMW 「………(그렇구나.. 그래서 가능한 거였구나.)」
+		PRINTFORMW 「……(암튼, 그게 중요한 게 아니야!)대체 무슨 생각을 하는거야?」
+		PRINTFORMW 『왜 그러지? 내가 전투능력을 가져서는 안 되는 이유라도 있는건가? 너희들은 탄막놀이를 할 만큼의 전투력을 지니고 있잖나. 그런 너희들이, 나에게 그런 말을 할 자격이 있나?』
+		PRINTFORMW 「%CSTR:90%는 애초에 탄막놀이를 하는 사람이 아니잖아!」
+		PRINTFORMW 「게다가! 다른 무엇보다도 '삼신기'야!」
+		PRINTFORMW 「%CSTR:90% 자신 스스로 지난번에 나에게 저질렀던 일을 잊어버린거야?」
+		PRINTFORMW 『이번엔 아니야. 나는 나 나름대로의 제대로된 목적이 있어서 그것들을 흡수하고 '힘'을 가진거다.』
+		PRINTFORMW 「무슨 꿍꿍이야, %CSTR:90%!?」
+		PRINTFORMW 『첫째, '용'에게 나의 실력을 인정받는 것.』
+		PRINTFORMW 「………'용'이라면, 용신을 말하는 거?」
+		PRINTFORMW 『둘째, 환상향과 바깥세계를 왕래할 수 있는 힘을 얻는 것.』
+		PRINTFORMW 「그건 무리라고! 한 번 환상향을 나갔다간, 잊혀져서 두 번다시 우리가 당신을 못 알아볼지도 모른다고! 게다가……… 」
+		PRINTFORMW 『한 번 나갔다간 다시 돌아올 수가 없다는 건가? 그렇기에 특정한 '힘'을 얻으려고 하는거다.』
+		PRINTFORMW 『셋째, 나 자신의 로망을 환상향에서 누리는 것.』
+		PRINTFORMW 「뭐야 대체 그건? 첫번째와 두번째는 그렇다고 치고, 세번째는 뭔가 수상한데!」
+		PRINTFORMW 『네가 우려하던 사태는, 절대로 일어나지 않을거다.』
+		PRINTFORMW 「지금의 %CSTR:90%는 전혀 신뢰할 수가 없어!」
+		PRINTFORMW 『레이무, 나는 네가 필요하다. 부디 도와줄 순 없을까?』
+		PRINTFORMW 「안돼. 지금의 %CSTR:90%는..」
+		PRINTFORMW 『내 눈을 봐, 레이무. 지금의 내가 정말 이상한지 제대로 한 번 생각해보라고.』
+		PRINTFORMW 「……나도 %CSTR:90%를 믿고…싶어. 하지만, 하지만!」
+		PRINTFORMW 『…………(덥썩!)』
+		PRINTFORMW 「……%CSTR:90%」
+		PRINTL
+		PRINTFORMW %CALLNAME:MASTER%는 순간, 레이무를 끌어안았다.
+		PRINTFORMW 그에 의해 레이무는 얼굴을 빨같게 붉혔다.
+		PRINTFORMW 몸은 떨고 있었으며, 얼굴은 '정'에 의한 망설임으로 가득했다.
+		PRINTL
+		PRINTFORMW 「……%CSTR:90%, 반칙이야. 그, 그러면 난 더 이상...」
+		PRINTL
+		PRINTFORMW %CALLNAME:MASTER%는 레이무의 목덜미와 뺨을 애무했다.
+		PRINTFORMW 그녀는 거친 숨을 내쉬며 느끼고 있었다.
+		PRINTL
+		PRINTFORMW 『나는 미치지 않았어, 레이무. 나는 진지해.』
+		PRINTFORMW 『나는 네가 필요해. 너의 '사랑'이 필요해.』
+		PRINTFORMW 「……%CSTR:90%, 그 말은 즉……」
+		PRINTFORMW 『아아, 그렇고 말고.』
+		PRINTFORMW 「……정말 %CSTR:90%를 믿어도 돼? 정말로 그래도 돼?」
+		PRINTFORMW 『믿어도 된다.』
+		PRINTFORMW 「…나, %CSTR:90%를 좋아하고 있어. 예전부터 쭉……」
+		PRINTFORMW 「사실, 그때 %CSTR:90%가 날 공격하는 순간, 마음이 정말 아팠어. 다른 누구도 아닌 %CSTR:90%한테 미움받았을까봐 말이야.」
+		PRINTFORMW 『정정할게. 그때의 나는 제정신이 아니었어. 짐승의 욕망으로 점철된 필부에 지나지 않았어.』
+		PRINTFORMW 『하지만 지금은 달라. 난 너와 함께 사랑을 나누고 싶어. 그리고 네 목표를 진지하게 이루고 싶어.』
+		PRINTFORMW 「………믿을게. 만약 지금의 %CSTR:90%가 '진짜(本物, ほんもの)'라면, 믿을거야!」
+		PRINTFORMW 『고마워. 정말 고마워. 알아줘서, 정말 고맙다.』
+		;린노스케 EXTRA 보정, 호감도1000 순종3로 스타트!
+		CFLAG:2 = 1000
+		ABL:10 = 3
+		TALENT:150 = 1
+		CFLAG:5001 = 1
+		RETURN 1
+	ELSE
+		DRAWLINE
+		PRINTFORMW 「응, 왜 이런 곳에 있는 거지?」
+		PRINTFORMW 「헤―, 날 조교하신다라…. 어, 어라? 에잇!」
+		PRINTFORMW (이상한데, 도약도 할 수 없고, 스펠 카드도 사용할 수 없는 것 같아)
+		PRINTFORMW (……하아, 조만간 어떻게든 되겠지)
+		PRINTFORMW 「뭐어, 하쿠레이의 무녀를 간단히 농락할 수 있다고 생각하지는 마」
+		CFLAG:5001 = 1
+		RETURN 1
+	ENDIF
 
 ;임신 후 첫 회의 개시 이벤트 CFLAG5210 (주인이 부친)
 ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
 	;연모
 	IF TALENT:150 == 1
-		PRINTFORMW 「저, 저기, 나… 임신한 것 같은데」
-		PRINTFORMW 레이무는 흠칫 흠칫 조심스럽게 입을 열고는 회임한 것을 보고했다.
-		PRINTFORMW 「이것으로 난, 상품의 가치가 없는 여자가 된 것 같네, 후후」
-		PRINTFORMW 「물론, 당신이 책임져야 해? 나와 이 아이를, 평생」
-		PRINTFORMW 「싫다고는 말하게 하지 않아? 각오해두라고」
+		IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+			PRINTFORMW 「…나, %CSTR:90%의 아이를 임신했어!」
+			PRINTFORMW 레이무는 눈동자에 하트모양을 한 채 황홀하게 입을 열고는 회임한 것을 보고했다.
+			PRINTFORMW 「…정말 기뻐! 항상 꿈에서만 그리워하고 하고 있었는데..」
+			PRINTFORMW 「이제는 절대로 놓치지 않을거야, %CSTR:90%.」
+			PRINTFORMW 「이제부턴 항상 나와 이 아이만을 바라보게 해 주겠어.」
+			PRINTFORMW 「영원히!」
+		ELSE
+			PRINTFORMW 「저, 저기, 나… 임신한 것 같은데」
+			PRINTFORMW 레이무는 흠칫 흠칫 조심스럽게 입을 열고는 회임한 것을 보고했다.
+			PRINTFORMW 「이것으로 난, 상품의 가치가 없는 여자가 된 것 같네, 후후」
+			PRINTFORMW 「물론, 당신이 책임져야 해? 나와 이 아이를, 평생」
+			PRINTFORMW 「싫다고는 말하게 하지 않아? 각오해두라고」
+		ENDIF		
 	;굴복각인 3
 	ELSEIF MARK:2 == 3
 		PRINTFORMW 「저기, 그, 나 임신했어」
@@ -322,227 +428,301 @@ ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
 
 ;연모 또는 상애
 ELSEIF CFLAG:5001 < 2 && ( TALENT:150 == 1 || TALENT:153 == 1 )
-	DRAWLINE
-	PRINTFORMW 당신이 방의 문을 열자, 이쪽을 눈치챈 레이무는 일순간 얼굴을 밝게 폈지만, 당황해 무뚝뚝하게 얼굴을 되돌렸다.
-	PRINTFORMW 「…알았어. 항복이야」
-	PRINTFORMW 「확실히 당신, 대단한 변태에 에로의 화신이고 번뇌의 덩어리였지만」
-	PRINTFORMW 「노예라고 말해도, 왠지 당신, 상당히 그… 상냥했고」
-	PRINTFORMW 「필요하다는 말을 들으면 기뻐… 그렇게 되면, 나라도 당신에게 여러 가지 해 주고 싶어지잖아」
-	PRINTFORMW 「그러니까 그… 가능한 한 곁에 있어 줘. 응?」
-	PRINTFORMW 울 것 같은 얼굴로 독백을 끝낸 레이무는 잠시 후 자신이 말한 말의 의미를 눈치채, 대단한 기세로 고개를 돌렸다.
-	PRINTFORMW 「그, 그러니까! 이제 와서 멈추거나 하면 용납하지 않아!」
-	PRINTFORMW 입을 삐죽이며 화내고 있는 척 하지만, 얼굴은 홍시처럼 달아올라, 당장 감정이 폭발할 것 같다.
-	PRINTFORMW 아무래도 어떤 얼굴을 하면 좋을 지 모르는 것 같다.
-	PRINTFORMW 당신은 쓴웃음 지으며, 상기된 레이무의 몸을 상냥하게 꼭 껴안고, 레이무는 표정을 부드럽게 하며 당신에게 몸을 맡겼다….
-	PRINTFORMW ………
-	PRINTFORMW ……
-	PRINTFORMW …
-	CFLAG:5001 = 2
-;-------------------------------------------------
-;이름을 가르치는 이벤트와 조교 중의 통칭을 매듭짓는 이벤트
-;-------------------------------------------------
-	;이름을 가르치는 이벤트
-	PRINTFORML 
-	PRINTFORMW 잠시 말없이 당신에게 기대 있던 레이무는, 작은 목소리로 나지막이 중얼거렸다.
-	PRINTFORMW 「…저기. 부탁이 있는데」
-	PRINTFORMW 「당신의 이름… 가르쳐 주지 않을래?」
-	PRINTFORMW 싼 용건이라고 가르치려고 한 당신의 입술에, 레이무가 접한다.
-	PRINTFORMW 「…잘 생각해」
-	PRINTFORMW 「이름을 말해준다고 하는 것은, 약점을 가르치는 것과 같아. 마음을 허락한 사람에게 밖에, 하면 안 되는 거야」
-	PRINTFORMW 「요괴에 자신의 이름을 가르쳐 준지 얼마 안 돼서, 저주받아 살해당한 사람도 있어」
-	PRINTFORMW 「하물며 나는 무녀. 상대의 이름을 사용하는 저주도 알고 있을지도 몰라」
-	PRINTFORMW 「자신의… 노예에게, 이름을 말해도. 그런데도 괜찮아?」
-	PRINTL [0] 가르친다
-	PRINTL [1] 가르치지 않는다
-	;이름을 가르칠까 가르치지 않는가의 루프
-	$INPUT_LOOP_1
-	INPUT
-	IF RESULT == 0
-			PRINTL 이름을 입력해 주세요.
-			PRINTL  
-		;이름을 입력하는 루프
-		$INPUT_LOOP_2
-		INPUTS
-		STRLENS RESULTS
-		IF RESULT > 14
-			PRINTFORML 「음―, 조금 길어. 조금만 더 짧게 안 돼?」
-			GOTO INPUT_LOOP_2
-		ELSEIF RESULTS == ""
-			GOTO INPUT_LOOP_1
-		ELSE
-			IF RESULTS == "레이무"
-				PRINTFORML 「내 이름 말고, 당신 이름」
-				GOTO INPUT_LOOP_2
-			ELSEIF RESULTS == "하쿠레이레이무"
-				PRINTFORML 「내 이름 말고, 당신 이름」
-				GOTO INPUT_LOOP_2
-			ELSEIF RESULTS == "하쿠레이 레이무"
-				PRINTFORML 「내 이름 말고, 당신 이름」
-				GOTO INPUT_LOOP_2
-			ELSEIF RESULTS == "마리사"
-				PRINTFORML 「…어딘가의 흑백 같은 이름이야」
-			ELSEIF RESULTS == "린노스케"
-				PRINTFORML 「린노스케? 아는 사람하고 같구나」
-			ELSEIF RESULTS == "유카리"
-				PRINTFORML 「유카리? 어딘가의 스키마 요괴 같은 이름인걸」
-			ELSE
-				PRINTFORML 「%RESULTS%… 그게 당신 이름」
-			ENDIF
-			PRINTL [0] 예
-			PRINTL [1] 아니오
-			;입력한 이름을 확정하는 루프
-			$INPUT_LOOP_3
-			INPUT
-			IF RESULT == 0
-				MASTERNAME = %RESULTS%
-				CFLAG:5002 = 1
-				PRINTFORMW 당신은 진짜 이름(%MASTERNAME%)을 가르쳤다.
-			ELSEIF RESULT == 1
-				PRINTL 이름을 입력해 주세요.
-				GOTO INPUT_LOOP_2
-			ELSE
-				GOTO INPUT_LOOP_3
-			ENDIF
-		ENDIF
-				PRINTFORMW 「%MASTERNAME%… 당신의 이름은 %MASTERNAME%…」
-				PRINTFORMW 「나는 낙원의 무녀, 하쿠레이 레이무. 지금부터 잘 부탁해, %MASTERNAME%!」
-				PRINTFORMW 레이무는 마음 깊이 기쁜 듯한 얼굴로 재차 자기를 소개했다.
-				PRINTFORMW 「저기, 조교 중에도 %조사처리(MASTERNAME,"라")%고 불러도 좋아?」
-				PRINTFORMW 「아니면 역시 주인님이 괜찮겠지?」
-	ELSEIF RESULT == 1
-		MASTERNAME = CALLNAME:MASTER
-		PRINTFORMW 「…응. 나도 그 쪽이 좋다고 생각해. 노예 같은 것에 자신의 이름을 말해주지 않는 것이 좋아」
-		PRINTFORMW 레이무는 조용히 말했다. 당신에게 웃음을 보이고 있지만, 외로운 듯이 보인다. 아마 실수는 아닐 것이다.
-		PRINTFORMW 「…그럼, 적어도 어떻게 부르면 좋을지 말해줘」
-		PRINTFORMW 「역시, 이럴 때는 주인님, 이라든지?」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「…나, %CSTR:90%가 더욱 좋아져버렸어.」
+		PRINTFORMW 「이제는 %CSTR:90%가 없으면 더 이상, 살아갈 수가 없어.」
+		PRINTFORMW 『레, 레이무...』
+		PRINTFORMW 「이제 %CSTR:90%가 나에게 무슨 짓을 해도 좋아. 어떤 짓을 해도 좋아.」
+		PRINTFORMW 「그러니까, 제발.. 나를 떠나지 말아줘.」
+		PRINTFORMW 레이무는 울면서 %CALLNAME:MASTER%의 가슴을 끌어안았다.
+		PRINTFORMW 그리고 재빨리 눈을 감고 그의 입에 입술을 맞췄다.
+		PRINTFORMW 얼마나 지났을까.
+		PRINTFORMW %CALLNAME:MASTER%는 그녀를 쓰다듬어준 뒤, 두 손으로 그녀의 어깨를 잡고 그녀를 바라보았다.
+		PRINTFORMW 레이무는 그런 %CALLNAME:MASTER%의 얼굴을 보면서 뭔가 생각하기 시작했다.
 	ELSE
-		GOTO INPUT_LOOP_1
+		DRAWLINE
+		PRINTFORMW 당신이 방의 문을 열자, 이쪽을 눈치챈 레이무는 일순간 얼굴을 밝게 폈지만, 당황해 무뚝뚝하게 얼굴을 되돌렸다.
+		PRINTFORMW 「…알았어. 항복이야」
+		PRINTFORMW 「확실히 당신, 대단한 변태에 에로의 화신이고 번뇌의 덩어리였지만」
+		PRINTFORMW 「노예라고 말해도, 왠지 당신, 상당히 그… 상냥했고」
+		PRINTFORMW 「필요하다는 말을 들으면 기뻐… 그렇게 되면, 나라도 당신에게 여러 가지 해 주고 싶어지잖아」
+		PRINTFORMW 「그러니까 그… 가능한 한 곁에 있어 줘. 응?」
+		PRINTFORMW 울 것 같은 얼굴로 독백을 끝낸 레이무는 잠시 후 자신이 말한 말의 의미를 눈치채, 대단한 기세로 고개를 돌렸다.
+		PRINTFORMW 「그, 그러니까! 이제 와서 멈추거나 하면 용납하지 않아!」
+		PRINTFORMW 입을 삐죽이며 화내고 있는 척 하지만, 얼굴은 홍시처럼 달아올라, 당장 감정이 폭발할 것 같다.
+		PRINTFORMW 아무래도 어떤 얼굴을 하면 좋을 지 모르는 것 같다.
+		PRINTFORMW 당신은 쓴웃음 지으며, 상기된 레이무의 몸을 상냥하게 꼭 껴안고, 레이무는 표정을 부드럽게 하며 당신에게 몸을 맡겼다….
+		PRINTFORMW ………
+		PRINTFORMW ……
+		PRINTFORMW …
+		CFLAG:5001 = 2
+	;-------------------------------------------------
+	;이름을 가르치는 이벤트와 조교 중의 통칭을 매듭짓는 이벤트
+	;-------------------------------------------------
+		;이름을 가르치는 이벤트
+		PRINTFORML 
+		PRINTFORMW 잠시 말없이 당신에게 기대 있던 레이무는, 작은 목소리로 나지막이 중얼거렸다.
+		PRINTFORMW 「…저기. 부탁이 있는데」
+		PRINTFORMW 「당신의 이름… 가르쳐 주지 않을래?」
+		PRINTFORMW 싼 용건이라고 가르치려고 한 당신의 입술에, 레이무가 접한다.
+		PRINTFORMW 「…잘 생각해」
+		PRINTFORMW 「이름을 말해준다고 하는 것은, 약점을 가르치는 것과 같아. 마음을 허락한 사람에게 밖에, 하면 안 되는 거야」
+		PRINTFORMW 「요괴에 자신의 이름을 가르쳐 준지 얼마 안 돼서, 저주받아 살해당한 사람도 있어」
+		PRINTFORMW 「하물며 나는 무녀. 상대의 이름을 사용하는 저주도 알고 있을지도 몰라」
+		PRINTFORMW 「자신의… 노예에게, 이름을 말해도. 그런데도 괜찮아?」
+		PRINTL [0] 가르친다
+		PRINTL [1] 가르치지 않는다
+		;이름을 가르칠까 가르치지 않는가의 루프
+		$INPUT_LOOP_1
+		INPUT
+		IF RESULT == 0
+				PRINTL 이름을 입력해 주세요.
+				PRINTL  
+			;이름을 입력하는 루프
+			$INPUT_LOOP_2
+			INPUTS
+			STRLENS RESULTS
+			IF RESULT > 14
+				PRINTFORML 「음―, 조금 길어. 조금만 더 짧게 안 돼?」
+				GOTO INPUT_LOOP_2
+			ELSEIF RESULTS == ""
+				GOTO INPUT_LOOP_1
+			ELSE
+				IF RESULTS == "레이무"
+					PRINTFORML 「내 이름 말고, 당신 이름」
+					GOTO INPUT_LOOP_2
+				ELSEIF RESULTS == "하쿠레이레이무"
+					PRINTFORML 「내 이름 말고, 당신 이름」
+					GOTO INPUT_LOOP_2
+				ELSEIF RESULTS == "하쿠레이 레이무"
+					PRINTFORML 「내 이름 말고, 당신 이름」
+					GOTO INPUT_LOOP_2
+				ELSEIF RESULTS == "마리사"
+					PRINTFORML 「…어딘가의 흑백 같은 이름이야」
+				ELSEIF RESULTS == "린노스케"
+					PRINTFORML 「린노스케? 아는 사람하고 같구나」
+				ELSEIF RESULTS == "유카리"
+					PRINTFORML 「유카리? 어딘가의 스키마 요괴 같은 이름인걸」
+				ELSE
+					PRINTFORML 「%RESULTS%… 그게 당신 이름」
+				ENDIF
+				PRINTL [0] 예
+				PRINTL [1] 아니오
+				;입력한 이름을 확정하는 루프
+				$INPUT_LOOP_3
+				INPUT
+				IF RESULT == 0
+					MASTERNAME = %RESULTS%
+					CFLAG:5002 = 1
+					PRINTFORMW 당신은 진짜 이름(%MASTERNAME%)을 가르쳤다.
+				ELSEIF RESULT == 1
+					PRINTL 이름을 입력해 주세요.
+					GOTO INPUT_LOOP_2
+				ELSE
+					GOTO INPUT_LOOP_3
+				ENDIF
+			ENDIF
+					PRINTFORMW 「%MASTERNAME%… 당신의 이름은 %MASTERNAME%…」
+					PRINTFORMW 「나는 낙원의 무녀, 하쿠레이 레이무. 지금부터 잘 부탁해, %MASTERNAME%!」
+					PRINTFORMW 레이무는 마음 깊이 기쁜 듯한 얼굴로 재차 자기를 소개했다.
+					PRINTFORMW 「저기, 조교 중에도 %조사처리(MASTERNAME,"라")%고 불러도 좋아?」
+					PRINTFORMW 「아니면 역시 주인님이 괜찮겠지?」
+		ELSEIF RESULT == 1
+			MASTERNAME = CALLNAME:MASTER
+			PRINTFORMW 「…응. 나도 그 쪽이 좋다고 생각해. 노예 같은 것에 자신의 이름을 말해주지 않는 것이 좋아」
+			PRINTFORMW 레이무는 조용히 말했다. 당신에게 웃음을 보이고 있지만, 외로운 듯이 보인다. 아마 실수는 아닐 것이다.
+			PRINTFORMW 「…그럼, 적어도 어떻게 부르면 좋을지 말해줘」
+			PRINTFORMW 「역시, 이럴 때는 주인님, 이라든지?」
+		ELSE
+			GOTO INPUT_LOOP_1
+		ENDIF
 	ENDIF
+	
 ;-------------------------------------------------
 	;통칭을 매듭짓는 이벤트
 	
-	PRINTFORMW 「…… 그렇지 않으면 오빠라든지, 오라버니라든지, 랄까…」
-	PRINTFORMW ―조교 중의 호칭을 결정하세요―
-	PRINTL  
-	PRINTL [0] 주인님이 좋다
-	PRINTL [1] 오빠가 좋다  [2] 오라버니가 좋다
-	SIF CFLAG:5002 == 1
-	PRINTL [3] 그냥 이름이 좋다        [4] ~씨가 좋다     [5] ~님이 좋다 
-	;통칭을 선택하는 루프
-	$INPUT_LOOP_4
-	INPUT
-	IF RESULT == 0
-		CSTR:90 = 주인님
-		PRINTFORMW 「응. 알았어」
-		PRINTFORMW 「앞으로도, 잘 부탁드립니다. 주인님」
-	ELSEIF RESULT == 1
-		CSTR:90 = 오빠
-		PRINTFORMW 「후후, 농담이었는데. 그렇지만 왠지 신선하네♪」
-		PRINTFORMW 「그렇다면은, 앞으로도 잘 부탁해, 오빠」
-		PRINTFORMW 「오빠, 인가…」
-	ELSEIF RESULT == 2
-		CSTR:90 = 오라버니
-		PRINTFORMW 「후후, 농담이었는데. 그렇지만 왠지 신선하네♪」
-		PRINTFORMW 「그러면, 앞으로도 잘 부탁 드려요, 오라버니. 후훗」
-	ELSEIF RESULT == 3
-		IF CFLAG:5002 == 1
-			CSTR:90 = %MASTERNAME%
-			PRINTFORMW 「그럼 조교 중에도 %조사처리(CSTR:90,"라")%고 부를게」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「……생각해봤는데 말이야…」
+		PRINTFORMW 「……이제부터 %CSTR:90%를 달리 불러보려고 해…」
+		PRINTFORMW 「……이봐, 이제부터 당신을 어떻게 불렀으면 좋겠어?」
+		PRINTL  
+		PRINTL [0] 주인님으로 하자
+		PRINTL [1] 오빠가 좋다  [2] 오라버니가 좋다
+		PRINTL [3] 그냥 이름이 좋다        [4] ~씨가 좋다     [5] ~님이 좋다 
+		;통칭을 선택하는 루프
+		$INPUT_LOOP_44
+		INPUT
+		IF RESULT == 0
+			CSTR:90 = 주인님
+			PRINTFORMW 「응. 알았어」
+			PRINTFORMW 「앞으로도, 잘 부탁드립니다. 주인님」
+		ELSEIF RESULT == 1
+			CSTR:90 = 오빠
+			PRINTFORMW 「후후, 농담이었는데. 그렇지만 왠지 신선하네♪」
+			PRINTFORMW 「그렇다면은, 앞으로도 잘 부탁해, 오빠」
+			PRINTFORMW 「오빠, 인가…」
+		ELSEIF RESULT == 2
+			CSTR:90 = 오라버니
+			PRINTFORMW 「후후, 농담이었는데. 그렇지만 왠지 신선하네♪」
+			PRINTFORMW 「그러면, 앞으로도 잘 부탁 드려요, 오라버니. 후훗」
+		ELSEIF RESULT == 3
+			CSTR:90 = %CALLNAME:MASTER%
+			PRINTFORMW 「그럼 이제부턴 경칭인 '씨'를 생략하고 %조사처리(CSTR:90,"라")%고 부를게」
+			PRINTFORMW 「후훗…♪」
+		ELSEIF RESULT == 4
+			CSTR:90 = %CALLNAME:MASTER% 씨
+			PRINTFORMW 「그럼 지금까지처럼 %조사처리(CSTR:90,"라")%고 부를게」
+			PRINTFORMW 「후훗…♪」
+		ELSEIF RESULT == 5
+			CSTR:90 = %CALLNAME:MASTER% 님
+			PRINTFORMW 「그럼 이제부턴 경칭을 '씨'대신 '님'으로, %조사처리(CSTR:90,"라")%고 부를게」
 			PRINTFORMW 「후훗…♪」
 		ELSE
-			GOTO INPUT_LOOP_4
+			GOTO INPUT_LOOP_44
 		ENDIF
-	ELSEIF RESULT == 4
-		IF CFLAG:5002 == 1
-			CSTR:90 = %MASTERNAME% 씨
-			PRINTFORMW 「그럼 조교 중에도 %조사처리(CSTR:90,"라")%고 부를게」
-			PRINTFORMW 「후훗…♪」
-		ELSE
-			GOTO INPUT_LOOP_4
-		ENDIF
-	ELSEIF RESULT == 5
-		IF CFLAG:5002 == 1
-			CSTR:90 = %MASTERNAME% 님
-			PRINTFORMW 「그럼 조교 중에는 %조사처리(CSTR:90,"라")%고 부를게」
-			PRINTFORMW 「후훗…♪」
-		ELSE
-			GOTO INPUT_LOOP_4
-		ENDIF
+		DRAWLINE
+		PRINTFORMW -향후, 조교 첫 수에 「아무것도 하지 않는다」로 언제든 조교 중의 통칭을 변경할 수가 있습니다-
+		CFLAG:5001 = 2
+		CALL RESET_1_CFLAG
+		RETURN 1
 	ELSE
-		GOTO INPUT_LOOP_4
-	ENDIF
+		PRINTFORMW 「…… 그렇지 않으면 오빠라든지, 오라버니라든지, 랄까…」
+		PRINTFORMW ―조교 중의 호칭을 결정하세요―
+		PRINTL  
+		PRINTL [0] 주인님이 좋다
+		PRINTL [1] 오빠가 좋다  [2] 오라버니가 좋다
+		SIF CFLAG:5002 == 1
+		PRINTL [3] 그냥 이름이 좋다        [4] ~씨가 좋다     [5] ~님이 좋다 
+		;통칭을 선택하는 루프
+		$INPUT_LOOP_4
+		INPUT
+		IF RESULT == 0
+			CSTR:90 = 주인님
+			PRINTFORMW 「응. 알았어」
+			PRINTFORMW 「앞으로도, 잘 부탁드립니다. 주인님」
+		ELSEIF RESULT == 1
+			CSTR:90 = 오빠
+			PRINTFORMW 「후후, 농담이었는데. 그렇지만 왠지 신선하네♪」
+			PRINTFORMW 「그렇다면은, 앞으로도 잘 부탁해, 오빠」
+			PRINTFORMW 「오빠, 인가…」
+		ELSEIF RESULT == 2
+			CSTR:90 = 오라버니
+			PRINTFORMW 「후후, 농담이었는데. 그렇지만 왠지 신선하네♪」
+			PRINTFORMW 「그러면, 앞으로도 잘 부탁 드려요, 오라버니. 후훗」
+		ELSEIF RESULT == 3
+			IF CFLAG:5002 == 1
+				CSTR:90 = %MASTERNAME%
+				PRINTFORMW 「그럼 조교 중에도 %조사처리(CSTR:90,"라")%고 부를게」
+				PRINTFORMW 「후훗…♪」
+			ELSE
+				GOTO INPUT_LOOP_4
+			ENDIF
+		ELSEIF RESULT == 4
+			IF CFLAG:5002 == 1
+				CSTR:90 = %MASTERNAME% 씨
+				PRINTFORMW 「그럼 조교 중에도 %조사처리(CSTR:90,"라")%고 부를게」
+				PRINTFORMW 「후훗…♪」
+			ELSE
+				GOTO INPUT_LOOP_4
+			ENDIF
+		ELSEIF RESULT == 5
+			IF CFLAG:5002 == 1
+				CSTR:90 = %MASTERNAME% 님
+				PRINTFORMW 「그럼 조교 중에는 %조사처리(CSTR:90,"라")%고 부를게」
+				PRINTFORMW 「후훗…♪」
+			ELSE
+				GOTO INPUT_LOOP_4
+			ENDIF
+		ELSE
+			GOTO INPUT_LOOP_4
+		ENDIF
 		PRINTL  
 		DRAWLINE
 		PRINTFORMW -향후, 조교 첫 수에 「아무것도 하지 않는다」로 언제든 조교 중의 통칭을 변경할 수가 있습니다-
-	CFLAG:5001 = 2
-	CALL RESET_1_CFLAG
-	RETURN 1
+		CFLAG:5001 = 2
+		CALL RESET_1_CFLAG
+		RETURN 1
+	ENDIF
 	
 ;왜 빼앗지 않았는지 질문하는 이벤트
 ;연모 or 상애 상태에서 위 이벤트를 본 후, 아직 처녀일 때 다음 조교에서 발생
 ;선택에 따라 처녀를 빼앗은 뒤 조촐하게 말과 보너스가 변화
 ELSEIF CFLAG:5001 < 3 && TALENT:0 == 1 && ( TALENT:150 == 1 || TALENT:153 == 1 )
-	PRINTFORMW 「응… 왔네…」
-	PRINTFORMW 방에 들어가자, 희미하게 긴장한 듯한 레이무에게 응접받았다.
-	PRINTFORMW 「조금 그… 궁금한 게 있는데」
-	PRINTFORMW 양해를 구하고, 레이무 옆에 앉았다.
-	PRINTFORMW 「저기… 넌, 나를 노예로서… 사들였잖아」
-	PRINTFORMW 「그런데 왜, 저기… 지금까지, 가져가지 않나, 해서」
-	PRINTFORMW 아무래도, 지금까지 레이무의 처녀를 취하지 않은 것에 의문이 든 듯하다…
-	PRINTL [0] 그래야 더 비싸게 팔려서
-	PRINTL [1] 왠지 모르게
-	PRINTL [2] …
-	PRINTL [3] 억지로 빼앗기 싫어서
-	$INPUT_LOOP_SITUMON
-	INPUT
-	IF RESULT == 0
-		PRINTFORMW 「…! …그래」
-		PRINTFORMW 레이무는 괴로운 듯한 표정을 지으면서도, 각오하고 있었는지 조용히 대답했다.
-		PRINTFORMW 「알았어. 하지만 일단, 내 바람도 전할게」
-		PRINTFORMW 「전에도 그랬지만, 난 이 생활에도, %CSTR:90%에게도 불만 없어. 그러니까, 여기 있고 싶어」
-		PRINTFORMW 「여기 둘 이유가 없다고 한다면, 가사든 뭐든지 다 할게… 그, 야한 일도 좋아」
-		PRINTFORMW 「파는 것보다 낫다는 생각이 들게 할 거야. 나같은 말괄량이, 사갈 사람도 없겠지만…」
-		PRINTFORMW 「그래도, 무서워. 만약 사들일 녀석이 있고, 그 녀석이 지독한 녀석이라면?」
-		PRINTFORMW 「그러니까… 팔지 마. 여기에 있게 해줘」
-		PRINTFORMW 「%CSTR:90%에게라면 나의… 것, 줘도 좋아. …부탁이야」
-		PRINTFORML 
-		PRINTFORMW 「…」
-		PRINTFORMW 「하고 싶은 말은, 여기까지야. 자, 시작할까…」
-		CFLAG:5030 = 1
-	ELSEIF RESULT == 1
-		PRINTFORMW 「… 그래…」
-		PRINTFORMW 사실상 대답을 회피한 거나 마찬가지지만, 레이무도 그 이상 추궁하지 않았다.
-		PRINTFORMW (역시 상품 가치를 유지하기 위해서였을까, 아마…)
-		PRINTFORMW (그런 걸 마주보는 앞에서 말하는 건, 힘들겠지…)
-		PRINTFORMW 침울한 표정으로 고개를 숙이고 있던 레이무는, 그러나 억지로 웃으면서 이 화제를 중단했다.
-		PRINTFORMW 「이상한 질문이었네, 잊어버려. 자, 시작할까…」
-		CFLAG:5030 = 2
-	ELSEIF RESULT == 2
-		PRINTFORMW 침묵을 지키는 당신을 보고, 레이무는 크게 한숨을 내쉬었다.
-		PRINTFORMW 「…그래, 무리하게 대답하지 않아도 돼. 솔직히 나도 답을 듣기 두려워…」
-		PRINTFORMW (역시 상품 가치를 유지하기 위해서였을까, 아마…)
-		PRINTFORMW (그런 걸 마주보는 앞에서 말하는 건, 힘들겠지…)
-		PRINTFORMW 침울한 표정으로 고개를 숙이고 있던 레이무는, 그러나 억지로 웃으면서 이 화제를 중단했다.
-		PRINTFORMW 「이상한 질문이었네, 잊어버려. 자, 시작할까…」
-		CFLAG:5030 = 3
-	ELSEIF RESULT == 3
-		;eramomi의 앨리스 표ㅈ…리스펙트. 봐, 봐요, 레이무랑 앨리스는 성격이 비슷하기도 하고…(떨리는 목소리)
-		PRINTFORMW 「…뭐야, 그거」
-		PRINTFORMW 당신의 대답에, 레이무는 언성을 높였다.
-		PRINTFORMW 「나를 납치해서, 자유를 빼앗아 감금하고, 제멋대로 해놓고」
-		PRINTFORMW 「이제와서 억지로 빼앗고 싶지 않다!? 의미를 모르겠어!」
-		PRINTFORML 「빼앗아봐. 처녀든지 순결이든지 빼앗아가라고!
-		PRINTFORMW  사람을 납치해놓고……이제와서 내 마음에 신경쓰려들다니 웃기고 앉아 있어!」
-		PRINTFORMW 「팔아먹으려고 일부러 처녀를 남겨놓는 건지 뭔지 생각하던 내가 바보같잖아…!」
-		PRINTFORMW 
-		PRINTFORMW 「…하아」
-		PRINTFORMW 「할 말은, 이거뿐이야. …기분 좋게 해줘」
-		PRINTFORMW 그러면서 레이무는 침대에 큰 대자로 누웠다…
-		CFLAG:5030 = 4
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「저기, %CSTR:90%.」
+		PRINTFORMW 『왜 그러지, 레이무.』
+		PRINTFORMW 「왜, 왜 아직도 나의 처녀를 받아주지 않는거야?」
+		PRINTFORMW 『그, 그건..』
+		PRINTFORMW 「……나, %CSTR:90%와 하나가 되고 싶어. 나의 모든 것을 %CSTR:90%에게 주고 싶어. %CSTR:90%의 모든 것을 갖고 싶어.」
+		PRINTFORMW 『그건 너의 소중한 것이니 빼앗으면 안 된다고 생각해서다. 결코 다른 뜻은...』
+		PRINTFORMW 「다른 여자들 것은 빼앗은 적이 있으면서!」
+		PRINTFORMW 『윽! 그건!』
+		PRINTFORMW 「나는, %CSTR:90%를 원하고 있어. 얼른, 얼른 나와 하나가 되어줘.」
+		PRINTFORMW 『노력해보마.』
+		CFLAG:5001 = 3
 	ELSE
-		GOTO INPUT_LOOP_SITUMON
+		PRINTFORMW 「응… 왔네…」
+		PRINTFORMW 방에 들어가자, 희미하게 긴장한 듯한 레이무에게 응접받았다.
+		PRINTFORMW 「조금 그… 궁금한 게 있는데」
+		PRINTFORMW 양해를 구하고, 레이무 옆에 앉았다.
+		PRINTFORMW 「저기… 넌, 나를 노예로서… 사들였잖아」
+		PRINTFORMW 「그런데 왜, 저기… 지금까지, 가져가지 않나, 해서」
+		PRINTFORMW 아무래도, 지금까지 레이무의 처녀를 취하지 않은 것에 의문이 든 듯하다…
+		PRINTL [0] 그래야 더 비싸게 팔려서
+		PRINTL [1] 왠지 모르게
+		PRINTL [2] …
+		PRINTL [3] 억지로 빼앗기 싫어서
+		$INPUT_LOOP_SITUMON
+		INPUT
+		IF RESULT == 0
+			PRINTFORMW 「…! …그래」
+			PRINTFORMW 레이무는 괴로운 듯한 표정을 지으면서도, 각오하고 있었는지 조용히 대답했다.
+			PRINTFORMW 「알았어. 하지만 일단, 내 바람도 전할게」
+			PRINTFORMW 「전에도 그랬지만, 난 이 생활에도, %CSTR:90%에게도 불만 없어. 그러니까, 여기 있고 싶어」
+			PRINTFORMW 「여기 둘 이유가 없다고 한다면, 가사든 뭐든지 다 할게… 그, 야한 일도 좋아」
+			PRINTFORMW 「파는 것보다 낫다는 생각이 들게 할 거야. 나같은 말괄량이, 사갈 사람도 없겠지만…」
+			PRINTFORMW 「그래도, 무서워. 만약 사들일 녀석이 있고, 그 녀석이 지독한 녀석이라면?」
+			PRINTFORMW 「그러니까… 팔지 마. 여기에 있게 해줘」
+			PRINTFORMW 「%CSTR:90%에게라면 나의… 것, 줘도 좋아. …부탁이야」
+			PRINTFORML 
+			PRINTFORMW 「…」
+			PRINTFORMW 「하고 싶은 말은, 여기까지야. 자, 시작할까…」
+			CFLAG:5030 = 1
+		ELSEIF RESULT == 1
+			PRINTFORMW 「… 그래…」
+			PRINTFORMW 사실상 대답을 회피한 거나 마찬가지지만, 레이무도 그 이상 추궁하지 않았다.
+			PRINTFORMW (역시 상품 가치를 유지하기 위해서였을까, 아마…)
+			PRINTFORMW (그런 걸 마주보는 앞에서 말하는 건, 힘들겠지…)
+			PRINTFORMW 침울한 표정으로 고개를 숙이고 있던 레이무는, 그러나 억지로 웃으면서 이 화제를 중단했다.
+			PRINTFORMW 「이상한 질문이었네, 잊어버려. 자, 시작할까…」
+			CFLAG:5030 = 2
+		ELSEIF RESULT == 2
+			PRINTFORMW 침묵을 지키는 당신을 보고, 레이무는 크게 한숨을 내쉬었다.
+			PRINTFORMW 「…그래, 무리하게 대답하지 않아도 돼. 솔직히 나도 답을 듣기 두려워…」
+			PRINTFORMW (역시 상품 가치를 유지하기 위해서였을까, 아마…)
+			PRINTFORMW (그런 걸 마주보는 앞에서 말하는 건, 힘들겠지…)
+			PRINTFORMW 침울한 표정으로 고개를 숙이고 있던 레이무는, 그러나 억지로 웃으면서 이 화제를 중단했다.
+			PRINTFORMW 「이상한 질문이었네, 잊어버려. 자, 시작할까…」
+			CFLAG:5030 = 3
+		ELSEIF RESULT == 3
+			;eramomi의 앨리스 표ㅈ…리스펙트. 봐, 봐요, 레이무랑 앨리스는 성격이 비슷하기도 하고…(떨리는 목소리)
+			PRINTFORMW 「…뭐야, 그거」
+			PRINTFORMW 당신의 대답에, 레이무는 언성을 높였다.
+			PRINTFORMW 「나를 납치해서, 자유를 빼앗아 감금하고, 제멋대로 해놓고」
+			PRINTFORMW 「이제와서 억지로 빼앗고 싶지 않다!? 의미를 모르겠어!」
+			PRINTFORML 「빼앗아봐. 처녀든지 순결이든지 빼앗아가라고!
+			PRINTFORMW  사람을 납치해놓고……이제와서 내 마음에 신경쓰려들다니 웃기고 앉아 있어!」
+			PRINTFORMW 「팔아먹으려고 일부러 처녀를 남겨놓는 건지 뭔지 생각하던 내가 바보같잖아…!」
+			PRINTFORMW 
+			PRINTFORMW 「…하아」
+			PRINTFORMW 「할 말은, 이거뿐이야. …기분 좋게 해줘」
+			PRINTFORMW 그러면서 레이무는 침대에 큰 대자로 누웠다…
+			CFLAG:5030 = 4
+		ELSE
+			GOTO INPUT_LOOP_SITUMON
+		ENDIF
+		CFLAG:5001 = 3
 	ENDIF
-	CFLAG:5001 = 3
 
 ;연모+「일선 넘지 않는다」소실 or친애
 ;전설에 따르면 이렇게 하고 팔아먹는 귀축 신사가 있다던데…
@@ -616,18 +796,32 @@ IF NO:ASSI == 2
 			PRINTFORMW 『……독점의 맛을 알아 버리면 참을 수 없지』
 			PRINTFORMW 「웃! 서, 설마 마리사와 이런 일로 싸우다니 생각도 하지 못했어」
 			PRINTFORMW 『거기에는 전면적으로 동의다!』
-			PRINTFORMW 두 명은 장난감을 서로 빼앗는 것처럼 웃는 얼굴을 띄우면서 당신의 팔을 양쪽 모두로부터 잡아당기고 있다.
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 두 명은 장난감을 서로 빼앗는 것처럼 웃는 얼굴을 띄우면서 %CALLNAME:MASTER%의 팔을 양쪽 모두로부터 잡아당기고 있다.
+			ELSE
+				PRINTFORMW 두 명은 장난감을 서로 빼앗는 것처럼 웃는 얼굴을 띄우면서 당신의 팔을 양쪽 모두로부터 잡아당기고 있다.
+			ENDIF
 		;그 이외
 		ELSE
-			PRINTFORMW 『여, 레이무, 상당히 오래간만이다』
-			PRINTFORMW 「엑, 마리사? 아니 왜 이런 곳에 있는 거야!」
-			PRINTFORMW 『그거야 뭐, 직감이 날카로운 레이무니까 말하지 않아도 알고 있겠지?』
-			PRINTFORMW 「최근 얼굴이 안 보인다고 생각하고 있었는데, 그래, 마리사도 구나…」
-			PRINTFORMW (두 명이라면 어떻게든 되는 것일까, 우선……?)
-			PRINTFORMW 『응? 그런 게 아니야…… 이제 참을 수 없지만 좋겠지?』
-			PRINTFORMW 마리사는 살짝 당신 쪽을 뒤돌아보고는, 레이무를 격렬하게 밀어 넘어뜨렸다.
-			PRINTFORMW 「!? 잠깐 마리사! 웃, 어디를…, 당신 마리사에 무슨 짓을 한 거야!」
-			PRINTFORMW 『레이무도 곧바로 알 수 있도록 해줄 테니까, 함께 나랑 즐기자구?』
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 『여, 레이무, 상당히 오래간만이다』
+				PRINTFORMW 「엑, 마리사? 아니 왜 이런 곳에 있는 거야!」
+				PRINTFORMW 『그거야 뭐, 직감이 날카로운 레이무니까 말하지 않아도 알고 있겠지?』
+				PRINTFORMW 『응? 그런 게 아니야…… 이제 참을 수 없지만 좋겠지?』
+				PRINTFORMW 마리사는 살짝 당신 쪽을 뒤돌아보고는, 레이무를 격렬하게 밀어 넘어뜨렸다.
+				PRINTFORMW 「!? 잠깐 마리사! 웃, 어디를…」
+				PRINTFORMW 『레이무도 곧바로 알 수 있도록 해줄 테니까, 함께 나랑 즐기자구?』
+			ELSE
+				PRINTFORMW 『여, 레이무, 상당히 오래간만이다』
+				PRINTFORMW 「엑, 마리사? 아니 왜 이런 곳에 있는 거야!」
+				PRINTFORMW 『그거야 뭐, 직감이 날카로운 레이무니까 말하지 않아도 알고 있겠지?』
+				PRINTFORMW 「최근 얼굴이 안 보인다고 생각하고 있었는데, 그래, 마리사도 구나…」
+				PRINTFORMW (두 명이라면 어떻게든 되는 것일까, 우선……?)
+				PRINTFORMW 『응? 그런 게 아니야…… 이제 참을 수 없지만 좋겠지?』
+				PRINTFORMW 마리사는 살짝 당신 쪽을 뒤돌아보고는, 레이무를 격렬하게 밀어 넘어뜨렸다.
+				PRINTFORMW 「!? 잠깐 마리사! 웃, 어디를…, 당신 마리사에 무슨 짓을 한 거야!」
+				PRINTFORMW 『레이무도 곧바로 알 수 있도록 해줄 테니까, 함께 나랑 즐기자구?』
+			ENDIF			
 		ENDIF
 			CFLAG:5002 = 1
 			CALL RESET_1_CFLAG
@@ -647,9 +841,15 @@ IF NO:ASSI == 2
 			ENDIF
 		;그 이외
 		ELSE
-			PRINTFORMW 「마리사, 정신차려! 저런 녀석에게 홀려 버리다니」
-			PRINTFORMW 『변함없이 이상한 데서 고집이 있는 녀석이구만 너는, 나는 언제라도 제정신으로 정직하다구?』
-			PRINTFORMW 「이제 그 일상으로는 돌아갈 수 없는 것일까」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「마리사, 조금 천천히!」
+				PRINTFORMW 『변함없이 이상한 데서 고집이 있는 녀석이구만 너는. 그렇지 코린?』
+				PRINTFORMW 『과연, 그 말대로다.』
+			ELSE
+				PRINTFORMW 「마리사, 정신차려! 저런 녀석에게 홀려 버리다니」
+				PRINTFORMW 『변함없이 이상한 데서 고집이 있는 녀석이구만 너는, 나는 언제라도 제정신으로 정직하다구?』
+				PRINTFORMW 「이제 그 일상으로는 돌아갈 수 없는 것일까」
+			ENDIF
 		ENDIF
 			CALL RESET_1_CFLAG
 			RETURN 1
@@ -665,9 +865,17 @@ ELSEIF NO:ASSI == 10
 			PRINTFORMW 레밀리아는 날개를 파닥파닥 휘두르면서 레이무에게 날아들었다.
 			PRINTFORMW 「꺅, 어, 레밀리아? …어째서 이런 데서 튀어나오는 거야」
 			PRINTFORMW 『물론 뻔하잖아, 레이무를 먹어버리기 위해서지』
-			PRINTFORMW 「……먹힌 쪽은 너 아냐?」
-			PRINTFORMW 레이무는 업신여기는 것 같은 눈으로 당신을 찌릿하고 노려보았다.
-			PRINTFORMW 「내용은 어쨌든, 이런 작은 아가씨에게까지 손을 뻗치는 녀석이네」
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「……%CSTR:90%, 이거 대체 어떻게 된거야?」
+				PRINTFORMW 「어째서 여기에, 레밀리아가 있는 것일까? 응, %CSTR:90%?」
+				PRINTFORMW 『그, 그건 사정이 좀…』
+				PRINTFORMW 「아무튼 레밀리아, %CSTR:90%는 내꺼니까 너는 저기가서 쉬고 있기나 해.」
+				PRINTFORMW 「저 어린 유녀보다, 내가 훨씬 더 기분좋게 해줄 수 있어. 그렇지 %CSTR:90%?」
+			ELSE
+				PRINTFORMW 「……먹힌 쪽은 너 아냐?」
+				PRINTFORMW 레이무는 업신여기는 것 같은 눈으로 당신을 찌릿하고 노려보았다.
+				PRINTFORMW 「내용은 어쨌든, 이런 작은 아가씨에게까지 손을 뻗치는 녀석이네」
+			ENDIF
 			PRINTFORMW 『뭐야… 우∼, 레이무보다 내 몸이 기분이 좋다구?』
 			PRINTFORMW 레밀리아는 다시 당신을 향해 안겨 얼굴을 문지르고 외로운 듯이 눈을 치켜 뜨고 올려봤다.
 			PRINTFORMW 「으, 우우, 마성의 계집… 나도!」
@@ -678,12 +886,16 @@ ELSEIF NO:ASSI == 10
 			PRINTFORMW 레밀리아는 날개를 파닥파닥 휘두르면서 레이무에게 날아들었다.
 			PRINTFORMW 「꺅…. 왜 이런 데서 레밀리아가 튀어나오는 거야」
 			PRINTFORMW 『그런 거야 뻔하잖아, 레이무를 먹어버리기 위해서지♪』
-			PRINTFORMW 「하아… 여기는 신사가 아니거든. 상황 알고 있지?」
-			PRINTFORMW 『…지금 레이무는 새장 속의 새와 매 한 가지』
-			PRINTFORMW 『아무것도 할 수 없는, 아무것도 모르는 무구한 작은 새… 어떤 소리로 우는 걸까?』
-			PRINTFORMW 「……거짓말, 그렇게 오만하던 네가, 그럴 수가!」
-			PRINTFORMW 『나 참, 말이 지나치네…. 오만이 아니라 긍지가 높다겠지. 그래, 레이무에게도 가르쳐 주도록 할까』
-			PRINTFORMW 『차분히 가르쳐 줄게, 아침이 오지 않는 밤도 있다는 것을』
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+				PRINTFORMW 「너는 필요없어. 나에겐 %CSTR:90%가 있으니까.」
+			ELSE
+				PRINTFORMW 「하아… 여기는 신사가 아니거든. 상황 알고 있지?」
+				PRINTFORMW 『…지금 레이무는 새장 속의 새와 매 한 가지』
+				PRINTFORMW 『아무것도 할 수 없는, 아무것도 모르는 무구한 작은 새… 어떤 소리로 우는 걸까?』
+				PRINTFORMW 「……거짓말, 그렇게 오만하던 네가, 그럴 수가!」
+				PRINTFORMW 『나 참, 말이 지나치네…. 오만이 아니라 긍지가 높다겠지. 그래, 레이무에게도 가르쳐 주도록 할까』
+				PRINTFORMW 『차분히 가르쳐 줄게, 아침이 오지 않는 밤도 있다는 것을』
+			ENDIF
 		ENDIF
 			CFLAG:5003 = 1
 			CALL RESET_1_CFLAG
@@ -722,7 +934,7 @@ ELSEIF NO:ASSI == 22
 			PRINTFORMW 「후와아……귀찮은 것이 나와 버렸네」
 			PRINTFORMW 『어머어머, 말투 한 번 어지간하구나, 너무해라, 흑』
 			PRINTFORMW 「하나하나 어쩐지 수상해… 너도 독사의 이빨에 걸려 버린 걸까나? 무우」
-			PRINTFORMW 레이무는 당신을 불쾌한 것 같이 흘겨봤지만, 쫙 표정을 바꾸고 팔에 달려들어 안겼다.
+			PRINTFORMW 레이무는 %CALLNAME:MASTER%을 불쾌한 것 같이 흘겨봤지만, 쫙 표정을 바꾸고 팔에 달려들어 안겼다.
 			PRINTFORMW 『우후후, 귀여워졌구나, 너, 그렇게 초조해 하지 않아도 되거든?』
 			PRINTFORMW 「윽, 시, 시끄러워, 어차피 너에 비하면 나는…… 나는」
 			PRINTFORMW 『둘이서 함께 기분 좋게 해주자꾸나, 그래, 뭐든 할 수 있는걸』
@@ -1007,17 +1219,31 @@ SIF TFLAG:899 >= 1
 
 ;반발 각인 Lv3(1회만) CFLAG:5020 == 0
 IF MARK:9 == 3 && CFLAG:5020 == 0 && CFLAG:8102 == 1
-	DRAWLINE
-	PRINTFORMW 레이무는 당신이 존재하지 않는 것처럼, 옷차림을 정돈했다.
-	PRINTFORMW 「……………………」
-	PRINTFORMW 방을 나오려고 하자, 등 뒤에 얼어붙어 버릴 것 같은 차가운 시선을 느낀 것 같은 생각이 들었다.
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 레이무는 당신이 존재하지 않는 것처럼, 옷차림을 정돈했다.
+		PRINTFORMW 「………%CSTR:90%, 정말 너무해.」
+		PRINTFORMW 「조금만 더 상냥하게 해주었으면 좋았잖아.」
+		PRINTFORMW 「아무리 내가 당신을 좋아해도, 이렇게 심한 짓들을 하면 누구라도 싫어할거라고.」
+		PRINTFORMW 『음, 미안했다. 주의하지.』
+		PRINTFORMW 「흥! %CSTR:90%, 싫어!」
+		PRINTFORMW 『사과로는... 화가 안 풀리는 것인가.』
+		PRINTFORMW 「그럼 날 상냥하게 해줘. 만약 내가 만족할 정도라면, 생각해볼게.」
+		PRINTFORMW 『……알았다.』
+		PRINTFORMW %CALLNAME:MASTER%는 레이무의 지적에 죄책감을 가진 채 고개를 끄덕였다.
+	ELSE
+		DRAWLINE
+		PRINTFORMW 레이무는 당신이 존재하지 않는 것처럼, 옷차림을 정돈했다.
+		PRINTFORMW 「……………………」
+		PRINTFORMW 방을 나오려고 하자, 등 뒤에 얼어붙어 버릴 것 같은 차가운 시선을 느낀 것 같은 생각이 들었다.
+	ENDIF
 	CFLAG:5020 = 1
 	RETURN 1
 ;恋慕時に処女奪った(一回のみ)
 ELSEIF TALENT:0 == 0 && TALENT:150 == 1 && CFLAG:5024 == 0
 	DRAWLINE
 	PRINTFORMW 「결국, 빼앗긴 거네, 나…」
-	PRINTFORMW 「아, 아냐, 그, …싫은 건, 아니란, 말이지? 너라면, 뭐, 괜찮을까…」
+	PRINTFORMW 「아, 아냐, 그, …싫은 건, 아니란, 말이지? %CSTR:90%라면, 뭐, 괜찮을까…」
 	PRINTFORMW 「…그것보다, 알고 있지? 책임은 반드시 끝까지 지는 거야?」
 	CFLAG:5024 = 1
 ;非恋慕時に処女奪った(一回のみ)
@@ -19368,27 +19594,45 @@ ENDIF
 ;エンゲージリング使用時
 ;-------------------------------------------------
 IF TFLAG:200 == 200
-	PRINTFORMW 「거짓말……」
-	PRINTFORMW 반지를 보면 레이무는 뚝뚝 굵은 눈물을 흘리기 시작했다.
-	PRINTFORMW 「이런 심한 농담… 그만둬…… 나의 기분, 알고 있겠지?」
-	PRINTFORMW 도망치려고 하는 레이무의 손을 잡아, 끌어들이고는 당신은 상냥하게 키스를 했다.
-	PRINTFORM 「응…… 후우…… 안 돼… 안 돼…… 나는 
-	IF TALENT:160
-		PRINTFORMW 노예인걸…. %조사처리(CSTR:90,"와")%는 달라…」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 「%CSTR:90%… 나 정말 행복해.」
+		PRINTFORMW 『그렇게 말해주니 기쁘군.』
+		PRINTFORMW 「항상 이렇게 되고 싶었어. 쭉...」
+		PRINTFORMW 『그럼 이 순간 너의 소원은 성취되는 셈이군, 레이무.』
+		PRINTFORMW 「응, 고마워. 나의 소원을 들어줘서. 정말로 고마워.」
+		PRINTFORMW %CALLNAME:MASTER%는 고개를 가로젓는 레이무를 강하게 꼭 껴안고 귓전으로 사랑을 속삭였다.
+		PRINTFORMW 「영원히, 우린 함께야!」
+		PRINTFORMW 당신을 꼭 껴안고 기쁨의 눈물을 흘리는 레이무는
+		PRINTL
+		PRINTW 하쿠레이의 무녀가 아닌…
+		PRINTL
+		PRINTW 노예도 아닌…
+		PRINTL 
+		PRINTL 
+		PRINTW 단순한, 소녀였다
 	ELSE
-		PRINTFORMW %CSTR:90%의 물건일 뿐이야… 그 이상을 요구하면 안 돼, 그러니…까…」
+		PRINTFORMW 「거짓말……」
+		PRINTFORMW 반지를 보면 레이무는 뚝뚝 굵은 눈물을 흘리기 시작했다.
+		PRINTFORMW 「이런 심한 농담… 그만둬…… 나의 기분, 알고 있겠지?」
+		PRINTFORMW 도망치려고 하는 레이무의 손을 잡아, 끌어들이고는 당신은 상냥하게 키스를 했다.
+		PRINTFORM 「응…… 후우…… 안 돼… 안 돼…… 나는 
+		IF TALENT:160
+			PRINTFORMW 노예인걸…. %조사처리(CSTR:90,"와")%는 달라…」
+		ELSE
+			PRINTFORMW %CSTR:90%의 물건일 뿐이야… 그 이상을 요구하면 안 돼, 그러니…까…」
+		ENDIF
+		PRINTFORMW 당신은 고개를 가로젓는 레이무를 강하게 꼭 껴안고 귓전으로 사랑을 속삭이며
+		PRINTFORMW 제발 결혼해 주었으면 하고 고백했다.
+		PRINTFORMW 「흑, 아아아, 아아아아아아아아아아아앙!」
+		PRINTFORMW 당신을 꼭 껴안아 큰 소리를 질러 우는 레이무는
+		PRINTL
+		PRINTW 하쿠레이의 무녀가 아닌…
+		PRINTL
+		PRINTW 노예도 아닌…
+		PRINTL 
+		PRINTL 
+		PRINTW 단순한, 소녀였다
 	ENDIF
-	PRINTFORMW 당신은 고개를 가로젓는 레이무를 강하게 꼭 껴안고 귓전으로 사랑을 속삭이며
-	PRINTFORMW 제발 결혼해 주었으면 하고 고백했다.
-	PRINTFORMW 「흑, 아아아, 아아아아아아아아아아아앙!」
-	PRINTFORMW 당신을 꼭 껴안아 큰 소리를 질러 우는 레이무는
-	PRINTL
-	PRINTW 하쿠레이의 무녀가 아닌…
-	PRINTL
-	PRINTW 노예도 아닌…
-	PRINTL 
-	PRINTL 
-	PRINTW 단순한, 소녀였다
 ENDIF
 ;-------------------------------------------------
 ;赤い首輪使用時

@@ -15,16 +15,21 @@ RETURN 1
 ;エキストラモード構文 CFLAG:7001（素質変化） CFLAG:7002（反発状態）
 ;-------------------------------------------------;
 @SET_CHARA_KOJO_EXTRA_K42
-	CSTR:90 = あなた
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		CSTR:90 = 점주 씨
+	ELSE
+		CSTR:90 = あなた
+	ENDIF
+	
 	;IF ASSI > 0
 	;	SIF ASSINO() == Y1
 	;		CFLAG:7003 = 1
 	;ENDIF
-	IF RAND:50 == 0
+	IF RAND:5 == 0
 		PRINTL 「상식을 버리다니, 요즘 사나에씨는 개구쟁이라 곤란해」
 		$INPUT_LOOP_1
 		PRINTL [0] 「상식을 내던져선 안 돼」
-		PRINTL [1] 「상식은 똥이야! 똥！！」
+		PRINTL [1] 「상식은 똥이야! 똥!!」
 		PRINTL [2] 「뭐라고～～ 안 들려～～～」
 		INPUT
 		IF RESULT == 0
@@ -149,38 +154,73 @@ SIF EXP:0 >= 1
 IF CFLAG:7004 == 0
 	DRAWLINE
 	;主人にサド＋スタンガン所持
-	IF TALENT:MASTER:81 == 1 && ITEM:37 == 1
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
 		PRINTFORMW 「……읏……여긴……」
 		PRINTFORMW 사나에가 눈을 뜬 곳은, 처음 보는 방 안이었다
 		PRINTFORMW 가구도 거의 없고, 친대와 선반이 하나 있을 뿐인 살풍경한 방
 		PRINTFORMW 마치 감옥 같은 그 곳은, 보는 사람에게 적지 않은 공포를 줬다
 		PRINTFORMW 「뭐야, 여기……이, 일단, 여길 나가야……」
 		PRINTFORMW 몸을 일으키려던 그 순간, 끼이익 하며 문이 열렸다.
-		PRINTFORMW 사나에는 누군가가 도와주러 온 것이라고 생각했지만, 그 생각은 바로 부셔졌다
-		PRINTFORMW 「앗……아앗……이, 건……」
-		PRINTFORMW 사나에의 눈에 비친 건, 전기를 튀기는 스턴건이었다
-		PRINTFORMW 　
-		PRINTFORMW 기억이 선명하게 돌아온다
-		PRINTFORMW 인적 없는 곳에 불려, 갑자기 스턴 건에 당했다.
-		PRINTFORMW 마지막으로 본 건, 눈앞의 남자의 요염한 미소.
-		PRINTFORMW 「시……싫어요！　가까이 오지 마요！」
-		PRINTFORMW 벌벌 떨며 비명을 지르는 사나에에게, %조사처리(CALLNAME:MASTER,"는")% 스위치를 켠 스턴 건을 가까이 댔다
-		PRINTFORMW 사나에의 얼굴이 창백해지고, 몸은 끊임없이 떨렸다.
-		PRINTFORMW 스턴건의 공포가, 마음속 깊숙이 자리 잡은 듯하다
-		PRINTFORMW 그대로 스턴 건으로 위협하며, %조사처리(CALLNAME:MASTER,"는")% 사나에에게 옷을 벗으라고 명령했다
-		PRINTFORMW 사나에는 아무 말도 못하고, 눈물을 흘리며 고개를 끄덕일 수밖에 없었다
-	;通常
+		PRINTFORMW 사나에는 들어오는 누군가가 뜯밖의 인물이라 매우 당황했다.
+		PRINTFORMW 「……%CSTR:90%?」
+		PRINTFORMW 『안녕, 코치야. 그 동안 잘 지냈나?』
+		PRINTFORMW 「%CSTR:90%, 제가 거의 한 달동안 향림당에 방문하지 않았으니 정말 오랜만이군요.」
+		PRINTFORMW 「그나저나 여긴 대체 어딘가요?」
+		PRINTFORMW 『어디긴 어디야, 바로 내 가게지.』
+		PRINTFORMW 「엑!? 여기가.. 향림당이라고요?」
+		PRINTFORMW 『그러니까 코치야, 이제부터 진지한 이야기를 할 테니 잘 듣도록 해.』
+		PRINTFORMW 「에? 진지..진지한 이야기라고 하셨나요 지금?」
+		PRINTFORMW 「(서... 설마.. 아... 아니겠지, 그 목석인 %CSTR:90%가 설마..)」
+		PRINTFORMW 『나와 함께, 행복을 누리지 않겠나?』
+		PRINTFORMW 「에? 에에에에엑!?」
+		PRINTFORMW 「(설마가 아니라 역시였어! %CSTR:90%는 진짜로 나에게!)」
+		PRINTFORMW 「%CSTR:90%? 대체 어떻게 된 거에요? 그리고 방금 그 발언은, 제가 생각하는 그 의미, 맞죠?」
+		PRINTFORMW 『그렇다고 할 수 있다. 나는 너를 진심으로 소중하다고 생각하고 있다. 모리야의 무녀여. 아니, 사나에.』
+		PRINTFORMW 「%CSTR:90%, 설마 방금 저를 이름으로?」
+		PRINTFORMW 『분명히 그렇다만, 사나에.』
+		PRINTFORMW 「(우와! 이거 그린라이트!? 으아, 몰라몰라몰라!!)」
+		PRINTFORMW 『그러니 사나에, 나와 함께, '하지 않겠는가!?'』
+		PRINTFORMW 「%CSTR:90%…… 설마 바로 지금요?」
+		PRINTFORMW 「아하하.. 정말로 진심이었을 줄이야.. 지금 한다니... 정말? 레알? 진짜?」
+		PRINTFORMW 「아... 그, 그럼... 상냥히.. 부탁드려요. (에헤헤헤헤헤...)」
+		;린노스케 EXTRA 보정, 호감도1050 순종3로 스타트!
+		CFLAG:2 = 1050
+		ABL:10 = 3
+		TALENT:150 = 1
 	ELSE
-		PRINTFORMW 「……환상향에도, 당신 같은 사람은 있네요」
-		PRINTFORMW 「하지만,  전 당신이 하라는 대로 하진 않을 거예요！」
-		PRINTFORMW 「설령 힘이 봉인 당했어도, 절대로！」
-		PRINTFORMW 사나에는 힘찬 목소리로 %조사처리(CALLNAME:MASTER,"를")% 쏘아붙였다
-		PRINTFORMW 　
-		PRINTFORMW 그럼, 그 생각이 언제까지 갈까
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 음험하게 웃으며, 사나에의 옷을 벗겼다
+		IF TALENT:MASTER:81 == 1 && ITEM:37 == 1
+			PRINTFORMW 「……읏……여긴……」
+			PRINTFORMW 사나에가 눈을 뜬 곳은, 처음 보는 방 안이었다
+			PRINTFORMW 가구도 거의 없고, 친대와 선반이 하나 있을 뿐인 살풍경한 방
+			PRINTFORMW 마치 감옥 같은 그 곳은, 보는 사람에게 적지 않은 공포를 줬다
+			PRINTFORMW 「뭐야, 여기……이, 일단, 여길 나가야……」
+			PRINTFORMW 몸을 일으키려던 그 순간, 끼이익 하며 문이 열렸다.
+			PRINTFORMW 사나에는 누군가가 도와주러 온 것이라고 생각했지만, 그 생각은 바로 부셔졌다
+			PRINTFORMW 「앗……아앗……이, 건……」
+			PRINTFORMW 사나에의 눈에 비친 건, 전기를 튀기는 스턴건이었다
+			PRINTFORMW 　
+			PRINTFORMW 기억이 선명하게 돌아온다
+			PRINTFORMW 인적 없는 곳에 불려, 갑자기 스턴 건에 당했다.
+			PRINTFORMW 마지막으로 본 건, 눈앞의 남자의 요염한 미소.
+			PRINTFORMW 「시……싫어요！　가까이 오지 마요！」
+			PRINTFORMW 벌벌 떨며 비명을 지르는 사나에에게, %조사처리(CALLNAME:MASTER,"는")% 스위치를 켠 스턴 건을 가까이 댔다
+			PRINTFORMW 사나에의 얼굴이 창백해지고, 몸은 끊임없이 떨렸다.
+			PRINTFORMW 스턴건의 공포가, 마음속 깊숙이 자리 잡은 듯하다
+			PRINTFORMW 그대로 스턴 건으로 위협하며, %조사처리(CALLNAME:MASTER,"는")% 사나에에게 옷을 벗으라고 명령했다
+			PRINTFORMW 사나에는 아무 말도 못하고, 눈물을 흘리며 고개를 끄덕일 수밖에 없었다
+		;通常
+		ELSE
+			PRINTFORMW 「……환상향에도, 당신 같은 사람은 있네요」
+			PRINTFORMW 「하지만,  전 당신이 하라는 대로 하진 않을 거예요！」
+			PRINTFORMW 「설령 힘이 봉인 당했어도, 절대로！」
+			PRINTFORMW 사나에는 힘찬 목소리로 %조사처리(CALLNAME:MASTER,"를")% 쏘아붙였다
+			PRINTFORMW 　
+			PRINTFORMW 그럼, 그 생각이 언제까지 갈까
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 음험하게 웃으며, 사나에의 옷을 벗겼다
+		ENDIF
 	ENDIF
-		CFLAG:7004 = 1
-		RETURN 1
+	CFLAG:7004 = 1
+	RETURN 1
 
 ;-------------------------------------------------
 ;調教開始時（一回のみ） CFLAG:7004
@@ -212,58 +252,97 @@ ELSEIF CFLAG:7004 < 4 && MARK:2 == 3 && TALENT:150 == 0 && TALENT:160 == 0
 
 ;恋慕or服従
 ELSEIF CFLAG:7004 < 5 && (TALENT:150 == 1 || TALENT:160 == 1)
-	DRAWLINE
-	PRINTFORMW 방에 들어가니, 사나에는 %CALLNAME:MASTER%에게 등을 돌린 채 정좌하고 있다
-	PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 가까이 가자, 조용히 몸을 돌렸다
-	PRINTFORMW 「……저는, 얼마 전까지 신을 섬기는 무녀였어요」
-	PRINTFORMW 「그래서, 지금까지 더러움을 모르며 지내왔어요」
-	PRINTFORMW 「하지만, 당신 곁에 오고 나서는, 몸도, 마음도, 모두 더러움에 빠져버렸어요……」
-	PRINTFORMW 「그러니까, 이제 신사에 돌아갈 수 없어요.」
-	PRINTFORMW 사나에는 조용히 일어서며, 몸에 걸친 옷을 벗었다
-	PRINTFORMW 「……환상향에 온지 얼마 안 된 저는, 모리야 신사 말고 있을 곳이 없어요.」
-	PRINTFORMW 사나에는 천천히 %CALLNAME:MASTER%에게 다가와, %CALLNAME:MASTER%의 앞에 멈춰 섰다.
-	PRINTFORMW 「꼭 그래서만은 아니지만……저를 당신의 노예로 삼아주세요」
-	PRINTFORMW 「당신 밖에……당신 밖에 의지할 사람이 없어요……」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		DRAWLINE
+		PRINTFORMW 방에 들어가니, 사나에는 %CALLNAME:MASTER%에게 등을 돌린 채 정좌하고 있다
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 가까이 가자, 조용히 몸을 돌렸다
+		PRINTFORMW 「……저는, 얼마 전까지 신을 섬기는 무녀였어요」
+		PRINTFORMW 「그래서, 지금까지 더러움을 모르며 지내왔어요」
+		PRINTFORMW 「하지만, %CSTR:90%가 제대로 고백해주셔서 마음을 새롭게 잡을 수 있었어요.」
+		PRINTFORMW 「그러니까, 이제 신사에 돌아가지 않겠어요.」
+		PRINTFORMW 「저, %CSTR:90%를 처음 봤을 때는 솔직히 무슨 이상한 사람이라고만 생각했어요.」
+		PRINTFORMW 「하지만 점점 당신을 알아가고 나니, 어느새에 %CSTR:90%를 좋아하고 있었어요.」
+		PRINTFORMW 「기억나세요? 하트표시로 보내온 과장된 표현의 편지.」
+		PRINTFORMW 『암, 기억하다마다. 발신인도 안 적혀있었고 편지를 열어보니 내용도 엉망이었지.』
+		PRINTFORMW 「그것은 제 나름대로의 애정의 표시였어요.」
+		PRINTFORMW 『설마.. 그것도...』
+		PRINTFORMW 「예, 상식을 버린 나름대로의 표현.」
+		PRINTFORMW 「하지만 이젠 이렇게 제대로 마주할 수 있게 되었어요.」
+		PRINTFORMW 「덕분에 %CSTR:90%를 향해 마음을 표현할 수 있게 되었어요.」
+		PRINTFORMW 사나에는 조용히 일어서며, 몸에 걸친 옷을 벗었다
+		PRINTFORMW 「……모리야 신사 말고 있을 곳이 없어요. 하지만 %CSTR:90%라면 얼마든지 함께 있을 수 있어요.」
+		PRINTFORMW 「……부디 저를, 받아주세요.」
+	ELSE
+		DRAWLINE
+		PRINTFORMW 방에 들어가니, 사나에는 %CALLNAME:MASTER%에게 등을 돌린 채 정좌하고 있다
+		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 가까이 가자, 조용히 몸을 돌렸다
+		PRINTFORMW 「……저는, 얼마 전까지 신을 섬기는 무녀였어요」
+		PRINTFORMW 「그래서, 지금까지 더러움을 모르며 지내왔어요」
+		PRINTFORMW 「하지만, 당신 곁에 오고 나서는, 몸도, 마음도, 모두 더러움에 빠져버렸어요……」
+		PRINTFORMW 「그러니까, 이제 신사에 돌아갈 수 없어요.」
+		PRINTFORMW 사나에는 조용히 일어서며, 몸에 걸친 옷을 벗었다
+		PRINTFORMW 「……환상향에 온지 얼마 안 된 저는, 모리야 신사 말고 있을 곳이 없어요.」
+		PRINTFORMW 사나에는 천천히 %CALLNAME:MASTER%에게 다가와, %CALLNAME:MASTER%의 앞에 멈춰 섰다.
+		PRINTFORMW 「꼭 그래서만은 아니지만……저를 당신의 노예로 삼아주세요」
+		PRINTFORMW 「당신 밖에……당신 밖에 의지할 사람이 없어요……」
+	ENDIF
 	CFLAG:7004 = 5
 	RETURN 1
 
 ;恋慕＋屈服刻印Lv3＋陥落済み＋好感度3000以上
 ELSEIF CFLAG:7004 == 5 && TALENT:150 == 1 && MARK:2 == 3 && CFLAG:2 >= 3000
-	DRAWLINE
-	PRINTFORMW 방에 들어가니, 사나에는 갑자기 당황했다.
-	PRINTFORMW 평소에는 고양이처럼 바로 달려왔지만, 오늘은 아니다.
-	PRINTFORMW 고개를 숙인 채, 움직이지 않는다.
-	PRINTFORMW 무언가를 생각하는 것 같다
-	PRINTFORMW 　
-	PRINTFORMW 하지만, 침묵은 길지 않았다.
-	PRINTFORMW 무언가를 결의한 걸까, 사나에는 크게 심호흡하고 %CALLNAME:MASTER%에게 다가왔다.
-	PRINTFORMW 「저는……저는 이제……당신이 없으면 안돼요……」
-	PRINTFORMW 「전에, 『저를 당신의 노예로 삼아주세요』라고 말한 적이 있지만……달라요！」
-	PRINTFORMW %CALLNAME:MASTER%의 옷을 잡으며, 사나에는 말을 이었다.
-	PRINTFORMW 「제멋대로인 건 알고 있어요, 하지만, 하지만！」
-	PRINTFORMW 「……저를……사랑해 주실래요？」
-	PRINTL [0] 「……미안」
-	PRINTL [1] 「……그래」
-	$INPUT_LOOP_5
-	INPUT
-	SIF RESULT >= 2
-		GOTO INPUT_LOOP_5
-	IF RESULT == 0
-		PRINTFORMW 「그……래요……. 그렇죠！」
-		PRINTFORMW 「주인님과 특별한 관계가 된다니, 무리겠죠！」
-		PRINTFORMW 사나에는 억지스러운 웃음을 띠며, 옷을 벗었다
-		PRINTFORMW 그 와중에, 한 줄기 눈물이 떨어지는 것을 %조사처리(CALLNAME:MASTER,"는")% 눈치 채지 못했다
-		CFLAG:7004 = 6
-		RETURN 1
-	ELSEIF RESULT == 1
-		PRINTFORMW 「정말……이요……？」
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORMW 『언제나 말하는 거지만, 나는 너를 소중히 생각하고 있다.』
+		PRINTFORMW 「정말……고마워요……」
+		PRINTFORMW 『모리야 신사를 나와, 이렇게 나와 함께 하고 있는 것에 매우 감사하고 있어.』
+		PRINTFORMW 『내가 무슨 생각을 하고 있는지 정확히 모르면서, 이렇게 나를 따르고 있으니 말이야.』
+		PRINTFORMW 「정말……괜한 걱정을 하고 계시네요.」
+		PRINTFORMW 「……제가, %CSTR:90%를 의심할 리가 없잖아요.」
+		PRINTFORMW 「……저는 %CSTR:90%를 언제까지나 믿고 있어요.」
+		PRINTFORMW 「……부디 믿어주세요. 흑... 흐윽..」
+		PRINTFORMW 『사나에...』
 		PRINTFORMW 한 줄기 눈물이 떨어졌다. 그와 함께, 사나에는 둑이 터진 듯이 울었다
 		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 어린아이를 달래듯 상냥하게 머리를 쓰다듬었다
 		PRINTFORMW 「……사랑해요……」
 		CFLAG:7004 = 7
 		RETURN 1
+	ELSE
+		DRAWLINE
+		PRINTFORMW 방에 들어가니, 사나에는 갑자기 당황했다.
+		PRINTFORMW 평소에는 고양이처럼 바로 달려왔지만, 오늘은 아니다.
+		PRINTFORMW 고개를 숙인 채, 움직이지 않는다.
+		PRINTFORMW 무언가를 생각하는 것 같다
+		PRINTFORMW 　
+		PRINTFORMW 하지만, 침묵은 길지 않았다.
+		PRINTFORMW 무언가를 결의한 걸까, 사나에는 크게 심호흡하고 %CALLNAME:MASTER%에게 다가왔다.
+		PRINTFORMW 「저는……저는 이제……당신이 없으면 안돼요……」
+		PRINTFORMW 「전에, 『저를 당신의 노예로 삼아주세요』라고 말한 적이 있지만……달라요！」
+		PRINTFORMW %CALLNAME:MASTER%의 옷을 잡으며, 사나에는 말을 이었다.
+		PRINTFORMW 「제멋대로인 건 알고 있어요, 하지만, 하지만！」
+		PRINTFORMW 「……저를……사랑해 주실래요？」
+		PRINTL [0] 「……미안」
+		PRINTL [1] 「……그래」
+		$INPUT_LOOP_5
+		INPUT
+		SIF RESULT >= 2
+			GOTO INPUT_LOOP_5
+		IF RESULT == 0
+			PRINTFORMW 「그……래요……. 그렇죠！」
+			PRINTFORMW 「주인님과 특별한 관계가 된다니, 무리겠죠！」
+			PRINTFORMW 사나에는 억지스러운 웃음을 띠며, 옷을 벗었다
+			PRINTFORMW 그 와중에, 한 줄기 눈물이 떨어지는 것을 %조사처리(CALLNAME:MASTER,"는")% 눈치 채지 못했다
+			CFLAG:7004 = 6
+			RETURN 1
+		ELSEIF RESULT == 1
+			PRINTFORMW 「정말……이요……？」
+			PRINTFORMW 한 줄기 눈물이 떨어졌다. 그와 함께, 사나에는 둑이 터진 듯이 울었다
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 어린아이를 달래듯 상냥하게 머리를 쓰다듬었다
+			PRINTFORMW 「……사랑해요……」
+			CFLAG:7004 = 7
+			RETURN 1
+		ENDIF
 	ENDIF
-
+	
 ;上記で「……ああ」を選択＋好感度4000以上
 ELSEIF CFLAG:7004 == 7 && CFLAG:2 >= 4000
 	CALL NAME_CHANGE_42
@@ -1305,7 +1384,7 @@ ELSEIF (TALENT:150 == 1 || TALENT:160 == 1) && FLAG:11 == 2
 			PRINTFORMW 방에 들어가니, 사나에가 다가왔다
 			PRINTFORMW 그대로 침대까지 데리고 가니, 이번에는 밀어 넘어트려졌다
 			PRINTFORMW 「정말, 오는 게 늦어요！」
-			PRINTFORMW 「%CSTR:90%이 오는 게 너무 늦어서, 먼저 시작해 버렸어요」
+			PRINTFORMW 「%CSTR:90%(이/가) 오는 게 너무 늦어서, 먼저 시작해 버렸어요」
 			PRINTFORMW 사나에는 달아오른 몸으로 %CALLNAME:MASTER%에게 달라붙고, 입을 맞췄다
 		ELSE
 			PRINTFORMW 「아, 이제야 오셨다」
@@ -2431,7 +2510,7 @@ IF SELECTCOM == 2
 					PRINTFORMW 「크읏！　하아, 굉장해……엉덩이가 녹아버릴 것 같아요……」
 				;恋慕or服従
 				ELSEIF CFLAG:7051 == 1
-					PRINTFORMW 「읏！　하아……%CSTR:90%이였다면, 더 기분 좋아질 수 있을까요……」
+					PRINTFORMW 「읏！　하아……%CSTR:90%(이/가)였다면, 더 기분 좋아질 수 있을까요……」
 				;それ以外
 				ELSE
 					PRINTFORMW 「싫어요, 촉수는 안 돼요！」
@@ -4348,7 +4427,7 @@ IF SELECTCOM == 6
 			PRINTFORMW 사나에는 입술을 닦고, 굴복하지 않겠다는 듯 %조사처리(CALLNAME:MASTER,"를")% 노려봤다
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
-			PRINTFORMW 「응……%CSTR:90%이……첫 사람이라 다행이에요……」
+			PRINTFORMW 「응……%CSTR:90%(이/가)……첫 사람이라 다행이에요……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「이런 사람하고, 라니……하아……」
@@ -6689,7 +6768,7 @@ IF SELECTCOM == 9
 						PRINTFORMW 사나에는 유방을 %CALLNAME:MASTER%의 앞에 내놓고, 넘쳐흐르는 모유를 먹였다
 						CFLAG:7146 = 8
 					ELSEIF CFLAG:7052 == 1 && (CFLAG:7146 <= 6 || FLAG:11 == 2)
-						PRINTFORMW 「응, %CSTR:90%이 아무것도 하지 않아도……」
+						PRINTFORMW 「응, %CSTR:90%(이/가) 아무것도 하지 않아도……」
 						PRINTFORMW 「젖이, 멈추지 않아요！」
 						CFLAG:7146 = 7
 					ENDIF
@@ -6718,7 +6797,7 @@ IF SELECTCOM == 9
 			ELSEIF CFLAG:7051 == 1 && (CFLAG:7146 <= 2 || FLAG:11 == 2)
 				IF TALENT:150 == 1
 					PRINTFORMW 「저기, 마시지 않으실래요？　제 모유……」
-					PRINTFORMW 「%CSTR:90%이 마셔주시면 좋겠어요……」
+					PRINTFORMW 「%CSTR:90%(이/가) 마셔주시면 좋겠어요……」
 				ELSE
 					PRINTFORMW 「주인님, 사나에의 가슴을 괴롭혀 주실래요？」
 				ENDIF
@@ -6772,7 +6851,7 @@ IF SELECTCOM == 9
 						IF RAND:2 == 0
 							PRINTFORMW 「응……더 가까이 와주세요……」
 						ELSE
-							PRINTFORMW 「하아……하아……아무것도 하지 않는데……%CSTR:90%이 곁에 있는 것만으로……」
+							PRINTFORMW 「하아……하아……아무것도 하지 않는데……%CSTR:90%(이/가) 곁에 있는 것만으로……」
 						ENDIF
 							CFLAG:7147 = 9
 					ELSEIF CFLAG:7052 == 2 && (CFLAG:7147 <= 7 || FLAG:11 == 2)
@@ -7628,7 +7707,7 @@ IF SELECTCOM == 13 && TEQUIP:25 == 1
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1
 				PRINTFORMW 「엉덩이요？　……조금 무서워요……」
-				PRINTFORMW 「하지만, %CSTR:90%이라면 상냥하게 해주시겠죠？」
+				PRINTFORMW 「하지만, %CSTR:90%(이/가)라면 상냥하게 해주시겠죠？」
 				PRINTFORMW 사나에는 주저하면서도 엉덩이를 내밀고, 바이브를 몸으로 집어삼켰다
 			;それ以外
 			ELSE
@@ -8055,7 +8134,7 @@ IF SELECTCOM == 15 && TEQUIP:35 == 1
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7173 <= 3 || FLAG:11 == 2)
 			IF TALENT:150 == 1
-				PRINTFORMW 「이런 것보다, %CSTR:90%이 사랑해 주시는 게 좋아요」
+				PRINTFORMW 「이런 것보다, %CSTR:90%(이/가) 사랑해 주시는 게 좋아요」
 			ELSE
 				PRINTFORMW 「응, 으으응……가슴이 찌릿찌릿한 게, 점점 심해져요」
 			ENDIF
@@ -8160,9 +8239,9 @@ IF SELECTCOM == 16 && TEQUIP:30 == 2
 			IF TALENT:150 == 1
 				IF CFLAG:7052 == 3 && (CFLAG:7175 <= 9 || FLAG:11 == 2)
 					IF RAND:2 == 0
-						PRINTFORMW 「앗, 좋아！　%CSTR:90%이, 뜨거워지고 있어요！」
+						PRINTFORMW 「앗, 좋아！　%CSTR:90%(이/가), 뜨거워지고 있어요！」
 					ELSE
-						PRINTFORMW 「앗, 앗！　이게, %CSTR:90%이 느끼는 쾌감이죠！」
+						PRINTFORMW 「앗, 앗！　이게, %CSTR:90%(이/가) 느끼는 쾌감이죠！」
 					ENDIF
 						CFLAG:7175 = 10
 				ELSEIF CFLAG:7052 == 2 && (CFLAG:7175 <= 8 || FLAG:11 == 2)
@@ -8303,7 +8382,7 @@ IF SELECTCOM == 20
 				PRINTFORMW 「싫어요, 이제 들어오지 마요！　아앗, 싫어！」
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1
-				PRINTFORMW 「응……%CSTR:90%이……들어오고 있어……」
+				PRINTFORMW 「응……%CSTR:90%(이/가)……들어오고 있어……」
 				PRINTFORMW 「안까지, 들어오고 있어요……！」
 			;それ以外
 			ELSE
@@ -8335,7 +8414,7 @@ IF SELECTCOM == 20
 						PRINTFORMW 「와주세요, 더 안까지！　아앗！」
 						PRINTFORMW 주위에 보여주듯이 허리를 흔들며, 사나에는 날카로운 소리를 질렀다
 					ELSE
-						PRINTFORMW 「핫, %CSTR:90%이, 오고 있어！　오고 있어요！」
+						PRINTFORMW 「핫, %CSTR:90%(이/가), 오고 있어！　오고 있어요！」
 						PRINTFORMW 사나에는 조임을 강하게 하며, %CALLNAME:MASTER%에게 달라붙었다
 					ENDIF
 						CFLAG:7191 = 17
@@ -8374,7 +8453,7 @@ IF SELECTCOM == 20
 					IF RAND:2 == 0
 						PRINTFORMW 「앗, 안아주세요！　안아주세요！」
 					ELSE
-						PRINTFORMW 「응, 하아앙！　%CSTR:90%이 오고 있어！」
+						PRINTFORMW 「응, 하아앙！　%CSTR:90%(이/가) 오고 있어！」
 						PRINTFORMW 사나에는 %조사처리(CALLNAME:MASTER,"를")% 끌어당겨, 질의 한층 깊숙한 곳에 %조사처리(CALLNAME:MASTER,"를")% 이끌었다
 					ENDIF
 						CFLAG:7191 = 11
@@ -8453,7 +8532,7 @@ IF SELECTCOM == 21
 				PRINTFORMW 「싫어요, 이런！　이런 사람에게！　읏, 우와아아앙！」
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1
-				PRINTFORMW 「으으응……들어, 와요……%CSTR:90%이, 제 안에……！」
+				PRINTFORMW 「으으응……들어, 와요……%CSTR:90%(이/가), 제 안에……！」
 				PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 허리를 움직이니, 사나에도 반응하듯 열심히 움직였다
 				PRINTFORMW 「응……이대로, 와주세요, 싸주, 세요！」
 			;それ以外
@@ -8505,7 +8584,7 @@ IF SELECTCOM == 21
 						PRINTFORMW 「응, 아응, 좋으, 세요！」
 						PRINTFORMW 부드러운 유방을 흔들면서, 사나에는 허리를 움직였다
 					ELSE
-						PRINTFORMW 「히야！　들어와요！　%CSTR:90%이 들어오고 있어요！」
+						PRINTFORMW 「히야！　들어와요！　%CSTR:90%(이/가) 들어오고 있어요！」
 					ENDIF
 						CFLAG:7192 = 17
 				ELSEIF CFLAG:7052 == 2 && (CFLAG:7192 <= 15 || FLAG:11 == 2)
@@ -8907,7 +8986,7 @@ IF SELECTCOM == 24
 					CFLAG:7195 = 16
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7195 <= 14 || FLAG:11 == 2)
 					PRINTFORMW 「우리들, 보이고 있는 거죠……」
-					PRINTFORMW 「하지만, %CSTR:90%이 함께라면……」
+					PRINTFORMW 「하지만, %CSTR:90%(이/가) 함께라면……」
 					CFLAG:7195 = 15
 				ENDIF
 			;服従
@@ -8938,11 +9017,11 @@ IF SELECTCOM == 24
 					IF RAND:2 == 0
 						PRINTFORMW 「앗, 더, 기분 좋아져 주세요！」
 					ELSE
-						PRINTFORMW 「오고 있어, %CSTR:90%이 뜨거워지고 있어요！　아앗！」
+						PRINTFORMW 「오고 있어, %CSTR:90%(이/가) 뜨거워지고 있어요！　아앗！」
 					ENDIF
 						CFLAG:7195 = 11
 				ELSEIF CFLAG:7052 == 2 && (CFLAG:7195 <= 9 || FLAG:11 == 2)
-					PRINTFORMW 「앗, 하응, %CSTR:90%이, 안에서, 뜨거워요, 우응！」
+					PRINTFORMW 「앗, 하응, %CSTR:90%(이/가), 안에서, 뜨거워요, 우응！」
 					CFLAG:7195 = 10
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7195 <= 8 || FLAG:11 == 2)
 					PRINTFORMW 「제가 기분 좋게 해드릴 깨요」
@@ -9931,7 +10010,7 @@ IF SELECTCOM == 27
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
 			PRINTFORMW 「히야, 아아앙！　깊어어！」
-			PRINTFORMW 「%CSTR:90%이, 안까지！　핫, 아아ー앗！」
+			PRINTFORMW 「%CSTR:90%(이/가), 안까지！　핫, 아아ー앗！」
 			SIF TEQUIP:40 == 0
 				PRINTFORMW 사나에는 %CALLNAME:MASTER%에게 안기며, 격렬하게 허리를 흔들었다
 		;それ以外
@@ -10047,7 +10126,7 @@ IF SELECTCOM == 28
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
 			PRINTFORMW 「아아앙……으으응……」
-			PRINTFORMW 「%CSTR:90%이, 안까지……」
+			PRINTFORMW 「%CSTR:90%(이/가), 안까지……」
 			PRINTFORMW 사나에는 뜨거운 숨을 내쉬며, 등을 %CALLNAME:MASTER%에게 기댔다
 		;それ以外
 		ELSE
@@ -10087,7 +10166,7 @@ IF SELECTCOM == 28
 					CFLAG:7202 = 10
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7202 <= 8 || FLAG:11 == 2)
 					PRINTFORMW 「앉아서 할 때보다 조금 불안정하지만……」
-					PRINTFORMW 「%CSTR:90%이 함께 있다고 느껴져요……」
+					PRINTFORMW 「%CSTR:90%(이/가) 함께 있다고 느껴져요……」
 					CFLAG:7202 = 9
 				ENDIF
 			;服従
@@ -10440,7 +10519,7 @@ IF SELECTCOM == 31
 			IF TALENT:150 == 1
 				IF CFLAG:7052 == 3 && (CFLAG:7222 <= 9 || FLAG:11 == 2)
 					IF RAND:2 == 0
-						PRINTFORMW 「앗, %CSTR:90%이, 안에서, 움직이고 있어！」
+						PRINTFORMW 「앗, %CSTR:90%(이/가), 안에서, 움직이고 있어！」
 						PRINTFORMW 사나에는 조임을 강하게 하며, %CALLNAME:MASTER%의 페니스를 집어삼켰다
 					ELSE
 						PRINTFORMW 「히야！　엉덩이가, 뜨거워, 지고, 있어요！」
@@ -11360,7 +11439,7 @@ IF SELECTCOM == 38
 					CFLAG:7227 = 9
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7227 <= 7 || FLAG:11 == 2)
 					PRINTFORMW 「아응……또 엉덩이로 하는 거예요？」
-					PRINTFORMW 「정말……%CSTR:90%이 엉덩이만 괴롭히니까, 저까지 버릇이 돼버렸어요」
+					PRINTFORMW 「정말……%CSTR:90%(이/가) 엉덩이만 괴롭히니까, 저까지 버릇이 돼버렸어요」
 					CFLAG:7227 = 8
 				ENDIF
 			;服従
@@ -11575,7 +11654,7 @@ IF SELECTCOM == 41
 					PRINTFORMW 사나에는 만면에 웃음을 띠며, %CALLNAME:MASTER%의 페니스를 물었다
 					CFLAG:7242 = 9
 				ELSEIF CFLAG:7053 == 1 && (CFLAG:7242 <= 7 || FLAG:11 == 2)
-					PRINTFORMW 「%CSTR:90%이 기쁘시면, 저도 기뻐요」
+					PRINTFORMW 「%CSTR:90%(이/가) 기쁘시면, 저도 기뻐요」
 					CFLAG:7242 = 8
 				ENDIF
 			;服従
@@ -11859,7 +11938,7 @@ IF SELECTCOM == 43
 				IF TALENT:150 == 1
 					IF CFLAG:7053 == 3 && (CFLAG:7245 <= 9 || FLAG:11 == 2)
 						IF RAND:2 == 0
-							PRINTFORMW 「응, %CSTR:90%이, 들어온 것 같아서, 아아앙！」
+							PRINTFORMW 「응, %CSTR:90%(이/가), 들어온 것 같아서, 아아앙！」
 						ELSE
 							PRINTFORMW 「거기가 비벼져서……, 좋……아요！」
 						ENDIF
@@ -12127,7 +12206,7 @@ IF SELECTCOM == 47
 				PRINTFORMW 「왜 그래요？　발로 느끼는 변태씨」
 				PRINTFORMW 사나에는 %조사처리(CALLNAME:MASTER,"를")% 도발했다
 			ELSEIF RAND:15 == 0
-				PRINTFORMW 「여기, %CSTR:90%이 너무 좋아하는 발이 있어요？」
+				PRINTFORMW 「여기, %CSTR:90%(이/가) 너무 좋아하는 발이 있어요？」
 				SIF TEQUIP:41 == 0
 					PRINTFORMW 사나에는 깔보는 눈빛으로, %CALLNAME:MASTER%의 페니스를 발로 문질렀다
 			ELSEIF RAND:14 == 0
@@ -12157,7 +12236,7 @@ IF SELECTCOM == 47
 				PRINTFORMW 「지금도, 자, 밟혀서 꿈틀꿈틀 거리고 있어요」
 			ELSEIF RAND:6 == 0
 				PRINTFORMW 「엣, 뭐라고요？　더 강하게？」
-				PRINTFORMW 「하아……이 변태는 어쩔 수 없네요. %CSTR:90%이 원하는 대로 해드리죠」
+				PRINTFORMW 「하아……이 변태는 어쩔 수 없네요. %CSTR:90%(이/가) 원하는 대로 해드리죠」
 			ELSEIF RAND:5 == 0
 				PRINTFORMW 사나에는 양발로 페니스를 비비며, %CALLNAME:MASTER%의 페니스를 발로 밟았다
 				PRINTFORMW 「후흣……벌써 끈적끈적해요, %CSTR:90%의 여기」
@@ -12489,7 +12568,7 @@ IF SELECTCOM == 60
 			IF TALENT:150 == 1
 				IF CFLAG:7052 == 3 && (CFLAG:7271 <= 9 || FLAG:11 == 2)
 					IF RAND:2 == 0
-						PRINTFORMW 「하아……%CSTR:90%이 만져주시면, 바로 젖을 텐데……」
+						PRINTFORMW 「하아……%CSTR:90%(이/가) 만져주시면, 바로 젖을 텐데……」
 					ELSE
 						PRINTFORMW 「이런 걸 쓰는 것보다, %CSTR:90%에게 사랑받아 젖는 게……」
 					ENDIF
@@ -12607,7 +12686,7 @@ IF SELECTCOM == 61
 				ENDIF
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1 && (CFLAG:7272 <= 3 || FLAG:11 == 2)
-				PRINTFORMW 「%CSTR:90%이 해주신다면, 기쁘게 받아들이겠지만……」
+				PRINTFORMW 「%CSTR:90%(이/가) 해주신다면, 기쁘게 받아들이겠지만……」
 				CFLAG:7272 = 4
 			;欲望Lv5以上＋촉수中毒Lv3以上
 			ELSEIF ABL:11 >= 5 && ABL:35 >= 3 && (CFLAG:7272 <= 2 || FLAG:11 == 2)
@@ -12711,7 +12790,7 @@ IF SELECTCOM == 61
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1 && (CFLAG:7273 <= 3 || FLAG:11 == 2)
 				IF TALENT:150 == 1
-					PRINTFORMW 「%CSTR:90%이 있으면, 그런 거……」
+					PRINTFORMW 「%CSTR:90%(이/가) 있으면, 그런 거……」
 				ELSE
 					PRINTFORMW 「응, 몸이 달아올라서, 더는 안 돼요……」
 					PRINTFORMW 「빨리 사나에에게, 넣어주세요！」
@@ -13337,7 +13416,7 @@ IF SELECTCOM == 81
 			ELSEIF CFLAG:7051 == 1 && (CFLAG:7303 <= 3 || FLAG:11 == 2)
 				IF TALENT:150 == 1
 					PRINTFORMW 「주사는 너무 쓰지 말아주셨으면 좋겠어요……」
-					PRINTFORMW 「주사로 느끼는 것보다, %CSTR:90%이 넣어 주시는 게 더 기뻐요……」
+					PRINTFORMW 「주사로 느끼는 것보다, %CSTR:90%(이/가) 넣어 주시는 게 더 기뻐요……」
 				ELSE
 					PRINTFORMW 「아, 네……부디……」
 					PRINTFORMW 사나에는 순간 주저했지만, 바로 다리를 벌리고 비밀의 틈을 드러냈다
@@ -13679,7 +13758,7 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 			CFLAG:7322 = 5
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7322 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「……%CSTR:90%이 원한다면, 또 입어도 좋아요」
+			PRINTFORMW 「……%CSTR:90%(이/가) 원한다면, 또 입어도 좋아요」
 			CFLAG:7322 = 4
 		;奉仕精神Lv3以上
 		ELSEIF ABL:13 >= 3 && (CFLAG:7322 <= 2 || FLAG:11 == 2)
@@ -15649,7 +15728,7 @@ ELSEIF SELECTCOM == 151 && TEQUIP:20 == 0
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7402 <= 3 || FLAG:11 == 2)
 			IF TALENT:150 == 1
 				PRINTFORMW 「으으응, 핫……」
-				PRINTFORMW 「다음은, %CSTR:90%이 넣어주시는 거죠？」
+				PRINTFORMW 「다음은, %CSTR:90%(이/가) 넣어주시는 거죠？」
 			ELSE
 				PRINTFORMW 「하읏！　응……」
 				PRINTFORMW 「감사, 합니다」
@@ -16674,7 +16753,7 @@ IF SELECTCOM == 190
 						PRINTFORMW 사나에는 교성을 지르며, 로터가 닿을 때마다 몸을 움찔거렸다
 					ELSE
 						PRINTFORMW 「아아앙！　이거, 기분 좋지만！」
-						PRINTFORMW 「%CSTR:90%이, 희롱해 주셨으면 해요！」
+						PRINTFORMW 「%CSTR:90%(이/가), 희롱해 주셨으면 해요！」
 					ENDIF
 						CFLAG:7451 = 10
 				ELSEIF CFLAG:7052 == 2 && (CFLAG:7451 <= 8 || FLAG:11 == 2)
@@ -17128,7 +17207,7 @@ IF SELECTCOM == 195 && TEQUIP:35 == 5
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7456 <= 3 || FLAG:11 == 2)
 			IF TALENT:150 == 1
 				PRINTFORMW 「하아, 하아……%CSTR:90%가 해주시는 게 아닌데……」
-				PRINTFORMW 「아응！　다음엔 %CSTR:90%이 해주세요！」
+				PRINTFORMW 「아응！　다음엔 %CSTR:90%(이/가) 해주세요！」
 				SIF TEQUIP:41 == 0
 					PRINTFORMW 사나에는 숨을 헐떡이며, 농후한 시선을 %CALLNAME:MASTER%에게 보냈다
 			ELSE
@@ -17624,7 +17703,7 @@ IF SELECTCOM == 202
 				ENDIF
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1 && (CFLAG:7462 <= 3 || FLAG:11 == 2)
-				PRINTFORMW 「읏, 으으응……%CSTR:90%이 해주시는 게, 전 더 기뻐요……」
+				PRINTFORMW 「읏, 으으응……%CSTR:90%(이/가) 해주시는 게, 전 더 기뻐요……」
 				CFLAG:7462 = 4
 			;B感覚Lv5以上＋촉수中毒Lv3以上
 			ELSEIF ABL:3 >= 5 && ABL:35 >= 3 && (CFLAG:7462 <= 2 || FLAG:11 == 2)
@@ -18417,7 +18496,7 @@ IF SELECTCOM == 220
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7491 <= 3 || FLAG:11 == 2)
 			IF TALENT:150 == 1
-				PRINTFORMW 「응……%CSTR:90%이 때려주시는 건, 복잡한 기분이 들어요」
+				PRINTFORMW 「응……%CSTR:90%(이/가) 때려주시는 건, 복잡한 기분이 들어요」
 			ELSE
 				PRINTFORMW 「아흣, 아픈데, 기분이 좋아지려해요……」
 			ENDIF
@@ -18457,7 +18536,7 @@ IF SELECTCOM == 221
 			PRINTFORMW 저항할 틈도 없는 걸까, 사나에는 비명을 지를 뿥이다
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
-			PRINTFORMW 「읏！　%CSTR:90%이 원하신다면, 저는 무엇이든 할 수 있어요！」
+			PRINTFORMW 「읏！　%CSTR:90%(이/가) 원하신다면, 저는 무엇이든 할 수 있어요！」
 		;それ以外
 		ELSE
 			PRINTFORMW 「히익！　그, 그만, 꺄아아아아！」
@@ -18523,7 +18602,7 @@ IF SELECTCOM == 221
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7492 <= 3 || FLAG:11 == 2)
 			IF TALENT:150 == 1
-				PRINTFORMW 「응……%CSTR:90%이 원하시면, 어떤 거라도 할 수 있어요」
+				PRINTFORMW 「응……%CSTR:90%(이/가) 원하시면, 어떤 거라도 할 수 있어요」
 			ELSE
 				PRINTFORMW 「히야읏, 아앗！」
 				PRINTFORMW 「마음에 드실 때까지, 때려주세요！」
@@ -19175,7 +19254,7 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
 			PRINTFORMW 「빨리 벗겨주세요」
-			PRINTFORMW 「%CSTR:90%이 보이지 않으면, 불안해요……」
+			PRINTFORMW 「%CSTR:90%(이/가) 보이지 않으면, 불안해요……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「이, 이런 걸 씌어도……소용없어요」
@@ -19205,7 +19284,7 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
 					ENDIF
 						CFLAG:7501 = 10
 				ELSEIF CFLAG:7052 == 2 && (CFLAG:7501 <= 8 || FLAG:11 == 2)
-					PRINTFORMW 「%CSTR:90%이 보이지 않아도, 이런 것도 꽤……」
+					PRINTFORMW 「%CSTR:90%(이/가) 보이지 않아도, 이런 것도 꽤……」
 					CFLAG:7501 = 9
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7501 <= 7 || FLAG:11 == 2)
 					PRINTFORMW 「하, 아앙……보이지 않아도……왠지, 이런……」
@@ -19279,7 +19358,7 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 			CFLAG:7502 = 5
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7502 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「%CSTR:90%이 보이지 않아서 무서웠어요……」
+			PRINTFORMW 「%CSTR:90%(이/가) 보이지 않아서 무서웠어요……」
 			PRINTFORMW 사나에는 안도한 얼굴로, %조사처리(CALLNAME:MASTER,"를")% 조용히 바라봤다
 			CFLAG:7502 = 4
 		;マゾっ気Lv3以上
@@ -19558,7 +19637,7 @@ IF SELECTCOM == 231
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
 			PRINTFORMW 「손을 넣는 거예요！？」
-			PRINTFORMW 「%CSTR:90%이 원하신다면……해도 좋지만……」
+			PRINTFORMW 「%CSTR:90%(이/가) 원하신다면……해도 좋지만……」
 			PRINTFORMW 「별로, 하고 싶지 않아요……」
 		;それ以外
 		ELSE
@@ -21969,7 +22048,7 @@ IF SELECTCOM == 343
 					CFLAG:7592 = 9
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7592 <= 7 || FLAG:11 == 2)
 					PRINTFORMW 「이걸로, 기분 좋으세요？」
-					PRINTFORMW 「%CSTR:90%이 좋으시다면 좋지만……」
+					PRINTFORMW 「%CSTR:90%(이/가) 좋으시다면 좋지만……」
 					CFLAG:7592 = 8
 				ENDIF
 			;服従
@@ -22200,7 +22279,7 @@ IF SELECTCOM == 351 && TEQUIP:54 == 1
 			ENDIF
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7623 < 3 || FLAG:11 == 2)
-			PRINTFORMW 「응……계속 이러고 싶지만, 그러면 %CSTR:90%이 범해주시지 않으니까요」
+			PRINTFORMW 「응……계속 이러고 싶지만, 그러면 %CSTR:90%(이/가) 범해주시지 않으니까요」
 			PRINTFORMW 「하지만, 조금은……이대로 있게 해주세요……」
 			CFLAG:7623 = 4
 		;奉仕精神Lv3以上
@@ -22308,7 +22387,7 @@ IF SELECTCOM == 352
 				IF RAND:2 == 0
 					PRINTFORMW 「아아……%CSTR:90%에게 봉사할 수 있다니, 저는 행복해요」
 				ELSE
-					PRINTFORMW 「%CSTR:90%이 말씀하신다면, 저, 뭐든지 할게요」
+					PRINTFORMW 「%CSTR:90%(이/가) 말씀하신다면, 저, 뭐든지 할게요」
 					PRINTFORMW 「그러니까, 더 기분 좋게 돼주세요……」
 				ENDIF
 					CFLAG:7625 = 7
@@ -22646,7 +22725,7 @@ ELSEIF SELECTCOM == 363 && TEQUIP:55 == 0
 			PRINTFORMW 「당신은 여자의 몸을 뭐라고 생각하는 거예요！」
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
-			PRINTFORMW 「하아, 하아……다음엔, %CSTR:90%이 범해주실 차례에요？」
+			PRINTFORMW 「하아, 하아……다음엔, %CSTR:90%(이/가) 범해주실 차례에요？」
 			SIF TEQUIP:41 == 0
 				PRINTFORMW 거칠어진 호흡을 정리하며, 사나에는 선망이 담긴 시선을 보냈다
 		;それ以外
@@ -22670,7 +22749,7 @@ ELSEIF SELECTCOM == 363 && TEQUIP:55 == 0
 		;恋慕or服従＋C感覚Lv3以上＋B感覚Lv3以上
 		ELSEIF CFLAG:7051 == 1 && ABL:0 >= 3 && ABL:3 >= 3 && (CFLAG:7629 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 「하아, 하아……너무, 기분 좋았어요」
-			PRINTFORMW 「응……다음엔, %CSTR:90%이 기분 좋게 해주실 거예요？」
+			PRINTFORMW 「응……다음엔, %CSTR:90%(이/가) 기분 좋게 해주실 거예요？」
 			CFLAG:7629 = 5
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7629 <= 3 || FLAG:11 == 2)
@@ -22826,7 +22905,7 @@ IF SELECTCOM == 381
 				;恋慕or服従
 				ELSEIF CFLAG:7051 == 1
 					PRINTFORMW 「엣……거, 거짓말이죠？」
-					PRINTFORMW 「처음이 %CSTR:90%이 아닌데다, 개라니 농담이죠？」
+					PRINTFORMW 「처음이 %CSTR:90%(이/가) 아닌데다, 개라니 농담이죠？」
 					PRINTFORMW 사나에는 벌벌 떨며, %CALLNAME:MASTER%에게 물었다
 					PRINTFORMW 하지만, 돌아온 대답은 비정했다
 				;それ以外
@@ -23050,7 +23129,7 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
 				PRINTFORMW 「더 난폭하게 해도 좋았는데……」
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1
-				PRINTFORMW 「하아, 하ー앗……역시 %CSTR:90%이 좋아요」
+				PRINTFORMW 「하아, 하ー앗……역시 %CSTR:90%(이/가) 좋아요」
 			;それ以外
 			ELSE
 				PRINTFORMW 「뭐든지 할 테니까, 촉수는, 촉수만은 이제 그만두세요……」
@@ -23116,7 +23195,7 @@ IF SELECTCOM == 501 && TEQUIP:20 == 1
 				;恋慕or服従＋촉수中毒Lv3以上
 				ELSEIF CFLAG:7051 == 1 && ABL:35 >= 3
 					PRINTFORMW 「아흣, 앗……응……」
-					PRINTFORMW 「처음은……촉수씨께 줬으니까, 뒤는 %CSTR:90%이 뺐어주세요？」
+					PRINTFORMW 「처음은……촉수씨께 줬으니까, 뒤는 %CSTR:90%(이/가) 뺐어주세요？」
 				;恋慕or服従
 				ELSEIF CFLAG:7051 == 1
 					PRINTFORMW 「기, 기다려주세요！」
@@ -23709,7 +23788,7 @@ ELSEIF SELECTCOM == 504 && TEQUIP:35 == 0
 			PRINTFORMW 사나에는 아직 부족하다는 표정을 띄우며 말했다
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
-			PRINTFORMW 「역시, %CSTR:90%이 좋아요」
+			PRINTFORMW 「역시, %CSTR:90%(이/가) 좋아요」
 			PRINTFORMW 「촉수는, 너무 격렬해요……」
 		;B感覚Lv5以上＋촉수中毒Lv3以上
 		ELSEIF ABL:3 >= 5 && ABL:35 >= 3
@@ -23876,7 +23955,7 @@ ELSEIF SELECTCOM == 505 && TEQUIP:30 == 0
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7762 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「이런 일을 하셨으니까, 다음엔 제가 하게 해주세요？」
-			PRINTFORMW 「……물론, 상대는 %CSTR:90%이……」
+			PRINTFORMW 「……물론, 상대는 %CSTR:90%(이/가)……」
 			CFLAG:7762 = 4
 		;정액中毒Lv3以上＋촉수中毒Lv3以上
 		ELSEIF ABL:31 >= 3 && ABL:35 >= 3 && (CFLAG:7762 <= 2 || FLAG:11 == 2)
@@ -24010,7 +24089,7 @@ ELSEIF SELECTCOM == 506 && TEQUIP:42 == 0
 			CFLAG:7764 = 5
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7764 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「이게 %CSTR:90%이었으면, 기뻤을 텐데……」
+			PRINTFORMW 「이게 %CSTR:90%(이/가)었으면, 기뻤을 텐데……」
 			CFLAG:7764 = 4
 		;奉仕精神Lv5以上＋촉수中毒Lv3以上
 		ELSEIF ABL:13 >= 5 && ABL:35 >= 3 && (CFLAG:7764 <= 2 || FLAG:11 == 2)
@@ -24122,7 +24201,7 @@ ELSEIF SELECTCOM == 507 && TEQUIP:40 == 0
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
 			PRINTFORMW 「우우……촉수씨 조임이 강해서, 자국이 남았어요」
-			PRINTFORMW 「%CSTR:90%이 주신 게 아닌 자국이……」
+			PRINTFORMW 「%CSTR:90%(이/가) 주신 게 아닌 자국이……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「이제 묶지 마세요……」
@@ -24151,7 +24230,7 @@ ELSEIF SELECTCOM == 507 && TEQUIP:40 == 0
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7766 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「그저 강하게 조이는 거라면, 당하는 쪽도 아플 뿐이에요」
-			PRINTFORMW 「역시……%CSTR:90%이 해주시는 게 좋아요」
+			PRINTFORMW 「역시……%CSTR:90%(이/가) 해주시는 게 좋아요」
 			CFLAG:7766 = 4
 		;マゾっ気Lv5以上＋촉수中毒Lv3以上
 		ELSEIF ABL:21 >= 5 && ABL:35 >= 3 && (CFLAG:7766 <= 2 || FLAG:11 == 2)
@@ -25512,7 +25591,7 @@ ELSEIF SELECTCOM == 525 && TEQUIP:35 == 0
 			PRINTFORMW 「봐주세요……가슴이, 이렇게……」
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
-			PRINTFORMW 「역시, %CSTR:90%이 해주시는 게 기뻐요……」
+			PRINTFORMW 「역시, %CSTR:90%(이/가) 해주시는 게 기뻐요……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「이제 그만……용서해주세요……」
@@ -25709,7 +25788,7 @@ ELSEIF SELECTCOM == 526 && TEQUIP:35 == 0
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7798 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「후우……겨우 끝났다……」
-			PRINTFORMW 「%CSTR:90%이 해주신다면, 더 기쁠 텐데……」
+			PRINTFORMW 「%CSTR:90%(이/가) 해주신다면, 더 기쁠 텐데……」
 			CFLAG:7798 = 4
 		;噴乳中毒Lv3以上＋촉수中毒Lv3以上
 		ELSEIF ABL:34 >= 3 && ABL:35 >= 3 && (CFLAG:7798 <= 2 || FLAG:11 == 2)
@@ -27078,7 +27157,7 @@ ELSEIF SELECTCOM == 550 && TEQUIP:92 == 0
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7814 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「응, 최면술이었어요……？」
-			PRINTFORMW 「%CSTR:90%이 사랑해준 게 아니었네요……」
+			PRINTFORMW 「%CSTR:90%(이/가) 사랑해준 게 아니었네요……」
 			CFLAG:7814 = 4
 		;欲望Lv5以上＋촉수中毒Lv3以上
 		ELSEIF ABL:11 >= 5 && ABL:35 >= 3 && (CFLAG:7814 <= 2 || FLAG:11 == 2)
@@ -27312,7 +27391,7 @@ IF SELECTCOM == 553
 			ENDIF
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7817 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「정말……아무리 %CSTR:90%이라도, 이건 심해요」
+			PRINTFORMW 「정말……아무리 %CSTR:90%(이/가)라도, 이건 심해요」
 			PRINTFORMW 사나에는 얼굴을 찡그리며 말했다
 			CFLAG:7817 = 4
 		;マゾっ気Lv5以上＋촉수中毒Lv3以上
@@ -27651,7 +27730,7 @@ IF SELECTCOM == 560 && TEQUIP:91 >= 1
 				ENDIF
 			;恋慕or服従
 			ELSEIF CFLAG:7051 == 1 && (CFLAG:7821 <= 3 || FLAG:11 == 2)
-				PRINTFORMW 「우우……이런 것보다, %CSTR:90%이 상대해 주시는 게 좋아요」
+				PRINTFORMW 「우우……이런 것보다, %CSTR:90%(이/가) 상대해 주시는 게 좋아요」
 				PRINTFORMW 「그치만 이거, %CSTR:90%의 체력을 받는 거죠？」
 				CFLAG:7821 = 4
 			;정액中毒Lv3以上＋촉수中毒Lv3以上
@@ -28096,7 +28175,7 @@ IF SELECTCOM == 564
 			ENDIF
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1 && (CFLAG:7827 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「우우……%CSTR:90%이 바라신다면, 할게요……」
+			PRINTFORMW 「우우……%CSTR:90%(이/가) 바라신다면, 할게요……」
 			CFLAG:7827 = 4
 		;露出癖Lv5以上＋촉수中毒Lv3以上
 		ELSEIF ABL:14 >= 5 && ABL:35 >= 3 && (CFLAG:7827 <= 2 || FLAG:11 == 2)
@@ -29502,8 +29581,8 @@ IF SELECTCOM == 610
 					ENDIF
 				;恋慕or服従
 				ELSEIF CFLAG:7051 == 1 && (CFLAG:7876 <= 3 || FLAG:11 == 2)
-					PRINTFORMW 「으으응, 핫……다음엔 %CSTR:90%이 엉덩이에 넣어주세요……」
-					PRINTFORMW 「%CSTR:90%이, 싸주셨으면 좋겠어요……」
+					PRINTFORMW 「으으응, 핫……다음엔 %CSTR:90%(이/가) 엉덩이에 넣어주세요……」
+					PRINTFORMW 「%CSTR:90%(이/가), 싸주셨으면 좋겠어요……」
 					CFLAG:7876 = 4
 				;Ａ感覚Lv3以上＋奉仕精神Lv3以上
 				ELSEIF ABL:2 >= 3 && ABL:13 >= 3 && (CFLAG:7876 <= 2 || FLAG:11 == 2)
@@ -29537,7 +29616,7 @@ IF SELECTCOM == 611
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
 			PRINTFORMW 「응, 혹시, 허리가 내려가도, 용서해주세요？」
-			PRINTFORMW 「%CSTR:90%이 핥아주시면, 저기, 너무 기분 좋아져서……」
+			PRINTFORMW 「%CSTR:90%(이/가) 핥아주시면, 저기, 너무 기분 좋아져서……」
 		;それ以外
 		ELSE
 			PRINTFORMW 「안, 돼, 읏！　아앗！！」
@@ -29793,7 +29872,7 @@ IF SELECTCOM == 613
 						CFLAG:7879 = 10
 				ELSEIF CFLAG:7052 == 2 && (CFLAG:7879 <= 8 || FLAG:11 == 2)
 					PRINTFORMW 「핫, 후우……아아앙……」
-					PRINTFORMW 「안에서, %CSTR:90%이, 뜨거워졌어요……」
+					PRINTFORMW 「안에서, %CSTR:90%(이/가), 뜨거워졌어요……」
 					CFLAG:7879 = 9
 				ELSEIF CFLAG:7052 == 1 && (CFLAG:7879 <= 7 || FLAG:11 == 2)
 					PRINTFORMW 「응, 이쪽도, 봐주세요……하아앙！」
@@ -29971,7 +30050,7 @@ IF SELECTCOM == 615
 			PRINTFORMW 사나에는 그저 받아들일 수밖에 없었다
 		;恋慕or服従
 		ELSEIF CFLAG:7051 == 1
-			PRINTFORMW 「하앗!　앗……오고 있어……가장 안쪽에, %CSTR:90%이……」
+			PRINTFORMW 「하앗!　앗……오고 있어……가장 안쪽에, %CSTR:90%(이/가)……」
 			PRINTFORMW 사나에는 호흡이 거칠어지고, 이마에 땀이 맺혔다
 			PRINTFORMW 자궁구는, 아픔도 크겠지
 			PRINTFORMW 「괜찮, 아요. 그러니까, 빨리, 움직여주세요」
@@ -30266,7 +30345,7 @@ IF SELECTCOM == 616
 						ENDIF
 							CFLAG:7883 = 11
 					ELSEIF CFLAG:7052 == 2 && (CFLAG:7883 <= 9 || FLAG:11 == 2)
-						PRINTFORMW 「읏, 응！　%CSTR:90%이, 기분 좋게 해주신다면, 저도！」
+						PRINTFORMW 「읏, 응！　%CSTR:90%(이/가), 기분 좋게 해주신다면, 저도！」
 						PRINTFORMW 사나에는 조임을 강하게 하며, %CALLNAME:MASTER%의 페니스를 깊숙이 삼켰다
 						CFLAG:7883 = 10
 					ELSEIF CFLAG:7052 == 1 && (CFLAG:7883 <= 8 || FLAG:11 == 2)
@@ -30376,7 +30455,7 @@ IF SELECTCOM == 620
 					PRINTFORMW 「핫, 아앗！　나와！　오줌이 나오고 있어！」
 					PRINTFORMW 방뇨의 쾌락을 느끼고 있는 걸까, 사나에는 황홀한 표정을 지었다
 				ELSE
-					PRINTFORMW 「하아……%CSTR:90%이 만져주시니까, 평소보다 잔뜩 나왔어요」
+					PRINTFORMW 「하아……%CSTR:90%(이/가) 만져주시니까, 평소보다 잔뜩 나왔어요」
 				ENDIF
 					CFLAG:7884 = 10
 			ELSEIF CFLAG:7052 == 2 && (CFLAG:7884 <= 8 || FLAG:11 == 2)
@@ -31292,7 +31371,7 @@ IF LOCAL > PALAMLV:2 && CFLAG:8001 == 0
 		;それ以外
 		ELSE
 			PRINTFORMW 「아아, 이제 멈추지 않아요」
-			PRINTFORMW 「%CSTR:90%이 있기만 해도, 젖어버려요」
+			PRINTFORMW 「%CSTR:90%(이/가) 있기만 해도, 젖어버려요」
 		ENDIF
 	;それ以外
 	ELSE
@@ -31345,7 +31424,7 @@ IF LOCAL > PALAMLV:2 && CFLAG:8003 == 0
 	;恋慕or服従
 	IF TALENT:150 == 1 || TALENT:160 == 1
 		PRINTFORMW 「부끄러워, 부끄럽지만……」
-		PRINTFORMW 「%CSTR:90%이 함께 있으니까, 용서해드릴게요」
+		PRINTFORMW 「%CSTR:90%(이/가) 함께 있으니까, 용서해드릴게요」
 	;それ以外
 	ELSE
 		PRINTFORMW 「싫, 싫어요……이런, 부끄러워요……」
@@ -31711,7 +31790,7 @@ IF TFLAG:10 == 1
 		IF CFLAG:8014 == 0
 			;恋慕or服従
 			IF TALENT:150 == 1 || TALENT:160 == 1
-				PRINTFORMW 「응, 느껴져요, %CSTR:90%이 안에 있는 게……」
+				PRINTFORMW 「응, 느껴져요, %CSTR:90%(이/가) 안에 있는 게……」
 				PRINTFORMW 「여기까지 왔으니까, 저와 당신, 하나가 되지 않으실래요？」
 			;屈服刻印Lv3
 			ELSEIF MARK:2 == 3
@@ -32397,7 +32476,7 @@ IF TFLAG:19 == 2
 			;恋慕or服従＋奉仕精神Lv5
 			ELSEIF (TALENT:150 == 1 || TALENT:160 == 1) && ABL:13 >= 5 && (CFLAG:8027 <= 4 || FLAG:11 == 2)
 				PRINTFORMW 「앗, 잔뜩 싸주셨어요」
-				PRINTFORMW 「후훗, %CSTR:90%이 기뻐해주시면, 저도 기뻐요♪」
+				PRINTFORMW 「후훗, %CSTR:90%(이/가) 기뻐해주시면, 저도 기뻐요♪」
 				CFLAG:8027 = 5
 			;恋慕or服従
 			ELSEIF (TALENT:150 == 1 || TALENT:160 == 1) && (CFLAG:8027 <= 3 || FLAG:11 == 2)
@@ -34199,7 +34278,7 @@ IF TFLAG:200 == 130
 	;恋慕＋反発刻印Lv3未満
 	ELSEIF TALENT:150 == 1 && MARK:9 < 3
 		PRINTFORMW 「%CSTR:90%의 곁을 떠난다니……싫어요……」
-		PRINTFORMW 「하지만, %CSTR:90%이 그걸 원하신다면……」
+		PRINTFORMW 「하지만, %CSTR:90%(이/가) 그걸 원하신다면……」
 		PRINTFORMW 사나에는 %CALLNAME:MASTER%에게 안겨, 살짝 입맞춤을 나눴다
 		PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 떨어지니, 사나에는 부자연스러운 미소를 지었다
 		PRINTFORMW 「응……지금까지 감사했습니다……」
@@ -34419,13 +34498,13 @@ IF TFLAG:200 == 150
 	ELSE
 		;妄信＋V感覚Lv3以上
 		IF TALENT:151 == 1 && ABL:1 >= 3 && (CFLAG:8141 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「응, 이렇게, %CSTR:90%이 가득」
+			PRINTFORMW 「응, 이렇게, %CSTR:90%(이/가) 가득」
 			PRINTFORMW 「앗, 기분 좋아요！」
 			CFLAG:8141 = 5
 		;妄信
 		ELSEIF TALENT:151 == 1 && (CFLAG:8141 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「응, 더 찔러주세요！」
-			PRINTFORMW 「%CSTR:90%이 곁에 있는 걸, 느끼게 해주세요！」
+			PRINTFORMW 「%CSTR:90%(이/가) 곁에 있는 걸, 느끼게 해주세요！」
 			CFLAG:8141 = 4
 		;V感覚Lv3以上
 		ELSEIF ABL:1 >= 3 && (CFLAG:8141 <= 2 || FLAG:11 == 2)
@@ -34642,7 +34721,7 @@ IF TFLAG:200 == 158
 			CFLAG:8146 = 5
 		;妄信
 		ELSEIF TALENT:151 == 1 && (CFLAG:8146 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「%CSTR:90%이 옆에 있어요！」
+			PRINTFORMW 「%CSTR:90%(이/가) 옆에 있어요！」
 			PRINTFORMW 「가지 말아주세요！　더 곁에 있어주세요！」
 			CFLAG:8146 = 4
 		;V感覚Lv5以上
@@ -34651,7 +34730,7 @@ IF TFLAG:200 == 158
 			CFLAG:8146 = 3
 		;それ以外
 		ELSEIF CFLAG:8146 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「응, %CSTR:90%이, 나쁜 거예요！」
+			PRINTFORMW 「응, %CSTR:90%(이/가), 나쁜 거예요！」
 			PRINTFORMW 행위를 계속할수록, 사나에의 움직임이 격렬해졌다
 			CFLAG:8146 = 2
 		ENDIF
@@ -34698,6 +34777,23 @@ ENDIF
 ;-------------------------------------------------
 @NAME_CHANGE_42
 ;-------------------------------------------------
+IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+	DRAWLINE
+	CFLAG:7004 = 8
+	PRINTFORMW 「요즘 생각해봤는데요, 계속 %CSTR:90%(이/가)라고 불러도 괜찮은 걸까요？」
+	PRINTFORMW 『네가 나를 어떻게 부를지는 네 자유야. 내가 강요할 이유는 없지.』
+	PRINTFORMW 「그렇죠? 근데 계속 %CSTR:90%라고만 부르니까 뭔가 이상해요.」
+	PRINTFORMW 「벌써 볼꺼 못볼꺼 다 본 사이인데.」
+	PRINTFORMW 『음, 뭐, 그렇지.』
+	PRINTFORMW 「그러니까 이제.. '오라버니'라 불러도.. 괜찮을까요?」
+	PRINTFORMW 『글쎄... 괜찮으려나..』
+	PRINTFORMW 「좋아! 정했어요.」
+	PRINTFORMW 『뭘?』
+	PRINTFORMW 「저는 이제 당신을 '오라버니'라 불러드릴게요.」
+	PRINTFORMW 『좋을대로.』
+	CSTR:90 = 오라버니
+	PRINTFORMW 「그럼 이제부터, 다시 잘 부탁드려요, 」
+ELSE
 	DRAWLINE
 	CFLAG:7004 = 8
 	PRINTFORMW 「요즘 생각해봤는데요, 당신이라고 불러도 괜찮은 걸까요？」
@@ -34747,6 +34843,9 @@ ENDIF
 		ENDIF
 			RETURN 1
 	ENDIF
+ENDIF
+
+	
 
 ;-------------------------------------------------
 ;@単体エンディング関係

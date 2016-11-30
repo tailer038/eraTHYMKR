@@ -172,7 +172,7 @@ IF RESULT == 0 && FLAG:5041 > 0 || ARG:1 == LOCAL:8
 			;인원수가 넘으면 포확할 수 없다.
 			IF CALC_SLAVE_CAPACITY() - CHARANUM <= 0 
 				PRINTFORMW 그러나 더 이상 노예를 가둘 공간이 없다….
-				PRINTFORMW 아쉽지만 %조사처리(CALLNAME:TARGET,"를")% 풀어줄 수 밖에 없었다….
+				PRINTFORMW 아쉽지만 %조사처리(CALLNAME:TARGET,"를")% 풀어줄 수밖에 없었다….
 				;임시캐러 삭제
 				DELCHARA CHARANUM - 1
 				;타겟 복귀
@@ -236,7 +236,7 @@ IF LOCAL:0 == 1
 	;구출에 성공했다.
 	IF RESULT:1 == 0
 		CALL SETCOLOR_TORIKOMODE, "RED", 2
-		PRINTFORMW <%조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:(ARG:1),"를")% 구출 하는데 실패했다.>
+		PRINTFORMW <%조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:(ARG:1),"를")% 구출하는 데 실패했다.>
 		RESETCOLOR
 		;속행
 		LOCAL:0 == 1
@@ -258,7 +258,7 @@ IF LOCAL:0 == 1
 	ELSEIF RESULT:1 == 1
 		LOCAL:2 == 1
 		CALL SETCOLOR_TORIKOMODE, "RED", 2
-		PRINTFORMW <%조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:(ARG:1),"를")% 구출하는데 성공했다.>
+		PRINTFORMW <%조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:(ARG:1),"를")% 구출하는 데 성공했다.>
 		RESETCOLOR
 		;속행
 		LOCAL:0 == 1
@@ -606,7 +606,7 @@ LOCAL:12 = 0
 LOCAL:13 = FINDCHARA(CFLAG:4013, 2)
 ;시간정지 발동 중 움직일 수 있는 최대시간(현재 5초)
 LOCAL:14 = 5
-;버서커 모드 사용여부 - 내가 싸울 시 분기(0:쓰지 않음, 1:사용함)
+;버서커 모드 사용여부 - 내가 싸울 시 분기(0:쓰지 않음, 1:사용함, 2:천총극살검무)
 LOCAL:15 = 0
 ;시간정지 발동 중 움직이는 데 경과한 시간(기본 최대 5초까지)
 LOCAL:16 = -1
@@ -637,6 +637,8 @@ LOCAL:27 = 0
 LOCAL:28 = 0
 ;아이아스 방패 깨지는 효과반복 루프변수
 LOCAL:29 = 0
+;전투 최대턴 수(일반. 5턴, 린노. 10턴)
+LOCAL:30 = 5
 ;침입자의 버프 상태
 LOCALS:0 = 
 ;침입자가 때릴 캐릭터의 대표명. 만약 경비대장이 있으면 경비대장명이, 아니면 그냥 '경비원' 이 된다.
@@ -750,6 +752,13 @@ ENDIF
 ;	BASE:ARG:1 += BASE:ARG:1 * DAY / 100
 ;ENDIF
 
+IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
+;린노스케일 경우
+	LOCAL:30 = 10 ;최대 전투턴을 10턴으로
+ELSE
+;일반 아나타일 경우
+	LOCAL:30 = 5 ;최대 전투턴을 5턴으로
+ENDIF
 ;...........................................................................................
 ;전투턴
 LOCAL:0 = 0
@@ -758,7 +767,7 @@ DO
 	LOCAL:13 = FINDCHARA(CFLAG:4013, 2)
 	DRAWLINE
 	;턴 정보 표시
-	PRINTFORML <{LOCAL:0+1}/10 턴>
+	PRINTFORML <{LOCAL:0+1}/{LOCAL:30} 턴>
 	IF LOCAL:18 == 1
 		;시간정지 중이라는 표시
 		FONTBOLD
@@ -876,12 +885,12 @@ DO
 	LOOP LOCAL:99 < 10
 	;작전지정! (첫 턴에만)
 	IF LOCAL:0 == 0
-		$SELECT_LIST
 		PRINTFORML "%CALLNAME:MASTER% 님. 명령을 내려주십시오!"
 		PRINTFORML [1] 기절시켜! : 돈 획득大, 공격대 전투력 하락↓. 포획시 깨끗한 상태의 노예 획득 가능.
 		PRINTFORML [2] 때려잡아!! : 돈 획득中, 포획시 노예의 고통각인1, 반발각인1,  스트레스↑
 		PRINTFORML [3] 윤간한다!!! : 돈 획득小, 공격대 전투력 상승↑. 포획시 윤간, 반발각인1~2, 스트레스↑↑, 이상경험
 		PRINTFORML [999] 도망쳐라!!!! : 침입자를 무시하고 도망칩니다.
+		$INPUT_LOOP
 		INPUT
 		IF RESULT == 1
 			LOCAL:1 = 1
@@ -913,13 +922,13 @@ DO
 			RETURN RESULT:1
 			RETURN 0
 		ELSE
-			GOTO SELECT_LIST
+			CLEARLINE 1
+			GOTO INPUT_LOOP
 		ENDIF
 		;첫 턴의 작전은 '싸워라' 가 된다.
 		LOCAL:7 = 1
 	;작전지정! (두번째 턴 부터)
 	ELSE
-		$SELECT_LIST2
 		IF LOCAL:18 == 1
 			;시간정지 중일 때의 커맨드 메뉴
 			PRINTFORML 『시간이 멈추자 '나'를 제외한 모든이들, 아니, 모든 세계가 정지했다.』
@@ -929,6 +938,18 @@ DO
 			PRINTFORML ※경과한 정지시간 {LOCAL:16}/{LOCAL:14}(초)
 			RESETCOLOR
 			FONTREGULAR
+			
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
+				;야채의 연금술사여야 '천총극살검무'가 가능!
+				IF FLAG:574 >= 18000
+					;야채가 18000개 이상이어야 한다
+					PRINTFORML [3] 천총극살검무 발동 : 전설의 검무를 시전한다!! (야채 18000개 소비) ※야채수:{FLAG:574}
+				ELSE
+					;천총극살검무 불가능
+					PRINTFORML [x] 천총극살검무 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+				ENDIF
+			ENDIF
+			
 			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
 				;환상향의 왕이 있어야 한다
 				PRINTFORML [5] 자신이 직접 전투 : 압도적인 실력으로 때려눕힌다!
@@ -971,6 +992,23 @@ DO
 			ELSE
 				PRINTFORML [2] 방어해라! : 방어를 해서 경비원이 받는 피해를 줄입니다. 공격은 하지 않음.
 			ENDIF
+			
+			
+			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
+				IF LOCAL:25 == 0
+				;아이아스가 발동중이 아닐 때				
+					;야채의 연금술사여야 '천총극살검무'가 가능!
+					IF FLAG:574 >= 18000
+						;야채가 18000개 이상이어야 한다
+						PRINTFORML [3] 천총극살검무 발동 : 전설의 검무를 시전한다!! (야채 18000개 소비) ※야채수:{FLAG:574}
+					ELSE
+						;천총극살검무 불가능
+						PRINTFORML [x] 천총극살검무 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
+					ENDIF
+				ENDIF
+			ENDIF
+
+			
 			IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
 			;야채의 연금술사여야 시간정지를 발동가능!
 				IF LOCAL:25 == 0
@@ -1008,10 +1046,10 @@ DO
 			;야채의 연금술사여야 아이아스의 거울발동이 가능!
 				IF LOCAL:25 == 0
 				;아이아스가 발동중이 아닐 때
-					IF FLAG:574 >= 20000
-					;야채가 20000개 이상이어야 한다
+					IF FLAG:574 >= 8000
+					;야채가 8000개 이상이어야 한다
 						PRINTFORML [8] 아이아스의 거울 : 분홍빛으로 물든 7장의 거울방패가 불타는 하늘을 뒤덮는다!
-						PRINTFORML     (야채 20000개 소비) ※야채수:{FLAG:574}
+						PRINTFORML     (야채 8000개 소비) ※야채수:{FLAG:574}
 					ELSE
 						PRINTFORML [x] 아이아스 발동 불가능 : Warning! 야채가 부족합니다! ※야채수:{FLAG:574}
 					ENDIF
@@ -1032,14 +1070,22 @@ DO
 				PRINTFORML [999] 도망쳐라!!!! : 침입자를 무시하고 도망갑니다.
 			ENDIF
 		ENDIF
+		$INPUT_LOOP2
 		INPUT
-		IF  RESULT == 1
+		IF RESULT == 1 && (LOCAL:22 == 0) && (LOCAL:18 == 0)
+			;경비대장과 경비원의 공격
 			LOCAL:7 = 1
-		ELSEIF  RESULT == 2
+		ELSEIF RESULT == 2 && (LOCAL:22 == 0) && (LOCAL:18 == 0)
+			;경비원의 방어
 			PRINTFORMW 방어해라!
 			PRINTFORMW 경비원들은 방어를 하며 시간을 끌기 시작했다….
 			LOCAL:7 = 2
-		ELSEIF RESULT == 4
+		ELSEIF RESULT == 3 && (LOCAL:25 == 0) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831 && (FLAG:574 >= 18000)
+			;천총극살검무 시전
+			FLAG:574 -= 18000 ;야채소비
+			LOCAL:7 = 4 ;이번 턴의 행동을 '내가 싸운다'로 설정
+			LOCAL:15 = 2 ;천총극살검무 씀
+		ELSEIF RESULT == 4 && (LOCAL:18 == 0) && (LOCAL:25 == 0) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831 && (FLAG:574 >= 3000)
 			;시간정지 구현
 			FLAG:574 -= 3000 ;야채소비
 			LOCAL:7 = 0 ;우발적인 공격방지 - 에러방지
@@ -1100,14 +1146,14 @@ DO
 				SETBGCOLOR 0,0,111 ; 시간정지(야채 더 월드) 적합배경바탕 변경
 				PRINTFORMW %CALLNAME:MASTER%는 발동주문을 크게 외치며 시간을 정지했다!
 			ENDIF
-		ELSEIF RESULT == 5
+		ELSEIF RESULT == 5 && (LOCAL:25 == 0) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
 			;환상향의 왕 직접전투
 			LOCAL:7 = 4 ;이번 턴의 행동을 '내가 싸운다'로 설정
 			LOCAL:15 = 0 ;버서커모드 안 씀
 			CALL SETCOLOR_TORIKOMODE, "GREEN", 2
 			PRINTFORMW %CALLNAME:MASTER%는 스스로 싸우기 위해 앞으로 나섰다!
 			RESETCOLOR
-		ELSEIF RESULT == 6
+		ELSEIF RESULT == 6 && (LOCAL:25 == 0) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && (FLAG:574 >= 10000)
 			;환상향의 왕 버서커 모드 발동
 			FLAG:574 -= 10000 ;야채소비
 			LOCAL:7 = 4 ;이번 턴의 행동을 '내가 싸운다'로 설정
@@ -1115,7 +1161,7 @@ DO
 			CALL SETCOLOR_TORIKOMODE, "RED", 2
 			PRINTFORMW %CALLNAME:MASTER%는 스스로 싸우기 위해 기합을 크게 주고 앞으로 나섰다!!
 			RESETCOLOR
-		ELSEIF RESULT == 7
+		ELSEIF RESULT == 7 && (LOCAL:18 == 1) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
 			;만약 시간정지 중일때, [시간정지]를 그만둔다
 			FONTBOLD
 			CALL SETCOLOR_TORIKOMODE, "YELLOW", 2
@@ -1125,9 +1171,9 @@ DO
 			FONTREGULAR
 			LOCAL:19 = 1 ;시간정지 도중중단 조정스위치 ON
 			PRINTFORMW %CALLNAME:MASTER%는 발동주문을 크게 외치며 시간을 다시 움직였다!
-		ELSEIF RESULT == 8
+		ELSEIF RESULT == 8 && (LOCAL:18 == 0) && (LOCAL:25 == 0) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831 && (FLAG:574 >= 8000)
 			;아이아스의 거울 발동!
-			FLAG:574 -= 20000 ;야채소비
+			FLAG:574 -= 8000 ;야채소비
 			LOCAL:25 = 1 ;방패 스위치 ON
 			LOCAL:26 = 1750 ;거울방패 내구도 초기화
 			LOCAL:27 = 7 ;거울방패 갯수 초기화
@@ -1146,7 +1192,7 @@ DO
 			PRINTL
 			RESETCOLOR
 			FONTREGULAR
-		ELSEIF RESULT == 9
+		ELSEIF RESULT == 9 && (LOCAL:18 == 0) && (LOCAL:25 == 1) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
 			;아이아스의 거울 발동중지!
 			LOCAL:25 = 0 ;방패 스위치 OFF
 			LOCAL:28 = 1 ;거울방패 도중중단 조정변수 ON
@@ -1158,11 +1204,11 @@ DO
 			FONTREGULAR
 			PRINTL
 			PRINTFORMW %CALLNAME:MASTER%는 전개하고 있던 거울방패를 사라지게 하고 난 뒤, 공격을 위해 경계테세로 전환했다.
-		ELSEIF RESULT == 10
+		ELSEIF RESULT == 10 && (LOCAL:18 == 0) && (LOCAL:22 == 1) && (LOCAL:25 == 1) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 && TALENT:MASTER:831
 			;아이아스 연속전개
 			LOCAL:7 = 0 ;우발적인 공격방지 - 에러방지
-			PRINTFORML %CALLNAME:MASTER%는 오른손을 계속 뻗으면서 아이아스의 거울을 유지했다.
-		ELSEIF RESULT == 999
+			PRINTFORML %CALLNAME:MASTER%는 왼손을 계속 뻗으면서 아이아스의 거울을 유지했다.
+		ELSEIF RESULT == 999 && (LOCAL:22 == 0) && (LOCAL:18 == 0)
 			LOCAL:1 = 999
 			PRINTFORMW 도망쳐라!!!
 			PRINTFORMW "히이이익――!!"
@@ -1172,7 +1218,8 @@ DO
 			RETURN RESULT:1
 			RETURN 0
 		ELSE
-			GOTO SELECT_LIST2
+			CLEARLINE 1
+			GOTO INPUT_LOOP2
 		ENDIF
 	ENDIF
 
@@ -2088,6 +2135,7 @@ DO
 					PRINTFORMW 『(그렇다면 내가 취할 행동은 단 한 가지밖에 없지.)』
 					PRINTL
 					PRINTFORML %CALLNAME:MASTER%는 전투를 포기하고 %CALLNAME:ARG%에게 길을 비켜주었다.
+					PRINTFORML 
 					IF CALLNAME:ARG == "치르노"
 						PRINTFORMW 『이봐, 얼음요정.』
 						PRINTFORMW 「잇…! 난 치르노라는 제대로된 이름이 있다구! 좀 제대로 불러달란 말야, 코린!」
@@ -2097,6 +2145,7 @@ DO
 						PRINTFORMW 「항복? 그게 뭐야? 먹는거야?」
 						PRINTFORMW 『……, 바보인 너라도 제대로 이해할 수 있게 설명해주마. '내가 졌고 네가 이겼다'. 너는 그만큼 강하다는 것을 내가 인정하지.』
 						PRINTFORMW 「……, 바보같이 뭔 소리를 하고 있는거야, 코린?」
+						PRINTFORMW 「난 원래부터 최강이라구. 그걸 모르다니 코린은 엄청 바보였나보네?」
 						PRINTFORMW 『뭣?! 바보라고? 바보는 너겠지, 꼬맹이 얼음요정!』
 						PRINTFORMW 「우씨! 나는 '치르노'야!」
 						PRINTFORMW 『암튼 치르노, 너는 이겼다. 그러니 얼른 여길 지나가서 네 친구를 찾든가 말든가 마음대로 하란 말이다!』
@@ -2117,10 +2166,12 @@ DO
 						FONTREGULAR
 						PRINTL
 						SETBGCOLOR 0,0,111 ; 시간정지(야채 더 월드) 적합배경바탕 변경
-						PRINTFORMW %CALLNAME:ARG%는 '바보'라서 린노스케의 행동을 전혀 이해하지 못 했다.
+						PRINTFORMW %CALLNAME:ARG%는 '바보'라서 %CALLNAME:MASTER%의 행동을 전혀 이해하지 못 했다.
 						PRINTFORMW 그렇기에 그는 은밀하게 이 바보를 따돌리기로 결심하고 시간을 정지했다.
+						PRINTFORMW 
 						PRINTFORMW 『(이제 빨리 숨도록 할까…….)』
-						PRINTFORMW 그리고 %CALLNAME:ARG%는 재빨리 날아 아무도 모르는 곳에 자신의 몸을 숨겼다.
+						PRINTFORMW 
+						PRINTFORMW 그리고 %CALLNAME:MASTER%는 재빨리 날아 아무도 모르는 곳에 자신의 몸을 숨겼다.
 						PRINTFORMW 그리고...
 						PRINTL
 						FONTBOLD
@@ -2137,7 +2188,8 @@ DO
 						PRINTFORMW 「난 아직 널 못 이겼다구! 우씨! 언제 도망갔지?」
 						PRINTFORMW 「우으으……!! 반드시 찾아낼꺼야! 찾아내서 엄청 패준 뒤에, 그 위에 보기좋게 깔고앉아 내가 최강이라는 걸 보여줄꺼얏!」
 						PRINTFORMW 「절대로 놓치지 않을꺼야, 코린! 각오해!!」
-						PRINTFORMW 치르노는 %CALLNAME:ARG%를 찾아 향림당 주변과 조교관 내부를 이리저리 뒤졌다.
+						PRINTFORMW 
+						PRINTFORMW 치르노는 %CALLNAME:MASTER%를 찾아 향림당 주변과 조교관 내부를 이리저리 뒤졌다.
 						PRINTFORMW 하지만 나오는 것은 아무것도 없었다.
 						PRINTFORMW 그렇게 찾다찾다 나오는 건 단 한 가지, 자신이 애초에 구하려고 한 %CALLNAME:(ARG:1)%뿐이었다!
 					ELSE
@@ -2203,12 +2255,16 @@ DO
 				IF LOCAL:15 == 0
 				;통상전투 때
 					LOCAL:20 = (MAXBASE:MASTER:1 * 10/100)
+					CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG, 1
 				ELSEIF LOCAL:15 == 1
 				;버서커모드 때
 					LOCAL:20 = (MAXBASE:MASTER:1 * 10/100 * 3)
+					CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG, 1
+				ELSEIF LOCAL:15 == 2
+				;천총극살검무 때
+					LOCAL:20 = (MAXBASE:MASTER:1 * 10/100 * 8)
+					CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG, 2
 				ENDIF
-				;공격패턴 선택
-				CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG
 				; 시간정지 적합배경바탕 변경
 				SETBGCOLOR 0,0,111
 				;순간대미지 변수에 기록
@@ -2322,12 +2378,16 @@ DO
 			IF LOCAL:15 == 0
 			;통상전투 때
 				LOCAL:20 = (MAXBASE:MASTER:1 * 10/100)
+				CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG, 1
 			ELSEIF LOCAL:15 == 1
 			;버서커모드 때
 				LOCAL:20 = (MAXBASE:MASTER:1 * 10/100 * 3)
+				CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG, 1
+			ELSEIF LOCAL:15 == 2
+			;천총극살검무 때
+				LOCAL:20 = (MAXBASE:MASTER:1 * 10/100 * 8)
+				CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG, 2
 			ENDIF
-			;공격패턴 선택
-			CALL ATTACK_FANTASY_KING_TORIKOMODE, LOCAL:20, CALLNAME:ARG
 			LOCAL:4 = RESULT
 			;침입자에게 대미지를 준다.
 			PRINTFORM %CALLNAME:ARG%에게 
@@ -2766,7 +2826,7 @@ DO
 	ENDIF
 
 
-LOOP LOCAL:0 < 10
+LOOP LOCAL:0 < LOCAL:30
 ;전투종료.무승부
 RESULT:1 = 2
 RETURN RESULT:1
@@ -3135,8 +3195,9 @@ RETURN RESULT
 ;환상향의 왕의 공격패턴과 대미지 계산
 ;ARG = 왕의 공격력(공격측의 공격격)
 ;ARGS = 공격대상의 이름. 배틀크라이 용.
+;ARG:1 = 공격방식(1.탄막/스펠카드 2.천총극살검무)
 ;-------------------------------------------
-@ATTACK_FANTASY_KING_TORIKOMODE, ARG, ARGS
+@ATTACK_FANTASY_KING_TORIKOMODE, ARG, ARGS, ARG:1
 LOCAL:0 = 0 ;공격패턴(0:탄막, 1:스펠카드)
 LOCAL:1 = 0 ;대미지
 ;
@@ -3151,40 +3212,47 @@ ELSE
 	LOCAL:0  = 0
 	LOCAL:1 = ARG * (RAND:50 + 75) /100
 ENDIF
-CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
-PRINTFORM %CALLNAME:MASTER%는 
-RESETCOLOR
-;필살기
-IF LOCAL:0 == 1
-	;배경 번쩍이기 이펙트
-	SETBGCOLOR 205,255,255
-	SETBGCOLOR 115,237,255
-	RESETBGCOLOR
-	CALL SETCOLOR_TORIKOMODE, "GREEN", 5
-	FONTBOLD
-	PRINTFORM 스펠카드
-	FONTREGULAR
-	RESETCOLOR
-;강공격
-ELSEIF LOCAL:0  == 0 && LOCAL:1  > ARG
-	CALL SETCOLOR_TORIKOMODE, "MAGENTA", 3
-	PRINTFORM 강탄막
-	RESETCOLOR
+
+IF ARG:1 == 2
+;천총극살검무
+	CALL MASTER_BLADE_DANCE_SCENE
 ELSE
+;일반적인 탄막과 스펠카드
 	CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
-	PRINTFORM 탄막
+	PRINTFORM %CALLNAME:MASTER%는 
 	RESETCOLOR
-ENDIF
-CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
-PRINTFORML 을(를) 쐈다!
-FONTBOLD
-;공격멘트
-IF LOCAL:0  == 1
-	;스펠카드 공격멘트
-	CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 3, ARGS ;스펠카드
-ELSE
-	;탄막 공격멘트
-	CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 4, ARGS ;탄막
+	;필살기
+	IF LOCAL:0 == 1
+		;배경 번쩍이기 이펙트
+		SETBGCOLOR 205,255,255
+		SETBGCOLOR 115,237,255
+		RESETBGCOLOR
+		CALL SETCOLOR_TORIKOMODE, "GREEN", 5
+		FONTBOLD
+		PRINTFORM 스펠카드
+		FONTREGULAR
+		RESETCOLOR
+	;강공격
+	ELSEIF LOCAL:0  == 0 && LOCAL:1  > ARG
+		CALL SETCOLOR_TORIKOMODE, "MAGENTA", 3
+		PRINTFORM 강탄막
+		RESETCOLOR
+	ELSE
+		CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
+		PRINTFORM 탄막
+		RESETCOLOR
+	ENDIF
+	CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
+	PRINTFORML 을(를) 쐈다!
+	FONTBOLD
+	;공격멘트
+	IF LOCAL:0  == 1
+		;스펠카드 공격멘트
+		CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 3, ARGS ;스펠카드
+	ELSE
+		;탄막 공격멘트
+		CALL FANTASY_KING_BATTLECRY_TORIKOMODE, 4, ARGS ;탄막
+	ENDIF
 ENDIF
 ;대미지를 반환한다.
 RESULT = LOCAL:1
@@ -3312,7 +3380,202 @@ ELSEIF ARG == 6
 	FONTREGULAR
 ENDIF
 
+;-------------------------------------------
+;천총극살검무(天叢極殺劍舞) 연출씬
+;-------------------------------------------
+@MASTER_BLADE_DANCE_SCENE
+;천총극살검무 이펙트
+PRINTFORMW 
+PRINTFORMW 『나의 몸은 쿠사나기의 검으로 되어있다.』
+PRINTFORMW 『고로 나의 힘은, 천운(天雲)의 춤을 추는 것!』
+PRINTFORMW 
+PRINTFORM %CALLNAME:MASTER%는 자신의 영혼에 잠든
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 5
+PRINTFORM  '그 검'
+RESETCOLOR
+FONTREGULAR
+PRINTFORMW 의 형상을 이미지했다.
+PRINTFORM 그 결과 %CALLNAME:MASTER%의 왼손에
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "GREEN", 5
+PRINTFORM  빛나는 검
+RESETCOLOR
+FONTREGULAR
+PRINTFORMW 이 생성되어 잡혔다.
+PRINTFORMW %CALLNAME:MASTER%는 검이 구현되자마자 몸을 놀려 적에게 돌진해 검을 휘둘렀다.
+PRINTL
 
+;1격
+SETBGCOLOR 120,120,120
+FONTBOLD
+PRINTFORML (쉭!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 116,161,111
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "GREEN", 1
+PRINTFORML (부-욱!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 147,109,128
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "RED", 1
+PRINTFORML (촥!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 109,121,147
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "BLUE", 1
+PRINTFORML (파-악!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 147,109,142
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "PINK", 1
+PRINTFORML (콱!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+PRINTL
+
+;2격
+SETBGCOLOR 147,147,147
+RESETBGCOLOR
+FONTBOLD
+PRINTFORML (파-박!)
+FONTREGULAR
+SETBGCOLOR 129,129,129
+RESETBGCOLOR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 145,157,183
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "BLUE", 1
+PRINTFORML (파-악!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 129,91,110
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "PINK", 1
+PRINTFORML (콱!)
+FONTREGULAR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 78,78,78
+RESETBGCOLOR
+FONTBOLD
+PRINTFORML (촤-아-악!)
+FONTREGULAR
+SETBGCOLOR 93,93,93
+RESETBGCOLOR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 80,125,75
+RESETBGCOLOR
+SETBGCOLOR 44,89,39
+RESETBGCOLOR
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "GREEN", 1
+PRINTFORML (파바바박!)
+FONTREGULAR
+SETBGCOLOR 124,109,147
+RESETBGCOLOR
+SETBGCOLOR 116,161,111
+RESETBGCOLOR
+SETBGCOLOR 147,59,59
+RESETBGCOLOR
+RESETCOLOR
+RESETBGCOLOR
+PRINTL
+
+;3격
+SETBGCOLOR 108,108,108
+RESETBGCOLOR
+FONTBOLD
+PRINTFORML (쉬익!)
+FONTREGULAR
+SETBGCOLOR 108,108,108
+RESETBGCOLOR
+RESETCOLOR
+RESETBGCOLOR
+
+SETBGCOLOR 108,108,108
+SETBGCOLOR 93,93,93
+SETBGCOLOR 78,78,78
+FONTBOLD
+PRINTFORML (촤아아아아!)
+FONTREGULAR
+SETBGCOLOR 108,108,108
+SETBGCOLOR 108,108,108
+SETBGCOLOR 93,93,93
+SETBGCOLOR 93,93,93
+SETBGCOLOR 78,78,78
+RESETBGCOLOR
+SETBGCOLOR 108,108,108
+SETBGCOLOR 93,93,93
+SETBGCOLOR 78,78,78
+FONTBOLD
+PRINTFORML (촤아아아아!)
+FONTREGULAR
+SETBGCOLOR 108,108,108
+SETBGCOLOR 108,108,108
+SETBGCOLOR 93,93,93
+SETBGCOLOR 93,93,93
+SETBGCOLOR 78,78,78
+RESETBGCOLOR
+SETBGCOLOR 180,180,180
+RESETBGCOLOR
+RESETCOLOR
+RESETBGCOLOR
+PRINTFORML
+PRINTFORML 
+PRINTFORM 【
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 5
+PRINTFORM 천天
+REUSELASTLINE
+CALL SETCOLOR_TORIKOMODE, "GREEN", 5
+PRINTFORM   총叢
+REUSELASTLINE
+CALL SETCOLOR_TORIKOMODE, "YELLOW", 5
+PRINTFORM   극極
+REUSELASTLINE
+CALL SETCOLOR_TORIKOMODE, "RED", 5
+PRINTFORM   살殺
+REUSELASTLINE
+CALL SETCOLOR_TORIKOMODE, "BLUE", 5
+PRINTFORM   검劍
+REUSELASTLINE
+CALL SETCOLOR_TORIKOMODE, "PINK", 5
+PRINTFORM   무舞
+FONTREGULAR
+RESETCOLOR
+PRINTFORM 】
+PRINTL
+PRINTL
+PRINTFORMW 그야말로 '천총운참'을 뛰어넘는 기교였다.
+PRINTFORM 시전이 끝난 후, %CALLNAME:MASTER%의 왼손에 잡힌
+FONTBOLD
+CALL SETCOLOR_TORIKOMODE, "GREEN", 5
+PRINTFORM  빛나는 검
+RESETCOLOR
+FONTREGULAR
+PRINTFORMW 은 입자가 되어 유유히 사라졌다.
+PRINTFORMW 
 ;-----------------------------------------------
 ;노예 구매시 가격설정. 시리즈 구매 막기
 ;토리코모드 - 구출 시스템을 제작하기 위해 원본을 참고하여 개조하였다.

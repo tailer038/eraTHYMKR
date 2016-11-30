@@ -3371,6 +3371,14 @@ IF ARGS:1 == ""
 	ARGS:1 = %UNICODE(0x2585)%
 ENDIF
 
+;수치계산 안전장치
+SIF ARG:0 <= 0
+	ARG:0 = 1
+SIF ARG:2 <= 0
+	ARG:2 = 1
+SIF ARG:1 <= 0
+	ARG:1 = 1
+
 LOCAL:1 = ARG:0 * ARG:2 / ARG:1
 LOCAL:2 = GETCOLOR()
 FOR LOCAL, 1, ARG:2 + 1

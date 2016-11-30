@@ -16,6 +16,10 @@
 @EVENTSHOP
 DRAWLINE
 DRAWLINE
+;린노스케일 경우, 장사의욕 플래그변수를 매일 아침(낮)마다 갱신
+IF TIME == 0 && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
+	FLAG:8000 = 3
+ENDIF
 ;주인 외에 캐릭터가 있으며 낮 턴일 때에는 기념일 체크를 실행한다
 SIF CHARANUM > 1 && TIME == 0
 	CALL ANNIVERSARY_CHECK
@@ -284,7 +288,39 @@ ELSE
 	;디버그
 	;PRINTFORML BASE:8 이 MAXBASE:8  보다 작거나 같고 그리고  BASE:MASTER:8 이  MAXBASE:MASTER:8 보다 작거나 같고  그리고  CFLAG:MASTER:1501 == 0  이고  TALENT:MASTER:262 == 0 이어야 함
 	;PRINTFORML {BASE:8} 이 {MAXBASE:8} 보다 작거나 같고 그리고  {BASE:MASTER:8} 이  {MAXBASE:MASTER:8} 보다 작거나 같고  그리고  {CFLAG:MASTER:1501}  이고  {TALENT:MASTER:262} 이어야 함
-
+	
+	
+	
+	;향림당 장사 커맨드
+	IF CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69 ;린노 확정조건
+		PRINTFORML -----------☎ 향 림 당 ☎----------- (※장사의욕: {FLAG:8000}/3)
+		IF TIME == 0 
+		;낮일 경우 장사활동 가능
+			;장사는 의욕이 1소모
+			IF FLAG:8000 > 0
+				PRINTLC [0] - 장사하기
+			ELSE
+				PRINTLC [x] - 의욕부족(…)
+			ENDIF
+			;무연총 발굴은 의욕이 2소모
+			IF FLAG:8000 > 1
+				PRINTLC [1] - 신품발굴
+			ELSE
+				PRINTLC [x] - 의욕부족(…)
+			ENDIF
+		ELSE
+		;밤일 경우 가게를 폐점
+			PRINTLC [x] - 문 닫음!
+			PRINTLC [x] - 이미 늦음!
+		ENDIF
+		PRINTLC [2] - 재고확인
+		PRINTL
+		PRINTL
+		PRINTL -----------♨ 조 교 관 ♨-----------
+	ENDIF
+	
+	
+	
 	SIF TARGET >= 0 && BASE:8 <= MAXBASE:8 && BASE:MASTER:8 <= MAXBASE:MASTER:8 && CFLAG:MASTER:1501 == 0 && TALENT:MASTER:262 == 0
 		PRINTFORMLC [100] - %NAME_SHOPCOMMAND_100()%
 	SIF CHARANUM > 0
@@ -478,7 +514,18 @@ ENDIF
 IF CFLAG:MASTER:4 == 3
 	CALL USERSHOP_WORKSHOP
 ELSE
-	IF RESULT == 100 && TARGET >= 0
+	IF RESULT == 0 && (TIME == 0) && (FLAG:8000 > 0) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
+		;향림당에서 장사하기
+		FLAG:8000 -= 1 ;장사의욕 1감소
+		CALL KORINDOU_SELL
+	ELSEIF RESULT == 1 && (TIME == 0) && (FLAG:8000 > 1) && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
+		;무연총으로 새로운 물품을 구하러 가기
+		FLAG:8000 -= 2 ;장사의욕 2감소
+		CALL KORINDOU_SEEK
+	ELSEIF RESULT == 2 && CALLNAME:MASTER == "린노스케" && CSTR:MASTER:1 == "향림당" && NO:MASTER == 69
+		;향림당에 있는 상품갯수 확인
+		CALL KORINDOU_CHECK_PRODUCT
+	ELSEIF RESULT == 100 && TARGET >= 0
 		;조교 대상이 술에 떡이 되어 있을 경우(이 경우에는 주인이 떡이 되어 있을 상황은 표시되지 않음)
 		IF BASE:8 > MAXBASE:8
 			PRINTFORML 취한 탓인지 %CALLNAME:TARGET%의 얼굴이 새파랗다.
@@ -2054,3 +2101,890 @@ CFLAG:96 = MAX(CFLAG:96, MONEY:1)
 ;--------------------------------------------------
 @TOTAL_INCOME_SLAVE, ARG
 CFLAG:97 = MIN (CFLAG:97+ARG, 10000000000000000)
+
+
+
+;--------------------------------------------------
+;향림당의 장사
+;--------------------------------------------------
+@KORINDOU_SELL
+LOCAL:0 = 34 ;물품의 종류 수
+LOCAL:1 = 0 ;물품 고유번호
+LOCAL:2 = 0 ;해당물품 갯수
+LOCAL:3 = 0 ;존재물품 종류갯수
+LOCAL:4 = 0 ;손님인지 아닌지 판별
+LOCAL:5 = 0 ;손님이 선택한 물건
+LOCAL:6 = 0 ;물품의 가격변수
+LOCAL:7 = 0 ;손님의 현재 지불능력
+LOCAL:99 = 1 ;판매물품 조율변수
+LOCAL:100 = 0 ;루프변수
+
+DRAWLINE
+PRINTFORML                ￥향림당￥
+PRINTL
+;판매할 만한 상품을 표시
+	DO
+		IF FLAG:(8000+LOCAL:99) > 0
+			;해당물품의 고유번호 대입
+			LOCAL:1 = 8000+LOCAL:99
+			;해당물품의 갯수를 대입
+			LOCAL:2 = FLAG:(8000+LOCAL:99)
+			;물품의 명칭과 갯수를 불러와 표시한다
+			CALL PRODUCT_NAMECALL, LOCAL:1, LOCAL:2
+			;존재물품 종류갯수 가산
+			LOCAL:3++
+		ENDIF
+		LOCAL:99++
+	LOOP LOCAL:99 <= LOCAL:0
+;물품이 만약 하나도 없을 경우 - 장사불가
+	IF LOCAL:3 == 0
+		;장사불가 메시지
+		PRINTFORML   판매/보관 중인 상품이 없습니다.
+		PRINTFORML   고로 장사가 불가능합니다.
+		;함수 종료
+		RETURN 0
+	ENDIF
+DRAWLINE
+PRINTL
+
+;손님이 올지 안 올지 판별
+LOCAL:4 = RAND:7
+IF (LOCAL:4 % 2) == 0
+;손님이 왔다!
+	;손님인가 아닌가 판별
+	FONTBOLD
+	CALL SETCOLOR_TORIKOMODE, "YELLOW", 5
+	PRINTFORMW 딸랑!
+	RESETCOLOR
+	FONTREGULAR
+	PRINTFORMW 
+	PRINTFORMW %CALLNAME:MASTER%가 책을 읽고 있는동안 어떤 손님이 가게 안으로 들어왔다.
+	PRINTFORMW 
+	PRINTFORMW 『어서오세요.』
+	LOCAL:4 = RAND:7
+	IF (LOCAL:4 % 2) == 0
+		;손님이다
+		PRINTFORMW 
+		PRINTFORMW 확실히 그 사람은 도구를 구매할 의향이 있었다.
+		PRINTFORMW 그렇기에 %CALLNAME:MASTER%는 극진히 그 사람을 대접했다.
+		PRINTFORMW 
+		PRINTFORMW 『어떤 물품을 찾으시죠?』
+		PRINTFORMW 
+	ELSE
+		;손님이 아니다
+		PRINTFORMW 
+		PRINTFORMW 그 사람은 물건을 사러온 것이 아니었다.
+		PRINTFORMW 그 사실을 안 %CALLNAME:MASTER%는 순간 태도가 급변했다.
+		PRINTFORMW 
+		PRINTFORMW 『출구는 그쪽. 돌아서 오른쪽으로 나가주면 좋겠어.』
+		PRINTFORMW 『다음번엔 손님으로서 찾아와줬으면 좋겠군.』
+		PRINTFORMW 
+		PRINTFORMW 그 사람은 용무를 간단히 마친 뒤 가게를 나갔다.
+		;함수 종료
+		RETURN 0
+	ENDIF
+	
+	;현재 손님이 지불 가능한 돈의 양
+	LOCAL:7 = LIMIT(RAND:10000+1,1000,10000) ;기본 현금지급(1000~10000원 사이)
+	IF RAND:2 == 0 ;50%확률로 2000~50000원 추가지급
+		LOCAL:7 += LIMIT(RAND:50000+1,2000,50000)
+		IF RAND:3 == 0 ;33.3%확률로 3000~100000원 추가지급
+			LOCAL:7 += LIMIT(RAND:100000+1,3000,100000)
+		ENDIF
+	ENDIF
+	PRINTFORM ※현재 손님의 보유금액: 
+	FONTBOLD
+	CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
+	PRINTFORM  {LOCAL:7}
+	RESETCOLOR
+	FONTREGULAR
+	PRINTFORMW (원)
+	PRINTFORMW 
+
+	;판매할 상품을 랜덤으로 선택(손님의 선택)
+	DO
+		;랜덤선택
+		LOCAL:5 = RAND:(LOCAL:0) + 1
+		;해당물품의 고유번호 대입
+		LOCAL:1 = 8000+LOCAL:5
+		;해당물품이 재고가 있는지 검사
+		IF FLAG:(LOCAL:1) > 0
+			;재고가 있음
+			PRINTFORM 손님은
+			CALL SALE_ITEMNAME, LOCAL:1
+			PRINTFORMW (을/를) 선택했다.
+			PRINTFORMW 
+			;가격대입
+			LOCAL:6 = RESULT
+			;부가세 추가(바가지) - 50%확률로
+			SIF RAND:2 == 0
+				LOCAL:6 += LIMIT(RAND:10000+1,1000,10000)
+			
+			;비매품인지 검사
+			IF LOCAL:1 == 8010 || LOCAL:1 == 8012 || LOCAL:1 == 8013
+			;비매품일 경우 - 당연히 안 판다!
+				;현재 비매품
+				;히히이로카네, 난로, 등유
+				PRINTFORMW 『그것은 비매품이라서 팔지 않는다만.』
+				PRINTFORMW 
+			ELSE
+			;판매품일 경우 - 팔아서 돈번다!
+				;가격을 흥정하여 제시한다
+				PRINTFORMW 『이것은 음, {LOCAL:6}원이다.』
+				PRINTFORMW 
+				;가격을 지불할 수 있는지 판별
+				IF LOCAL:7 >= LOCAL:6
+					;돈을 낼 수 있다면 - 그것은 손님!
+					PRINTFORMW 손님은 {LOCAL:6}원을 확실히 지불했다!
+					PRINTFORM %CALLNAME:MASTER%는 돈을 확실히 받고는
+					CALL SALE_ITEMNAME, LOCAL:1
+					PRINTFORMW 를 건네주었다.
+					PRINTFORMW 
+					PRINTFORMW 『언제든 감사합니다♬』
+					PRINTFORMW 
+					;구매가 끝났으니 향림당을 나간다
+					LOCAL:100 = 3
+					;소지금에 이익금을 추가
+					MONEY += LOCAL:6
+					;해당 물품을 1개 줄인다
+					FLAG:(LOCAL:1) -= 1
+					;물품구매에 성공했을 경우
+					IF LOCAL:100 >= 3
+						PRINTFORM 손님은 원하는 물품을 구매한 후,
+					ENDIF
+				ELSE
+					;돈을 낼 수 없다면 - 손님이 아니다!
+					;선택지 1.포기, 2.대금, 3.외상!!
+					PRINTFORMW 그 사람은 그만한 돈을 가지고 있지 않았다.
+					PRINTFORMW 그렇기에 해당물품을 포기하고 다른 물품을 찾아보기로 했다.
+					PRINTFORMW 
+					;손님이 물품을 찾는 횟수증가
+					LOCAL:100++
+					;물품 수색횟수가 초과할 경우
+					IF LOCAL:100 >= 3
+						PRINTFORM 손님은 자신이 가진 돈으로는 물품을 구매할 수 없다는 걸 깨닫고는,
+					ENDIF
+				ENDIF
+			ENDIF
+		ELSE
+			;재고가 없음
+			PRINTFORM 손님은
+			CALL SALE_ITEMNAME, LOCAL:1
+			PRINTFORMW (을/를) 찾고 있었다.
+			PRINTFORMW 허나 %CALLNAME:MASTER%가 말하길,
+			PRINTFORMW 
+			PRINTFORM 『미안하지만 현재
+			CALL SALE_ITEMNAME, LOCAL:1
+			PRINTFORMW (을/를) 취급하고 있지 않아.』
+			PRINTFORMW 
+			;손님이 물품을 찾는 횟수증가
+			LOCAL:100++
+			;물품 수색횟수가 초과할 경우
+			IF LOCAL:100 >= 3
+				PRINTFORM 손님은 자신이 찾으려는 물건이 향림당에 없음을 깨닫고는,
+			ENDIF
+		ENDIF
+		;(쇼핑이 끝난 후)횟수가 초과하면 향림당을 나간다
+		IF LOCAL:100 >= 3
+			PRINTFORMW  %CALLNAME:MASTER%에게 인사하고 가게를 나갔다.	
+		ENDIF
+	LOOP LOCAL:100 < 3
+ELSE
+;손님이 오지 않았다
+	FONTBOLD
+	CALL SETCOLOR_TORIKOMODE, "BLUE", 5
+	PRINTFORMW 조-용……
+	PRINTFORMW 
+	CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
+	PRINTFORMW (펄럭… 펄럭……)
+	PRINTFORMW 
+	RESETCOLOR
+	FONTREGULAR
+	PRINTFORMW …
+	PRINTFORMW ………
+	PRINTFORMW ……………
+	PRINTFORMW …………………
+	PRINTFORMW ………………………
+	PRINTFORMW 가게 안은 너무나…… 조용했다.
+	PRINTFORMW 누구하나…… 오지 않았다.
+	PRINTFORMW %CALLNAME:MASTER%는 이 고요함을 오히려 즐기듯이, 웃으면서 책만을 읽었다.
+	PRINTFORMW 
+	PRINTFORMW …
+	PRINTFORMW ………
+	PRINTFORMW ……………
+	PRINTFORMW …………………
+	PRINTFORMW ………………………
+	PRINTFORMW 
+	FONTBOLD
+	PRINTFORMW (조금 시간이 지난 후)
+	FONTREGULAR
+	PRINTFORMW 
+	PRINTFORMW 『으아……! 잘 읽었…다.』
+	PRINTFORMW 『...흠, 오늘은 아무도 오지 않았군.』
+	PRINTFORMW 『운이 없었던 거겠지.』
+	PRINTFORMW 『뭐, 언젠가는 오겠지?』
+	PRINTFORMW 
+	PRINTFORMW %CALLNAME:MASTER%는 손님이 오지 않는 것을 아쉬워하지 않고, 그저 묵묵히 독서하며 시간을 보냈다.
+ENDIF
+DRAWLINE
+
+;--------------------------------------------------
+;향림당주가 무연총에서 신품발굴
+;--------------------------------------------------
+@KORINDOU_SEEK
+LOCAL:0 = 34 ;물품의 종류 수
+LOCAL:1 = 0 ;신품의 고유번호
+LOCAL:2 = 0 ;신품 랜덤변수
+LOCAL:3 = 0 ;입수여부 확인변수(0.비입수, 1.입수)
+LOCAL:99 = 0 ;수색횟수(루프변수)
+
+DRAWLINE
+PRINTFORMW 새로운 물품을 찾기위해 %CALLNAME:MASTER%는 수레를 이끌고 무연총까지 왔다.
+PRINTFORMW 이제는 날 수 있는데도 불구하고 평소의 버릇인지 수레를 끌고 천천히 걸으면서 왔다.
+PRINTFORMW 
+PRINTFORMW 『읏차! 어디보자……』
+PRINTFORMW 『바깥세계의 새로운 물건들이 얼마나 들어왔나 한 번 볼까……?』
+PRINTFORMW 
+PRINTFORMW %CALLNAME:MASTER%는 무연총을 샅샅히 뒤져 뭔가 쓸만한 게 없나 살펴보기 시작했다.
+PRINTFORMW 
+;랜덤으로 신품이 튀어나옴(발굴)
+DO
+	FONTBOLD
+	CALL SETCOLOR_TORIKOMODE, "YELLOW", 3
+	PRINTFORMW (뒤적… 뒤적…)
+	RESETCOLOR
+	FONTREGULAR
+	;신품 랜덤출현
+	LOCAL:2 = RAND:(LOCAL:0) + 1
+	;신품의 고유번호 대입
+	LOCAL:1 = 8000+LOCAL:2
+	;고유번호를 함수에 대입하여 입수여부를 확인
+	CALL ITEM_SEEK_PERCENT, LOCAL:1
+	;입수여부 반환값 대입
+	LOCAL:3 = RESULT
+	;입수/비입수 처리
+	IF LOCAL:3 == 1
+	;입수했다
+		PRINTFORM %CALLNAME:MASTER%는
+		CALL SALE_ITEMNAME, LOCAL:1
+		PRINTFORMW 을 손에 넣었다.
+		;찾은 물품 1증가
+		FLAG:(LOCAL:1)++
+	ELSE
+	;입수 못했다
+		PRINTFORMW 아무 것도 찾지 못했다.
+	ENDIF
+	;수색횟수 증가
+	LOCAL:99++
+	IF LOCAL:99 >= 5
+		PRINTFORMW 
+		PRINTFORMW %CALLNAME:MASTER%는 더 이상 찾지 않기로 했다.
+		PRINTFORMW 기왕 온 거 주변에 있는 시체들을 제대로 양지바른 곳에다 묻어주고 간소히 제를 지내주었다.
+		PRINTFORMW 그리고 수레를 끌고 천천히 걸으면서 향림당으로 돌아갔다.
+		PRINTFORMW 
+	ELSE
+		PRINTFORMW 
+		PRINTFORMW %CALLNAME:MASTER%는 계속해서 뭔가있나 찾아보았다.
+		PRINTFORMW 
+	ENDIF
+LOOP LOCAL:99 < 5
+DRAWLINE
+
+;--------------------------------------------------
+;향림당의 재고확인
+;--------------------------------------------------
+@KORINDOU_CHECK_PRODUCT
+LOCAL:0 = 34 ;물품의 종류 수
+LOCAL:1 = 0 ;물품 고유번호
+LOCAL:2 = 0 ;해당물품 갯수
+LOCAL:3 = 0 ;존재물품 종류갯수
+LOCAL:99 = 1 ;루프변수
+
+DRAWLINE
+PRINTFORML                ★물품 재고★
+PRINTL
+;보유 물품을 표시
+	DO
+		IF FLAG:(8000+LOCAL:99) > 0
+			;해당물품의 고유번호 대입
+			LOCAL:1 = 8000+LOCAL:99
+			;해당물품의 갯수를 대입
+			LOCAL:2 = FLAG:(8000+LOCAL:99)
+			;물품의 명칭과 갯수를 불러와 표시한다
+			CALL PRODUCT_NAMECALL, LOCAL:1, LOCAL:2
+			;존재물품 종류갯수 가산
+			LOCAL:3++
+		ENDIF
+		LOCAL:99++
+	LOOP LOCAL:99 <= LOCAL:0
+;물품이 만약 하나도 없을 경우
+	IF LOCAL:3 == 0
+		PRINTFORML   판매/보관 중인 상품이 없습니다.
+	ENDIF
+DRAWLINE
+PRINTLC [1000] 돌아간다
+$WAREHOUSE_LOOP
+INPUT
+IF RESULT == 1000
+	RETURN 0
+ELSE
+	CLEARLINE 1
+	GOTO WAREHOUSE_LOOP
+ENDIF
+
+;--------------------------------------------------
+;물품의 재고호출(재고확인용)
+;ARG = 물품의 고유번호
+;ARG:1 = 물품의 현재갯수
+;--------------------------------------------------
+@PRODUCT_NAMECALL, ARG, ARG:1
+CALL SETCOLOR_TORIKOMODE, "GREEN", 3
+SELECTCASE ARG
+	CASE 8001
+		PRINTFORMLC □ 퍼스널컴퓨터:
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(대)
+	CASE 8002
+		PRINTFORMLC □ 外세계 남성복:
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(벌)
+	CASE 8003
+		PRINTFORMLC □ 外세계 여성복:
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(벌)
+	CASE 8004
+		PRINTFORMLC □ 外세계 남성속옷: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(벌)
+	CASE 8005
+		PRINTFORMLC □ 外세계 여성속옷: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(벌)
+	CASE 8006
+		PRINTFORMLC □ 불쥐의 옷: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(벌)
+	CASE 8007
+		PRINTFORMLC □ 제비의 자안패: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(벌)
+	CASE 8008
+		PRINTFORMLC □ 일본도: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(자루)
+	CASE 8009
+		PRINTFORMLC □ 서양도: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(자루)
+	CASE 8010
+		PRINTFORMLC □ 히히이로카네: 
+		RESETCOLOR
+		PRINTFORM x{ARG:1}(개)
+		CALL SETCOLOR_TORIKOMODE, "MAGENTA", 5
+		PRINTFORML  [비매품]
+		RESETCOLOR
+	CASE 8011
+		PRINTFORMLC □ 잡동사니: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8012
+		PRINTFORMLC □ 난로(스토브): 
+		RESETCOLOR
+		PRINTFORM x{ARG:1}(대)
+		CALL SETCOLOR_TORIKOMODE, "MAGENTA", 5
+		PRINTFORML  [비매품]
+		RESETCOLOR
+	CASE 8013
+		PRINTFORMLC □ 등유(1L): 
+		RESETCOLOR
+		PRINTFORM x{ARG:1}(통)
+		CALL SETCOLOR_TORIKOMODE, "MAGENTA", 5
+		PRINTFORML  [비매품]
+		RESETCOLOR
+	CASE 8014
+		PRINTFORMLC □ 삐삐: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8015
+		PRINTFORMLC □ 신용카드: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8016
+		PRINTFORMLC □ 다완: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(점)
+	CASE 8017
+		PRINTFORMLC □ 고려청자: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(점)
+	CASE 8018
+		PRINTFORMLC □ 外세계 소설책: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(권)
+	CASE 8019
+		PRINTFORMLC □ 外세계 공과서적: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(권)
+	CASE 8020
+		PRINTFORMLC □ 外세계 상식서적: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(권)
+	CASE 8021
+		PRINTFORMLC □ DVD: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8022
+		PRINTFORMLC □ 스마트폰: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8023
+		PRINTFORMLC □ 스카치테이프: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8024
+		PRINTFORMLC □ 접착제: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8025
+		PRINTFORMLC □ 생리대: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8026
+		PRINTFORMLC □ 세면도구: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8027
+		PRINTFORMLC □ 보석: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8028
+		PRINTFORMLC □ 外세계 필기도구: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(세트)
+	CASE 8029
+		PRINTFORMLC □ 모형로봇: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8030
+		PRINTFORMLC □ 자전거: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(대)
+	CASE 8031
+		PRINTFORMLC □ 다마고치: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8032
+		PRINTFORMLC □ 콜라: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(병)
+	CASE 8033
+		PRINTFORMLC □ 손목시계: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+	CASE 8034
+		PRINTFORMLC □ 나침반: 
+		RESETCOLOR
+		PRINTFORML x{ARG:1}(개)
+ENDSELECT
+
+;--------------------------------------------------
+;물품의 명칭 및 가격호출(장사하기용)
+;ARG = 물품의 고유번호
+;--------------------------------------------------
+@SALE_ITEMNAME, ARG
+;물품의 가격변수(반환)
+LOCAL:0 = 0
+
+CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 3
+SELECTCASE ARG
+	CASE 8001
+		PRINTFORM  퍼스널컴퓨터
+		RESETCOLOR
+		LOCAL:0 = 6000
+	CASE 8002
+		PRINTFORM  外세계 남성복
+		RESETCOLOR
+		LOCAL:0 = 1200
+	CASE 8003
+		PRINTFORM  外세계 여성복
+		RESETCOLOR
+		LOCAL:0 = 1100
+	CASE 8004
+		PRINTFORM  外세계 남성속옷
+		RESETCOLOR
+		LOCAL:0 = 800
+	CASE 8005
+		PRINTFORM  外세계 여성속옷
+		RESETCOLOR
+		LOCAL:0 = 1000
+	CASE 8006
+		PRINTFORM  불쥐의 옷
+		RESETCOLOR
+		LOCAL:0 = 130000
+	CASE 8007
+		PRINTFORM  제비의 자안패
+		RESETCOLOR
+		LOCAL:0 = 150000
+	CASE 8008
+		PRINTFORM  일본도
+		RESETCOLOR
+		LOCAL:0 = 45000
+	CASE 8009
+		PRINTFORM  서양도
+		RESETCOLOR
+		LOCAL:0 = 38000
+	CASE 8010
+		PRINTFORM  히히이로카네
+		RESETCOLOR
+		LOCAL:0 = 8500000
+	CASE 8011
+		PRINTFORM  잡동사니
+		RESETCOLOR
+		LOCAL:0 = 300
+	CASE 8012
+		PRINTFORM  난로(스토브)
+		RESETCOLOR
+		LOCAL:0 = 6500000
+	CASE 8013
+		PRINTFORM  등유(1L)
+		RESETCOLOR
+		LOCAL:0 = 100000
+	CASE 8014
+		PRINTFORM  삐삐
+		RESETCOLOR
+		LOCAL:0 = 6500
+	CASE 8015
+		PRINTFORM  신용카드
+		RESETCOLOR
+		LOCAL:0 = 8000
+	CASE 8016
+		PRINTFORM  다완
+		RESETCOLOR
+		LOCAL:0 = 19000
+	CASE 8017
+		PRINTFORM  고려청자
+		RESETCOLOR
+		LOCAL:0 = 320000
+	CASE 8018
+		PRINTFORM  外세계 소설책
+		RESETCOLOR
+		LOCAL:0 = 5000
+	CASE 8019
+		PRINTFORM  外세계 공과서적
+		RESETCOLOR
+		LOCAL:0 = 7700
+	CASE 8020
+		PRINTFORM  外세계 상식서적
+		RESETCOLOR
+		LOCAL:0 = 6100
+	CASE 8021
+		PRINTFORM  DVD
+		RESETCOLOR
+		LOCAL:0 = 11000
+	CASE 8022
+		PRINTFORM  스마트폰
+		RESETCOLOR
+		LOCAL:0 = 5600
+	CASE 8023
+		PRINTFORM  스카치테이프
+		RESETCOLOR
+		LOCAL:0 = 1600
+	CASE 8024
+		PRINTFORM  접착제
+		RESETCOLOR
+		LOCAL:0 = 900
+	CASE 8025
+		PRINTFORM  생리대
+		RESETCOLOR
+		LOCAL:0 = 1450
+	CASE 8026
+		PRINTFORM  세면도구
+		RESETCOLOR
+		LOCAL:0 = 2300
+	CASE 8027
+		PRINTFORM  보석
+		RESETCOLOR
+		LOCAL:0 = 265000
+	CASE 8028
+		PRINTFORM  外세계 필기도구
+		RESETCOLOR
+		LOCAL:0 = 1500
+	CASE 8029
+		PRINTFORM  모형로봇
+		RESETCOLOR
+		LOCAL:0 = 8300
+	CASE 8030
+		PRINTFORM  자전거
+		RESETCOLOR
+		LOCAL:0 = 97000
+	CASE 8031
+		PRINTFORM  다마고치
+		RESETCOLOR
+		LOCAL:0 = 660
+	CASE 8032
+		PRINTFORM  콜라
+		RESETCOLOR
+		LOCAL:0 = 1000
+	CASE 8033
+		PRINTFORM  손목시계
+		RESETCOLOR
+		LOCAL:0 = 2000
+	CASE 8034
+		PRINTFORM  나침반
+		RESETCOLOR
+		LOCAL:0 = 4500
+ENDSELECT
+;가격값을 반환
+RETURN LOCAL:0
+
+
+;--------------------------------------------------
+;발굴 확률조정(신품발굴용)
+;ARG = 물품의 고유번호
+;--------------------------------------------------
+@ITEM_SEEK_PERCENT, ARG
+;입수여부 반환값(0.비입수, 1.입수)
+LOCAL:0 = 0
+
+SELECTCASE ARG
+	CASE 8001
+		;퍼스널컴퓨터
+		IF RAND:3 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8002
+		;外세계 남성복
+		IF RAND:100 > 30
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8003
+		;外세계 여성복
+		IF RAND:100 > 40
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8004
+		;外세계 남성속옷
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8005
+		;外세계 여성속옷
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8006
+		;불쥐의 옷
+		IF RAND:90 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8007
+		;제비의 자안패
+		IF RAND:100 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8008
+		;일본도
+		IF RAND:100 > 70
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8009
+		;서양도
+		IF RAND:100 > 65
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8010
+		;히히이로카네
+		IF RAND:80 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8011
+		;잡동사니
+		IF RAND:100 > 10
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8012
+		;난로(스토브)
+		IF RAND:120 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8013
+		;등유(1L)
+		IF RAND:150 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8014
+		;삐삐
+		IF RAND:100 > 45
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8015
+		;신용카드
+		IF RAND:3 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8016
+		;다완
+		IF RAND:3 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8017
+		;고려청자
+		IF RAND:100 > 80
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8018
+		;外세계 소설책
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8019
+		;外세계 공과서적
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8020
+		;外세계 상식서적
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8021
+		;DVD
+		IF RAND:100 > 45
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8022
+		;스마트폰
+		IF RAND:3 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8023
+		;스카치테이프
+		IF RAND:100 > 35
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8024
+		;접착제
+		IF RAND:100 > 55
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8025
+		;생리대
+		IF RAND:3 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8026
+		;세면도구
+		IF RAND:100 > 45
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8027
+		;보석
+		IF RAND:100 > 90
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8028
+		;外세계 필기도구
+		IF RAND:100 > 35
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8029
+		;모형로봇
+		IF RAND:100 > 65
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8030
+		;자전거
+		IF RAND:5 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8031
+		;다마고치
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8032
+		;콜라
+		IF RAND:2 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8033
+		;손목시계
+		IF RAND:3 == 0
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+	CASE 8034
+		;나침반
+		IF RAND:100 > 45
+			LOCAL:0 = 1
+		ELSE
+			LOCAL:0 = 0
+		ENDIF
+ENDSELECT
+;입수여부를 반환
+RETURN LOCAL:0

@@ -206,11 +206,17 @@ SELECTCASE ARG
 		ENDSELECT
 	;필살기. 보통 스펠 카드를 쓰면 좋음.
 	CASE 7
-		SELECTCASE RAND:2
+		SELECTCASE RAND:5
 			CASE 0
 				PRINTFORMW 「신령! 몽상봉인!」
 			CASE 1
 				PRINTFORMW 「몽상천생!」
+			CASE 2
+				PRINTFORMW 「보구! 음양귀신옥!」
+			CASE 3
+				PRINTFORMW 「영부! 음양보옥!」
+			CASE 4
+				PRINTFORMW 「신기! 팔방귀박진!」
 		ENDSELECT
 	;승리대사
 	CASE 8
@@ -552,11 +558,13 @@ SELECTCASE ARG
 		ENDSELECT
 	;필살기. 보통 스펠 카드를 쓰면 좋음.
 	CASE 7
-		SELECTCASE RAND:2
+		SELECTCASE RAND:3
 			CASE 0
-				PRINTFORMW 「『동부』 퍼펙트 프리즈! 얼어버려랏!」
+				PRINTFORMW 「받아랏! 『빙부』아이시클 폴!」
 			CASE 1
-				PRINTFORMW 「『동부』 마이너스 K」
+				PRINTFORMW 「『동부』 퍼펙트 프리즈! 얼어버려랏!」
+			CASE 2
+				PRINTFORMW 「『빙괴』그레이트 크래셔!」
 		ENDSELECT
 	;필살기. 보통 스펠 카드를 쓰면 좋음.
 	CASE 8
@@ -4985,7 +4993,7 @@ SELECTCASE ARG
 	CASE 7
 		SELECTCASE RAND:2
 			CASE 0
-				PRINTFORMW 「린노한테 빌려온거야! 쿠사나기의 검!」
+				PRINTFORMW 「[금기] 『책으로 내려치기』!! 으엑! 내.. 내 책이!」
 			CASE 1
 				PRINTFORMW 「[청음] 『따오기 울음소리』!!! …그런 거 없다는 거 안다고!!!」
 		ENDSELECT
@@ -5143,7 +5151,7 @@ SELECTCASE ARG
 			CASE 1
 				PRINTFORMW 「적당히 해달라고. 나는 그쪽은 아니라서 말이야」
 			CASE 2
-				PRINTFORMW 「고도구상의 주인이다. 잘부탁하지」
+				PRINTFORMW 「고도구상의 주인이다. 잘 부탁하지」
 		ENDSELECT
 	;공격시
 	CASE 2
