@@ -40,7 +40,7 @@ ELSE
 ENDIF
 
 ABL:35 += 1
-PRINTFORMW %ABLNAME:35%의 레벨이 %조사처리(ABL:35,"가")% 되었습니다.
+PRINTFORMW %ABLNAME:35%의 레벨이 %조사처리(TOSTR(ABL:35),"가")% 되었습니다.
 
 ;奴隷の触手中毒を上昇させると主人に一定量触手의 구슬が入る様になる
 IF ABL:35 == 1

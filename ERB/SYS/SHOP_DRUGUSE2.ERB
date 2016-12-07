@@ -811,11 +811,11 @@ SIF TFLAG:225 == 1
 IF TARGET != MASTER
 	IF ABL:10 > 0
 		ABL:10 = (ABL:10 <= 2) ? 0 # ABL:10 - 2
-		PRINTFORML ＜%CALLNAME:TARGET%의 %조사처리(ABLNAME:10,"는")% %조사처리(ABL:10,"가")% 되었다＞
+		PRINTFORML ＜%CALLNAME:TARGET%의 %조사처리(ABLNAME:10,"는")% %조사처리(TOSTR(ABL:10),"가")% 되었다＞
 	ENDIF
 	IF ABL:13 > 0
 		ABL:13 = (ABL:13 <= 2) ? 0 # ABL:13 - 2
-		PRINTFORML ＜%CALLNAME:TARGET%의 %조사처리(ABLNAME:13,"는")% %조사처리(ABL:13,"가")% 되었다＞
+		PRINTFORML ＜%CALLNAME:TARGET%의 %조사처리(ABLNAME:13,"는")% %조사처리(TOSTR(ABL:13),"가")% 되었다＞
 	ENDIF
 	FOR LOCAL:1, 0, 20
 		JUEL:(LOCAL:1) /= 2
@@ -824,7 +824,7 @@ IF TARGET != MASTER
 		LOCAL:2 = (LOCAL:1 == 4) ? 8 # LOCAL:1
 		IF MARK:(LOCAL:2)
 			MARK:(LOCAL:2) = 0
-			PRINTFORML ＜%CALLNAME:TARGET%의 %조사처리(MARKNAME:(LOCAL:2),"는")% %조사처리(MARK:(LOCAL:2),"가")% 되었다＞
+			PRINTFORML ＜%CALLNAME:TARGET%의 %조사처리(MARKNAME:(LOCAL:2),"는")% %조사처리(TOSTR(MARK:(LOCAL:2)),"가")% 되었다＞
 		ENDIF
 	NEXT
 ENDIF
