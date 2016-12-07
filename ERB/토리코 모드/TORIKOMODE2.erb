@@ -1009,8 +1009,12 @@ RETURN RESULT:0
 ;납품가능여부 체크
 CALL CHECK_MISSION_SLAVE_OK_OR_NOT_TORIKOMODE, ARG:0, ARG:1
 PRINTL
+;스케쥴 등으로 노예가 다른 작업을 하고 있을 때 (T. 16/12/07)
+IF RESULT == 1 && CFLAG:ARG:4
+	PRINTFORMW %조사처리(CALLNAME:(ARG:0),"를")% 팔려면 현재 지정된 작업을 해제해야 합니다.
+	PRINTL
 ;납품 가능하다
-IF RESULT == 1
+ELSEIF RESULT == 1
 	;납품하고 돈 올리고 의뢰을 지운다.
 	CALL SALE_CONFIRM_MISSION_TORIKOMODE, ARG, ARG:1
 ;납품 불가하다

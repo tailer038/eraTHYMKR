@@ -1,0 +1,3536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+<title>eratohoYM</title>
+<style type="text/css">
+<!--
+body {
+  color: #CCCCCC;
+  background-color: black;
+  font-family : Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-weight : normal;
+  text-align : left;
+  line-height: 1.2em;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.h {
+  color: #EE0000;
+}
+
+a.menu_char {
+  color: #EE0000;
+}
+
+h1 {
+  color: #EE0000;
+  font-size: 24pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 4px 0px 12px 0px;
+  padding: 4px 8px 4px 8px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h2 {
+  color: #EE0000;
+  font-size: 18pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 4px 0px 12px 0px;
+  padding: 2px 4px 2px 16px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h3 {
+  color: #EE0000;
+  font-size: 14pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 0px;
+  padding: 1px 0px 0px 16px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h4 {
+  color: #DD0000;
+  font-size: 12pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 0px;
+  padding: 4px 0px 0px 32px;
+}
+
+.base {
+  width : 700px;
+  background-color : #333333;
+  margin : 0 auto;
+}
+
+table {
+  border: none;
+  border-spacing: 4px;
+  margin: 0px;
+  padding: 0px;
+}
+
+table.gamebase {
+  margin: 0px 0px 32px 70px;
+  border-spacing: 16px 4px;
+}
+
+table.Ability {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Palam {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Talent {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Item {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Mark {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Train {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Exp {
+  margin: 0px 0px 32px 70px;
+}
+
+td.tag {
+  font-weight: bold;
+	text-align: right;
+  white-space: nowrap;
+}
+
+td.data {
+  padding: 0px 16px 0px 0px;
+}
+
+table.char {
+  width: 600px;
+  border: 0px;
+  background: #555555;
+  margin: 8px 0px 48px 70px;
+  padding: 0px;
+}
+
+td.char_palam {
+  width: 180px;
+}
+
+span.life {
+  color: #EE0000;
+  font-weight: bold;
+  margin-left: 42px;
+}
+span.mind {
+  color: #2222FF;
+  font-weight: bold;
+  margin-left: 42px;
+}
+span.sei {
+  color: #22EE22;
+  font-weight: bold;
+  margin-left: 42px;
+}
+
+table.char_ability {
+  min-width: 190px;
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_ability_tag {
+  width: 124px;
+}
+
+td.char_ability_data {
+  width: 32px;
+}
+
+div.char_talent {
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-left: 42px;
+}
+
+span.talent {
+  white-space: nowrap;
+  margin: 0px 5px 0px 0px;
+}
+
+table.char_exp {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_exp_tag {
+  width: 124px;
+}
+
+td.char_exp_data {
+  width: 32px;
+}
+
+table.char_relation {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.relation {
+  width: 124px;
+}
+
+
+a.relation_posi {
+  color: #EEAAAA;
+}
+
+a.relation_nega {
+  color: #9999EE;
+}
+
+a.relation_normal {
+  color: #CCCCCC;
+}
+
+td.char_relation_data {
+  width: 32px;
+}
+
+table.char_flag {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_flag_tag {
+  width: 124px;
+}
+
+td.char_flag_data {
+  width: 32px;
+}
+
+
+body.menu_base {
+  color: #CCCCCC;
+  background-color: black;
+  font-family : Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-weight : normal;
+  text-align : left;
+  line-height: 1.2em;
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu_base {
+  width : 140px;
+  margin : 0 auto;
+}
+
+h1.menu {
+  font-size: 14pt;
+  margin: 2px 0px 2px 0px;
+  padding: 6px 0px 6px 8px;
+}
+
+h2.menu {
+  font-size: 11pt;
+  margin: 12px 0px 2px 0px;
+  padding: 2px 0px 2px 14px;
+}
+
+
+div.menu_char {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px 0px 0px 24px;
+  padding: 0px;
+}
+
+div.datasummary {
+  float: left;
+  margin: 0px 0px 4px 1px;
+}
+
+table.datasummary {
+  table-layout: fixed;
+  width: 130px;
+  padding: 0px;
+  line-height: 1.05em;
+  border-collapse: collapse; 
+  letter-spacing: -0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+th.summarytag {
+  width: 130px;
+  color: #EE0000;
+  background-color: #black;
+  padding-right: 4px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px #666666 solid;
+}
+th.summarytag_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: none;
+}
+
+td.summarytag {
+  width: 26px;
+  color: #990000;
+  background-color: #black;
+  padding-right: 4px;
+  text-align: right;
+  font-weight: bold;
+  border: 1px #666666 solid;
+}
+td.summarytag_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: 1px #333333 solid;
+}
+
+td.summarydata {
+  width: 98px;
+  background-color: #222222;
+  padding-left: 4px;
+  font-size: small;
+  border: 1px #666666 solid;
+}
+td.summarydata_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: 1px #333333 solid;
+}
+-->
+</style>
+</head>
+<body>
+<div class="base">
+<h1>eratohoYM</h1>
+<a name="palam">
+<h2>パラメータ</h2>
+<table class="Palam">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">快Ｃ</td>
+      <td class="tag">1.</td>
+      <td class="data">快Ｖ</td>
+  </tr>
+  <tr>
+      <td class="tag">2.</td>
+      <td class="data">快Ａ</td>
+      <td class="tag">3.</td>
+      <td class="data">快Ｂ</td>
+  </tr>
+  <tr>
+      <td class="tag">10.</td>
+      <td class="data">潤滑</td>
+      <td class="tag">11.</td>
+      <td class="data">習得</td>
+  </tr>
+  <tr>
+      <td class="tag">12.</td>
+      <td class="data">恭順</td>
+      <td class="tag">13.</td>
+      <td class="data">欲情</td>
+  </tr>
+  <tr>
+      <td class="tag">14.</td>
+      <td class="data">屈服</td>
+      <td class="tag">15.</td>
+      <td class="data">恥情</td>
+  </tr>
+  <tr>
+      <td class="tag">16.</td>
+      <td class="data">苦痛</td>
+      <td class="tag">17.</td>
+      <td class="data">恐怖</td>
+  </tr>
+  <tr>
+      <td class="tag">20.</td>
+      <td class="data">反感</td>
+      <td class="tag">21.</td>
+      <td class="data">不快</td>
+  </tr>
+  <tr>
+      <td class="tag">22.</td>
+      <td class="data">抑鬱</td>
+      <td class="tag">30.</td>
+      <td class="data">薬毒</td>
+  </tr>
+  <tr>
+      <td class="tag">31.</td>
+      <td class="data">侵蝕</td>
+      <td class="tag">32.</td>
+      <td class="data">先導</td>
+  </tr>
+  <tr>
+      <td class="tag">100.</td>
+      <td class="data">否定</td>
+      <td class="tag">198.</td>
+      <td class="data">触手</td>
+  </tr>
+</table>
+</a>
+<a name="talent">
+<h2>素質</h2>
+<table class="Talent">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">処女</td>
+      <td class="tag">1.</td>
+      <td class="data">肥大陰核</td>
+  </tr>
+  <tr>
+      <td class="tag">9.</td>
+      <td class="data">雌雄可変</td>
+      <td class="tag">10.</td>
+      <td class="data">臆病</td>
+  </tr>
+  <tr>
+      <td class="tag">11.</td>
+      <td class="data">反抗的</td>
+      <td class="tag">12.</td>
+      <td class="data">気丈</td>
+  </tr>
+  <tr>
+      <td class="tag">13.</td>
+      <td class="data">素直</td>
+      <td class="tag">14.</td>
+      <td class="data">大人しい</td>
+  </tr>
+  <tr>
+      <td class="tag">15.</td>
+      <td class="data">生意気</td>
+      <td class="tag">16.</td>
+      <td class="data">プライド高い</td>
+  </tr>
+  <tr>
+      <td class="tag">17.</td>
+      <td class="data">プライド低い</td>
+      <td class="tag">18.</td>
+      <td class="data">ツンデレ</td>
+  </tr>
+  <tr>
+      <td class="tag">19.</td>
+      <td class="data">嫉妬しやすい</td>
+      <td class="tag">20.</td>
+      <td class="data">自制心</td>
+  </tr>
+  <tr>
+      <td class="tag">21.</td>
+      <td class="data">無関心</td>
+      <td class="tag">22.</td>
+      <td class="data">感情乏しい</td>
+  </tr>
+  <tr>
+      <td class="tag">23.</td>
+      <td class="data">好奇心</td>
+      <td class="tag">24.</td>
+      <td class="data">保守的</td>
+  </tr>
+  <tr>
+      <td class="tag">25.</td>
+      <td class="data">楽観的</td>
+      <td class="tag">26.</td>
+      <td class="data">悲観的</td>
+  </tr>
+  <tr>
+      <td class="tag">27.</td>
+      <td class="data">一線越えない</td>
+      <td class="tag">28.</td>
+      <td class="data">目立ちたがり</td>
+  </tr>
+  <tr>
+      <td class="tag">30.</td>
+      <td class="data">貞操観念</td>
+      <td class="tag">31.</td>
+      <td class="data">貞操無頓着</td>
+  </tr>
+  <tr>
+      <td class="tag">32.</td>
+      <td class="data">抑圧</td>
+      <td class="tag">33.</td>
+      <td class="data">解放</td>
+  </tr>
+  <tr>
+      <td class="tag">34.</td>
+      <td class="data">抵抗</td>
+      <td class="tag">35.</td>
+      <td class="data">恥じらい</td>
+  </tr>
+  <tr>
+      <td class="tag">36.</td>
+      <td class="data">恥薄い</td>
+      <td class="tag">37.</td>
+      <td class="data">男嫌い</td>
+  </tr>
+  <tr>
+      <td class="tag">38.</td>
+      <td class="data">女嫌い</td>
+      <td class="tag">39.</td>
+      <td class="data">弱味</td>
+  </tr>
+  <tr>
+      <td class="tag">40.</td>
+      <td class="data">痛みに弱い</td>
+      <td class="tag">41.</td>
+      <td class="data">痛みに強い</td>
+  </tr>
+  <tr>
+      <td class="tag">42.</td>
+      <td class="data">濡れやすい</td>
+      <td class="tag">43.</td>
+      <td class="data">濡れにくい</td>
+  </tr>
+  <tr>
+      <td class="tag">44.</td>
+      <td class="data">薬毒耐性</td>
+      <td class="tag">45.</td>
+      <td class="data">おもらし癖</td>
+  </tr>
+  <tr>
+      <td class="tag">46.</td>
+      <td class="data">媚薬中毒</td>
+      <td class="tag">47.</td>
+      <td class="data">喘息</td>
+  </tr>
+  <tr>
+      <td class="tag">48.</td>
+      <td class="data">呪精</td>
+      <td class="tag">49.</td>
+      <td class="data">蓬莱人</td>
+  </tr>
+  <tr>
+      <td class="tag">50.</td>
+      <td class="data">習得早い</td>
+      <td class="tag">51.</td>
+      <td class="data">習得遅い</td>
+  </tr>
+  <tr>
+      <td class="tag">52.</td>
+      <td class="data">舌使い</td>
+      <td class="tag">53.</td>
+      <td class="data">針さばき</td>
+  </tr>
+  <tr>
+      <td class="tag">54.</td>
+      <td class="data">猫舌</td>
+      <td class="tag">55.</td>
+      <td class="data">調合知識</td>
+  </tr>
+  <tr>
+      <td class="tag">56.</td>
+      <td class="data">禁断の知識</td>
+      <td class="tag">57.</td>
+      <td class="data">妖精知識</td>
+  </tr>
+  <tr>
+      <td class="tag">58.</td>
+      <td class="data">淫具知識</td>
+      <td class="tag">59.</td>
+      <td class="data">治療</td>
+  </tr>
+  <tr>
+      <td class="tag">60.</td>
+      <td class="data">自慰しやすい</td>
+      <td class="tag">61.</td>
+      <td class="data">汚臭鈍感</td>
+  </tr>
+  <tr>
+      <td class="tag">62.</td>
+      <td class="data">汚臭敏感</td>
+      <td class="tag">63.</td>
+      <td class="data">献身的</td>
+  </tr>
+  <tr>
+      <td class="tag">64.</td>
+      <td class="data">汚れ無視</td>
+      <td class="tag">65.</td>
+      <td class="data">パイパン</td>
+  </tr>
+  <tr>
+      <td class="tag">66.</td>
+      <td class="data">精愛味覚</td>
+      <td class="tag">70.</td>
+      <td class="data">快感に素直</td>
+  </tr>
+  <tr>
+      <td class="tag">71.</td>
+      <td class="data">快感の否定</td>
+      <td class="tag">80.</td>
+      <td class="data">倒錯的</td>
+  </tr>
+  <tr>
+      <td class="tag">81.</td>
+      <td class="data">サド</td>
+      <td class="tag">82.</td>
+      <td class="data">マゾ</td>
+  </tr>
+  <tr>
+      <td class="tag">83.</td>
+      <td class="data">両刀</td>
+      <td class="tag">84.</td>
+      <td class="data">中毒しやすい</td>
+  </tr>
+  <tr>
+      <td class="tag">85.</td>
+      <td class="data">中毒しにくい</td>
+      <td class="tag">86.</td>
+      <td class="data">中毒扇動</td>
+  </tr>
+  <tr>
+      <td class="tag">90.</td>
+      <td class="data">魅力</td>
+      <td class="tag">91.</td>
+      <td class="data">魅惑</td>
+  </tr>
+  <tr>
+      <td class="tag">92.</td>
+      <td class="data">謎の魅力</td>
+      <td class="tag">93.</td>
+      <td class="data">小悪魔</td>
+  </tr>
+  <tr>
+      <td class="tag">94.</td>
+      <td class="data">人気</td>
+      <td class="tag">95.</td>
+      <td class="data">鼓舞</td>
+  </tr>
+  <tr>
+      <td class="tag">96.</td>
+      <td class="data">大乳導</td>
+      <td class="tag">97.</td>
+      <td class="data">つるぺた堕し</td>
+  </tr>
+  <tr>
+      <td class="tag">98.</td>
+      <td class="data">大甲斐性</td>
+      <td class="tag">100.</td>
+      <td class="data">Ｃ敏感</td>
+  </tr>
+  <tr>
+      <td class="tag">101.</td>
+      <td class="data">Ｃ鈍感</td>
+      <td class="tag">102.</td>
+      <td class="data">Ｖ敏感</td>
+  </tr>
+  <tr>
+      <td class="tag">103.</td>
+      <td class="data">Ｖ鈍感</td>
+      <td class="tag">104.</td>
+      <td class="data">Ａ敏感</td>
+  </tr>
+  <tr>
+      <td class="tag">105.</td>
+      <td class="data">Ａ鈍感</td>
+      <td class="tag">106.</td>
+      <td class="data">Ｂ敏感</td>
+  </tr>
+  <tr>
+      <td class="tag">107.</td>
+      <td class="data">Ｂ鈍感</td>
+      <td class="tag">110.</td>
+      <td class="data">絶壁</td>
+  </tr>
+  <tr>
+      <td class="tag">111.</td>
+      <td class="data">貧乳</td>
+      <td class="tag">112.</td>
+      <td class="data">巨乳</td>
+  </tr>
+  <tr>
+      <td class="tag">113.</td>
+      <td class="data">爆乳</td>
+      <td class="tag">114.</td>
+      <td class="data">日光浴</td>
+  </tr>
+  <tr>
+      <td class="tag">115.</td>
+      <td class="data">月光浴</td>
+      <td class="tag">116.</td>
+      <td class="data">動物耳</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">尻尾</td>
+      <td class="tag">*.</td>
+      <td class="data">有翼</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">髪形</td>
+      <td class="tag">120.</td>
+      <td class="data">オトコ</td>
+  </tr>
+  <tr>
+      <td class="tag">121.</td>
+      <td class="data">ふたなり</td>
+      <td class="tag">122.</td>
+      <td class="data">不思議な根</td>
+  </tr>
+  <tr>
+      <td class="tag">123.</td>
+      <td class="data">具現</td>
+      <td class="tag">124.</td>
+      <td class="data">顕在化</td>
+  </tr>
+  <tr>
+      <td class="tag">125.</td>
+      <td class="data">狂気の目</td>
+      <td class="tag">126.</td>
+      <td class="data">教育者</td>
+  </tr>
+  <tr>
+      <td class="tag">127.</td>
+      <td class="data">小人体型</td>
+      <td class="tag">128.</td>
+      <td class="data">小柄体型</td>
+  </tr>
+  <tr>
+      <td class="tag">129.</td>
+      <td class="data">巨躯</td>
+      <td class="tag">130.</td>
+      <td class="data">幼児</td>
+  </tr>
+  <tr>
+      <td class="tag">131.</td>
+      <td class="data">幼稚</td>
+      <td class="tag">132.</td>
+      <td class="data">早漏</td>
+  </tr>
+  <tr>
+      <td class="tag">133.</td>
+      <td class="data">遅漏</td>
+      <td class="tag">134.</td>
+      <td class="data">母乳体質</td>
+  </tr>
+  <tr>
+      <td class="tag">135.</td>
+      <td class="data">卵生</td>
+      <td class="tag">136.</td>
+      <td class="data">産卵体質</td>
+  </tr>
+  <tr>
+      <td class="tag">137.</td>
+      <td class="data">回復早い</td>
+      <td class="tag">138.</td>
+      <td class="data">回復遅い</td>
+  </tr>
+  <tr>
+      <td class="tag">139.</td>
+      <td class="data">変幻自在</td>
+      <td class="tag">140.</td>
+      <td class="data">妊娠</td>
+  </tr>
+  <tr>
+      <td class="tag">141.</td>
+      <td class="data">育児中</td>
+      <td class="tag">142.</td>
+      <td class="data">母性</td>
+  </tr>
+  <tr>
+      <td class="tag">143.</td>
+      <td class="data">抱卵中</td>
+      <td class="tag">145.</td>
+      <td class="data">懐卵</td>
+  </tr>
+  <tr>
+      <td class="tag">146.</td>
+      <td class="data">寄生</td>
+      <td class="tag">149.</td>
+      <td class="data">触手使役術</td>
+  </tr>
+  <tr>
+      <td class="tag">150.</td>
+      <td class="data">恋慕</td>
+      <td class="tag">151.</td>
+      <td class="data">妄信</td>
+  </tr>
+  <tr>
+      <td class="tag">152.</td>
+      <td class="data">親愛</td>
+      <td class="tag">153.</td>
+      <td class="data">相愛</td>
+  </tr>
+  <tr>
+      <td class="tag">157.</td>
+      <td class="data">嫉妬</td>
+      <td class="tag">158.</td>
+      <td class="data">狂気</td>
+  </tr>
+  <tr>
+      <td class="tag">159.</td>
+      <td class="data">幼児退行</td>
+      <td class="tag">160.</td>
+      <td class="data">服従</td>
+  </tr>
+  <tr>
+      <td class="tag">161.</td>
+      <td class="data">烙印</td>
+      <td class="tag">162.</td>
+      <td class="data">隷属</td>
+  </tr>
+  <tr>
+      <td class="tag">163.</td>
+      <td class="data">傷物</td>
+      <td class="tag">164.</td>
+      <td class="data">使い魔</td>
+  </tr>
+  <tr>
+      <td class="tag">167.</td>
+      <td class="data">精神崩壊</td>
+      <td class="tag">168.</td>
+      <td class="data">傀儡</td>
+  </tr>
+  <tr>
+      <td class="tag">169.</td>
+      <td class="data">壊造人格</td>
+      <td class="tag">170.</td>
+      <td class="data">淫乱</td>
+  </tr>
+  <tr>
+      <td class="tag">171.</td>
+      <td class="data">淫核／淫茎</td>
+      <td class="tag">172.</td>
+      <td class="data">淫壷</td>
+  </tr>
+  <tr>
+      <td class="tag">173.</td>
+      <td class="data">淫尻</td>
+      <td class="tag">174.</td>
+      <td class="data">淫乳</td>
+  </tr>
+  <tr>
+      <td class="tag">175.</td>
+      <td class="data">尿道狂</td>
+      <td class="tag">176.</td>
+      <td class="data">キス魔</td>
+  </tr>
+  <tr>
+      <td class="tag">177.</td>
+      <td class="data">ドＳ</td>
+      <td class="tag">178.</td>
+      <td class="data">ドＭ</td>
+  </tr>
+  <tr>
+      <td class="tag">179.</td>
+      <td class="data">即落ち</td>
+      <td class="tag">180.</td>
+      <td class="data">淫魔</td>
+  </tr>
+  <tr>
+      <td class="tag">189.</td>
+      <td class="data">家電使役知識</td>
+      <td class="tag">190.</td>
+      <td class="data">音痴</td>
+  </tr>
+  <tr>
+      <td class="tag">191.</td>
+      <td class="data">音感</td>
+      <td class="tag">192.</td>
+      <td class="data">料理苦手</td>
+  </tr>
+  <tr>
+      <td class="tag">193.</td>
+      <td class="data">料理得意</td>
+      <td class="tag">194.</td>
+      <td class="data">調理名人</td>
+  </tr>
+  <tr>
+      <td class="tag">195.</td>
+      <td class="data">工作名人</td>
+      <td class="tag">196.</td>
+      <td class="data">報道者</td>
+  </tr>
+  <tr>
+      <td class="tag">197.</td>
+      <td class="data">魔術技能</td>
+      <td class="tag">198.</td>
+      <td class="data">超常目算</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">分身</td>
+      <td class="tag">200.</td>
+      <td class="data">妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">205.</td>
+      <td class="data">吸血鬼</td>
+      <td class="tag">206.</td>
+      <td class="data">機械</td>
+  </tr>
+  <tr>
+      <td class="tag">207.</td>
+      <td class="data">霊体</td>
+      <td class="tag">208.</td>
+      <td class="data">人形</td>
+  </tr>
+  <tr>
+      <td class="tag">209.</td>
+      <td class="data">悪魔</td>
+      <td class="tag">210.</td>
+      <td class="data">河童</td>
+  </tr>
+  <tr>
+      <td class="tag">211.</td>
+      <td class="data">妖狐</td>
+      <td class="tag">212.</td>
+      <td class="data">半白澤</td>
+  </tr>
+  <tr>
+      <td class="tag">213.</td>
+      <td class="data">覚</td>
+      <td class="tag">214.</td>
+      <td class="data">鬼</td>
+  </tr>
+  <tr>
+      <td class="tag">215.</td>
+      <td class="data">天狗</td>
+      <td class="tag">216.</td>
+      <td class="data">求聞持</td>
+  </tr>
+  <tr>
+      <td class="tag">217.</td>
+      <td class="data">鵺</td>
+      <td class="tag">218.</td>
+      <td class="data">博麗の巫女</td>
+  </tr>
+  <tr>
+      <td class="tag">219.</td>
+      <td class="data">風祝</td>
+      <td class="tag">220.</td>
+      <td class="data">爆発物</td>
+  </tr>
+  <tr>
+      <td class="tag">221.</td>
+      <td class="data">黄昏の怪物</td>
+      <td class="tag">222.</td>
+      <td class="data">神霊</td>
+  </tr>
+  <tr>
+      <td class="tag">223.</td>
+      <td class="data">半神</td>
+      <td class="tag">224.</td>
+      <td class="data">死神</td>
+  </tr>
+  <tr>
+      <td class="tag">225.</td>
+      <td class="data">仙人</td>
+      <td class="tag">260.</td>
+      <td class="data">娼婦</td>
+  </tr>
+  <tr>
+      <td class="tag">261.</td>
+      <td class="data">求愛依存</td>
+      <td class="tag">262.</td>
+      <td class="data">売春中毒</td>
+  </tr>
+  <tr>
+      <td class="tag">263.</td>
+      <td class="data">春の人</td>
+      <td class="tag">264.</td>
+      <td class="data">看板娘</td>
+  </tr>
+  <tr>
+      <td class="tag">265.</td>
+      <td class="data">常連客</td>
+      <td class="tag">830.</td>
+      <td class="data">拒絶</td>
+  </tr>
+  <tr>
+      <td class="tag">831.</td>
+      <td class="data">野菜の錬金術師</td>
+      <td class="tag">*.</td>
+      <td class="data">魔才の錬金術師</td>
+  </tr>
+  <tr>
+      <td class="tag">833.</td>
+      <td class="data">Spell Card</td>
+      <td class="tag">834.</td>
+      <td class="data">地獄の勲章</td>
+  </tr>
+  <tr>
+      <td class="tag">835.</td>
+      <td class="data">変遷</td>
+      <td class="tag">*.</td>
+      <td class="data"></td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data"></td>
+      <td class="tag">*.</td>
+      <td class="data"></td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data"></td>
+      <td class="tag">*.</td>
+      <td class="data"></td>
+  </tr>
+  <tr>
+      <td class="tag">998.</td>
+      <td class="data">Debug</td>
+  </tr>
+</table>
+</a>
+<a name="ability">
+<h2>能力</h2>
+<table class="Ability">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">Ｃ感覚</td>
+      <td class="tag">1.</td>
+      <td class="data">Ｖ感覚</td>
+  </tr>
+  <tr>
+      <td class="tag">2.</td>
+      <td class="data">Ａ感覚</td>
+      <td class="tag">3.</td>
+      <td class="data">Ｂ感覚</td>
+  </tr>
+  <tr>
+      <td class="tag">10.</td>
+      <td class="data">従順</td>
+      <td class="tag">11.</td>
+      <td class="data">欲望</td>
+  </tr>
+  <tr>
+      <td class="tag">12.</td>
+      <td class="data">技巧</td>
+      <td class="tag">13.</td>
+      <td class="data">奉仕精神</td>
+  </tr>
+  <tr>
+      <td class="tag">14.</td>
+      <td class="data">露出癖</td>
+      <td class="tag">20.</td>
+      <td class="data">サドっ気</td>
+  </tr>
+  <tr>
+      <td class="tag">21.</td>
+      <td class="data">マゾっ気</td>
+      <td class="tag">22.</td>
+      <td class="data">レズっ気</td>
+  </tr>
+  <tr>
+      <td class="tag">23.</td>
+      <td class="data">ＢＬっ気</td>
+      <td class="tag">30.</td>
+      <td class="data">自慰中毒</td>
+  </tr>
+  <tr>
+      <td class="tag">31.</td>
+      <td class="data">精液中毒</td>
+      <td class="tag">32.</td>
+      <td class="data">レズ中毒</td>
+  </tr>
+  <tr>
+      <td class="tag">33.</td>
+      <td class="data">ＢＬ中毒</td>
+      <td class="tag">34.</td>
+      <td class="data">噴乳中毒</td>
+  </tr>
+  <tr>
+      <td class="tag">35.</td>
+      <td class="data">触手中毒</td>
+      <td class="tag">36.</td>
+      <td class="data">排泄中毒</td>
+  </tr>
+  <tr>
+      <td class="tag">37.</td>
+      <td class="data">射精中毒</td>
+      <td class="tag">70.</td>
+      <td class="data">料理技能</td>
+  </tr>
+  <tr>
+      <td class="tag">71.</td>
+      <td class="data">撮影技能</td>
+      <td class="tag">72.</td>
+      <td class="data">歌唱技能</td>
+  </tr>
+  <tr>
+      <td class="tag">73.</td>
+      <td class="data">工作技能</td>
+      <td class="tag">98.</td>
+      <td class="data">触手使役</td>
+  </tr>
+  <tr>
+      <td class="tag">99.</td>
+      <td class="data">調教師Lv</td>
+  </tr>
+</table>
+</a>
+<a name="mark">
+<h2>刻印</h2>
+<table class="Mark">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">苦痛刻印</td>
+      <td class="tag">1.</td>
+      <td class="data">快楽刻印</td>
+  </tr>
+  <tr>
+      <td class="tag">2.</td>
+      <td class="data">屈服刻印</td>
+      <td class="tag">3.</td>
+      <td class="data">薬物刻印</td>
+  </tr>
+  <tr>
+      <td class="tag">4.</td>
+      <td class="data">恥辱刻印</td>
+      <td class="tag">*.</td>
+      <td class="data">触手刻印</td>
+  </tr>
+  <tr>
+      <td class="tag">8.</td>
+      <td class="data">恐怖刻印</td>
+      <td class="tag">9.</td>
+      <td class="data">反発刻印</td>
+  </tr>
+  <tr>
+      <td class="tag">10.</td>
+      <td class="data">不死刻印</td>
+      <td class="tag">*.</td>
+      <td class="data">性格反転薬使用回数</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">成長判定用</td>
+      <td class="tag">*.</td>
+      <td class="data">妖精化キャラ口上(妖精化直後は1、妖精化後初回口上表示後は2にすれば安全)</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">妖精化奴隷が主人と会ったかのフラグ(0：まだ、1：あった、2：一度会った後、さらに奴隷を妖精化してからあった)</td>
+      <td class="tag">*.</td>
+      <td class="data">妊娠時等の母乳体質の管理用フラグ</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">恐怖刻印取得履歴</td>
+      <td class="tag">*.</td>
+      <td class="data">反発刻印取得履歴</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">諸処理の判定用</td>
+  </tr>
+</table>
+</a>
+<a name="exp">
+<h2>経験</h2>
+<table class="Exp">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">Ｖ経験</td>
+      <td class="tag">1.</td>
+      <td class="data">Ａ経験</td>
+  </tr>
+  <tr>
+      <td class="tag">2.</td>
+      <td class="data">絶頂経験</td>
+      <td class="tag">3.</td>
+      <td class="data">射精経験</td>
+  </tr>
+  <tr>
+      <td class="tag">4.</td>
+      <td class="data">精液経験</td>
+      <td class="tag">5.</td>
+      <td class="data">噴乳経験</td>
+  </tr>
+  <tr>
+      <td class="tag">6.</td>
+      <td class="data">放尿経験</td>
+      <td class="tag">7.</td>
+      <td class="data">調教排泄経験</td>
+  </tr>
+  <tr>
+      <td class="tag">8.</td>
+      <td class="data">精飲絶頂経験</td>
+      <td class="tag">10.</td>
+      <td class="data">自慰経験</td>
+  </tr>
+  <tr>
+      <td class="tag">11.</td>
+      <td class="data">調教自慰経験</td>
+      <td class="tag">12.</td>
+      <td class="data">レズ経験</td>
+  </tr>
+  <tr>
+      <td class="tag">13.</td>
+      <td class="data">ＢＬ経験</td>
+      <td class="tag">14.</td>
+      <td class="data">露出快楽経験</td>
+  </tr>
+  <tr>
+      <td class="tag">20.</td>
+      <td class="data">奉仕快楽経験</td>
+      <td class="tag">21.</td>
+      <td class="data">愛情経験</td>
+  </tr>
+  <tr>
+      <td class="tag">22.</td>
+      <td class="data">フェラ経験</td>
+      <td class="tag">23.</td>
+      <td class="data">キス経験</td>
+  </tr>
+  <tr>
+      <td class="tag">30.</td>
+      <td class="data">苦痛快楽経験</td>
+      <td class="tag">31.</td>
+      <td class="data">緊縛経験</td>
+  </tr>
+  <tr>
+      <td class="tag">32.</td>
+      <td class="data">Ｖ拡張経験</td>
+      <td class="tag">33.</td>
+      <td class="data">Ａ拡張経験</td>
+  </tr>
+  <tr>
+      <td class="tag">34.</td>
+      <td class="data">Ｕ拡張経験</td>
+      <td class="tag">39.</td>
+      <td class="data">ＳＭ教育経験</td>
+  </tr>
+  <tr>
+      <td class="tag">40.</td>
+      <td class="data">薬物経験</td>
+      <td class="tag">41.</td>
+      <td class="data">Ｃ調律経験</td>
+  </tr>
+  <tr>
+      <td class="tag">42.</td>
+      <td class="data">Ｖ調律経験</td>
+      <td class="tag">43.</td>
+      <td class="data">Ａ快楽経験</td>
+  </tr>
+  <tr>
+      <td class="tag">44.</td>
+      <td class="data">Ｂ快楽経験</td>
+      <td class="tag">45.</td>
+      <td class="data">乳腺開発経験</td>
+  </tr>
+  <tr>
+      <td class="tag">46.</td>
+      <td class="data">尿道開発経験</td>
+      <td class="tag">50.</td>
+      <td class="data">異常経験</td>
+  </tr>
+  <tr>
+      <td class="tag">51.</td>
+      <td class="data">産卵経験</td>
+      <td class="tag">52.</td>
+      <td class="data">出産経験</td>
+  </tr>
+  <tr>
+      <td class="tag">53.</td>
+      <td class="data">触手経験</td>
+      <td class="tag">54.</td>
+      <td class="data">吸血経験</td>
+  </tr>
+  <tr>
+      <td class="tag">55.</td>
+      <td class="data">調教失神経験</td>
+      <td class="tag">56.</td>
+      <td class="data">動物性愛経験</td>
+  </tr>
+  <tr>
+      <td class="tag">70.</td>
+      <td class="data">調理経験</td>
+      <td class="tag">71.</td>
+      <td class="data">撮影経験</td>
+  </tr>
+  <tr>
+      <td class="tag">72.</td>
+      <td class="data">被写経験</td>
+      <td class="tag">73.</td>
+      <td class="data">歌唱経験</td>
+  </tr>
+  <tr>
+      <td class="tag">74.</td>
+      <td class="data">工作経験</td>
+      <td class="tag">75.</td>
+      <td class="data">教育経験</td>
+  </tr>
+  <tr>
+      <td class="tag">76.</td>
+      <td class="data">売春経験</td>
+      <td class="tag">77.</td>
+      <td class="data">娼館人気</td>
+  </tr>
+  <tr>
+      <td class="tag">80.</td>
+      <td class="data">強姦経験</td>
+      <td class="tag">81.</td>
+      <td class="data">被強姦経験</td>
+  </tr>
+  <tr>
+      <td class="tag">82.</td>
+      <td class="data">被輪姦経験</td>
+      <td class="tag">83.</td>
+      <td class="data">被姦快楽経験</td>
+  </tr>
+  <tr>
+      <td class="tag">97.</td>
+      <td class="data">極楽絶頂経験</td>
+      <td class="tag">98.</td>
+      <td class="data">主人調教経験</td>
+  </tr>
+  <tr>
+      <td class="tag">99.</td>
+      <td class="data">助手経験</td>
+  </tr>
+</table>
+</a>
+<a name="train">
+<h2>調教</h2>
+<table class="Train">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">愛撫</td>
+      <td class="tag">1.</td>
+      <td class="data">クンニ</td>
+  </tr>
+  <tr>
+      <td class="tag">2.</td>
+      <td class="data">アナル愛撫</td>
+      <td class="tag">3.</td>
+      <td class="data">胸愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">4.</td>
+      <td class="data">指挿入れ</td>
+      <td class="tag">5.</td>
+      <td class="data">フェラする</td>
+  </tr>
+  <tr>
+      <td class="tag">6.</td>
+      <td class="data">キスする</td>
+      <td class="tag">7.</td>
+      <td class="data">自慰</td>
+  </tr>
+  <tr>
+      <td class="tag">9.</td>
+      <td class="data">何もしない</td>
+      <td class="tag">10.</td>
+      <td class="data">ローター</td>
+  </tr>
+  <tr>
+      <td class="tag">11.</td>
+      <td class="data">電気按摩</td>
+      <td class="tag">12.</td>
+      <td class="data">バイブ</td>
+  </tr>
+  <tr>
+      <td class="tag">13.</td>
+      <td class="data">アナルバイブ</td>
+      <td class="tag">14.</td>
+      <td class="data">クリキャップ</td>
+  </tr>
+  <tr>
+      <td class="tag">15.</td>
+      <td class="data">ニプルキャップ</td>
+      <td class="tag">16.</td>
+      <td class="data">オナホール</td>
+  </tr>
+  <tr>
+      <td class="tag">17.</td>
+      <td class="data">電極オナホール</td>
+      <td class="tag">20.</td>
+      <td class="data">正常位</td>
+  </tr>
+  <tr>
+      <td class="tag">21.</td>
+      <td class="data">後背位</td>
+      <td class="tag">22.</td>
+      <td class="data">対面座位</td>
+  </tr>
+  <tr>
+      <td class="tag">23.</td>
+      <td class="data">背面座位</td>
+      <td class="tag">24.</td>
+      <td class="data">騎乗位</td>
+  </tr>
+  <tr>
+      <td class="tag">25.</td>
+      <td class="data">逆レイプ</td>
+      <td class="tag">26.</td>
+      <td class="data">助手を犯す</td>
+  </tr>
+  <tr>
+      <td class="tag">27.</td>
+      <td class="data">対面立位</td>
+      <td class="tag">28.</td>
+      <td class="data">背面立位</td>
+  </tr>
+  <tr>
+      <td class="tag">30.</td>
+      <td class="data">正常位アナル</td>
+      <td class="tag">31.</td>
+      <td class="data">後背位アナル</td>
+  </tr>
+  <tr>
+      <td class="tag">32.</td>
+      <td class="data">対面座位アナル</td>
+      <td class="tag">33.</td>
+      <td class="data">背面座位アナル</td>
+  </tr>
+  <tr>
+      <td class="tag">34.</td>
+      <td class="data">騎乗位アナル</td>
+      <td class="tag">35.</td>
+      <td class="data">逆アナルレイプ</td>
+  </tr>
+  <tr>
+      <td class="tag">36.</td>
+      <td class="data">助手のＡを犯す</td>
+      <td class="tag">37.</td>
+      <td class="data">対面立位アナル</td>
+  </tr>
+  <tr>
+      <td class="tag">38.</td>
+      <td class="data">背面立位アナル</td>
+      <td class="tag">40.</td>
+      <td class="data">手淫</td>
+  </tr>
+  <tr>
+      <td class="tag">41.</td>
+      <td class="data">フェラチオ</td>
+      <td class="tag">42.</td>
+      <td class="data">パイズリ</td>
+  </tr>
+  <tr>
+      <td class="tag">43.</td>
+      <td class="data">素股</td>
+      <td class="tag">44.</td>
+      <td class="data">アナル舐め強制</td>
+  </tr>
+  <tr>
+      <td class="tag">45.</td>
+      <td class="data">アナルおねだり</td>
+      <td class="tag">46.</td>
+      <td class="data">足舐め強制</td>
+  </tr>
+  <tr>
+      <td class="tag">47.</td>
+      <td class="data">足扱き</td>
+      <td class="tag">48.</td>
+      <td class="data">髪扱き</td>
+  </tr>
+  <tr>
+      <td class="tag">49.</td>
+      <td class="data">腋扱き</td>
+      <td class="tag">50.</td>
+      <td class="data">全身扱き</td>
+  </tr>
+  <tr>
+      <td class="tag">51.</td>
+      <td class="data">尻扱き</td>
+      <td class="tag">52.</td>
+      <td class="data">竿扱き</td>
+  </tr>
+  <tr>
+      <td class="tag">53.</td>
+      <td class="data">玉揉み強制</td>
+      <td class="tag">54.</td>
+      <td class="data">玉舐め強制</td>
+  </tr>
+  <tr>
+      <td class="tag">55.</td>
+      <td class="data">アナル愛撫強制</td>
+      <td class="tag">60.</td>
+      <td class="data">ローション</td>
+  </tr>
+  <tr>
+      <td class="tag">61.</td>
+      <td class="data">媚薬</td>
+      <td class="tag">62.</td>
+      <td class="data">利尿剤</td>
+  </tr>
+  <tr>
+      <td class="tag">63.</td>
+      <td class="data">座薬</td>
+      <td class="tag">64.</td>
+      <td class="data">座薬(膣)</td>
+  </tr>
+  <tr>
+      <td class="tag">65.</td>
+      <td class="data">強精神薬</td>
+      <td class="tag">66.</td>
+      <td class="data">排卵誘発剤</td>
+  </tr>
+  <tr>
+      <td class="tag">67.</td>
+      <td class="data">緊急避妊薬</td>
+      <td class="tag">68.</td>
+      <td class="data">産卵促進剤</td>
+  </tr>
+  <tr>
+      <td class="tag">69.</td>
+      <td class="data">陰核成長剤</td>
+      <td class="tag">70.</td>
+      <td class="data">興奮剤</td>
+  </tr>
+  <tr>
+      <td class="tag">71.</td>
+      <td class="data">助手避妊薬</td>
+      <td class="tag">72.</td>
+      <td class="data">感覚増幅薬</td>
+  </tr>
+  <tr>
+      <td class="tag">80.</td>
+      <td class="data">クリトリス注射</td>
+      <td class="tag">81.</td>
+      <td class="data">ヴァギナ注射</td>
+  </tr>
+  <tr>
+      <td class="tag">82.</td>
+      <td class="data">アナル注射</td>
+      <td class="tag">83.</td>
+      <td class="data">バスト注射</td>
+  </tr>
+  <tr>
+      <td class="tag">84.</td>
+      <td class="data">尿道注射</td>
+      <td class="tag">85.</td>
+      <td class="data">Ｃ肥大注射</td>
+  </tr>
+  <tr>
+      <td class="tag">86.</td>
+      <td class="data">Ｃ強精神薬注射</td>
+      <td class="tag">88.</td>
+      <td class="data">採血注射</td>
+  </tr>
+  <tr>
+      <td class="tag">90.</td>
+      <td class="data">裸エプロン</td>
+      <td class="tag">91.</td>
+      <td class="data">スク水プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">92.</td>
+      <td class="data">お医者プレイ</td>
+      <td class="tag">93.</td>
+      <td class="data">コスプレ</td>
+  </tr>
+  <tr>
+      <td class="tag">94.</td>
+      <td class="data">助手コスプレ</td>
+      <td class="tag">100.</td>
+      <td class="data">ビデオ撮影</td>
+  </tr>
+  <tr>
+      <td class="tag">101.</td>
+      <td class="data">ビデオ鑑賞</td>
+      <td class="tag">102.</td>
+      <td class="data">写真撮影</td>
+  </tr>
+  <tr>
+      <td class="tag">103.</td>
+      <td class="data">羞恥プレイ</td>
+      <td class="tag">104.</td>
+      <td class="data">野外プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">105.</td>
+      <td class="data">公開露出ライブ</td>
+      <td class="tag">106.</td>
+      <td class="data">公衆肉便器プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">107.</td>
+      <td class="data">裸体盛り</td>
+      <td class="tag">108.</td>
+      <td class="data">ベビープレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">オムツにお漏らし</td>
+      <td class="tag">110.</td>
+      <td class="data">秘貝開帳</td>
+  </tr>
+  <tr>
+      <td class="tag">111.</td>
+      <td class="data">放尿</td>
+      <td class="tag">112.</td>
+      <td class="data">剃毛</td>
+  </tr>
+  <tr>
+      <td class="tag">113.</td>
+      <td class="data">毛抜き</td>
+      <td class="tag">114.</td>
+      <td class="data">毛を抜かせる</td>
+  </tr>
+  <tr>
+      <td class="tag">115.</td>
+      <td class="data">自慰見せつけ</td>
+      <td class="tag">116.</td>
+      <td class="data">二人自慰見せつけ</td>
+  </tr>
+  <tr>
+      <td class="tag">117.</td>
+      <td class="data">秘貝開帳見せつけ</td>
+      <td class="tag">118.</td>
+      <td class="data">二人秘貝見せつけ</td>
+  </tr>
+  <tr>
+      <td class="tag">120.</td>
+      <td class="data">焦らしプレイ</td>
+      <td class="tag">121.</td>
+      <td class="data">射精止め</td>
+  </tr>
+  <tr>
+      <td class="tag">122.</td>
+      <td class="data">豆責め</td>
+      <td class="tag">123.</td>
+      <td class="data">豆絞り</td>
+  </tr>
+  <tr>
+      <td class="tag">124.</td>
+      <td class="data">ローター自慰</td>
+      <td class="tag">125.</td>
+      <td class="data">電マ自慰</td>
+  </tr>
+  <tr>
+      <td class="tag">126.</td>
+      <td class="data">顔面騎乗</td>
+      <td class="tag">*.</td>
+      <td class="data">脚自慰</td>
+  </tr>
+  <tr>
+      <td class="tag">128.</td>
+      <td class="data">亀頭責め</td>
+      <td class="tag">*.</td>
+      <td class="data">媚薬塗り込み</td>
+  </tr>
+  <tr>
+      <td class="tag">130.</td>
+      <td class="data">陰核クリップ</td>
+      <td class="tag">131.</td>
+      <td class="data">陰核電極</td>
+  </tr>
+  <tr>
+      <td class="tag">132.</td>
+      <td class="data">ペニスローター</td>
+      <td class="tag">133.</td>
+      <td class="data">電マペニス責め</td>
+  </tr>
+  <tr>
+      <td class="tag">135.</td>
+      <td class="data">陰核測定</td>
+      <td class="tag">136.</td>
+      <td class="data">割礼</td>
+  </tr>
+  <tr>
+      <td class="tag">137.</td>
+      <td class="data">射精機能開発</td>
+      <td class="tag">140.</td>
+      <td class="data">尿道綿棒</td>
+  </tr>
+  <tr>
+      <td class="tag">141.</td>
+      <td class="data">カテーテル</td>
+      <td class="tag">142.</td>
+      <td class="data">採尿器</td>
+  </tr>
+  <tr>
+      <td class="tag">143.</td>
+      <td class="data">バルーンカテーテル</td>
+      <td class="tag">144.</td>
+      <td class="data">電極カテーテル</td>
+  </tr>
+  <tr>
+      <td class="tag">145.</td>
+      <td class="data">飲尿する</td>
+      <td class="tag">146.</td>
+      <td class="data">尿道挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">150.</td>
+      <td class="data">クスコ</td>
+      <td class="tag">151.</td>
+      <td class="data">ローター挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">152.</td>
+      <td class="data">小陰唇指愛撫</td>
+      <td class="tag">153.</td>
+      <td class="data">愛液採集器</td>
+  </tr>
+  <tr>
+      <td class="tag">155.</td>
+      <td class="data">ヴァギナ電極</td>
+      <td class="tag">156.</td>
+      <td class="data">ヴァギナバーベル</td>
+  </tr>
+  <tr>
+      <td class="tag">157.</td>
+      <td class="data">ヴァギナバルーン</td>
+      <td class="tag">170.</td>
+      <td class="data">ローターＡ挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">171.</td>
+      <td class="data">アナル電極</td>
+      <td class="tag">172.</td>
+      <td class="data">アナルビーズ</td>
+  </tr>
+  <tr>
+      <td class="tag">173.</td>
+      <td class="data">拡張バルーン</td>
+      <td class="tag">174.</td>
+      <td class="data">浣腸プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">175.</td>
+      <td class="data">空気浣腸</td>
+      <td class="tag">*.</td>
+      <td class="data">助手に浣腸</td>
+  </tr>
+  <tr>
+      <td class="tag">179.</td>
+      <td class="data">アナルバーベル</td>
+      <td class="tag">180.</td>
+      <td class="data">アナル舐め</td>
+  </tr>
+  <tr>
+      <td class="tag">181.</td>
+      <td class="data">アナル綿棒</td>
+      <td class="tag">182.</td>
+      <td class="data">アナニー</td>
+  </tr>
+  <tr>
+      <td class="tag">183.</td>
+      <td class="data">尻素股</td>
+      <td class="tag">184.</td>
+      <td class="data">フリスク挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">ギョウチュウ検査</td>
+      <td class="tag">186.</td>
+      <td class="data">尻愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">187.</td>
+      <td class="data">顔面騎乗アナル</td>
+      <td class="tag">188.</td>
+      <td class="data">アナルの皺数え</td>
+  </tr>
+  <tr>
+      <td class="tag">190.</td>
+      <td class="data">乳首ローター</td>
+      <td class="tag">191.</td>
+      <td class="data">搾乳機</td>
+  </tr>
+  <tr>
+      <td class="tag">192.</td>
+      <td class="data">乳腺開発</td>
+      <td class="tag">193.</td>
+      <td class="data">乳房電極</td>
+  </tr>
+  <tr>
+      <td class="tag">194.</td>
+      <td class="data">サラシ</td>
+      <td class="tag">195.</td>
+      <td class="data">乳首クリップ</td>
+  </tr>
+  <tr>
+      <td class="tag">200.</td>
+      <td class="data">胸揉み</td>
+      <td class="tag">201.</td>
+      <td class="data">乳首責め</td>
+  </tr>
+  <tr>
+      <td class="tag">202.</td>
+      <td class="data">乳首舐め</td>
+      <td class="tag">203.</td>
+      <td class="data">乳首吸い</td>
+  </tr>
+  <tr>
+      <td class="tag">204.</td>
+      <td class="data">母乳飲み</td>
+      <td class="tag">205.</td>
+      <td class="data">胸自慰</td>
+  </tr>
+  <tr>
+      <td class="tag">206.</td>
+      <td class="data">乳スパンキング</td>
+      <td class="tag">207.</td>
+      <td class="data">乳ファック</td>
+  </tr>
+  <tr>
+      <td class="tag">208.</td>
+      <td class="data">縦パイズリ</td>
+      <td class="tag">209.</td>
+      <td class="data">パイズリフェラ</td>
+  </tr>
+  <tr>
+      <td class="tag">210.</td>
+      <td class="data">乳合わせ</td>
+      <td class="tag">211.</td>
+      <td class="data">乳合わせ見せつけ</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">二人羽織プレイ</td>
+      <td class="tag">220.</td>
+      <td class="data">スパンキング</td>
+  </tr>
+  <tr>
+      <td class="tag">221.</td>
+      <td class="data">鞭</td>
+      <td class="tag">222.</td>
+      <td class="data">針</td>
+  </tr>
+  <tr>
+      <td class="tag">223.</td>
+      <td class="data">蝋燭</td>
+      <td class="tag">224.</td>
+      <td class="data">縄</td>
+  </tr>
+  <tr>
+      <td class="tag">225.</td>
+      <td class="data">アイマスク</td>
+      <td class="tag">226.</td>
+      <td class="data">ボールギャグ</td>
+  </tr>
+  <tr>
+      <td class="tag">227.</td>
+      <td class="data">罵倒</td>
+      <td class="tag">228.</td>
+      <td class="data">鼻フック</td>
+  </tr>
+  <tr>
+      <td class="tag">229.</td>
+      <td class="data">強制開口器</td>
+      <td class="tag">230.</td>
+      <td class="data">イラマチオ</td>
+  </tr>
+  <tr>
+      <td class="tag">231.</td>
+      <td class="data">フィストファック</td>
+      <td class="tag">232.</td>
+      <td class="data">アナルフィスト</td>
+  </tr>
+  <tr>
+      <td class="tag">233.</td>
+      <td class="data">両穴フィスト</td>
+      <td class="tag">234.</td>
+      <td class="data">ヴァギナダイビング</td>
+  </tr>
+  <tr>
+      <td class="tag">235.</td>
+      <td class="data">アナルダイビング</td>
+      <td class="tag">236.</td>
+      <td class="data">ツボを突く</td>
+  </tr>
+  <tr>
+      <td class="tag">237.</td>
+      <td class="data">鼻クリップ</td>
+      <td class="tag">238.</td>
+      <td class="data">スタンガン</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">洗濯バサミを弾く</td>
+      <td class="tag">240.</td>
+      <td class="data">足で踏む</td>
+  </tr>
+  <tr>
+      <td class="tag">241.</td>
+      <td class="data">腹パン</td>
+      <td class="tag">242.</td>
+      <td class="data">三角木馬</td>
+  </tr>
+  <tr>
+      <td class="tag">243.</td>
+      <td class="data">杭</td>
+      <td class="tag">244.</td>
+      <td class="data">ナイフ</td>
+  </tr>
+  <tr>
+      <td class="tag">245.</td>
+      <td class="data">鉈</td>
+      <td class="tag">*.</td>
+      <td class="data">ノコギリ</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">傷を抉る</td>
+      <td class="tag">*.</td>
+      <td class="data">食べる</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">食べさせる</td>
+      <td class="tag">*.</td>
+      <td class="data">首絞め</td>
+  </tr>
+  <tr>
+      <td class="tag">251.</td>
+      <td class="data">ビンタを張る</td>
+      <td class="tag">252.</td>
+      <td class="data">アイアンメイデン</td>
+  </tr>
+  <tr>
+      <td class="tag">270.</td>
+      <td class="data">罵ってもらう</td>
+      <td class="tag">271.</td>
+      <td class="data">足を舐める</td>
+  </tr>
+  <tr>
+      <td class="tag">272.</td>
+      <td class="data">叩いてもらう</td>
+      <td class="tag">273.</td>
+      <td class="data">鞭で打ってもらう</td>
+  </tr>
+  <tr>
+      <td class="tag">290.</td>
+      <td class="data">コンドーム</td>
+      <td class="tag">291.</td>
+      <td class="data">コンドーム精飲(奴)</td>
+  </tr>
+  <tr>
+      <td class="tag">292.</td>
+      <td class="data">コンドーム精飲(助)</td>
+      <td class="tag">293.</td>
+      <td class="data">ザーメンキス</td>
+  </tr>
+  <tr>
+      <td class="tag">300.</td>
+      <td class="data">クンニ強制</td>
+      <td class="tag">301.</td>
+      <td class="data">貝あわせ</td>
+  </tr>
+  <tr>
+      <td class="tag">302.</td>
+      <td class="data">足コキする</td>
+      <td class="tag">303.</td>
+      <td class="data">二人フェラチオ</td>
+  </tr>
+  <tr>
+      <td class="tag">304.</td>
+      <td class="data">二本フェラチオ</td>
+      <td class="tag">305.</td>
+      <td class="data">二人で素股</td>
+  </tr>
+  <tr>
+      <td class="tag">306.</td>
+      <td class="data">二人でパイズリ</td>
+      <td class="tag">307.</td>
+      <td class="data">助手を犯させる</td>
+  </tr>
+  <tr>
+      <td class="tag">308.</td>
+      <td class="data">助手のＡを犯させる</td>
+      <td class="tag">309.</td>
+      <td class="data">助手とキスする</td>
+  </tr>
+  <tr>
+      <td class="tag">310.</td>
+      <td class="data">二人の尻を叩く</td>
+      <td class="tag">311.</td>
+      <td class="data">尻を二人で叩く</td>
+  </tr>
+  <tr>
+      <td class="tag">312.</td>
+      <td class="data">二人のＶをフィスト</td>
+      <td class="tag">313.</td>
+      <td class="data">二人のＡをフィスト</td>
+  </tr>
+  <tr>
+      <td class="tag">320.</td>
+      <td class="data">優しくする</td>
+      <td class="tag">321.</td>
+      <td class="data">手淫する</td>
+  </tr>
+  <tr>
+      <td class="tag">322.</td>
+      <td class="data">パイズリする</td>
+      <td class="tag">323.</td>
+      <td class="data">正常位させる</td>
+  </tr>
+  <tr>
+      <td class="tag">324.</td>
+      <td class="data">後背位させる</td>
+      <td class="tag">325.</td>
+      <td class="data">騎乗位する</td>
+  </tr>
+  <tr>
+      <td class="tag">326.</td>
+      <td class="data">ペニバン挿入</td>
+      <td class="tag">327.</td>
+      <td class="data">指チュパ</td>
+  </tr>
+  <tr>
+      <td class="tag">328.</td>
+      <td class="data">首筋耳裏責め</td>
+      <td class="tag">329.</td>
+      <td class="data">玉愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">330.</td>
+      <td class="data">玉を舐める</td>
+      <td class="tag">331.</td>
+      <td class="data">二人でフェラする</td>
+  </tr>
+  <tr>
+      <td class="tag">332.</td>
+      <td class="data">Ａ正常位させる</td>
+      <td class="tag">333.</td>
+      <td class="data">Ａ後背位させる</td>
+  </tr>
+  <tr>
+      <td class="tag">334.</td>
+      <td class="data">Ａ騎乗位する</td>
+      <td class="tag">335.</td>
+      <td class="data">パイズリフェラする</td>
+  </tr>
+  <tr>
+      <td class="tag">336.</td>
+      <td class="data">ヴァギナを拭く</td>
+      <td class="tag">337.</td>
+      <td class="data">二人で首筋耳裏責め</td>
+  </tr>
+  <tr>
+      <td class="tag">338.</td>
+      <td class="data">二人に犯させる</td>
+      <td class="tag">340.</td>
+      <td class="data">ぱふぱふ</td>
+  </tr>
+  <tr>
+      <td class="tag">341.</td>
+      <td class="data">胸枕</td>
+      <td class="tag">342.</td>
+      <td class="data">乳繰り合う</td>
+  </tr>
+  <tr>
+      <td class="tag">343.</td>
+      <td class="data">乳ビンタ</td>
+      <td class="tag">344.</td>
+      <td class="data">乳の揉み合い</td>
+  </tr>
+  <tr>
+      <td class="tag">345.</td>
+      <td class="data">お風呂を楽しむ</td>
+      <td class="tag">346.</td>
+      <td class="data">お外を楽しむ</td>
+  </tr>
+  <tr>
+      <td class="tag">347.</td>
+      <td class="data">お嫁さんで楽しむ</td>
+      <td class="tag">348.</td>
+      <td class="data">お酒を飲ませる</td>
+  </tr>
+  <tr>
+      <td class="tag">349.</td>
+      <td class="data">ふぉーゆーっ！</td>
+      <td class="tag">350.</td>
+      <td class="data">お風呂場プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">351.</td>
+      <td class="data">シャワー</td>
+      <td class="tag">352.</td>
+      <td class="data">泡踊り</td>
+  </tr>
+  <tr>
+      <td class="tag">353.</td>
+      <td class="data">泡踊りする</td>
+      <td class="tag">354.</td>
+      <td class="data">たわし洗い</td>
+  </tr>
+  <tr>
+      <td class="tag">360.</td>
+      <td class="data">蟲風呂</td>
+      <td class="tag">361.</td>
+      <td class="data">鰻風呂</td>
+  </tr>
+  <tr>
+      <td class="tag">362.</td>
+      <td class="data">ローション風呂</td>
+      <td class="tag">363.</td>
+      <td class="data">スライム風呂</td>
+  </tr>
+  <tr>
+      <td class="tag">364.</td>
+      <td class="data">媚薬風呂</td>
+      <td class="tag">365.</td>
+      <td class="data">水牢</td>
+  </tr>
+  <tr>
+      <td class="tag">366.</td>
+      <td class="data">精液風呂</td>
+      <td class="tag">367.</td>
+      <td class="data">酒風呂</td>
+  </tr>
+  <tr>
+      <td class="tag">368.</td>
+      <td class="data">トロロ風呂</td>
+      <td class="tag">369.</td>
+      <td class="data">毛玉風呂</td>
+  </tr>
+  <tr>
+      <td class="tag">370.</td>
+      <td class="data">蒸し風呂</td>
+      <td class="tag">371.</td>
+      <td class="data">国士無双の薬風呂</td>
+  </tr>
+  <tr>
+      <td class="tag">372.</td>
+      <td class="data">厄毒風呂</td>
+      <td class="tag">373.</td>
+      <td class="data">岩盤浴</td>
+  </tr>
+  <tr>
+      <td class="tag">374.</td>
+      <td class="data">札束風呂</td>
+      <td class="tag">380.</td>
+      <td class="data">バター犬プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">381.</td>
+      <td class="data">犬に犯させる</td>
+      <td class="tag">382.</td>
+      <td class="data">犬を犯させる</td>
+  </tr>
+  <tr>
+      <td class="tag">383.</td>
+      <td class="data">豚に犯させる</td>
+      <td class="tag">384.</td>
+      <td class="data">豚を犯させる</td>
+  </tr>
+  <tr>
+      <td class="tag">385.</td>
+      <td class="data">馬のをフェラさせる</td>
+      <td class="tag">386.</td>
+      <td class="data">馬に犯させる</td>
+  </tr>
+  <tr>
+      <td class="tag">387.</td>
+      <td class="data">犬とキスさせる</td>
+      <td class="tag">388.</td>
+      <td class="data">豚とキスさせる</td>
+  </tr>
+  <tr>
+      <td class="tag">400.</td>
+      <td class="data">吸血</td>
+      <td class="tag">401.</td>
+      <td class="data">暗闇</td>
+  </tr>
+  <tr>
+      <td class="tag">402.</td>
+      <td class="data">尻子玉抜き</td>
+      <td class="tag">403.</td>
+      <td class="data">焼芋責め</td>
+  </tr>
+  <tr>
+      <td class="tag">404.</td>
+      <td class="data">巨峰責め</td>
+      <td class="tag">405.</td>
+      <td class="data">石勺柏責め</td>
+  </tr>
+  <tr>
+      <td class="tag">406.</td>
+      <td class="data">荊で緊縛</td>
+      <td class="tag">407.</td>
+      <td class="data">荊の鞭</td>
+  </tr>
+  <tr>
+      <td class="tag">408.</td>
+      <td class="data">蜘蛛の糸</td>
+      <td class="tag">409.</td>
+      <td class="data">独楽回し</td>
+  </tr>
+  <tr>
+      <td class="tag">410.</td>
+      <td class="data">蜘蛛脚愛撫</td>
+      <td class="tag">411.</td>
+      <td class="data">人形愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">412.</td>
+      <td class="data">操りの糸</td>
+      <td class="tag">413.</td>
+      <td class="data">豆炙り</td>
+  </tr>
+  <tr>
+      <td class="tag">414.</td>
+      <td class="data">乳豆炙り</td>
+      <td class="tag">415.</td>
+      <td class="data">読心</td>
+  </tr>
+  <tr>
+      <td class="tag">416.</td>
+      <td class="data">思姦</td>
+      <td class="tag">417.</td>
+      <td class="data">筆責め</td>
+  </tr>
+  <tr>
+      <td class="tag">418.</td>
+      <td class="data">時間停止</td>
+      <td class="tag">419.</td>
+      <td class="data">狂気の目</td>
+  </tr>
+  <tr>
+      <td class="tag">420.</td>
+      <td class="data">鈴蘭の毒</td>
+      <td class="tag">421.</td>
+      <td class="data">昆虫採集セットの薬</td>
+  </tr>
+  <tr>
+      <td class="tag">422.</td>
+      <td class="data">媚薬漬け</td>
+      <td class="tag">423.</td>
+      <td class="data">酒漬け</td>
+  </tr>
+  <tr>
+      <td class="tag">424.</td>
+      <td class="data">わかめ酒</td>
+      <td class="tag">425.</td>
+      <td class="data">かりちゅまがーど</td>
+  </tr>
+  <tr>
+      <td class="tag">427.</td>
+      <td class="data">陰毛炙り</td>
+      <td class="tag">430.</td>
+      <td class="data">御所車</td>
+  </tr>
+  <tr>
+      <td class="tag">431.</td>
+      <td class="data">フォーオブアカインド</td>
+      <td class="tag">432.</td>
+      <td class="data">氷柱責め</td>
+  </tr>
+  <tr>
+      <td class="tag">433.</td>
+      <td class="data">アナル卒塔婆</td>
+      <td class="tag">434.</td>
+      <td class="data">角愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">435.</td>
+      <td class="data">角挿入</td>
+      <td class="tag">436.</td>
+      <td class="data">角アナル挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">437.</td>
+      <td class="data">ヴァギナ要石</td>
+      <td class="tag">438.</td>
+      <td class="data">アナル要石</td>
+  </tr>
+  <tr>
+      <td class="tag">439.</td>
+      <td class="data">両穴要石</td>
+      <td class="tag">440.</td>
+      <td class="data">半霊を犯す</td>
+  </tr>
+  <tr>
+      <td class="tag">441.</td>
+      <td class="data">半霊を挿入(前)</td>
+      <td class="tag">442.</td>
+      <td class="data">半霊を挿入(後)</td>
+  </tr>
+  <tr>
+      <td class="tag">443.</td>
+      <td class="data">幽明の苦輪</td>
+      <td class="tag">444.</td>
+      <td class="data">半霊再構成</td>
+  </tr>
+  <tr>
+      <td class="tag">445.</td>
+      <td class="data">薀蓄語り</td>
+      <td class="tag">446.</td>
+      <td class="data">説教を受ける</td>
+  </tr>
+  <tr>
+      <td class="tag">447.</td>
+      <td class="data">傘を愛撫する</td>
+      <td class="tag">448.</td>
+      <td class="data">房中術</td>
+  </tr>
+  <tr>
+      <td class="tag">449.</td>
+      <td class="data">フィーバー！</td>
+      <td class="tag">450.</td>
+      <td class="data">ピッチャー二つ</td>
+  </tr>
+  <tr>
+      <td class="tag">451.</td>
+      <td class="data">酔生夢死</td>
+      <td class="tag">452.</td>
+      <td class="data">超凝視</td>
+  </tr>
+  <tr>
+      <td class="tag">453.</td>
+      <td class="data">傘に舐めさせる</td>
+      <td class="tag">500.</td>
+      <td class="data">触手召喚</td>
+  </tr>
+  <tr>
+      <td class="tag">501.</td>
+      <td class="data">触手挿入</td>
+      <td class="tag">502.</td>
+      <td class="data">触手アナル挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">503.</td>
+      <td class="data">触手クリ責め</td>
+      <td class="tag">504.</td>
+      <td class="data">触手乳首責め</td>
+  </tr>
+  <tr>
+      <td class="tag">505.</td>
+      <td class="data">触手ペニス責め</td>
+      <td class="tag">506.</td>
+      <td class="data">触手口辱</td>
+  </tr>
+  <tr>
+      <td class="tag">507.</td>
+      <td class="data">触手緊縛</td>
+      <td class="tag">508.</td>
+      <td class="data">触手鼻穴挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">509.</td>
+      <td class="data">触手メイデン</td>
+      <td class="tag">510.</td>
+      <td class="data">触手寄生</td>
+  </tr>
+  <tr>
+      <td class="tag">511.</td>
+      <td class="data">触手くすぐり</td>
+      <td class="tag">512.</td>
+      <td class="data">触手秘貝開き</td>
+  </tr>
+  <tr>
+      <td class="tag">513.</td>
+      <td class="data">触手パイズリ</td>
+      <td class="tag">514.</td>
+      <td class="data">触手素股</td>
+  </tr>
+  <tr>
+      <td class="tag">515.</td>
+      <td class="data">触手放電ペニス責め</td>
+      <td class="tag">520.</td>
+      <td class="data">触手Ｇスポ責め</td>
+  </tr>
+  <tr>
+      <td class="tag">521.</td>
+      <td class="data">触手子宮責め</td>
+      <td class="tag">522.</td>
+      <td class="data">触手浣腸</td>
+  </tr>
+  <tr>
+      <td class="tag">523.</td>
+      <td class="data">触手小腸責め</td>
+      <td class="tag">524.</td>
+      <td class="data">触手貫通</td>
+  </tr>
+  <tr>
+      <td class="tag">525.</td>
+      <td class="data">触手搾乳</td>
+      <td class="tag">526.</td>
+      <td class="data">触手乳腺挿入</td>
+  </tr>
+  <tr>
+      <td class="tag">527.</td>
+      <td class="data">触手カテーテル</td>
+      <td class="tag">528.</td>
+      <td class="data">触手採尿</td>
+  </tr>
+  <tr>
+      <td class="tag">529.</td>
+      <td class="data">触手耳穴挿入</td>
+      <td class="tag">530.</td>
+      <td class="data">触手ヴァギナ拡張</td>
+  </tr>
+  <tr>
+      <td class="tag">531.</td>
+      <td class="data">触手アナル拡張</td>
+      <td class="tag">532.</td>
+      <td class="data">触手両穴拡張</td>
+  </tr>
+  <tr>
+      <td class="tag">533.</td>
+      <td class="data">触手産卵</td>
+      <td class="tag">534.</td>
+      <td class="data">触手アナル産卵</td>
+  </tr>
+  <tr>
+      <td class="tag">535.</td>
+      <td class="data">触手愛液採集</td>
+      <td class="tag">540.</td>
+      <td class="data">触手口内洗浄</td>
+  </tr>
+  <tr>
+      <td class="tag">541.</td>
+      <td class="data">触手膣内洗浄</td>
+      <td class="tag">542.</td>
+      <td class="data">触手腸内洗浄</td>
+  </tr>
+  <tr>
+      <td class="tag">543.</td>
+      <td class="data">触手膀胱洗浄</td>
+      <td class="tag">544.</td>
+      <td class="data">触手鼻腔洗浄</td>
+  </tr>
+  <tr>
+      <td class="tag">545.</td>
+      <td class="data">触手耳穴洗浄</td>
+      <td class="tag">546.</td>
+      <td class="data">触手全穴洗浄</td>
+  </tr>
+  <tr>
+      <td class="tag">550.</td>
+      <td class="data">触手催眠</td>
+      <td class="tag">551.</td>
+      <td class="data">触手鞭打ち</td>
+  </tr>
+  <tr>
+      <td class="tag">552.</td>
+      <td class="data">触手針責め</td>
+      <td class="tag">553.</td>
+      <td class="data">触手放電</td>
+  </tr>
+  <tr>
+      <td class="tag">554.</td>
+      <td class="data">触手吸血</td>
+      <td class="tag">*.</td>
+      <td class="data">触手丸呑み</td>
+  </tr>
+  <tr>
+      <td class="tag">556.</td>
+      <td class="data">触手チキチキ</td>
+      <td class="tag">*.</td>
+      <td class="data">触手服</td>
+  </tr>
+  <tr>
+      <td class="tag">560.</td>
+      <td class="data">触手強制回復</td>
+      <td class="tag">561.</td>
+      <td class="data">触手排卵誘発</td>
+  </tr>
+  <tr>
+      <td class="tag">562.</td>
+      <td class="data">触手避妊膜塗布</td>
+      <td class="tag">563.</td>
+      <td class="data">触手発毛剤</td>
+  </tr>
+  <tr>
+      <td class="tag">564.</td>
+      <td class="data">触手脱毛剤</td>
+      <td class="tag">580.</td>
+      <td class="data">触手読心責め</td>
+  </tr>
+  <tr>
+      <td class="tag">581.</td>
+      <td class="data">触手潮干狩り</td>
+      <td class="tag">582.</td>
+      <td class="data">触手幽霊膣鏡</td>
+  </tr>
+  <tr>
+      <td class="tag">583.</td>
+      <td class="data">触手強制飲酒</td>
+      <td class="tag">584.</td>
+      <td class="data">触手精神制御</td>
+  </tr>
+  <tr>
+      <td class="tag">585.</td>
+      <td class="data">触手厄落とし</td>
+      <td class="tag">586.</td>
+      <td class="data">触手腸内撮影</td>
+  </tr>
+  <tr>
+      <td class="tag">587.</td>
+      <td class="data">触手言葉責め</td>
+      <td class="tag">588.</td>
+      <td class="data">触手鈴蘭媚薬</td>
+  </tr>
+  <tr>
+      <td class="tag">589.</td>
+      <td class="data">触手官能図書</td>
+      <td class="tag">590.</td>
+      <td class="data">触手妖精按摩</td>
+  </tr>
+  <tr>
+      <td class="tag">591.</td>
+      <td class="data">触手氷精手淫</td>
+      <td class="tag">592.</td>
+      <td class="data">触手淫脈探査</td>
+  </tr>
+  <tr>
+      <td class="tag">593.</td>
+      <td class="data">触手最終審判</td>
+      <td class="tag">594.</td>
+      <td class="data">触手百裂紅葉</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">触手豊穣淫香</td>
+      <td class="tag">*.</td>
+      <td class="data">触手○○○○</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">触手薀蓄</td>
+      <td class="tag">*.</td>
+      <td class="data">触手貝あわせ</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">触手フェラチオ</td>
+      <td class="tag">*.</td>
+      <td class="data">触手６９</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">触手乱交</td>
+      <td class="tag">600.</td>
+      <td class="data">Ｇスポット刺激</td>
+  </tr>
+  <tr>
+      <td class="tag">601.</td>
+      <td class="data">潜望鏡</td>
+      <td class="tag">602.</td>
+      <td class="data">シックスナイン</td>
+  </tr>
+  <tr>
+      <td class="tag">603.</td>
+      <td class="data">６９パイズリ</td>
+      <td class="tag">604.</td>
+      <td class="data">雁が首</td>
+  </tr>
+  <tr>
+      <td class="tag">605.</td>
+      <td class="data">指でＶを撫でる</td>
+      <td class="tag">610.</td>
+      <td class="data">二人で犯す</td>
+  </tr>
+  <tr>
+      <td class="tag">611.</td>
+      <td class="data">岩清水</td>
+      <td class="tag">612.</td>
+      <td class="data">乱れ牡丹</td>
+  </tr>
+  <tr>
+      <td class="tag">613.</td>
+      <td class="data">騎乗乳房自慰</td>
+      <td class="tag">614.</td>
+      <td class="data">挿入Ｇスポ責め</td>
+  </tr>
+  <tr>
+      <td class="tag">615.</td>
+      <td class="data">挿入子宮口責め</td>
+      <td class="tag">616.</td>
+      <td class="data">後背位愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">617.</td>
+      <td class="data">対面愛撫</td>
+      <td class="tag">618.</td>
+      <td class="data">後背位アナル胸愛撫</td>
+  </tr>
+  <tr>
+      <td class="tag">619.</td>
+      <td class="data">対面アナル胸愛撫</td>
+      <td class="tag">620.</td>
+      <td class="data">強制放尿</td>
+  </tr>
+  <tr>
+      <td class="tag">621.</td>
+      <td class="data">口移し</td>
+      <td class="tag">622.</td>
+      <td class="data">四肢緊縛</td>
+  </tr>
+  <tr>
+      <td class="tag">623.</td>
+      <td class="data">亀甲縛り</td>
+      <td class="tag">624.</td>
+      <td class="data">吊り下げ</td>
+  </tr>
+  <tr>
+      <td class="tag">625.</td>
+      <td class="data">ローションプレイ</td>
+      <td class="tag">626.</td>
+      <td class="data">搾乳</td>
+  </tr>
+  <tr>
+      <td class="tag">627.</td>
+      <td class="data">乳首甘噛み</td>
+      <td class="tag">628.</td>
+      <td class="data">相互自慰</td>
+  </tr>
+  <tr>
+      <td class="tag">629.</td>
+      <td class="data">サンドイッチ</td>
+      <td class="tag">630.</td>
+      <td class="data">後背位手淫</td>
+  </tr>
+  <tr>
+      <td class="tag">631.</td>
+      <td class="data">相互秘貝開帳</td>
+      <td class="tag">649.</td>
+      <td class="data">イきつけ三杯</td>
+  </tr>
+  <tr>
+      <td class="tag">650.</td>
+      <td class="data">浄玻璃の鏡</td>
+      <td class="tag">651.</td>
+      <td class="data">御所車(逆レイプ)</td>
+  </tr>
+  <tr>
+      <td class="tag">652.</td>
+      <td class="data">フォーオブアカインド(ふたなり)</td>
+      <td class="tag">653.</td>
+      <td class="data">蜘蛛の巣</td>
+  </tr>
+  <tr>
+      <td class="tag">654.</td>
+      <td class="data">蜘蛛脚六点責め</td>
+      <td class="tag">655.</td>
+      <td class="data">蜘蛛の巣姦</td>
+  </tr>
+  <tr>
+      <td class="tag">656.</td>
+      <td class="data">蜘蛛の巣肛門姦</td>
+      <td class="tag">657.</td>
+      <td class="data">蓑虫プレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">658.</td>
+      <td class="data">拘束∇</td>
+      <td class="tag">*.</td>
+      <td class="data">暗黒潮干狩り</td>
+  </tr>
+</table>
+</a>
+<a name="item">
+<h2>アイテム</h2>
+<table class="Item">
+  <tr>
+      <td class="tag">0.</td>
+      <td class="data">ローター</td>
+      <td class="tag">1.</td>
+      <td class="data">電気按摩</td>
+  </tr>
+  <tr>
+      <td class="tag">2.</td>
+      <td class="data">ペニスバンド</td>
+      <td class="tag">3.</td>
+      <td class="data">バイブ</td>
+  </tr>
+  <tr>
+      <td class="tag">4.</td>
+      <td class="data">ヴァギナバーベル</td>
+      <td class="tag">5.</td>
+      <td class="data">ヴァギナバルーン</td>
+  </tr>
+  <tr>
+      <td class="tag">6.</td>
+      <td class="data">愛液採集器</td>
+      <td class="tag">7.</td>
+      <td class="data">ヴァギナ電極</td>
+  </tr>
+  <tr>
+      <td class="tag">8.</td>
+      <td class="data">クスコ</td>
+      <td class="tag">9.</td>
+      <td class="data">アナルバイブ</td>
+  </tr>
+  <tr>
+      <td class="tag">10.</td>
+      <td class="data">浣腸器具一式</td>
+      <td class="tag">11.</td>
+      <td class="data">アナルビーズ</td>
+  </tr>
+  <tr>
+      <td class="tag">12.</td>
+      <td class="data">空気ポンプ</td>
+      <td class="tag">13.</td>
+      <td class="data">拡張バルーン</td>
+  </tr>
+  <tr>
+      <td class="tag">14.</td>
+      <td class="data">電極プラグ</td>
+      <td class="tag">15.</td>
+      <td class="data">クリキャップ</td>
+  </tr>
+  <tr>
+      <td class="tag">16.</td>
+      <td class="data">オナホール</td>
+      <td class="tag">17.</td>
+      <td class="data">電極オナホール</td>
+  </tr>
+  <tr>
+      <td class="tag">18.</td>
+      <td class="data">陰核電極</td>
+      <td class="tag">19.</td>
+      <td class="data">リボン</td>
+  </tr>
+  <tr>
+      <td class="tag">20.</td>
+      <td class="data">ニプルキャップ</td>
+      <td class="tag">21.</td>
+      <td class="data">搾乳器</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">(Ｂ系調教道具)</td>
+      <td class="tag">23.</td>
+      <td class="data">テープ付き電極</td>
+  </tr>
+  <tr>
+      <td class="tag">24.</td>
+      <td class="data">サラシ</td>
+      <td class="tag">25.</td>
+      <td class="data">カテーテル</td>
+  </tr>
+  <tr>
+      <td class="tag">26.</td>
+      <td class="data">採尿器</td>
+      <td class="tag">27.</td>
+      <td class="data">風船カテーテル</td>
+  </tr>
+  <tr>
+      <td class="tag">28.</td>
+      <td class="data">電極カテーテル</td>
+      <td class="tag">29.</td>
+      <td class="data">縄</td>
+  </tr>
+  <tr>
+      <td class="tag">30.</td>
+      <td class="data">アイマスク</td>
+      <td class="tag">31.</td>
+      <td class="data">ボールギャグ</td>
+  </tr>
+  <tr>
+      <td class="tag">32.</td>
+      <td class="data">鞭</td>
+      <td class="tag">33.</td>
+      <td class="data">針</td>
+  </tr>
+  <tr>
+      <td class="tag">34.</td>
+      <td class="data">強制開口器</td>
+      <td class="tag">35.</td>
+      <td class="data">鼻フック</td>
+  </tr>
+  <tr>
+      <td class="tag">36.</td>
+      <td class="data">豆つまみ</td>
+      <td class="tag">37.</td>
+      <td class="data">スタンガン</td>
+  </tr>
+  <tr>
+      <td class="tag">40.</td>
+      <td class="data">大鏡</td>
+      <td class="tag">41.</td>
+      <td class="data">首輪＋リード</td>
+  </tr>
+  <tr>
+      <td class="tag">42.</td>
+      <td class="data">プレイマット</td>
+      <td class="tag">43.</td>
+      <td class="data">プラカード</td>
+  </tr>
+  <tr>
+      <td class="tag">44.</td>
+      <td class="data">エプロン</td>
+      <td class="tag">45.</td>
+      <td class="data">スクール水着</td>
+  </tr>
+  <tr>
+      <td class="tag">46.</td>
+      <td class="data">聴診器</td>
+      <td class="tag">47.</td>
+      <td class="data">仮装衣装一式</td>
+  </tr>
+  <tr>
+      <td class="tag">48.</td>
+      <td class="data">特注日傘</td>
+      <td class="tag">49.</td>
+      <td class="data">風呂場用大鏡</td>
+  </tr>
+  <tr>
+      <td class="tag">50.</td>
+      <td class="data">ビデオカメラ</td>
+      <td class="tag">51.</td>
+      <td class="data">カメラ</td>
+  </tr>
+  <tr>
+      <td class="tag">52.</td>
+      <td class="data">マイク</td>
+      <td class="tag">53.</td>
+      <td class="data">注射セット</td>
+  </tr>
+  <tr>
+      <td class="tag">58.</td>
+      <td class="data">編集機材</td>
+      <td class="tag">59.</td>
+      <td class="data">進化の秘法</td>
+  </tr>
+  <tr>
+      <td class="tag">60.</td>
+      <td class="data">ローション</td>
+      <td class="tag">61.</td>
+      <td class="data">媚薬</td>
+  </tr>
+  <tr>
+      <td class="tag">62.</td>
+      <td class="data">利尿剤</td>
+      <td class="tag">63.</td>
+      <td class="data">坐剤</td>
+  </tr>
+  <tr>
+      <td class="tag">64.</td>
+      <td class="data">排卵誘発剤</td>
+      <td class="tag">65.</td>
+      <td class="data">緊急避妊薬</td>
+  </tr>
+  <tr>
+      <td class="tag">66.</td>
+      <td class="data">強精神薬</td>
+      <td class="tag">67.</td>
+      <td class="data">産卵促進剤</td>
+  </tr>
+  <tr>
+      <td class="tag">68.</td>
+      <td class="data">陰核成長剤</td>
+      <td class="tag">69.</td>
+      <td class="data">興奮剤</td>
+  </tr>
+  <tr>
+      <td class="tag">70.</td>
+      <td class="data">感覚増幅薬</td>
+      <td class="tag">75.</td>
+      <td class="data">ビデオテープ</td>
+  </tr>
+  <tr>
+      <td class="tag">76.</td>
+      <td class="data">フィルム</td>
+      <td class="tag">77.</td>
+      <td class="data">具材セット</td>
+  </tr>
+  <tr>
+      <td class="tag">78.</td>
+      <td class="data">コンドーム</td>
+      <td class="tag">79.</td>
+      <td class="data">抗菌綿棒</td>
+  </tr>
+  <tr>
+      <td class="tag">80.</td>
+      <td class="data">低温蝋燭</td>
+      <td class="tag">81.</td>
+      <td class="data">蓋付き瓶</td>
+  </tr>
+  <tr>
+      <td class="tag">82.</td>
+      <td class="data">ヲトナのオムツ</td>
+      <td class="tag">83.</td>
+      <td class="data">フリスク</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">娼館</td>
+      <td class="tag">95.</td>
+      <td class="data">空晶石の首輪</td>
+  </tr>
+  <tr>
+      <td class="tag">96.</td>
+      <td class="data">青珊瑚の指輪</td>
+      <td class="tag">97.</td>
+      <td class="data">隷属の証</td>
+  </tr>
+  <tr>
+      <td class="tag">98.</td>
+      <td class="data">赤い首輪</td>
+      <td class="tag">99.</td>
+      <td class="data">エンゲージリング</td>
+  </tr>
+  <tr>
+      <td class="tag">100.</td>
+      <td class="data">あなた</td>
+      <td class="tag">101.</td>
+      <td class="data">霊夢</td>
+  </tr>
+  <tr>
+      <td class="tag">102.</td>
+      <td class="data">魔理沙</td>
+      <td class="tag">103.</td>
+      <td class="data">ルーミア</td>
+  </tr>
+  <tr>
+      <td class="tag">104.</td>
+      <td class="data">大妖精</td>
+      <td class="tag">105.</td>
+      <td class="data">チルノ</td>
+  </tr>
+  <tr>
+      <td class="tag">106.</td>
+      <td class="data">美鈴</td>
+      <td class="tag">107.</td>
+      <td class="data">小悪魔</td>
+  </tr>
+  <tr>
+      <td class="tag">108.</td>
+      <td class="data">パチュリー</td>
+      <td class="tag">109.</td>
+      <td class="data">咲夜</td>
+  </tr>
+  <tr>
+      <td class="tag">110.</td>
+      <td class="data">レミリア</td>
+      <td class="tag">111.</td>
+      <td class="data">フランドール</td>
+  </tr>
+  <tr>
+      <td class="tag">112.</td>
+      <td class="data">レティ</td>
+      <td class="tag">113.</td>
+      <td class="data">橙</td>
+  </tr>
+  <tr>
+      <td class="tag">114.</td>
+      <td class="data">アリス</td>
+      <td class="tag">115.</td>
+      <td class="data">リリーホワイト</td>
+  </tr>
+  <tr>
+      <td class="tag">116.</td>
+      <td class="data">リリカ</td>
+      <td class="tag">117.</td>
+      <td class="data">メルラン</td>
+  </tr>
+  <tr>
+      <td class="tag">118.</td>
+      <td class="data">ルナサ</td>
+      <td class="tag">119.</td>
+      <td class="data">妖夢</td>
+  </tr>
+  <tr>
+      <td class="tag">120.</td>
+      <td class="data">幽々子</td>
+      <td class="tag">121.</td>
+      <td class="data">藍</td>
+  </tr>
+  <tr>
+      <td class="tag">122.</td>
+      <td class="data">紫</td>
+      <td class="tag">123.</td>
+      <td class="data">萃香</td>
+  </tr>
+  <tr>
+      <td class="tag">124.</td>
+      <td class="data">リグル</td>
+      <td class="tag">125.</td>
+      <td class="data">ミスティア</td>
+  </tr>
+  <tr>
+      <td class="tag">126.</td>
+      <td class="data">慧音</td>
+      <td class="tag">127.</td>
+      <td class="data">てゐ</td>
+  </tr>
+  <tr>
+      <td class="tag">128.</td>
+      <td class="data">鈴仙</td>
+      <td class="tag">129.</td>
+      <td class="data">永琳</td>
+  </tr>
+  <tr>
+      <td class="tag">130.</td>
+      <td class="data">輝夜</td>
+      <td class="tag">131.</td>
+      <td class="data">妹紅</td>
+  </tr>
+  <tr>
+      <td class="tag">132.</td>
+      <td class="data">文</td>
+      <td class="tag">133.</td>
+      <td class="data">メディスン</td>
+  </tr>
+  <tr>
+      <td class="tag">134.</td>
+      <td class="data">幽香</td>
+      <td class="tag">135.</td>
+      <td class="data">小町</td>
+  </tr>
+  <tr>
+      <td class="tag">136.</td>
+      <td class="data">映姫</td>
+      <td class="tag">137.</td>
+      <td class="data">静葉</td>
+  </tr>
+  <tr>
+      <td class="tag">138.</td>
+      <td class="data">穣子</td>
+      <td class="tag">139.</td>
+      <td class="data">雛</td>
+  </tr>
+  <tr>
+      <td class="tag">140.</td>
+      <td class="data">にとり</td>
+      <td class="tag">141.</td>
+      <td class="data">椛</td>
+  </tr>
+  <tr>
+      <td class="tag">142.</td>
+      <td class="data">早苗</td>
+      <td class="tag">143.</td>
+      <td class="data">神奈子</td>
+  </tr>
+  <tr>
+      <td class="tag">144.</td>
+      <td class="data">諏訪子</td>
+      <td class="tag">145.</td>
+      <td class="data">サニーミルク</td>
+  </tr>
+  <tr>
+      <td class="tag">146.</td>
+      <td class="data">ルナチャイルド</td>
+      <td class="tag">147.</td>
+      <td class="data">スターサファイア</td>
+  </tr>
+  <tr>
+      <td class="tag">148.</td>
+      <td class="data">阿求</td>
+      <td class="tag">149.</td>
+      <td class="data">蓮子</td>
+  </tr>
+  <tr>
+      <td class="tag">150.</td>
+      <td class="data">マエリベリー</td>
+      <td class="tag">151.</td>
+      <td class="data">衣玖</td>
+  </tr>
+  <tr>
+      <td class="tag">152.</td>
+      <td class="data">天子</td>
+      <td class="tag">153.</td>
+      <td class="data">豊姫</td>
+  </tr>
+  <tr>
+      <td class="tag">154.</td>
+      <td class="data">依姫</td>
+      <td class="tag">155.</td>
+      <td class="data">レイセン</td>
+  </tr>
+  <tr>
+      <td class="tag">156.</td>
+      <td class="data">リリーブラック</td>
+      <td class="tag">157.</td>
+      <td class="data">キスメ</td>
+  </tr>
+  <tr>
+      <td class="tag">158.</td>
+      <td class="data">ヤマメ</td>
+      <td class="tag">159.</td>
+      <td class="data">パルスィ</td>
+  </tr>
+  <tr>
+      <td class="tag">160.</td>
+      <td class="data">勇儀</td>
+      <td class="tag">161.</td>
+      <td class="data">さとり</td>
+  </tr>
+  <tr>
+      <td class="tag">162.</td>
+      <td class="data">お燐</td>
+      <td class="tag">163.</td>
+      <td class="data">空</td>
+  </tr>
+  <tr>
+      <td class="tag">164.</td>
+      <td class="data">こいし</td>
+      <td class="tag">165.</td>
+      <td class="data">半霊</td>
+  </tr>
+  <tr>
+      <td class="tag">166.</td>
+      <td class="data">上海人形</td>
+      <td class="tag">167.</td>
+      <td class="data">蓬莱人形</td>
+  </tr>
+  <tr>
+      <td class="tag">168.</td>
+      <td class="data">朱鷺子</td>
+      <td class="tag">169.</td>
+      <td class="data">霖之助</td>
+  </tr>
+  <tr>
+      <td class="tag">170.</td>
+      <td class="data">妖忌</td>
+      <td class="tag">171.</td>
+      <td class="data">ナズーリン</td>
+  </tr>
+  <tr>
+      <td class="tag">172.</td>
+      <td class="data">小傘</td>
+      <td class="tag">173.</td>
+      <td class="data">一輪</td>
+  </tr>
+  <tr>
+      <td class="tag">174.</td>
+      <td class="data">雲山</td>
+      <td class="tag">175.</td>
+      <td class="data">ムラサ</td>
+  </tr>
+  <tr>
+      <td class="tag">176.</td>
+      <td class="data">星</td>
+      <td class="tag">177.</td>
+      <td class="data">白蓮</td>
+  </tr>
+  <tr>
+      <td class="tag">178.</td>
+      <td class="data">ぬえ</td>
+      <td class="tag">179.</td>
+      <td class="data">はたて</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">華扇</td>
+      <td class="tag">*.</td>
+      <td class="data">ナマズ様</td>
+  </tr>
+  <tr>
+      <td class="tag">196.</td>
+      <td class="data">大江戸人形</td>
+      <td class="tag">197.</td>
+      <td class="data">ゴリアテ人形</td>
+  </tr>
+  <tr>
+      <td class="tag">198.</td>
+      <td class="data">レイラ</td>
+      <td class="tag">199.</td>
+      <td class="data">半霊(忌)</td>
+  </tr>
+  <tr>
+      <td class="tag">200.</td>
+      <td class="data">魅魔</td>
+      <td class="tag">201.</td>
+      <td class="data">里香</td>
+  </tr>
+  <tr>
+      <td class="tag">202.</td>
+      <td class="data">明羅</td>
+      <td class="tag">203.</td>
+      <td class="data">エレン</td>
+  </tr>
+  <tr>
+      <td class="tag">204.</td>
+      <td class="data">小兎姫</td>
+      <td class="tag">205.</td>
+      <td class="data">カナ</td>
+  </tr>
+  <tr>
+      <td class="tag">206.</td>
+      <td class="data">理香子</td>
+      <td class="tag">207.</td>
+      <td class="data">ちゆり</td>
+  </tr>
+  <tr>
+      <td class="tag">208.</td>
+      <td class="data">夢美</td>
+      <td class="tag">209.</td>
+      <td class="data">オレンジ</td>
+  </tr>
+  <tr>
+      <td class="tag">210.</td>
+      <td class="data">くるみ</td>
+      <td class="tag">211.</td>
+      <td class="data">エリー</td>
+  </tr>
+  <tr>
+      <td class="tag">212.</td>
+      <td class="data">夢月</td>
+      <td class="tag">213.</td>
+      <td class="data">幻月</td>
+  </tr>
+  <tr>
+      <td class="tag">214.</td>
+      <td class="data">サラ</td>
+      <td class="tag">215.</td>
+      <td class="data">ルイズ</td>
+  </tr>
+  <tr>
+      <td class="tag">216.</td>
+      <td class="data">ユキ</td>
+      <td class="tag">217.</td>
+      <td class="data">マイ</td>
+  </tr>
+  <tr>
+      <td class="tag">218.</td>
+      <td class="data">夢子</td>
+      <td class="tag">219.</td>
+      <td class="data">神綺</td>
+  </tr>
+  <tr>
+      <td class="tag">220.</td>
+      <td class="data">シンギョク</td>
+      <td class="tag">221.</td>
+      <td class="data">ユウゲンマガン</td>
+  </tr>
+  <tr>
+      <td class="tag">222.</td>
+      <td class="data">エリス</td>
+      <td class="tag">223.</td>
+      <td class="data">サリエル</td>
+  </tr>
+  <tr>
+      <td class="tag">224.</td>
+      <td class="data">キクリ</td>
+      <td class="tag">225.</td>
+      <td class="data">コンガラ</td>
+  </tr>
+  <tr>
+      <td class="tag">226.</td>
+      <td class="data">中天使</td>
+      <td class="tag">227.</td>
+      <td class="data">る～こと</td>
+  </tr>
+  <tr>
+      <td class="tag">228.</td>
+      <td class="data">ＶＩＶＩＴ</td>
+      <td class="tag">229.</td>
+      <td class="data">比良乃</td>
+  </tr>
+  <tr>
+      <td class="tag">230.</td>
+      <td class="data">ミリア</td>
+      <td class="tag">*.</td>
+      <td class="data">めい</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">まい</td>
+      <td class="tag">*.</td>
+      <td class="data">ゲイツ</td>
+  </tr>
+  <tr>
+      <td class="tag">234.</td>
+      <td class="data">マリー</td>
+      <td class="tag">*.</td>
+      <td class="data">エーリッヒ</td>
+  </tr>
+  <tr>
+      <td class="tag">236.</td>
+      <td class="data">ビビット</td>
+      <td class="tag">*.</td>
+      <td class="data">モーガン</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">ミューズ</td>
+      <td class="tag">239.</td>
+      <td class="data">伊佐美</td>
+  </tr>
+  <tr>
+      <td class="tag">240.</td>
+      <td class="data">辰巳</td>
+      <td class="tag">241.</td>
+      <td class="data">ルミ</td>
+  </tr>
+  <tr>
+      <td class="tag">242.</td>
+      <td class="data">天治</td>
+      <td class="tag">*.</td>
+      <td class="data">玄爺</td>
+  </tr>
+  <tr>
+      <td class="tag">247.</td>
+      <td class="data">麟</td>
+      <td class="tag">248.</td>
+      <td class="data">息子</td>
+  </tr>
+  <tr>
+      <td class="tag">249.</td>
+      <td class="data">娘</td>
+      <td class="tag">250.</td>
+      <td class="data">ひまわり妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">251.</td>
+      <td class="data">メイド妖精</td>
+      <td class="tag">252.</td>
+      <td class="data">赤妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">253.</td>
+      <td class="data">青妖精</td>
+      <td class="tag">254.</td>
+      <td class="data">緑妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">255.</td>
+      <td class="data">黄妖精</td>
+      <td class="tag">256.</td>
+      <td class="data">ゾンビフェアリー</td>
+  </tr>
+  <tr>
+      <td class="tag">260.</td>
+      <td class="data">黒ひまわり妖精</td>
+      <td class="tag">261.</td>
+      <td class="data">黒メイド妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">262.</td>
+      <td class="data">朱妖精</td>
+      <td class="tag">263.</td>
+      <td class="data">蒼妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">264.</td>
+      <td class="data">翠妖精</td>
+      <td class="tag">265.</td>
+      <td class="data">金妖精</td>
+  </tr>
+  <tr>
+      <td class="tag">266.</td>
+      <td class="data">黒呪精</td>
+      <td class="tag">270.</td>
+      <td class="data">地上の兎</td>
+  </tr>
+  <tr>
+      <td class="tag">271.</td>
+      <td class="data">里の人間</td>
+      <td class="tag">272.</td>
+      <td class="data">アリスの人形</td>
+  </tr>
+  <tr>
+      <td class="tag">273.</td>
+      <td class="data">魔界人</td>
+      <td class="tag">274.</td>
+      <td class="data">鴉天狗</td>
+  </tr>
+  <tr>
+      <td class="tag">275.</td>
+      <td class="data">白狼天狗</td>
+      <td class="tag">276.</td>
+      <td class="data">ここぁ</td>
+  </tr>
+  <tr>
+      <td class="tag">277.</td>
+      <td class="data">夜雀</td>
+      <td class="tag">278.</td>
+      <td class="data">地獄鴉</td>
+  </tr>
+  <tr>
+      <td class="tag">279.</td>
+      <td class="data">亡霊</td>
+      <td class="tag">280.</td>
+      <td class="data">河童</td>
+  </tr>
+  <tr>
+      <td class="tag">281.</td>
+      <td class="data">旧都鬼</td>
+      <td class="tag">282.</td>
+      <td class="data">地獄鬼</td>
+  </tr>
+  <tr>
+      <td class="tag">283.</td>
+      <td class="data">死神</td>
+      <td class="tag">284.</td>
+      <td class="data">玉兎</td>
+  </tr>
+  <tr>
+      <td class="tag">285.</td>
+      <td class="data">天人</td>
+      <td class="tag">286.</td>
+      <td class="data">化け猫</td>
+  </tr>
+  <tr>
+      <td class="tag">287.</td>
+      <td class="data">化け狐</td>
+      <td class="tag">288.</td>
+      <td class="data">化け鼠</td>
+  </tr>
+  <tr>
+      <td class="tag">289.</td>
+      <td class="data">仙人</td>
+      <td class="tag">290.</td>
+      <td class="data">吸血鬼</td>
+  </tr>
+  <tr>
+      <td class="tag">300.</td>
+      <td class="data">メイベル</td>
+      <td class="tag">301.</td>
+      <td class="data">アリオーシュ</td>
+  </tr>
+  <tr>
+      <td class="tag">302.</td>
+      <td class="data">ユナ</td>
+      <td class="tag">303.</td>
+      <td class="data">キナコ</td>
+  </tr>
+  <tr>
+      <td class="tag">304.</td>
+      <td class="data">烈美鈴</td>
+      <td class="tag">305.</td>
+      <td class="data">ミルル</td>
+  </tr>
+  <tr>
+      <td class="tag">306.</td>
+      <td class="data">蝶子</td>
+      <td class="tag">307.</td>
+      <td class="data">みとり</td>
+  </tr>
+  <tr>
+      <td class="tag">308.</td>
+      <td class="data">則紗</td>
+      <td class="tag">309.</td>
+      <td class="data">天則</td>
+  </tr>
+  <tr>
+      <td class="tag">310.</td>
+      <td class="data">深疫</td>
+      <td class="tag">311.</td>
+      <td class="data">華蓮</td>
+  </tr>
+  <tr>
+      <td class="tag">312.</td>
+      <td class="data">閃</td>
+      <td class="tag">313.</td>
+      <td class="data">タト</td>
+  </tr>
+  <tr>
+      <td class="tag">314.</td>
+      <td class="data">映華</td>
+      <td class="tag">315.</td>
+      <td class="data">シュガーサテラ</td>
+  </tr>
+  <tr>
+      <td class="tag">500.</td>
+      <td class="data">ＩＲＣあなた</td>
+      <td class="tag">501.</td>
+      <td class="data">触手娘</td>
+  </tr>
+  <tr>
+      <td class="tag">502.</td>
+      <td class="data">ドリアード</td>
+      <td class="tag">503.</td>
+      <td class="data">リリーグレイ</td>
+  </tr>
+  <tr>
+      <td class="tag">520.</td>
+      <td class="data">Ｓひまわり妖精</td>
+      <td class="tag">521.</td>
+      <td class="data">Ｇゾンビフェアリー</td>
+  </tr>
+  <tr>
+      <td class="tag">522.</td>
+      <td class="data">Ｏメイド妖精</td>
+      <td class="tag">523.</td>
+      <td class="data">ロイヤルフレア</td>
+  </tr>
+  <tr>
+      <td class="tag">524.</td>
+      <td class="data">サイレントセレナ</td>
+      <td class="tag">525.</td>
+      <td class="data">アグニシャイン</td>
+  </tr>
+  <tr>
+      <td class="tag">526.</td>
+      <td class="data">Ｐウンディネ</td>
+      <td class="tag">527.</td>
+      <td class="data">シルフィホルン</td>
+  </tr>
+  <tr>
+      <td class="tag">528.</td>
+      <td class="data">メタルファティーグ</td>
+      <td class="tag">529.</td>
+      <td class="data">レイジィトリリトン</td>
+  </tr>
+  <tr>
+      <td class="tag">597.</td>
+      <td class="data">地獄子</td>
+      <td class="tag">600.</td>
+      <td class="data">カルーア</td>
+  </tr>
+  <tr>
+      <td class="tag">601.</td>
+      <td class="data">ビール</td>
+      <td class="tag">602.</td>
+      <td class="data">ワイン</td>
+  </tr>
+  <tr>
+      <td class="tag">603.</td>
+      <td class="data">大吟醸酒</td>
+      <td class="tag">604.</td>
+      <td class="data">スピリタス</td>
+  </tr>
+  <tr>
+      <td class="tag">605.</td>
+      <td class="data">《神便鬼毒酒》</td>
+      <td class="tag">*.</td>
+      <td class="data">(ネクタル)</td>
+  </tr>
+  <tr>
+      <td class="tag">*.</td>
+      <td class="data">(ソーマ)</td>
+      <td class="tag">610.</td>
+      <td class="data">シダーウッド</td>
+  </tr>
+  <tr>
+      <td class="tag">611.</td>
+      <td class="data">ペパーミント</td>
+      <td class="tag">612.</td>
+      <td class="data">ジャスミン</td>
+  </tr>
+  <tr>
+      <td class="tag">613.</td>
+      <td class="data">ラヴェンダー</td>
+      <td class="tag">614.</td>
+      <td class="data">ムスク</td>
+  </tr>
+  <tr>
+      <td class="tag">615.</td>
+      <td class="data">フランキンセンス</td>
+      <td class="tag">999.</td>
+      <td class="data">東方調教典</td>
+  </tr>
+</table>
+</a>
+</div>
+</body>
+</html>

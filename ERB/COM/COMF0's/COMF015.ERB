@@ -262,6 +262,19 @@ CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 	RETURN 0
 
+;토리코 모드에서의 직접 호출 대비
+TSTR:7 = 유두캡
+IF FLAG:1100 & 1
+	;技師パッチ有効なら特殊な名前チェック
+	FLAG:1110 = 20
+	CALL NAMECHECK_CUSTOMTOOL
+	SIF STR:4 == "유두캡"
+		STR:4 = 클립 로터
+ELSE
+	TSTR:8 = %TSTR:7%
+	TSTR:9 = 클립 로터
+ENDIF
+
 PRINTL
 IF TEQUIP:90
 	IF TEQUIP:35

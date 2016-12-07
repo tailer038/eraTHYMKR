@@ -317,6 +317,17 @@ CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 	RETURN 0
 
+;토리코 모드에서의 직접 호출 대비
+TSTR:7 = 로터
+IF FLAG:1100 & 1
+	;技師パッチ有効なら特殊な名前チェック
+	FLAG:1110 = 0
+	CALL NAMECHECK_CUSTOMTOOL
+ELSE
+	TSTR:8 = %TSTR:7%
+	TSTR:9 = %TSTR:7%
+ENDIF
+
 PRINTL
 IF TEQUIP:20 == 3
 	PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%에서 고속으로 진동하는 %조사선택(TSTR:7, "를")% 천천히 뽑아 냈다.
