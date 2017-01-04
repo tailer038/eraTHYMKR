@@ -5832,253 +5832,225 @@ REPEAT 11
 SIF COUNT == 0
 CONTINUE
 
+PRINTFORML {COUNT}/{TFLAG:121 - 1}번째 내용: [%VIDEO_COMF(FLAG:(COUNT + 39))%]
+
 ;P:COUNTの中身は撮影したコマンドのCOMF番号(愛撫なら0番)
 ;COMF番号はTRAIN.CSVを見てください
 ;条件設定は愛撫の口上条件などを参考に拡張するともっと良くなる
 ;愛撫系コマンド
-IF P:COUNT == 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 9 | 180
+IF GROUPMATCH(FLAG:(39+COUNT), 0, 1, 2, 3, 4, 5, 6, 7, 9, 180)
 	;COUNTの数字＝調教の順番（ｎ回目）　以下は1～10回目で判定してる
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:101 = 1
+	IF P:101 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「…………와아아……」
+			PRINTFORMW 「나, 이런 목소리로 헐떡거리는 거네……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「……어쩐지, 이렇게 보면」
+			PRINTFORMW 「하는 도중의 네 얼굴, 열받네……」
+			PRINTFORML 
+		ENDIF
+		P:101++
 	ENDIF
+
 ;道具使用コマンド
-ELSEIF P:COUNT == 10 | 11 | 12 | 13 | 14 | 15 | 16 | 172 | 191 | 351
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:121 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 10, 11, 12, 13, 14, 15, 16, 172, 191, 351)
+	IF P:121 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「…………응……기분 좋은듯이 해대고 있구나……」
+			PRINTFORMW 「사실은, 도구가 아니라 주인님이 조―치만 말이지……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「…………뭔가……한심해지네에……」
+			PRINTFORML 
+		ENDIF
+		P:121++
 	ENDIF
+
 ;セックス系コマンド
-ELSEIF P:COUNT == 20 | 21 | 22 | 23 | 24 | 25 | 27 | 28
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:141 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 20, 21, 22, 23, 24, 25, 27, 28)
+	IF P:141 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「………………」
+			PRINTFORMW 리글은 %CALLNAME:MASTER%에게 찰싹 달라붙은 채로, 한마디도 하지않고 잡아먹을듯 비디오를 보고있다.
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「…………진짜 취미 나뻐, 너」
+			PRINTFORML 
+		ENDIF
+		P:141++
 	ENDIF
 
 ;アナルセックス系コマンド 
-ELSEIF P:COUNT == 30 | 31 | 32 | 33 | 34 | 35 | 37 | 38
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:161 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 30, 31, 32, 33, 34, 35, 37, 38)
+	IF P:161 == 0
+		;恋慕＋尻穴狂い
+		IF TALENT:150 == 1 && TALENT:173 == 1
+			PRINTFORMW 「아우……아……」
+			PRINTFORMW 화면속의 항문을 꿰뚫리는 자신을, 리글은 엉덩이를 뭉기적 뭉기적 대면서 바라보고 있다.
+			PRINTFORMW 그 얼굴은 이대로 절정에라도 달해버릴것 같을 정도의 흥분한 기색을 띄고 있다.
+			PRINTFORML 
+		;恋慕
+		ELSEIF TALENT:150 == 1
+			PRINTFORMW 「……응야아……이런……부끄러운 구멍에……주인님이……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「………………」
+			PRINTFORMW 치욕이 복받쳐 왔는지, 리글은 얼굴에 홍조를 띄운채 외면하고 있다.
+			PRINTFORML 
+		ENDIF
+		P:161++
 	ENDIF
 
 ;奉仕系コマンド
-ELSEIF P:COUNT == 40 | 41 | 42 | 43 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 352
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:181 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 40, 41, 42, 43, 46, 47, 48, 49, 50, 51, 52, 53, 54, 352)
+	IF P:181 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「…………응～……」
+			PRINTFORMW 리글은 만족스러운 목소리를 내며 %CALLNAME:MASTER%에게 늘어져 기대왔다.
+			PRINTFORMW 아무래도 비디오 안의 더없이 행복했던 시간을 떠올리고 있는 듯 하다.
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「……부끄러움 따위 같은게 아냐」
+			PRINTFORMW 「굴욕이다……!!」
+			PRINTFORML 
+		ENDIF
+		P:181++
 	ENDIF
 
 ;SM系コマンド
-ELSEIF P:COUNT == 17 | 131 | 155 | 173 | 174 | 175 | 193 | 220 | 221 | 222 | 223 | 224 | 225 | 226 | 227 | 228 | 229
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:201 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 17, 131, 155, 173, 174, 175, 193, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229)
+	IF P:201 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「………………」
+			PRINTFORMW 리글은 눈을 질끈 감고, 몸을 떨며 %CALLNAME:MASTER%에게 안겨붙어있다.
+			PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그런 리글을 꾸짖어, 제대로 보도록 재촉했다.
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「………………」
+			PRINTFORMW 저번 조교의 고통과 공포를 떠올리고 있는건지, 리글은 이따금 이를 딱딱 부딪히며 떨고 있다.
+			PRINTFORML 
+		ENDIF
+		P:201++
 	ENDIF
 
 ;助手によるコマンド, 及びレズプレイ 
-ELSEIF P:COUNT == 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308 | 309 | 310 | 311 | 602 | 610
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:221 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 602, 610)
+	IF P:221 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「…………응으―……」
+			PRINTFORMW 「좀 더 좀 더, 주인님을 느끼고 싶었었지이……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「…………뭐랠―까, 사양없이 그냥 닥치는 대로지, 너……」
+			PRINTFORML 
+		ENDIF
+		P:221++
 	ENDIF
 
 ;ハ―ドな調教コマンド
-ELSEIF P:COUNT == 107 | 111 | 230 | 231 | 232 | 233 | 620
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:241 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 107, 111, 230, 231, 232, 233, 620)
+	IF P:241 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「…………오오으……」
+			PRINTFORMW 「우리들, 옆에서 보면, 엄청난거 하고 있네에……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「…………지 하고싶은대로, 구나, 진짜……」
+			PRINTFORML 
+		ENDIF
+		P:241++
 	ENDIF
 
 ;Ａの奉仕（? ）コマンド暫定
-ELSEIF P:COUNT == 44 | 55
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:261 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 44, 55)
+	IF P:261 == 0
+		;恋慕
+		;現在実装されているのはアナル奉仕強制だけという前提で口上書いてます。
+		IF TALENT:150 == 1
+			PRINTFORMW 「……헤헤」
+			PRINTFORMW 「주인님, 기분 좋아보여―……♪」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「………………」
+			PRINTFORMW 리글은 쭉 얼굴을 숙이고 있다. 자기혐오에 짓눌리고 있는 모양이다.
+			PRINTFORML 
+		ENDIF
+		P:261++
 	ENDIF
 
 ;触手系コマンド
-ELSEIF P:COUNT == 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 522 | 525
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:281 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 500, 501, 502, 503, 504, 505, 506, 507, 522, 525)
+	IF P:281 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「……웃와아」
+			PRINTFORMW 「…………이 촉수, 좀 더 귀엽게 안돼는걸까나아……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「…………으와, 징그러」
+			PRINTFORML 
+		ENDIF
+		P:281++
 	ENDIF
 
 ;特殊な調教道具コマンド
-ELSEIF P:COUNT == 80 | 81 | 82 | 83 | 84 | 85 | 86 | 88 | 92 | 150
-	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-		P:301 = 1
+ELSEIF GROUPMATCH(FLAG:(39+COUNT), 80, 81, 82, 83, 84, 85, 86, 88, 92, 150)
+	IF P:301 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「………………」
+			PRINTFORMW 이것저것 생각나는게 있는지, 리글은 조금 얼굴을 경련시키고 있다.
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「………………」
+			PRINTFORMW 리글의 얼굴은 자기 자신과 %CALLNAME:MASTER%에 대한 혐오감으로 흘러넘치고 있다.
+			PRINTFORML 
+		ENDIF
+		P:301++
 	ENDIF
+
 ;その他, グル―プ分けしない方が良いもの（吸血とか）　下の;３つをはずしてXXXXにCOMF番号を入れる
 ;ELSEIF P:COUNT == XXXX
 ;	IF COUNT == 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 ;		P:321 = 1
+ELSEIF FLAG:(39+COUNT) == -1
+
+ELSE
+	IF P:999 == 0
+		;恋慕
+		IF TALENT:150 == 1
+			PRINTFORMW 「……어쩐지, 부끄럽다고 할까, 이상한 기분……」
+			PRINTFORML 
+		;それ以外
+		ELSE
+			PRINTFORMW 「…………넌 이런 거 봐도 부끄럽지도 않다는거야?」
+			PRINTFORMW 「……그야 그렇겠지」
+			PRINTFORML 
+		ENDIF
+		P:999++
+	ENDIF
 ENDIF
 
 REND
-
-;口上出力部分
-;PRINT系 REPEAT-RENDの外に出さないと同じ口上が複数出ることがあるためこっちに隔離
-;やろうと思えば口上判定部分とここで細かい条件がつけられます
-;上の方が優先順位高いです　なれてる人は自分用に改造しよう
-;愛撫系コマンド口上
-IF P:101 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「…………와아아……」
-		PRINTFORMW 「나, 이런 목소리로 헐떡거리는 거네……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「……어쩐지, 이렇게 보면」
-		PRINTFORMW 「하는 도중의 네 얼굴, 열받네……」
-		PRINTFORML 
-	ENDIF
-;道具使用コマンド口上
-ELSEIF P:121 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「…………응……기분 좋은듯이 해대고 있구나……」
-		PRINTFORMW 「사실은, 도구가 아니라 주인님이 조―치만 말이지……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「…………뭔가……한심해지네에……」
-		PRINTFORML 
-	ENDIF
-;セックス系コマンド口上
-ELSEIF P:141 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「………………」
-		PRINTFORMW 리글은 %CALLNAME:MASTER%에게 찰싹 달라붙은 채로, 한마디도 하지않고 잡아먹을듯 비디오를 보고있다.
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「…………진짜 취미 나뻐, 너」
-		PRINTFORML 
-	ENDIF
-;アナルセックス系コマンド口上
-ELSEIF P:161 == 1
-	;恋慕＋尻穴狂い
-	IF TALENT:150 == 1 && TALENT:173 == 1
-		PRINTFORMW 「아우……아……」
-		PRINTFORMW 화면속의 항문을 꿰뚫리는 자신을, 리글은 엉덩이를 뭉기적 뭉기적 대면서 바라보고 있다.
-		PRINTFORMW 그 얼굴은 이대로 절정에라도 달해버릴것 같을 정도의 흥분한 기색을 띄고 있다.
-		PRINTFORML 
-	;恋慕
-	ELSEIF TALENT:150 == 1
-		PRINTFORMW 「……응야아……이런……부끄러운 구멍에……주인님이……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「………………」
-		PRINTFORMW 치욕이 복받쳐 왔는지, 리글은 얼굴에 홍조를 띄운채 외면하고 있다.
-		PRINTFORML 
-	ENDIF
-;奉仕系コマンド口上
-ELSEIF P:181 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「…………응～……」
-		PRINTFORMW 리글은 만족스러운 목소리를 내며 %CALLNAME:MASTER%에게 늘어져 기대왔다.
-		PRINTFORMW 아무래도 비디오 안의 더없이 행복했던 시간을 떠올리고 있는 듯 하다.
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「……부끄러움 따위 같은게 아냐」
-		PRINTFORMW 「굴욕이다……!!」
-		PRINTFORML 
-	ENDIF
-;SM系コマンド口上
-ELSEIF P:201 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「………………」
-		PRINTFORMW 리글은 눈을 질끈 감고, 몸을 떨며 %CALLNAME:MASTER%에게 안겨붙어있다.
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그런 리글을 꾸짖어, 제대로 보도록 재촉했다.
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「………………」
-		PRINTFORMW 저번 조교의 고통과 공포를 떠올리고 있는건지, 리글은 이따금 이를 딱딱 부딪히며 떨고 있다.
-		PRINTFORML 
-	ENDIF
-;助手によるコマンド, 及びレズプレイ口上
-ELSEIF P:221 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「…………응으―……」
-		PRINTFORMW 「좀 더 좀 더, 주인님을 느끼고 싶었었지이……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「…………뭐랠―까, 사양없이 그냥 닥치는 대로지, 너……」
-		PRINTFORML 
-	ENDIF
-;ハ―ドな調教コマンド口上
-ELSEIF P:241 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「…………오오으……」
-		PRINTFORMW 「우리들, 옆에서 보면, 엄청난거 하고 있네에……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「…………지 하고싶은대로, 구나, 진짜……」
-		PRINTFORML 
-	ENDIF
-;Ａの奉仕（? ）コマンド暫定の口上
-ELSEIF P:261 == 1
-	;恋慕
-	;現在実装されているのはアナル奉仕強制だけという前提で口上書いてます。
-	IF TALENT:150 == 1
-		PRINTFORMW 「……헤헤」
-		PRINTFORMW 「주인님, 기분 좋아보여―……♪」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「………………」
-		PRINTFORMW 리글은 쭉 얼굴을 숙이고 있다. 자기혐오에 짓눌리고 있는 모양이다.
-		PRINTFORML 
-	ENDIF
-;触手系コマンド口上
-ELSEIF P:281 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「……웃와아」
-		PRINTFORMW 「…………이 촉수, 좀 더 귀엽게 안돼는걸까나아……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「…………으와, 징그러」
-		PRINTFORML 
-	ENDIF
-;特殊な調教道具コマンド口上
-ELSEIF P:301 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「………………」
-		PRINTFORMW 이것저것 생각나는게 있는지, 리글은 조금 얼굴을 경련시키고 있다.
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「………………」
-		PRINTFORMW 리글의 얼굴은 자기 자신과 %CALLNAME:MASTER%에 대한 혐오감으로 흘러넘치고 있다.
-		PRINTFORML 
-	ENDIF
-;COMF（XXXX）の口上
-;ELSEIF P:321 == 1
-;	;恋慕
-;	IF TALENT:150 == 1
-;		PRINTFORMW 
-;	;それ以外
-;	ELSE
-;		PRINTFORMW 
-;	ENDIF
-;ここには条件を満たさなかった場合の口上を入れる
-ELSE
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「……어쩐지, 부끄럽다고 할까, 이상한 기분……」
-		PRINTFORML 
-	;それ以外
-	ELSE
-		PRINTFORMW 「…………넌 이런 거 봐도 부끄럽지도 않다는거야?」
-		PRINTFORMW 「……그야 그렇겠지」
-		PRINTFORML 
-	ENDIF
-ENDIF
 
 ;P:0～999をすべてリセット
 REPEAT 1000

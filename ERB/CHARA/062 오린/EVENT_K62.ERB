@@ -8391,7 +8391,7 @@ IF TFLAG:200 == 111
 			DRAWLINE
 			RETURN 1
 	ELSE
-		IF LOCAL == 0 && ABL:70 == 5 && (CFLAG:5420 <= 4 || FLAG:11 == 2)
+		IF TFLAG:99 == 0 && ABL:70 == 5 && (CFLAG:5420 <= 4 || FLAG:11 == 2)
 			DRAWLINE
 			PRINTFORMW 「자―그럼, 오늘은 어떤 지옥을 재현해줄까나」
 			PRINTFORMW 「손발을 씻고 기다리고 있으라고! %MNAME_TARGET_62()%!」
