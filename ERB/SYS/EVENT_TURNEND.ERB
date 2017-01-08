@@ -473,6 +473,8 @@ IF FLAG:14 & 4
 		PRINTL 
 		PRINTFORML %조사처리(CALLNAME:TARGET,"가")% 행방불명되었다.
 		PRINTFORMW 방금 전의 조교로 체력이 없어 도주하리라곤 생각도 못했는데....
+		SIF ASSI > TARGET
+			ASSI--
 		DELCHARA TARGET
 		TARGET = -1
 		FLAG:996 = -1

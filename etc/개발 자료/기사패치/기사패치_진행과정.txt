@@ -1,0 +1,345 @@
+﻿2015/08/17
+중복된 파일과 함수들을 살펴보고 어디서 차이가 나는지와 구조의 변경 사항을 확인한 뒤 국내 통합판의 파일을 고치기로 한다.
+
+[ABL_MENU.ERB]
+공작기능 표시는 국내 통합판의 경우 확장 기능 사용에 따라 표시가 좌우되는 것으로 보인다. 국내 통합판의 파일을 그대로 사용한다.
+
+[ABLUP073.ERB]
+이미 이식된 상태로 봐서는 누군가가 일전에 작업한 흔적으로 보인다. 국내 통합판의 파일을 그대로 사용한다. (나중에 이 파일도 수정이 필요함을 알았다.)
+
+[CONFIG2.ERB]
+기사 패치에 대한 문장이 이미 있으나 ;으로 비활성화되어 있다. ;을 지운다.
+
+[EVENT.ERB]
+이 파일은 국내 통합판에 있는 어떤 파일과 중복될 확률이 높으나 같은 이름은 없다. 함수 검색을 통해 겹치는 걸 확인하도록 한다.
+
+[EVENT_SUB.ERB]
+원본의 경우 또다른 @EVENTTRAIN이 있고 백택화 처리 후 공작기능에 대한 함수가 나온다.
+이건 국내 통합판에선 TRAIN_BEFORE.ERB에서 처리하므로 여기다가 삽입한다.
+
+[HELP0.ERB]
+공작기능 및 경험에 대해서 해설 추가 작업을 했다.
+
+[INFO0.ERB]
+IF FLAG:1100 & 1
+	FLAG:1110 = U
+	CALL CUSTOMTOOL_INFO
+ENDIF
+국내 통합판에 없는 문장이 있어 U를 ARG로 바꾸고 집어 넣었다.
+
+[INFO1.ERB, INFO2.ERB]
+공작기능에 대해 표시하도록 수정된 파일로 보이는데 국내 갱신판에서는 필요없는 작업으로 보여서 생략했다.
+
+[SHOP.ERB]
+@EVENTSHOP에 새로운 문장이 있다.
+IF CFLAG:MASTER:691 & 1p10
+	TARGET = -1
+	CFLAG:MASTER:691 -= 1p10 
+ENDIF
+공방 처리에 관계된 부분으로 보인다. CFLAG:691은 사용하지 않는 CFLAG이므로 그대로 활용한다.
+
+@SHOW_SHOP의 구조가 상당히 다르다.
+일단 국내 통합판은 원판 SHOP에서 ELSE일 경우에만 국한되는 것으로 보인다.
+CFLAG:MASTER:4 == 3일 때는 특수하게 SHOW_WORKSHOP를 보여야 하는 것 같은데 이는 다른 파일에 있는 듯하다.
+일단 SHOW_SHOP은 고치지 않기로 했다.
+
+@SHOW_MAINSHOP은 국내 통합판의 경우 SHOW_SHOP 안에 포함돼 있다.
+공작패치는 180으로 공방에 들어가는 것으로 보이나 현재 국내 통합판은 여기에 윤간이 들어가 있다.
+따라서 171로 바꾼다.
+
+@USERSHOP에서 커맨드 입력 시 공방에 들어가도록 하는 문장을 추가했다.
+즉 다음을 대입했다.
+ELSEIF RESULT == 171 && (FLAG:1100 & 1) && (FLAG:1100 & 8) && FLAG:1102 > 0
+	IF FLAG:1102 > 1
+		;主人、工房へ
+		CFLAG:MASTER:4 = 3
+	ELSE
+		CALL BUILD_WORKSHOP
+	ENDIF
+
+[SOURCE0.ERB]
+원래 없었던 REDUCE_LOSEBASE_CUSTOMTOOL와 DECLARE_CUSTOMTOOL를 호출하는 문장을 추가했다.
+
+[SYSTEM_NEWTERM.ERB]
+국내 통합판과의 차이점을 확인할 수 없었다.
+
+
+CONFIG_CUSTOMTOOL.ERB
+CUSTOMTOOL.ERB
+CUSTOMTOOL_INFO.ERB
+ITEMCHECKER.ERB
+SHOP_WORKSHOP.ERB
+SHOP_WORKSHOP_JUDGE.ERB
+SHOP_WORKSHOP_PROMISCUITY.ERB
+SHOP_WORKSHOP_RESULT.ERB
+SHOP_WORKSHOP_SELF.ERB
+SHOP_WORKSHOP_STATE.ERB
+SHOP_WORKSHOP_TEACH.ERB
+SHOP_WORKSHOP_VALUE.ERB
+
+국내 통합판에는 없는 파일이다. 당장 넣어도 일단은 돌아간다. 그러나 알파벳 변수나 CSV 문제가 있을 수 있으므로 확인 작업이 필요하다.
+
+
+2015/08/18
+SHOP.ERB를 다시 고친다.
+@SHOW_SHOP
+;CHALLENGEモードにおけるキャラ補充処理
+SIF CHARANUM < 100 && FLAG:4 >= 50
+	CALL FILL_CHARA
+DRAWLINE
+CALL SHOW_DAILYSTATE
+IF CFLAG:MASTER:4 == 2
+	;育児室拡張パッチオンで育児室にいる場合は育児室のメニュー表示
+	CALL SHOW_NURSERY
+ELSEIF CFLAG:MASTER:4 == 3
+	;技師パッチオンで工房にいる場合は工房のメニュー表示
+	CALL SHOW_WORKSHOP
+ELSE
+	;その他の場合は自室にいるとして一応通常のショップ表示
+	CALL SHOW_TARGET
+	CALL SHOW_ITEMSHOP
+	CALL SHOW_MAINSHOP
+ENDIF
+이에 맞게 국내 통합판도 고칠 것이다.
+
+국내 통합판에서는 함수 형태로 굳이 고치지 않고 다만 CFLAG:MASTER:4에 따라 분기하는 것으로 정했다.
+
+CONFIG0.ERB와 CONFIG2.ERB를 수정했다.
+CONFIG0.ERB에서는 6번에 들어가서 공작 기능 설정에 들어갈 수 있도록 하고 CONFIG2.ERB에서도 들어갈 수 있도록 했다.
+CONFIG_CUSTOMTOOL을 CONFIGURATION_6으로 바꿔 CONFIG2.ERB에 넣고 싶긴 하지만 역시 괜히 할 일은 아니다.
+
+EVENT.ERB는 EVENT_TURNEND.ERB로 변경됐다. EVENT_TURNEND.ERB에 CALL JUDGE_WORKSHOP만 넣는다.
+
+SHOP_WORKSHOP_PROMISCUITY.ERB의 경우 중간에 만들지 않은 함수를 호출하는 문제가 있어 이를 주석 처리했다.
+
+치환을 통해 식별자 문제를 해결했다. 이제 다음 커맨드에 대한 수정이 필요하다.
+
+여기까지 해서 돌려봤다. 뭔가 일본어가 추가됐지만 그 이상의 일이 일어나지 않는다.
+아무래도 커맨드까지 수정해야 돌아갈 것 같다.
+
+007, 010, 011, 012, 013, 014, 015, 016, 017, 105,
+121, 124, 125, 130, 131, 141, 142, 143, 144, 150,
+151, 153, 155, 156, 157, 170, 171, 172, 173, 174,
+175, 179, 190, 191, 193, 194, 195, 221, 222, 224,
+225, 226, 228, 229, 236, 238, 622, 623, 624, 658
+
+두 가지 기능이 추가되는 것 같다.
+하나는 NAMECHECK_CUSTOMTOOL을 통해 새로운 이름을 부여하는 것이다.
+또 하나는 SOURCECHECK_CUSTOMTOOL를 통해 소스를 조절하는 것이다.
+둘 다 난점이 있다.
+NAMECHECK_CUSTOMTOOL를 추가할 때 원본에서는 STR를 쓰는 반면 국내 통합판에서는 TSTR를 써야 한다. 문제는 TSTR:2와 TSTR:3이 사용 중인지 아닌지를 판단해야 한다는 점이다.
+
+
+2015/08/20
+TSTR:2부터 4까지는 이미 쓰고 있으므로 함부로 재사용했다가는 엉뚱한 문장이 출력되는 결과가 일어날 수 있다. 따라서 TSTR:7부터 9까지 사용할 것이다.
+커맨드 파일은 물론이고 추가적으로 CUSTOMTOOL.ERB와 CUSTOMTOOL_INFO.ERB도 고쳤다.
+띄어쓰기 문제가 있어 CUSTOMTOOL_INFO.ERB의 PRINTFORMLC를 PRINTFORML로 고쳤다.
+12번 커맨드에 대해서 시범적으로 도입했다. 개조까지는 잘 됐는데 특제품이 만들어지지 않는다. 재확인이 필요하다.
+바이브를 개조하는데 바기나바벨로 이름이 뜨는 문제가 보였다. 확인이 요구된다.
+
+
+2015/08/22
+다른 아이템이 뜨는 건 숫자가 한 칸 밀려서 그런 것이 아닌가 추정한다. 왜 밀리는지는 아직 원인을 알 수 없다.
+전기안마기와 B감각이 무슨 상관이 있어서 지문이 분리되는지 알 수 없다. 아무래도 오타인 듯하다.
+15번까지 진행했다.
+
+
+2015/08/23
+131번까지 진행했다.
+
+
+2015/08/25
+173번까지 진행했다.
+
+
+2015/09/02
+174번과 175번은 패치 파일과 국내 통합판의 대사 구조가 상당히 달라서 그냥 아이템 이름 결합 부분은 포기하기로 했다. 능력치만 오르게 된다.
+623번 역시 대사가 달라서 능력치 부분만 바꿨다.
+커맨드 개조를 완료했다.
+
+README를 보니 패치 적용 시 공작기능 레벨 0에서는 구슬로 올릴 수 없게 된다고 한다.
+이를 참고하여 원본의 ABLUP073.ERB를 참고하여 국내 갱신판의 그것을 똑같이 맞췄다.
+
+이제 번역이 남았다. PRINT 수는 다음과 같으며 총 540개다.
+CONFIG_CUSTOMTOOL.ERB (132)
+CUSTOMTOOL.ERB (28)
+CUSTOMTOOL_INFO.ERB (13)
+SHOP_WORKSHOP.ERB (109)
+SHOP_WORKSHOP_JUDGE.ERB (49)
+SHOP_WORKSHOP_PROMISCUITY.ERB (48)
+SHOP_WORKSHOP_RESULT.ERB (32)
+SHOP_WORKSHOP_SELF.ERB (4)
+SHOP_WORKSHOP_STATE.ERB (1)
+SHOP_WORKSHOP_TEACH.ERB (128)
+
+먼저 빨리 끌낼 수 있는 SHOP_WORKSHOP_STATE.ERB, SHOP_WORKSHOP_SELF.ERB, CUSTOMTOOL_INFO.ERB, CUSTOMTOOL.ERB, SHOP_WORKSHOP_RESULT.ERB를 진행했다.
+PRINT 외에도 LOCALS도 고쳤다. 이건 SHOP_WORKSHOP_RESULT.ERB, SHOP_WORKSHOP_TEACH.ERB, CUSTOMTOOL.ERB를 수정했다.
+
+남은 파일은 다음과 같다.
+CONFIG_CUSTOMTOOL.ERB (132)
+SHOP_WORKSHOP.ERB (109)
+SHOP_WORKSHOP_JUDGE.ERB (49)
+SHOP_WORKSHOP_PROMISCUITY.ERB (48)
+SHOP_WORKSHOP_TEACH.ERB (128)
+
+
+2015/09/03
+남은 파일은 다음과 같다.
+SHOP_WORKSHOP_TEACH.ERB (128)
+CONFIG_CUSTOMTOOL.ERB (132)
+
+특제품이 만들어지지 않는 버그가 있었다. 이는 readme에서 제시한 자위 중독 Lv5에 대한 조건문이 존재하지 않았기 때문이다.
+CUSTOMTOOL.ERB의 @DEVELOP_CUSTOMTOOL에 다음 문장을 추가했다.
+;自慰中毒Lv5以上
+SIF ABL:(LOCAL:3):30 > 4
+	LOCAL:11 = 16
+
+SM 물품에도 마찬가지 버그가 있다.
+순종 Lv3 이상, 마조끼 Lv3 이상, 자위 중독 Lv5 이상을 만족하면 특제품을 만들 수 있다던데 저런 조건문은 없다.
+아무래도 비트 연산을 5비트까지만 하는 것 같은데 숫자를 더 추가하려면 문제가 더 복잡해질 것 같다.
+개별적으로 README를 쓸 때 저 문장은 쓰지 않을 예정이다.
+
+공방 개설 가능 조건이 됐는데도 알림이 뜨지 않는 문제가 있어서 CUSTOMTOOL.ERB의 @DEVELOPED_CUSTOMTOOL에서 다음 문장의 순서를 서로 바꿨다.
+SIF FLAG:1102 < 1
+	FLAG:1102 = 1
+IF (FLAG:1100 & 8) && FLAG:1102 < 1
+	PRINTW 공방을 개설할 수 있게 되었습니다.
+ENDIF
+
+공방 개설 후 문제가 2개 일어났다.
+1. 공방에서 나가면 조교가 시작된다.
+2. 공방에서 캐릭터를 선택하려면 엉뚱하게도 스테이터스 확인 창이 뜬다.
+1의 경우는 공방에 들어갔는데도 @USERSHOP_WORKSHOP 대신 @USERSHOP을 읽기 때문에 문제가 생기는 것이다. 다시 보니 2도 마찬가지 원인이다.
+해결 방식은 SHOP.ERB를 고치는 것이다.
+IF CFLAG:MASTER:4 == 3
+	CALL USERSHOP_WORKSHOP
+ELSE
+	(원래 명령어들)
+ENDIF
+RETURN 0
+이 방식은 마치 국내 통합판에 @SHOW_SHOP의 구조를 모방하려는 시도와 비슷하다.
+
+게임 상에서 공방에 들어가 작업 개시하고 분위기를 지정하니 오류가 난다.
+SYS\SHOP_WORKSHOP_TEACH.ERBの89行目でエラーが発生しました:Emuera1818_kr3
+		FINDCHARA CFLAG:692, CFLAG:COUNT:3109, LOCAL:10 + 1
+エラー内容：関数の第3引数(3)はキャラクタ位置の範囲外です
+現在の関数：@JUDGE_WORKSHOP_RESULT_TEACH_HANDYCRAFT（SYS\SHOP_WORKSHOP_TEACH.ERBの42行目）
+関数呼び出しスタック：
+↑SYS\SHOP_WORKSHOP_RESULT.ERBの92行目（関数@JUDGE_WORKSHOP_RESULT内）
+↑SYS\SHOP_WORKSHOP_JUDGE.ERBの183行目（関数@JUDGE_WORKSHOP内）
+↑SYS\EVENT_TURNEND.ERBの19行目（関数@EVENTTURNEND内）
+LOCAL:10이 -1, 0, 2 식으로 1을 건너뛰고 있다.
+공방에 캐릭터를 가득 채우고 전부 수업시키면 오류가 난다.
+아마 수업 지정 캐릭터 중 가장 끝에 있는 캐릭터가 포함됐을 경우 오류가 생기는 것 같다.
+그렇다면 만약 WHILE 문 내에
+SIF LOCAL:10 + 1 == CHARANUM
+	BREAK
+같은 걸 넣으면 오류는 피할 수 있지만 오작동이 일어날 확률이 있다.
+아무래도 저 WHILE은 가르칠 캐릭터의 수를 지정하는 것 같다. 그렇다면 넣어도 될 것 같긴 하다.
+
+그 외 식별자 문제가 있지만 이건 ABL에 대한 검색으로 해결할 수 있다.
+
+
+2015/09/04
+ABL 식별자 일부가 치환되지 않은 걸 해결했다.
+
+SHOP_WORKSHOP_TEACH.ERB의 262번째 줄에서 어제와 똑같은 에러가 발생했다. 같은 방법으로 해결을 시도했으나 제대로 될지는 역시 알 수 없다.
+
+드디어 돌아간다. 근데 그 결과가 밸런스 붕괴 급이다.
+절정경험 ＋ 23
+자위경험 ＋ 12
+교육경험 ＋ 7
+쾌Ｃ의 구슬 ＋ 97200
+쾌Ａ의 구슬 ＋ 134400
+쾌Ｂ의 구슬 ＋ 216000
+습득의 구슬 ＋ 29847
+욕정의 구슬 ＋ 74600
+
+일단 해당 캐릭터는 어느 정도 조교가 진행된 상태이기에 큰 상관은 없을 것이다. 오히려 귀찮음을 줄일 수 있는 수단이 될 수 있을지도 모른다.
+공략이 어렵다는 호라이를 넣었을 때 20일 만에 욕망이 Lv4를 찍었다는 건 역시 걸리지만 어차피 선택은 플레이어에게 달려 있다.
+
+FINDCHARA가 달린 곳에선 줄줄이 오류가 발생하고 있다. 결국 똑같은 조치를 붙여넣었다.
+아무래도 과거 FINDCHARA는 범위 초과 시 RESULT를 -1로 처리했는데 현재 FINDCHARA는 범위를 넘으면 그냥 튕기는 것 같다.
+
+고치고 나니 반복 시도를 해도 일단 오류가 생기지는 않는다.
+MASTER에 대해서는 구슬을 늘릴 필요가 없다고 생각하지만 굳이 고치지 않아도 될 것 같다.
+
+공작기능이 오른다고 나왔는데 정작 공작기능이 오르지 않는 문제를 발견했다.
+SHOP_WORKSHOP_VALUE.ERB에서 문자열만 출력되는 걸 ABL:(ARG:0):73++으로 레벨도 오르도록 했다.
+
+능력치 상승 창에서 레벨 0일 때 레벨업 불가로 표시하도록 할 것이다.
+ABLUP073.ERB의 @ISABLUP73 함수에서 다음 문장을 넣어서 이를 구현했다.
+SIF ABL:73 == 0
+	RETURN 0
+
+SHOP_WORKSHOP_JUDGE.ERB 832번째 줄에서 오류가 나고 있다.
+LOCAL:2가 -1로 바뀌는 문제다.
+SYS/SHOP_WORKSHOP_PROMISCUITY.ERB 1224번째 줄에서도 오류가 나고 있다.
+LOCAL:11이 0으로 바뀔 때 발생한다.
+
+LOCAL:2가 -1로 바뀌면 Debug 상태에서 특정 설정을 켰을 때 패치 제작자가 미리 설정해둔 경고가 떠야 할 텐데 뜨지 않는다.
+이건 아무래도 FOR LOCAL:1, 0, LOCAL:0에서 LOCAL:0 = LOCAL:1 = 0일 때 발생하는 게 아닌가 추정한다.
+경고가 뜨지 않는 것으로 봐서 유추하자면 이런 상황에선 FOR 안에 전혀 진입도 못하는 것 같다.
+억지로 LOCAL:0 = 0일 때 증가시켜도 괜찮을지 모르겠다.
+같은 파라미터 상에서 이를 시험할 수 있으면 좋겠지만 emuera는 그게 안 되는 듯하다.
+LOCAL:0 = RAND:(CFLAG:COUNT:797) 다음에 다음 문장을 집어넣어본다.
+SIF !LOCAL:0
+	LOCAL:0++
+일단 오류는 나지 않는다. 하지만 정상 작동인지도 알 수 없는 상황이다.
+
+
+2015/09/05
+LOCAL:11 = 0일 때는 RAND 값을 설정하지 못하도록 하는 조치가 필요할 것으로 보인다.
+IF LOCAL:10 - LOCAL:11 > 0 밑에다 또다른 조건문을 만들기로 했다.
+LOCAL:11 = 0이면 아래에 있는 RAND 함수에 접근하지 못하도록 했다.
+바꾸고 나니 200일을 연속으로 돌렸으나 오류가 생기지 않았다. 하지만 제대로 돌아가고 있는지는 여전히 의문이다.
+
+개발 완료 후 다른 아이템이 뜨는 문제는 아무래도 임시적으로 번호를 1 내렸다가 올리는 방식으로 해결해야 할 것 같다.
+왜 아이템 번호가 1 증가하는지는 여전히 의문이다.
+문제 해결을 위해 CUSTOMTOOL.ERB에서
+
+PRINTFORML %CALLNAME:TARGET%의 %ITEMNAME:(LOCAL:1)%의 성능이 더 오른 것 같다.
+
+상하에 다음 문장을 추가한다.
+
+LOCAL:1--
+PRINTFORML %CALLNAME:TARGET%의 %ITEMNAME:(LOCAL:1)%의 성능이 더 오른 것 같다.
+LOCAL:1++
+
+어느 정도 돌아가는 것 같으므로 다시 번역으로 돌아간다.
+
+번역까지 끝났다. 플레이 중 종종 %TSTR:7%이라는 문자열 변수가 그대로 뜨는 경우가 있는데 이에 대해서는 각 커맨드 파일 (COMFxxx.ERB, COMF_ALL.ERB)에서 PRINT를 PRINTFORM으로 바꾸는 것으로 해결한다.
+
+이제 이에 대한 README를 쓸 차례다.
+사용 방법과 주의점을 쓸 것이다. CFLAG와 같은 세세한 부분은 원본 README를 참고하도록 한다.
+
+오전 3시 47분 작업을 마쳤다.
+
+
+수정한 파일
+ABLUP/ABLUP073.ERB
+/COM/COMF_ALL.ERB
+/COM/COMF0's/COMF007.ERB
+/COM/COMF0's/COMF010.ERB
+/COM/COMF0's/COMF011.ERB
+/COM/COMF0's/COMF012.ERB
+/COM/COMF0's/COMF013.ERB
+/COM/COMF0's/COMF014.ERB
+/COM/COMF0's/COMF015.ERB
+/COM/COMF0's/COMF016.ERB
+/COM/COMF0's/COMF017.ERB
+SYS/CONFIG0.ERB
+SYS/CONFIG2.ERB
+SYS/CUSTOMTOOL.ERB (원본 자체의 오류 해결)
+SYS/EVENT_TURNEND.ERB
+SYS/HELP0.ERB
+SYS/INFO0.ERB
+SYS/SHOP.ERB
+SYS/SHOP_WORKSHOP.ERB (원본 자체의 오류 해결)
+SYS/SHOP_WORKSHOP_JUDGE.ERB (원본 자체의 오류 및 식별자 문제 해결)
+SYS/SHOP_WORKSHOP_PROMISCUITY.ERB (원본 자체의 오류 및 식별자 문제 해결)
+SYS/SHOP_WORKSHOP_RESULT.ERB (원본 자체의 오류 해결)
+SYS/SHOP_WORKSHOP_SELF.ERB (식별자 문제 해결)
+SYS/SHOP_WORKSHOP_TEACH.ERB (원본 자체의 오류 및 식별자 문제 해결)
+SYS/SOURCE0.ERB
+SYS/TRAIN_BEFORE.ERB

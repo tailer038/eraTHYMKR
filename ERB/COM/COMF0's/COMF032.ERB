@@ -393,7 +393,7 @@ IF TFLAG:102 && PREVCOM == 32 && ((ASSIPLAY && TFLAG:133) || (ASSIPLAY == 0 && T
 			TCVAR:PLAYER:23 += LOCAL
 		ENDIF
 	ELSE
-		LOCALS = \\(EQUIP:14 || TFLAG:899 > 0) ? 입맞춤을 # 혀을 얽는 키스를 \\
+		LOCALS = \@(EQUIP:14 || TFLAG:899 > 0) ? 입맞춤을 # 혀을 얽는 키스를 \@
 		PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% %조사선택(CALLNAME:PLAYER, "과")% \@(TEQUIP:42) ? # %LOCALS% 하면서 \@ 허리를 다시 움직이기 시작했다.
 		IF TEQUIP:42 == 0
 			TCVAR:23 += 1

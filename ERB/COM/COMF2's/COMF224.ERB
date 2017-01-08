@@ -53,16 +53,17 @@ RETURN 1
 @COM224
 ;촉수 조교중은 아니고, CONFIG로 고문계, 정신 조작계 커맨드가 유효해,
 ;지금부터 노예를 긴박 하는 경우, 묶는 방법을 선택할 수가 있다.
+TSTR:7 = 밧줄
+IF FLAG:1100 & 1
+	;技師パッチ有効なら特殊な名前チェック
+	FLAG:1110 = 29
+	CALL NAMECHECK_CUSTOMTOOL
+ELSE
+	TSTR:8 = %TSTR:7%
+	TSTR:9 = %TSTR:7%
+ENDIF
+
 IF TEQUIP:40 == 0 && TEQUIP:90 == 0 && FLAG:15 & 16
-	TSTR:7 = 밧줄
-	IF FLAG:1100 & 1
-		;技師パッチ有効なら特殊な名前チェック
-		FLAG:1110 = 29
-		CALL NAMECHECK_CUSTOMTOOL
-	ELSE
-		TSTR:8 = %TSTR:7%
-		TSTR:9 = %TSTR:7%
-	ENDIF
 	CALL SELECT_ROPE
 	SELECTCASE RESULT
 		CASE 1
@@ -320,6 +321,17 @@ RETURN 1
 CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 	RETURN 0
+
+;토리코 모드에서의 직접 호출 대비
+TSTR:7 = 밧줄
+IF FLAG:1100 & 1
+	;技師パッチ有効なら特殊な名前チェック
+	FLAG:1110 = 29
+	CALL NAMECHECK_CUSTOMTOOL
+ELSE
+	TSTR:8 = %TSTR:7%
+	TSTR:9 = %TSTR:7%
+ENDIF
 
 PRINTL
 IF TEQUIP:90

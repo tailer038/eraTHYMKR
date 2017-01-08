@@ -2071,7 +2071,7 @@ DO
 								;경비대장 배틀크라이 출력.쓰러짐.
 								;사쿠야의 능력이 발동중일 경우 대사가 나오지 않는다
 								SIF LOCAL:23 == 0
-									CALL BATTLECRY_GUARDSMAN_TORIKOMODE, NO:(LOCAL:13), 6
+									CALL BATTLECRY_GUARDSMAN_TORIKOMODE, TOSTR(NO:(LOCAL:13)), 6
 								;쓰러지기
 								CALL SETCOLOR_TORIKOMODE, "RED", 3
 								FONTBOLD

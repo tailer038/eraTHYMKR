@@ -97,6 +97,20 @@
 	ELSEIF RESULT == 1
 		PRINTFORMW ―능력이 변화한 것처럼 합니다―
 	ENDIF
+	PRINTL 봉래인은 처녀막도 재생된다고 생각해?
+	PRINTL (예를 선택할 경우, 처녀를 잃게 되면 다음 조교 시작시에 처녀가 부활합니다)
+	PRINTL (게임 밸런스에 영향을 미칠 수 있으므로 신중하게 선택해주세요)
+	PRINTL [0] 몸은 처녀인데 경험은 비처녀 같은 일이 충분히 일어날 수 있다고 생각한다
+	PRINTL [1] 개소리 마
+	CALL SENTAKUSHI_K30, 2
+	IF RESULT == 0
+		PRINTFORMW ―처녀 리저렉션 모드를 ON으로 합니다-
+		SIF TALENT:0 == 0
+			TALENT:0 = 1
+		CFLAG:8999 = 1
+	ELSEIF RESULT == 1
+		PRINTFORMW ―통상 모드로 조교를 개시합니다-
+	ENDIF
 	;主人が豊姫
 	IF NO:MASTER == 53
 		PRINTL 토요히메에 금단의 지식과 촉수 사역방법을 취득시킵니까?
@@ -139,6 +153,17 @@ SIF FLAG:11 == 0
 	RETURN 0
 SIF NO:TARGET != 30
 	RETURN 0
+;A경험을 기억
+CFLAG:5119 = EXP:1
+;처녀화 플래그
+IF CFLAG:8999 >= 1 && TALENT:0 == 0
+	TALENT:0 = 1
+	DRAWLINE
+	PRINTFORML ★★★ VIRGINITY RESURRECTION ★★★
+	PRINTFORML 봉래인의 힘에 의해 처녀막이 재생된 듯하다…
+	DRAWLINE
+	WAIT
+ENDIF
 
 ;--------------------------------------------------
 ;特定助手, 主人時に特殊助手口上を呼び出す(Y1を特定助手, 30を主人のキャラ番号に置換）
@@ -17835,7 +17860,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
 				IF TALENT:0 == 0
 					;露出癖がLv4以上
 					IF ABL:14 >= 4
-						PRINTFORMW %CALLNAME:MASTER%는 알몸 에이프런으로 요리하고 있는 카구야의 뒤에 서서, 에이프런 안에 손을 넣고 온몸을 애무하기 시작했다
+						PRINTFORMW %조사처리(CALLNAME:MASTER, "는")% 알몸 에이프런으로 요리하고 있는 카구야의 뒤에 서서, 에이프런 안에 손을 넣고 온몸을 애무하기 시작했다
 						PRINTFORML 「읏……잠깐, 지금 요리 만드니까 위험하다고……」
 						PRINTFORMW 조금씩 숨이 열을 띠고, 몸을 붉히는 카구야
 						PRINTFORML 그 모습을 보고 흥분한 %CALLNAME:MASTER%는, 카구야의 음부에 육봉을 삽입했다
@@ -17861,7 +17886,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
 				ELSE
 					;露出癖がLv4以上
 					IF ABL:14 >= 4
-						PRINTFORMW %조사처리(CALLNAME:MASTER, "는")% 알몸 에이프런으로 요리하고 있는 카구야의 뒤에 서서, 에이프런 안에 손을 넣고 온몸을 애무하기 시작했다
+						PRINTFORMW %CALLNAME:MASTER%는 알몸 에이프런으로 요리하고 있는 카구야의 뒤에 서서, 에이프런 안에 손을 넣고 온몸을 애무하기 시작했다
 						PRINTFORML 「읏……잠깐, 지금 요리 만드니까 위험하다고……」
 						PRINTFORMW 조금씩 숨이 열을 띠고, 몸을 붉히는 카구야
 						PRINTFORML 그 모습을 보고 흥분한 %CALLNAME:MASTER%는, 카구야의 애널에 육봉을 삽입했다

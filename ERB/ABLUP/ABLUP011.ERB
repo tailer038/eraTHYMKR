@@ -37,7 +37,7 @@ ELSE
 ENDIF
 
 ABL:11 += 1
-PRINTFORMW %ABLNAME:11%의 레벨이 %조사처리(ABL:11,"가")% 되었습니다.
+PRINTFORMW %ABLNAME:11%의 레벨이 %조사처리(TOSTR(ABL:11),"가")% 되었습니다.
 SIF ABL:11 >= 3 && (TALENT:32 || TALENT:34)
 	CALL YOKUBO_UP_CHECK
 
