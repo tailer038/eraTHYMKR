@@ -23068,7 +23068,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 110 && TFLAG:99 == 1
 	;꽤 좋은 느낌에 성공
-	IF N >= 120
+	IF LOCAL@CONCERT_SUCCESS:1 >= 120
 		;난수 분기:2
 		IF RAND:2 == 0 && (TALENT:150 == 1 || MARK:2 == 3)
 			PRINTFORMW 「주인님~♪」

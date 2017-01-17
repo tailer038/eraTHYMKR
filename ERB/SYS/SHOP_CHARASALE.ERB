@@ -2116,7 +2116,7 @@ RETURNF ARG:1
 #FUNCTION
 ;범용 캐릭터/오리캐 계열(딸 포함)
 LOCAL = ARG:1
-IF NO:ARG >= 148
+IF (NO:ARG >= 148 && NO:ARG <= 218) || NO:ARG >= 300
 	
 	;오리지날
 	;ARG:1 = TABLE_CALC(ARG:1, 500000, 5)
