@@ -8425,7 +8425,7 @@ SIF FLAG:11 < 2 && LOCAL:1 == 0
 ;-------------------------------------------------
 ;처녀상실
 ;-------------------------------------------------
-IF EXP:0 && TALENT:0 && TFLAG:1
+IF !EXP:0 && TALENT:0 && TFLAG:1
 	;주인의 페니스
 	IF (ASSIPLAY == 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 430 || SELECTCOM == 612 || SELECTCOM == 613 || SELECTCOM == 614 || SELECTCOM == 615 || SELECTCOM == 616 || SELECTCOM == 630)) || (SELECTCOM == 610 && TFLAG:130 == 1)
 		;연모

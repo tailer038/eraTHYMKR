@@ -13783,7 +13783,7 @@ IF TFLAG:200 == 110
 			ENDIF
 				CFLAG:8210 = 1
 		;레퍼터리로 성공했다
-		ELSEIF K == 0 && ABL:72 == 5
+		ELSEIF TFLAG:235 == 1 && ABL:72 == 5
 			;유아 퇴행
 			IF TALENT:159 && (CFLAG:8210 <= 6 || FLAG:11 == 2)
 ;				PRINTFORMW 
@@ -13866,14 +13866,14 @@ IF TFLAG:200 == 111
 			CFLAG:8211 = 1
 	ELSE
 		;유아 퇴행＆캐릭터 고유 요리 작성 플래그가 끊고 있다
-		IF TALENT:159 == 1 && K == 0 && ABL:70 >= 4 && (CFLAG:8211 <= 10 || FLAG:11 == 2)
+		IF TALENT:159 == 1 && TFLAG:99 == 0 && ABL:70 >= 4 && (CFLAG:8211 <= 10 || FLAG:11 == 2)
 			PRINTFORMW 「에헤헤∼, 저거하고, 이거하고, 이게 있으면……우후훗」
 			PRINTFORMW 「기다려줄래? 굉장한거 만들어서, \@(TALENT:MASTER:120) ? 오빠 # 언니\@를 깜짝 놀라게 해버릴거야!」
 			PRINTFORMW 언제보다도 훨씬 더, 미스티아의 표정이 자신감으로 넘치고 있다.
 			PRINTFORMW 보아하니 이번 요리는 꽤나 기대해도 될것 같다……
 			CFLAG:8211 = 11
 		;캐릭터 고유 요리 작성 플래그가 끊고 있다
-		ELSEIF K == 0 && ABL:70 >= 4 && (CFLAG:8211 <= 9 || FLAG:11 == 2)
+		ELSEIF TFLAG:99 == 0 && ABL:70 >= 4 && (CFLAG:8211 <= 9 || FLAG:11 == 2)
 			PRINTFORMW 「앗, 이거……응, 그거에 쓸 수 있겠어……」
 			PRINTFORMW 「후훗, 기다려주세요? 이번 도시락은 뭔가 좀 다를거에요♪」
 			PRINTFORMW 언제보다도 훨씬 더, 미스티아의 표정이 자신감으로 넘치고 있다.
