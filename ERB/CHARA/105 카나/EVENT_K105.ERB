@@ -3449,9 +3449,9 @@ ENDIF
 LOCAL = UP:20 + UP:21
 IF TFLAG:0 > 0 && CFLAG:8009 == 0
 	;연모에다 주인의 섹스로 처녀상실
-	IF TALENT:150 && TFLAG:2
+	IF TFLAG:2
 		;연모에다 반발각인 미취득
-		IF TALENT:150 && LOCAL < 500
+		IF LOCAL < 500
 			PRINTFORMW 「は,初めてをご主人さまに」
 			PRINTFORMW 「……嬉しい」
 		;연모에다 반발각인 취득
