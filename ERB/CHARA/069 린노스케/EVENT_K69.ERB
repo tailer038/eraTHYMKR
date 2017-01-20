@@ -1,6 +1,7 @@
 ﻿;-------------------------------------------------
 ;린노스케 대사
-;
+;ノンケなので作成が非常に辛かったです.何で俺こんなことやってんだろう……
+;甘っちょろい,こんなんじゃちんこもげねえYO! とゆー猛者の方の加筆訂正お待ちしています
 ;-------------------------------------------------
 
 ;--------------------------------------------------
@@ -22,12 +23,13 @@ FLAG:11 = 2
 @EVENTTRAIN
 SIF FLAG:11 == 0
 	RETURN 0
-SIF NO:TARGET != 69
+SIF NO != 69
 	RETURN 0
 ;--------------------------------------------------
 ;엑스트라 모드 구문 CFLAG:5020을 사용
-;예를 선택했을 때 첫 조교시에 대사 설정용의 소질로 변경할 수 있습니다.
-;밑에 적은 처녀화할 경우의 구문을 샘플로 실어둡니다.
+;【正に恐悦至極】を選択するとイージーモードになります
+;ついでに【それなくね?】を選択するとエンディングが始まります
+;エンディング見るだけならば多分一番楽なキャラになりましたw
 ;-------------------------------------------------;
 IF CFLAG:5020 == 0
 	PRINTL 이 앞에는
@@ -35,10 +37,10 @@ IF CFLAG:5020 == 0
 	PRINTL 오니 같은
 	PRINTL 극살점주가
 	PRINTL 당신을 기다리고 있습니다.
-	PRINTL 　
+	PRINTL  
 	PRINTL 그래도 플레이하겠습니까?
-	PRINTL 　
-	PRINTL [0] 예　　[1] 아니오
+	PRINTL  
+	PRINTL [0] 예  [1] 아니오
 	$INPUT_LOOP
 	INPUT
 	IF RESULT != 0 && RESULT != 1
@@ -50,7 +52,7 @@ IF CFLAG:5020 == 0
 		PRINTL 나의 린노스케 ⑨극소적계획은
 		PRINTL 자네들의 강한 생명으로
 		PRINTL 비로소 완수될 것이다.
-		PRINTL 　
+		PRINTL  
 		PRINTW 이로써 드디어
 		PRINTW 죽
 		PRINTW 도
@@ -68,12 +70,12 @@ ENDIF
 @RIN_EASY
 PRINTFORMW Q, 린노스케가 함락해주지 않습니다. 어떻게 하면 좋죠? (남성 32세)
 PRINTFORMW A, 조교를 베풀면서, 기합으로 (반발각인을) 피해주세요.
-PRINTFORMW 　
+PRINTFORMW  
 PRINTFORMW 라고 말하고 싶은 심정이지만, 린노스케파의 미래를 더욱 빛나는 것으로 하기 위해서.
 PRINTFORMW 나는 이 eratoho에 새로운 질서를 세우기로 했다.
 PRINTFORMW 이하 귀공들은 이지 모드 린노스케와 싸워줘야겠다.
 PRINTFORMW 눈물과 콧물의 각오는 되었는가?
-PRINTL [0] 【참으로 황공무지】　　[1] 【건 좀 아니지 않냐?】
+PRINTL [0] 【참으로 황공무지】  [1] 【건 좀 아니지 않냐?】
 $INPUT_LOOP2
 INPUT
 IF RESULT != 0 && RESULT != 1
@@ -82,53 +84,53 @@ ELSEIF RESULT == 0
 	PRINTFORMW 린노스케 08
 	PRINTFORMW 아직도 개발 도중의 성노예
 	PRINTFORMW 망가지기 쉬운 정신이나 자아로 필사적으로 반항할 거야
-	BASE:0 == 3000
-	BASE:1 == 2000
-	BASE:2 == 0
-	MAXBASE:0 == 3000
-	MAXBASE:1 == 2000
-	MAXBASE:2 == 5000
-	ABL:2 == 2
-	EXP:1 == 0
-	EXP:11 == 0
-	EXP:22 == 0
-	EXP:41 == 0
-	EXP:51 == 0
-	TALENT:11 == 0
-	TALENT:14 == 1
-	TALENT:20 == 0
-	TALENT:21 == 0
-	TALENT:23 == 1
-	TALENT:27 == 0
-	TALENT:41 == 0
-	TALENT:50 == 1
-	TALENT:71 == 0
-	TALENT:106 == 1
-	TALENT:107 == 0
+	BASE:0 = 3000
+	BASE:1 = 2000
+	BASE:2 = 0
+	MAXBASE:0 = 3000
+	MAXBASE:1 = 2000
+	MAXBASE:2 = 5000
+	ABL:2 = 2
+	EXP:1 = 0
+	EXP:11 = 0
+	EXP:22 = 0
+	EXP:41 = 0
+	EXP:51 = 0
+	TALENT:11 = 0
+	TALENT:14 = 1
+	TALENT:20 = 0
+	TALENT:21 = 0
+	TALENT:23 = 1
+	TALENT:27 = 0
+	TALENT:41 = 0
+	TALENT:50 = 1
+	TALENT:71 = 0
+	TALENT:106 = 1
+	TALENT:107 = 0
 ELSEIF RESULT == 1
 	DRAWLINE
 	PRINTFORMW ―――단독 엔딩 조건 달성―――
 	PRINTFORMW …………
 	PRINTFORMW ………
 	PRINTFORMW ……
-	PRINTFORMW 　
+	PRINTFORMW  
 	PRINTFORMW 어쩐지 빨리도 끝나버렸으므로, 지난날의 향림당 모습을 봐주십시오.
-	PRINTFORMW 　
+	PRINTFORMW  
 	PRINTFORMW 「잘도 여기(주1)까지 왔군.
-	PRINTFORMW 　네놈들(주2)은 내 모든 것을 빼앗아갔다.
-	PRINTFORMW 　이건 용납할 수 없는 반역행위(주3)라 할 수 있으리.
-	PRINTFORMW 　이 최종귀축병기(주4)로
-	PRINTFORMW 　네놈들의 죄에 내가 몸소 처벌을 내려주겠다(주5).
-	PRINTFORMW 　죽도록 해라(주6)」
-	PRINTFORMW 　
+	PRINTFORMW  네놈들(주2)은 내 모든 것을 빼앗아갔다.
+	PRINTFORMW  이건 용납할 수 없는 반역행위(주3)라 할 수 있으리.
+	PRINTFORMW  이 최종귀축병기(주4)로
+	PRINTFORMW  네놈들의 죄에 내가 몸소 처벌을 내려주겠다(주5).
+	PRINTFORMW  죽도록 해라(주6)」
+	PRINTFORMW  
 	PRINTL 주1: 향림당. 마법의 숲 입구에 있는 고도구점. 도통 손님이 오질 않는다.
 	PRINTL 주2: 레이무와 마리사. 안 그래도 손님이 없는 향림당에서 노상 상품을 강탈한다.
 	PRINTL 주3: 외상을 갚지 않는 것. 전혀 손님이 없는 향림당에선 사활 문제.
 	PRINTL 주4: 쿠사나기의 검. 천하를 쥐는 정도의 능력을 가진 희귀한 물품이지만, 활용할 수 없으므로 무리.
 	PRINTL 주5: 궁둥이 백 번 때리기라던가. 필시 반격 당하므로 무리.
 	PRINTL 주6: 과언. 그리고 필시 린노스케가 질 테니 무리.
-	PRINTFORMW 　
-	PRINTFORMW 　　　　　　　　―― Ending No.1⑨8 (린노스케 노멀 엔딩)
+	PRINTFORMW  
+	PRINTFORMW         ―― Ending No.106⑨ (린노스케 노멀 엔딩)
 	CFLAG:5001 = 1
 	CFLAG:5020 = 1
 	CALL GAME_CONTINUE
@@ -163,22 +165,22 @@ CFLAG:5020 = 1
 IF CFLAG:5001 == 0
 	DRAWLINE
 	PRINTFORMW 「요즘 소녀의 실종 사건을 자주 주워 들었지만, 아무래도 원인은 너인가 보군.
-	PRINTFORMW 　그런데 보는 대로 날더러 소녀라고 부르기엔 무리가 있을 텐데, 그건 어떻게 생각하지?」
+	PRINTFORMW  그런데 보는 대로 날더러 소녀라고 부르기엔 무리가 있을 텐데, 그건 어떻게 생각하지?」
 	PRINTFORMW 물론 그런 헛소리에 어울려줄 생각은 없다.
 	PRINTFORMW 의도적으로 무시한 것을 눈치채고 린노스케는 한숨을 쉬었다.
 	IF ASSI > 0
 		;마리사가 조수
 		IF NO:ASSI == 2
 			PRINTFORMW 「별수 없지. 당분간은 함께 할 수밖에 없는 모양이야.
-			PRINTFORMW 　조만간에 마리사라도 와주겠지」
+			PRINTFORMW  조만간에 마리사라도 와주겠지」
 			PRINTFORMW 『아ㅡ, 그거 말인데, 코린』
-			PRINTFORMW 　%CALLNAME:MASTER% 뒤에서 모습을 드러낸 마리사를 보고 린노스케는 무심코 일어섰다.
+			PRINTFORMW  %CALLNAME:MASTER% 뒤에서 모습을 드러낸 마리사를 보고 린노스케는 무심코 일어섰다.
 			PRINTFORMW 「마리사? 벌서 도착했나!」
 			PRINTFORMW 『「빠르다!」 「왔다! 탱커 왔다!」 「메인 탱커 왔다!」 「이걸로 이긴다다!」
-			PRINTFORMW 　라고 대환영 상태의 심경이야?』
+			PRINTFORMW  라고 대환영 상태의 심경이야?』
 			PRINTFORMW 『미안하다, 코린. 이번만은 못 도와줄 것 같아』
 			;마리사가 연모 소유
-			IF TALENT:ASSI:85 == 1
+			IF TALENT:ASSI:150
 				PRINTFORMW 「그건 무슨 뜻……」
 				PRINTFORMW 린노스케가 마지막까지 말하기보다 먼저, %조사처리(CALLNAME:MASTER,"는")% 마리사를 끌어안으며 입을 맞추었다.
 				PRINTFORMW 『음……』
@@ -190,14 +192,14 @@ IF CFLAG:5001 == 0
 				PRINTFORMW 「네놈, 마리사에게 무슨 짓을 했지?」
 				PRINTFORMW 살기조차 머금고 %조사처리(CALLNAME:MASTER,"를")% 노려보는 린노스케를 마리사가 만류했다.
 				PRINTFORMW 『기다려 봐. 서둘지 말라고, 코린.
-				PRINTFORMW 　확실히 나도 납치나 마찬가지로 여기에 왔지만, 지금 이 녀석 옆에 있는 건 내 의지야』
+				PRINTFORMW  확실히 나도 납치나 마찬가지로 여기에 왔지만, 지금 이 녀석 옆에 있는 건 내 의지야』
 				PRINTFORMW 『뭘, 코린도 언젠가 알 거야』
 				PRINTFORMW 「아마 그건 평생 없겠다 싶군……」
 				PRINTFORMW 마리사의 대답에 맥이 풀렸는지 린노스케는 주어진 침대에 걸터앉았다.
 				PRINTFORMW 「나 원, 조금만 더 신경을 써뒀어야 했으려나.
-				PRINTFORMW 　한 동안 안 보인다고 여겼더니 포주에게 꾀였을 줄이야……」
+				PRINTFORMW  한 동안 안 보인다고 여겼더니 포주에게 꾀였을 줄이야……」
 				PRINTFORMW 「그래, 좋아. 하지만 내가 그렇게 간단히 굴복하리라곤 생각하지 마라.
-				PRINTFORMW 　자다가 목이 달아나지 않도록 힘껏 조심하도록」
+				PRINTFORMW  자다가 목이 달아나지 않도록 힘껏 조심하도록」
 			;그 외
 			ELSE
 				PRINTFORMW 『알기 쉽게 말하자면 말이다. 나도 너랑 같은 꼴이란 거지』
@@ -206,19 +208,16 @@ IF CFLAG:5001 == 0
 				PRINTFORMW 「넌 정말로 마리사냐……? 내가 아는 마리사가 그런 말을 할 리가……」
 				PRINTFORMW 린노스케는 마리사에게서 눈을 떼고 %조사처리(CALLNAME:MASTER,"를")% 쏘아보았다.
 				PRINTFORMW 「각오해두시지. 내가 언제까지고 얌전히 있으리라곤 생각하지 마라.
-				PRINTFORMW 　마리사를 이렇게 만든 보답, 반드시 갚아주겠어!」
+				PRINTFORMW  마리사를 이렇게 만든 보답, 반드시 갚아주겠어!」
 				PRINTFORMW 마리사는 증오를 드러내고 있는 린노스케를 서글프게 보며 중얼거렸다.
 				PRINTFORML 
 				PRINTFORMW 『기다리고 있었다구……. 구해주기를……. 나는』
 			ENDIF
 		ENDIF
-			CFLAG:5001 = 1
-			CFLAG:7202 = 1
-			RETURN 1
 	ELSE
 		PRINTFORMW 「……나 원, 귀도 기울이지 않나. 아무렴 어때. 이런 짓이 언제까지고 계속될까 보냐」
-		CFLAG:5001 = 1
 	ENDIF
+	CFLAG:5001 = 1
 	RETURN 1
 
 ;-------------------------------------------------
@@ -228,29 +227,68 @@ IF CFLAG:5001 == 0
 ;굴복각인Lv1
 ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「店員のいない店を何と言うか,君は知っているかい?
+	PRINTFORMW  答えは無人販売所だ.
+	PRINTFORMW  さて,この幻想郷で無人販売所に真っ当に代価を置いていく輩がどれ程いると思う?
+	PRINTFORMW  要約すると,香霖堂には店主が必要だということなのだが……」
+	PRINTFORMW  それだけ言って霖之助は%CALLNAME:MASTER%を見ている.だがすぐに諦めた様だ.
+	PRINTFORMW 「それで,今日は何をするつもりだい?」
 	CFLAG:5001 = 2
 	RETURN 1
 
 ;굴복각인Lv2
 ELSEIF CFLAG:5001 < 3 && MARK:2 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「君が僕に対して行っている行為の数々だが,僕にとっては現段階では情報に過ぎない
+	PRINTFORMW  仕入れた情報を自身の中で吟味解釈することによって,初めてそれは知識となる.
+	PRINTFORMW  幸い今のこの環境,考察する時間だけは事欠かない.
+	PRINTFORMW  長い人生だ,たまには思索にふけるのも悪くない」
+	PRINTFORMW  そこまで言って,霖之助は立ち上がり,準備を始めた.
+	PRINTFORMW 「それで,今日はどんな情報を与えてくれるんだい?」
 	CFLAG:5001 = 3
 	RETURN 1
 
 ;굴복각인Lv3
-ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && TALENT:150 == 0
+ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && !TALENT:150
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「やあ,待っていたよ.
+	PRINTFORMW  最近では君が来るのが楽しみですらある.
+	PRINTFORMW  肉体に与えられた反応は,やはりダイレクトに精神に作用するものだな.
+	PRINTFORMW  何のことかって? 条件反射だ,パブロフの犬の逸話くらいは知っているだろう.
+	PRINTFORMW  今では君を見ただけでこのザマだ.快楽とはなかなかに忌々しいものだね」
 	CFLAG:5001 = 4
 	RETURN 1
 
 ;연모
 ELSEIF CFLAG:5001 < 5 && TALENT:150
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,霖之助はベッドの上で頭を抱えていた.
+	PRINTFORMW 「……君は僕に何をした?」
+	PRINTFORMW  部屋に入ってきた%CALLNAME:MASTER%を,霖之助は視線を上げて真っ直ぐに見やった.
+	PRINTFORMW 「自分の異常が僕には論理的に納得できない.ならば要因は外的なものである筈だ.
+	PRINTFORMW  ……そしてこの環境下における外的要因とは,つまり君のことだ.
+	PRINTFORMW  だから答えてくれ,君は僕に何をしたんだ!」
+	PRINTFORMW  何の事を言われているかわからない様子の%CALLNAME:MASTER%を見て,
+	PRINTFORMW  霖之助はやや語調を緩めた.
+	PRINTFORMW 「ふと気づけば四六時中君のことを考えている.
+	PRINTFORMW  次はいつ来るのか待ちわびる時間が無限にも感じられる.
+	PRINTFORMW  考えをまとめようにも,思索はバラバラになり浮かぶのは君のことばかり.
+	PRINTFORMW  これではまるで……」
+	PRINTFORMW  そこまで一気に口にした霖之助は,遂に辿り着いた結論を前に愕然とつぶやいた.
+	PRINTFORMW 「……これではまるで,恋,のようじゃ……」
+	PRINTFORMW  到達した真実の衝撃に,放心してへたりこんだ霖之助へと
+	PRINTFORMW %CALLNAME:MASTER%は近付き,その身を抱きすくめた.
+	PRINTFORMW  おとなしく抱かれるままになっている霖之助の顎に手を当て,軽く上を向かせる.
+	PRINTFORMW 抵抗はない.
+	PRINTFORMW そして殺風景な部屋で,二つの影が重なった……
+	PRINTFORML 
+	PRINTFORMW ―霖之助が【反抗的】を失いました―
+	PRINTFORMW ―霖之助が【快感の否定】を失いました―
+	PRINTFORMW ―霖之助が【男嫌い】を失いました―
 	CFLAG:5001 = 5
+	TALENT:11 = 0
+	TALENT:71 = 0
+	TALENT:37 = 0
 	RETURN 1
 
 ;조수 유무를 체크(없을 경우엔 2회째 이후로 넘어감)
@@ -262,30 +300,129 @@ ELSEIF ASSI < 0
 ;회화하는 캐릭터를 늘릴 경우에는 복붙을 해서, CFLAG의 숫자를 5003, 5004 라는 식으로 늘린다
 ;-------------------------------------------------
 ;조수
-;ELSEIF NO:ASSI == Y1
-;	DRAWLINE
+ELSEIF NO:ASSI == 2
+	DRAWLINE
 	;처음
-;	IF CFLAG:5002 == 0
-		;연모＋연모시 첫 대사(함락 이벤트)가 발생 완료
-;		IF TALENT:150 && CFLAG:5201 >= 5
-;			PRINTFORMW 
-		;그 외
-;		ELSE
-;			PRINTFORMW 
-;		ENDIF
-;			CFLAG:5002 = 1
-;			RETURN 1
+	IF CFLAG:5002 == 0
+		;恋慕+恋慕時初口上陥落イベントが発生済み+魔理沙が恋慕持ち
+		IF TALENT:150 && CFLAG:201 >= 5 && TALENT:ASSI:150
+			PRINTFORMW 『よお,香霖.元気にしてたか』
+			PRINTFORMW 「魔理沙,どうして君がここに?
+			PRINTFORMW  しかしわざわざ来て貰ったところ悪いのだが僕は帰らない.いや,帰れない」
+			PRINTFORMW 『帰れないって…….うはあ,そういうことか.お前もかよ香霖』
+			PRINTFORMW 「お前も,と言うことは…….魔理沙,君もそっち側か」
+			PRINTFORMW 『そっちと言うか,私に言わせれば香霖がこっち側だぜ』
+			PRINTFORMW 「違いないな.それにしても君も年頃か.
+			PRINTFORMW  まあ,この状況で祝福すべきかはわからないが」
+			PRINTFORMW 『私だって香霖の浮いた話なんて聞くのは初めてだぜ.
+			PRINTFORMW  しかもその相手がこいつねえ……』
+			PRINTFORMW 「僕だって木石ではなかった,ということだ.
+			PRINTFORMW  悪いが今回はツケで渡したりはしないよ,非売品だ」
+			PRINTFORMW 『おいおい,香霖.所有物なのは向こうじゃなくて私たちの方だぜ?
+			PRINTFORMW  まだまだ自覚が足りないな』
+			PRINTFORMW 「そうだったね,これは一本とられた.ところでどうして魔理沙が一緒に?」
+			PRINTFORMW 『ああ,今日は私が助手につくことになったんだ.覚悟しろよ香霖』
+			PRINTFORMW 「二人がかりと言うことか,まあお手柔らかに頼むよ」
+			PRINTFORMW 『任せとけ,私だって大好きな香霖を必要以上に痛めつけたりはしないぜ』
+			PRINTFORMW 「ある程度は痛めつけられるのが確定なのか……」
+			PRINTFORMW 『じゃあ始めるか.っと,そうそう言い忘れてた事があった,始める前に言っとくぜ.
+			PRINTFORMW  愛してるぜ香霖.世界で二番目だけどな』
+			PRINTFORMW 「ありがとう……とは言っておこうかな.ふむ,そう言えば僕も思い出したよ.
+			PRINTFORMW  愛してるよ魔理沙.一番は他にいるけどね」
+			PRINTFORML 
+			PRINTFORMW  しばし部屋に沈黙が降り立ち,やがて誰からともなく吹き出した.
+			PRINTFORMW 『くっくっく……何だよ香霖,今更.
+			PRINTFORMW  もっと早くに言ってれば,いつでも受けてやったのに』
+			PRINTFORMW 「ああ,もっと早ければ何か変わっていたかもな.
+			PRINTFORMW  まあ僕としては現状には然程不満はないがね」
+			PRINTFORMW 『私も不満はないぜ.この人がいるし,香霖もいるしな』
+			PRINTFORMW 『さてと,無駄話が過ぎた.そろそろいい加減始めるぜ,二の次で大好きな香霖』
+			PRINTFORMW 「ああ,よろしく頼むよ.次点で愛しい魔理沙」
+		;恋慕+恋慕時初口上陥落イベントが発生済み
+		ELSEIF TALENT:150 && CFLAG:201 >= 5
+			PRINTFORMW 『香霖?! まさかお前もここにいたなんて』
+			PRINTFORMW 「魔理沙,君もいたのか.ふん,今日の趣向はそういう事か」
+			PRINTFORMW 『ああ,悪いけど……』
+			PRINTFORMW 「まあいいさ.彼が与えてくれるものならば何だろうと甘んじてうけよう,始めてくれ」
+			PRINTFORMW 『あ,ああ.ところで香霖,お前何かおかしくないか? その,雰囲気……とかがさ』
+			PRINTFORMW 「おかしい? ……ああ,そう言うことか.
+			PRINTFORMW  ふむ,説明しても良いがこの方が早いな」
+			PRINTFORMW  そう呟いて,霖之助は%CALLNAME:MASTER%に近付いてきて,そのまま迷わず口付けた.
+			PRINTFORMW そのまましばらくしてから霖之助は%CALLNAME:MASTER%から離れ,
+			PRINTFORMW 絶句した魔理沙へと振り返った.
+			PRINTFORMW 「とまあ,こういう事だ.理解できたかな」
+			PRINTFORMW 『あ,ああ……』
+			PRINTFORMW 「それは何より,百聞は一見に如かず.先人の格言は流石だね」
+			PRINTFORMW  苦笑する%CALLNAME:MASTER%と,この世の終わりのような顔で立ち尽くす魔理沙の間で
+			PRINTFORMW この半妖は一人したり顔で頷くのだった.
+		;魔理沙が恋慕持ち
+		ELSEIF TALENT:ASSI:150
+			PRINTFORMW 『よお香霖.息災か?』
+			PRINTFORMW 「魔理沙か!? よくここが分かったな.まあ良い,経緯は後で聞く.
+			PRINTFORMW  ここから出る手助けを頼むよ」
+			PRINTFORMW 『いや,非常に申し訳ないんだがその期待には応えられそうにないぜ』
+			PRINTFORMW 「……どういうことだ?」
+			PRINTFORMW 『分かりやすく言うとだな,今の私はこいつの忠実な奴隷ってわけだ』
+			PRINTFORMW 「魔理沙……? 貴様,魔理沙に一体何をした!!」
+			PRINTFORMW  %CALLNAME:MASTER%に詰め寄ろうとした霖之助を,魔理沙が阻んだ.
+			PRINTFORMW 『そこまでだ香霖.
+			PRINTFORMW  こいつに手を出そうってんなら香霖でもただじゃおかないぜ』
+			PRINTFORMW 「本気か,魔理沙……」
+			PRINTFORMW  抵抗する気を失ってへたり込んだ霖之助に,楽しそうに魔理沙は笑いかけた.
+			PRINTFORMW 『それじゃ始めるか.そうそう,喜べ香霖.
+			PRINTFORMW  今日は私がこの人の助手なんだぜ,理性を失くすくらい楽しんでくれ』
+			PRINTFORMW  その言葉が彼を更なる絶望へと追いやるであろうことも,
+			PRINTFORMW 今の魔理沙には気づけないようだった.
+		;それ以外
+		ELSE
+			PRINTFORMW 『香霖!? どうしてここに香霖が? そうか,そういうことなのか……』
+			PRINTFORMW 「魔理沙か!? どうやら人様の家に勝手に上がり込む癖はなおってないみたいだな.
+			PRINTFORMW  とは言え,今回はその悪癖が役に立ったか.
+			PRINTFORMW  どうせ君のことだ,ここがどこかも知らずに忍びこんだのだろ?」
+			PRINTFORMW 『い,いやそれはわかっている.わかっているんだがな……』
+			PRINTFORMW 「なら丁度良い.ここから逃げる手助けを頼めるかい?」
+			PRINTFORMW 『悪い香霖,それは無理だ』
+			PRINTFORMW 「無理ってそれはどういう……」
+			PRINTFORMW  そこまで口にした所で,霖之助は部屋の入り口に立つ%CALLNAME:MASTER%に気づいた.
+			PRINTFORMW 「しまった,遅かったか! 魔理沙,僕のことは良いから早く逃げろ!」
+			PRINTFORMW  その声に従うかのように魔理沙は身を翻した.
+			PRINTFORMW  だがその後の行動は霖之助の後ろへの回りこみ,
+			PRINTFORMW そしてそのまま彼を羽交い絞めにすることだった.
+			PRINTFORMW 「痛っ! ……魔理沙,一体何を」
+			PRINTFORMW 『すまないな香霖.私はこいつには逆らえないんだ……』
+			PRINTFORMW 「魔理沙……? 貴様,魔理沙に一体何をした!」
+			PRINTFORMW  身動きできない霖之助へ,%CALLNAME:MASTER%は口の端を歪めるだけで答えた.
+			PRINTFORMW 『今日の私への命令は,この部屋の住人への調教助手だ.
+			PRINTFORMW  ……なるべく気持ち良くしてやるから許してくれ』
+			PRINTFORMW  霖之助に見えることはないだろうが,その目元は僅かに涙でにじんでいる.
+			PRINTFORMW 「貴様は,貴様だけはいつか必ず殺してやる!!」
+			PRINTFORMW  悪鬼の形相でにらみつける霖之助の後ろで,魔理沙は小さく震えていた.
+			PRINTFORMW 『ごめん……ごめんなさい,香霖……』
+		ENDIF
+		CFLAG:5002 = 1
+		RETURN 1
 	;2회째 이후
-;	ELSE CFLAG:5002 == 1 && FLAG:11 ==2
-		;연모
-;		IF TALENT:150
-;			PRINTFORMW 
-		;그 외
-;		ELSE
-;			PRINTFORMW 
-;		ENDIF
-;			RETURN 1
-;	ENDIF
+	ELSE CFLAG:5002 == 1 && FLAG:11 == 2
+		;恋慕+魔理沙が恋慕持ち
+		IF TALENT:150 && TALENT:ASSI:150
+			PRINTFORMW 『それにしても私が香霖と同じ奴を好きになるなんて,想像もしなかったぜ』
+			PRINTFORMW 「それが正常だよ.この状況を想像できる人間の方が,僕はどうかと思う」
+		;恋慕
+		ELSEIF TALENT:150
+			PRINTFORMW 『よお香霖,今日も私が一緒だ.嬉しいだろ?』
+			PRINTFORMW 「いや,どっちかというと二人だけの方が嬉しいかな」
+			PRINTFORMW 『ちっ,そういうこと言うのか.仕方ないな,私の良さをその体に刻んでやるぜ』
+		;魔理沙が恋慕持ち
+		ELSEIF TALENT:ASSI:150
+			PRINTFORMW 『へへっ,今回も二人がかりだ.香霖も早いところ諦めた方が楽になるぜ?』
+			PRINTFORMW 「あいにくと,僕はまだ人生を諦めちゃいないよ.あと君の状況もね」
+		;それ以外
+		ELSE
+			PRINTFORMW 「またか…….魔理沙は関係ないだろう,この子を巻き込むな!」
+			PRINTFORMW 『良いんだ香霖.私はもう……』
+		ENDIF
+		RETURN 1
+	ENDIF
 
 ;ELSEIF NO:ASSI == Y1
 ;	DRAWLINE
@@ -324,42 +461,64 @@ ENDIF
 ;반발각인Lv3
 IF MARK:9 == 3 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「僕はこう見えても君の何倍も長く生きていてね.
+	PRINTFORMW  多分,これからも君より長く生きるだろう」
+	PRINTFORMW  普段の彼からはかけ離れた,酷薄な笑みで霖之助は笑って言った.
+	PRINTFORMW 「楽しみだよ,君が老いさらばえたその時がね」
 	RETURN 1
 
 ;굴복각인Lv0
 ELSEIF MARK:2 == 0 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「いい加減店に帰してくれないかな.そろそろこの本も君の顔も見飽きてきたんだが」
+	PRINTFORMW  %CALLNAME:MASTER%の顔を見た霖之助はそう言うと,再び手元の本に目を落とした.
 	RETURN 1
 
 ;굴복각인Lv1
 ELSEIF MARK:2 == 1 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「来たか」
+	PRINTFORMW  %CALLNAME:MASTER%が入ってきたのを確認すると,霖之助は自分の服に手をかけた.
+	PRINTFORMW 「逆らわないほうが少しでも早く終わるからな……」
 	RETURN 1
 
 ;굴복각인Lv2
 ELSEIF MARK:2 == 2 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「知識を蓄えるのは良いことだ.実践において研磨するのも素晴らしいことだ.
+	PRINTFORMW  ……だが,それに付き合わされる方の身にも……いや,言うだけ無駄だったな」
+	PRINTFORMW  溜め息をつきながら,それでも霖之助は衣服を脱ぎ捨てた.
 	RETURN 1
 
 ;굴복각인Lv3＋연모 없음
-ELSEIF MARK:2 == 3 && TALENT:150 == 0 && FLAG:11 == 2
+ELSEIF MARK:2 == 3 && !TALENT:150 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「やあ,来たのか.……待っていたよ,と言うのも癪だな.
+	PRINTFORMW  いったいどうしたのだろうな,僕は」
 	RETURN 1
 
 ;연모
 ELSEIF TALENT:150 && FLAG:11 == 2
 	DRAWLINE
 	IF RAND:3 == 0
-		PRINTFORMW 
+		PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,霖之助はノートに何か書き記していた.
+		PRINTFORMW 「これかい? これは日記だ.いつかこれを纏めて本にするのが僕の夢でね.
+		PRINTFORMW  今日も記すネタを与えてくれるんだろう? 印税は……そうだな7,3でどうだい」
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 
+		PRINTFORMW 「今でもこの状況に,時々疑問を感じないわけではないのだが
+		PRINTFORMW  何処かの誰かにとっての異常も,それが万人にとってそうというわけでもない」
+		PRINTFORMW そう言って霖之助は手早く衣服を脱ぎ捨てた.
+		PRINTFORMW 「それで今日の異常事態は何をするのかな?」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「二階から目薬,と言うことわざがある.回りくどくて効果のないことの例えだね.
+		PRINTFORMW  昔,僕の妹分がそれを試してみると言い出してね.
+		PRINTFORMW  新品の目薬を使い切ったが,ただの一滴すら目には入らなかったよ.
+		PRINTFORMW  愚かな行動ではあるが,それによって彼女は本質的な意味で,
+		PRINTFORMW  このことわざの意味を知ったわけだ.
+		PRINTFORMW  机上の論を知識に変える方法として,行動は重要な選択肢の一つだろうね.
+		PRINTFORMW  僕の流儀ではないが.
+		PRINTFORMW  ……ところで一日千秋という言葉の意味は知っているかい?
+		PRINTFORMW  僕は最近,身をもって理解しているんだが……」
 	ENDIF
 	RETURN 1
 ENDIF
@@ -372,7 +531,7 @@ RETURN 0
 @EVENTEND
 SIF FLAG:11 == 0
 	RETURN 0
-SIF NO:TARGET != 69
+SIF NO != 69
 	RETURN 0
 ;--------------------------------------------------
 ;특정 조수, 주인시에 특수 조수 대사를 호출한다
@@ -389,40 +548,102 @@ SIF NO:TARGET != 69
 ;--------------------------------------------------
 ;조교 종료시 대사
 ;--------------------------------------------------
+IF ASSI > 0
+	;魔理沙がいる
+	IF NO:ASSI == 2
+		DRAWLINE
+		;反発刻印Lv3
+		IF MARK:3 == 3
+			PRINTFORMW 「魔理沙を,僕を辱めた報いはいつか必ずくれてやる.それを忘れるな!」
+			PRINTFORMW 『香霖……いいんだ.私はもう……』
+		;屈服刻印Lv1以下
+		ELSEIF MARK:2 <= 1
+			PRINTFORMW 「終わったんだろ,さっさと帰ってくれないか.君もだ,魔理沙」
+			;魔理沙が恋慕持ち
+			IF TALENT:ASSI:150
+				PRINTFORMW 『ああ,じゃあな香霖.体は大事にしろよ,もうお前はお前の物じゃないんだからな』
+			;それ以外
+			ELSE
+				PRINTFORMW 『その……,香霖.私は……』
+				PRINTFORMW 「何度も言わせるな.さっさと帰ってくれ」
+				PRINTFORMW 『……わかったよ』
+			ENDIF
+		;屈服刻印Lv2
+		ELSEIF MARK:2 == 2
+			PRINTFORMW 「僕のことはもうどうでもいい,だが魔理沙だけでも解放しろ」
+			PRINTFORMW 『もう遅いんだ,私は…….哀れと思うなら,せめて私と一緒に堕ちてくれ』
+			PRINTFORMW 「魔理沙……」
+		;屈服刻印Lv3+恋慕＋体力500未満
+		ELSEIF MARK:2 == 3 && TALENT:150 && BASE:0 < 500
+			PRINTFORMW 『おーい,生きてるか香霖?』
+			PRINTFORMW 「ああ,何とかね…….ふふ,心行くまで弄ばれるのは良いものだ」
+			;魔理沙が恋慕持ち
+			IF TALENT:ASSI:150
+				PRINTFORMW 『ちぇっ,ずるいぜ香霖ばっかり.次は私の番だよな?』
+			;それ以外
+			ELSE
+				PRINTFORMW 『ノロケなのか,それは? まあいいや.風邪とかひかない様に気をつけろよ』
+			ENDIF
+		;屈服刻印Lv3+恋慕
+		ELSEIF MARK:2 == 3 && TALENT:150
+			PRINTFORMW 「ふう……もう終わりか.僕ならもう少し大丈夫なんだが」
+			PRINTFORMW 『おいおい香霖.こいつにも事情はあるんだ,あんまり勝手ばかり言うなよ』
+			PRINTFORMW 「ああ,わかってるさ.それじゃあ,また」
+		;屈服刻印Lv3
+		ELSE
+			IF !RAND:10
+				PRINTFORMW 「堕ちてしまえば楽……か.魔理沙,もう君を笑えないな」
+				PRINTFORMW 『だったらどうして泣いてるんだよ,お前は.香霖は!』
+				PRINTFORMW 「何を言って……あ,あれおかしいな.どうして涙が……」
+			ELSE
+				PRINTFORMW 『……えっと,じゃあな香霖』
+				PRINTFORMW 「ああ……」
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+
 ;반발각인Lv3
-IF MARK:9 == 3
+ELSEIF MARK:9 == 3
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「阿礼乙女には遠く及ばないが,僕は記憶力にはそこそこ自身がある.
+	PRINTFORMW  喜べ,君の最期の時には今までの事を全て語ってやるさ.さぞ安らかに眠れるだろう」
+	PRINTFORMW  そう言って,霖之助は%CALLNAME:MASTER%を憎憎しげに睨み付けた
 	RETURN 1
 
 ;굴복각인Lv1이하
 ELSEIF MARK:2 <= 1
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「終わったのならとっとと帰ってくれ,これ以上君と空間を共有したくないからな」
 	RETURN 1
 
 ;굴복각인Lv2
 ELSEIF MARK:2 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「終わったか,ならばここからは僕の時間だ.
+	PRINTFORMW  君が居るのは勝手だが,邪魔はしないでくれ」
+	PRINTFORMW  そう言って霖之助は,彼の私物である表紙の擦り切れた文庫本に手を伸ばした.
 	RETURN 1
 
 ;굴복각인Lv3
-ELSEIF MARK:2 == 3 && TALENT:150 == 0
+ELSEIF MARK:2 == 3 && !TALENT:150
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「もう帰るのか,もう少しゆっくりしていけば……いや,何でもない」
+	PRINTFORMW  衣服を着込み,一人だけになった部屋で霖之助は一人つぶやいた.
+	PRINTFORMW 「何なんだろうな,最近自分がわからない…….非論理的な事は嫌いなんだが」
 	RETURN 1
 
 ;연모＋체력 500 미만
-;ELSEIF TALENT:150 && BASE:0 < 500
-;	DRAWLINE
-;	PRINTFORMW 
-;	RETURN 1
+ELSEIF TALENT:150 && BASE:0 < 500
+	DRAWLINE
+	PRINTFORMW 「僕を弄ぶのはかまわないが,少しはわきまえたらどうだ? これも悪くはないがね.
+	PRINTFORMW  だが流石に限界だ,すまないがこのまま休ませてもらうよ」
+	RETURN 1
 
 ;연모
 ELSEIF TALENT:150
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「もう終わりなのか……いや,何でもない.無理を言って困らせる気はないよ」
 	RETURN 1
 ENDIF
 RETURN 0
@@ -463,42 +684,72 @@ SIF EQUIP:14 || TFLAG:899 > 0
 IF SELECTCOM == 0
 	;처음
 	IF CFLAG:9000 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『こうやって香霖を弄り倒すのも久しぶりだな』
+				PRINTFORMW 「誤解されそうな発言はやめてくれ.幼かった君の悪ふざけだろ,あれは」
+			ENDIF
 		;굴복각인Lv2이상
-		IF MARK:2 >= 2
-			PRINTFORMW 
+		ELSEIF MARK:2 >= 2
+			PRINTFORMW 「く,ふぅ……どうでも良いよ,好きにしてくれ……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「くぅっ,半妖を弄繰り回すのが君はそんなに楽しいのか?」
 		ENDIF
 		CFLAG:9000 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;屈服刻印Lv3
+				IF MARK:2 == 3
+					PRINTFORMW 「くはあっ……そ,そこはっ!!」
+					PRINTFORMW 『はは,声を抑えなくなってきたか.素直なのは良いことだぜ香霖』
+					PRINTFORMW 「声が聞きたいんなら,いくらでも出すよ.だから……っ!」
+					PRINTFORMW 『心配するなって,香霖の声が枯れるまでやってやるさ』
+				;屈服刻印Lv2
+				ELSEIF MARK:2 == 2
+					PRINTFORMW 「くっ……!! ……っっ!!」
+					PRINTFORMW 『どうした香霖,歯を食いしばって? 感じてるんだろ,いいから素直に声出せよ』
+					PRINTFORMW 「か,感じてなど……ああっ!! い,いない!」
+					PRINTFORMW 『香霖はまず説得力って言葉の意味を覚えるべきだな,うん』
+				ELSE
+					PRINTFORMW 「魔理沙,いつまで続ける気だ」
+					PRINTFORMW 『決まってる,私が飽きるまでだ.なかなか触り心地がいいぜ,香霖は』
+					PRINTFORMW 「褒められているんだろうか,それは?」
+				ENDIF
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9000 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9000 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「はぁっ……気持ち良いのが,逆に癪だな.
+			PRINTFORMW  自分でやってもそこまででもないんだけどね.どうしてだろうな?」
 			CFLAG:9000 = 5
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9000 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 気持ち悪い,気持ち悪いはずなんだが……気持ち良い.
+			PRINTFORMW  まずいな,そろそろ僕自身の正気が怪しいぞ……
 			CFLAG:9000 = 4
 		;굴복각인Lv2
 		ELSEIF MARK:2 == 2 && (CFLAG:9000 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「くうぅ……気は済んだか?」
 			CFLAG:9000 = 3
 		;그 외
 		ELSEIF MARK:2 <= 1 && (CFLAG:9000 <= 1 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「僕の体など,触ってて何か楽しいのか?
+			PRINTFORMW  少なくとも触られている僕は楽しくもなんともないんだがな」
 			CFLAG:9000 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;커닐링구스 CFLAG:9001
 ;이와시미즈 CFLAG:9611
 ;-------------------------------------------------
+[SKIPSTART]
 ;커닐링구스
 IF SELECTCOM == 1 && TEQUIP:56 == 0
 	;처음
@@ -511,7 +762,6 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9001 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -527,8 +777,8 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 			PRINTFORMW 
 			CFLAG:9001 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 ;이와시미즈
 IF SELECTCOM == 611
@@ -555,6 +805,7 @@ IF SELECTCOM == 611
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 애무 CFLAG:9002
@@ -562,36 +813,82 @@ ENDIF
 IF SELECTCOM == 2
 	;처음
 	IF CFLAG:9002 == 0
-		PRINTFORMW 
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『んー……これだけ濡れてりゃ大丈夫かな』
+				PRINTFORMW 「どこを触ってるんだ魔理沙!」
+				PRINTFORMW 『尻の穴だぜ,香霖の』
+				PRINTFORMW 「や,やめてくれ魔理沙!」
+				;魔理沙のA感覚Lv3以上
+				IF ABL:ASSI:3 >= 3
+					PRINTFORMW 『大丈夫だって,慣れりゃこっちもなかなか良いもんだぜ』
+				;魔理沙のA感覚Lv3未満+A経験有り
+				ELSEIF ABL:ASSI:3 < 3 && EXP:ASSI:1 > 0
+					PRINTFORMW 『私だってこっちはあまり好きじゃないから気持ちはわかるが,まあ観念してくれ』
+				;それ以外
+				ELSE
+					PRINTFORMW 『うん,まあ抵抗はあるだろうな.私だってこんなとこ弄られたくないし』
+				ENDIF
+			ENDIF
+		;恋慕
+		ELSEIF TALENT:150
+			PRINTFORMW 「ついに来たかというべきか,今まで手を出してこなかったことを感謝するべきか」
+			PRINTFORMW 「いいさ,君の好きにしてくれ.今更どうこう言うつもりもない」
+		;それ以外
+		ELSE
+			PRINTFORMW 「他に穴はないから,いつか来るとは思っていたが……」
+			PRINTFORMW 「ぐううっ! ゆ,指が中に.や,やめろ.頼むからやめてくれ!!」
+		ENDIF
 		CFLAG:9002 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;潤滑Lv2以上+A感覚Lv3以上
+				IF LOCAL >= PALAMLV:2 && ABL:5 >= 3
+					PRINTFORMW 「やめてくれ魔理沙.そこは本来排泄のための器官であって……」
+					PRINTFORMW 『そんなこと言ってるが,随分良さそうだぜ? まったくヘンタイだな香霖は』
+					PRINTFORMW 「違っ! こ,これは前立腺が刺激されることによる単なる生理反応で……」
+					PRINTFORMW 『聞く耳ないぜ,そーれ,ぐりぐりっと』
+					PRINTFORMW 「ひああっ! ま,魔理沙あっ!」
+				;それ以外
+				ELSE
+					PRINTFORMW 「いだっ! 魔理沙,ちょっと,痛っ! 」
+					PRINTFORMW 『はは,痛がってる香霖も見てて悪くないな.ほれほれ,こっちはどうだ?』
+					PRINTFORMW 「うぐうっ! やめて,く,ぐああっ!!」
+					PRINTFORMW 『うわ,何だか見てて私も興奮してきたぜ.案外そっちの素養もあったのかもな』
+				ENDIF
+			ENDIF
 		;연모+윤활Lv2이상
-		IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「くっ,すまないがもう少しゆっくり頼む」
+			PRINTFORMW 「自省が効かなくなる……! と言ったのにっ,つ,強くしないでくれ!」
 			CFLAG:9002 = 5
 		;연모+윤활Lv2미만
 		ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「くう,まだ少しきついな……」
+			PRINTFORMW 「いや,気にするな.君の好きなようにやってくれ」
 			CFLAG:9002 = 4
 		;윤활Lv2이상＋A감각Lv3이상
 		ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9002 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「やめてくれっ! このままじゃ僕は……あああっ!!」
 			CFLAG:9002 = 3
 		;그 외
 		ELSEIF CFLAG:9002 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「……やめろ!」
 			CFLAG:9002 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;가슴 애무 CFLAG:9003
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 3
 	;처음
 	IF CFLAG:9003 == 0
@@ -603,7 +900,6 @@ IF SELECTCOM == 3
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9003 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -619,8 +915,8 @@ IF SELECTCOM == 3
 			PRINTFORMW 
 			CFLAG:9003 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -641,7 +937,6 @@ IF SELECTCOM == 4
 				 PRINTFORMW
 			ENDIF
 			CFLAG:9004 = 1
-			RETURN 0
 		;비처녀
 		ELSE
 			;연모
@@ -655,7 +950,6 @@ IF SELECTCOM == 4
 				PRINTFORMW 
 			ENDIF
 			CFLAG:9004 = 1
-			RETURN 0
 		ENDIF
 	;2회째 이후
 	ELSE
@@ -672,8 +966,8 @@ IF SELECTCOM == 4
 			PRINTFORMW 
 			CFLAG:9004 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 ;G스팟 자극
 IF SELECTCOM == 600
@@ -692,6 +986,7 @@ IF SELECTCOM == 600
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;펠라한다(후타나리/남자만) CFLAG:9005
@@ -699,37 +994,67 @@ ENDIF
 IF SELECTCOM == 5
 	;처음
 	IF CFLAG:9005 == 0
-		;연모
-		IF TALENT:150
-			PRINTFORMW 
-		;그 외
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『目の前でこれだけまじまじと見るのは初めてだな……これが香霖のか.
+				PRINTFORMW  昔一緒に風呂に入ったとき見たのとは随分違うんだな.
+				PRINTFORMW  もっともあの時は萎びてたしな』
+				PRINTFORMW 「子供を見てこうなるような人間のほうがおかしいだろう.
+				PRINTFORMW  そういう趣味の者も世の中にはいるようだが」
+				PRINTFORMW 『ふーん,つまり今の私は子ども扱いされてないってことか.
+				PRINTFORMW  さて始めるぜ,こんな大きくしたのをいつまでもほっとくのも可哀そうだし.
+				PRINTFORMW  それじゃあいただきます,ってか』
+			ENDIF
+		;恋慕
+		ELSEIF TALENT:150
+			PRINTFORMW 「待て,何をするつもりだ,君は? いや,別に僕は嫌なわけではないが.
+			PRINTFORMW  だが君自身は……不快じゃないのか?
+			PRINTFORMW  構わないのか……そうか.不覚にも少し嬉しいよ」
+		;それ以外
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「……君は少し自分の行為に疑問を覚えたほうが良いと思うよ」
 		ENDIF
 		CFLAG:9005 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;屈服刻印Lv3
+				IF MARK:2 == 3
+					PRINTFORMW 「ああ,いいよ魔理沙.凄く気持ち良い」
+					PRINTFORMW 『ちゅぱっ……へへ,そんなに良いのか香霖.いいぜ,いつでもイっちゃっいな』
+				;それ以外
+				ELSE
+					PRINTFORMW 『んむっ,ふう……どうだ香霖,って聞くまでもなさそうだな』
+					PRINTFORMW 「やめろ魔理沙! 君はこんなことすべきじゃない!」
+					PRINTFORMW 『へっ,これだけカチカチにしてちゃ説得力ないぜ,香霖』
+				ENDIF
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9005 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9005 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「気持ち良いんだが,やはりおかしいだろう.その,こういう行為は……
+			PRINTFORMW  別に嫌というわけではないさ.むしろもっと……聞かなかったことにしてくれ」
 			CFLAG:9005 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9005 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「良い……んだが……」
+			PRINTFORMW 「これは君がすべきことではないような……」
 			CFLAG:9005 = 3
 		;그 외
 		ELSEIF CFLAG:9005 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「気持ち良いと感じる自分が嫌だ……」
 			CFLAG:9005 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;키스한다 CFLAG:9006
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 6
 	;처음
 	IF CFLAG:9006 == 0
@@ -741,7 +1066,6 @@ IF SELECTCOM == 6
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9006 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -757,9 +1081,10 @@ IF SELECTCOM == 6
 			PRINTFORMW 
 			CFLAG:9006 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;자위 CFLAG:9007
@@ -769,37 +1094,106 @@ ENDIF
 IF SELECTCOM == 7 && TEQUIP:54 == 0
 	;처음
 	IF CFLAG:9007 == 0
-		PRINTFORMW 
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『香霖,オナニーって何か知ってるか?』
+				PRINTFORMW 「……あまり女の子が口にすべきじゃない言葉だな.自慰のことだよ.
+				PRINTFORMW 「語源は人名だな.旧約聖書の登場人物でその名をオナンと言う.
+				PRINTFORMW  彼は自分の兄の妻と床を共にしたのだが,その時に……
+				PRINTFORMW  何だ,その勤めを果たさなかったんんだ」
+				PRINTFORMW 『兄の妻って,おいおい.それは不倫じゃないか』
+				PRINTFORMW 「いや,妻と言ってもその時は未亡人だったんだ.
+				PRINTFORMW  この時代においては長男が子を成さずに死んだ場合,
+				PRINTFORMW  次男が長男の妻と子をもうけるのもよくあった話なのだそうだ」
+				PRINTFORMW 『ふむふむ.しかしそんな据え膳な状況で手を出さなかったのは何でだ?
+				PRINTFORMW  よっぽど不細工だったのか,その嫁さん?』
+				PRINTFORMW 「彼女の美醜は知らないが,兄の妻が子を成したら,その子は兄の家の物になるんだ.
+				PRINTFORMW  それが嫌だったようだね,オナンは」
+				PRINTFORMW 『ほお,快楽を否定してまで我が子を欲したのか.なかなか立派な奴じゃないか』
+				PRINTFORMW 「まあ,彼はこの後神の意思に逆らった罪人として神に殺されるのだがね.
+				PRINTFORMW  ちなみに彼の兄の死因も神の怒りを買ったことによる神罰だよ」
+				PRINTFORMW 『酷い神もあったもんだな』
+				PRINTFORMW 「神話の神なんてのは古今東西気まぐれなものだよ.
+				PRINTFORMW  それにかの宗教においては子を成す目的でなく,
+				PRINTFORMW  快楽のために行為に及ぶのは罪悪とされている.そうやって考えれば一貫はしている
+				PRINTFORMW  なお補足までに付け加えると,オナンはただ地に流しただけなのだそうだよ」
+				PRINTFORMW 『地に流したってことはつまり……中に出さなかっただけってことか?』
+				PRINTFORMW 「ああ,いわゆる膣外射精という奴だな.
+				PRINTFORMW  つまりこれは逸話自体が語源として不適当だったという話だな」
+				PRINTFORMW 『うーん……感心して損したぜ.やることはきちんとやってたのか』
+				PRINTFORMW 「やってたと言うか,成すべきことをやってなかったために命を落としたんだがね」
+				PRINTFORMW 『そんな言葉遊びはどうでもいいぜ.
+				PRINTFORMW  さて,薀蓄を聞いてやったんだから次は私の言うことを聞いてもらうぜ』
+				PRINTFORMW 「どういう理屈だよ……それで,何をしろと?」
+				PRINTFORMW 『話の流れで理解できるだろ.今ここで,私の目の前でやってくれ.
+				PRINTFORMW  語 源 と し て 間 違 っ た 方 を な』
+				PRINTFORMW 「……ちなみに,拒否権は?」
+				PRINTFORMW 『拒否した場合は天罰が下るぜ,私が下す』
+				PRINTFORMW 「君はいつから神になったんだ」
+				PRINTFORMW 『知らないのか,お客様は神様だぜ』
+				PRINTFORMW 「そういう台詞はせめてツケを払ってからお願いするよ……」
+			ENDIF
+		;恋慕
+		ELSEIF TALENT:150
+			PRINTFORMW 「君の前でやれと? 自慰をか?」
+			PRINTFORMW 「さすがに照れるんだが……あまりまじまじ見ないでくれよ」
+		;それ以外
+		ELSE
+			PRINTFORMW 「君の前でやれと? 自慰をか?」
+			PRINTFORMW 「この変態が……」
+		ENDIF
 		CFLAG:9007 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;自慰中毒Lv3以上
+				IF ABL:30 >= 3
+					PRINTFORMW 「くあっ! ま,魔理沙っ!」
+					PRINTFORMW 『必死だな香霖.いいぜ,いつでも出して』
+					;魔理沙精液中毒Lv3以上
+					IF ABL:ASSI:31 >= 3
+						PRINTFORM 『何だったら,思いっきり私にぶちまけてくれてもいいぜ』
+					;魔理沙精液中毒Lv2以下
+					ELSE
+						PRINTFORMW 『我慢は体に毒だからな』
+					ENDIF
+				;それ以外
+				ELSE
+					PRINTFORMW 「魔理沙,頼むからせめてむこうを向いてくれないか?」
+					PRINTFORMW 『それだと意味ないだろ.さ,見ててやるから続けるんだ』
+				ENDIF
+			ENDIF
 		;연모＋자위중독Lv3이상
-		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:9007 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:30 >= 3 && (CFLAG:9007 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「う,うああっ.と,止まらないっ!」
+			PRINTFORMW 「もっとだ,もっと見ていてくれ!」
 			CFLAG:9007 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9007 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「これは相当恥ずかしい……君なら別だがあまり人に見せたい姿ではないな」
 			CFLAG:9007 = 4
 		;자위중독Lv3이상
 		ELSEIF ABL:30 >= 3 && (CFLAG:9007 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「そんな……指が止められない……」
+			PRINTFORMW 「違う,こんなのは僕じゃない……」
 			CFLAG:9007 = 3
 		;그 외
 		ELSEIF CFLAG:9007 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「何が楽しいんだ,こんな見世物の」
 			CFLAG:9007 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
+[SKIPSTART]
 ;샤워기 자위
 ELSEIF SELECTCOM == 7 && TEQUIP:54
 	;처음
 	IF CFLAG:8801 == 0
 		PRINTFORMW 
 		CFLAG:8800 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋자위중독Lv3이상
@@ -819,13 +1213,15 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 			PRINTFORMW 
 			CFLAG:8800 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;아무것도 하지 않는다 CFLAG:9009
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 9
 	;처음
 	IF CFLAG:9009 == 0
@@ -837,7 +1233,6 @@ IF SELECTCOM == 9
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9009 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋욕정Lv3이상
@@ -853,9 +1248,10 @@ IF SELECTCOM == 9
 			PRINTFORMW 
 			CFLAG:9009 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;로터 CFLAG:9010
@@ -863,37 +1259,70 @@ ENDIF
 IF SELECTCOM == 10
 	;처음
 	IF CFLAG:9010 == 0
-		;연모
-		IF TALENT:150
-			PRINTFORMW 
-		;그 외
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「なんだい魔理沙,その道具は? 少し貸してくれないか」
+				PRINTFORMW 『いいぜ,相変わらず道具に目が無い奴だな』
+				PRINTFORMW 「ふむ,名称はピンクローター.別に桃色には見えないが……
+				PRINTFORMW  用途は……振動によって快感を得る,か.いわゆる淫具の一種だな.
+				PRINTFORMW  膣内への挿入以外にも,陰核や乳首など刺激する用途にも向く,か.
+				PRINTFORMW  うるさい事をいう気はないが,少女が人前で見せびらかすものではないと思うよ」
+				PRINTFORMW 『大きなお世話だ.それに勘違いしてるようだが,これを使われるのはお前だぜ』
+				PRINTFORMW 「冗談はよせ……いや,冗談ではなさそうだな……」
+			ENDIF
+		;恋慕
+		ELSEIF TALENT:150
+			PRINTFORMW 「これは……名称はローター.用途は振動によって快感を得る,か.
+			PRINTFORMW  構わないよ,使ってくれ.おっと,体勢を変えたほうが使い易いのかな?
+			PRINTFORMW  か,勘違いしないでくれ.
+			PRINTFORMW  楽しみにしているわけじゃなく,未知の道具に興味があるだけなんだからな」
+		;それ以外
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「これは……名称はローター.用途は振動によって快感を得る,か」
+			PRINTFORMW 「ところでそれを誰に使うかは……できれば聞きたくは無いんだが」
 		ENDIF
 		CFLAG:9010 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
-		;연모
-		IF TALENT:150 && (CFLAG:9010 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;屈服刻印Lv3
+				IF MARK:2 == 3
+					PRINTFORMW 『おお,面白いな.こいつの震えにあわせて香霖も震えてるぜ』
+					PRINTFORMW 「ひ,ひとを玩具にするんじゃない! と言うのに……っ!」
+					PRINTFORMW 『ふんふん,こっちに押し付けるとさらに効果があるみたいだな』
+				;それ以外
+				ELSE
+					PRINTFORMW 「……っ! くっ……!」
+					PRINTFORMW 『素直に声出せよ香霖.我慢は体に毒だぜ』
+					PRINTFORMW 「だ,誰がそんな事を……んんっ!」
+					PRINTFORMW 『ほほお.よーし,それじゃ素直になるまでやってやるぜ』
+				ENDIF
+			ENDIF
+		;연모+굴복각인Lv3
+		ELSEIF TALENT:150 && MARK:2 == 3 && (CFLAG:9010 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「くぅっ……気持ちは良いんだができれば道具よりも……ああっ!」
 			CFLAG:9010 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9010 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「うっ……こ,こんな道具なんかで!
+			PRINTFORMW  そ,外の連中は技術の無駄遣いという言葉を知らないのか!」
 			CFLAG:9010 = 3
 		;그 외
 		ELSEIF CFLAG:9010 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「男にそれを使って,君は何か楽しいのか?」
 			CFLAG:9010 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;전기안마 CFLAG:9011
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 11
 	;처음
 	IF CFLAG:9011 == 0
@@ -905,7 +1334,6 @@ IF SELECTCOM == 11
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9011 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -921,13 +1349,15 @@ IF SELECTCOM == 11
 			PRINTFORMW 
 			CFLAG:9011 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;바이브 CFLAG:9012　CFLAG:8811
+;바이브 CFLAG:9012 CFLAG:8811
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 12 && TEQUIP:20
 	;처음
@@ -952,7 +1382,6 @@ IF SELECTCOM == 12 && TEQUIP:20
 			ENDIF
 		ENDIF
 		CFLAG:9012 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -968,8 +1397,8 @@ IF SELECTCOM == 12 && TEQUIP:20
 			PRINTFORMW 
 			CFLAG:9012 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	;연모
@@ -983,65 +1412,116 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;애널바이브 CFLAG:9013　CFLAG:8812
+;애널바이브 CFLAG:9013 CFLAG:8812
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 13 && TEQUIP:25
 	;처음
 	IF CFLAG:9013 == 0
-		;연모
-		IF TALENT:150
-			PRINTFORMW 
-		;그 외
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「魔理沙,それは……何だか嫌な予感はするが,少し貸してくれるか?
+				PRINTFORMW  名称はアナルバイブ.用途は……肛門用の張り型.
+				PRINTFORMW  ……どうしてこう,嫌な予感だけ当たるんだ」
+				PRINTFORMW 『こういう時は便利だな,その能力.心構えができたろう?』
+				;屈服刻印が3以上
+				IF MARK:2 >= 3
+					PRINTFORMW 「ああ,好きにしてくれ」
+					PRINTFORMW 『抵抗されないのも,それはそれで面白くないぜ……』
+				;それ以外
+				ELSE
+					PRINTFORMW 「できる事なら断固拒否したいところだが」
+					PRINTFORMW 『悪いがその断固拒否は,断固拒否させてもらうぜ』
+				ENDIF
+			ENDIF
+		;恋慕
+		ELSEIF TALENT:150
+			PRINTFORMW 「ほお,肛門で快感を得るための性具か.面白そうだな,やってくれ」
+		;それ以外
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「また奇妙な物を持ち出したな」
+			PRINTFORMW 「名称はアナルバイブ……用途は知らないほうが良さそうだな」
 		ENDIF
 		CFLAG:9013 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;A感覚Lv3以上
+				IF ABL:5 >= 3
+					PRINTFORMW 「くう……入ってくる……」
+					PRINTFORMW 『香霖もだいぶ慣れてきたみたいだな,最近はすんなり入るぜ』
+					PRINTFORMW 「そんな褒められ方をされてもな……」
+				;それ以外
+				ELSE
+					PRINTFORMW 『んしょ……っと.ふう,なかなか入らないものだな.もう少し力抜けよ,香霖』
+					PRINTFORMW 「痛いしきついし気持ち悪いし,こんな状況で力なんか抜けるわけないだろう」
+					PRINTFORMW 『別に私は良いんだが,早く慣れないと辛いのは香霖だぜ』
+				ENDIF
+			ENDIF
 		;연모＋A감각Lv3이상
-		IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9013 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:2 >= 3 && (CFLAG:9013 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「ふ,ふひゃああっ! 熱い! 肛門があ,熱い!」
+			PRINTFORMW 「だ,大丈夫だ.入れたままでも……ひゃふんっ!」
 			CFLAG:9013 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9013 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「それは正直苦手なんだが……まあ良いさ,好きにしてくれ」
 			CFLAG:9013 = 4
 		;A감각Lv3이상
 		ELSEIF ABL:2 >= 3 && (CFLAG:9013 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「もう痛くはないが,不快なのには違いないんだが……」
 			CFLAG:9013 = 3
 		;그 외
 		ELSEIF CFLAG:9013 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やめてくれ,そんな物をこんな所に突っ込まれる身にもなってみろ!」
 			CFLAG:9013 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			;A感覚Lv3以上
+			IF ABL:5 >= 3
+				PRINTFORMW 『うわ,こんなにヌラヌラするほど濡れてるぜ.よっぽど良かったんだな』
+				PRINTFORMW 「……うるさい.それは単なる生態防御反応だ」
+				PRINTFORMW 『引っこ抜いた瞬間に物足りなさそうな顔してた奴が,そんなこと言ってもなあ』
+			;それ以外
+			ELSE
+				PRINTFORMW 『せーの,っと』
+				PRINTFORMW 「ぐあ,あああああっ!!」
+				PRINTFORMW 『まだ慣れてないみたいだな.心配するな,私がちゃんと仕込んでやるから』
+			ENDIF
+		ENDIF
 	;연모
-	IF TALENT:150 && (CFLAG:8812 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+	ELSEIF TALENT:150 && (CFLAG:8812 < 3 || FLAG:11 == 2)
+		PRINTFORMW 「ふう……どうにもこの感覚は慣れないな」
+		PRINTFORMW 「よ,悦んでなどいなかったぞ.本当だからな」
 		CFLAG:8812 = 3
 	;A감각Lv3이상
 	ELSEIF ABL:2 >= 3 && (CFLAG:8812 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ふうっ……! やっと終わったか,次はもうごめんだからな」
 		CFLAG:8812 = 2
 	;그 외
 	ELSEIF CFLAG:8812 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「この貸しは,いつか払ってもらうぞ……」
 		CFLAG:8812 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;클리캡 CFLAG:9014　CFLAG:8813
+;클리캡 CFLAG:9014 CFLAG:8813
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 14 && TEQUIP:30
 	;처음
@@ -1054,7 +1534,6 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9014 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1066,8 +1545,8 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 
 			CFLAG:9014 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	;연모
@@ -1083,7 +1562,7 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 ENDIF
 
 ;-------------------------------------------------
-;유두캡 CFLAG:9015　CFLAG:8814
+;유두캡 CFLAG:9015 CFLAG:8814
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 15 && TEQUIP:35
@@ -1097,7 +1576,6 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9015 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1109,8 +1587,8 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 
 			CFLAG:9015 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	;연모
@@ -1126,7 +1604,7 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 ENDIF
 
 ;-------------------------------------------------
-;오나홀(후타나리/남자만) CFLAG:9016　CFLAG:8815
+;오나홀(후타나리/남자만) CFLAG:9016 CFLAG:8815
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 16 && TEQUIP:30
@@ -1140,7 +1618,6 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9016 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1152,8 +1629,8 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 
 			CFLAG:9016 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	;연모
@@ -1194,7 +1671,6 @@ IF SELECTCOM == 20
 			ENDIF
 		ENDIF
 		CFLAG:9020 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1214,8 +1690,8 @@ IF SELECTCOM == 20
 			PRINTFORMW 
 			CFLAG:9020 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1244,7 +1720,6 @@ IF SELECTCOM == 21
 			ENDIF
 		ENDIF
 		CFLAG:9021 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1264,8 +1739,8 @@ IF SELECTCOM == 21
 			PRINTFORMW 
 			CFLAG:9021 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1282,7 +1757,6 @@ IF SELECTCOM == 22
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9022 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1302,8 +1776,8 @@ IF SELECTCOM == 22
 			PRINTFORMW 
 			CFLAG:9022 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1322,7 +1796,6 @@ IF SELECTCOM == 23
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9023 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1342,8 +1815,8 @@ IF SELECTCOM == 23
 			PRINTFORMW 
 			CFLAG:9023 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 ;노니는 모란
 IF SELECTCOM == 612
@@ -1357,7 +1830,6 @@ IF SELECTCOM == 612
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9612 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모+노출벽Lv3이상+V감각Lv3이상
@@ -1381,8 +1853,8 @@ IF SELECTCOM == 612
 			PRINTFORMW 
 			CFLAG:9612 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1411,7 +1883,6 @@ IF SELECTCOM == 24
 			ENDIF
 		ENDIF
 		CFLAG:9024 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1431,9 +1902,10 @@ IF SELECTCOM == 24
 			PRINTFORMW 
 			CFLAG:9024 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;역강간 CFLAG:9025
@@ -1442,33 +1914,317 @@ ENDIF
 IF SELECTCOM == 25
 	;처음
 	IF CFLAG:9025 == 0
-		;연모
-		IF TALENT:150
-			PRINTFORMW 
-		;그 외
-		ELSE
-			PRINTFORMW 
+		;助手魔理沙
+		IF ASSI > 0 && ASSIPLAY
+			IF NO:ASSI == 2
+				;魔理沙が処女
+				IF !EXP:ASSI:0
+					;魔理沙が恋慕持ち
+					IF TALENT:ASSI:150
+						;屈服刻印Lv3
+						IF MARK:2 >= 3
+							PRINTFORMW 『あーあ,よりによって私の初めては香霖か』
+							PRINTFORMW 「命令だから仕方ないと諦めるんだね,魔理沙」
+							PRINTFORMW 『お前もお前で少しは嬉しがれよ.こんな美少女の初めてがお前のものなんだぜ』
+							;恋慕
+							IF TALENT:150
+								PRINTFORMW 「いやいや,嬉しいよ.思わずツケを負けてあげたくなる程に」
+								PRINTFORMW 『いまいち真実味が感じられないな……
+								PRINTFORMW  ツケを全部返して釣りが来るくらいの価値はあると思うぜ,魔理沙さんには』
+							;恋慕なし
+							ELSE
+								PRINTFORMW 「さすがにこれは喜んで良いものなのかどうか…….大旦那にも合わせる顔がない」
+								PRINTFORMW 『いや,そこで真面目に返されると…….まあ良いや,やるか』
+								PRINTFORMW 「君は逆に軽すぎるだろう,この重大事に」
+								PRINTFORMW 『無駄に深刻ぶっても仕方ないだろ.それに私はあいつが望むなら何だってできるぜ』
+							ENDIF
+						;屈服刻印Lv2以下
+						ELSE
+							;魔理沙屈服刻印Lv3
+							IF MARK:ASSI:2 >= 3
+								PRINTFORMW 『それじゃあ,い,入れるぜ香霖』
+								PRINTFORMW 「大丈夫か魔理沙,震えてるぞ?」
+								PRINTFORMW 『そりゃ,は,初めての時は私だって,緊張するぜ』
+								PRINTFORMW 「初めて……そうなのか?」
+								PRINTFORMW 『何だ,香霖は私がそんな尻軽に見えてたのか』
+								PRINTFORMW 「そういう訳じゃないが,この状況でまだだったというのが意外だったから……」
+								PRINTFORMW 『私も最初はあいつが良かったんだけどな……ま,命令だから仕方ないぜ』
+								PRINTFORMW 「君はそれでいいのか,魔理沙.何なら今から頼んで……」
+								PRINTFORMW 『良いんだ,あいつがこれを望んでるなら.
+								PRINTFORMW  香霖,お前はもっと喜べよ.私の初めてをお前にやるんだから……」
+							;魔理沙屈服刻印Lv2以下
+							ELSE
+								PRINTFORMW 『い,行くぜ香霖』
+								PRINTFORMW  仰向けになった霖之助に言い,魔理沙は自らの秘所と霖之助のペニスに手を添え……
+								PRINTFORMW  だがそこまでで魔理沙の動きは止まった.
+								PRINTFORMW 『な,なあ.初めては……せめてお前ので……』
+								PRINTFORMW  涙を浮かべ,魔理沙は%CALLNAME:MASTER%へ振り向いたが,
+								PRINTFORMW %CALLNAME:MASTER%の返答は「否」だ.
+								PRINTFORMW 「君という奴は……」
+								PRINTFORMW  霖之助は%CALLNAME:MASTER%を睨みつけたが,
+								PRINTFORMW それで下を膨らませていては説得力もあったものではない.
+								PRINTFORMW  それにしても二人ともまだまだ反抗的だ,まだ仕込みが足りていないようだ.
+								PRINTFORMW だがそれは次回以降どうにかすれば良いだけだ.
+								PRINTFORMW そう結論付け,%CALLNAME:MASTER%は魔理沙に続けるように命じた.
+								PRINTFORMW 「地獄に落ちろ……」
+								PRINTFORMW  霖之助の呪詛の言葉は,その後に続く魔理沙の絶叫にかき消され
+								PRINTFORMW  誰の耳に届くこともなかった……
+							ENDIF
+						ENDIF
+					;魔理沙恋慕なし
+					ELSE
+						;恋慕持ち
+						IF TALENT:150
+							PRINTFORMW 『痛ぅ……う.は,入ったぜ,何とか』
+							PRINTFORMW 「大丈夫か,魔理沙.今の感触からすると経験ないだろ,君」
+							PRINTFORMW 『……まあな.でも良いんだ,香霖のだから.平気だぜ,私は』
+							PRINTFORMW 「平気か.ならば動くよ」
+							PRINTFORMW 『え? ちょ,ちょっとだけ待ってくれ.さすがに今すぐは……』
+							PRINTFORMW 「駄目だ,そういう命令だからね.じゃあやるよ」
+							PRINTFORMW 『あ,あああああああああっ!』
+							PRINTFORMW  絶叫を上げる魔理沙を,しかし霖之助は意に介さず攻め立てる.
+							PRINTFORMW  一瞬だけ%CALLNAME:MASTER%のそれと交わされた眼には,一片の迷いも躊躇もなかった.
+							PRINTFORMW 「魔理沙,もう少し我慢できないのかい.彼が見ている前であまり無様なのは……
+							PRINTFORMW  ……はて,これじゃどっちが調教されてるのだかわからないな」
+							PRINTFORML 
+							PRINTFORMW  結局,その後も最後まで魔理沙の絶叫は止まることはなかった……
+						;恋慕なし+魔理沙好感度500未満
+						ELSEIF CFLAG:ASSI:2 < 500
+							PRINTFORMW 『入れるぜ……香霖』
+							PRINTFORMW  魔理沙の手が霖之助のペニスへと伸び,
+							PRINTFORMW ゆっくりとまだ毛も生え揃わない自らの秘所へと導く.
+							PRINTFORMW  しかし行為の前,自らの手でさんざん慰めていた魔理沙のそこは,
+							PRINTFORMW それでもまだ霖之助を受け入れるには早すぎたのか.
+							PRINTFORMW  先端が沈み込むか否かのあたりで魔理沙の動きは止まってしまった.
+							PRINTFORMW 「魔理沙,もしかしなくても君は……」
+							PRINTFORMW 『はは,見てのとおりの未通女だぜ.
+							PRINTFORMW  これだけ濡らせば大丈夫かと思ったんだが,そんな甘くなかったな』
+							PRINTFORMW 「まったく相変わらず無茶をする…….しかしこれ以上は無理そうだ.
+							PRINTFORMW  ……なんとかして貰えるよう頼んでみるか」
+							PRINTFORMW 『嫌だ,続けるぜ』
+							PRINTFORMW 「続けるって言っても,この時点でいっぱいいっぱいじゃないか」
+							PRINTFORMW 『それでも,チャンスなんだ,これは』
+							PRINTFORMW 「チャンスって何のだい?」
+							PRINTFORMW 『……だよ』
+							PRINTFORMW 「え? すまない,よく聞こえなかったんだが」
+							PRINTFORMW 『っこの,鈍感…….私の初めてを香霖に……その……ごにょごにょ』
+							PRINTFORMW 「え,あ,……は? えーと……」
+							PRINTFORMW 『うるさい黙れコン畜生! 香霖,お前が私の初めての相手だ.
+							PRINTFORMW  嬉しいだろ,それとも嬉しくないか?』
+							PRINTFORMW 「嬉しい嬉しくないの問題じゃなくて,どっちかと言うと……」
+							PRINTFORMW 『そんな事は聞いてないぜ,香霖.2択だ,嬉しいか,嬉しくないか.どっちだ』
+							PRINTFORMW 「……その2択しかないならば…….いや,違うな.ここは正確に答えるべきか.
+							PRINTFORMW  どうやらこの状況が嬉しくて仕方ないようだ.色々と度し難いな,我が事ながら」
+							PRINTFORMW  見てくれ,これを.これがここまで大きくなったのを見るのは初めてだ.痛い程だ」
+							PRINTFORMW 『……この馬鹿,せめてもう少し他に感動を表す言葉は無いのかよ』
+							PRINTFORMW 『いや,香霖にそんなものを少しでも期待した私が馬鹿なのか』
+							PRINTFORMW 『良いや,馬鹿2人ならちょうど良いだろ.なあ,香霖』
+							PRINTFORML 
+							PRINTFORMW 『……愛してるぜ』
+							PRINTFORML 
+							PRINTFORMW  霖之助の耳元で小さく囁き,魔理沙は一気に腰を下ろし,
+							PRINTFORMW そして霖之助を自らの中に迎え入れた.
+							PRINTFORMW 『あああああああああああああああああっ!』
+							PRINTFORMW 「魔理沙っ! 何をやっているんだ!」
+							PRINTFORMW 『いつまでも……時間をかけて痛いよりも……
+							PRINTFORMW  一気にやった方が良いかと……思った……んだが』
+							PRINTFORMW  息も絶え絶えといった様子で,繋がったまま魔理沙は霖之助に倒れこんだ.
+							PRINTFORMW 『……ちょっとナメてたぜ,……まさかここまで痛いなんて』
+							PRINTFORMW 「どうしてこう君は…….昔から無鉄砲が過ぎるぞ」
+							PRINTFORMW 『昔から,か…….そうだな,いつも私が無茶やらかして
+							PRINTFORMW  ……んで香霖が迎えに来るんだっけ
+							PRINTFORMW  へへ,迷惑かけっ放しだな,昔から……
+							PRINTFORMW  なあ,香霖』
+							PRINTFORMW 「……なんだい?」
+							PRINTFORMW 『昔からの夢が叶ったからな.嬉しいぜ,私は』
+							PRINTFORMW 「……夢……?」
+							PRINTFORMW 『いつか香霖とこうなる夢だよ.
+							PRINTFORMW  ……まあ予定では新婚初夜,丘にある赤い屋根の家の,
+							PRINTFORMW  ふかふかのベッドの上の筈だったんだが』
+							PRINTFORMW 「……現実はどことも知れぬ薄暗い地下の,硬いベッドの上だな」
+							PRINTFORMW 『こういう状況で茶化すなよ.恋の魔法使い,一世一代の大告白だぜ』
+							PRINTFORMW 「そうだね,悪かったよ魔理沙」
+							PRINTFORMW 「……君の事を愛してる,魔理沙」
+							PRINTFORMW 『う,うう……』
+							PRINTFORMW 「どうした魔理沙?」
+							PRINTFORMW 『うわああーん……そ,そういう事は,ひっく,もっと早く言え馬鹿!
+							PRINTFORMW  香霖の馬鹿! 馬鹿香霖!』
+							PRINTFORMW 「悪かった…….僕が悪かったから泣き止んでくれ,魔理沙」
+							PRINTFORMW 「君が泣いていると……なんだ,その……僕も辛い」
+							PRINTFORMW 『うるさい馬鹿! えぐっ,泣いているもんか.でもこっちは見るな馬鹿!』
+							PRINTFORMW 「……その発言は色々理不尽だな.それにどれだけ馬鹿と言えば気が済むんだ.
+							PRINTFORMW  ……そうだな,見なければ良いんだろう?」
+							PRINTFORMW  そう言って,霖之助は倒れこんだ魔理沙の頭を右手で抱きかかえ,
+							PRINTFORMW 自分の胸に押し付けた.
+							PRINTFORMW 「これで良いだろ,これなら君の顔は見えない.落ち着くまでそうしてると良い」
+							PRINTFORMW 『う,うん……ひっく』
+							PRINTFORMW …………
+							PRINTFORMW ……
+							PRINTFORMW …
+							PRINTFORMW 『なあ,香霖』
+							PRINTFORMW 「落ち着いたかい?」
+							PRINTFORMW 『いや,その……香霖の心臓がドキドキうるさいんだが』
+							PRINTFORMW 「……仕方ないじゃないか.他の誰でもない,魔理沙とこうなってるんだ.
+							PRINTFORMW  これで落ち着けるわけがないだろう」
+							PRINTFORMW 『は,恥ずかしいこと言うな,この馬鹿!』
+							PRINTFORMW 「……魔理沙の鼓動も,随分早いようだけど?」
+							PRINTFORMW 『う,うるさい馬鹿! 馬鹿馬鹿馬鹿!』
+							PRINTFORML 
+							PRINTFORMW  その頃,すっかり存在を忘れられていた%CALLNAME:MASTER%は部屋の外で扉にもたれていた.
+							PRINTFORMW  部屋の中はまだ騒がしい.どうやら事が済むまでは,いましばらくかかりそうだ.
+						;それ以外
+						ELSE
+							PRINTFORMW 『私の初めては香霖か……』
+							PRINTFORMW 『本当は最初は好きな人とが良かったんだが……まあ良いさ,香霖なら』
+						ENDIF
+					ENDIF
+					CFLAG:9801 = 1
+				;魔理沙非処女
+				ELSE
+					;魔理沙が恋慕持ち
+					IF TALENT:ASSI:150
+						PRINTFORMW 『くふっ……ふう,全部入ったぜ.……気持ち良いか,香霖?』
+						PRINTFORMW 「君は良いのか.僕とその……こんな」
+						PRINTFORMW 『別に.もう初めてじゃないしな……』
+						PRINTFORMW 『あ,でも変な気を起こすなよ,私にはあいつがいるんだからな』
+						;恋慕
+						IF TALENT:150
+							PRINTFORMW 「そこだけは心配しなくて良いさ.僕だって二股かける程に盛んではない.
+							PRINTFORMW  ……って,痛ててて! いきなり何をするんだ魔理沙!?」
+							PRINTFORMW 『そんな完璧に否定されるのも,それはそれでやっぱりムカつくぜ.
+							PRINTFORMW  しかもよく考えたら恋敵か,お前!』
+						;恋慕なし
+						ELSE
+							PRINTFORMW 「……ああ」
+							PRINTFORMW 『ん,どうした香霖,何を泣いてんだ?
+							PRINTFORMW  私が初めてじゃなかったのが泣くほど悔しかったのか?』
+							PRINTFORMW 「……違う,そんなことじゃない」
+							PRINTFORMW 『変な奴だな,気持ち良いのに泣くなんて.どっかおかしいんじゃないのか?』
+						ENDIF
+					;魔理沙恋慕なし
+					ELSE
+						;恋慕
+						IF TALENT:150
+							PRINTFORMW 『くう,入った…….香霖,どうだ?』
+							PRINTFORMW 「うん,良い……んじゃないのか?」
+							PRINTFORMW 「なんだよ,それ.随分と上の空だな,だいたい私じゃなくてどこを見て……」
+							PRINTFORMW  そこまで言って魔理沙は,
+							PRINTFORMW 霖之助の視線の先にいたのが%CALLNAME:MASTER%だったのに気づいたようだ.
+							PRINTFORMW  不満げに頬を膨らませた魔理沙の右手が,霖之助の脚の間へと忍び寄った.
+							PRINTFORMW 「ん? ……痛゛だだだだだ! やめろ,魔理沙,潰れる!」
+							PRINTFORMW 『うるさい,霖之助のなんか潰れてしまえ』
+						;恋慕なし
+						ELSE
+							;霖之助が魔理沙の処女を奪った
+							IF CFLAG:9801 == 1
+								;魔理沙のV感覚が2以下
+								IF ABL:ASSI:1 <= 2
+									PRINTFORMW 『ん……まだ少し痛いぜ』
+									PRINTFORMW 「大丈夫か,魔理沙.あまり無理しないほうが……」
+									PRINTFORMW 『ブチ抜いた張本人が何を言ってるんだか.ま,少しずつ慣れるだろ』
+									PRINTFORMW 「なんと言うか……すまん」
+									PRINTFORMW 『謝ってどうすんだ.いいから少しは香霖も動いてくれ.
+									PRINTFORMW  さっきからあいつが睨んでるぜ』
+									PRINTFORMW 「あ,ああ.……こうか?」
+									PRINTFORMW 『あぐっ……! 少しは……加減してくれ.
+									PRINTFORMW  香霖じゃなかったらぶっ飛ばしてるとこだぜ』
+									PRINTFORMW 「す,すまない.もう少しゆっくりが良かったのか」
+									PRINTFORMW  なんで金を出して仕入れた奴隷同士がイチャついてるのを見せ付けられているのか.
+									PRINTFORMW  方針を誤ったかもしれん.%CALLNAME:MASTER%は少し頭を抱えた.
+								;魔理沙のV感覚が3以上
+								ELSE
+									PRINTFORMW 『んっ……へへ,なかなか良くなってきたぜ』
+									PRINTFORMW 「本当にもう痛くないのか,魔理沙?」
+									PRINTFORMW 『ああ,気持ち良いぜ.結構相性良いのかもな,私たち.……はあっ』
+									PRINTFORMW 「それは良かった.じゃあもう少し激しくしても大丈夫だな」
+									PRINTFORMW 「ひあっ! うう,いきなりは酷いぜ香霖……って言って,るのに,あああっ!」
+									PRINTFORMW  バケツに水入れて来て,あの二人の頭からブッかけてえ……
+									PRINTFORMW  %CALLNAME:MASTER%はその衝動を抑えるのに,やや苦労していた.
+								ENDIF
+							;霖之助以外が魔理沙の処女を奪った+魔理沙好感度500未満
+							ELSEIF CFLAG:ASSI:2 < 500
+								PRINTFORMW 『香霖のはこんな感じか.入れて見てみるとけっこう個性があるもんだな』
+								PRINTFORMW 「……女の子がそういうことを口にしない方が良いよ思うよ」
+								PRINTFORMW 『単なる知的好奇心だぜ.それに私は香霖のこれが一番好きだぜ,今のところな』
+								PRINTFORMW 「ありがたいね,霧雨魔理沙杯の暫定王者か,僕は」
+								PRINTFORMW 『少し違うぜ,霧雨魔理沙男性器検定の特級金賞ってとこだ.ちんこ検定でもいいぜ』
+								PRINTFORMW 「だから女の子がそういうことを口にするなと言うのに……」
+								PRINTFORMW 『……悪い,少しふざけ過ぎた.
+								PRINTFORMW  ちょっとさ…….香霖に初めてをくれてやれなかったから……
+								PRINTFORMW  覚えてるか.昔,香霖を嫁に貰ってやる約束したの.結構本気だったんだぜ,あれ
+								PRINTFORMW  違うな,今でも本気だ.でも私は……私はっ!』
+								PRINTFORMW  ぽん,と魔理沙の頭に霖之助の手が置かれた.
+								PRINTFORMW そのまま霖之助はわしゃわしゃと魔理沙の頭を撫でた.
+								PRINTFORMW 『香……霖?』
+								PRINTFORMW 「そんなこと気にするな,魔理沙.その気持ちで十分嬉しいさ」
+								PRINTFORMW 『でも……』
+								PRINTFORMW 「気にするな,と言っているだろう.……仕方ない,口で駄目なら態度で示すまでだ」
+								PRINTFORMW 『ふあっ! こ,香霖! いきなり,激し,息,できなっ……!』
+								PRINTFORMW 「僕は不器用だからな.魔理沙がそんな下らないことを気にしなくなるまで続けるぞ」
+								PRINTFORMW 『こ,香霖……っ!』
+								PRINTFORMW  魔理沙の小さな体躯が激しく揺すられる.
+								PRINTFORMW もはや犯されているのがどちらかわかったものではない.
+								PRINTFORMW 「どうだ,魔理沙.少しは忘れられそうか!」
+								PRINTFORMW 『うん,うんっ! もっと,もっとしてくれ,香霖! 私を全部塗り潰してくれ!』
+								PRINTFORMW 「ああ.いくらでもやってやるさ,魔理沙!」
+								PRINTFORMW 『ああっ,ああっ! 香霖,香霖,香霖!』
+								PRINTFORMW 「魔理沙,魔理沙,魔理沙あっ!」
+								PRINTFORMW 何故か%CALLNAME:MASTER%は,完全に部外者扱いになっていた.
+							;霖之助以外が魔理沙の処女を奪った+魔理沙好感度500以上
+							ELSE
+								PRINTFORMW 『悪いな香霖,中古品で.まあせめて楽しんでくれ』
+								PRINTFORMW 「魔理沙.僕は自分を貶めるようなことを言うように,君を育てた覚えはないぞ」
+								PRINTFORMW 『いつからお前は私の親になったんだ.……でもまあ,悪かった』
+							ENDIF
+						ENDIF
+					ENDIF
+					CFLAG:9801 += 2
+				ENDIF
+			ENDIF
 		ENDIF
-		CFLAG:9025 = 1
-		RETURN 0
+		CFLAG:9025 = (CFLAG:9801 > 1)
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9025 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			;助手魔理沙
+			IF ASSI > 0 && ASSIPLAY
+				IF NO:ASSI == 2
+					PRINTFORMW 『……香霖,一つ聞いとくぜ.
+					PRINTFORMW  どうしてお前は,こういう時まで私じゃなくてあいつばかり見てるんだ?』
+				ENDIF
+			ENDIF
 			CFLAG:9025 = 3
 		;그 외
 		ELSEIF CFLAG:9025 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			;助手魔理沙
+			IF ASSI > 0 && ASSIPLAY
+				IF NO:ASSI == 2
+					PRINTFORMW 『ん……気持ち良いか,香霖?』
+					PRINTFORMW 「ああ……」
+					;魔理沙恋慕
+					IF TALENT:ASSI:150
+						PRINTFORMW 『そうか,そりゃ良かった.……なあ,あいつもそう言ってくれるかな?』
+						PRINTFORMW 「……そうだね」
+					;魔理沙恋慕なし
+					ELSE
+						PRINTFORMW 『なんだ,その生返事は.
+						PRINTFORMW  もしかしてまだ申し訳ないとか,責任がどうとか考えてるのか?
+						PRINTFORMW  だとしたら失礼だぜ香霖.命令されたことだけど,私が好きでやってることだ.
+						PRINTFORMW  細かいことは良いから少しは楽しめ.そんなだとすぐ老け込むぜ』
+					ENDIF
+				ENDIF
+			ENDIF
 			CFLAG:9025 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;조수를 범한다 CFLAG:9026
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;처음
 	IF CFLAG:9026 == 0
@@ -1480,7 +2236,6 @@ IF SELECTCOM == 26
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9026 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1492,48 +2247,92 @@ IF SELECTCOM == 26
 			PRINTFORMW 
 			CFLAG:9026 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 섹스 CFLAG:9030
 ;정상위, 후배위를 나눠쓰기가 귀찮은 귀차니스트용
 ;체위마다 나눠쓰고 싶은 분은 이 항목을 삭제한 다음 각 체위별 대사를 써주세요
 ;-------------------------------------------------
-IF SELECTCOM == 30 || SELECTCOM == 31
+IF GROUPMATCH(SELECTCOM, 30, 31, 32, 33, 34, 37, 38)
 	;처음
 	IF CFLAG:9030 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「結構長く生きてきたつもりだが,
+				PRINTFORMW  まさか魔理沙に後ろを捧げることになろうとは夢にも思わなかった……」
+				PRINTFORMW 『それほど長く生きてない私も,
+				PRINTFORMW  まさか香霖を掘ることになるなんて想像もしなかったぜ』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「こんな日がいつか来るとは思っていた……」
+			PRINTFORMW 「いいよ,覚悟は出来てる.やってくれ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「やめろ! 僕にそんなケは……ああっ……アッー!」
 		ENDIF
 		CFLAG:9030 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;A感覚Lv4以上
+				IF ABL:2 >= 4
+					;魔理沙がふたなり・半人半妖・オトコでない+ペニスバンド所持
+					IF !TALENT:ASSI:120 && !TALENT:ASSI:121
+						PRINTFORMW 『まったく香霖はヘンタイだぜ,そんなによがりやがって.
+						PRINTFORMW  本当に道具ならなんでも良いんだな』
+						PRINTFORMW 「ち,違……ううっ! も,もっと……してくれ」
+						PRINTFORMW 『仕方ないな.リクエストにお応えして大好きな道具で滅茶苦茶にしてやるぜ』
+					;それ以外
+					ELSE
+						PRINTFORMW 『まったく香霖はヘンタイだぜ,そんなによがりやがって』
+						PRINTFORMW 「こんな,風にしたのは,君たちだろうっ! くうぅっ!」
+						PRINTFORMW 『羨ましいな,随分と気持ち良さそうだぜ.
+						PRINTFORMW  ま,突っ込んでる私も気持ち良いんだけどな』
+					ENDIF
+				ELSE
+					;魔理沙がふたなり・半人半妖・オトコでない+ペニスバンド所持
+					IF !TALENT:ASSI:120 && !TALENT:ASSI:121
+						PRINTFORMW 『香霖の大好きな道具だぜ.もっと悦んだらどうだ?』
+						PRINTFORMW 「ぐああっ! ひゃ,ひゃめろっ……うあっ!」
+						PRINTFORMW 『あーあ,聞こえてないなこりゃ.まあそのうち慣れるかな』
+					;それ以外
+					ELSE
+						PRINTFORMW 『うあっ,なかなか良いぜ.香霖のここの穴は.気を抜くとすぐ出ちまいそうだ』
+						PRINTFORMW 「うわああああっ! 痛うぅ……」
+						PRINTFORMW 『香霖はそうでもないみたいだな.
+						PRINTFORMW  まあ良いや,調教なんだし私は好きにさせてもらうとするぜ』
+					ENDIF
+				ENDIF
+			ENDIF
 		;연모＋A감각Lv3이상
-		IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:2 >= 3 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「こんな,ところで感じるなんてっ!」
+			PRINTFORMW 「僕は変態に……なってしまったか……!」
 			CFLAG:9030 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「これが惚れた弱みか……
+			PRINTFORMW  好きな相手になら,全てを捧げられる女性の気持ちが少し理解できた気がする」
 			CFLAG:9030 = 4
-		;A감각Lv3이상
-		ELSEIF ABL:2 >= 3 && (CFLAG:9030 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		;A감각Lv4이상
+		ELSEIF ABL:2 >= 4 && (CFLAG:9030 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「何でこれが……こんなに気持ち良いんだ! うう,死んでしまいたい……」
 			CFLAG:9030 = 3
 		;그 외
 		ELSEIF CFLAG:9030 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「殺せっ! いっそのこと殺してくれえっ!」
 			CFLAG:9030 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;------------------------------------------------
@@ -1550,7 +2349,6 @@ ENDIF
 ;			PRINTFORMW 
 ;		ENDIF
 ;		CFLAG:9030 = 1
-;		RETURN 0
 ;	;2회째 이후
 ;	ELSE
 ;		LOCAL = PALAM:10 + UP:10
@@ -1571,8 +2369,8 @@ ENDIF
 ;			PRINTFORMW 
 ;			CFLAG:9030 = 2
 ;		ENDIF
-;		RETURN 0
 ;	ENDIF
+;	RETURN 0
 ;ENDIF
 
 ;-------------------------------------------------
@@ -1589,7 +2387,6 @@ ENDIF
 ;			PRINTFORMW 
 ;		ENDIF
 ;		CFLAG:9031 = 1
-;		RETURN 0
 ;	;2회째 이후
 ;	ELSE
 ;		LOCAL = PALAM:10 + UP:10
@@ -1610,13 +2407,14 @@ ENDIF
 ;			PRINTFORMW 
 ;			CFLAG:9031 = 2
 ;		ENDIF
-;		RETURN 0
 ;	ENDIF
+;	RETURN 0
 ;ENDIF
 
 ;-------------------------------------------------
 ;대면좌위애널 CFLAG:9032
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;처음
 	IF CFLAG:9032 == 0
@@ -1628,7 +2426,6 @@ IF SELECTCOM == 32
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9032 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
@@ -1649,8 +2446,8 @@ IF SELECTCOM == 32
 			PRINTFORMW 
 			CFLAG:9032 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1667,7 +2464,6 @@ IF SELECTCOM == 33
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9033 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
@@ -1688,8 +2484,8 @@ IF SELECTCOM == 33
 			PRINTFORMW 
 			CFLAG:9033 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1706,7 +2502,6 @@ IF SELECTCOM == 34
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9034 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
@@ -1727,9 +2522,10 @@ IF SELECTCOM == 34
 			PRINTFORMW 
 			CFLAG:9034 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;수음 CFLAG:9040
@@ -1737,32 +2533,63 @@ ENDIF
 IF SELECTCOM == 40
 	;처음
 	IF CFLAG:9040 == 0
+		;助手魔理沙
+		IF ASSI > 0 && ASSIPLAY
+			IF NO:ASSI == 2
+				PRINTFORMW 「魔理沙のこれを,手でやれと……?」
+				PRINTFORMW 『ああ,ちゃんと気持ちよくしてくれよ,香霖』
+				PRINTFORMW 「そもそも何で君にそんなモノがあるのか,その一点だけは興味あるが……
+				PRINTFORMW  実は男だったのか,君は?」
+				PRINTFORMW 『そんなわけあるか,昔から私のことは知ってるだろ』
+				PRINTFORMW 「そうだな,昔一緒に風呂に入っていた時には……」
+				PRINTFORMW 『わー! わーー!! わーーーっ!!!
+				PRINTFORMW  だ,黙れ香霖! いいからとっとと始めろ!』
+			ENDIF
 		;봉사정신Lv3이상
-		IF ABL:13 >= 3
-			PRINTFORMW 
+		ELSEIF ABL:13 >= 3
+			PRINTFORMW 「これを手でやるのか……
+			PRINTFORMW  手だけで済む分,まだ良しとするか」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「……これを,手でやれと?
+			PRINTFORMW  できれば断ると言いたいところだが……そうもいくまいな.
+			PRINTFORMW  確実にどこかおかしいぞ,君は.具体的に言うと脳が」
 		ENDIF
 		CFLAG:9040 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		;助手魔理沙
+		IF ASSI > 0 && ASSIPLAY && (CFLAG:9040 <= 4 || FLAG:11 == 2)
+			IF NO:ASSI == 2
+				;奉仕精神Lv5以上
+				IF ABL:13 >= 5
+					PRINTFORMW 「魔理沙……これで良いか?」
+					PRINTFORMW 『ああ,良いぜ.このまま香霖の眼鏡にブチ撒けて良いか?』
+					PRINTFORMW 「さすがに勘弁してくれ,後の手入れが面倒なんてものじゃないからね」
+				;それ以外
+				ELSE
+					PRINTFORMW 「何なんだ,この状況は……普通逆なんじゃないのか」
+					PRINTFORMW 『ほお,香霖は私にこういうことをやらせたかった,と.覚えとくぜ』
+					PRINTFORMW 「待ってくれ.そういう意味で言ったんじゃなくて……」
+				ENDIF
+			ENDIF
+			CFLAG:9040 = 5
 		;연모＋봉사정신Lv5
-		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:13 >= 5 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「本当に手だけで良いのか? 僕なら別に構わないんだが.
+			PRINTFORMW  ……すまない,本当は僕のほうが自省が効かなさそうなんだ」
 			CFLAG:9040 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9040 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「これで良いのだろう.僕にもあるものだからな,やり方は分かるさ」
 			CFLAG:9040 = 3
 		;그 외
 		ELSEIF CFLAG:9040 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「男に触らせて,何が楽しい.次からは自分で処理してくれ」
 			CFLAG:9040 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1771,37 +2598,109 @@ ENDIF
 IF SELECTCOM == 41
 	;처음
 	IF CFLAG:9041 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「……もはや,なんで君にこんな物が生えているか問うことはすまい」
+				PRINTFORMW 「それで,もう一度だけ聞くが僕にこれをどうしろと?」
+				PRINTFORMW 『舐めたり咥えたりしてくれ.フェラチオという奴だな』
+				PRINTFORMW 「やはり聞き違いではなかったか……」
+				PRINTFORMW 『ほらほら香霖,放っといても終わらないぜ.とっととやってくれ.
+				PRINTFORMW  フェラチオが気に食わないんなら尺八でも良いぜ』
+				PRINTFORMW 「なんで君はそんなにノリノリなんだ.そもそも言い方の問題ではないだろう.
+				PRINTFORMW  ……いや,待て.魔理沙,そもそもどうして尺八と呼ばれるかは知っているか?」
+				PRINTFORMW 『別に講釈はいらないぜ.そのまま和楽器の見立てだろ』
+				PRINTFORMW 「正解だ.では千鳥の曲というのは知っているか?」
+				PRINTFORMW 『それは知らないな.歌か何かか?』
+				PRINTFORMW 「残念,歌ではなく箏曲だな.琴の曲目の一つだ,語源はね.これも口取りの一種だ」
+				PRINTFORMW 『口取り……?』
+				PRINTFORMW 「おっとすまない.口取りとは,口淫の総称だな.
+				PRINTFORMW  語源の説明は,まあ必要ないだろうね
+				PRINTFORMW  さて,千鳥の曲だがこれは口取りをする側が相手の横に座り,
+				PRINTFORMW  される側は寝そべる姿勢となる.
+				PRINTFORMW  する側が比較的手が自由になるので,同時に愛撫も可能となる.
+				PRINTFORMW  その様を琴の演奏に見立てたのだろうな」
+				PRINTFORMW 『ほおほお』
+				PRINTFORMW 「他にはそうだな.雁が首というのもある.
+				PRINTFORMW  雁が音とも言うかな,いわゆるごく普通の口取りだ.
+				PRINTFORMW  先の千鳥の曲と共に,四十八手に入っているからこれらは比較的有名だろう」
+				PRINTFORMW 『ちょっと待ってくれ香霖.四十八手ってあの四十八手か?』
+				PRINTFORMW 「多分その四十八手だ.勘違いしている人間も多いようだが,
+				PRINTFORMW  四十八手とは単に男女の交合を48種描き連ねた物ではない
+				PRINTFORMW  性交における体位の各種から代表的な48種類を抜粋したものだ.
+				PRINTFORMW  当然愛撫や口取りも含まれる.
+				PRINTFORMW  そもそも締めとも言える48手目は何か知っているかい?」
+				PRINTFORMW 『知るわけがないぜ』
+				PRINTFORMW 「なぜそこで勝ち誇れるのか知らないが,説明すると寄り添いと言う.
+				PRINTFORMW  つまりは添い寝だな」
+				PRINTFORMW 『それだけなのか?』
+				PRINTFORMW 「それだけだ.腕枕でもすれば更に良いと本には書いてあったがね」
+				PRINTFORMW 「行為そのものも疎かにすべきではないが,やはり大切なのは心の交歓ということだ」
+				PRINTFORMW 「寄り添いはそれを端的にあらわす好例として,締めに配置されたのだろう」
+				PRINTFORMW 『ふーん.つまり香霖は子供の私を相手に四十八手の一つを験していたわけか』
+				PRINTFORMW 「人聞きの悪い言い方はやめてくれ.
+				PRINTFORMW  さておき,四十八手は一通り試せば,
+				PRINTFORMW  基本を一通り身につけられるという実用的な面もあるのだが,
+				PRINTFORMW  その名前にユニークな物が多い
+				PRINTFORMW  まあ,斯様にこの国の風土はこういった行為の編纂に関しても,
+				PRINTFORMW  遊び心と洒落っ気を忘れていなかっということだ」
+				PRINTFORMW 『なるほど,よくわかったぜ.
+				PRINTFORMW  ところで,それで有耶無耶にできたとは思ってないよな?』
+				PRINTFORMW 「……やはり駄目か?」
+				PRINTFORMW 『当たり前だ.ふむ,せっかく教わったんだし雁が首と千鳥の曲,両方やってもらうか
+				PRINTFORMW  何なら四十八手全部でも良いぜ』
+				PRINTFORMW 「勘弁してくれ.わかったよ,やればいいんだろう.やれやれ……」
+				PRINTFORMW 『仕方ないな,他のは勘弁してやるから口取りは両方頼むぜ』
+				PRINTFORMW 「藪を突いて蛇を出す,だな.
+				PRINTFORMW  薮蛇と言えば,一説によればこの言葉は
+				PRINTFORMW  茂みの中で行為に励んでいた男女にちょっかいを……
+				PRINTFORMW  ……これ以上はやめておこう,蛇は2匹で十分だ」
+			ENDIF
 		;봉사정신Lv3이상
-		IF ABL:13 >= 3
-			PRINTFORMW 
+		ELSEIF ABL:13 >= 3
+			PRINTFORMW 「これを咥えるのか? わかったよ,やれば良いのだろう……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「その薄汚いものを近付けるな,噛み切られたいか! やめろと言って……うぐぅ!」
 		ENDIF
 		CFLAG:9041 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「ちゅぷ……ぴちゃ……」
+				PRINTFORMW 『ふうっ……気持ち良いぜ香霖.良すぎて直ぐにでも出ちゃいそうだ』
+				;性液中毒Lv3以上
+				IF ABL:11 >= 3
+					PRINTFORMW 「んぐ……良いよ,いつでも好きなときに出しても」
+				;精液中毒Lv2以下
+				ELSE
+					PRINTFORMW 「……勘弁してくれ,出すならそこのチリ紙にでも出してくれ」
+				ENDIF
+			ENDIF
 		;연모＋봉사정신Lv5
-		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9041 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:13 >= 5 && (CFLAG:9041 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「くちゅ,ちゅぷっ……ふう.すまない少し顎が疲れた.熱を入れすぎたかな」
 			CFLAG:9041 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9041 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「何となくどうすればいいのか,どこが良いのかを体が覚えてきたようだ.
+			PRINTFORMW  ……死んでしまいたい」
 			CFLAG:9041 = 3
 		;그 외
 		ELSEIF CFLAG:9041 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「うえっ……げえっ……く,糞っ垂れめ……」
 			CFLAG:9041 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;파이즈리 CFLAG:9042
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 42
 	;처음
 	IF CFLAG:9042 == 0
@@ -1813,7 +2712,6 @@ IF SELECTCOM == 42
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9042 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋봉사정신Lv5
@@ -1829,9 +2727,10 @@ IF SELECTCOM == 42
 			PRINTFORMW 
 			CFLAG:9042 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;스마타 CFLAG:9043
@@ -1839,28 +2738,86 @@ ENDIF
 IF SELECTCOM == 43
 	;처음
 	IF CFLAG:9043 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『むー……これだけ塗れてりゃ大丈夫かな』
+				PRINTFORMW 「今度はなにをする気だ? ああ,ちょんか」
+				PRINTFORMW 『ちょん? 何だそりゃ?』
+				PRINTFORMW 「君が行おうとしているそれだ.素股,と言えばわかりやすいか」
+				PRINTFORMW 『初耳だぜ,そんな名前は』
+				PRINTFORMW 「僕が子供の頃はそう言っていたものだが,年と共に廃れたのかな」
+				PRINTFORMW 『香霖が子供の頃か……何時ごろだ,それは?』
+				PRINTFORMW 「さてね,君が生まれるより遙か昔なのはたしかだよ.
+				PRINTFORMW  ちょんだが,手軽な娯楽としてなかなか人気はあった.
+				PRINTFORMW  実は一番これの恩恵を享受していたのは思春期の子供らだったのだがね」
+				PRINTFORMW 『子供って……乱れてるな,そこは』
+				PRINTFORMW 「何を他人事のように.君の住んでいたあの人里でもごく当たり前の行為だったよ.
+				PRINTFORMW  昔の農村山村じゃ珍しくもない話だ」
+				PRINTFORMW 『え,えええええ!?』
+				PRINTFORMW 「と言っても君のご両親が子供だった頃には,もう廃れた風習だとは思うがね」
+				PRINTFORMW 『そ,そうか…….と言うか本当に何歳なんだ,香霖は』
+				PRINTFORMW 「多分君が考えるよりは年寄りだと思うよ.さて,話を戻そうか.
+				PRINTFORMW  これが持てはやされた……というと語弊があるが,まあ良いか.
+				PRINTFORMW  受け入れられたのは,これの特徴に由来する.
+				PRINTFORMW  性交の代替行為として考えると,陰茎の挿入が必要ないというのが最大の違いだね.
+				PRINTFORMW  まだ身体が育ちきっていない年齢の子でも,
+				PRINTFORMW  これならば体にそう負担をかけることなく行為に及べるというわけだ.
+				PRINTFORMW  ……まあ,そのまま勢いで本番に及ぶ例も少なくはないようだが.思春期だからねえ
+				PRINTFORMW  あとは妊娠の恐れがないからね.手軽に事に及べる.
+				PRINTFORMW  さっきも言ったように,まだ身体の育ちきっていない年齢の子や,不義密通,
+				PRINTFORMW  それに……いや,これは良いか」
+				PRINTFORMW 『何だよ,言いかけてやめるなよ.気になるじゃないか』
+				PRINTFORMW 「……聞きたいのか?」
+				PRINTFORMW 『おう,気になるからな』
+				PRINTFORMW 「……いつも同じようなものばかり食べていると,
+				PRINTFORMW  たまには変わったものも食べたくなるだろう.
+				PRINTFORMW  それと同じことだよ,たまにはゲテモノと身をあわせるのも一興だろう.
+				PRINTFORMW  そういうときにも非常に重宝するんだよ,これは」
+				PRINTFORMW 『ゲテモノって言うと……凄い不細工とかか?』
+				PRINTFORMW 「いや,そういうのではなくムラのコミュニティから外れた存在だな.
+				PRINTFORMW  非人と呼ばれる階層の面々や,不具者……あとは妖怪のあいのことかもな」
+				PRINTFORMW 『あー……えっと……悪かった』
+				PRINTFORMW 「構わないよ,昔の話だ」
+				PRINTFORMW 『……いや,でもさ』
+				PRINTFORMW 「言っておいてなんだが,あまり気にされるとかえって気になる.
+				PRINTFORMW  それに君がしおらしいと気持ち悪いよ」
+				PRINTFORMW 『わかったよ.しかし気持ち悪いとは随分な言われ様だな.
+				PRINTFORMW  これは遠慮せずにやってくれ,ってことだな』
+				PRINTFORMW 「……おや?」
+				PRINTFORMW 『安心しろ,ちゃんと気軽にできる方ですませてやるよ.万が一孕んでも困るからな』
+				PRINTFORMW 「……この場合孕むの主語はどっちなのか,若干気になるんだが」
+				PRINTFORMW 『気にするなと言ったり,気になると言ったり.忙しいやつだな,香霖は』
+			ENDIF
 		;연모 있음
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「素股? それで良いのかい.
+			PRINTFORMW  それで満足されるよりは,僕としては中に出してくれた方が……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「……まあ,まだマシか.体勢の屈辱感にさえ目を瞑れば」
 		ENDIF
 		CFLAG:9043 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『これが女同士だったら貝合わせって言うんだっけ.
+				PRINTFORMW  こういう場合はなんて言うんだ? 棒合わせか?』
+				PRINTFORMW 「知らないよ,そんなの……」
+			ENDIF
 		;연모 있음
-		IF TALENT:150 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「挿れてくれても……良いんだが」
 			CFLAG:9043 = 3
 		;그 외
 		ELSEIF CFLAG:9043 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「とっとと済ませてくれ.結構腰にくるんだ,この姿勢」
 			CFLAG:9043 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1869,36 +2826,66 @@ ENDIF
 IF SELECTCOM == 44
 	;처음
 	IF CFLAG:9044 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「舐めるのか,ここを……?」
+				PRINTFORMW 『そ,そうだよ』
+				PRINTFORMW 「その,魔理沙の……お尻の穴だぞ」
+				PRINTFORMW 『わかってるよ! 私だって恥ずかしいんだから,いちいち確認するな!』
+				PRINTFORMW 「あ,ああ,すまない.えーと……」
+				PRINTFORMW 『ひ,広げるなっ! 何考えてんだ香霖!』
+				PRINTFORMW 「し,仕方ないだろ.こうしないとどこなのか見えないし……」
+				PRINTFORMW 『確認しなくていい! 適当にやれ!』
+				PRINTFORMW 「わかったよ,えーとそれじゃあ……」
+				PRINTFORMW 『い,いやちょっと待て! いいか,ここでおとなしくして待ってろよ!』
+				PRINTFORMW 「あ,ああ……?」
+				PRINTFORML 
+				PRINTFORMW 『悪い,待たせたな.やっていいぜ』
+				PRINTFORMW 「わかったけど,一体風呂場で何をしてたんだ君は……?」
+				PRINTFORMW 『そ,そんなこと聞くなっ,この馬鹿あっ!』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「ん……いや,平気だ,続けるよ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「肛門を舐めろって……正気なのか君は」
 		ENDIF
 		CFLAG:9044 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『んくっ……』
+				PRINTFORMW 「気持ちいいのか,魔理沙?」
+				PRINTFORMW 『き,聞くなそんなこと!』
+			ENDIF
 		;연모+순종Lv5이상
-		IF TALENT:150 && ABL:10 >= 5 && (CFLAG:9044 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:10 >= 5 && (CFLAG:9044 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「正直,今でもこんな行為は正気の沙汰ではないと思っているが……
+			PRINTFORMW  それでも平気なものだな,君のだったら」
 			CFLAG:9044 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9044 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「いいのか,直腸は人体でも最も吸収の良い箇所の一つだ.
+			PRINTFORMW  ここに毒でも仕込まれたらイチコロだぞ.
+			PRINTFORMW  まあ,それだけ信頼されていると考えて良いのかな,これは」
 			CFLAG:9044 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9044 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「今までかなり惨めだと思っていたが,
+			PRINTFORMW  考えてみればされる方も惨めに感じるのじゃないか,これは?」
 			CFLAG:9044 = 3
 		;그 외
 		ELSEIF CFLAG:9044 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「精神的にもそうだが,肉体的にもきついな,これは.
+			PRINTFORMW  妙な味じゃなかったら,それもそれで異常だが」
 			CFLAG:9044 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1907,33 +2894,49 @@ ENDIF
 IF SELECTCOM == 60
 	;처음
 	IF CFLAG:9060 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「名称はローション,用途は摩擦の軽減か.
+				PRINTFORMW  しかし液体ですらそれが道具ならば認識できるのか,僕の能力は
+				PRINTFORMW  ふむ,ヌルヌルしているのにそこまで纏わりつくわけでもない.面白いな,これは」
+				PRINTFORMW 『おーい,香霖.いつまでそれで遊んでるつもりだよ.
+				PRINTFORMW  ……聞いてないな,仕方ない,勝手に続けるぜ』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「名称はローション,用途は摩擦の軽減……」
+			PRINTFORMW 「すまないな,こういうものに頼らなければならない身で」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「こんなものを用いてまで僕にこだわらなくても,僕は一向に構わないんだが……」
 		ENDIF
 		CFLAG:9060 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『ビショビショだぜ,香霖.漏らしたみたいだぜ』
+				PRINTFORMW 「あのなあ.楽しいのか,僕を辱めて?」
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9060 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9060 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「この時ばかりは男に生まれついたのが恨めしいな」
 			CFLAG:9060 = 3
 		;그 외
 		ELSEIF CFLAG:9060 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「濡れるしベタつくし……不快極まりないんだがな」
 			CFLAG:9060 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;미약 CFLAG:9061
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 61
 	;처음
 	IF CFLAG:9061 == 0
@@ -1945,7 +2948,6 @@ IF SELECTCOM == 61
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9061 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1957,8 +2959,8 @@ IF SELECTCOM == 61
 			PRINTFORMW 
 			CFLAG:9061 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1982,7 +2984,9 @@ IF SELECTCOM == 62
 		PRINTFORMW 
 		CFLAG:9062 = 1
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;알몸 에이프런(새댁 플레이) CFLAG:9090 해제 CFLAG:8823
@@ -1991,54 +2995,60 @@ ENDIF
 IF SELECTCOM == 90 && TEQUIP:59
 	;처음
 	IF CFLAG:9090 == 0
+		PRINTFORMW 「エプロンだな.用途は主に衣服の前面を保護するための作業着の一種だ.
+		PRINTFORMW  とは言えこれは生地がなかなかに上等だし,
+		PRINTFORMW  フリルなんかもついているから耐久性は期待できそうにない.
+		PRINTFORMW  色も白だし,実用よりはコスチュームとしてのエプロンだな.
+		PRINTFORMW  で,まさか僕にこれをつけろと言うんじゃなかろうな?
+		PRINTFORMW  はあ!? は,裸になってこれ一枚着ろというのか!?
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW  ……良いんだな,僕で.苦情は受け付けないからな」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW  今まで何度言ったかは忘れたが,言わせてもらうぞ.確実に君は頭がおかしい!」
 		ENDIF
 		CFLAG:9090 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9090 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「なあ,僕にこれを強要して楽しいか……? 君が良いというなら止めないが……」
 			CFLAG:9090 = 3
 		;그 외
 		ELSEIF CFLAG:9090 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「まあ,多少とはいえ衣服をまとえる分マシと考えるか……」
 			CFLAG:9090 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 	;처음
 	IF CFLAG:8823 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「止めるのか……それはまあ,そうだよな」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「そりゃまあ,目が腐る前に止めさせたくもなるよな,これは……」
 		ENDIF
 		CFLAG:8823 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:8823 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「何度もやらせるということは,多少は気に入ったのかい,それとも気まぐれか?」
+			PRINTFORMW 「まあ僕は従うだけだ.次もやりたいなら何度でもどうぞ」
 			CFLAG:8823 = 3
 		;그 외
 		ELSEIF CFLAG:8022 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「自分でさせておいて,自分がダメージを受けて……馬鹿か君は」
+			PRINTFORMW 「単純な失敗をする者ではなく,同じ失敗を繰り返すのを愚かと言うのだぞ」
 			CFLAG:8823 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2047,28 +3057,48 @@ ENDIF
 IF SELECTCOM == 100 && TEQUIP:50
 	;처음
 	IF CFLAG:9100 == 0
+		PRINTFORMW 「なんだいそれは.少し天狗の写真機に似てはいるが……
+		PRINTFORMW  名称はビデオカメラ.用途は……写真と違って動く像を保存する.
+		PRINTFORMW  大したものだな,外の世界の道具は」
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『ま,そういうわけだ.綺麗に撮ってやるから,せいぜい乱れまくってくれよ,香霖』
+				PRINTFORMW 「趣味が悪いぞ,魔理沙.だいたいそんな物どうする気だ」
+				PRINTFORMW 『売るんだとさ,けっこう良い金になるらしいぜ』
+				PRINTFORMW 「冗談は休み休み……でもなさそうだな.勘弁してくれ……」
+				PRINTFORMW 『うまく撮れたら私にもわけて貰えるらしいんでな,気合入れていこうぜ』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「で,保存してどうする……う,売るのか!? 君が望むならば別に構わないが……
+			PRINTFORMW  しかし売れるのか,僕で?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「そしてその大した道具をこんな用途にしか使えないのか,君は」
 		ENDIF
 		CFLAG:9100 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『よく考えたら,これって香霖だけじゃなくて私も映ってるんだよな』
+				PRINTFORMW 「そうだな,やめる気になったかい?」
+				PRINTFORMW 『んー……,いや.見せ付けてやるのも面白そうだ,始めるぜ』
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9100 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9100 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「この間のはどうなったんだい? う,売れたのか……世の中物好きもいるものだ.
+			PRINTFORMW  いや,大丈夫だ.嫌なわけでは……ないこともないな,君以外の目に触れるのは」
 			CFLAG:9100 = 3
 		;그 외
 		ELSEIF CFLAG:9100 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「君という奴は……後々まで残るものまで使って僕を辱めて何が楽しい」
 			CFLAG:9100 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2077,109 +3107,203 @@ ENDIF
 IF SELECTCOM == 103 && TEQUIP:56
 	;처음
 	IF CFLAG:9103 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「名称は鏡.用途は物を映す.そのままだな.で,これを何に使うんだ?」
+				PRINTFORMW 『多分きっと間違いなく絶対香霖の想像通りだぜ』
+				PRINTFORMW 「そんな滅茶苦茶な日本語使ってまで強調しなくてもいいよ……この前でか.
+				PRINTFORMW  なあ,せめて目を瞑ったら駄目か?」
+				PRINTFORMW 『それだったらやる意味がないだろ,観念しな』
+				PRINTFORMW 「気の毒に.この鏡もどうせならもっとまっとうな物を映したかったろうに……」
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「……鏡の前で,かい?」
+			PRINTFORMW 「君がそれでいいのならば構わない……が恥ずかしいな,これは」
 		;노출벽Lv3이상
 		ELSEIF ABL:14 >= 3
-			PRINTFORMW 
+			PRINTFORMW 「鏡の前で……まったく妙なことを思いつくな,君は.
+			PRINTFORMW  道具屋に対する冒涜だな.だがまあ良いさ,香霖堂店主としてその挑戦,受けて立とう」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「鏡に映して……頭は大丈夫か,君は」
 		ENDIF
 		CFLAG:9103 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「そういえば鏡の向こうには,こっちとは別の世界が広がっているという説もあるな.
+				PRINTFORMW  向こうから僕たちを覗き込んでいる魔理沙と僕は,果たしてただの虚像なのかな?」
+				PRINTFORMW 『それで脅してるつもりか,香霖?
+				PRINTFORMW  良いさ,だったら向こうの奴らに見せ付けてやるぜ』
+			ENDIF
 		;연모+노출벽Lv3이상
-		IF TALENT:150 && ABL:14 >= 3 && (CFLAG:9103 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:14 >= 3 && (CFLAG:9103 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「見られている……
+			PRINTFORMW  いや,わかってはいる.あれはただの光の反射だ,その筈だ.……その筈なのに.
+			PRINTFORMW  み,見られているぞ.僕たちが,僕たちに……」
 			CFLAG:9103 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9103 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あまり鏡の中ばかり見ないでくれるか.
+			PRINTFORMW  僕はここにいるんだ,ここにいる僕を見てくれ.……僕も君を見ているからさ」
 			CFLAG:9103 = 4
 		;노출벽Lv3이상
 		ELSEIF ABL:14 >= 3
-			PRINTFORMW 
+			PRINTFORMW 「最初は狂気の沙汰だと思ったが,意外と慣れるものだな.
+			PRINTFORMW  それが悦びに変わったりはしないがね.今はまだ……」
 			CFLAG:9103 = 3
 		;그 외
-		ELSEIF CFLAG:272 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+		ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
+			PRINTFORMW 「何の意味もないぞ,あの鏡は.僕はあっちを見たりしないからな.
+			PRINTFORMW  だから早く片付けるといい,無駄だからね.……無駄だと言っているだろう!」
 			CFLAG:9103 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 	;처음
 	IF CFLAG:8822 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『お疲れさん.この鏡片付けるぜ,手伝ってくれ』
+				PRINTFORMW 「あ,ああ……」
+				PRINTFORMW 『お,なかなか堪えてるみたいだな.よしよし』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「なあ,もう少し正常にできないのかい.
+			PRINTFORMW  ……まあ,たまにならこれも悪くはない……かな」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「まったく……なかなか良い造りの鏡だというのに,もう少し有意義に使えないのか」
 		ENDIF
 		CFLAG:8822 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『じゃあこの鏡,片付けてくれ香霖』
+				IF !RAND:10
+					PRINTFORMW 「了解.ん,この鏡は……?」
+					PRINTFORMW 『どうかしたのか,香霖』
+					PRINTFORMW 「ああ,いや,何でもない.気のせいだったようだ」
+				ELSE
+					PRINTFORMW 「わかったよ,まったくどうして僕がこんなことを……」
+					PRINTFORMW 『ブツブツ言うな,肉体労働は男の仕事だぜ』
+				ENDIF
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:8822 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:8822 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「あ,もう終わりなのか.しかしやはり恥ずかしいな,これは.
+			PRINTFORMW  大丈夫だよ,君が見ているのなら平気だ.
+			PRINTFORMW  もっとも,この場合は鏡の中のこいつらも見てくるんだけどね」
 			CFLAG:8822 = 3
 		;그 외
 		ELSEIF CFLAG:8822 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やっと終わりか.きみのこの悪趣味はいつになったら治るのかねえ」
 			CFLAG:8822 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;야외 플레이 CFLAG:9104　CFLAG:8821
+;야외 플레이 CFLAG:9104 CFLAG:8821
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 104 && TEQUIP:52
 	;처음
 	IF CFLAG:9104 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「動物用ではないのか,この首輪は.形状はほぼ同じなのだが……
+				PRINTFORMW  こういう場合用途としての道具の記憶は作成者と使用者,
+				PRINTFORMW  どちらの意思を反映するのだろうな」
+				PRINTFORMW 『香霖の能力を私に聞かれたって,わかんないぜ.
+				PRINTFORMW  そんなことよりお散歩だ,出かけるぜ』
+				PRINTFORMW 「散歩って……まさかこのまま外に出るのか!?」
+				PRINTFORMW 『おいおい.そのままって,何言ってんだ香霖.
+				PRINTFORMW  散歩に出るのにペットが服着てちゃ変だろ.首輪以外は全部脱げよ』
+				PRINTFORMW 「んなっ……ひ,人に見られたらどうするんだ!」
+				PRINTFORMW 『私の知ったこっちゃないぜ.そーれ,しゅっぱーつ!』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「首輪だね,この場合は隷属の証か.……どうだ,似合うかい?
+			PRINTFORMW  このまま出かける? ……まあ良いや,家畜は家畜らしく主に従おう」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「名称は首輪.用途は装着者への支配力の誇示……
+			PRINTFORMW  まるっきり奴隷扱いか.それでどうする……こ,このまま外に!? 冗談だろ!?」
 		ENDIF
 		CFLAG:9104 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;露出癖Lv3以上
+				IF ABL:14 >= 3
+					PRINTFORMW 『おーい,散歩の時間だぜ,香霖』
+					PRINTFORMW 「……わかったよ,今準備する」
+					PRINTFORMW 一二三四五六七八九十一二三四五六七八九廿一二三四五六七八九参一二三四五六七八九終
+					PRINTFORMW 『なんだか最近は抵抗しなくなってきたなあ.……それはそれで物足りないぜ』
+				;それ以外
+				ELSE
+					PRINTFORMW 『出かけるぜ香霖.もちろんちゃんと服は脱ぐんだぜ』
+					PRINTFORMW 「はいはい,人に見られたらどうする気だ,まったく……」
+					PRINTFORMW 『その時は香霖を放置して私だけ雲隠れだな』
+				ENDIF
+			ENDIF
 		;연모＋노출벽Lv3이상
-		IF TALENT:150 && ABL:14 >= 3 && (CFLAG:9104 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:14 >= 3 && (CFLAG:9104 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「なんだな,最近は人目のなさそうな場所だと逆に物足りなくなってきた.
+			PRINTFORMW  どうせなら人里の真ん中で,見せ付けてやるのはどうだい?
+			PRINTFORMW  いや,悪い.さすがに冗談だ.……君がやりたいのならば従うけどね」
 			CFLAG:9104 = 4
 		;노출벽Lv3이상
 		ELSEIF ABL:14 >= 3 && (CFLAG:9104 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「また外出か.ああ,わかったよ.
+			PRINTFORMW  しかし段々慣れるものだな.便利なものだ,適応力とは.
+			PRINTFORMW  有難いとは微塵も思わないけれどね」
 			CFLAG:9104 = 3
 		;그 외
 		ELSEIF CFLAG:9104 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「いい加減にしてくれ.そもそも他人に発見された場合良識を疑われるのは君もだぞ.
+			PRINTFORMW  いや,最初からそんなものを気にする人間がこんなことはしないか」
 			CFLAG:9104 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「やれやれ,やっと戻れるのか.もう嫌だぞ,こんなのは」
+			;露出癖Lv3以上
+			IF ABL:14 >= 3
+				PRINTFORMW 『へえ,私の目には結構楽しそうに見えたんだがな』
+			;露出癖Lv2以下
+			ELSE
+				PRINTFORMW 『そうやって嫌がってるのを引き回すのもなかなか楽しいんだぜ』
+			ENDIF
+		ENDIF
 	;연모
-	IF TALENT:150 && (CFLAG:8821 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+	ELSEIF TALENT:150 && (CFLAG:8821 < 2 || FLAG:11 == 2)
+		PRINTFORMW 「こんなんじゃなくて,たまには普通に二人で出歩くのは……いや,何でもない」
 		CFLAG:8821 = 2
 	;그 외
 	ELSEIF CFLAG:8821 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「まったく,誰にも会わなかったから良かったようなものの……」
 		CFLAG:8821 = 1
 	ENDIF
 	RETURN 0
@@ -2189,6 +3313,7 @@ ENDIF
 ;방뇨 CFLAG:9111
 ;강제방뇨 CFLAG:9620
 ;-------------------------------------------------
+[SKIPSTART]
 ;방뇨
 IF SELECTCOM == 111
 	;연모+오줌싸개+야외 플레이
@@ -2255,7 +3380,6 @@ IF SELECTCOM == 171 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9171 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2275,8 +3399,8 @@ IF SELECTCOM == 171 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9171 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	;연모
@@ -2294,6 +3418,7 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널비즈 개시시CFLAG:9172 종료시CFLAG:8852
@@ -2302,49 +3427,85 @@ ENDIF
 IF SELECTCOM == 172 && TEQUIP:25
 	;처음
 	IF CFLAG:9172 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「名称はアナルビーズ.用途は括約筋の神経の刺激……
+				PRINTFORMW  つまり肛門から出し入れするのか,これは……」
+				PRINTFORMW 『そういうわけだ,後ろを向いて四つん這いになりな,香霖』
+				PRINTFORMW 「いつもながら僕に拒否権はないのだろうな.……わかったよ」
+				PRINTFORMW 『素直なのはいいことだな,それじゃ入れるぜ』
+				PRINTFORMW 「あ,あああっ! これ……は」
+				PRINTFORMW 『よ……っと.全部入ったぜ.
+				PRINTFORMW  しかし四つん這いで,尻尾まで生えててまるで犬みたいだな』
+				PRINTFORMW 「挙げ句に人を犬呼ばわりか……」
+				PRINTFORMW 『こらこら,犬が人の言葉を喋っちゃ駄目だぜ.ほれ,ワンと鳴いてみろ』
+				PRINTFORMW 「魔理沙,いい加減に…….いや,こんな格好で何を言っても説得力はないか.
+				PRINTFORMW  ワンワン,と.気が済んだか,これで?」
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「た,玉が……ひ,一つずつ……くううっ!
+			PRINTFORMW  はあっ,はあ……こ,これで良いかい?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「うああ……っ! 腸の中でゴリゴリ……ッ!」
 		ENDIF
 		CFLAG:9172 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「またそれか……細い分まだ抵抗は少ないからマシだが」
+				PRINTFORMW 『なんだ香霖,まだこれで気持ちよくなれないのか?』
+				;A感覚Lv3以上
+				IF ABL:2 >= 3
+					PRINTFORMW 「いや,良いか悪いかというとまあ……悪くはないが」
+					PRINTFORMW 『つまり良いんだな.日本語は正確に使うべきだぜ』
+				;それ以外
+				ELSE
+					PRINTFORMW 「良いわけないだろ,本来排泄するための器官に逆に挿入するなんて」
+				ENDIF
+			ENDIF
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
-		IF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:9172 = 5
-		;연모
-		ELSEIF TALENT:150 && (CFLAG:9172 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「それ……ああっ,良い! も,もっと激しく出し入れして……ひゃあうっ!?」
 			CFLAG:9172 = 4
 		;A감각Lv3이상＋마조끼Lv3이상
 		ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んくっ…….い,いや,違う.感じてるわけではない.本当だ!」
 			CFLAG:9172 = 3
 		;그 외
 		ELSEIF CFLAG:9172 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「よくもまあ,こんな不快感を与えるだけの道具が存在するものだな……」
 			CFLAG:9172 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 『それじゃ抜くぜ,それ』
+			PRINTFORMW 「……ひゃふっ!」
+			PRINTFORMW 『今少し気持ちよさそうじゃなかったか,香霖?』
+			PRINTFORMW 「し,仕方ないだろう.排泄時に快感を得るのは生理現象なんだから」
+			PRINTFORMW 『気持ちよかったのは否定しないんだな.まあいい,そういう事にしといてやるから』
+		ENDIF
 	;연모
-	IF TALENT:150 && (CFLAG:8852 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
-		CFLAG:8852 = 3
+	;ELSEIF TALENT:150 && (CFLAG:8852 < 3 || FLAG:11 == 2)
+		;PRINTFORMW 
+		;CFLAG:8852 = 3
 	;A감각Lv3이상＋마조끼Lv3이상
 	ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8852 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「うあっ,あああおおっ!」
+		PRINTFORMW 「し,仕方ないだろう.何らかの刺激を与えられれば思わず声が出ても!」
 		CFLAG:8852 = 2
 	;그 외
 	ELSEIF CFLAG:8852 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「終わったか……しかし入ってるときも抜くときも気持ち悪いな……」
 		CFLAG:8852 = 1
 	ENDIF
 	RETURN 0
@@ -2353,6 +3514,7 @@ ENDIF
 ;-------------------------------------------------
 ;확장 벌룬 개시시CFLAG:9173 종료시CFLAG:8853
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 173 && TEQUIP:25
 	;처음
@@ -2365,7 +3527,6 @@ IF SELECTCOM == 173 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9173 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2385,8 +3546,8 @@ IF SELECTCOM == 173 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9173 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	;연모
@@ -2420,7 +3581,6 @@ IF SELECTCOM == 174 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9174 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2440,8 +3600,8 @@ IF SELECTCOM == 174 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9174 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2458,7 +3618,6 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8854 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2478,8 +3637,8 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 			PRINTFORMW 
 			CFLAG:8854 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2497,7 +3656,6 @@ IF SELECTCOM == 175 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9175 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2517,8 +3675,8 @@ IF SELECTCOM == 175 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9175 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	;연모
@@ -2536,6 +3694,7 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 핥기 CFLAG:9180
@@ -2543,37 +3702,59 @@ ENDIF
 IF SELECTCOM == 180
 	;처음
 	IF CFLAG:9180 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『香霖の癖になかなか引き締まった尻だな,褌とか似合うんじゃないのか?』
+				PRINTFORMW 「……やめてくれ,何故か褌と聞くと身の毛がよだつんだ.
+				PRINTFORMW  それとあんまりまじまじ見るものではないと思うんだが」
+				PRINTFORMW 『これくらいで恥ずかしがってどうするんだ,これからもっと恥ずかしいぜ』
+				PRINTFORMW 「何をする気だ……はひいっ!? な,何をした魔理沙,今!」
+				PRINTFORMW 『うえー……当たり前だけど美味いもんじゃないな』
+				PRINTFORMW 「や,やっぱり舐めたのか! あ,穴……を」
+				PRINTFORMW 『なんだ,何をしたかわかってるんじゃないか.続けるぜ』
+				PRINTFORMW 「ま,待て魔理沙! ……はふぅ!?」
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「ど,何処をなめているんだ君は!?
+			PRINTFORMW  あ,当たり前だ恥ずかしいに決まっている! ……嫌なわけではないがね」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「いったい何を……ひああっ!?」
+			PRINTFORMW 「な,舐めたな!? 今!?」
 		ENDIF
 		CFLAG:9180 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「魔理沙,ちゃんと口をゆすいでおくんだぞ.雑菌が多いからな,そこは」
+				PRINTFORMW 『……忠告は感謝するけどさあ,もうちょっと状況考えて言おうぜ,それ.
+				PRINTFORMW  終わった直後にそれはないだろ』
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9180 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9180 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「あ……君の舌が…….蠢いて……くうっ!」
 			CFLAG:9180 = 4
 		;A감각Lv3이상
 		ELSEIF ABL:2 >= 3 && (CFLAG:9180 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「肛門を,舐められて,気持ち良いなんて…… お,おかしい筈なのに……何で……」
 			CFLAG:9180 = 3
 		;그 외
 		ELSEIF CFLAG:9180 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「ナメクジが這い回ってるみたいで気持ち悪いんだが……」
 			CFLAG:9180 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;착유기(모유 체질만) CFLAG:9191　CFLAG:8861
+;착유기(모유 체질만) CFLAG:9191 CFLAG:8861
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 191 && TEQUIP:35
 	;처음
@@ -2586,7 +3767,6 @@ IF SELECTCOM == 191 && TEQUIP:35
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9191 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -2598,8 +3778,8 @@ IF SELECTCOM == 191 && TEQUIP:35
 			PRINTFORMW 
 			CFLAG:9191 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	;연모
@@ -2628,7 +3808,6 @@ IF SELECTCOM == 220
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9220 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2652,8 +3831,8 @@ IF SELECTCOM == 220
 			PRINTFORMW 
 			CFLAG:9220 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2670,7 +3849,6 @@ IF SELECTCOM == 221
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9221 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2694,8 +3872,8 @@ IF SELECTCOM == 221
 			PRINTFORMW 
 			CFLAG:9221 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2712,7 +3890,6 @@ IF SELECTCOM == 222
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9222 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2736,123 +3913,193 @@ IF SELECTCOM == 222
 			PRINTFORMW 
 			CFLAG:9222 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;밧줄 CFLAG:9224　CFLAG:8872
+;밧줄 CFLAG:9224 CFLAG:8872
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 224 && TEQUIP:40
 	;처음
 	IF CFLAG:9224 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「名称は縄.用途は物を縛る……そのままだな」
+				PRINTFORMW 『そのままだぜ.じゃあ,ちゃっちゃと梱包させてもらうぜ』
+				PRINTFORMW 「う,うわ.……もう縛り終えたのか,なんだかやたらと手馴れてないか,魔理沙?」
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「縄だな……それで僕を縛って何が楽しいんだ.まったく度し難いな.
+			PRINTFORMW  まあ,それを心待ちにしている僕ほどではないか」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「ふん,身動きを封じたくらいで屈服させられるつもりか?」
 		ENDIF
 		CFLAG:9224 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;マゾっ気Lv3以上
+				IF ABL:21 >= 3
+					PRINTFORMW 『縛られただけでこんなになるなんて変態だな,香霖』
+					PRINTFORMW 「う,うるさい! それを言うなら縛って喜んでる魔理沙の方はどうなんだ!」
+				;それ以外
+				ELSE
+					PRINTFORMW 『これを……こうして……グイっとな,と』
+					PRINTFORMW 「い,痛っ,魔理沙! 少しは加減してくれ!」
+				ENDIF
+			ENDIF
 		;연모＋마조끼Lv5이상
-		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9224 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:21 >= 5 && (CFLAG:9224 <= 5 || FLAG:11 == 2)
+			PRINTFORMW 「く……もう少し強く縛ってくれても良いのに……
+			PRINTFORMW  わかってるよ,こういう反応が見たくてわざと手を抜いて縛ったんだろう?
+			PRINTFORMW  まったく,とことん性格の悪い……」
 			CFLAG:9224 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9224 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「縄が食い込んで……痛いんだが」
+			PRINTFORMW 「しかしこの痛みも悪くない.……なんだかなあ,我ながら」
 			CFLAG:9224 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9224 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「身動きできない僕を嬲るのは楽しいか? ……そうか,だったらそれで良いよ」
 			CFLAG:9224 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9224 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「痛い……と言ってもやめるわけはないんだよな」
 			CFLAG:9224 = 3
 		;그 외
 		ELSEIF CFLAG:9224 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「僕を動けなくしてどうする気だ,君は……」
 			CFLAG:9224 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
+	IF ASSI > 0 && ASSIPLAY && (CFLAG:8872 < 3 || FLAG:11 == 2)
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 『はいよ,お疲れさん』
+			PRINTFORMW 「少しは加減してくれよ.見ろ,痕がついてるぞ」
+			PRINTFORMW 『はは,牛の焼印みたいだな.いっそ私の物になるか,香霖?』
+			;恋慕もち
+			IF TALENT:150
+				PRINTFORMW 「残念ながら売約済みだ,またのご来店を待ってるよ」
+			;恋慕なし
+			ELSE
+				PRINTFORMW 「いっそ,それも良いかもな……まあ許可が出ることはないだろうがね」
+			ENDIF
+			CFLAG:8872 = 3
+		ENDIF
 	;연모
-	IF TALENT:150 && (CFLAG:8872 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+	ELSEIF TALENT:150 && (CFLAG:8872 < 2 || FLAG:11 == 2)
+		PRINTFORMW 「あ,終わりか……
+		PRINTFORMW  動けないことよりも,君に何もしてやれないことが辛いな,これは」
 		CFLAG:8872 = 2
 	;그 외
 	ELSEIF CFLAG:8872 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「やっと解き放たれたか.ついでにこのまま開放してくれても構わないんだがね」
 		CFLAG:8872 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;아이마스크 CFLAG:9225　CFLAG:8871
+;아이마스크 CFLAG:9225 CFLAG:8871
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 225 && TEQUIP:41
 	;처음
 	IF CFLAG:9225 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「名称はアイマスク.本来は明るい場所でも睡眠を取るための道具なんだが……
+				PRINTFORMW  僕を眠らせてくれるつもりじゃないんだよな,もちろん」
+				PRINTFORMW 『わかってるなら話が早い.正しくない用途で楽しんでくれよ,香霖』
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「視覚を奪われるだけで随分と不安になるものだな.
+			PRINTFORMW  ……なあ,本当にそこにいるのか?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「何も見えないか.君もこのまま消え失せれば良いんだがな」
 		ENDIF
 		CFLAG:9225 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;マゾっ気Lv3以上
+				IF ABL:21 >= 3
+					PRINTFORMW 『ほれほれ,香霖.こっちだこっち,手の鳴るほうへ,ってな』
+					PRINTFORMW 「待ってくれよ.くう……魔理沙に弄ばれるなんて」
+					PRINTFORMW 『悔しい,でも感じちゃうビクンビクンてところか,香霖?』
+					PRINTFORMW 「勝手に人の心を読むんじゃ……なんでもない」
+					PRINTFORMW 『おい,そこ! 今なんて言った!?』
+				;それ以外
+				ELSE
+					PRINTFORMW 「何も見えないんだが,魔理沙」
+					PRINTFORMW 『そりゃまあ,何も見せないために付けてるんだしな』
+				ENDIF
+			ENDIF
 		;연모＋마조끼Lv5이상
-		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9225 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:9225 = 6
-		;연모＋마조끼Lv3이상
-		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9225 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:21 >= 5 && (CFLAG:9225 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 「君が見えないもどかしさすら,楽しめるようになってきた」
+			PRINTFORMW 「……しかしこれを成長というのは,我ながら違うよなあ」
 			CFLAG:9225 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9225 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「そこに……いるんだよな? おい,何とか言ってくれ」
 			CFLAG:9225 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9225 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 冷静になれ,不安を悟られるな……
 			CFLAG:9225 = 3
 		;그 외
 		ELSEIF CFLAG:9225 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「僕の視覚を封じて何をする気だ……?」
 			CFLAG:9225 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「やっと……終わりか.
+			PRINTFORMW  視覚を奪われるというのは,なかなかに恐怖を呼び覚まされるものだな.
+			PRINTFORMW  蔵に放り込まれて泣きじゃくっていた魔理沙の気持ちが少しはわかったよ」
+			PRINTFORMW 『よ,余計なことまで思い出すな!』
+		ENDIF
 	;연모
-	IF TALENT:150 && (CFLAG:8871 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+	ELSEIF TALENT:150 && (CFLAG:8871 < 2 || FLAG:11 == 2)
+		PRINTFORMW 「もう終わりか.もう少しこのままでも良かったんだがな,僕は」
 		CFLAG:8871 = 2
 	;그 외
 	ELSEIF CFLAG:8871 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「やっと終わりか.
+		PRINTFORMW  道具は正しく使わないと祟るというのに,こんな用途で使っても知らないよ」
 		CFLAG:8871 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;볼 개그 CFLAG:9226　CFLAG:8872
+;볼 개그 CFLAG:9226 CFLAG:8872
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 226 && TEQUIP:42
 	;처음
@@ -2865,7 +4112,6 @@ IF SELECTCOM == 226 && TEQUIP:42
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9226 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2889,8 +4135,8 @@ IF SELECTCOM == 226 && TEQUIP:42
 			PRINTFORMW 
 			CFLAG:9226 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	;연모
@@ -2904,6 +4150,7 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;이라마치오 CFLAG:9230
@@ -2911,37 +4158,103 @@ ENDIF
 IF SELECTCOM == 230
 	;처음
 	IF CFLAG:9230 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『さてと,こいつを咥えてもらおうか』
+				PRINTFORMW 「……どうして僕はミニ八卦炉と,君の陰茎を突きつけられてるんだ」
+				PRINTFORMW 『口答えするな,それともこいつでズドンとされたいか?』
+				PRINTFORMW 「そもそも君,能力を封じられてるだろうに…….いったい何の遊びだい?」
+				PRINTFORMW 『ちえっ,ノリが悪いぜ香霖.見てのとおり”敵の女性仕官を尋問ごっこ”だぜ』
+				PRINTFORMW 「ちょっと,突っ込みどころが多すぎるんだが…….
+				PRINTFORMW  どうして君はそう,ところどころでおっさん臭いかな」
+				PRINTFORMW 『そこまで含めて私らしさだぜ.さて,やって貰おうか?』
+				PRINTFORMW 「まあ,逆らっても無駄なのは理解させられてるしね.……了解だ」
+				PRINTFORML 
+				PRINTFORMW 『んっ……いいぜ香霖.おっと,歯は立てるなよ.脳天ブチ抜かれたくなかったらな』
+				PRINTFORMW 「……ふぁらふづいふぇはふぉはい,ふぉえ」
+				PRINTFORMW 『ひゃあうっ!? く,咥えたまま喋るな! ……気持ち良いけど.
+				PRINTFORMW  しかし強制的にこれやらせるのも結構良いな.征服感がなんとも……
+				PRINTFORMW  イマラチオ,って言うんだっけ』
+				PRINTFORMW 「……ふぃふぁうほ,ふぁひは,ふぉえは……」
+				PRINTFORMW 『ひはああああっ?! だ,だから喋るなって!
+				PRINTFORMW  わかったから,解説先にしていいから!』
+				PRINTFORMW 「ふう,やっと解放されたか.顎が疲れるな,これは……
+				PRINTFORMW  さてと.魔理沙,君の勘違いを２つ正させてもらうよ」
+				PRINTFORMW 「まず１つ目だが,名称が違う.”イラマチオ”が正しい.
+				PRINTFORMW  本なんかでも間違えているのはたまに見るけどね
+				PRINTFORMW 『イマラチオ,イラマチオ……語呂が悪いな,言い難いぜ』
+				PRINTFORMW 「それはまあ,日本語じゃないから仕方ないだろう.
+				PRINTFORMW  誤用が多いのは,口淫を”フェラチオ”と言うせいだろうね.
+				PRINTFORMW  語感的に”イマラチオ”の方が近い」
+				PRINTFORMW 『確かにそうだな.で,もう一個の私の間違いってのはなんなのぜ?』
+				PRINTFORMW 「ああ,それか.単純に言葉の意味として間違っているだけだ」
+				PRINTFORMW ((……スルーされたのぜ))
+				PRINTFORMW 「君のやっていたように口淫を強制する行為ではないのだ.
+				PRINTFORMW  それだとフェラチオだからな,結局は.
+				PRINTFORMW  イマラチオは口を性器に見立てて,
+				PRINTFORMW  相手の頭部をつかんで突き立て前後させるもの……と言ったところだろうか.
+				PRINTFORMW  かなり強引に行うものだからな,その分支配欲を満たせるのは間違いないだろう.
+				PRINTFORMW  フェラチオは前戯としての性質が強いが,こっちはそれ自体を目的とする場合も多い
+				PRINTFORMW  肉体的な快感もさることながら,精神的優位を楽しむものといった位置づけかな.
+				PRINTFORMW  もっとも,プレイの一環として行う場合は加減を忘れないことだ.
+				PRINTFORMW  喉奥に物が当たるとむせるし,最悪窒息の危険もある」
+				PRINTFORMW 『ふむふむ……わかったぜ,んじゃ続けるか.激しく行くぜ』
+				PRINTFORMW 「……念の為聞いておくが,僕の言わんとしたことは伝わったよな?」
+				PRINTFORMW 『ああ,任せとけって.優しくしてやるよ,香霖がブっ壊れない程度にはな』
+				PRINTFORMW 「……やっぱりわかってなかったか.いや通じた上で言ってるのか……」
+			ENDIF
 		;봉사정신Lv3이상
-		IF ABL:13 >= 3
-			PRINTFORMW 
+		ELSEIF ABL:13 >= 3
+			PRINTFORMW 「……乱暴は止せ,言ってくれればこっちだって少しは.
+			PRINTFORMW  ……いや,それ自体が目的か.
+			PRINTFORMW  ならば仕方ないか……だが,言っておくが納得したわけではないからな」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「今度は何を……むぐっ!? ……んんーっ!
+			PRINTFORMW  がはっ,げうっ……はあ,はあっ……
+			PRINTFORMW  う……くっ……」
 		ENDIF
 		CFLAG:9230 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				;奉仕精神Lv3以上
+				IF ABL:13 >= 3
+					PRINTFORMW 「気持ちよかったか,魔理沙?」
+					PRINTFORMW 『ああ,香霖の中は最高だぜ.
+					PRINTFORMW  できることなら何時まででも突っ込んでたいくらいだな』
+					PRINTFORMW 「勘弁してくれ,さすがに窒息死はしたくない」
+				;それ以外
+				ELSE
+					PRINTFORMW 「君は良いかもしれないが,少しはこっちのことも考えてくれないか」
+					PRINTFORMW 『そりゃ無理だな.香霖が悪いんだぜ,気持ち良過ぎるからな』
+					PRINTFORMW 「褒められて……いるのか,それは?」
+				ENDIF
+			ENDIF
 		;연모＋봉사정신Lv5
-		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9230 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:13 >= 5 && (CFLAG:9230 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「……もう良いのか? ふふ,僕もおかしな物だ.喉奥で快感を得られるなんてな」
 			CFLAG:9230 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9230 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「まったく,僕に突き込んで何が楽しいんだか.まあせめてお手柔らかに頼むよ」
 			CFLAG:9230 = 3
 		;그 외
 		ELSEIF CFLAG:9230 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「うげえっ……! つ,次にやってみろ.噛み千切るぞ」
 			CFLAG:9230 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;피스트퍽 CFLAG:9231
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231
 	;처음
 	IF CFLAG:9231 == 0
@@ -2953,7 +4266,6 @@ IF SELECTCOM == 231
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9231 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2977,8 +4289,8 @@ IF SELECTCOM == 231
 			PRINTFORMW 
 			CFLAG:9231 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2995,7 +4307,6 @@ IF SELECTCOM == 232
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9232 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -3019,8 +4330,8 @@ IF SELECTCOM == 232
 			PRINTFORMW 
 			CFLAG:9232 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -3037,7 +4348,6 @@ IF SELECTCOM == 233
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9233 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -3061,9 +4371,10 @@ IF SELECTCOM == 233
 			PRINTFORMW 
 			CFLAG:9233 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;목욕탕 플레이 CFLAG:9350 해제 CFLAG:8824
@@ -3071,54 +4382,110 @@ ENDIF
 IF SELECTCOM == 350 && TEQUIP:53
 	;처음
 	IF CFLAG:9350 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「どこに連れて行かれるものかと思っていたが,風呂……だな.どう見ても」
+				PRINTFORMW 『風呂だぜ』
+				PRINTFORMW 「ああ……って何で,服を着てないんだ魔理沙!?」
+				PRINTFORMW 『おまえは何を言っているんだ.
+				PRINTFORMW  風呂で服を着ているほうがおかしいだろ,そもそも着てないのも今更だぜ』
+				PRINTFORMW 「いやまあ,そうなんだが…….
+				PRINTFORMW  あまりにも異常な状況から,いきなり普通の空間に来たものだからね」
+				PRINTFORMW 『それなら安心しろ香霖.ここでも十分異常なことを行うからな』
+				PRINTFORMW 「……だろうと思った」
+				PRINTFORMW 『ま,それはそれ,これはこれ.少しくらいなら寛いでも罰は当たらないだろ.
+				PRINTFORMW  ゆっくり浸かっていけ,香霖』
+				PRINTFORMW 「そうだね.しかし良いのかい,そんなことして?」
+				PRINTFORMW 『たまには良いさ.
+				PRINTFORMW  それに少しはリラックスしてもらった方が調教の効果も高まるだろうしな』
+				PRINTFORMW 「……だろうと思った」
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「一緒に風呂に入るのか……まあそういうのも良いか」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「風呂に入れるのは有難いんだが,なぜ君までいるんだ?」
+			PRINTFORMW 「……わかってるよ,そういうことだな」
 		ENDIF
 		CFLAG:9350 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「良い湯だな.しかしこうなると,冷酒でも欲しいところだな」
+				PRINTFORMW 『それは駄目だな,飲酒状態の調教は法律で禁止されてるからな』
+				PRINTFORMW 「どこの国の法律だ,それは……」
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9350 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9350 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「たまには二人でのんびりと風呂に入るだけというのも悪くないと思うんだが……
+			PRINTFORMW  ……わかってるさ,そうもいかないだろう事は.さ,始めてくれ」
 			CFLAG:9350 = 3
 		;그 외
 		ELSEIF CFLAG:9350 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「風呂とは憩いの場というのが一般認識だと思っていたが……
+			PRINTFORMW  君一人いるだけで寛げないものだな」
 			CFLAG:9350 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 	;처음
 	IF CFLAG:8824 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「やれやれ,のぼせるかと思ったよ」
+				PRINTFORMW 『情けないな,香霖.私はまだ平気だぜ』
+				PRINTFORMW 「そりゃまあ,責められるのは僕だからな」
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「たまには場所を変えるのも悪くはないね.
+			PRINTFORMW  また入ろうか,今度も二人で」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「やっと出られるか……子供の時以来だな,早く風呂から出たいと思ったのは」
 		ENDIF
 		CFLAG:8824 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『いい湯だったな,ところで香霖?』
+				;魔理沙恋慕
+				IF TALENT:ASSI:150
+					PRINTFORMW 『コーヒー牛乳はないのか?』
+					PRINTFORMW 「あるわけないだろ,こんな所に」
+				;魔理沙恋慕なし
+				ELSE
+					PRINTFORMW 『前回と比べて,どうだ.私は……』
+					PRINTFORMW 「どうって何がだい?」
+					PRINTFORMW 『いや,その……何でもない,この朴念仁!』
+					PRINTFORMW 「……魔理沙が何を言いたいのかはわからないな.
+					PRINTFORMW  けどそうだね,この間よりも魅力的になったと思うよ」
+					PRINTFORMW 『そ,そうかよ』
+					PRINTFORMW 「と言う訳で魅力的な魔理沙.少し僕に対する責め手を緩めてくれると嬉しいんだが」
+					PRINTFORMW 『……珍しく空気を読んだと思ったら目的はそれかよ.もう絶対勘弁してやらねえ!』
+				ENDIF
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:8824 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:8824 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「いい湯だったね,また次もこっちでやるのも悪くはないかな」
 			CFLAG:8824 = 3
 		;그 외
 		ELSEIF CFLAG:8824 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「利点は後片付けの手間が省けるくらいだな,ここは……
+			PRINTFORMW  やれやれ,君だけじゃなく風呂まで嫌いになりそうだ」
 			CFLAG:8824 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -3127,28 +4494,78 @@ ENDIF
 IF SELECTCOM == 351 && TEQUIP:54
 	;처음
 	IF CFLAG:9351 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「名称はシャワー.用途は体を清潔に保つための設備か.
+				PRINTFORMW  成る程,この形状ならば全ての穴からほぼ均一な勢いで水流が出るわけか.
+				PRINTFORMW  しかもこれなら同じ量の水でも広範囲に散布できるから,結果として水が節約できる
+				PRINTFORMW  理に適ってはいるな」
+				PRINTFORMW 『香霖,こういうとこでまで薀蓄たれるのはどうかと思うぜ』
+				PRINTFORMW 「……それもそうだね.浴びていて気持ちが良い,それだけで十分か.
+				PRINTFORMW  そうだ,魔理沙.せっかくだし頭を洗ってやろう」
+				PRINTFORMW 『え!? い,いや別にいいぜ,そんなの』
+				PRINTFORMW 「何でだ? 昔はよく洗っていたろう.
+				PRINTFORMW  君は放っておくと髪を濡らしただけで風呂から出ていたからな」
+				PRINTFORMW 『いつの話だよ.昔じゃないから問題なんだろうが……私が今何歳だと思ってるんだ』
+				PRINTFORMW 「そうか,まあ嫌だと言うなら無理強いはしないよ」
+				;魔理沙が恋慕
+				IF TALENT:ASSI:150
+					PRINTFORMW ((それにあいつ以外に髪を触れられるのは……な,何考えてるんだ私は!))
+				;それ以外
+				ELSE
+					PRINTFORMW 『いやその……別に嫌なわけじゃないけどさ』
+					PRINTFORMW 「無理しなくてもいいんだぞ,考えてみれば君も年頃なんだから」
+					PRINTFORMW 『考えなくても年頃だぜ.
+					PRINTFORMW  ……あー,わかったからとっとと頼む.う,上から覗くんじゃないぞ!』
+					PRINTFORMW 「なんだ,そんな心配をしてたのか.大丈夫だ,誓ってそんな真似はしないさ」
+					PRINTFORMW 『……そうはっきり言い切られるのもな.まあいいか,丁寧に頼むぜ』
+					PRINTFORMW 「はいはい,わかりましたよお姫様」
+					PRINTFORML 
+					PRINTFORMW 青年洗髪中……
+					PRINTFORML 
+					PRINTFORMW 「はい,終わり.じゃあ流すよ」
+					PRINTFORMW 『あ,ああ……』
+					PRINTFORMW 「……よし,終わり.しかし珍しく魔理沙がおとなしかったな.
+					PRINTFORMW  まるで借りてきた猫みたいだったぞ」
+					PRINTFORMW 『私だってこういう状況はさすがに照れる……』
+					PRINTFORMW 「よくわからないな,この状況でどうしてその程度で照れるんだ,君は?」
+					PRINTFORMW 『……こ,この朴念仁っ!』
+					PRINTFORMW 「ま,待て魔理沙.桶を振り上げてどうする気だ!?」
+					PRINTFORMW 『うるさい,おとなしくしてろ!!』
+					PRINTFORMW  魔理沙が叫んだその直後,風呂場に乾いた音が木霊したのだった……
+				ENDIF
+			ENDIF
 		;연모
-		IF TALENT:150
-			PRINTFORMW 
+		ELSEIF TALENT:150
+			PRINTFORMW 「これは……体を清めるためのものか.
+			PRINTFORMW  ちょうどいい,君を洗ってやろう.ほら,そこに座ってくれ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「へえ,簡易の洗浄設備か.便利なものもあるのだな,ここには.
+			PRINTFORMW  君のやっていることを考えるならば,僕らは清潔な方が都合が良い.
+			PRINTFORMW  ただそれだけのことだろうけど」
 		ENDIF
 		CFLAG:9351 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『それじゃ,今度は私が香霖を洗ってやるぜ』
+				PRINTFORMW 「……うーん,意外と恥ずかしいな,これは」
+			ENDIF
 		;연모
-		IF TALENT:150 && (CFLAG:9351 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && (CFLAG:9351 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「僕ばかり浴びているのも何だな……一緒に浴びるかい?」
 			CFLAG:9351 = 3
 		;그 외
 		ELSEIF CFLAG:9351 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「君にもこの程度の慈悲はあるのだな」
 			CFLAG:9351 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -3157,52 +4574,134 @@ ENDIF
 IF SELECTCOM == 352
 	;처음
 	IF CFLAG:9352 == 0
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 「阿波踊り? 四国は阿波の国,いまは徳島県か.そこの盆踊りがどうかしたのか?」
+				PRINTFORMW 『えらやっちゃえらやっちゃ,ヨイヨイヨイヨイって奴だな』
+				PRINTFORMW 「それが有名だが,ヤットサーヤットサーという掛け声もあるな.
+				PRINTFORMW  他にも『連』,つまり踊り手のチームだが,それによって色々とあるようだね.
+				PRINTFORMW  起源は諸説あるが,実ははっきりしていない.
+				PRINTFORMW  だいたい400年程の歴史があるのはわかっている.
+				PRINTFORMW  400年といっても途切れなく綿々と受け継がれたわけではないようだけどね.
+				PRINTFORMW  一揆に繋がるとかで禁止されたり,また戦時中は自粛したりだったらしい.
+				PRINTFORMW  余談だが禁止の令を破って踊ったばかりに,御家を断絶された家老もいたそうだ.
+				PRINTFORMW  まあ長く生きてはいるが僕も現物は見たことがないな.
+				PRINTFORMW  外に行くことがあったら見たいものだ」
+				PRINTFORMW 『ふむふむ.ところでお約束のボケはそこまでだぜ,香霖』
+				PRINTFORMW 「……やはり押し通せないか.
+				PRINTFORMW  しかしなあ……魔理沙,君は僕に体を擦り付けられて何か楽しいか?」
+				;魔理沙恋慕もち
+				IF TALENT:ASSI:150
+					PRINTFORMW 『……あんまり面白そうじゃないな』
+					PRINTFORMW 「だろう? 何を考えてこんなことをさせるんだか……
+					PRINTFORMW  まあ良いや.とっとと終わらせよう」
+					PRINTFORMW 『やけに積極的だな,このスケベ』
+					PRINTFORMW 「な,何を言う…….僕は単にこんなことはだなぁ……」
+					PRINTFORMW 『はいはい,言い訳はもういいぜ.
+					PRINTFORMW  ……しかし香霖が喜ぶだけでこっちには何のメリットもないぜ』
+					PRINTFORMW 「よ,喜んでなんかいない!」
+				;それ以外
+				ELSE
+					PRINTFORMW 『良いんじゃないのか? 精々私に奉仕するといいぜ』
+					PRINTFORMW 「まあ君が構わないと言うならよいが.ところでどの方式でやる?」
+					PRINTFORMW 『どの方式って,そんな種類があるのか?』
+					PRINTFORMW 「ああ.初期はその名のとおり石鹸を泡立てて,それで相手の体を洗っていた.
+					PRINTFORMW  しかし,これを一日に何度も行うと肌をいためるからね.やがて廃れた」
+					;ローション使用経験あり
+					IF CFLAG:9060
+						PRINTFORMW 「そこで現在はローションを使って体をすり合わせるのが一般的だね.
+						PRINTFORMW  一応繰り返していれば多少は泡立つが,これを泡というのは少し無理があると思う.
+						PRINTFORMW  その為か最近ではボディシャンプーを混ぜて行う場合もあるようだね.
+						PRINTFORMW  ボディシャンプーとやらがどういうものかは知らないが」
+						PRINTFORMW 『そこにある奴だろ,そう書いてあるぜ』
+						PRINTFORMW 「これか……名称はボディシャンプー,用途は身体の洗浄.うん,間違いないようだ」
+						PRINTFORMW 『ちなみにこっちに石鹸もあるぜ.当然のようにローションも』
+					;ローション使用経験なし
+					ELSE
+						PRINTFORMW 「そこで現在はローションという,粘性の液体を使って体をすり合わせるのが一般的だ
+						PRINTFORMW  それがどういうものかは知らないが.
+						PRINTFORMW  その為か最近ではボディシャンプーを混ぜて行う場合もあるようだね.
+						PRINTFORMW  こっちもどういうものかは知らないが」
+						PRINTFORMW 『そこにある奴だろ,そう書いてあるぜ』
+						PRINTFORMW 「これか……名称はボディシャンプー,用途は身体の洗浄.うん,間違いないようだ」
+						PRINTFORMW 『ちなみにこっちに石鹸もあるぜ.当然のようにローションとやらもここに』
+					ENDIF
+					PRINTFORMW 「……魔理沙,まさか全部やれというんじゃないだろうな?」
+					PRINTFORMW 『せっかくだから歴史を体験してみるのも良いだろ?』
+					PRINTFORMW 「歴史……違いはないが,里の賢者に怒られそうな用語の使い方だな.
+					PRINTFORMW  まあいい,わかったよ.昔は風呂でよく君を洗ったものだしな.その延長と思えば.
+					PRINTFORMW  延長と……思えば…….いや,やっぱり無理があるだろ」
+					PRINTFORMW 『往生際が悪いぜ香霖.
+					PRINTFORMW  ぐだぐだ言ってないでとっとと始めてくれよ,こっちは準備OKだぜ』
+					PRINTFORMW 「なっ! ま,魔理沙.仰向けに寝るんならもう少し色々と隠して……」
+					PRINTFORMW 『か,隠してたらできないだろうが!
+					PRINTFORMW  と言うか今更照れるな,こっちまで照れるじゃないか!』
+					PRINTFORMW 「あ,えーと悪かった.じゃあ,な,なるべく見ないようにやるから」
+					PRINTFORMW 『み,見ないとできないだろうが……あーうー,いいからとっとと始めてくれ!』
+					PRINTFORMW 「わ,わかってる.ならしっかり見てやるから」
+					PRINTFORMW 『そ,それも何か違うだろう! もういいから黙ってとっととしてくれ!』
+				ENDIF
+			ENDIF
 		;봉사정신Lv3이상
-		IF ABL:13 >= 3
-			PRINTFORMW 
+		ELSEIF ABL:13 >= 3
+			PRINTFORMW 「いや,命令とあらばやる事はやるが……
+			PRINTFORMW  あまり客観的に光景を想像したくないな,これは」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「あのなあ……僕にこれをやらせて何か楽しいのか,君は?」
 		ENDIF
 		CFLAG:9352 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
+		IF ASSI > 0 && ASSIPLAY
+			;助手魔理沙
+			IF NO:ASSI == 2
+				PRINTFORMW 『ゴツゴツするぜ.意外と鍛えてるんだな香霖.
+				PRINTFORMW  本ばっかりよんでるから青黒もやしかとおもってたぜ』
+				PRINTFORMW 「これでもたまには出歩いて仕入れをしたり,倉庫の整理をしたりするからな.
+				PRINTFORMW  逆に魔理沙は柔らかいね,どこにすりつけてもふにふにしている」
+				PRINTFORMW 『う,うるさい! さり気にセクハラ発言するな!』
+			ENDIF
 		;연모＋봉사정신Lv5
-		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9352 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		ELSEIF TALENT:150 && ABL:13 >= 5 && (CFLAG:9352 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「本当に気持ちいのか,これで?
+			PRINTFORMW  僕は十分満たされるから良いんだが……」
 			CFLAG:9352 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9352 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「僕にやらせて何が良いんだ,君は……いいさ,どうせなら徹底的にしてやろう」
 			CFLAG:9352 = 3
 		;그 외
 		ELSEIF CFLAG:9352 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「いままで色々とやらされたが,精神的には一番辛いな,これは……」
 			CFLAG:9352 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;지식대담 CFLAG:9445
+;とりあえず妖々夢キャラまで.
+;霖之助に限らず,どのキャラも「誰てめえ」率が異常です.生暖かい目でスルーして頂けると幸い.
+;てか,旧作キャラとか口調も性格もさっぱりなんですが,どうすればいいんだ.
 ;-------------------------------------------------
 IF SELECTCOM == 445
 	;처음
 	IF CFLAG:9445 == 0
 		;연모
-		IF TALENT:150 == 1
+		IF TALENT:150
 			PRINTFORMW 「내 이야기가 듣고 싶다고? 그래, 기꺼이 말해주지」
 		;그 이외
 		ELSE
 			PRINTFORMW 「내 이야기가 듣고 싶나? 너도 특이하군」
 		ENDIF
-			CFLAG:9445 == 1
+		CFLAG:9445 = 1
 	;2회 이후
 	ELSE
 		;연모
-		IF TALENT:150 == 1 && (CFLAG:9445 <= 2 || FLAG:11 == 2)
+		IF TALENT:150 && (CFLAG:9445 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「뭔가, 또 내 이야기가 듣고 싶은건가? 그럼 오늘은 무슨 이야기를 할까……」
 			CFLAG:9445 = 3
 		;그 이외
@@ -3211,638 +4710,594 @@ IF SELECTCOM == 445
 			CFLAG:9445 = 2
 		ENDIF
 	ENDIF
-		PRINTFORML 
-		PRINTFORMW 「그럼, 이번에 할 얘기는……」
-		PRINTFORML 
-A = RAND:23
-	IF A == 22
+	PRINTFORML 
+	PRINTFORMW 「그럼, 이번에 할 얘기는……」
+	PRINTFORML 
+	LOCAL = RAND:23
+	IF LOCAL == 22
 		PRINTFORMW 「환상향 최대의 요괴라고 하면, 물론 그 야쿠모 유카리지.
-		PRINTFORMW 　신체 능력은 말할 것도 없고 지식도 지능도 톱 클래스.
-		PRINTFORMW 　그리고 무엇보다 무서운건 경계를 다루는 정도의 능력이다.
-		PRINTFORMW 　경계는 물건과 물건, 공간과 공간등을 구분하는 경계선.
-		PRINTFORMW 　그것을 조작 할 수 있다는 것이니까 만물의 파괴와 창조를 할 수 있다는 것과 동의어야.
-		PRINTFORMW 　존재 자체가 농담이나 사기극 같은 존재지. 실수로라도 손대지 마라.
-		PRINTFORMW 　그런데 일상에서 볼 수 있는 경계 중 하나로는 금줄(注連縄)이 있다.
-		PRINTFORMW 　금줄의 새끼는 영역을 표시하는 줄과 같은 것, 즉 새끼를 치고 점유의 증표로 삼는거지.
-		PRINTFORMW 　그럼 이 경계가 구분하고 있는게 뭔가 하면, 그건 사람과 신의 영역이다.
-		PRINTFORMW 　끈 안쪽이 신의 영역이므로 가볍게 들어 갈 수 없도록 하는 결계지.
-		PRINTFORMW 　그런데 사실 금줄의 유래는 재밌게도 현재와는 완전히 반대의 의미야.
-		PRINTFORMW 　아마노이와토(天の岩戸)설화는 알고 있겠지. 아마테라스 오오카미가 동굴에 들어가 나오지 않는 신화다.
-		PRINTFORMW 　지식의 신 오모이카네(思金神)의 지략에 의해 아마테라스 오오카미를 동굴에서 끌어낸 후
-		PRINTFORMW 　이때 후토다마노미코토(布刀玉命), 후토다마의 손에 의해서
-		PRINTFORMW 　아마테라스가 다시 동굴에 들어가지 못하도록 친 금줄이 최초의 금줄로 알려졌다.
-		PRINTFORMW 　신의 출입을 막기 위한 물건이 이젠 사람의 출입을 막고있으니 신기한 일이지.
-		PRINTFORMW 　아니, 의외로 하나님을 가두기 위해 인간이 금줄을 이용하고 있는 것일지도 모른다.
-		PRINTFORMW 　워낙 변덕이 많아서 가만히 두면 어디로 갈지 알 수 없으니까」
+		PRINTFORMW  신체 능력은 말할 것도 없고 지식도 지능도 톱 클래스.
+		PRINTFORMW  그리고 무엇보다 무서운건 경계를 다루는 정도의 능력이다.
+		PRINTFORMW  경계는 물건과 물건, 공간과 공간등을 구분하는 경계선.
+		PRINTFORMW  그것을 조작 할 수 있다는 것이니까 만물의 파괴와 창조를 할 수 있다는 것과 동의어야.
+		PRINTFORMW  존재 자체가 농담이나 사기극 같은 존재지. 실수로라도 손대지 마라.
+		PRINTFORMW  그런데 일상에서 볼 수 있는 경계 중 하나로는 금줄(注連縄)이 있다.
+		PRINTFORMW  금줄의 새끼는 영역을 표시하는 줄과 같은 것, 즉 새끼를 치고 점유의 증표로 삼는거지.
+		PRINTFORMW  그럼 이 경계가 구분하고 있는게 뭔가 하면, 그건 사람과 신의 영역이다.
+		PRINTFORMW  끈 안쪽이 신의 영역이므로 가볍게 들어 갈 수 없도록 하는 결계지.
+		PRINTFORMW  그런데 사실 금줄의 유래는 재밌게도 현재와는 완전히 반대의 의미야.
+		PRINTFORMW  아마노이와토(天の岩戸)설화는 알고 있겠지. 아마테라스 오오카미가 동굴에 들어가 나오지 않는 신화다.
+		PRINTFORMW  지식의 신 오모이카네(思金神)의 지략에 의해 아마테라스 오오카미를 동굴에서 끌어낸 후
+		PRINTFORMW  이때 후토다마노미코토(布刀玉命), 후토다마의 손에 의해서
+		PRINTFORMW  아마테라스가 다시 동굴에 들어가지 못하도록 친 금줄이 최초의 금줄로 알려졌다.
+		PRINTFORMW  신의 출입을 막기 위한 물건이 이젠 사람의 출입을 막고있으니 신기한 일이지.
+		PRINTFORMW  아니, 의외로 하나님을 가두기 위해 인간이 금줄을 이용하고 있는 것일지도 모른다.
+		PRINTFORMW  워낙 변덕이 많아서 가만히 두면 어디로 갈지 알 수 없으니까」
 		;유카리가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 22
-				PRINTFORML 
-				PRINTFORMW 「여담이지만 이 아마노이와토 신화때 만들어진 도구가
-				PRINTFORMW 　그 유명한 아사카니의 곡옥(八尺瓊勾玉), 야타의 거울(八咫鏡)이지.
-				PRINTFORMW 　쿠사나기의 검(天叢雲剣) 이외의 보물은 이때 만들어진 것이다.」
-				PRINTFORMW 『어머, 그러고 보니 당신의 상점에 낡은 검이 있었지 않았나?』
-				PRINTFORMW 「윽, 이런!? 야쿠모 유카리, 너도 있었나」
-				PRINTFORMW 『너무하네요, 그렇게 깜짝 놀랄 것 까지야. 그런데 그 칼은……』
-				PRINTFORMW 「미안하지만 그건 마리사의 유품이 될 예정인 상품이기 때문에 비매품이야 다른 거라면 뭘 가져가도 상관없지만 그 검만큼은 절대 안된다 너도 사람과 사람간의 관계의 중요성 정도는 알고 있을테니까 거기다 그건……」
-				PRINTFORMW 『스톱! 그 검에 볼일은 없으니까 그렇게 당황하지 않아도 돼』
-				PRINTFORMW 「그, 그렇나……」
-				PRINTFORMW 『지금은 아직 없지만, 앞으로도 그런날이 오진 않기를 바라고 있어요』
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 22
+			PRINTFORML 
+			PRINTFORMW 「여담이지만 이 아마노이와토 신화때 만들어진 도구가
+			PRINTFORMW  그 유명한 아사카니의 곡옥(八尺瓊勾玉), 야타의 거울(八咫鏡)이지.
+			PRINTFORMW  쿠사나기의 검(天叢雲剣) 이외의 보물은 이때 만들어진 것이다.」
+			PRINTFORMW 『어머, 그러고 보니 당신의 상점에 낡은 검이 있었지 않았나?』
+			PRINTFORMW 「윽, 이런!? 야쿠모 유카리, 너도 있었나」
+			PRINTFORMW 『너무하네요, 그렇게 깜짝 놀랄 것 까지야. 그런데 그 칼은……』
+			PRINTFORMW 「미안하지만 그건 마리사의 유품이 될 예정인 상품이기 때문에 비매품이야 다른 거라면 뭘 가져가도 상관없지만 그 검만큼은 절대 안된다 너도 사람과 사람간의 관계의 중요성 정도는 알고 있을테니까 거기다 그건……」
+			PRINTFORMW 『스톱! 그 검에 볼일은 없으니까 그렇게 당황하지 않아도 돼』
+			PRINTFORMW 「그, 그렇나……」
+			PRINTFORMW 『지금은 아직 없지만, 앞으로도 그런날이 오진 않기를 바라고 있어요』
 		ENDIF
-	ELSEIF A == 21
+	ELSEIF LOCAL == 21
 		PRINTFORMW 「스키마 요괴의 식은 구미호다. 알다시피 요수는 꼬리의 수가 힘에 직결된다.
-		PRINTFORMW 　그러니 구미호는 수많은 요수들 중에서도 최상위 존재가 된다.
-		PRINTFORMW 　이 나라에선 백면금모(白面金毛)라는 구미호가 유명하지.
-		PRINTFORMW 　달기(妲己), 화양부인(華陽夫人), 타마모노마에(玉藻前)와 모습을 바꾸고, 각국에서 권력자를 조종한 세계 제일의 미녀다.
-		PRINTFORMW 　참고로 삼국은 위오촉이 아니라 일본, 인도, 중국이다.
-		PRINTFORMW 　착각하고 있다가 자칫 망신을 당하는 일은 없도록.
-		PRINTFORMW 　이 세명 중에선 화양부인이 제일 알려지지 않았으려나.
-		PRINTFORMW 　인도의 남천축국(耶竭国)의 반다라(班足) 태자의 왕비였다고 알려져있다.
-		PRINTFORMW 　여기서도 천명의 목을 치라고 부추기며 상당한 악행을 저질렀지. 
-		PRINTFORMW 　그리고 그 후에 여러가지 일을 거쳐서 일본으로 건너 오는……
-		PRINTFORMW 　화양부인이라는 이름이 인도인같지 않다고?
-		PRINTFORMW 　그야 이 이름은 에도 시대의 일본인이 멋대로 붙인 거니 당연하다.
-		PRINTFORMW 　즉, 중국(華)남쪽(陽)인물이니까 화양부인인거다. 적당하게 붙인거야」
+		PRINTFORMW  그러니 구미호는 수많은 요수들 중에서도 최상위 존재가 된다.
+		PRINTFORMW  이 나라에선 백면금모(白面金毛)라는 구미호가 유명하지.
+		PRINTFORMW  달기(妲己), 화양부인(華陽夫人), 타마모노마에(玉藻前)와 모습을 바꾸고, 각국에서 권력자를 조종한 세계 제일의 미녀다.
+		PRINTFORMW  참고로 삼국은 위오촉이 아니라 일본, 인도, 중국이다.
+		PRINTFORMW  착각하고 있다가 자칫 망신을 당하는 일은 없도록.
+		PRINTFORMW  이 세명 중에선 화양부인이 제일 알려지지 않았으려나.
+		PRINTFORMW  인도의 남천축국(耶竭国)의 반다라(班足) 태자의 왕비였다고 알려져있다.
+		PRINTFORMW  여기서도 천명의 목을 치라고 부추기며 상당한 악행을 저질렀지. 
+		PRINTFORMW  그리고 그 후에 여러가지 일을 거쳐서 일본으로 건너 오는……
+		PRINTFORMW  화양부인이라는 이름이 인도인같지 않다고?
+		PRINTFORMW  그야 이 이름은 에도 시대의 일본인이 멋대로 붙인 거니 당연하다.
+		PRINTFORMW  즉, 중국(華)남쪽(陽)인물이니까 화양부인인거다. 적당하게 붙인거야」
 		;란이 조수
-		IF ASSI > 0
-			IF NO:ASSI == 21
-				PRINTFORML 
-				PRINTFORMW 「그리고 조금 신경 쓰여서 묻는건데, 너와 백면과는 무슨 관계인가?」
-				PRINTFORMW 『몰라, 식이 된 이후론 옛 일은 기억나지 않아서 말이야』
-				PRINTFORMW 「대답을 피하는건가. 시간이라면 얼마든지 있으니 말해줄때까지 기다리면 되겠지」
-				PRINTFORMW 『남자라면 기다리는 것 보단 그 정신으로 주변에라도 물어보는게 어때?』
-				PRINTFORMW 「그럴 생각은 없다. 난 귀찮은 일은 싫어하니까」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 21
+			PRINTFORML 
+			PRINTFORMW 「그리고 조금 신경 쓰여서 묻는건데, 너와 백면과는 무슨 관계인가?」
+			PRINTFORMW 『몰라, 식이 된 이후론 옛 일은 기억나지 않아서 말이야』
+			PRINTFORMW 「대답을 피하는건가. 시간이라면 얼마든지 있으니 말해줄때까지 기다리면 되겠지」
+			PRINTFORMW 『남자라면 기다리는 것 보단 그 정신으로 주변에라도 물어보는게 어때?』
+			PRINTFORMW 「그럴 생각은 없다. 난 귀찮은 일은 싫어하니까」
 		ENDIF
-	ELSEIF A == 20
+	ELSEIF LOCAL == 20
 		PRINTFORMW 「명계에는 백옥루라는 저택이 있다. 사이교우지라는 명문의 저택이지.
-		PRINTFORMW 　그 곳의 주인은 사이교우지 유유코라는 아가씨다. 천년 이상 망령으로 지낸 모양이야.
-		PRINTFORMW 　와가(和歌)로 가장 뛰어나다던(歌聖) 사이교 법사를 아버지로 두었다는 얘기도 들었었고. 정말 명문가로군.
-		PRINTFORMW 　그녀가 사는 백옥루의 정원의 넓이는 200유순(由旬)이라 한다.
-		PRINTFORMW 　유순은 길이의 단위이기도 하지만 '이정도로 넓다' 라고 말하는 용도이기도 한데,
-		PRINTFORMW 　이게 무슨 소린가 하면 실제론 어느 정도의 넓이일지 잘 모른다는 거다.
-		PRINTFORMW 　유순은 고대 인도의 길이의 단위인데 그때는 요즘처럼 도량형이 통일되어 있지 않았다.
-		PRINTFORMW 　일반적으로 1유순은 8간(間) 정도…… 네가 쉽게 알아 듣도록 바꿔 말한다면 14.4km 또는 7km정도일까.
-		PRINTFORMW 　왜 길이가 배나 차이가 나는가 하면 후자의 길이는 불교 서적이 근본이기 때문이야.
-		PRINTFORMW 　반대로 힌두교 문헌을 바탕으로 한다면 전자가 되겠지.
-		PRINTFORMW 　고대 인도의 단위니까 14.4km쪽이 맞는 것 같겠지만, 사실은 그렇게 단순하지 않아.
-		PRINTFORMW 　유순에는 한단계 아래의 단위가 있고, 1유순은 4크로샤(倶盧舎)며
-		PRINTFORMW 　그 아래에 또 여러 단계가 있지만 그건 귀찮으니 생략하고
-		PRINTFORMW 　결국 1유순은 32000팔꿈치가 된다. 사실 더 아래 단계도 있지만 그런건 신경쓰지 마라.
-		PRINTFORMW 　1팔꿈치란 팔을 뻗었을 때 팔꿈치에서 손끝까지의 길이다.
-		PRINTFORMW 　이런 개인차가 있는 걸 단위로 삼아도 될까 싶겠지만 사실 고대 인도 뿐만 아니라 어디에서나 사용된 단위다.
-		PRINTFORMW 　아, 이야기가 샜네.
-		PRINTFORMW 　아까 말한 크로샤의 단위는 소의 울음 소리가 닿는 범위가 기준이다.
-		PRINTFORMW 　원래 크로샤라는 단어에 소 울음 소리라는 뜻이 있다지만 아무리 그래도 애매한 것도 정도가 있지.
-		PRINTFORMW 　유순도 소 달구지가 하루에 갈 수 있는 거리등으로 정의를 내리고 있질 않나, 도통 이해가 안된다.
-		PRINTFORMW 　아까 1유순은 32000팔꿈치라고 말했지만, 불교계의 책에서는 이걸 16000팔꿈치라고 한다.
-		PRINTFORMW 　어디서 사본을 베낄때 실수한건지,
-		PRINTFORMW 　아니면 소 달구지가 간 거리든 소의 울음 소리든 뭐든 직접 계산해봤던 걸지도 모르겠지만
-		PRINTFORMW 　결국 아무리 조사해봐도 따져보면 어딘가에선 결국 모순이 생기고
-		PRINTFORMW 　어떤 사람은 1유순 = 53.9km 라고 주장하고 있기도 하니까
-		PRINTFORMW 　200유순 같은건 그냥 엄청 크다고 이해하는게 훨씬 더 나을거다.」
+		PRINTFORMW  그 곳의 주인은 사이교우지 유유코라는 아가씨다. 천년 이상 망령으로 지낸 모양이야.
+		PRINTFORMW  와가(和歌)로 가장 뛰어나다던(歌聖) 사이교 법사를 아버지로 두었다는 얘기도 들었었고. 정말 명문가로군.
+		PRINTFORMW  그녀가 사는 백옥루의 정원의 넓이는 200유순(由旬)이라 한다.
+		PRINTFORMW  유순은 길이의 단위이기도 하지만 '이정도로 넓다' 라고 말하는 용도이기도 한데,
+		PRINTFORMW  이게 무슨 소린가 하면 실제론 어느 정도의 넓이일지 잘 모른다는 거다.
+		PRINTFORMW  유순은 고대 인도의 길이의 단위인데 그때는 요즘처럼 도량형이 통일되어 있지 않았다.
+		PRINTFORMW  일반적으로 1유순은 8간(間) 정도…… 네가 쉽게 알아 듣도록 바꿔 말한다면 14.4km 또는 7km정도일까.
+		PRINTFORMW  왜 길이가 배나 차이가 나는가 하면 후자의 길이는 불교 서적이 근본이기 때문이야.
+		PRINTFORMW  반대로 힌두교 문헌을 바탕으로 한다면 전자가 되겠지.
+		PRINTFORMW  고대 인도의 단위니까 14.4km쪽이 맞는 것 같겠지만, 사실은 그렇게 단순하지 않아.
+		PRINTFORMW  유순에는 한단계 아래의 단위가 있고, 1유순은 4크로샤(倶盧舎)며
+		PRINTFORMW  그 아래에 또 여러 단계가 있지만 그건 귀찮으니 생략하고
+		PRINTFORMW  결국 1유순은 32000팔꿈치가 된다. 사실 더 아래 단계도 있지만 그런건 신경쓰지 마라.
+		PRINTFORMW  1팔꿈치란 팔을 뻗었을 때 팔꿈치에서 손끝까지의 길이다.
+		PRINTFORMW  이런 개인차가 있는 걸 단위로 삼아도 될까 싶겠지만 사실 고대 인도 뿐만 아니라 어디에서나 사용된 단위다.
+		PRINTFORMW  아, 이야기가 샜네.
+		PRINTFORMW  아까 말한 크로샤의 단위는 소의 울음 소리가 닿는 범위가 기준이다.
+		PRINTFORMW  원래 크로샤라는 단어에 소 울음 소리라는 뜻이 있다지만 아무리 그래도 애매한 것도 정도가 있지.
+		PRINTFORMW  유순도 소 달구지가 하루에 갈 수 있는 거리등으로 정의를 내리고 있질 않나, 도통 이해가 안된다.
+		PRINTFORMW  아까 1유순은 32000팔꿈치라고 말했지만, 불교계의 책에서는 이걸 16000팔꿈치라고 한다.
+		PRINTFORMW  어디서 사본을 베낄때 실수한건지,
+		PRINTFORMW  아니면 소 달구지가 간 거리든 소의 울음 소리든 뭐든 직접 계산해봤던 걸지도 모르겠지만
+		PRINTFORMW  결국 아무리 조사해봐도 따져보면 어딘가에선 결국 모순이 생기고
+		PRINTFORMW  어떤 사람은 1유순 = 53.9km 라고 주장하고 있기도 하니까
+		PRINTFORMW  200유순 같은건 그냥 엄청 크다고 이해하는게 훨씬 더 나을거다.」
 		;유유코가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 20
-				PRINTFORML 
-				PRINTFORMW 「그래서, 실제로는 어느정도의 크기인가?」
-				PRINTFORMW 『어라, 세세한 건 신경쓰지 않는게 아니였어?』
-				PRINTFORMW 「눈 앞에 답을 알고 있는 인물이 있다면, 당연히 신경이 쓰이는 법이지」
-				PRINTFORMW 『어머어머. 미안하지만 나도 잘 모르겠어.
-				PRINTFORMW 　일일이 자기 집의 넓이를 측정하고 다니는 일은 보통 없겠죠?』
-				PRINTFORMW 「그야 그렇지……역시 직접 측량해보는 방법뿐이려나.
-				PRINTFORMW 　사후의 즐거움이 하나 늘었다고 긍정적으로 해석해둬야겠군」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 20
+			PRINTFORML 
+			PRINTFORMW 「그래서, 실제로는 어느정도의 크기인가?」
+			PRINTFORMW 『어라, 세세한 건 신경쓰지 않는게 아니였어?』
+			PRINTFORMW 「눈 앞에 답을 알고 있는 인물이 있다면, 당연히 신경이 쓰이는 법이지」
+			PRINTFORMW 『어머어머. 미안하지만 나도 잘 모르겠어.
+			PRINTFORMW  일일이 자기 집의 넓이를 측정하고 다니는 일은 보통 없겠죠?』
+			PRINTFORMW 「그야 그렇지……역시 직접 측량해보는 방법뿐이려나.
+			PRINTFORMW  사후의 즐거움이 하나 늘었다고 긍정적으로 해석해둬야겠군」
 		ENDIF
-	ELSEIF A == 19
+	ELSEIF LOCAL == 19
 		PRINTFORMW 「명계에는 백옥루라는 저택이 있다. 사이교우지라는 명문의 저택이다.
-		PRINTFORMW 　거기에 문지기 겸 정원사 겸 검술 지도 역할을 하는 콘파쿠 요우무라는 소녀가 있지.
-		PRINTFORMW 　솜씨는 괜찮지만 정신적으로는 아직 반쪽이야.
-		PRINTFORMW 　반쪽이라 하니 생각났는데 그녀는 반인반령이란 특이한 종족이다.
-		PRINTFORMW 　이름 그대로 사람과 귀신의 몸을 절반씩 가지고 있지.
-		PRINTFORMW 　그녀의 할아버지도 반인반령이라 들었는데, 그럼 여기서 문제다.
-		PRINTFORMW 　부모의 소질을 각각 절반씩 물려받는다고 가정하고
-		PRINTFORMW 　할머니와 부모에게 적용시킬 것을 각각 사람, 유령, 반인반령으로 했을 경우
-		PRINTFORMW 　어떤 조합이 되야 그녀가 반인반령이 될 수 있을까?
-		PRINTFORMW 　다만, 반인반령은 그녀와 할아버지 뿐이라고 하자.
-		PRINTFORMW 　그렇지 않으면 전원 반인반령으로 끝나버릴테니까.
-		PRINTFORMW 　아아, 복잡해지니까 멘델의 유전 법칙은 무시해도 상관 없어.」
-		PRINTFORMW 　…………
-		PRINTFORMW 　……
+		PRINTFORMW  거기에 문지기 겸 정원사 겸 검술 지도 역할을 하는 콘파쿠 요우무라는 소녀가 있지.
+		PRINTFORMW  솜씨는 괜찮지만 정신적으로는 아직 반쪽이야.
+		PRINTFORMW  반쪽이라 하니 생각났는데 그녀는 반인반령이란 특이한 종족이다.
+		PRINTFORMW  이름 그대로 사람과 귀신의 몸을 절반씩 가지고 있지.
+		PRINTFORMW  그녀의 할아버지도 반인반령이라 들었는데, 그럼 여기서 문제다.
+		PRINTFORMW  부모의 소질을 각각 절반씩 물려받는다고 가정하고
+		PRINTFORMW  할머니와 부모에게 적용시킬 것을 각각 사람, 유령, 반인반령으로 했을 경우
+		PRINTFORMW  어떤 조합이 되야 그녀가 반인반령이 될 수 있을까?
+		PRINTFORMW  다만, 반인반령은 그녀와 할아버지 뿐이라고 하자.
+		PRINTFORMW  그렇지 않으면 전원 반인반령으로 끝나버릴테니까.
+		PRINTFORMW  아아, 복잡해지니까 멘델의 유전 법칙은 무시해도 상관 없어.」
+		PRINTFORMW  …………
+		PRINTFORMW  ……
 		PRINTFORMW 「풀었나?
-		PRINTFORMW 　고민하게 해놓곤 미안하지만 사실은 이 문제의 해답은 없다.
-		PRINTFORMW 　그녀의 반이 영혼인 이유는 사람과 귀신의 혼혈이라서가 아니라, 종족이기 때문이다.
-		PRINTFORMW 　사람은 사람, 요괴는 요괴라는 식으로 반인반령도 하나의 카테고리니까
-		PRINTFORMW 　사람과 요괴의 혼혈인 나와는 이야기가 달라지지.
-		PRINTFORMW 　문제가 비겁하다고? 가끔은 머리를 써보라는 부모의 마음으로 낸거다. 감사하게 생각해.」
+		PRINTFORMW  고민하게 해놓곤 미안하지만 사실은 이 문제의 해답은 없다.
+		PRINTFORMW  그녀의 반이 영혼인 이유는 사람과 귀신의 혼혈이라서가 아니라, 종족이기 때문이다.
+		PRINTFORMW  사람은 사람, 요괴는 요괴라는 식으로 반인반령도 하나의 카테고리니까
+		PRINTFORMW  사람과 요괴의 혼혈인 나와는 이야기가 달라지지.
+		PRINTFORMW  문제가 비겁하다고? 가끔은 머리를 써보라는 부모의 마음으로 낸거다. 감사하게 생각해.」
 		;요우무가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 19
-				PRINTFORML 
-				PRINTFORMW 『정확하게 말하면 전 문지기 겸 정원사 겸 검술 사범 역할인데요……』
-				PRINTFORMW 「사범 역할이라고 해도 진심으로 한다면 네가 그 아가씨를 이길 수 있나?」
-				PRINTFORMW 『그건 아니지만…… 그래도 그렇게 말하는건』
-				PRINTFORMW 「억울하면 불평말고 좀 더 정진해라. 아직 선대의 발끝에도 미치지 않아. 너는」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 19
+			PRINTFORML 
+			PRINTFORMW 『정확하게 말하면 전 문지기 겸 정원사 겸 검술 사범 역할인데요……』
+			PRINTFORMW 「사범 역할이라고 해도 진심으로 한다면 네가 그 아가씨를 이길 수 있나?」
+			PRINTFORMW 『그건 아니지만…… 그래도 그렇게 말하는건』
+			PRINTFORMW 「억울하면 불평말고 좀 더 정진해라. 아직 선대의 발끝에도 미치지 않아. 너는」
 		ENDIF
-	ELSEIF A == 18
+	ELSEIF LOCAL == 18
 		PRINTFORMW 「유령 악단 프리즘 리버 세 자매를 알고 있나? 환상향에서 가장 유명한 연예인이지.
-		PRINTFORMW 　리더는 장녀 루나사다. 사람을 우울하게 하는 소리를 연주하지.
-		PRINTFORMW 　그다지 가까이 하고 싶지는 않군.
-		PRINTFORMW 　오늘은 소령이라 불리는 그들과 인연이 깊은 폴터가이스트에 대해 말해볼까.
-		PRINTFORMW 　누군가의 손이 닿아 있는 것도 아닌데 가구가 움직이거나, 아무 것도 없는 곳이 빛나거나
-		PRINTFORMW 　소리가 나거나, 드물게 발화하기도 하는 현상이다.
-		PRINTFORMW 　제일 자주 관측되는 현상은 처음에 말한 물체 이동이려나?
-		PRINTFORMW 　보통 폴터가이스트라고 하면 떠올리는 일이겠지.
-		PRINTFORMW 　이런 현상이 발생하는 원인으론 여러가지 설이 있다.
-		PRINTFORMW 　요정의 장난, 사춘기 소년 소녀가 가진 특수 능력의 발현, 기분 탓.
-		PRINTFORMW 　지하에서 미약한 진동의 축적 등……. 예를 들면 끝이 없다
-		PRINTFORMW 　그런데 내가 생각하기엔 아마 원인과 결과의 순서를 반대로 보고 있는게 아닐까 싶다.
-		PRINTFORMW 　어떠한 원인으로 폴터가이스트가 일어나는 것이 아니라,
-		PRINTFORMW 　폴터가이스트현상이 먼저 일어났고 그걸 일으키는 원인은 여러가지가 존재하는거지.
-		PRINTFORMW 　즉, 그렇게 보면 요정의 장난도 초능력도 같은 것이라는 거다.
-		PRINTFORMW 　……그렇다곤 해도 원래는 현상밖에 관측되지 않는 폴터가이스트가
-		PRINTFORMW 　그녀들처럼 형태를 갖춘다는 얘기는 다른 곳에서도 들어 본 적이 없지만」
+		PRINTFORMW  리더는 장녀 루나사다. 사람을 우울하게 하는 소리를 연주하지.
+		PRINTFORMW  그다지 가까이 하고 싶지는 않군.
+		PRINTFORMW  오늘은 소령이라 불리는 그들과 인연이 깊은 폴터가이스트에 대해 말해볼까.
+		PRINTFORMW  누군가의 손이 닿아 있는 것도 아닌데 가구가 움직이거나, 아무 것도 없는 곳이 빛나거나
+		PRINTFORMW  소리가 나거나, 드물게 발화하기도 하는 현상이다.
+		PRINTFORMW  제일 자주 관측되는 현상은 처음에 말한 물체 이동이려나?
+		PRINTFORMW  보통 폴터가이스트라고 하면 떠올리는 일이겠지.
+		PRINTFORMW  이런 현상이 발생하는 원인으론 여러가지 설이 있다.
+		PRINTFORMW  요정의 장난, 사춘기 소년 소녀가 가진 특수 능력의 발현, 기분 탓.
+		PRINTFORMW  지하에서 미약한 진동의 축적 등……. 예를 들면 끝이 없다
+		PRINTFORMW  그런데 내가 생각하기엔 아마 원인과 결과의 순서를 반대로 보고 있는게 아닐까 싶다.
+		PRINTFORMW  어떠한 원인으로 폴터가이스트가 일어나는 것이 아니라,
+		PRINTFORMW  폴터가이스트현상이 먼저 일어났고 그걸 일으키는 원인은 여러가지가 존재하는거지.
+		PRINTFORMW  즉, 그렇게 보면 요정의 장난도 초능력도 같은 것이라는 거다.
+		PRINTFORMW  ……그렇다곤 해도 원래는 현상밖에 관측되지 않는 폴터가이스트가
+		PRINTFORMW  그녀들처럼 형태를 갖춘다는 얘기는 다른 곳에서도 들어 본 적이 없지만」
 		;루나사가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 18
-				PRINTFORML 
-				PRINTFORMW 『자세히 말하긴 귀찮고…… 딱히 뭐라해도 상관없고……』
-				PRINTFORMW 「그럼 현상이 형태를 가진 결과, 너희들이 태어난 것은 아니라는 건가?」
-				PRINTFORMW 『……그래……』
-				PRINTFORMW 「흥미로운데, 좀 더 자세히 들려주지 않겠나?」
-				PRINTFORMW 『……귀찮으니까. 여동생한테 물어봐……』
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 18
+			PRINTFORML 
+			PRINTFORMW 『자세히 말하긴 귀찮고…… 딱히 뭐라해도 상관없고……』
+			PRINTFORMW 「그럼 현상이 형태를 가진 결과, 너희들이 태어난 것은 아니라는 건가?」
+			PRINTFORMW 『……그래……』
+			PRINTFORMW 「흥미로운데, 좀 더 자세히 들려주지 않겠나?」
+			PRINTFORMW 『……귀찮으니까. 여동생한테 물어봐……』
 		ENDIF
-	ELSEIF A == 17
+	ELSEIF LOCAL == 17
 		PRINTFORMW 「유령 악단 프리즘 리버 세 자매를 알고 있나? 환상향에서 가장 유명한 연예인이지.
-		PRINTFORMW 　둘째인 메를랑은 사람을 들뜨게 하고 기행을 하게하는 소리를 연주한다.
-		PRINTFORMW 　그다지 가까이 하고 싶지는 않군.
-		PRINTFORMW 　이 자매들의 오케스트라는 손이 닿지도 않은 상태에서도 악기를 연주하지.
-		PRINTFORMW 　가지고 있는 악기는 그냥 상징 같은 것인 모양이다.
-		PRINTFORMW 　어디에서 소리를 내고 있는지 조차 모르기 때문에
-		PRINTFORMW 　그녀들의 연주를 들을 기회가 있다면 주의해서 들어보는게 좋겠지.
-		PRINTFORMW 　어떻게 봐도 음색의 수와 악기의 수가 일치하지 않으니까.
-		PRINTFORMW 　뭐, 아까도 말했지만 나는 그런건 사양이니 듣고 싶다면 혼자 들어보게」
+		PRINTFORMW  둘째인 메를랑은 사람을 들뜨게 하고 기행을 하게하는 소리를 연주한다.
+		PRINTFORMW  그다지 가까이 하고 싶지는 않군.
+		PRINTFORMW  이 자매들의 오케스트라는 손이 닿지도 않은 상태에서도 악기를 연주하지.
+		PRINTFORMW  가지고 있는 악기는 그냥 상징 같은 것인 모양이다.
+		PRINTFORMW  어디에서 소리를 내고 있는지 조차 모르기 때문에
+		PRINTFORMW  그녀들의 연주를 들을 기회가 있다면 주의해서 들어보는게 좋겠지.
+		PRINTFORMW  어떻게 봐도 음색의 수와 악기의 수가 일치하지 않으니까.
+		PRINTFORMW  뭐, 아까도 말했지만 나는 그런건 사양이니 듣고 싶다면 혼자 들어보게」
 		;메를랑이 조수
-		IF ASSI > 0
-			IF NO:ASSI == 17
-				PRINTFORML 
-				PRINTFORMW 『에, 그런말 하지 말고 해피하게 함께 하자!
-				PRINTFORMW 　좋아, 모처럼이니까 지금부터 솔로 라이브 해볼께』
-				PRINTFORMW 「됐다, 시끄러운건 질색이야. 게다가 지금은 악기를 갖고……아」
-				PRINTFORMW 『있는쪽이 좀 더 좋지만 딱히 없어도 연주할 수 있어요.
-				PRINTFORMW 　그럼 모두 다, 시작해요!』
-				PRINTFORMW 「우,우와아아아아앗!?」
-				PRINTFORMW 　이리하여 밀실은 라이브 회장이 되고,
-				PRINTFORMW 　리듬을 타면서 춤을 추는 린노스케라는 희귀한 현상이 관측되었다.
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 17
+			PRINTFORML 
+			PRINTFORMW 『에, 그런말 하지 말고 해피하게 함께 하자!
+			PRINTFORMW  좋아, 모처럼이니까 지금부터 솔로 라이브 해볼께』
+			PRINTFORMW 「됐다, 시끄러운건 질색이야. 게다가 지금은 악기를 갖고……아」
+			PRINTFORMW 『있는쪽이 좀 더 좋지만 딱히 없어도 연주할 수 있어요.
+			PRINTFORMW  그럼 모두 다, 시작해요!』
+			PRINTFORMW 「우,우와아아아아앗!?」
+			PRINTFORMW  이리하여 밀실은 라이브 회장이 되고,
+			PRINTFORMW  리듬을 타면서 춤을 추는 린노스케라는 희귀한 현상이 관측되었다.
 		ENDIF
-	ELSEIF A == 16
+	ELSEIF LOCAL == 16
 		PRINTFORMW 「유령 악단 프리즘 리버 세 자매를 알고 있나? 환상향에서 가장 유명한 연예인이지.
-		PRINTFORMW 　막내 여동생은 리리카라고 한다. 언니들과 달리 정신에 영향을 주는 소리를 연주하는 것은 아니지만
-		PRINTFORMW 　시끄러운건 별 다르지 않아. 그다지 가까이 하고 싶지는 않군.
-		PRINTFORMW 　예전에 마을에 있는 팬클럽에게 그들의 회보를 보여달라고 한 적이 있는데
-		PRINTFORMW 　회보에 따르면 그녀들이 가진 악기는 모두 어떤 사정이 있는 유령이 붙은 악기라고 한다.
-		PRINTFORMW 　그럼 물론 연주되는 소리도 소리의 유령이지.
-		PRINTFORMW 　뭐냐, 그 이상한 표정은? 무기물이나 소리에 유령이 있다는게 그렇게 이해가 안되나?
-		PRINTFORMW 　도구라도 영혼은 있어. 내가 하는 말이니까 틀릴 리는 없다.
-		PRINTFORMW 　그럼 유령이 있다는 사실에 이상한 점은 없지. 
-		PRINTFORMW 　자아, 소리에는 영혼이 있는지 없는지……
-		PRINTFORMW 　그렇지. 유령이라고 하면 일반적으론 사후 그릇을 떠나 떠도는 영혼의 이미지군.
-		PRINTFORMW 　하지만 그것과는 별개로 있는지 없는지 잘 모르는 상황의 비유로도 쓰인다.
-		PRINTFORMW 　집 안에서만 강한척 하는 사람(内弁慶外幽霊)이라던가 유령부원 같은 말도 있지 않나?
-		PRINTFORMW 　소리의 유령에 관해서는 그런 걸 생각하면 이해하기 쉽다.
-		PRINTFORMW 　존재하는지 하지 않는지 명확하지 않은 소리, 즉 환상의 소리지.
-		PRINTFORMW 　환상향에 있다면 환상이라 해도 놀라운 일도 아니니까. 즉 그들의 연주는 환상인 것이다」
+		PRINTFORMW  막내 여동생은 리리카라고 한다. 언니들과 달리 정신에 영향을 주는 소리를 연주하는 것은 아니지만
+		PRINTFORMW  시끄러운건 별 다르지 않아. 그다지 가까이 하고 싶지는 않군.
+		PRINTFORMW  예전에 마을에 있는 팬클럽에게 그들의 회보를 보여달라고 한 적이 있는데
+		PRINTFORMW  회보에 따르면 그녀들이 가진 악기는 모두 어떤 사정이 있는 유령이 붙은 악기라고 한다.
+		PRINTFORMW  그럼 물론 연주되는 소리도 소리의 유령이지.
+		PRINTFORMW  뭐냐, 그 이상한 표정은? 무기물이나 소리에 유령이 있다는게 그렇게 이해가 안되나?
+		PRINTFORMW  도구라도 영혼은 있어. 내가 하는 말이니까 틀릴 리는 없다.
+		PRINTFORMW  그럼 유령이 있다는 사실에 이상한 점은 없지. 
+		PRINTFORMW  자아, 소리에는 영혼이 있는지 없는지……
+		PRINTFORMW  그렇지. 유령이라고 하면 일반적으론 사후 그릇을 떠나 떠도는 영혼의 이미지군.
+		PRINTFORMW  하지만 그것과는 별개로 있는지 없는지 잘 모르는 상황의 비유로도 쓰인다.
+		PRINTFORMW  집 안에서만 강한척 하는 사람(内弁慶外幽霊)이라던가 유령부원 같은 말도 있지 않나?
+		PRINTFORMW  소리의 유령에 관해서는 그런 걸 생각하면 이해하기 쉽다.
+		PRINTFORMW  존재하는지 하지 않는지 명확하지 않은 소리, 즉 환상의 소리지.
+		PRINTFORMW  환상향에 있다면 환상이라 해도 놀라운 일도 아니니까. 즉 그들의 연주는 환상인 것이다」
 		;리리카가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 16
-				PRINTFORML 
-				PRINTFORMW 『오빠, 그래서 해설 끝난거야?
-				PRINTFORMW 　해설이라고 해봤자 불확정한 존재, 이른바 유령이랑 같은게 되어버렸는데』
-				PRINTFORMW 「칫, 조용히 있었으면 그대로 끝났을텐데……
-				PRINTFORMW 　그래, 설명이 좀 부족했던건가
-				PRINTFORMW 　분명 이름은 같지만 그게 같다는 뜻은 아니다.
-				PRINTFORMW 　하지만 같은 이름이 된 시점에서 본질도 변화하게 되지.
-				PRINTFORMW 　예를 들어서 내가 독립해서 가게를 열고 모리치카 린노스케라고 이름을 밝혔을때,
-				PRINTFORMW 　그 이전의 나와는 그 시점에서 다른것이 된다.
-				PRINTFORMW 　영력이라는 것이지. 이름에는 마력이 깃든 것이야.
-				PRINTFORMW 　나는 모리치카 린노스케라고 자칭한 시점에서 모리치카 린노스케가 되었다,
-				PRINTFORMW 　이것과 마찬가지로『있는지 없는지 모르는 현상』은『유령』이란 이름을 얻었고
-				PRINTFORMW 　그 시점에서, 사후에 떠돌아 다니는 영혼과 같은 성질이 되었다.
-				PRINTFORMW 　그래서 그 둘을 동일시해서 묶어버려도 아무런 문제가 없다는 것이다.
-				PRINTFORMW 　어때, 이 설명이라면 문제는 없겠지」
-				PRINTFORMW 『음, 영혼이 먼저『유령』의 이름을 얻었다면
-				PRINTFORMW 　어찌보면 문제 없다고는 들리지만 그렇지 않은것일지도 아닐까?』
-				PRINTFORMW 「……그러니까 조용히 있었으면 들키지 않는다고 했는데」
-				PRINTFORMW 『소령에게 닥치라고 해보는 건 어떨까, 오빠』
-				PRINTFORMW 「정말 귀찮게 하는군.
-				PRINTFORMW 　혹시 아까 가까이 있진 않았다고 한 것에 원한이라도 품었나?」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 16
+			PRINTFORML 
+			PRINTFORMW 『오빠, 그래서 해설 끝난거야?
+			PRINTFORMW  해설이라고 해봤자 불확정한 존재, 이른바 유령이랑 같은게 되어버렸는데』
+			PRINTFORMW 「칫, 조용히 있었으면 그대로 끝났을텐데……
+			PRINTFORMW  그래, 설명이 좀 부족했던건가
+			PRINTFORMW  분명 이름은 같지만 그게 같다는 뜻은 아니다.
+			PRINTFORMW  하지만 같은 이름이 된 시점에서 본질도 변화하게 되지.
+			PRINTFORMW  예를 들어서 내가 독립해서 가게를 열고 모리치카 린노스케라고 이름을 밝혔을때,
+			PRINTFORMW  그 이전의 나와는 그 시점에서 다른것이 된다.
+			PRINTFORMW  영력이라는 것이지. 이름에는 마력이 깃든 것이야.
+			PRINTFORMW  나는 모리치카 린노스케라고 자칭한 시점에서 모리치카 린노스케가 되었다,
+			PRINTFORMW  이것과 마찬가지로『있는지 없는지 모르는 현상』은『유령』이란 이름을 얻었고
+			PRINTFORMW  그 시점에서, 사후에 떠돌아 다니는 영혼과 같은 성질이 되었다.
+			PRINTFORMW  그래서 그 둘을 동일시해서 묶어버려도 아무런 문제가 없다는 것이다.
+			PRINTFORMW  어때, 이 설명이라면 문제는 없겠지」
+			PRINTFORMW 『음, 영혼이 먼저『유령』의 이름을 얻었다면
+			PRINTFORMW  어찌보면 문제 없다고는 들리지만 그렇지 않은것일지도 아닐까?』
+			PRINTFORMW 「……그러니까 조용히 있었으면 들키지 않는다고 했는데」
+			PRINTFORMW 『소령에게 닥치라고 해보는 건 어떨까, 오빠』
+			PRINTFORMW 「정말 귀찮게 하는군.
+			PRINTFORMW  혹시 아까 가까이 있진 않았다고 한 것에 원한이라도 품었나?」
 		ENDIF
-	ELSEIF A == 15
+	ELSEIF LOCAL == 15
 		PRINTFORMW 「릴리 화이트라고 하는, 봄을 알리는 요정이 있다.
-		PRINTFORMW 　그래도 명확한 목적을 가지고 있는 만큼 다른 요정보다는 정직한 부류가 아닌가?
-		PRINTFORMW 　봄 이외엔 먼저 모습을 나타내는 일이 없기 때문에, 계어(季語)가 될 정도야.
-		PRINTFORMW 　계어가 뭐냐고? 계어란 하이쿠 같은 시에서 계절감을 나타내기 위해 넣는 문구다.
-		PRINTFORMW 　그런데 이걸 꼭 설명해줘야 하나?
-		PRINTFORMW 　뭐? 이런걸 번역하지 않으면 못견디는 성격이라고? ……대체 무슨 소린지.
-		PRINTFORMW 　아무튼, 거의 보이지 않는 탓인지 지명도에 비해서 생태는 잘 알려져 있지 않다.
-		PRINTFORMW 　아무리 환상향이래도 한가한 사람이 아니면 요정의 생태 같은건 조사하지 않으니까.
-		PRINTFORMW 　먼저 말해두겠는데, 여기서 한가한 사람은 내가 아니고 다른 사람이다. 이건 들은 얘기야.
-		PRINTFORMW 　사실은 동서고금 어디의 서적을 읽어봐도 봄을 알리는 요정같은 자는 드문 듯 하다.
-		PRINTFORMW 　없는 건 아니지만, 궂이 따지자면 신격을 가진 신으로 취급되는 경우가 많아.
-		PRINTFORMW 　거기다 그런 경우에는 대부분 『봄을 알리는 자』가 아니라
-		PRINTFORMW 　『봄을 가지고 오는 자』가 된다. 계절을 맡는 존재니까 예외없이 강대한 존재지.
-		PRINTFORMW 　만약 릴리 화이트가 오기 때문에 봄이 되는 것 이라면 그녀가 두려운 존재가 된다만
-		PRINTFORMW 　이건 닭이 먼저인가 계란이 먼저인가 같은 문제라서……
-		PRINTFORMW 　아까 말한 그 한가한 사람의 연구를 기대하고 있다. 그러니까 그 사람은 내가 아니라고」
+		PRINTFORMW  그래도 명확한 목적을 가지고 있는 만큼 다른 요정보다는 정직한 부류가 아닌가?
+		PRINTFORMW  봄 이외엔 먼저 모습을 나타내는 일이 없기 때문에, 계어(季語)가 될 정도야.
+		PRINTFORMW  계어가 뭐냐고? 계어란 하이쿠 같은 시에서 계절감을 나타내기 위해 넣는 문구다.
+		PRINTFORMW  그런데 이걸 꼭 설명해줘야 하나?
+		PRINTFORMW  뭐? 이런걸 번역하지 않으면 못견디는 성격이라고? ……대체 무슨 소린지.
+		PRINTFORMW  아무튼, 거의 보이지 않는 탓인지 지명도에 비해서 생태는 잘 알려져 있지 않다.
+		PRINTFORMW  아무리 환상향이래도 한가한 사람이 아니면 요정의 생태 같은건 조사하지 않으니까.
+		PRINTFORMW  먼저 말해두겠는데, 여기서 한가한 사람은 내가 아니고 다른 사람이다. 이건 들은 얘기야.
+		PRINTFORMW  사실은 동서고금 어디의 서적을 읽어봐도 봄을 알리는 요정같은 자는 드문 듯 하다.
+		PRINTFORMW  없는 건 아니지만, 궂이 따지자면 신격을 가진 신으로 취급되는 경우가 많아.
+		PRINTFORMW  거기다 그런 경우에는 대부분 『봄을 알리는 자』가 아니라
+		PRINTFORMW  『봄을 가지고 오는 자』가 된다. 계절을 맡는 존재니까 예외없이 강대한 존재지.
+		PRINTFORMW  만약 릴리 화이트가 오기 때문에 봄이 되는 것 이라면 그녀가 두려운 존재가 된다만
+		PRINTFORMW  이건 닭이 먼저인가 계란이 먼저인가 같은 문제라서……
+		PRINTFORMW  아까 말한 그 한가한 사람의 연구를 기대하고 있다. 그러니까 그 사람은 내가 아니라고」
 		;릴리가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 15
-				PRINTFORML 
-				PRINTFORMW 「그래서, 사실은 뭔가, 너의 정체는?」」
-				PRINTFORMW 『……? 봄이에요ー』
-				PRINTFORMW 「들으려고 했던 내가 바보지. 머릿 속까지 봄인 것 같군. 이 녀석은……」
-				PRINTFORMW （아니 잠깐, 무엇인지 물어본 대답이「봄이에요ー」라고 하는 것은
-				PRINTFORMW 　즉 그것은 그녀야말로 환상향의 봄 그 자체란 것인가!?）
-				PRINTFORMW 『……봄이에요ー?』
-				PRINTFORMW 「……아무래도 너무 지나친 생각을 했나보군」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 15
+			PRINTFORML 
+			PRINTFORMW 「그래서, 사실은 뭔가, 너의 정체는?」
+			PRINTFORMW 『……? 봄이에요ー』
+			PRINTFORMW 「들으려고 했던 내가 바보지. 머릿 속까지 봄인 것 같군. 이 녀석은……」
+			PRINTFORMW 아니 잠깐, 무엇인지 물어본 대답이「봄이에요ー」라고 하는 것은
+			PRINTFORMW  즉 그것은 그녀야말로 환상향의 봄 그 자체란 것인가!?
+			PRINTFORMW 『……봄이에요ー?』
+			PRINTFORMW 「……아무래도 너무 지나친 생각을 했나보군」
 		ENDIF
-	ELSEIF A == 14
+	ELSEIF LOCAL == 14
 		PRINTFORMW 「마법의 숲에는 인형사 소녀가 살고 있다.
-		PRINTFORMW 　물론 마법의 숲에 사는 소녀니까 그녀도 마녀지.
-		PRINTFORMW 　그녀는 꼭두각시 인형을 수십개에서 수백개를 조종한다고 들었다.
-		PRINTFORMW 　인형에 연결된 실도 마법 실이라서 눈에 보이진 않지만.
-		PRINTFORMW 　그럼, 꼭두각시 인형을 다루는 사람을 괴뢰자(傀儡子)라고 부르는데
-		PRINTFORMW 　주요 관절에 총 10여개나 실을 달아서 조종하는 대단한 기술을 갖고 있다.
-		PRINTFORMW 　헤이안 시대에는 이미 꼭두각시 인형에게 재주를 부리게 해서
-		PRINTFORMW 　그것만으로 먹고 살던 사람이 있었다는 것이니까 역사는 상당하지.
-		PRINTFORMW 　인형극은 에도 시대에 전성기를 맞지만, 사실 그 후엔 급속히 쇠퇴해 버렸다.
-		PRINTFORMW 　원인은 가부키의 인기에 압도된 것 때문인 듯 하다.
-		PRINTFORMW 　살아 있는 것처럼 다룬다고 해도 정말 살아 있는 사람에겐 어쩔 수 없었던걸까.
-		PRINTFORMW 　지금도 전통 예능으로 지방에서 근근히 전해지고 있는 것도 있지만
-		PRINTFORMW 　예능으로써는 거의 쓸모 없게 된거나 마찬가지겠지.
-		PRINTFORMW 　진짜 인간을 뛰어 넘는, 그녀 정도의 기량이 있었다면
-		PRINTFORMW 　가부키와의 위치가 역전되서 지금도 전해지고 있을지도 모르겠군」
+		PRINTFORMW  물론 마법의 숲에 사는 소녀니까 그녀도 마녀지.
+		PRINTFORMW  그녀는 꼭두각시 인형을 수십개에서 수백개를 조종한다고 들었다.
+		PRINTFORMW  인형에 연결된 실도 마법 실이라서 눈에 보이진 않지만.
+		PRINTFORMW  그럼, 꼭두각시 인형을 다루는 사람을 괴뢰자(傀儡子)라고 부르는데
+		PRINTFORMW  주요 관절에 총 10여개나 실을 달아서 조종하는 대단한 기술을 갖고 있다.
+		PRINTFORMW  헤이안 시대에는 이미 꼭두각시 인형에게 재주를 부리게 해서
+		PRINTFORMW  그것만으로 먹고 살던 사람이 있었다는 것이니까 역사는 상당하지.
+		PRINTFORMW  인형극은 에도 시대에 전성기를 맞지만, 사실 그 후엔 급속히 쇠퇴해 버렸다.
+		PRINTFORMW  원인은 가부키의 인기에 압도된 것 때문인 듯 하다.
+		PRINTFORMW  살아 있는 것처럼 다룬다고 해도 정말 살아 있는 사람에겐 어쩔 수 없었던걸까.
+		PRINTFORMW  지금도 전통 예능으로 지방에서 근근히 전해지고 있는 것도 있지만
+		PRINTFORMW  예능으로써는 거의 쓸모 없게 된거나 마찬가지겠지.
+		PRINTFORMW  진짜 인간을 뛰어 넘는, 그녀 정도의 기량이 있었다면
+		PRINTFORMW  가부키와의 위치가 역전되서 지금도 전해지고 있을지도 모르겠군」
 		;앨리스가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 14
-				PRINTFORML 
-				PRINTFORMW 『으음, 하긴 수백의 무리니까……』
-				PRINTFORMW 「그런가? 뭐 분명 대단하겠지.
-				PRINTFORMW 　그런데 최근 희귀한 천이 매몰로 왔는데 어떤가? 싸게 해주지」
-				PRINTFORMW 『어쩐지 너무 치켜세워준다 했더니 그게 속셈이였어……
-				PRINTFORMW 　뭐 서로 무사히 이 곳에서 나갈 수 있다면 생각해둘게』
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 14
+			PRINTFORML 
+			PRINTFORMW 『으음, 하긴 수백의 무리니까……』
+			PRINTFORMW 「그런가? 뭐 분명 대단하겠지.
+			PRINTFORMW  그런데 최근 희귀한 천이 매몰로 왔는데 어떤가? 싸게 해주지」
+			PRINTFORMW 『어쩐지 너무 치켜세워준다 했더니 그게 속셈이였어……
+			PRINTFORMW  뭐 서로 무사히 이 곳에서 나갈 수 있다면 생각해둘게』
 		ENDIF
-	ELSEIF A == 13
+	ELSEIF LOCAL == 13
 		PRINTFORMW 「스키마 요괴의 식의 식은 둔갑고양이(化け猫)다. 정확히는 둔갑고양이에 식을 씌운 모양이지만
-		PRINTFORMW 　그녀는 요괴의 산에 있는 마요이가에서 다른 고양이들과 함께 사는 것 같아.
-		PRINTFORMW 　마요이가란 주로 동북 지방 일대에 전해지는 전승으로
-		PRINTFORMW 　일반적으론 야나기타 옹의 저서『토오노 이야기(遠野物語)』로 이름을 알리게 되었다.
-		PRINTFORMW 　이야기의 패턴은 산에서 길을 잃은 사람이 훌륭한 저택에 도착했는데
-		PRINTFORMW 　가축도 있고, 가구도 갖춰져 있는데다가, 부뚜막에서는 차가 끓고 있고
-		PRINTFORMW 　어째서인지 식사까지 준비되어 있지. 방금까지 사람이 있었던 것처럼.
-		PRINTFORMW 　하지만 사람의 모습은 아무리 찾아도 찾을 수 없지.
-		PRINTFORMW 　섬뜩하다고 생각하고 망설이다가도 지쳐있으니까 거기서 쉰다.
-		PRINTFORMW 　물론 그러는 동안에도 사람은 나타나지 않아.
-		PRINTFORMW 　피로가 가신 후, 길을 잃은 사람은 거기서 그릇을 하나 가지고 떠난다.
-		PRINTFORMW 　왠지 모르겠지만 가져간다거나, 딱 하나만 가져간다거나 그러지만 전승이란건 그런거다.
-		PRINTFORMW 　그리고 산에서 내려간 길 잃은 사람은 행복을 얻게된다.
-		PRINTFORMW 　사업이 번창한다거나, 쌀이 떨어지지 않게 된다거나 내용은 다양하고
-		PRINTFORMW 　그 후에 다시 그 저택을 찾으려고 해도 발견하지 못하게 되는,
-		PRINTFORMW 　소소한 부분은 이야기마다 다르지만 대체로 이런 느낌이다.
-		PRINTFORMW 　듣다시피 도원향 전설 유형이지.
-		PRINTFORMW 　그 둔갑 고양이가 사는 마요이가도 찾으려면 헤메다가 겨우 도달해야 한다는 조건은 충족하고 있다.
-		PRINTFORMW 　마리사는 거기에 가본적이 있는 것 같다만
-		PRINTFORMW 　딱히 그런 거창한 집이 아니라 그냥 폐촌이였던 것 같다.
-		PRINTFORMW 　주민도 반 정도 밖에 없고, 분명 그릇의 영험도 별 것 아니겠지.
-		PRINTFORMW 　그렇다고 해도 입수할 수만 있다면 꼭 가지고 싶지만」
+		PRINTFORMW  그녀는 요괴의 산에 있는 마요이가에서 다른 고양이들과 함께 사는 것 같아.
+		PRINTFORMW  마요이가란 주로 동북 지방 일대에 전해지는 전승으로
+		PRINTFORMW  일반적으론 야나기타 옹의 저서『토오노 이야기(遠野物語)』로 이름을 알리게 되었다.
+		PRINTFORMW  이야기의 패턴은 산에서 길을 잃은 사람이 훌륭한 저택에 도착했는데
+		PRINTFORMW  가축도 있고, 가구도 갖춰져 있는데다가, 부뚜막에서는 차가 끓고 있고
+		PRINTFORMW  어째서인지 식사까지 준비되어 있지. 방금까지 사람이 있었던 것처럼.
+		PRINTFORMW  하지만 사람의 모습은 아무리 찾아도 찾을 수 없지.
+		PRINTFORMW  섬뜩하다고 생각하고 망설이다가도 지쳐있으니까 거기서 쉰다.
+		PRINTFORMW  물론 그러는 동안에도 사람은 나타나지 않아.
+		PRINTFORMW  피로가 가신 후, 길을 잃은 사람은 거기서 그릇을 하나 가지고 떠난다.
+		PRINTFORMW  왠지 모르겠지만 가져간다거나, 딱 하나만 가져간다거나 그러지만 전승이란건 그런거다.
+		PRINTFORMW  그리고 산에서 내려간 길 잃은 사람은 행복을 얻게된다.
+		PRINTFORMW  사업이 번창한다거나, 쌀이 떨어지지 않게 된다거나 내용은 다양하고
+		PRINTFORMW  그 후에 다시 그 저택을 찾으려고 해도 발견하지 못하게 되는,
+		PRINTFORMW  소소한 부분은 이야기마다 다르지만 대체로 이런 느낌이다.
+		PRINTFORMW  듣다시피 도원향 전설 유형이지.
+		PRINTFORMW  그 둔갑 고양이가 사는 마요이가도 찾으려면 헤메다가 겨우 도달해야 한다는 조건은 충족하고 있다.
+		PRINTFORMW  마리사는 거기에 가본적이 있는 것 같다만
+		PRINTFORMW  딱히 그런 거창한 집이 아니라 그냥 폐촌이였던 것 같다.
+		PRINTFORMW  주민도 반 정도 밖에 없고, 분명 그릇의 영험도 별 것 아니겠지.
+		PRINTFORMW  그렇다고 해도 입수할 수만 있다면 꼭 가지고 싶지만」
 		;첸이 조수
-		IF ASSI > 0
-			IF NO:ASSI == 13
-				PRINTFORML 
-				PRINTFORMW 『줄 것 같냐. 헷』
-				PRINTFORMW 「쩨쩨하구만, 딱히 닳는것도 아닐텐데」
-				PRINTFORMW 『줄어든다고! 필요하다면 직접 마요이가까지 오면 되잖아!』
-				PRINTFORMW 「절대 못간다는 걸 알고 있으니까 하는 얘기지. 의외로 성격이 나쁘군, 너는」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 13
+			PRINTFORML 
+			PRINTFORMW 『줄 것 같냐. 헷』
+			PRINTFORMW 「쩨쩨하구만, 딱히 닳는것도 아닐텐데」
+			PRINTFORMW 『줄어든다고! 필요하다면 직접 마요이가까지 오면 되잖아!』
+			PRINTFORMW 「절대 못간다는 걸 알고 있으니까 하는 얘기지. 의외로 성격이 나쁘군, 너는」
 		ENDIF
-	ELSEIF A == 12
+	ELSEIF LOCAL == 12
 		PRINTFORMW 「레티 화이트락이란 겨울에만 모습을 드러낸다는 요괴가 있더군.
-		PRINTFORMW 　아레의 자손에 따르면 설녀의 일종이라고 하지만 그 요괴가 그런 귀여운 건가?
-		PRINTFORMW 　아무튼 있는 것 만으로도 주변이 추워질 정도다. 가능하면 일년내내 잠들어서 일어나지 않았으면 하는데.
-		PRINTFORMW 　설녀는 코이즈미 야쿠모(小泉 八雲)가 편찬한 괴담이 유명하지.
-		PRINTFORMW 　약속을 어기는 바람에 모든것을 망치게 된다는, 전형적인 민화다.
-		PRINTFORMW 　그런데 설녀만큼 유명하면서도 생태를 알 수 없는 요괴도 드물지.
-		PRINTFORMW 　야쿠모의 괴담 같은 이종족의 아내 이야기 외에도, 눈보라 속에서 아이를 안고 오는 자,
-		PRINTFORMW 　눈 속에서 나타난 사람이 목욕을 하거나 불을 쬐면 연기처럼 사라진다는 자……
-		PRINTFORMW 　정월 보름 밤에 많은 눈의 아이(雪童)와 노는 자, 사람의 정기를 흡수해서 죽인다는 자,
-		PRINTFORMW 　부탁을 무시하고 골짜기에 빠트린다는 자……전승은 얼마든지 더 있다.
-		PRINTFORMW 　이만큼 제각각이고 원래는 다른 자들이였던 요괴들을
-		PRINTFORMW 　편찬자가 분류를 해야하는 사정상 일괄로 묶었다고 생각하는 것이 자연스럽지.
-		PRINTFORMW 　어떤 이야기도 대부분 그럴듯한 끝이 아니라는 것이 공통점이라면 공통점이려나?
-		PRINTFORMW 　혹독한 겨울의 상징으로 태어난 요괴들이고. 해피 엔딩으로 끝나는 것도 없다.
-		PRINTFORMW 　그것이 그야말로 그녀들의 본질일지도 몰라.
-		PRINTFORMW 　그러니, 혹시 틀렸다고 해도 아레에겐 손을 대지 마라. 늦었다면 어쩔 수 없지만」
+		PRINTFORMW  아레의 자손에 따르면 설녀의 일종이라고 하지만 그 요괴가 그런 귀여운 건가?
+		PRINTFORMW  아무튼 있는 것 만으로도 주변이 추워질 정도다. 가능하면 일년내내 잠들어서 일어나지 않았으면 하는데.
+		PRINTFORMW  설녀는 코이즈미 야쿠모(小泉 八雲)가 편찬한 괴담이 유명하지.
+		PRINTFORMW  약속을 어기는 바람에 모든것을 망치게 된다는, 전형적인 민화다.
+		PRINTFORMW  그런데 설녀만큼 유명하면서도 생태를 알 수 없는 요괴도 드물지.
+		PRINTFORMW  야쿠모의 괴담 같은 이종족의 아내 이야기 외에도, 눈보라 속에서 아이를 안고 오는 자,
+		PRINTFORMW  눈 속에서 나타난 사람이 목욕을 하거나 불을 쬐면 연기처럼 사라진다는 자……
+		PRINTFORMW  정월 보름 밤에 많은 눈의 아이(雪童)와 노는 자, 사람의 정기를 흡수해서 죽인다는 자,
+		PRINTFORMW  부탁을 무시하고 골짜기에 빠트린다는 자……전승은 얼마든지 더 있다.
+		PRINTFORMW  이만큼 제각각이고 원래는 다른 자들이였던 요괴들을
+		PRINTFORMW  편찬자가 분류를 해야하는 사정상 일괄로 묶었다고 생각하는 것이 자연스럽지.
+		PRINTFORMW  어떤 이야기도 대부분 그럴듯한 끝이 아니라는 것이 공통점이라면 공통점이려나?
+		PRINTFORMW  혹독한 겨울의 상징으로 태어난 요괴들이고. 해피 엔딩으로 끝나는 것도 없다.
+		PRINTFORMW  그것이 그야말로 그녀들의 본질일지도 몰라.
+		PRINTFORMW  그러니, 혹시 틀렸다고 해도 아레에겐 손을 대지 마라. 늦었다면 어쩔 수 없지만」
 		;레티가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 12
-				PRINTFORML 
-				PRINTFORMW 『본인을 앞에 두곤, 좋은대로 제멋대로 말하네』
-				PRINTFORMW 「나는 추운건 질색이니까.
-				PRINTFORMW 　가능하면 그대로 방 구석에 가만히 있었으면 고맙겠는데」
-				PRINTFORMW 「……라고 했는데 왜 이쪽으로 오는건가? 그리고 왜 그렇게 쫓아오는건가!?」
-				PRINTFORMW 『어머어머, 남성분 주제 여성을 냉대하신다니』
-				PRINTFORMW 「뭔가 그 대사는!? 그래 내가 나빴으니 떨어져줘!
-				PRINTFORMW 　우왓, 피부에 얼음이 서리고 있는데!?」」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 12
+			PRINTFORML 
+			PRINTFORMW 『본인을 앞에 두곤, 좋은대로 제멋대로 말하네』
+			PRINTFORMW 「나는 추운건 질색이니까.
+			PRINTFORMW  가능하면 그대로 방 구석에 가만히 있었으면 고맙겠는데」
+			PRINTFORMW 「……라고 했는데 왜 이쪽으로 오는건가? 그리고 왜 그렇게 쫓아오는건가!?」
+			PRINTFORMW 『어머어머, 남성분 주제 여성을 냉대하신다니』
+			PRINTFORMW 「뭔가 그 대사는!? 그래 내가 나빴으니 떨어져줘!
+			PRINTFORMW  우왓, 피부에 얼음이 서리고 있는데!?」
 		ENDIF
-	ELSEIF A == 11
+	ELSEIF LOCAL == 11
 		PRINTFORMW 「홍마관의 주인에겐 여동생이 있는 것 같다. 태어난 후 500년 가까이 유폐되어 있었다고 하지만.
-		PRINTFORMW 　언니가 흡혈귀니 물론 그녀도 흡혈귀겠지만, 그것 말고 마법소녀이기도 한 것 같다.
-		PRINTFORMW 　같다……고는 했지만 마법소녀는 뭔가? 마녀와는 뭐가 다른가?
-		PRINTFORMW 　흠흠, 우선 나이도 차지 않은 소녀가 마법으로 성장과 변신을 한다고.
-		PRINTFORMW 　그건 소위 2차 성징의 은유겠지.
-		PRINTFORMW 　그리고 마법의 힘을 사용해서 사건을 해결하거나 괴물을 쓰러트리거나 하는건……
-		PRINTFORMW 　마리사 같은건가. 그럼 저것도 나에게 피해를 준다거나, 하진 않았으면 좋겠는데
-		PRINTFORMW 　이야기가 샜군. 계속해주게
-		PRINTFORMW 　대부분 작은 동물의 모습을 한 마스코트가 동행하고 있다?
-		PRINTFORMW 　식신도 사용하는건가, 마법소녀는 만능이군.
-		PRINTFORMW 　그리고 최종적으론 동경하던 오빠와 이어지는……
-		PRINTFORMW 　잠깐, 실제로는 나이도 차지 않는 소녀가 아니였다는건가?
-		PRINTFORMW 　그 오빠가 유아 성애의 변태인건지, 아니면 마법에 매료된건지……
-		PRINTFORMW 　그리고 그녀들을 부를때는 꼭『○○땅, 모에ー』라고 불러야 한다, 고
-		PRINTFORMW 　고맙다, 참고가 됬군」
+		PRINTFORMW  언니가 흡혈귀니 물론 그녀도 흡혈귀겠지만, 그것 말고 마법소녀이기도 한 것 같다.
+		PRINTFORMW  같다……고는 했지만 마법소녀는 뭔가? 마녀와는 뭐가 다른가?
+		PRINTFORMW  흠흠, 우선 나이도 차지 않은 소녀가 마법으로 성장과 변신을 한다고.
+		PRINTFORMW  그건 소위 2차 성징의 은유겠지.
+		PRINTFORMW  그리고 마법의 힘을 사용해서 사건을 해결하거나 괴물을 쓰러트리거나 하는건……
+		PRINTFORMW  마리사 같은건가. 그럼 저것도 나에게 피해를 준다거나, 하진 않았으면 좋겠는데
+		PRINTFORMW  이야기가 샜군. 계속해주게
+		PRINTFORMW  대부분 작은 동물의 모습을 한 마스코트가 동행하고 있다?
+		PRINTFORMW  식신도 사용하는건가, 마법소녀는 만능이군.
+		PRINTFORMW  그리고 최종적으론 동경하던 오빠와 이어지는……
+		PRINTFORMW  잠깐, 실제로는 나이도 차지 않는 소녀가 아니였다는건가?
+		PRINTFORMW  그 오빠가 유아 성애의 변태인건지, 아니면 마법에 매료된건지……
+		PRINTFORMW  그리고 그녀들을 부를때는 꼭『○○땅, 모에ー』라고 불러야 한다, 고
+		PRINTFORMW  고맙다, 참고가 됬군」
 		;플랑드르가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 11
-				PRINTFORML 
-				PRINTFORMW 「음ー그러니까……플랑땅, 모에ー, 라고」
-				PRINTFORMW 『무슨 말 하는지 모르겠어, 오빠』
-				PRINTFORMW 「그런가. 이런건 나에겐 맞지 않는 것 같네」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 11
+			PRINTFORML 
+			PRINTFORMW 「음ー그러니까……플랑땅, 모에ー, 라고」
+			PRINTFORMW 『무슨 말 하는지 모르겠어, 오빠』
+			PRINTFORMW 「그런가. 이런건 나에겐 맞지 않는 것 같네」
 		ENDIF
-	ELSEIF A == 10
+	ELSEIF LOCAL == 10
 		PRINTFORMW 「홍마관의 주인은 흡혈귀지만, 우리 가게에도 가끔 온다. 드물게도 값을 지불하는 고객이지.
-		PRINTFORMW 　흡혈귀가 드라큘라라고 불리는 이유는
-		PRINTFORMW 　루마니아의 영웅, 블라드 가시공 3세를 어원으로 하는 것이라고 잘 알려져있지.
-		PRINTFORMW 　그런데 너도 혹시 그의 본명이 블라드 체페슈라고 착각하지 않았나?
-		PRINTFORMW 　사실 체페슈는 성이 아니라, 말하자면 별명이야.
-		PRINTFORMW 　『체페슈』를 번역하자면 『가시』혹은『꼬챙이』다.
-		PRINTFORMW 　그럼 성은 무엇이였나 하면……원래 존재하지 않았어.
-		PRINTFORMW 　생전엔 블라드 체페슈가 아니라,
-		PRINTFORMW 　별명인 드라큘라로 불리는 일이 많았다고 한다.
-		PRINTFORMW 　하지만 이 때 불린 드라큘라는 뱀파이어가 아닌,『용의 아들』이란 뜻이야.
-		PRINTFORMW 　선대인 블라드 2세가 용공, 드라쿨이라고 불렸으니 그의 아들은 용의 아들인 셈이지.
-		PRINTFORMW 　거기다 블라드를 Blood, 즉 혈액의 어원으로 보고
-		PRINTFORMW 　흡혈귀 전설에 연결하는 괴상한 이야기를 하는 사람도 있는 것 같지만
-		PRINTFORMW 　블라드 3세는 15세기의 인간이야. 그 무렵에 이미 영어는 완성돼있었고
-		PRINTFORMW 　그는 루마니아 사람이니 영어랑은 관계도 없어」
+		PRINTFORMW  흡혈귀가 드라큘라라고 불리는 이유는
+		PRINTFORMW  루마니아의 영웅, 블라드 가시공 3세를 어원으로 하는 것이라고 잘 알려져있지.
+		PRINTFORMW  그런데 너도 혹시 그의 본명이 블라드 체페슈라고 착각하지 않았나?
+		PRINTFORMW  사실 체페슈는 성이 아니라, 말하자면 별명이야.
+		PRINTFORMW  『체페슈』를 번역하자면 『가시』혹은『꼬챙이』다.
+		PRINTFORMW  그럼 성은 무엇이였나 하면……원래 존재하지 않았어.
+		PRINTFORMW  생전엔 블라드 체페슈가 아니라,
+		PRINTFORMW  별명인 드라큘라로 불리는 일이 많았다고 한다.
+		PRINTFORMW  하지만 이 때 불린 드라큘라는 뱀파이어가 아닌,『용의 아들』이란 뜻이야.
+		PRINTFORMW  선대인 블라드 2세가 용공, 드라쿨이라고 불렸으니 그의 아들은 용의 아들인 셈이지.
+		PRINTFORMW  거기다 블라드를 Blood, 즉 혈액의 어원으로 보고
+		PRINTFORMW  흡혈귀 전설에 연결하는 괴상한 이야기를 하는 사람도 있는 것 같지만
+		PRINTFORMW  블라드 3세는 15세기의 인간이야. 그 무렵에 이미 영어는 완성돼있었고
+		PRINTFORMW  그는 루마니아 사람이니 영어랑은 관계도 없어」
 		;레밀리아가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 10
-				PRINTFORML 
-				PRINTFORMW 『어머, 그런거였구나. 파체에게는 그렇다고 들었었는데』
-				PRINTFORMW 「분명 놀리려고 했던 얘기겠지.
-				PRINTFORMW 　애초부터 흡혈귀가 그런 엉터리 이야기에 속는 것도 이상하군」
-				PRINTFORMW 『악마는 사람을 계략에 빠지게 하지, 속이지는 않아.
-				PRINTFORMW 　악마를 속이는 건 언제나 인간 뿐. 결국 가장 나쁜건 인간이지』
-				PRINTFORMW 「그런가, 하지만 그녀는 마녀잖나.」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 10
+			PRINTFORML 
+			PRINTFORMW 『어머, 그런거였구나. 파체에게는 그렇다고 들었었는데』
+			PRINTFORMW 「분명 놀리려고 했던 얘기겠지.
+			PRINTFORMW  애초부터 흡혈귀가 그런 엉터리 이야기에 속는 것도 이상하군」
+			PRINTFORMW 『악마는 사람을 계략에 빠지게 하지, 속이지는 않아.
+			PRINTFORMW  악마를 속이는 건 언제나 인간 뿐. 결국 가장 나쁜건 인간이지』
+			PRINTFORMW 「그런가, 하지만 그녀는 마녀잖나.」
 		ENDIF
-	ELSEIF A == 9
+	ELSEIF LOCAL == 9
 		PRINTFORMW 「홍마관에선 수많은 메이드를 고용하고 있다. 대부분은 요정이라 도움이 되지 않지만
-		PRINTFORMW 　단 한명, 인간 메이드장만 일을 하고 있다고 하던가.
-		PRINTFORMW 　영국, 빅토리아 왕조 때가 메이드 시대의 꽃이라고 할수 있으려나
-		PRINTFORMW 　그 때는 고용인의 수가 일종의 스테이터스였다.
-		PRINTFORMW 　그 이전에는 여성 하인을 사용하는 일은 부끄러운 일이였지만
-		PRINTFORMW 　숫자만 채우기 위해서라면 남녀는 신경 쓸 필요 없었다.
-		PRINTFORMW 　여성 하인은 남성보다 임금은 매우 쌌지.
-		PRINTFORMW 　거기다 여성을 고용하면 세금도 낼 필요가 없었어.
-		PRINTFORMW 　믿을 수 있는가, 사람을 고용하면 세금을 내야하는 시대가 있었다고?
-		PRINTFORMW 　뭐 부자에게 착취하는 것은 별 불만이 없었지만.
-		PRINTFORMW 　그리고 이 사람을 고용하는 풍습이 상류층뿐만이 아니라 중산층까지 침투하기 시작해서
-		PRINTFORMW 　비용 대비 성능이 좋은 여자하인은 자주 쓰이게 됐다.
-		PRINTFORMW 　이게 빅토리아 시대다.
-		PRINTFORMW 　그 결과 베테랑뿐만 아니라 젊은 나이도 메이드로 일하는 기회가 늘었지.
-		PRINTFORMW 　참고로 maid에는 소녀라는 의미도 있다.
-		PRINTFORMW 　그 후 여성의 사회 진출이 진행되면서 메이드는 급격히 감소하게 됐는데
-		PRINTFORMW 　큰 계기는 일차 대전이지.
-		PRINTFORMW 　남성 일꾼이 격감했기 때문에, 대신 여성이 일을 시작했기 때문이다.
-		PRINTFORMW 　덧붙여서 이 나라에도 고용인에게 붙은 세금은 있었고,
-		PRINTFORMW 　그때는 미성년 소녀가 부유층 가정에서 허드렛일을 하는 것은 드문 일이 아니였다.
-		PRINTFORMW 　그러니까 일반적으로 하녀라고 말하는 그런 것, 결국 하녀와 메이드는 하는 일이 다르지 않아.
-		PRINTFORMW 　그런데 바깥세계로 부터 들어오는 책, 특히 만화라는 그림책은
-		PRINTFORMW 　왜 쓸데없이『메이드』라는 호칭을 고집하는 것인지도 신경이 쓰이는데……」
+		PRINTFORMW  단 한명, 인간 메이드장만 일을 하고 있다고 하던가.
+		PRINTFORMW  영국, 빅토리아 왕조 때가 메이드 시대의 꽃이라고 할수 있으려나
+		PRINTFORMW  그 때는 고용인의 수가 일종의 스테이터스였다.
+		PRINTFORMW  그 이전에는 여성 하인을 사용하는 일은 부끄러운 일이였지만
+		PRINTFORMW  숫자만 채우기 위해서라면 남녀는 신경 쓸 필요 없었다.
+		PRINTFORMW  여성 하인은 남성보다 임금은 매우 쌌지.
+		PRINTFORMW  거기다 여성을 고용하면 세금도 낼 필요가 없었어.
+		PRINTFORMW  믿을 수 있는가, 사람을 고용하면 세금을 내야하는 시대가 있었다고?
+		PRINTFORMW  뭐 부자에게 착취하는 것은 별 불만이 없었지만.
+		PRINTFORMW  그리고 이 사람을 고용하는 풍습이 상류층뿐만이 아니라 중산층까지 침투하기 시작해서
+		PRINTFORMW  비용 대비 성능이 좋은 여자하인은 자주 쓰이게 됐다.
+		PRINTFORMW  이게 빅토리아 시대다.
+		PRINTFORMW  그 결과 베테랑뿐만 아니라 젊은 나이도 메이드로 일하는 기회가 늘었지.
+		PRINTFORMW  참고로 maid에는 소녀라는 의미도 있다.
+		PRINTFORMW  그 후 여성의 사회 진출이 진행되면서 메이드는 급격히 감소하게 됐는데
+		PRINTFORMW  큰 계기는 일차 대전이지.
+		PRINTFORMW  남성 일꾼이 격감했기 때문에, 대신 여성이 일을 시작했기 때문이다.
+		PRINTFORMW  덧붙여서 이 나라에도 고용인에게 붙은 세금은 있었고,
+		PRINTFORMW  그때는 미성년 소녀가 부유층 가정에서 허드렛일을 하는 것은 드문 일이 아니였다.
+		PRINTFORMW  그러니까 일반적으로 하녀라고 말하는 그런 것, 결국 하녀와 메이드는 하는 일이 다르지 않아.
+		PRINTFORMW  그런데 바깥세계로 부터 들어오는 책, 특히 만화라는 그림책은
+		PRINTFORMW  왜 쓸데없이『메이드』라는 호칭을 고집하는 것인지도 신경이 쓰이는데……」
 		;사쿠야가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 9
-				PRINTFORML 
-				PRINTFORMW 『어머, 딱히 바깥뿐이 아니라 아가씨도『하녀』라고 부르는 건 허락하지 않는데요?』
-				PRINTFORMW 「메이드라고 부르는 방법이 어딘지 모르게 고급스럽게 들려서 그런건지.
-				PRINTFORMW 　외래 콤플랙스에서 벗어날 수 없는걸까, 이 나라는」
-				PRINTFORMW 『아니요, 단지 그 저택에서『하녀』라고 하는건 이미지가 맞지 않는 것 뿐 아닐까요』
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 9
+			PRINTFORML 
+			PRINTFORMW 『어머, 딱히 바깥뿐이 아니라 아가씨도『하녀』라고 부르는 건 허락하지 않는데요?』
+			PRINTFORMW 「메이드라고 부르는 방법이 어딘지 모르게 고급스럽게 들려서 그런건지.
+			PRINTFORMW  외래 콤플랙스에서 벗어날 수 없는걸까, 이 나라는」
+			PRINTFORMW 『아니요, 단지 그 저택에서『하녀』라고 하는건 이미지가 맞지 않는 것 뿐 아닐까요』
 		ENDIF
-	ELSEIF A == 8
+	ELSEIF LOCAL == 8
 		PRINTFORMW 「홍마관의 도서관 주인은 저명한 마녀다.
-		PRINTFORMW 　마녀가 된 사람이 아니라, 타고난 마녀라는 확실한 마녀지.
-		PRINTFORMW 　마녀라고 한다면 세간의 일반적인 이미지로는 검정 일색에 고깔 모자를 쓴 매부리 코의 괴인에
-		PRINTFORMW 　수상쩍은 재료를 던진 냄비를 저어서 약품을 만드는 이상한 이미지지만
-		PRINTFORMW 　이런 이미지는 주로 중세 암흑 시대의 마녀사냥에서 기인한다.
-		PRINTFORMW 　세상이 불안정한 상황에, 희생양을 필요로 하는 사람들은
-		PRINTFORMW 　그들이 이길 수 있을 법한 존재면서 일반 사람들과는 차별화된 모습이 필요했지.
-		PRINTFORMW 　그래서 마녀로 부를 사람들에게 이상한 이미지를 심어 준 것이다.
-		PRINTFORMW 　요점은 원인과 결과가 반대라는 거지. 수상하기 때문에 사냥한 것이 아니라
-		PRINTFORMW 　사냥하기 위해서 그녀들의 행동을 수상하게 만든 것이다.
-		PRINTFORMW 　그녀들은 기독교의 악의때문에 마녀로 몰린 것이고
-		PRINTFORMW 　원래는 자연의 신의 숭배자에 불과했다. 원시 종교에 가까우려나.
-		PRINTFORMW 　그렇게 말해도, 다른 신을 믿고 있는 것만으로도 그들에게는 악이였겠지만.
-		PRINTFORMW 　그런 점에선 샤먼이나 무녀와 같다고 말할 수 있다.
-		PRINTFORMW 　하지만 홍마관의 마녀는 그런 것이 아니라 타고난 마녀지.
-		PRINTFORMW 　어떤 사람일까, 매우 흥미로운 곳이군」
+		PRINTFORMW  마녀가 된 사람이 아니라, 타고난 마녀라는 확실한 마녀지.
+		PRINTFORMW  마녀라고 한다면 세간의 일반적인 이미지로는 검정 일색에 고깔 모자를 쓴 매부리 코의 괴인에
+		PRINTFORMW  수상쩍은 재료를 던진 냄비를 저어서 약품을 만드는 이상한 이미지지만
+		PRINTFORMW  이런 이미지는 주로 중세 암흑 시대의 마녀사냥에서 기인한다.
+		PRINTFORMW  세상이 불안정한 상황에, 희생양을 필요로 하는 사람들은
+		PRINTFORMW  그들이 이길 수 있을 법한 존재면서 일반 사람들과는 차별화된 모습이 필요했지.
+		PRINTFORMW  그래서 마녀로 부를 사람들에게 이상한 이미지를 심어 준 것이다.
+		PRINTFORMW  요점은 원인과 결과가 반대라는 거지. 수상하기 때문에 사냥한 것이 아니라
+		PRINTFORMW  사냥하기 위해서 그녀들의 행동을 수상하게 만든 것이다.
+		PRINTFORMW  그녀들은 기독교의 악의때문에 마녀로 몰린 것이고
+		PRINTFORMW  원래는 자연의 신의 숭배자에 불과했다. 원시 종교에 가까우려나.
+		PRINTFORMW  그렇게 말해도, 다른 신을 믿고 있는 것만으로도 그들에게는 악이였겠지만.
+		PRINTFORMW  그런 점에선 샤먼이나 무녀와 같다고 말할 수 있다.
+		PRINTFORMW  하지만 홍마관의 마녀는 그런 것이 아니라 타고난 마녀지.
+		PRINTFORMW  어떤 사람일까, 매우 흥미로운 곳이군」
 		;파체가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 8
-				PRINTFORML 
-				PRINTFORMW 『별로. 그렇게 태어났을뿐 나는 그냥 나야.
-				PRINTFORMW 　그런데 당신 마리사의 보호자였지?
-				PRINTFORMW 　마리사가 가져간 책을 나한테 돌려주라고 말해줬으면 하는데』
-				PRINTFORMW 「말하는 것 만으로 돌려줄 마리사라면 우리 가게의 피해도 절반정도가 됐겠지」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 8
+			PRINTFORML 
+			PRINTFORMW 『별로. 그렇게 태어났을뿐 나는 그냥 나야.
+			PRINTFORMW  그런데 당신 마리사의 보호자였지?
+			PRINTFORMW  마리사가 가져간 책을 나한테 돌려주라고 말해줬으면 하는데』
+			PRINTFORMW 「말하는 것 만으로 돌려줄 마리사라면 우리 가게의 피해도 절반정도가 됐겠지」
 		ENDIF
-	ELSEIF A == 7
+	ELSEIF LOCAL == 7
 		PRINTFORMW 「홍마관에는 유명한 큰 도서관이 있는데, 거기엔 악마가 산다고 한다.
-		PRINTFORMW 　대부분 악마의 개념은 종교에 존재하고 있는 『악』의 상징으로, 세계에 대한 완전한 적대자다.
-		PRINTFORMW 　처음에는 그저 상징적인 존재였을 뿐이였지만 사람은 그것조차 이용하지.
-		PRINTFORMW 　그걸 무엇보다 잘 활용한 것이 기독교다.
-		PRINTFORMW 　포교의 단계에서 다른 종교의 신은 모두 악마로 폄하시키고
-		PRINTFORMW 　위대한 힘을 가진 이교도의 신의 힘은 그대로 악으로 타락시켜서
-		PRINTFORMW 　자신들이 믿는 신의 명성으로 전환시킨셈이지.
-		PRINTFORMW 　결국 제일 무서운 것은 인간이였습니다, 라는 진부한 결말이야.
-		PRINTFORMW 　또 악마는 매력과 지식을 가지고, 성자의 고결한 영혼을 타락시키는 것이기도 하니까
-		PRINTFORMW 　그 도서관에 사는 악마도, 분명 훌륭한 지식을 가지고 있겠지.
-		PRINTFORMW 　그런 지식에 대한 대가라면 분명 영혼도 아깝지않을…… 음……조금 생각해보겠다.」
+		PRINTFORMW  대부분 악마의 개념은 종교에 존재하고 있는 『악』의 상징으로, 세계에 대한 완전한 적대자다.
+		PRINTFORMW  처음에는 그저 상징적인 존재였을 뿐이였지만 사람은 그것조차 이용하지.
+		PRINTFORMW  그걸 무엇보다 잘 활용한 것이 기독교다.
+		PRINTFORMW  포교의 단계에서 다른 종교의 신은 모두 악마로 폄하시키고
+		PRINTFORMW  위대한 힘을 가진 이교도의 신의 힘은 그대로 악으로 타락시켜서
+		PRINTFORMW  자신들이 믿는 신의 명성으로 전환시킨셈이지.
+		PRINTFORMW  결국 제일 무서운 것은 인간이였습니다, 라는 진부한 결말이야.
+		PRINTFORMW  또 악마는 매력과 지식을 가지고, 성자의 고결한 영혼을 타락시키는 것이기도 하니까
+		PRINTFORMW  그 도서관에 사는 악마도, 분명 훌륭한 지식을 가지고 있겠지.
+		PRINTFORMW  그런 지식에 대한 대가라면 분명 영혼도 아깝지않을…… 음……조금 생각해보겠다.」
 		;소악마가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 7
-				PRINTFORML 
-				PRINTFORMW 『덧붙여 말하자면, 영혼에도 계급이 있고 성직자와 왕후의 영혼은 좀 더 값어치있어』
-				PRINTFORMW 「흠, 그렇다면 나는 어떤정도인가?」
-				PRINTFORMW 『……으으으으음、중하나 하상정도일까』
-				PRINTFORMW 「꽤나 평가 절하된 것 같은데. 장래 천하를 취할지도 모르는 인물이라고, 나는」
-				PRINTFORMW 『아하하하하, 잠꼬대는 잘때 하는 말이야』
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 7
+			PRINTFORML 
+			PRINTFORMW 『덧붙여 말하자면, 영혼에도 계급이 있고 성직자와 왕후의 영혼은 좀 더 값어치있어』
+			PRINTFORMW 「흠, 그렇다면 나는 어떤정도인가?」
+			PRINTFORMW 『……으으으으음,중하나 하상정도일까』
+			PRINTFORMW 「꽤나 평가 절하된 것 같은데. 장래 천하를 취할지도 모르는 인물이라고, 나는」
+			PRINTFORMW 『아하하하하, 잠꼬대는 잘때 하는 말이야』
 		ENDIF
-	ELSEIF A == 6
+	ELSEIF LOCAL == 6
 		PRINTFORMW 「홍마관의 문지기를 본 적이 있나?
-		PRINTFORMW 　그냥 보기엔 인간으로 밖에 보이지 않지만, 그것도 엄연한 요괴다.
-		PRINTFORMW 　기를 사용하는 정도의 능력을 가진 것 같지만 원래 기가 무엇인가 하면,
-		PRINTFORMW 　중국의 사상, 학문을 논하는 것부터 시작된다.
-		PRINTFORMW 　기란 어디에나 존재하고 있지만 보이지 않으며 운동을 작용할 수 있게 하는 것이며
-		PRINTFORMW 　한 곳에 모여 형태를 이룰 수도 있고, 만물의 근원으로 이해할 수도 있다.
-		PRINTFORMW 　오라나 프라나(Prana)라고 불리는, 생명력의 드러내는 것(顯出)과 동일시 되는 경우도 많지만
-		PRINTFORMW 　그걸 틀렸다고 말할 수도 없다.
-		PRINTFORMW 　이 지상에 있는 것 중『가장 큰 기』가 곧『대기』다.
-		PRINTFORMW 　대지 그 자체도 개인도 크기의 차이만 있을 뿐 하나의 생명이라 생각하고 있고
-		PRINTFORMW 　그 생명의 흐름을 주관하는 것이『기』라는 것이다.
-		PRINTFORMW 　여기까지 오면 철학이 되겠군.
-		PRINTFORMW 　……이렇게 생각하면, 그런 대단한 것을 다루는 힘을 가진 그 요괴가
-		PRINTFORMW 　어째서 잔챙이 취급인지는……」
+		PRINTFORMW  그냥 보기엔 인간으로 밖에 보이지 않지만, 그것도 엄연한 요괴다.
+		PRINTFORMW  기를 사용하는 정도의 능력을 가진 것 같지만 원래 기가 무엇인가 하면,
+		PRINTFORMW  중국의 사상, 학문을 논하는 것부터 시작된다.
+		PRINTFORMW  기란 어디에나 존재하고 있지만 보이지 않으며 운동을 작용할 수 있게 하는 것이며
+		PRINTFORMW  한 곳에 모여 형태를 이룰 수도 있고, 만물의 근원으로 이해할 수도 있다.
+		PRINTFORMW  오라나 프라나(Prana)라고 불리는, 생명력의 드러내는 것(顯出)과 동일시 되는 경우도 많지만
+		PRINTFORMW  그걸 틀렸다고 말할 수도 없다.
+		PRINTFORMW  이 지상에 있는 것 중『가장 큰 기』가 곧『대기』다.
+		PRINTFORMW  대지 그 자체도 개인도 크기의 차이만 있을 뿐 하나의 생명이라 생각하고 있고
+		PRINTFORMW  그 생명의 흐름을 주관하는 것이『기』라는 것이다.
+		PRINTFORMW  여기까지 오면 철학이 되겠군.
+		PRINTFORMW  ……이렇게 생각하면, 그런 대단한 것을 다루는 힘을 가진 그 요괴가
+		PRINTFORMW  어째서 잔챙이 취급인지는……」
 		;메이링이 조수
-		IF ASSI > 0
-			IF NO:ASSI == 6
-				PRINTFORML 
-				PRINTFORMW 『이래 뵈도 침입자는 훌륭하게 격퇴하고 있는데
-				PRINTFORMW 　나를 돌파하는 일부가 규격외인 것 뿐이에요.
-				PRINTFORMW 　그런 소문 때문인지, 솜씨를 겨뤄보자는 패거리도 많이 있지만
-				PRINTFORMW 　대부분 떠드는것만 잘할 뿐 심심풀이정도 밖에 안된다구요.
-				PRINTFORMW 　최근엔 일을 하지 않아서 그런데, 상대해주실 생각이라도?』
-				PRINTFORMW 「농담 마, 난 두뇌 담당이다. 그런 얘기는 마리사에게나 해줘」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 6
+			PRINTFORML 
+			PRINTFORMW 『이래 뵈도 침입자는 훌륭하게 격퇴하고 있는데
+			PRINTFORMW  나를 돌파하는 일부가 규격외인 것 뿐이에요.
+			PRINTFORMW  그런 소문 때문인지, 솜씨를 겨뤄보자는 패거리도 많이 있지만
+			PRINTFORMW  대부분 떠드는것만 잘할 뿐 심심풀이정도 밖에 안된다구요.
+			PRINTFORMW  최근엔 일을 하지 않아서 그런데, 상대해주실 생각이라도?』
+			PRINTFORMW 「농담 마, 난 두뇌 담당이다. 그런 얘기는 마리사에게나 해줘」
 		ENDIF
-	ELSEIF A == 5
+	ELSEIF LOCAL == 5
 		PRINTFORMW 「호수에서 정착해 있는 요정 중 냉기를 조종하는 요정이 있다.
-		PRINTFORMW 　요정으로는 파격적인 힘을 가진 존재지만, 머리는 다른 요정과 큰 차이가 없다…
-		PRINTFORMW 　고 말해도 실력은 절대 우습게 볼 만한 것이 아니지만.
-		PRINTFORMW 　일설에 의하면 염마와도 만난 적이 있다고도 하고.
-		PRINTFORMW 　애초부터 냉기란 사람에겐 가장 가까운 위험 중 하나지.
-		PRINTFORMW 　추워지면 생물 활동이 저하되고, 식량 확보도 곤란해진다.
-		PRINTFORMW 　그런것의 상징이 될 정도라면 강한 것은 어떤 의미에서는 당연하다고 할 수 있다.
-		PRINTFORMW 　더 중요한 것은 아직 그 요정은 어린아이라는 것이지.
-		PRINTFORMW 　성장하게 된다면 부디 그 힘에 걸맞는 분별력을 손에 넣었으면 하고 생각할 뿐이다.
-		PRINTFORMW 　뭐, 거기까지 간다면 이미 요정의 레벨이 아니라 요괴라고 불려야겠지만」
+		PRINTFORMW  요정으로는 파격적인 힘을 가진 존재지만, 머리는 다른 요정과 큰 차이가 없다…
+		PRINTFORMW  고 말해도 실력은 절대 우습게 볼 만한 것이 아니지만.
+		PRINTFORMW  일설에 의하면 염마와도 만난 적이 있다고도 하고.
+		PRINTFORMW  애초부터 냉기란 사람에겐 가장 가까운 위험 중 하나지.
+		PRINTFORMW  추워지면 생물 활동이 저하되고, 식량 확보도 곤란해진다.
+		PRINTFORMW  그런것의 상징이 될 정도라면 강한 것은 어떤 의미에서는 당연하다고 할 수 있다.
+		PRINTFORMW  더 중요한 것은 아직 그 요정은 어린아이라는 것이지.
+		PRINTFORMW  성장하게 된다면 부디 그 힘에 걸맞는 분별력을 손에 넣었으면 하고 생각할 뿐이다.
+		PRINTFORMW  뭐, 거기까지 간다면 이미 요정의 레벨이 아니라 요괴라고 불려야겠지만」
 		;치르노가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 5
-				PRINTFORML 
-				PRINTFORMW 『요정이든 요괴든 상관없어
-				PRINTFORMW 　어짜피 내가 최강인건 숨길 수~가 없으니까』
-				PRINTFORMW 「확정사항, 인건가. 일단 넌 좀 더 공부를 하게.
-				PRINTFORMW 　내용은 뭐든지 좋다. 지식이 늘어나게 되면 곧 스스로 지식을 더 구하게 되니까」
-				PRINTFORMW 『음, 귀찮은데……』
-				PRINTFORMW 「이런이런, 그런 태도로 계속 지낸다면 그렇게 대단한 위협이 되는 일은 없겠군」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 5
+			PRINTFORML 
+			PRINTFORMW 『요정이든 요괴든 상관없어
+			PRINTFORMW  어짜피 내가 최강인건 숨길 수~가 없으니까』
+			PRINTFORMW 「확정사항, 인건가. 일단 넌 좀 더 공부를 하게.
+			PRINTFORMW  내용은 뭐든지 좋다. 지식이 늘어나게 되면 곧 스스로 지식을 더 구하게 되니까」
+			PRINTFORMW 『음, 귀찮은데……』
+			PRINTFORMW 「이런이런, 그런 태도로 계속 지낸다면 그렇게 대단한 위협이 되는 일은 없겠군」
 		ENDIF
-	ELSEIF A == 4
+	ELSEIF LOCAL == 4
 		PRINTFORMW 「홍마관 근처의 호수에서는 요정이 흔히 보인다.
-		PRINTFORMW 　뭐 특별히 거기에서만 나오는게 아니라 환상향 어디에나 요정은 있지만.
-		PRINTFORMW 　자연 그 자체의 상징이 정령이며, 그 중 일부를 요정이라고 부른다.
-		PRINTFORMW 　정령과 요정을 나누는 방법이 뭐냐 하면 사실은 단순히 인간형인지의 아닌지의 여부다. 알기 쉽지.
-		PRINTFORMW 　여담이지만, 대륙쪽에서『요정』이라 하는 건 오래된 동식물이 변화한 요괴다.
-		PRINTFORMW 　말하자면, 그 무서운 스키마 요괴도
-		PRINTFORMW 　어디에나 얼마든지 있는 뇌가 텅 빈 것들과 똑같은 존재라는거다. 재미있지않나?」
+		PRINTFORMW  뭐 특별히 거기에서만 나오는게 아니라 환상향 어디에나 요정은 있지만.
+		PRINTFORMW  자연 그 자체의 상징이 정령이며, 그 중 일부를 요정이라고 부른다.
+		PRINTFORMW  정령과 요정을 나누는 방법이 뭐냐 하면 사실은 단순히 인간형인지의 아닌지의 여부다. 알기 쉽지.
+		PRINTFORMW  여담이지만, 대륙쪽에서『요정』이라 하는 건 오래된 동식물이 변화한 요괴다.
+		PRINTFORMW  말하자면, 그 무서운 스키마 요괴도
+		PRINTFORMW  어디에나 얼마든지 있는 뇌가 텅 빈 것들과 똑같은 존재라는거다. 재미있지않나?」
 		;대요정이 조수
-		IF ASSI > 0
-			IF NO:ASSI == 4
-				PRINTFORML 
-				PRINTFORMW 『저기ー, 아무리 그래도 머리가 비었다는건 너무한데』
-				PRINTFORMW 「그야 실제로 뇌가 없잖나, 너희들은」
-				PRINTFORMW 『그건 그래도, 말투를 어떻게 좀 바꿔서……』
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 4
+			PRINTFORML 
+			PRINTFORMW 『저기ー, 아무리 그래도 머리가 비었다는건 너무한데』
+			PRINTFORMW 「그야 실제로 뇌가 없잖나, 너희들은」
+			PRINTFORMW 『그건 그래도, 말투를 어떻게 좀 바꿔서……』
 		ENDIF
-	ELSEIF A == 3
+	ELSEIF LOCAL == 3
 		PRINTFORMW 「하쿠레이 신사 근처에는 어둠을 조종하는 요괴가 살고 있다.
-		PRINTFORMW 　나는 사실, 그건 꽤 무서운 요괴라고 생각한다.
-		PRINTFORMW 　어둠이란 학술적으로는 빛이 닿지 않는 범위라고 하지만,
-		PRINTFORMW 　눈에 보이지 않는 빛도 이 세상에는 많이 존재하지.
-		PRINTFORMW 　이 세상에 존재하는 것은 빛과 열을 적외선의 형태로 방출하고 있는데, 이 적외선도 빛이다.
-		PRINTFORMW 　또한 온갖 물건을 관통하는 감마선이라는 것도 존재하고 있다.
-		PRINTFORMW 　그러므로, 완전한 어둠이라는 것은 존재하지 않을텐데
-		PRINTFORMW 　그 요괴는 그걸 만들어낸다. 어떤가, 무섭지 않은가?
-		PRINTFORMW 　……그렇다 해도, 이 환상향에선 본래 존재할 수 없는 것이 있다 어떻다 해도 새삼스러울 뿐이고
-		PRINTFORMW 　잘 생각 해보면, 그런 어둠이 아닐지도 모른다, 그건……」
+		PRINTFORMW  나는 사실, 그건 꽤 무서운 요괴라고 생각한다.
+		PRINTFORMW  어둠이란 학술적으로는 빛이 닿지 않는 범위라고 하지만,
+		PRINTFORMW  눈에 보이지 않는 빛도 이 세상에는 많이 존재하지.
+		PRINTFORMW  이 세상에 존재하는 것은 빛과 열을 적외선의 형태로 방출하고 있는데, 이 적외선도 빛이다.
+		PRINTFORMW  또한 온갖 물건을 관통하는 감마선이라는 것도 존재하고 있다.
+		PRINTFORMW  그러므로, 완전한 어둠이라는 것은 존재하지 않을텐데
+		PRINTFORMW  그 요괴는 그걸 만들어낸다. 어떤가, 무섭지 않은가?
+		PRINTFORMW  ……그렇다 해도, 이 환상향에선 본래 존재할 수 없는 것이 있다 어떻다 해도 새삼스러울 뿐이고
+		PRINTFORMW  잘 생각 해보면, 그런 어둠이 아닐지도 모른다, 그건……」
 		;루미아가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 3
-				PRINTFORML 
-				PRINTFORMW 「그래서, 실제론 어떤건가?」
-				PRINTFORMW 『……글쎄?』
-				PRINTFORMW 「자신도 모르는 일인가. 처음부터 기대하지도 않았지만」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 3
+			PRINTFORML 
+			PRINTFORMW 「그래서, 실제론 어떤건가?」
+			PRINTFORMW 『……글쎄?』
+			PRINTFORMW 「자신도 모르는 일인가. 처음부터 기대하지도 않았지만」
 		ENDIF
-	ELSEIF A == 2
+	ELSEIF LOCAL == 2
 		PRINTFORMW 「마리사가 가지고 있는 미니 팔괘로 얘기지만, 그건 내 작품중에서도 자랑할만한 일품이다.
-		PRINTFORMW 　그럼 미니 팔괘로가 무엇이냐면
-		PRINTFORMW 　태상노군의 소지품인 단약(丹),즉 약을 만들기 위한 원자로다.
-		PRINTFORMW 　그래그래, 그 서유기와 봉신연의에서 유명한 그 태상노군이다. 도교의 상급신중 한 사람이지.
-		PRINTFORMW 　팔괘는 즉『乾兌離震巽坎艮坤(건태리진손감간곤)』,
-		PRINTFORMW 　쉽게 말하자면『天沢火雷風水山地(천택화뢰풍수산지)』가 된다.
-		PRINTFORMW 　제오라이머? 뭐냐 그건?
-		PRINTFORMW 　그런건 치워두고, 팔괘란 곧 자연의 상징이다.
-		PRINTFORMW 　팔괘로는 세계 그 자체의 중심의 화로(炉). 즉 불을 가두는 용도다.
-		PRINTFORMW 　그런 거창한 화로다. 물론 안에 있는 불도 그냥 불이 아니지.
-		PRINTFORMW 　진정한 불이라 불리는, 그것이야 말로 모든 것을 녹이는 불이다.
-		PRINTFORMW 　미니 팔괘로는 그것의 미니어처 버전이지. 그럼 그 안의 불은……상상에 맡기겠다」
+		PRINTFORMW  그럼 미니 팔괘로가 무엇이냐면
+		PRINTFORMW  태상노군의 소지품인 단약(丹),즉 약을 만들기 위한 원자로다.
+		PRINTFORMW  그래그래, 그 서유기와 봉신연의에서 유명한 그 태상노군이다. 도교의 상급신중 한 사람이지.
+		PRINTFORMW  팔괘는 즉『乾兌離震巽坎艮坤(건태리진손감간곤)』,
+		PRINTFORMW  쉽게 말하자면『天沢火雷風水山地(천택화뢰풍수산지)』가 된다.
+		PRINTFORMW  제오라이머? 뭐냐 그건?
+		PRINTFORMW  그런건 치워두고, 팔괘란 곧 자연의 상징이다.
+		PRINTFORMW  팔괘로는 세계 그 자체의 중심의 화로(炉). 즉 불을 가두는 용도다.
+		PRINTFORMW  그런 거창한 화로다. 물론 안에 있는 불도 그냥 불이 아니지.
+		PRINTFORMW  진정한 불이라 불리는, 그것이야 말로 모든 것을 녹이는 불이다.
+		PRINTFORMW  미니 팔괘로는 그것의 미니어처 버전이지. 그럼 그 안의 불은……상상에 맡기겠다」
 		;마리사가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 2
-				PRINTFORML 
-				PRINTFORMW 『넌 그런 위험한 것을 나한테 준거냐』
-				PRINTFORMW 「뭐야, 필요 없으면 돌려줘」
-				PRINTFORMW 『농담 하지 말라구, 한번 받았으면 내꺼야.
-				PRINTFORMW 　그리고 이젠 이게 없는 생활같은건 생각할 수도 없어』
-				PRINTFORMW 「뭐, 그렇게까지 말해준다는건 도구로는 더없이 기쁜 일이지」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 2
+			PRINTFORML 
+			PRINTFORMW 『넌 그런 위험한 것을 나한테 준거냐』
+			PRINTFORMW 「뭐야, 필요 없으면 돌려줘」
+			PRINTFORMW 『농담 하지 말라구, 한번 받았으면 내꺼야.
+			PRINTFORMW  그리고 이젠 이게 없는 생활같은건 생각할 수도 없어』
+			PRINTFORMW 「뭐, 그렇게까지 말해준다는건 도구로는 더없이 기쁜 일이지」
 		ENDIF
-	ELSEIF A == 1
+	ELSEIF LOCAL == 1
 		PRINTFORMW 「무녀의 복장에 대한 이야기를 해볼까. 일반적으론 흰색의 코소데(小袖)에 붉은 하카마(袴)를 입는 것이지만
-		PRINTFORMW 　사실 현재와 같은 형태가 된 것은 의외로 최근이다.
-		PRINTFORMW 　메이지 시대인가 뭔가 하던 때의 교육자가 입고 벗기 쉬운 안돈바카마(行灯袴)를 발명하고
-		PRINTFORMW 　그 복장이 호평받아서, 무녀 의상에도 채용되었지.
-		PRINTFORMW 　하지만 아직까지 옛날 그대로의 무녀 복장(捻襠袴)을 채용하고 있는 신사도 있고,
-		PRINTFORMW 　세부 사항의 차이를 따지자면 종류는 그야말로 끝이 없다.
-		PRINTFORMW 　그 중에서도 레이무의 겨드랑이 복장은 지나치게 독특하다고 생각한다. 만들고 있는 내가 말하기는 좀 그렇지만」
+		PRINTFORMW  사실 현재와 같은 형태가 된 것은 의외로 최근이다.
+		PRINTFORMW  메이지 시대인가 뭔가 하던 때의 교육자가 입고 벗기 쉬운 안돈바카마(行灯袴)를 발명하고
+		PRINTFORMW  그 복장이 호평받아서, 무녀 의상에도 채용되었지.
+		PRINTFORMW  하지만 아직까지 옛날 그대로의 무녀 복장(捻襠袴)을 채용하고 있는 신사도 있고,
+		PRINTFORMW  세부 사항의 차이를 따지자면 종류는 그야말로 끝이 없다.
+		PRINTFORMW  그 중에서도 레이무의 겨드랑이 복장은 지나치게 독특하다고 생각한다. 만들고 있는 내가 말하기는 좀 그렇지만」
 		;레이무가 조수
-		IF ASSI > 0
-			IF NO:ASSI == 1
-				PRINTFORML 
-				PRINTFORMW 『어머, 그 디자인은 린노스케씨의 취미 아니였어?』
-				PRINTFORMW 「무슨 소리야, 처음 만들어 달라고 했을때 부터 그런 옷이였다고.
-				PRINTFORMW 　안그래도 불편한 디자인이라고 했는데,
-				PRINTFORMW 　너도 동복을 엉망으로 만들어 오질 않나, 이 붉은 색의 상태도 엉망이고.
-				PRINTFORMW 　지금까지 외상이 얼마나 쌓여 있을건가 생각해봤나」
-				PRINTFORMW 『나중에 갚을거야, 새전이 들어오면』
-				PRINTFORMW 「그 정도로 믿을 수 없는 변제 계획은 어떤 의미론 신기하군.
-				PRINTFORMW 　드문만큼 무가치하지만……」
-			ENDIF
+		IF ASSI > 0 && NO:ASSI == 1
+			PRINTFORML 
+			PRINTFORMW 『어머, 그 디자인은 린노스케씨의 취미 아니였어?』
+			PRINTFORMW 「무슨 소리야, 처음 만들어 달라고 했을때 부터 그런 옷이였다고.
+			PRINTFORMW  안그래도 불편한 디자인이라고 했는데,
+			PRINTFORMW  너도 동복을 엉망으로 만들어 오질 않나, 이 붉은 색의 상태도 엉망이고.
+			PRINTFORMW  지금까지 외상이 얼마나 쌓여 있을건가 생각해봤나」
+			PRINTFORMW 『나중에 갚을거야, 새전이 들어오면』
+			PRINTFORMW 「그 정도로 믿을 수 없는 변제 계획은 어떤 의미론 신기하군.
+			PRINTFORMW  드문만큼 무가치하지만……」
 		ENDIF
-	ELSEIF A == 0
+	ELSEIF LOCAL == 0
 		PRINTFORMW 「곤란한데. 드물게도 이야기거리가 없군」
-		PRINTFORMW 　그래, 가끔은 네가 뭔가 얘기 해보는건 어떤가?」
-		PRINTFORMW 　%조사처리(CALLNAME:MASTER,"가")% 뽐내듯 이야기를 시작하자
-		PRINTFORMW 　거기에 관한 린노스케의 참견이 이어져, 결국 평소처럼 린노스케의 독무대가 되어버렸다.
+		PRINTFORMW  그래, 가끔은 네가 뭔가 얘기 해보는건 어떤가?」
+		PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 뽐내듯 이야기를 시작하자
+		PRINTFORMW  거기에 관한 린노스케의 참견이 이어져, 결국 평소처럼 린노스케의 독무대가 되어버렸다.
 	ENDIF
-		RETURN 0
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;촉수소환 CFLAG:9500　CFLAG:8901
+;촉수소환 CFLAG:9500 CFLAG:8901
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 500 && TEQUIP:90
@@ -3850,43 +5305,57 @@ IF SELECTCOM == 500 && TEQUIP:90
 	IF CFLAG:9500 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「これを喚んだのは君か,珍しい魔術体系だな.
+			PRINTFORMW  大いに興味はあるんだが……調べる暇など与えてくれるわけもないよな.
+			PRINTFORMW  しかし,あまり係わり合いになりたくはない容姿だな
+			PRINTFORMW ……まあ今更君が何をしようと反抗する気はないが」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「な,何だこいつらは!?
+			PRINTFORMW  君が喚びだした,ということはろくな用途ではないのだろうな.
+			PRINTFORMW  何に使うか聞くことすら野暮という物だろう.
+			PRINTFORMW  ……って,うわあ! ど,どこを触って……潜り込むなっ!」
 		ENDIF
 		CFLAG:9500 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모+촉수경험 20 이상(소비 기본치가 3분의 1이 됨)
 		IF TALENT:150 && EXP:53 >= 20 && (CFLAG:9500 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「すっかり見慣れたな,こいつらも.
+			PRINTFORMW  今では愛おしさすら感じる程……とは言い過ぎか.
+			PRINTFORMW  おや,少しは妬いてくれてるのかい?
+			PRINTFORMW  安心してくれ,こいつらよりは君のほうがいくらかランクは上だから」
 			CFLAG:9500 = 4
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9500 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「良かれと思ってやっているだろう君には悪いんだが,まだ慣れないな」
 			CFLAG:9500 = 3
 		;그 외
 		ELSEIF CFLAG:9500 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「引き千切ろうにも弾力としなやかさがあるし,逃げようにも力が強いし……
+			PRINTFORMW  まったく都合の良い生物だ,こいつらは.まさに外法の技だな」
 			CFLAG:9500 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
 	;연모+촉수경험 20 이상(소비 기본치가 3분의 1이 됨)
 	IF TALENT:150 && EXP:53 >= 20 && (CFLAG:8901 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「やっとこいつらとお別れか.そう思うと少しは名残惜しいかな.
+		PRINTFORMW  いや,言ってみただけだ,そこまで本気じゃない.
+		PRINTFORMW  何より,ここからは君とマンツーマンだろ?」
 		CFLAG:8901 = 3
 	;연모
 	ELSEIF TALENT:150 && (CFLAG:8901 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「終わったか……わかっているよ,次は君がやる番なんだろう.
+		PRINTFORMW  こういうときだけは,これでも疲れきっていない頑健な体に感謝できるな.
+		PRINTFORMW  まあ,できれば君には万全な体調で接したいんだがね」
 		CFLAG:8901 = 2
 	;그 외
 	ELSEIF CFLAG:8901 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「やっと消えてくれたか……
+		PRINTFORMW  しかしこいつらの体を覆っている粘液は……不快な感触どころじゃないな」
 		CFLAG:8901 = 1
 	ENDIF
 	RETURN 0
@@ -3895,6 +5364,7 @@ ENDIF
 ;-------------------------------------------------
 ;식스나인 CFLAG:9602
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 602
 	;처음
 	IF CFLAG:9602 == 0
@@ -3906,7 +5376,6 @@ IF SELECTCOM == 602
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9602 = 1
-		RETURN 0
 	ELSE
 		;연모+봉사정신Lv3이상+C감각Lv3이상
 		IF TALENT:150 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:9602 <= 5 || FLAG:11 == 2)
@@ -3929,8 +5398,8 @@ IF SELECTCOM == 602
 			PRINTFORMW 
 			CFLAG:9602 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -3947,7 +5416,6 @@ IF SELECTCOM == 610
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9610 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -3967,10 +5435,10 @@ IF SELECTCOM == 610
 			PRINTFORMW 
 			CFLAG:9610 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
-
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_PALAMCNG 관계
@@ -4012,19 +5480,21 @@ IF LOCAL > PALAMLV:2 && CFLAG:8001 == 0
 	IF TALENT:150
 		;로션을 사용했을 경우
 		IF SELECTCOM == 60
-			PRINTFORMW 
+			PRINTFORMW 「ベタベタだね……すまない,手間をかける」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「なんと言うかまあ……よくこれだけ濡れたものだな.
+			PRINTFORMW  わが事ながら……恥ずかしい」
 		ENDIF
 	;그 외
 	ELSE
 		;로션을 사용했을 경우
 		IF SELECTCOM == 60
-			PRINTFORMW 
+			PRINTFORMW 「これだけヌメっていると気持ち悪いな……
+			PRINTFORMW  これから何をされるかを考えると,さらに気持ち悪いな」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「何でこんな濡れているんだ……」
 		ENDIF
 	ENDIF
 	CFLAG:8001 = 1
@@ -4035,24 +5505,40 @@ ENDIF
 ;-------------------------------------------------
 LOCAL = PALAM:13 + UP:13
 IF LOCAL > PALAMLV:2 && CFLAG:8002 == 0
-	;연모
-	IF TALENT:150
-		;미약을 사용했을 경우
-		IF SELECTCOM == 61
-			PRINTFORMW 
-		;그 외
-		ELSE
-			PRINTFORMW 
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「魔理沙,悪いことは言わない.彼と代わってもらえ」
+			PRINTFORMW 『いきなりどうした,香霖?』
+			PRINTFORMW 「これ以上は抑えが効かなくなりそうだ……性的な意味で」
+			;魔理沙恋慕
+			IF TALENT:ASSI:150
+				PRINTFORMW 『それは困ったな.香霖の肉欲があいつに向けられるのも私としてはなあ……
+				PRINTFORMW  んー……まあ良いや,続けるぜ香霖.私は信じてるからな』
+				PRINTFORMW 「そこでそう言うか.卑怯だな,君は……」
+			;それ以外
+			ELSE
+				PRINTFORMW 『そうか,ところでそれがどうかしたのか』
+				PRINTFORMW 「そうかって,君はなあ……」
+				PRINTFORMW 『おっと,知ってるぜ男の欲望なんて物のことは.
+				PRINTFORMW  いつから私がここにいると思ってるんだ』
+				PRINTFORMW 「……そうか」
+				PRINTFORMW 『それに香霖が私で欲情したって事だろ,それは.良かったぜ
+				PRINTFORMW 『いつもいつも人のことを子供扱いしてたからな.
+				PRINTFORMW  なのに私で欲情したと,香霖は』
+				PRINTFORMW 「……いやその,それは」
+				PRINTFORMW 『……嬉しいぜ』
+				PRINTFORMW 「え? 今なんて……」
+				PRINTFORMW 『何でもない! さあ,続けるぜ香霖』
+			ENDIF
 		ENDIF
+	;연모
+	ELSEIF TALENT:150
+		PRINTFORMW 「はは……君にされただけで抑えが効かなくなるか.無様だねえ」
 	;그 외
 	ELSE
-		;미약을 사용했을 경우
-		IF SELECTCOM == 61
-			PRINTFORMW 
-		;그 외
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		PRINTFORMW 「身体は正直か……本能を抑えることは難しいな」
+		PRINTFORMW 「だがまあ,人には理性がある.こっちを突破するのは容易でないと知れ」
 	ENDIF
 	CFLAG:8002 = 1
 ENDIF
@@ -4062,12 +5548,19 @@ ENDIF
 ;-------------------------------------------------
 LOCAL = PALAM:15 + UP:15
 IF LOCAL > PALAMLV:2 && CFLAG:8003 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「魔理沙……その,恥ずかしいんだが,これ…･･･」
+			PRINTFORMW 『まあその為にやってるんだしな.我慢してくれ』
+		ENDIF
 	;연모
-	IF TALENT:150
-		PRINTFORMW 
+	ELSEIF TALENT:150
+		PRINTFORMW 「少しだけ,こっちを見ないでくれないか」
+		PRINTFORMW  霖之助は真っ赤になった顔で%CALLNAME:MASTER%から目を逸らした.
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「覚えて……いろ」
 	ENDIF
 	CFLAG:8003 = 1
 ENDIF
@@ -4077,12 +5570,16 @@ ENDIF
 ;-------------------------------------------------
 LOCAL = PALAM:17 + UP:17
 IF LOCAL > PALAMLV:2 && CFLAG:8004 == 0
-	;연모
-	IF TALENT:150
-		PRINTFORMW 
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 『ん,どうしたんだ香霖?』
+			PRINTFORMW 「な,なんでも……ない!」
+			PRINTFORMW 『歯の根が合ってないな,私が怖いのか……そりゃ悪かったな』
+		ENDIF
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW  %CALLNAME:MASTER%を睨む霖之助の目に,ついに怯えの色が見てとれた
 	ENDIF
 	CFLAG:8004 = 1
 ENDIF
@@ -4091,12 +5588,17 @@ ENDIF
 ;첫 C절정 CFLAG:8005
 ;-------------------------------------------------
 IF NOWEX:0 > 0 && CFLAG:8005 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「ま,魔理沙っ! くっ,あああああっ!」
+		ENDIF
 	;연모
-	IF TALENT:150
-		PRINTFORMW 
+	ELSEIF TALENT:150
+		PRINTFORMW 「あ,もう……駄目だっ……!」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「やめろ,もうこれ以上はっ! くううぅっ!」
 	ENDIF
 	CFLAG:8005 = 1
 ENDIF
@@ -4104,6 +5606,7 @@ ENDIF
 ;-------------------------------------------------
 ;첫 V절정 CFLAG:8006
 ;-------------------------------------------------
+[SKIPSTART]
 IF NOWEX:1 > 0 && CFLAG:8006 == 0
 	;연모
 	IF TALENT:150
@@ -4114,17 +5617,22 @@ IF NOWEX:1 > 0 && CFLAG:8006 == 0
 	ENDIF
 	CFLAG:8006 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;첫 A절정 CFLAG:8007
 ;-------------------------------------------------
 IF NOWEX:2 > 0 && CFLAG:8007 == 0
-	;연모
-	IF TALENT:150
-		PRINTFORMW 
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「それ以上はっ,だ,駄目だあっ! ま,魔理沙あっ!!」
+			PRINTFORMW 『もしかして……イったのか,こっちで? しかも私の名前叫びながら,』
+			PRINTFORMW 「……言うな.頼むから言わないでくれ……」
+		ENDIF
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「う,うわあああっ! こ……こんな……」
 	ENDIF
 	CFLAG:8007 = 1
 ENDIF
@@ -4132,6 +5640,7 @@ ENDIF
 ;-------------------------------------------------
 ;첫 B절정 CFLAG:8008
 ;-------------------------------------------------
+[SKIPSTART]
 IF NOWEX:3 > 0 && CFLAG:8008 == 0
 	;연모
 	IF TALENT:150
@@ -4288,7 +5797,6 @@ IF TFLAG:30 > 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8015 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -4300,7 +5808,6 @@ IF TFLAG:30 > 0
 			PRINTFORMW 
 			CFLAG:8015 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -4318,7 +5825,6 @@ IF TFLAG:31 > 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8016 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;순종Lv4이상
@@ -4330,7 +5836,6 @@ IF TFLAG:31 > 0
 			PRINTFORMW 
 			CFLAG:8016 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -4348,7 +5853,6 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8017 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -4360,7 +5864,6 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			PRINTFORMW 
 			CFLAG:8017 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -4378,7 +5881,6 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8018 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -4390,7 +5892,6 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			PRINTFORMW 
 			CFLAG:8018 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -4408,7 +5909,6 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8019 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -4420,7 +5920,6 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			PRINTFORMW 
 			CFLAG:8019 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -4438,7 +5937,6 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8020 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -4450,9 +5948,9 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			PRINTFORMW 
 			CFLAG:8020 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG 관계
@@ -4486,11 +5984,15 @@ SIF EQUIP:14 || TFLAG:899 > 0
 ;고통각인Lv3 취득 CFLAG:8096
 ;-------------------------------------------------
 IF TFLAG:40 == 3 && CFLAG:8096 == 0
-	;연모
-	IF TALENT:150
-		PRINTFORMW 
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「があっ……」
+			PRINTFORMW 『やばっ,やりすぎたか! 大丈夫か,香霖!?』
+		ENDIF
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「くっ…あっ……」
+		PRINTFORMW  息も絶え絶えになりながら,霖之助は苦痛に耐えている
 	ENDIF
 	CFLAG:8096 = 1
 ENDIF
@@ -4499,11 +6001,18 @@ ENDIF
 ;쾌락각인Lv3 취득 CFLAG:8097
 ;-------------------------------------------------
 IF TFLAG:41 == 3 && CFLAG:8097 == 0
+	IF ASSI > 0 && ASSIPLAY
+		;助手魔理沙
+		IF NO:ASSI == 2
+			PRINTFORMW 「まさか……魔理沙にこんな風にされるなんてな……」
+			PRINTFORMW 『お褒めいただき光栄の至り,ってか.
+			PRINTFORMW  まあ気持ち良くなってくれたみたいで何よりだ』
+		ENDIF
 	;연모
-	IF TALENT:150
-		PRINTFORMW 
+	ELSEIF TALENT:150
+		PRINTFORMW 「こんな気持ち良いことなど知らなかったのに……君のせいだぞ」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「なんで,気持ち良いんだ……こんなにも」
 	ENDIF
 	CFLAG:8097 = 1
 ENDIF
@@ -4512,12 +6021,7 @@ ENDIF
 ;굴복각인Lv3 취득 CFLAG:8098
 ;-------------------------------------------------
 IF TFLAG:42 == 3 && CFLAG:8098 == 0
-	;연모
-	IF TALENT:150
-		PRINTFORMW 
-	ELSE
-		PRINTFORMW 
-	ENDIF
+	PRINTFORMW 「もう抗う気もないさ.心が折れるというのは,こういうことか……」
 	CFLAG:8098 = 1
 ENDIF
 
@@ -4527,9 +6031,12 @@ ENDIF
 IF TFLAG:44 == 3 && CFLAG:8099 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「あのなあ,いくら君でもやって良いことと悪いことの区別くらいはつけてくれ.
+		PRINTFORMW  今の心境を端的に表すと愛憎半ば,という奴だな.早いところなんとかするんだね.
+		PRINTFORMW  黒いほうに傾いても,しらないからな」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「昔からこの体のせいで色々不愉快な思いはしてきたが……
+		PRINTFORMW  それでも初めてだよ,僕をここまで怒らせた相手は」
 	ENDIF
 	CFLAG:8099 = 1
 ENDIF
@@ -4537,6 +6044,7 @@ ENDIF
 ;-------------------------------------------------
 ;치욕각인 Lv3 취득 CFLAG:8100
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:46 == 3 && CFLAG:8100 == 0
 	;연모
 	IF TALENT:150
@@ -4546,6 +6054,7 @@ IF TFLAG:46 == 3 && CFLAG:8100 == 0
 	ENDIF
 	CFLAG:8100 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;이벤트 대사집 FLAG(TFLAG200의 내용물＋8100)
@@ -4557,16 +6066,19 @@ ENDIF
 IF TFLAG:200 == 130
 	;연모+반발각인Lv3미만
 	IF TALENT:150 && MARK:9 < 3
-		PRINTFORMW 
+		PRINTFORMW 「わかっていたよ,これが君の仕事だし,僕はこんな体だからな
+		PRINTFORMW  だが,少しくらいは夢を見たって……
+		PRINTFORMW  はは,無様だな森近霖之助.
+		PRINTFORMW  期待なんかしない方が良いってことは,昔から身に刻まれていただろうに.
+		PRINTFORMW  今まで世話になったな,さようならだ.もう会うこともないだろうけどね」
 	;반발각인Lv3
 	ELSEIF MARK:9 == 3
-		PRINTFORMW 
-	;음란
-	ELSEIF TALENT:170
-		PRINTFORMW 
+		PRINTFORMW 「ようやっと,君から離れられるか
+		PRINTFORMW  ああ,そうそう.夜中はせいぜい背後に気をつけるんだな」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「まあ,これでお互いせいせいしたな.
+		PRINTFORMW  次は妙な気まぐれを起こさずに少女を相手にすることだ」
 	ENDIF
 ENDIF
 
@@ -4576,15 +6088,18 @@ ENDIF
 IF TFLAG:200 == 140
 	;연모
 	IF TALENT:150 && (CFLAG:8240 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「あ,起こしてしまったか.
+		PRINTFORMW  愚かなことだとは思うんだがね.こうしたい衝動が抑えられなかったんだ.
+		PRINTFORMW  嘲ってくれても構わないさ」
 		CFLAG:8240 = 3
 	;봉사정신Lv5이상
 	ELSEIF ABL:13 >= 5 && (CFLAG:8240 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「朝から元気だな,君は.まあ僕も人のことをいえた義理ではないんだがね」
 		CFLAG:8240 = 2
 	;그 외
 	ELSEIF CFLAG:8240 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「あ,起きてしまったか.
+		PRINTFORMW  少しでも出しておけば,本番が楽に終わるかと企んではみたが……失敗かな」
 		CFLAG:8240 = 1
 	ENDIF
 ENDIF
@@ -4592,6 +6107,7 @@ ENDIF
 ;-------------------------------------------------
 ;조교 후 섹스 CFLAG:8250
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 150
 	;V감각Lv4이상
 	IF ABL:1 >= 4 && (CFLAG:8250 < 2 || FLAG:11 == 2)
@@ -4603,6 +6119,7 @@ IF TFLAG:200 == 150
 		CFLAG:8250 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;조교 후 자위 CFLAG:8251
@@ -4610,15 +6127,18 @@ ENDIF
 IF TFLAG:200 == 151
 	;연모
 	IF TALENT:150 && (CFLAG:8251 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「こういうのは……どうなんだ,人として.
+		PRINTFORMW  思春期のガキでもあるまいに,他者への妄想で自慰に耽るなど……」
 		CFLAG:8251 = 3
 	;자위중독Lv3이상
 	ELSEIF ABL:30 >= 3 && (CFLAG:8251 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「少しでも休んで,体力を回復させるべきだと言うのに.
+		PRINTFORMW  何をやっているんだ,僕は.昂ぶりが治まらない……」
 		CFLAG:8251 = 2
 	;그 외
 	ELSEIF CFLAG:8251 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「ふう,何をやっているんだ,僕は……
+		PRINTFORMW  こういう環境だと終わった後の虚しさも一入だな」
 		CFLAG:8251 = 1
 	ENDIF
 ENDIF
@@ -4626,6 +6146,7 @@ ENDIF
 ;-------------------------------------------------
 ;레즈 플레이 CFLAG:8254
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 154
 	;연모
 	IF TALENT:150 && (CFLAG:8254 < 4 || FLAG:11 == 2)
@@ -4647,7 +6168,7 @@ IF TFLAG:200 == 154
 ENDIF
 
 ;-------------------------------------------------
-;조교 후 밤에 덮치기　 CFLAG:8258
+;조교 후 밤에 덮치기  CFLAG:8258
 ;-------------------------------------------------
 IF TFLAG:200 == 158
 	;V감각Lv5이상
@@ -4660,6 +6181,7 @@ IF TFLAG:200 == 158
 		CFLAG:8258 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;약혼 반지 사용시
@@ -4674,9 +6196,9 @@ ENDIF
 ;-------------------------------------------------
 ;붉은 목걸이 사용시
 ;-------------------------------------------------
-IF TFLAG:200 == 201
-	PRINTFORMW 
-ENDIF
+;IF TFLAG:200 == 201
+;	PRINTFORMW 
+;ENDIF
 
 TFLAG:200 = 0
 RETURN 0
@@ -4692,68 +6214,68 @@ PRINTFORMW ………
 PRINTFORMW ……
 PRINTFORMW 
 PRINTFORMW 「미안하다, 약속을 지키지 않은채로……」
-PRINTFORMW 　%CALLNAME:MASTER%의 눈 앞에 있는 린노스케는, 지금도 그 날과 같이 젊다。
+PRINTFORMW  %CALLNAME:MASTER%의 눈 앞에 있는 린노스케는, 지금도 그 날과 같이 젊다.
 PRINTFORMW 
-PRINTFORMW 　그 날로부터 몇 년이 지난걸까.
-PRINTFORMW 　린노스케에게 약혼 반지를 건넨 그 날, %CALLNAME:MASTER%들은 모든 과거와 결별하기 위해 환상향을 뛰쳐나왔다.
-PRINTFORMW 　상식과 비상식을 가로막는 하쿠레이 대결계도, 린노스케가 가진 『천하를 차지할 정도의 능력』을 지닌 쿠사나기의 검 앞에서는 젖은 종이나 마찬가지였다.
-PRINTFORMW 　그 때, 린노스케는 들떠서 그 검의 내력과 힘을 얘기하며, %CALLNAME:MASTER%에게 모든것을 주겠다고 호언했다.
+PRINTFORMW  그 날로부터 몇 년이 지난걸까.
+PRINTFORMW  린노스케에게 약혼 반지를 건넨 그 날, %CALLNAME:MASTER%들은 모든 과거와 결별하기 위해 환상향을 뛰쳐나왔다.
+PRINTFORMW  상식과 비상식을 가로막는 하쿠레이 대결계도, 린노스케가 가진 『천하를 차지할 정도의 능력』을 지닌 쿠사나기의 검 앞에서는 젖은 종이나 마찬가지였다.
+PRINTFORMW  그 때, 린노스케는 들떠서 그 검의 내력과 힘을 얘기하며, %CALLNAME:MASTER%에게 모든것을 주겠다고 호언했다.
 PRINTFORML 
-PRINTFORMW 　그러나 검의 힘도 거기서 끝이었는지, 그 후의 생활은 평탄하지 않았다.
-PRINTFORMW 　호적이 없는 인간이 할 수있는 일같은게 있을리도 없고, 곧 더러운 일에 손을 물들이게 되었다.
-PRINTFORMW 　그렇지만 몸에 익힌 기술로 『상품』을 만드는 것만은 할 수 없었다.
-PRINTFORMW 　생활의 일부도 아닌, 인생 그 자체라고 할 수 있던 일이지만, 린노스케를 데려와버렸던게 운의 끝이었던 것 같다.
-PRINTFORMW 　이전과 같이 사람을 물건으로써 볼 수 없게되어버렸다. 자신이 이런 무른 인간이었다는 걸 절절히 느꼈다.
-PRINTFORMW 　정신을 차리고보니 어느새 늙고 추레해져 결국에는 걷는 것 조차 할 수 없어졌다.
-PRINTFORMW 　그런 %조사처리(CALLNAME:MASTER,"를")% 린노스케는 정성껏 보살폈지만, 거기에도 한계는 있다.
-PRINTFORMW 　어느날 당신은, 그리고 린노스케는 깨닫고 말았다. 오늘까지라고.
+PRINTFORMW  그러나 검의 힘도 거기서 끝이었는지, 그 후의 생활은 평탄하지 않았다.
+PRINTFORMW  호적이 없는 인간이 할 수있는 일같은게 있을리도 없고, 곧 더러운 일에 손을 물들이게 되었다.
+PRINTFORMW  그렇지만 몸에 익힌 기술로 『상품』을 만드는 것만은 할 수 없었다.
+PRINTFORMW  생활의 일부도 아닌, 인생 그 자체라고 할 수 있던 일이지만, 린노스케를 데려와버렸던게 운의 끝이었던 것 같다.
+PRINTFORMW  이전과 같이 사람을 물건으로써 볼 수 없게되어버렸다. 자신이 이런 무른 인간이었다는 걸 절절히 느꼈다.
+PRINTFORMW  정신을 차리고보니 어느새 늙고 추레해져 결국에는 걷는 것 조차 할 수 없어졌다.
+PRINTFORMW  그런 %조사처리(CALLNAME:MASTER,"를")% 린노스케는 정성껏 보살폈지만, 거기에도 한계는 있다.
+PRINTFORMW  어느날 당신은, 그리고 린노스케는 깨닫고 말았다. 오늘까지라고.
 PRINTFORML 
 PRINTFORMW 「최근에는 이 몸을 저주하는 일도 없었지만, 멍청했네. 네가 없는 여생을 생각하면 나까지 죽고싶어져.」
 PRINTFORMW 「알아, 그런 바보같은 짓은 하지 않아. ……저기, 물어봐도 될까?」
-PRINTFORMW 　그렇게 말하고 린노스케는 %CALLNAME:MASTER%의 손을 잡았다. 그 왼손에는 지금도 변함없이 그 날의 반지가 빛나고있다.
-PRINTFORMW 　아무리 생활고에 시달려도 언제나 지니고 있던 그것도, 지금은 조금 낡아져있지만.
+PRINTFORMW  그렇게 말하고 린노스케는 %CALLNAME:MASTER%의 손을 잡았다. 그 왼손에는 지금도 변함없이 그 날의 반지가 빛나고있다.
+PRINTFORMW  아무리 생활고에 시달려도 언제나 지니고 있던 그것도, 지금은 조금 낡아져있지만.
 PRINTFORMW 「나 이외에도 선택지는 얼마든지 있었을텐데, 어째서 하필 나였던거지?」
 PRINTFORMW 「애초에 그대로 장사를 계속해나가는 인생도 있었을거다. 돈도 여자도 부족하지 않은 생활이」
 PRINTFORMW 「그런데. 그런데, 나같은걸 선택해서 이런 싸구려 아파트 방에서 초라하게, 지금……수명이 다하려 하고있어」
-PRINTFORMW 　어째서 린노스케였는지, %CALLNAME:MASTER%도 알지 못한다. 
-PRINTFORMW 　모든 것을 던져서라도 손에 넣고싶었던게 눈 앞의 남자였다. 그것 뿐이다.
-PRINTFORMW 　그저 그것 뿐이다.
+PRINTFORMW  어째서 린노스케였는지, %CALLNAME:MASTER%도 알지 못한다. 
+PRINTFORMW  모든 것을 던져서라도 손에 넣고싶었던게 눈 앞의 남자였다. 그것 뿐이다.
+PRINTFORMW  그저 그것 뿐이다.
 PRINTFORMW 「정말이지, 구제불능이구나, 너란 녀석은……」
-PRINTFORMW 　그렇게 말하면서, 한심하다는 듯한 어조와 반대로 린노스케의 표정은 진지함 그 자체였다.
+PRINTFORMW  그렇게 말하면서, 한심하다는 듯한 어조와 반대로 린노스케의 표정은 진지함 그 자체였다.
 PRINTFORMW 「그리고 더 구제불능인게 나인가」
 PRINTFORMW 「너를 완전히 믿는것도, 만일이 두려워 이렇게 묻지도 못하고 지금까지……」
 PRINTFORMW 「……꽤나 늦어졌지만, 들어줬으면 하는게 있어」
 PRINTFORMW 「사실은 한번도 입 밖에 낸 적 없지만……나도 너를 영원히 사랑하겠다」
-PRINTFORMW 　듣고나서 처음으로 깨달았다.
-PRINTFORMW 　확실히 린노스케가 그렇게 말한 적은 한번도 없었다.
-PRINTFORMW 　애초에, 린노스케의 태도가 무엇보다도 유창하게 그걸 말하고 있었지만.
-PRINTFORMW 　쓴웃음을 짓는 %CALLNAME:MASTER%에게 린노스케도 쓴웃음을 짓어보인다.
+PRINTFORMW  듣고나서 처음으로 깨달았다.
+PRINTFORMW  확실히 린노스케가 그렇게 말한 적은 한번도 없었다.
+PRINTFORMW  애초에, 린노스케의 태도가 무엇보다도 유창하게 그걸 말하고 있었지만.
+PRINTFORMW  쓴웃음을 짓는 %CALLNAME:MASTER%에게 린노스케도 쓴웃음을 짓어보인다.
 PRINTFORMW 「할 수 없잖아. 사랑받는 것에 익숙하지 않으니까, 나는. 말로 하는게 무서웠어.」
 PRINTFORMW 「뭐, 내게 조교같은 걸 했던 벌을 받은거라고 생각하고 체념해줘」
-PRINTFORMW 　그 말을 끝으로, 어둑한 작은 방은 침묵에 휩싸였다.
-PRINTFORMW 　%CALLNAME:MASTER%도 린노스케도, 할 말은 얼마든지 있지만 말이 되어 나오질 않는다.
-PRINTFORMW 　아니면 말로 했다가는, 지금 느끼고있는 소중한 것이 사라질 것 같아서 였을까.
-PRINTFORMW 　말이란건 편리하지만, 그것을 가지고도 지금의 심정을 정확히 다 전할 수 없다.
-PRINTFORMW 　그것보다 이렇게 서로를 바라보고 있는 것만으로도 좋다.
-PRINTFORMW 　서로의 인식에는 큰 착각도 있겠지만, 그런 뒤죽박죽한거야말로 자신들에게는 오히려 어울린다. 
+PRINTFORMW  그 말을 끝으로, 어둑한 작은 방은 침묵에 휩싸였다.
+PRINTFORMW  %CALLNAME:MASTER%도 린노스케도, 할 말은 얼마든지 있지만 말이 되어 나오질 않는다.
+PRINTFORMW  아니면 말로 했다가는, 지금 느끼고있는 소중한 것이 사라질 것 같아서 였을까.
+PRINTFORMW  말이란건 편리하지만, 그것을 가지고도 지금의 심정을 정확히 다 전할 수 없다.
+PRINTFORMW  그것보다 이렇게 서로를 바라보고 있는 것만으로도 좋다.
+PRINTFORMW  서로의 인식에는 큰 착각도 있겠지만, 그런 뒤죽박죽한거야말로 자신들에게는 오히려 어울린다. 
 PRINTFORMW
-PRINTFORMW 　문득, 어째서인지 쿠사나기의 검이 생각났다.
-PRINTFORMW 　린노스케가 말하길, 『천하를 차지할 정도의 능력』을 지닌 전설상의 신기.
-PRINTFORMW 　이렇게 되고보니, 린노스케의 능력도 의심스럽기 그지없다.
-PRINTFORMW 　왜냐하면 지금의 상황은 천하인이라고 하기에는 너무 거리가 있다.
-PRINTFORMW 　돈도, 삼국의 미녀도, 섬기는 신하도 없이 그날 그날의 끼니도 아쉬운 처지.
-PRINTFORMW 　손에 넣은거라곤 이 작은 월세방과, 최저에도 미치지 못하는 수준의 가구.
-PRINTFORMW 　그리고 %CALLNAME:MASTER%의 마음을 받아준 린노스케뿐이다.
+PRINTFORMW  문득, 어째서인지 쿠사나기의 검이 생각났다.
+PRINTFORMW  린노스케가 말하길, 『천하를 차지할 정도의 능력』을 지닌 전설상의 신기.
+PRINTFORMW  이렇게 되고보니, 린노스케의 능력도 의심스럽기 그지없다.
+PRINTFORMW  왜냐하면 지금의 상황은 천하인이라고 하기에는 너무 거리가 있다.
+PRINTFORMW  돈도, 삼국의 미녀도, 섬기는 신하도 없이 그날 그날의 끼니도 아쉬운 처지.
+PRINTFORMW  손에 넣은거라곤 이 작은 월세방과, 최저에도 미치지 못하는 수준의 가구.
+PRINTFORMW  그리고 %CALLNAME:MASTER%의 마음을 받아준 린노스케뿐이다.
 PRINTFORML 
-PRINTFORMW 　거기서 갑자기 깨달았다. 다른건 아무것도 원하는게 없다는 것을.
-PRINTFORMW 　마지막을 지켜봐주는, 가장 사랑하는 존재가 여기에 있다. 
-PRINTFORMW 　그것만으로도 넘치게 충족되어있다.
-PRINTFORMW 　과연, 천하를 차지할 정도의 능력이다. 
-PRINTFORMW 　다른 누구도 이해해주지 않더라도, 나는 모든 것을 손에 넣었다.
-PRINTFORMW 　자신의 손을 잡는 린노스케의 손의 감촉을 느끼며 %조사처리(CALLNAME:MASTER,"는")% 조용히 눈을 감았다.
-PRINTFORMW 　그 표정은 아마 %CALLNAME:MASTER%의 인생에서 가장 편안한 미소였음에 틀림없겠지…….
+PRINTFORMW  거기서 갑자기 깨달았다. 다른건 아무것도 원하는게 없다는 것을.
+PRINTFORMW  마지막을 지켜봐주는, 가장 사랑하는 존재가 여기에 있다. 
+PRINTFORMW  그것만으로도 넘치게 충족되어있다.
+PRINTFORMW  과연, 천하를 차지할 정도의 능력이다. 
+PRINTFORMW  다른 누구도 이해해주지 않더라도, 나는 모든 것을 손에 넣었다.
+PRINTFORMW  자신의 손을 잡는 린노스케의 손의 감촉을 느끼며 %조사처리(CALLNAME:MASTER,"는")% 조용히 눈을 감았다.
+PRINTFORMW  그 표정은 아마 %CALLNAME:MASTER%의 인생에서 가장 편안한 미소였음에 틀림없겠지…….
 PRINTFORMW 
-PRINTFORMW 　　　　　　　　―― Ending No.198 (모리치카 린노스케 엔딩)
+PRINTFORMW         ―― Ending No.1069 (모리치카 린노스케 엔딩)
 
 WAIT
 RETURN 0
@@ -4770,6 +6292,6 @@ RETURN 0
 ;PRINTFORMW 
 
 ;PRINTFORMW 
-;PRINTFORMW 　　　　　　　　―― Ending No.{1000+NO:TARGET}i (%CALLNAME:TARGET% 노예 엔딩)
+;PRINTFORMW         ―― Ending No.{1000+NO:TARGET}i (%CALLNAME:TARGET% 노예 엔딩)
 
 ;RETURN 0
