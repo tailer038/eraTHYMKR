@@ -935,27 +935,27 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 	;初めて
 	IF CFLAG:8801 == 0
 		PRINTFORMW 「으응…따듯한물이 부딫쳐어…!」
-		CFLAG:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;二回目以降
 	ELSE
 		;恋慕＋自慰中毒Lv3以上
-		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8800 <= 4 || FLAG:11 == 2)
+		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8801 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 「응아앗、이것, 이것도 좋아앗♪」
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;恋慕
-		ELSEIF TALENT:150 && (CFLAG:8800 <= 3 || FLAG:11 == 2)
+		ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「기다려、지금 보지 깨끗이할테니까」
 			PRINTFORMW 「아우…끈적끈적한게 언제까지라도 없어지질않아…」
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;自慰中毒Lv3以上
-		ELSEIF ABL:30 >= 3 && (CFLAG:8800 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:30 >= 3 && (CFLAG:8801 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「샤워ー、여기에 하는건 기분좋아앗……」
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;それ以外
-		ELSEIF CFLAG:8800 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:8801 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「싫어、축축해……」
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 		RETURN 0
 	ENDIF
@@ -2523,7 +2523,7 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 「어……나, 음란한 얼굴을 했어……？」
 			CFLAG:9103 = 3
 		;それ以外
-		ELSEIF CFLAG:272 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「으음, 역시 불안……」
 			CFLAG:9103 = 2
 		ENDIF
