@@ -1178,6 +1178,7 @@ IF CFLAG:7022 <= 1 && CFLAG:7000 == 1
 	ENDIF
 ENDIF
 
+
 ;========================================================
 ;@KOJO_X_MESSAGE_PALAMCNG
 ;パラメータ変動をトリガーにした口上
@@ -1987,7 +1988,7 @@ ENDIF
 ;-------------------------------------------------
 ;膣内に射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_11
+@K82_MESSAGE_EJAC_PLAYER_10
 ;主人のペニス
 IF TFLAG:35
 	IF CFLAG:7001 == 1
@@ -2037,7 +2038,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナルに射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_12
+@K82_MESSAGE_EJAC_PLAYER_9
 ;主人のペニス
 IF TFLAG:35
 	IF CFLAG:7001 == 1
@@ -2071,118 +2072,127 @@ ENDIF
 ;-------------------------------------------------
 ;髪に射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_13
+@K82_MESSAGE_EJAC_PLAYER_16
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;顔に射精
+;顔に射精 (현 시스템에서 대응되는 플래그 없음. T)
 ;-------------------------------------------------
+[SKIPSTART]
 @K82_MESSAGE_EJAC_PLAYER_14
 ;PRINTFORMW 
+[SKIPEND]
 
 ;-------------------------------------------------
 ;口に射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_15
-IF CFLAG:7001 == 1
-	PRINTFORMW 「おー、なんかでてるぞー？」
-ELSEIF CFLAG:7020 >= 1
-	IF RAND:2 == 0
-		PRINTFORM 「んっ…　えへへー
-		SETCOLOR 0xFF0000
-		PRINTFORM %UNICODE(0x2665)%
-		RESETCOLOR
-		PRINTFORMW いっぱいでたなー？」
-	ELSE
-		PRINTFORM 「えへへ…
-		SETCOLOR 0xFF0000
-		PRINTFORM %UNICODE(0x2665)%
-		RESETCOLOR
-		PRINTFORM クセになっちゃった…ぞ…
+@K82_MESSAGE_EJAC_PLAYER_11
+IF GROUPMATCH (SELECTCOM, 41, 54, 230, 303, 304, 601, 602, 604, 610)
+	IF CFLAG:7001 == 1
+		PRINTFORMW 「おー、なんかでてるぞー？」
+	ELSEIF CFLAG:7020 >= 1
+		IF RAND:2 == 0
+			PRINTFORM 「んっ…　えへへー
+			SETCOLOR 0xFF0000
+			PRINTFORM %UNICODE(0x2665)%
+			RESETCOLOR
+			PRINTFORMW いっぱいでたなー？」
+		ELSE
+			PRINTFORM 「えへへ…
+			SETCOLOR 0xFF0000
+			PRINTFORM %UNICODE(0x2665)%
+			RESETCOLOR
+			PRINTFORM クセになっちゃった…ぞ…
+			SETCOLOR 0xFF0000
+			PRINTFORM %UNICODE(0x2665)%
+			RESETCOLOR
+			PRINTFORMW 」
+		ENDIF
+	ELSEIF TALENT:150 == 1
+		PRINTFORM 「おー、くちのなか…　いっぱい…
 		SETCOLOR 0xFF0000
 		PRINTFORM %UNICODE(0x2665)%
 		RESETCOLOR
 		PRINTFORMW 」
 	ENDIF
-ELSEIF TALENT:150 == 1
-	PRINTFORM 「おー、くちのなか…　いっぱい…
-	SETCOLOR 0xFF0000
-	PRINTFORM %UNICODE(0x2665)%
-	RESETCOLOR
-	PRINTFORMW 」
-ENDIF
 
-IF CFLAG:7001 == 1
-	IF CFLAG:7002 == 1
-		IF RAND:4 == 0
-			CFLAG:7021 += 1
-		ELSEIF RAND:3 == 0
-		
-		ELSEIF RAND:2 == 0
-		
-		ELSE
-		
+	IF CFLAG:7001 == 1
+		IF CFLAG:7002 == 1
+			IF RAND:4 == 0
+				CFLAG:7021 += 1
+			ELSEIF RAND:3 == 0
+			
+			ELSEIF RAND:2 == 0
+			
+			ELSE
+			
+			ENDIF
 		ENDIF
 	ENDIF
-ENDIF
 
 ;-------------------------------------------------
 ;胸に射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_16
-;PRINTFORMW 
+;@K82_MESSAGE_EJAC_PLAYER_16
+ELSE
+	;PRINTFORMW 
+ENDIF
 
 ;-------------------------------------------------
-;腹に射精
+;腹に射精 (현 시스템에서 대응되는 플래그 없음. T)
 ;-------------------------------------------------
+[SKIPSTART]
 @K82_MESSAGE_EJAC_PLAYER_17
 ;PRINTFORMW 
+[SKIPEND]
 
 ;-------------------------------------------------
 ;腋に射精
-;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_18
-;PRINTFORMW 
-
-;-------------------------------------------------
-;手に射精
-;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_19
-;PRINTFORMW 
-
-;-------------------------------------------------
-;秘裂に射精
 ;-------------------------------------------------
 @K82_MESSAGE_EJAC_PLAYER_20
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;竿に射精
+;手に射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_21
+@K82_MESSAGE_EJAC_PLAYER_12
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;尻に射精
+;秘裂に射精
+;-------------------------------------------------
+@K82_MESSAGE_EJAC_PLAYER_15
+;PRINTFORMW 
+
+;-------------------------------------------------
+;竿に射精
 ;-------------------------------------------------
 @K82_MESSAGE_EJAC_PLAYER_22
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;太腿に射精
+;尻に射精
 ;-------------------------------------------------
+@K82_MESSAGE_EJAC_PLAYER_8
+;PRINTFORMW 
+
+;-------------------------------------------------
+;太腿に射精 (현 시스템에서 대응되는 플래그 없음. T)
+;-------------------------------------------------
+[SKIPSTART]
 @K82_MESSAGE_EJAC_PLAYER_23
 ;PRINTFORMW 
+[SKIPEND]
 
 ;-------------------------------------------------
 ;足に射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_24
+@K82_MESSAGE_EJAC_PLAYER_19
 ;PRINTFORMW 
 ;-------------------------------------------------
 ;尿道で射精	CFLAG:9025
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_25
+@K82_MESSAGE_EJAC_PLAYER_23
 IF TFLAG:25 > 0 && SELECTCOM == 146
 	IF CFLAG:7001 == 1
 		IF CFLAG:7002 == 1 || CFLAG:7002 == 4
@@ -2269,20 +2279,22 @@ ENDIF
 ;-------------------------------------------------
 ;調教者がキスで射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_26
+@K82_MESSAGE_EJAC_PLAYER_14
 ;PRINTFORMW 
 
 ;-------------------------------------------------
 ;主人が助手を犯すで射精
 ;-------------------------------------------------
-@K82_MESSAGE_EJAC_PLAYER_27
+@K82_MESSAGE_EJAC_PLAYER_17
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;調教者がコンドームに射精
+;調教者がコンドームに射精 (현 시스템에서 대응되는 플래그 없음. T)
 ;-------------------------------------------------
+[SKIPSTART]
 @K82_MESSAGE_EJAC_PLAYER_28
 ;PRINTFORMW 
+[SKIPEND]
 
 ;========================================================
 ;@KOJO_X_MESSAGE_MARKCNG
