@@ -24806,8 +24806,23 @@ IF SELECTCOM == 346 && NO == 149
 				PRINTFORMW …그럴리가, 이번 기회에 아주 버르장머리를 고쳐놓아야겠다고 %조사처리(CALLNAME:MASTER,"는")% 판단했다.
 				PRINTFORMW 「헤에, 버르장머리이? 댁한테 정말로 그런 말 할 자격이 있다고 생각한다면 뭐 괜찮지만…!」
 				PRINTFORMW 「헛소리 말라그랫!!!」
-				PRINTFORMW 잠시 공에 불꽃이 감겨있는 듯한 착각이 들었고 다음 순간엔 %CALLNAME:MASTER%에게 정확히 공이 꽃히고 있었다.
-				PRINTFORMW 「버릇을 고친다면서? 자아 나는 도망치지도 숨지도 않을 테니까 마음껏 고쳐봐!」
+				;기교와 조교사레벨을 일종의 두뇌회전이나 상황파악에 대한 능력과 연관 지음. 어느정도는 연관성이 있겠지? 아마...도?
+				If ABL:MASTER:12 == 5 && ABL:MASTER:99 >= 4
+					PRINTFORMW 잠시 공에 불꽃이 감겨있는 듯한 착각이 들어 놀랐지만,
+					PRINTFORMW	이내 %조사처리(CALLNAME:MASTER,"는")% 여유롭게 한손으로 막아보이고, 공을 다시 되던졌다.
+					PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 공을 받아내었고, %조사처리(CALLNAME:MASTER,"는")% 여유로운 미소를 지어보였다.
+					PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 멍한 표정을 짓더니, %CALLNAME:MASTER%의 여유로운 태도에 분한 듯 발을 동동 굴렸다.
+					PRINTFORMW 「말도 안돼! 저런 인간에게 내 공이 가로막히다니!」
+					PRINTFORMW 「…뭐 좋아. 백번 막으면 이백번 던지면 돼지!」
+					PRINTFORMW …%조사처리(CALLNAME:MASTER,"와")% %CALLNAME:TARGET%의 혈투는 한동안 계속되었다
+					PRINTFORMW …………
+					PRINTFORMW ………
+					PRINTFORMW ……			
+					PRINTFORMW …
+				ELSE
+					PRINTFORMW 잠시 공에 불꽃이 감겨있는 듯한 착각이 들었고 다음 순간엔 %CALLNAME:MASTER%에게 정확히 공이 꽃히고 있었다.
+					PRINTFORMW 「버릇을 고친다면서? 자아 나는 도망치지도 숨지도 않을 테니까 마음껏 고쳐봐!」
+				ENDIF
 			ELSEIF RESULT == 1
 				PRINTFORMW 그렇게 예쁘게 웃을 수도 있잖아 하고 말하자… 
 				PRINTFORMW 「바, 바보가!? 지금 무슨 같잖은 수작을 친딸에게 거는 거얏!!」
@@ -24971,7 +24986,7 @@ IF SELECTCOM == 346 && NO == 149
 			PRINTFORMW 「어딜 도망갓!!!」
 			PRINTFORMW 살인도 아니고 
 			PRINTFORMW 「이걸로 숨통을 끊어주마앗!!!」
-			PRINTFORMW 무리!! 
+			PRINTFORMW 무리야!! 
 			PRINTFORMW 아무리 봐주는 거 없는 경기라고 해도 %CALLNAME:TARGET%의 기합은 그야말로 하늘을 찌르고 있다.
 			PRINTFORMW 이대로라면 할당된 포인트가 모조리 소진되어서 %CALLNAME:MASTER%의 패배는 거의 확정적이다… 
 			PRINTFORMW ……… 
@@ -25014,28 +25029,65 @@ IF SELECTCOM == 346 && NO == 149
 				PRINTFORMW 애초에 %조사처리(CALLNAME:TARGET,"과")% 마음이 통하고 싶은 것이다, 그런 짓을 했다가는 지금까지 했던 모든 일이 가짜가 되어버린다.
 				PRINTFORMW …상대는 어쨌건 성난 무소처럼 돌격일변도의 전술을 구사하고 있다, 그렇다면 여기서는 그 힘을 역으로 이용해서!!! 
 				PRINTFORMW 「하아아아아아아앗!!!」
-				PRINTFORMW 라고 생각한 순간 %조사처리(CALLNAME:MASTER,"는")% 전속력으로 날아온 %CALLNAME:TARGET%의 공을 안면으로 마중했다.
-				PRINTFORMW 「…에엑?」
-				PRINTFORMW 「바, 바보! 경기 중에 무슨 생각을 골똘이 하다가…!」
-				PRINTFORMW 코피를 뿜으며 뒤로 넘어가는 %CALLNAME:MASTER%에게 %조사처리(CALLNAME:TARGET,"가")% 황급히 달려오는 게 희미해져가는 의식속에 보였다… 
-				PRINTFORMW 
-				PRINTFORMW 「정신이 들어?」
-				PRINTFORMW 머리에 부드러운 감촉이 드는 것을 느끼며 정신이 들자 %조사처리(CALLNAME:TARGET,"를")% 내려다보고 있는 %조사처리(CALLNAME:TARGET,"가")% 보였다.
-				PRINTFORMW 「차, 착각하지 마…어쨌건 혈연적으로 따지면 부친이기도 하고 내버려둘 수 없으니까 조금 지켜봐준 거야」
-				PRINTFORMW 「아무리 밉더라도 내 손에 죽어버리면 엄마, 엄청 슬퍼할 테니까…」
-				PRINTFORMW %조사처리(CALLNAME:TARGET,"가")% 빨개진 얼굴을 돌리고 애써 변명하고 있다.
-				PRINTFORMW …순간 조금 두근거렸다, 주책맞게… 
-				PRINTFORMW 「…정신 들었으면 그만 머리 치워!」
-				PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 퍽 밀리는 바람에 굴러서 바닥에 힘차게 머리를 부딪쳤다… 
-				PRINTFORMW 「꺅! 괘, 괜찮아? 그, 그러니깐 왜 힘을 완전히 빼고 난리야! 문어도 아니고!」
-				PRINTFORMW 화내야 할 상대는 이쪽인 것 같지만 힘이 빠지니까 관둬야겠다… 
-				PRINTFORMW %CALLNAME:TARGET%의 빨개진 얼굴을 봤으니 그다지 손해본 것 같지도 않고… 
-				PRINTFORMW
-				PRINTFORMW %CALLNAME:TARGET%의 호감도＋100 
-				PRINTFORMW %CALLNAME:TARGET%의 습득의 구슬＋2000 
-				PRINTFORMW
-				CFLAG:TARGET:2 += 100
-				JUEL:TARGET:11 += 2000
+				IF ABL:MASTER:12 == 5 && ABL:MASTER:99 >= 4
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 매서운 화살처럼 날아오는 공을 본 뒤 옆으로 신체를 튼다음…!
+					PRINTFORMW 등에서 팔까지 힘을 끌어올린 상태에서 공을 부여잡고 당겨진 슬링처럼 상체와 팔을 틀어, 
+					PRINTFORMW 공의 반동을 이용해 던질 자세를 잡았다!
+					PRINTFORMW 「어?」					
+					PRINTFORMW 찰나의 순간 동안 %CALLNAME:TARGET%의 모습을 살펴보았다. 역시나, %조사처리(CALLNAME:TARGET,"는")% 전신을 이용해 공을 던지고 있었던 것이다!
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 생각했다. 
+					PRINTFORMW %CALLNAME:TARGET%에게 눈 먼 활력과 힘이 있다는 말은, 반대로 그녀에게 섬세함이 없다는 뜻이다.
+					PRINTFORMW 이에 %조사처리(CALLNAME:MASTER,"는")% 빈틈을 노려 공을 %CALLNAME:TARGET%에게 전속력으로…!
+					PRINTFORMW 「힉…!」
+					PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 양팔로 얼굴을 가리며 눈을 질끈 감았다.	
+					PRINTFORMW …
+					PRINTFORMW 아니다.     
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그 모습에 머릿속에서 타오르던 불꽃이 사그라드는 것을 느끼고, 
+					PRINTFORMW 마당에 그은 줄을 넘어서, 든 공을 내려놓았다
+					PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신에게 날아오지 않는 공에 대한 의문을 품었는지, 눈을 다시 떴다.
+					PRINTFORMW 「…? 뭐하는 거야?」				
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 자신이 선을 넘어갔으니 졌다고 했다.
+					PRINTFORMW 사실, %조사처리(CALLNAME:MASTER,"는")% 이 꼬마를 이기려고 전력을 다할 생각이 없었지만
+					PRINTFORMW 애초에 그저 공놀이로 생각 했던 것을, 어느 순간 어른답지 않게 전심을 다했다는 사실에 스스로에 대한 수치를 느낀 것이다.
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 그리 생각하고 있을 때, 씩씩거리는 숨소리에 생각을 멈추고 %조사처리(CALLNAME:TARGET,"을")% 보았고
+					PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 화가 난 것인지, 부끄러운 것인지 모를 오묘히 불그레한 얼굴로 울먹이며
+					PRINTFORMW %CALLNAME:MASTER%에게 다가와 배에 약한 펀치를 한방 먹였다.
+					PRINTFORMW 「누굴 바보로 아는거야! 이 바보멍청이! 승부는 승부잖아!」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 쓴웃음을 지으며, 울먹이는 %CALLNAME:TARGET%의 머리를 쓰다듬었다.
+					PRINTFORMW
+					PRINTFORMW %CALLNAME:TARGET%의 호감도＋200 
+					PRINTFORMW %CALLNAME:TARGET%의 습득의 구슬＋2000 
+					PRINTFORMW %CALLNAME:TARGET%의 공포의 구슬＋500
+					PRINTFORMW %CALLNAME:TARGET%의 애정경험＋5
+					PRINTFORMW
+					CFLAG:TARGET:2 += 200
+					JUEL:TARGET:11 += 2000
+					JUEL:TARGET:17 += 500
+					EXP:TARGET:21 += 5
+				ELSE
+					PRINTFORMW 라고 생각한 순간 %조사처리(CALLNAME:MASTER,"는")% 전속력으로 날아온 %CALLNAME:TARGET%의 공을 안면으로 마중했다.
+					PRINTFORMW 「…에엑?」
+					PRINTFORMW 「바, 바보! 경기 중에 무슨 생각을 골똘이 하다가…!」
+					PRINTFORMW 코피를 뿜으며 뒤로 넘어가는 %CALLNAME:MASTER%에게 %조사처리(CALLNAME:TARGET,"가")% 황급히 달려오는 게 희미해져가는 의식속에 보였다… 
+					PRINTFORMW 
+					PRINTFORMW 「정신이 들어?」
+					PRINTFORMW 머리에 부드러운 감촉이 드는 것을 느끼며 정신이 들자 %조사처리(CALLNAME:TARGET,"를")% 내려다보고 있는 %조사처리(CALLNAME:TARGET,"가")% 보였다.
+					PRINTFORMW 「차, 착각하지 마…어쨌건 혈연적으로 따지면 부친이기도 하고 내버려둘 수 없으니까 조금 지켜봐준 거야」
+					PRINTFORMW 「아무리 밉더라도 내 손에 죽어버리면 엄마, 엄청 슬퍼할 테니까…」
+					PRINTFORMW %조사처리(CALLNAME:TARGET,"가")% 빨개진 얼굴을 돌리고 애써 변명하고 있다.
+					PRINTFORMW …순간 조금 두근거렸다, 주책맞게… 
+					PRINTFORMW 「…정신 들었으면 그만 머리 치워!」
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 퍽 밀리는 바람에 굴러서 바닥에 힘차게 머리를 부딪쳤다… 
+					PRINTFORMW 「꺅! 괘, 괜찮아? 그, 그러니깐 왜 힘을 완전히 빼고 난리야! 문어도 아니고!」
+					PRINTFORMW 화내야 할 상대는 이쪽인 것 같지만 힘이 빠지니까 관둬야겠다… 
+					PRINTFORMW %CALLNAME:TARGET%의 빨개진 얼굴을 봤으니 그다지 손해본 것 같지도 않고… 
+					PRINTFORMW
+					PRINTFORMW %CALLNAME:TARGET%의 호감도＋100 
+					PRINTFORMW %CALLNAME:TARGET%의 습득의 구슬＋2000 
+					PRINTFORMW
+					CFLAG:TARGET:2 += 100
+					JUEL:TARGET:11 += 2000
+				ENDIF
 			ENDIF		
 			PRINTFORMW 
 			PRINTFORMW 「아～아아」
@@ -25123,7 +25175,7 @@ IF SELECTCOM == 346 && NO == 149
 			ELSEIF RESULT == 2
 				PRINTFORMW …솔직히 그 질문에는 대답하기 힘들다.
 				PRINTFORMW 물론 근본은 노예이지만, 지금에 와서는 그 경계도 희미하달까… 
-				PRINTFORMW 어디까지가 진심인지, 거짓인지 %CALLNAME:MASTER% 자신도 모르게 되어버린 것이다.
+				PRINTFORMW 결국엔 어디까지가 진심인지, 거짓인지 %CALLNAME:MASTER% 자신도 모르게 되어버린 것이다.
 				PRINTFORMW 「…대답, 못 하네」
 				PRINTFORMW 「…됐어, 당신은 그게 캐릭터인 것 같으니까」
 				PRINTFORMW 우물쭈물거리고 있는 %조사처리(CALLNAME:TARGET,"를")% 보고 %조사처리(CALLNAME:TARGET,"는")% 한숨을 쉬었다.
@@ -25203,12 +25255,23 @@ IF SELECTCOM == 346 && NO == 149
 				PRINTFORMW …딱 봐도 위험한 느낌이다.
 				PRINTFORMW 「아……빠」
 				PRINTFORMW 공포에 질려 눈물콧물을 질질 흘리고 있던 %조사처리(CALLNAME:TARGET,"과")% %CALLNAME:MASTER%의 눈이 마주쳤다.
-				PRINTFORMW …지니고 있는 능력이 진짜라면 저 요괴의 힘도 빼앗을 수 있을 것이다.
-				PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 사이를 가로막고 서서 오른손을 앞에 착 펴보였다.
-				PRINTFORMW 환상향의 모든 강자의 힘을 무력화시키는 이 힘을 사용해서 구해내리라 
+					IF ABL:MASTER:12 == 5 && ABL:MASTER:99 == 5
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:TARGET,"를")% 저 멀리 밀쳐내고
+					PRINTFORMW 달려오는 짐승 앞에 섰다.
+					PRINTFORMW 과연 이 능력이 맹수와 같은 것에도 통할까? 
+					PRINTFORMW 그다지 시도해 본적이 없다. 될 수도 있고 아닐 수도 있다.
+					PRINTFORMW 이와 같은 도박이 통할런지는 모르겠지만…
+					PRINTFORMW 그래도 시도는 해봐야…!
+					;흡혈귀
+;				ELSEIF MASTER:TALENT:205 == 1	
+				ELSE
+					PRINTFORMW …지니고 있는 능력이 진짜라면 저 요괴의 힘도 빼앗을 수 있을 것이다.
+					PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 사이를 가로막고 서서 오른손을 앞에 착 펴보였다.
+					PRINTFORMW 환상향의 모든 강자의 힘을 무력화시키는 이 힘을 사용해서 구해내리라 
+				ENDIF
+					WAIT
 				PRINTFORMW … 
 				PRINTFORMW …… 
-				WAIT
 				PRINTFORMW 그리고 짐승의 오른손 스트레이트 한방에 몸이 8ｍ는 위로 떴다… 
 				PRINTFORMW 「%STR:401%!!!!」
 				PRINTFORMW 
@@ -25242,7 +25305,11 @@ IF SELECTCOM == 346 && NO == 149
 				PRINTFORMW 떨리는 목소리로 %조사처리(CALLNAME:TARGET,"가")% 말했다.
 				PRINTFORMW 저 피가 전부 %CALLNAME:MASTER%의 피라면, 정말 위험할지도 
 				PRINTFORMW 주변은 어둡고 죽림으로는 보이지 않는다.
-				PRINTFORMW 「그……갑자기 다른 요괴가 나타나서, 서로 싸워서…」
+				IF ABL:MASTER:12 == 5
+					PRINTFORMW 「왠지 모르겠지만, 짐승이 갑자기 털썩 쓰러졌는데…」
+				ELSE
+					PRINTFORMW 「그……갑자기 다른 요괴가 나타나서, 서로 싸워서…」
+				ENDIF
 				PRINTFORMW 「이때다.싶어서…얼릉 데리고 도망갔는데…어디가 어딘지 모르겠고, 그래서 토굴 안에…」
 				PRINTFORMW 그렇군, 임시피난처인 셈인가… 
 				PRINTFORMW 하지만 언제까지고 이런 곳에 있을 수는 없는 노릇이다, 게다가 죽림에 보통 토굴 같은 건 없으니까 여기도 요괴의 소굴일 가능성이 높다.
@@ -25250,6 +25317,10 @@ IF SELECTCOM == 346 && NO == 149
 				PRINTFORMW 「아, 움직이지 마…지금 많이 다쳤으니까, 조금만 이대로 쉬어」
 				PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신의 옷을 찢어서 몇자락의 응급붕대를 만들더니 차례차례 응급치료를 했다.
 				PRINTFORMW …의외로 재주가 있구나, 그냥 왈패가 되지 않을까 걱정했는데 
+				IF TALENT:MASTER:49 == 1
+				PRINTFORMW 사실 무슨 일을 해도 죽지 않는 몸이긴 하지만…
+				ELSE
+				ENDIF
 				PRINTFORMW 잠시간은 이대로 %CALLNAME:TARGET%의 치료를 받기로 했다.
 				PRINTFORMW 
 				PRINTFORMW %CALLNAME:TARGET%의 피를 닦아주는 손길이 평소와 달리 부드럽다… 
