@@ -5008,12 +5008,12 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 			PRINTFORMW 嫌がる輝夜を%CALLNAME:MASTER%はただ無言で睨みつけた
 			PRINTFORMW 「分かった, 分かったからひどいことしないで頂戴」
 		ENDIF
-		CFLAG:TARGET:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;二回目以降
 	ELSE
 		;恋慕＋自慰中毒Lv3以上
-		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8800 <= 4 || FLAG:11 == 2)
+		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8801 <= 4 || FLAG:11 == 2)
 			IF !RAND:2
 				PRINTFORML 「あ앗, ひっ, ひっ, ひぃん♪」
 				PRINTFORMW 輝夜はシャワーによる刺激で悶えている
@@ -5022,18 +5022,18 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 				PRINTFORMW 輝夜はひたすらに自慰に耽った
 				PRINTFORMW どうやらシャワーは理性も押し流しているようだ
 			ENDIF
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;恋慕
-		ELSEIF TALENT:150 && (CFLAG:8800 <= 3 || FLAG:11 == 2)
+		ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
 			IF !RAND:2
 				PRINTFORMW 「あっ, 하아んっ♪　この水圧, 癖になっちゃうぅ！」
 			ELSE
 				PRINTFORML 「んっ, んんっ, はふぅんっ♪　もっと, もっときつくぅ♪」
 				PRINTFORMW 輝夜はシャワーでより強く秘所や胸に刺激を与えた
 			ENDIF
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;自慰中毒Lv3以上
-		ELSEIF ABL:30 >= 3 && (CFLAG:8800 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:30 >= 3 && (CFLAG:8801 <= 2 || FLAG:11 == 2)
 			IF !RAND:2
 				PRINTFORML 「あぁ……くぅ, はぅぅ……この刺激, 慣れないわね」
 				PRINTFORMW 輝夜は言葉とは裏腹に頬を赤らめながら自慰に没頭した
@@ -5041,16 +5041,16 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 				PRINTFORML 「あっ, はぅ, くぅん！　くぅ, うぅん！」
 				PRINTFORMW 輝夜はシャワーをより秘所の近くへと近づけた
 			ENDIF
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;それ以外
-		ELSEIF CFLAG:8800 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:8801 <= 1 || FLAG:11 == 2
 			IF !RAND:2
 				PRINTFORMW 「くぅぅ……こんなことさせられるなんて……」
 			ELSE
 				PRINTFORML 「シャワーをこんな事に使わないといけないだなんて, いやぁ……」
 				PRINTFORMW 輝夜は嫌がりながらシャワーで自慰をした
 			ENDIF
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -13199,7 +13199,7 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 「私の顔が赤くなってる……そんな……」
 			CFLAG:9103 = 3
 		;それ以外
-		ELSEIF CFLAG:272 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「いやっ……感じちゃってる私の姿なんて見たくない……」
 			CFLAG:9103 = 2
 		ENDIF
