@@ -21,7 +21,7 @@ FLAG:11 = 2
 @EVENTTRAIN
 SIF FLAG:11 == 0
 	RETURN 0
-SIF NO != 113
+SIF NO:TARGET != 113
 	RETURN 0
 ;--------------------------------------------------
 ;엑스트라 모드 구문 CFLAG:5020을 사용
@@ -38,21 +38,21 @@ IF CFLAG:5020 == 0
 	INPUT
 	IF RESULT == 0
 		PRINTFORMW ―백전연마에다 어설픈 테크닉으론 불타지 않는 겐게츠 누님으로 모드를 변경합니다―
-		TALENT:16 = 1
-		TALENT:27 = 1
-		TALENT:36 = 1
-		TALENT:61 = 1
-		ABL:1 = 1
-		ABL:2 = 1
-		ABL:11 = 0
-		ABL:12 = 5
-		EXP:0 = 100
-		EXP:1 = 100
-		EXP:2 = 30
-		EXP:20 = 30
-		EXP:40 = 150
-		EXP:50 = 5
-		RELATION:34 = 150
+		TALENT:TARGET:16 = 1
+		TALENT:TARGET:27 = 1
+		TALENT:TARGET:36 = 1
+		TALENT:TARGET:61 = 1
+		ABL:TARGET:1 = 1
+		ABL:TARGET:2 = 1
+		ABL:TARGET:11 = 0
+		ABL:TARGET:12 = 5
+		EXP:TARGET:0 = 100
+		EXP:TARGET:1 = 100
+		EXP:TARGET:2 = 30
+		EXP:TARGET:4 = 30
+		EXP:TARGET:12 = 150
+		EXP:TARGET:50 = 5
+		RELATION:TARGET:34 = 150
 	ELSEIF RESULT == 1
 		PRINTFORMW ―통상 모드로 조교를 개시합니다―
 	ELSE
@@ -100,30 +100,30 @@ IF CFLAG:5001 == 0
 	;엑스트라 모드 선택시, 마스터의 기교에 따라 최대 기력과 소질이 변화합니다. 판정은 TALENT:16으로 시행하고 있습니다. (국내통합판의 경우 엑스트라 모드 설정에 불문하여 TALENT:16이 존재해서 대신 TALENT:36으로 바꿨습니다. T)
 	;기교 2 이하 : 최대 기력 200. 반항적, 젖기 어려움, A둔감이 부여됨. V감각, A감각이 0이 됨.
 	IF ABL:MASTER:12 <= 2 && TALENT:36
-		MAXBASE:1 = 200
-		BASE:1 = 200
-		TALENT:11 = 1
-		TALENT:43 = 1
-		TALENT:105 = 1
-		ABL:1 = 0
-		ABL:2 = 0
+		MAXBASE:TARGET:1 = 200
+		BASE:TARGET:1 = 200
+		TALENT:TARGET:11 = 1
+		TALENT:TARGET:43 = 1
+		TALENT:TARGET:105 = 1
+		ABL:TARGET:1 = 0
+		ABL:TARGET:2 = 0
 	;기교 3 : 최대 기력 500. 젖기 어려움, A둔감이 부여됨. A감각이 0이 됨.
 	ELSEIF ABL:MASTER:12 == 3 && TALENT:36
-		MAXBASE:1 = 500
-		BASE:1 = 500
-		TALENT:43 = 1
-		TALENT:105 = 1
-		ABL:2 = 0
+		MAXBASE:TARGET:1 = 500
+		BASE:TARGET:1 = 500
+		TALENT:TARGET:43 = 1
+		TALENT:TARGET:105 = 1
+		ABL:TARGET:2 = 0
 	;기교 4 : 최대 기력 800. 젖기 어려움, A둔감이 부여됨.
 	ELSEIF ABL:MASTER:12 == 4 && TALENT:36
-		MAXBASE:1 = 800
-		BASE:1 = 800
-		TALENT:43 = 1
-		TALENT:105 = 1	
+		MAXBASE:TARGET:1 = 800
+		BASE:TARGET:1 = 800
+		TALENT:TARGET:43 = 1
+		TALENT:TARGET:105 = 1	
 	;기교 5 : V둔감, C둔감이 삭제됨.
 	ELSEIF ABL:MASTER:12 >= 5 && TALENT:36
-		TALENT:101 = 0	
-		TALENT:103 = 0	
+		TALENT:TARGET:101 = 0	
+		TALENT:TARGET:103 = 0	
 	ENDIF
 	CFLAG:5001 = 1
 	RETURN 1
@@ -575,7 +575,7 @@ RETURN 0
 @EVENTEND
 SIF FLAG:11 == 0
 	RETURN 0
-SIF NO != 113
+SIF NO:TARGET != 113
 	RETURN 0
 ;--------------------------------------------------
 ;특정 조수, 주인시에 특수 조수 대사를 호출한다
