@@ -554,8 +554,6 @@ ELSEIF RESULT == 4
 
 ;카지노
 ELSEIF RESULT == 5
-	;RPG모드에서 쓸 정보를 초기화 한다.
-	CALL INIT_RPG_DATA
 	PRINTFORML "호오? 한 판 놀아볼텐가?"
 	$SELECT_CAZINO
 	PRINTFORML [0] 카지노를 즐긴다. (1회 1000원. 잔고:{MONEY}원)

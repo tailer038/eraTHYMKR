@@ -1,0 +1,10 @@
+﻿;인벤토리 데이터 아이템 번호를 저장한다.
+#DIM SAVEDATA INVENTORY_ITEM, 1000
+
+;인벤토리 플래그 정보 10개 정도
+#DIM SAVEDATA INVENTORY_FLAG, 10
+; :0 = 인벤토리 출력 상태 [0전부 1무기만 2방구만 3악세만 4소모품만 5노예만]
+
+;아이템정보 2차배열변수
+;ITEM_RPG:번호:속성
+#DIM SAVEDATA ITEM_DATA_RPG, 1000, 100
