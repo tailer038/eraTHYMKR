@@ -1600,7 +1600,7 @@ ELSEIF SELECTCOM == 7 && TEQUIP:50
 			PRINTFORML 「무슨……!? 너, 너란 놈은… 정체불명의 요괴의 정체를, 어디까지 까발려야 직성이 풀리는 거야!?」
 			PRINTFORMW 「칫, 어차피 거부권은 없는 거잖아? 나참, 이 귀축이……」
 		ENDIF
-		CFLAG:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;2회째 이후
 	ELSE
@@ -1621,22 +1621,22 @@ ELSEIF SELECTCOM == 7 && TEQUIP:50
 				ENDIF
 			PRINTFORML 「싫, 아히이이!! 시러, 가버려어, 누에 가버려요오오오오!!」
 			PRINTFORMW 「안, 질내사정!! 누에의 자위를 반찬으로,  자위 정액 뿌려줘어엇!!!」
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;연모
 		ELSEIF TALENT:150
 			PRINTFORML 「우우… 역시 이전에 한다는 건…… 히읏, 뭔가 싫다…」
 			PRINTFORMW 「너, 너 이외의 녀석에게, 정체 알려지기 싫다구……」
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;굴복각인Lv3 | 번역_이상함
 		ELSEIF MARK:2 == 3
 			PRINTFORML 「싫엇…! 히큿… 우우으… 이제, 용서해줘……!」
 			PRINTFORMW 「이런 거 시켜버리면, 나 더 이상…… 성인들에게 얼굴 마주 볼 수 없게 되어버려어……!」
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;그 이외
 		;누에가 사다코 캐릭터로……… 는 안 되겠지요? 
 		ELSE
 			PRINTFORMW 「……구흣…! 절대 죽인다… 너도, 이 비디오 보고있는 녀석도… 읏!」
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 		RETURN 0
 	ENDIF

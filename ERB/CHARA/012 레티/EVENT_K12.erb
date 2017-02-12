@@ -3091,7 +3091,7 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW (그치만 어째서일까…평소보다 흥분해…)
 			CFLAG:9103 = 3
 		;그 외
-		ELSEIF CFLAG:272 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「이쪽을 향하지마…」
 			PRINTFORMW 레티는 최대한의 저항으로, 양손으로 눈을 가리고 있다.
 			CFLAG:9103 = 2

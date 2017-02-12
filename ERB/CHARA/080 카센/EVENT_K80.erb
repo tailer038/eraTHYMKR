@@ -1230,33 +1230,32 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 	IF CFLAG:8801 == 0
 			PRINTFORMW 「어……목욕(샤워)에 사용하는 거라고요?」
 			PRINTFORMW 「…지금 용도에선 절대 그런 도구가 아니게 된거 아닙니까?」
-		CFLAG:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋자위 중독 Lv3 이상
-		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8800 <= 4 || FLAG:11 == 2)
+		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8801 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 「아 ……더운 물이 들어가서, 따뜻해… 기분 좋아……」
 			PRINTFORMW 「버릇이 되어 버릴 것만 같아요…」
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;연모
-		ELSEIF TALENT:150 && (CFLAG:8800 <= 3 || FLAG:11 == 2)
+		ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「아, 으응…」
 			PRINTFORMW 「자극이 좀 강하네요……」
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;자위 중독 Lv3 이상
-		ELSEIF ABL:30 >= 3 && (CFLAG:8800 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:30 >= 3 && (CFLAG:8801 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「히이!…으, 후앗…!」
 			PRINTFORMW 카센은 열심히 샤워기의 끝 부분을 비소에 붙잡고 꽉 눌렀다.
 			PRINTFORMW 마치 %조사처리(CALLNAME:MASTER,"가")% 보는걸 잊고 있다는 듯…
 			PRINTFORMW 「아…후아! 응…히야앗…!」
-
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;그 이외
-		ELSEIF CFLAG:8800 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:8801 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「아, 으응…」
 			PRINTFORMW 「…비교적 평범한 것을 고를 수 있는 권한…그니까, 선택사항은 저에게 없는겁니까?」
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 		RETURN 0
 	ENDIF
@@ -4106,7 +4105,7 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 「또 이런 것 준비하면 무심코……」
 			CFLAG:9103 = 3
 		;그 이외
-		ELSEIF CFLAG:272 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「또 이런 것 준비하면……」
 			CFLAG:9103 = 2
 		ENDIF

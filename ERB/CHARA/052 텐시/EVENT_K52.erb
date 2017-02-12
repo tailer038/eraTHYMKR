@@ -40,6 +40,10 @@ SIF FLAG:11 <= 0
 	RETURN 0
 SIF NO:TARGET != 52
 	RETURN 0
+IF CFLAG:7900 == 1
+	CALL KOJO_52_SLAVE_MESSAGE_TRAIN_START_YM
+	RETURN 0
+ENDIF
 
 ;-------------------------------------------------
 ;初調教時 CFLAG201
@@ -402,6 +406,10 @@ SIF FLAG:11 <= 0
 	RETURN 0
 SIF NO:TARGET != 52
 	RETURN 0
+IF CFLAG:7900 == 1
+	CALL KOJO_52_SLAVE_MESSAGE_TRAIN_END_YM
+	RETURN 0
+ENDIF
 ;연모+텐코 루트+임신+体力500以上
 IF TALENT:150 == 1 && TALENT:151 == 1 && TALENT:140 == 1 && BASE:0 >= 500
 	DRAWLINE
@@ -474,6 +482,10 @@ RETURN 0
 ;助手が調教した時に口上をスキップする(好みに応じて使う, 行頭の;を消すとスキップするようになる)
 ;SIF ASSI > 0 && ASSIPLAY
 ;	RETURN 0 
+IF CFLAG:7900 == 1
+	CALL KOJO_52_TRAIN_MESSAGE_S_GENERAL_YM
+	RETURN 0
+ENDIF
 ;-------------------------------------------------
 ;コマンド初実行時のセリフ CFLAG 221～270を使用
 ;-------------------------------------------------
@@ -4271,7 +4283,11 @@ ENDIF
 @KOJO_MESSAGE_PALAMCNG_52
 ;助手が調教した時に口上をスキップする(好みに応じて使う, 行頭の;を消すとスキップするようになる)
 ;SIF ASSI > 0 && ASSIPLAY
-;	RETURN 0 
+;	RETURN 0
+IF CFLAG:7900 == 1
+	CALL KOJO_52_MESSAGE_PALAMCNG_YM
+	RETURN 0
+ENDIF
 ;-------------------------------------------------
 ;パラメ―タ変動時のセリフ CFLAG を使用
 ;-------------------------------------------------
@@ -4776,6 +4792,10 @@ ENDIF
 ;助手が調教した時に口上をスキップする(好みに応じて使う, 行頭の;を消すとスキップするようになる)
 ;SIF ASSI > 0 && ASSIPLAY
 ;	RETURN 0 
+IF CFLAG:7900 == 1
+	CALL KOJO_52_MESSAGE_MARKCNG_YM
+	RETURN 0
+ENDIF
 ;-------------------------------------------------
 ;苦痛刻印Lv3取得 CFLAG420
 ;-------------------------------------------------
@@ -4903,6 +4923,10 @@ ENDIF
 ;イベント口上集(3, 03をキャラ番号に置換する)
 ;-------------------------------------------------
 @SELF_KOJO_K52
+IF CFLAG:7900 == 1
+	TRYCALL KOJO_52_MESSAGE_SUB_EVENT_SCENE{TFLAG:200}
+	RETURN 0
+ENDIF
 ;-------------------------------------------------
 ;調教後自慰 CFLAG424
 ;-------------------------------------------------
@@ -5413,6 +5437,10 @@ ENDIF
 ;@개별 엔딩 관계
 ;-------------------------------------------------
 @SINGLE_ENDING_K52
+IF CFLAG:7900 == 1
+	CALL KOJO_52_MESSAGE_SINGLE_ENDING_YM
+	RETURN 0
+ENDIF
 DRAWLINE
 
 	PRINTFORMW ―――단독 엔딩 조건 달성―――
