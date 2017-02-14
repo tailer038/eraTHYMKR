@@ -30,6 +30,10 @@ SIF FLAG:11 <= 0
 	RETURN 0
 SIF NO != 51
 	RETURN 0
+IF CFLAG:7900 == 1
+	CALL KOJO_51_SLAVE_MESSAGE_TRAIN_START_YM
+	RETURN 0
+ENDIF
 ;--------------------------------------------------
 ;엑스트라 모드 구문　CFLAG:8001을 사용
 ;네를 선택했을 때에 첫조교시에 말설정용의 소질로 변경할 수 있습니다
@@ -687,6 +691,10 @@ SIF FLAG:11 == 0
 	RETURN 0
 SIF NO != 51
 	RETURN 0
+IF CFLAG:7900 == 1
+	CALL KOJO_51_SLAVE_MESSAGE_TRAIN_END_YM
+	RETURN 0
+ENDIF
 ;--------------------------------------------------
 ;특정 조수, 주인시에 특수 조수 말을 호출한다(Y1를 특정 조수, X1를 주인의 캐릭터 번호에 치환)
 ;--------------------------------------------------
@@ -738,6 +746,15 @@ RETURN 0
 ;커멘드 실행시에 출력됩니다
 ;--------------------------------------------------
 @KOJO_MESSAGE_COM_51
+IF CFLAG:7900 == 1
+	RESULT = 0
+	CALL KOJO_51_TRAIN_MESSAGE_S_BEFORE
+	IF !RESULT
+		CALL COM_FLAG
+		TRYCALLFORM KOJO_51_TRAIN_MESSAGE_S_COM_{SELECTCOM}
+	ENDIF
+	RETURN 0
+ENDIF
 ;조수가 조교했을 때에 말을 스킵 한다(기호에 응해 사용하는, 줄머리의 것;을 지우면(자) 스킵 하게 된다)
 ;SIF ASSI > 0 && ASSIPLAY
 ;	RETURN 0 
@@ -6840,6 +6857,10 @@ ENDIF
 ;파라미터 변동 후에 말을 발동합니다
 ;-------------------------------------------------
 @KOJO_MESSAGE_PALAMCNG_51
+IF CFLAG:7900 == 1
+	CALL KOJO_51_MESSAGE_PALAMCNG_YM
+	RETURN 0
+ENDIF
 ;조수가 조교했을 때에 말을 스킵 한다(기호에 응해 사용하는, 줄머리의 것;을 지우면(자) 스킵 하게 된다)
 ;SIF ASSI > 0 && ASSIPLAY
 ;	RETURN 0 
@@ -7523,6 +7544,10 @@ ENDIF
 ;각인 변동 후에 말을 발동합니다
 ;-------------------------------------------------
 @KOJO_MESSAGE_MARKCNG_51
+IF CFLAG:7900 == 1
+	CALL KOJO_51_MESSAGE_MARKCNG_YM
+	RETURN 0
+ENDIF
 ;조수가 조교했을 때에 말을 스킵 한다(기호에 응해 사용하는, 줄머리의 것;을 지우면(자) 스킵 하게 된다)
 ;SIF ASSI > 0 && ASSIPLAY
 ;	RETURN 0 
@@ -7598,6 +7623,13 @@ ENDIF
 ;이벤트 말집(X1, X2를 캐릭터 번호에 치환한다) CFLAG 9151~를 사용
 ;-------------------------------------------------
 @SELF_KOJO_K51
+IF CFLAG:7900 == 1
+	RESULT = 0
+	CALL KOJO_51_MESSAGE_SUB_EVENT_BEFORE
+	SIF !RESULT
+		TRYCALLFORM KOJO_51_MESSAGE_SUB_EVENT_SCENE{SELECTCOM}
+	RETURN 0
+ENDIF
 ;-------------------------------------------------
 ;명령 거부	CFLAG:9151
 ;-------------------------------------------------
@@ -8275,7 +8307,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 406
 	;천자
-	IF NO:M == 51
+	IF NO:GET_CHARA_M() == 51
 		PRINTFORML 이쿠 「계승자낭님이 아무래도 함께 하고 싶다고 말하며」
 		PRINTFORMW 이쿠 「네, 그런 일 말하지 않아? ……있고, 싫네요 수치인가 해 꽈당 해, 우후 후후후」
 		RETURN 0
@@ -8611,6 +8643,10 @@ ENDIF
 ;@단체 엔딩 관계(X1, X2를 캐릭터 번호에 치환한다)
 ;-------------------------------------------------
 @SINGLE_ENDING_K51
+IF CFLAG:7900 == 1
+	CALL KOJO_51_MESSAGE_SINGLE_ENDING_YM
+	RETURN 0
+ENDIF
 PRINTFORMW ―――단체 엔드 조건 달성---
 PRINTFORMW …………
 PRINTFORMW ………
@@ -8630,6 +8666,12 @@ PRINTFORMW
 PRINTFORMW 그리고 결의하는 그녀와…아내와 함께 마지막 때까지……
 PRINTFORMW 
 PRINTFORMW 　　　　　　　　―― Ending No. 1051 (이쿠 엔드)
+RETURN 0
+
+@SLAVE_ENDING_K51
+IF CFLAG:7900 == 1
+	CALL KOJO_51_MESSAGE_SLAVE_ENDING_YM
+ENDIF
 RETURN 0
 
 ;말의 존재 판정(YM판)

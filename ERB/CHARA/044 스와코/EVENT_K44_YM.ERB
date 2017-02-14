@@ -703,26 +703,26 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 	IF CFLAG:8801 == 0
 		PRINTFORMW 「샤워기로 자위한다고……어떻게 해야할지 모르겠, 히야아앙!」
 		PRINTFORMW 「가, 강요하지 말라고! 알았어, 해볼게……」
-		CFLAG:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;二回目以降
 	ELSE
 		;연모＋自慰中毒Lv3以上
 		IF TALENT:150 && ABL:30 >= 3
 			PRINTFORMW 「하-앗♪물줄기, 기분 좋아앗♪」
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;연모
 		ELSEIF TALENT:150
 			PRINTFORMW 「아앗♪물이, 물이 닿아서어♪」
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;自慰中毒Lv3以上
 		ELSEIF ABL:30 >= 3
 			PRINTFORMW 「앗……물줄기가……아읏, 아후, 응」
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;그 외
 		ELSE
 			PRINTFORMW 「아주……이런 걸로 기분 좋아질 거라 생각하나본 데……엣」
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 		RETURN 0
 	ENDIF

@@ -1600,7 +1600,7 @@ ELSEIF SELECTCOM == 7 && TEQUIP:50
 			PRINTFORML 「무슨……!? 너, 너란 놈은… 정체불명의 요괴의 정체를, 어디까지 까발려야 직성이 풀리는 거야!?」
 			PRINTFORMW 「칫, 어차피 거부권은 없는 거잖아? 나참, 이 귀축이……」
 		ENDIF
-		CFLAG:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;2회째 이후
 	ELSE
@@ -1621,22 +1621,22 @@ ELSEIF SELECTCOM == 7 && TEQUIP:50
 				ENDIF
 			PRINTFORML 「싫, 아히이이!! 시러, 가버려어, 누에 가버려요오오오오!!」
 			PRINTFORMW 「안, 질내사정!! 누에의 자위를 반찬으로,  자위 정액 뿌려줘어엇!!!」
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;연모
 		ELSEIF TALENT:150
 			PRINTFORML 「우우… 역시 이전에 한다는 건…… 히읏, 뭔가 싫다…」
 			PRINTFORMW 「너, 너 이외의 녀석에게, 정체 알려지기 싫다구……」
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;굴복각인Lv3 | 번역_이상함
 		ELSEIF MARK:2 == 3
 			PRINTFORML 「싫엇…! 히큿… 우우으… 이제, 용서해줘……!」
 			PRINTFORMW 「이런 거 시켜버리면, 나 더 이상…… 성인들에게 얼굴 마주 볼 수 없게 되어버려어……!」
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;그 이외
 		;누에가 사다코 캐릭터로……… 는 안 되겠지요? 
 		ELSE
 			PRINTFORMW 「……구흣…! 절대 죽인다… 너도, 이 비디오 보고있는 녀석도… 읏!」
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 		RETURN 0
 	ENDIF
@@ -2989,7 +2989,7 @@ ENDIF
 ;体位の書き分けが面倒なモノグサな人向け
 ;体位毎に書き分けたい方はこの項目を削除した上で各体位別の口上を書いてください
 ;-------------------------------------------------
-IF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 33 || SELECTCOM == 34
+IF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 37 || SELECTCOM == 38
 	;처음
 	IF CFLAG:9030 == 0
 		;복종
@@ -7053,7 +7053,7 @@ IF SELECTCOM == 510 && TALENT:146
 		PRINTFORMW 「やだあぁぁッ!!! 出て来て, 出てきてよおぉぉッ!!! いやあぁぁ……!!」
 		PRINTFORML  ぬえは半狂乱になりながら, 身体を激しく震わせる. その様子は, 傍目から見ても尋常ではない
 		PRINTFORMW  ……元から触手を使役する術を会得していた彼女の事だ, 恐らく今までに幾人もの犠牲者の末路を目の当たりにしてきたのだろう……
-		CFLAG:9504 = 1
+		CFLAG:9510 = 1
 	;2회째 이후
 	ELSE
 		;복종＋触手中毒Lv5
@@ -7061,20 +7061,20 @@ IF SELECTCOM == 510 && TALENT:146
 			PRINTFORML 「んくっ……あは♪ また入ってきちゃった……あふっ, 中で暴れちゃダメだよぉ」
 			PRINTFORML 「ふふ, すぐに大きくしてあげるからね―♪」
 			PRINTFORMW  愛おしげに下腹部を擦るぬえは, ともすれば受胎告知を受けた母親の様な優しげな表情をしていた……
-			CFLAG:9504 = 5
+			CFLAG:9510 = 5
 		;복종＋
 		ELSEIF TALENT:160
 			PRINTFORMW 「んぅぅ……の, 飲み込みました, ご主人様……んぷっ」
 			PRINTFORMW  苦しげに口元を押さえるぬえ. やはり, こればかりは辛い様だ……
-			CFLAG:9504 = 4
+			CFLAG:9510 = 4
 		;연모+触手経験20이상(消費基本値が三分の一になる)
 		ELSEIF TALENT:150 && EXP:53 >= 20
 			PRINTFORMW 「あぐぅぅ……やだよぉぉ, 触手なんか育てたくないのにぃ……」
-			CFLAG:9504 = 3
+			CFLAG:9510 = 3
 		ELSE
 			PRINTFORML 「いやああぁぁぁ!!! 触手っ, もうイヤアア!!!! いっそ殺してぇッ, 楽にしてよォォッ!!!!」
 			PRINTFORMW  今にも自らの喉を掻き毟ってしまいそうなぬえ……彼女が落ち着くまで暫く, 調教を続ける事は出来そうに無かった……
-			CFLAG:9504 = 2
+			CFLAG:9510 = 2
 		ENDIF
 	ENDIF
 	RETURN 0
@@ -8646,7 +8646,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 324
 	;記憶を無くす前は연모
-	IF TALENT:B:150
+	IF TALENT:150
 		PRINTFORMW 「기억을……어, 없앤다고…!?」
 		PRINTFORMW 「그렇다는 건, 즈, 즉, 너의 일도……너를 좋아했다는 것도 잊는다…고!?」
 		PRINTFORMW 「그, 그런 거……그런 건 심하잖아!! 나, 나, 너를 이렇게나 좋아하는데……엣!!」

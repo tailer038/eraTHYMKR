@@ -95,21 +95,23 @@ ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
 ;굴복각인Lv2
 ELSEIF CFLAG:5001 < 3 && MARK:2 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「……んっ.また?」
+	PRINTFORMW 「まあいいわ,付き合ってあげる.最近ちょっと面白くなってきたし」
 	CFLAG:5001 = 3
 	RETURN 1
 
 ;굴복각인Lv3
 ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && TALENT:150 == 0
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「や……やさしく……して」
 	CFLAG:5001 = 4
 	RETURN 1
 
 ;연모
 ELSEIF CFLAG:5001 < 5 && TALENT:150
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「あ……ご主人さま」
+	PRINTFORMW 「はやくぅ.カナを可愛がってください」
 	CFLAG:5001 = 5
 	RETURN 1
 
@@ -184,42 +186,48 @@ ENDIF
 ;반발각인Lv3
 IF MARK:9 == 3 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「なんの用よ.あなたの顔なんて見たくもないわ」
 	RETURN 1
 
 ;굴복각인Lv0
 ELSEIF MARK:2 == 0 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「来たわね,変態」
+	PRINTFORMW 「そっちがその気なら,私は抵抗するしかないわね」
 	RETURN 1
 
 ;굴복각인Lv1
 ELSEIF MARK:2 == 1 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「また,するの? ちっとも楽しくないのに」
+	PRINTFORMW 「私はもっと面白いことがやりたいんだけどなぁ」
 	RETURN 1
 
 ;굴복각인Lv2
 ELSEIF MARK:2 == 2 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「ああ.もうそんな時間になったのね」
+	PRINTFORMW 「さて,今度はなにをしてくれるのかしら?」
 	RETURN 1
 
 ;굴복각인Lv3＋연모 없음
 ELSEIF MARK:2 == 3 && TALENT:150 == 0 && FLAG:11 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「あ,あの……今回も,その……お願い……ね」
 	RETURN 1
 
 ;연모
 ELSEIF TALENT:150 && FLAG:11 == 2
 	DRAWLINE
 	IF RAND:3 == 0
-		PRINTFORMW 
+		PRINTFORMW 「あ,ご主人さま.ずっと待ってたんだから」
+		PRINTFORMW 「早くカナにして.いっぱい」
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さま～.淋しかったのよ」
+		PRINTFORMW 「またカナをたっぷり愛してね」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「ふわぁ……ご主人さまだ」
+		PRINTFORMW 「はやくはやく,ちょうだいちょうだい.ご主人さまでカナの中をたっぷり満たして!」
 	ENDIF
 	RETURN 1
 ENDIF
@@ -252,37 +260,42 @@ SIF NO:TARGET != 105
 ;반발각인Lv3
 IF MARK:9 == 3
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「う……ぐっ……」
+	PRINTFORMW 「……あなたのことを呪ってやる.死ぬまで家鳴りに怯えるようにしてやる!」
 	RETURN 1
 
 ;굴복각인Lv1이하
 ELSEIF MARK:2 <= 1
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「あなたねえ,もうやめてよ.こんなことしたって楽しくないわ」
 	RETURN 1
 
 ;굴복각인Lv2
 ELSEIF MARK:2 == 2
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「んっ.やっと終わったの?」
+	PRINTFORMW 「……別に気持ちよくなんてなかったわよ.退屈しなかっただけで」
 	RETURN 1
 
 ;굴복각인Lv3
 ELSEIF MARK:2 == 3 && TALENT:150 == 0
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「ふふっ.……楽しかった」
 	RETURN 1
 
 ;연모＋체력 500 미만
 ;ELSEIF TALENT:150 && BASE:0 < 500
-;	DRAWLINE
-;	PRINTFORMW 
-;	RETURN 1
+	DRAWLINE
+	PRINTFORMW 「んんっ……ごめんなさい,ご主人さま」
+	PRINTFORMW 「カナ……もう……限界」
+	PRINTFORMW 「カナの中が,ご主人さまで,いっぱいだわ」
+	RETURN 1
 
 ;연모
 ELSEIF TALENT:150
 	DRAWLINE
-	PRINTFORMW 
+	PRINTFORMW 「あ,あれ? ご主人さま,もう帰っちゃうの?」
+	PRINTFORMW 「ううん,なんでもないわ.またカナを可愛がってね」
 	RETURN 1
 ENDIF
 RETURN 0
@@ -325,34 +338,33 @@ IF SELECTCOM == 0
 	IF CFLAG:9000 == 0
 		;굴복각인Lv2이상
 		IF MARK:2 >= 2
-			PRINTFORMW 
+			PRINTFORMW 「んっ! ……優しくね?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「やだ! 触らないでよ!」
 		ENDIF
 		CFLAG:9000 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9000 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふわぁぁぁ…….もっといっぱい,カナを愛して?」
 			CFLAG:9000 = 5
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9000 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んああっ! そ,そこも触って」
 			CFLAG:9000 = 4
 		;굴복각인Lv2
 		ELSEIF MARK:2 == 2 && (CFLAG:9000 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んっ! 気持ちよくなんて……ないわよ……」
 			CFLAG:9000 = 3
 		;그 외
 		ELSEIF MARK:2 <= 1 && (CFLAG:9000 <= 1 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「汚らしい手で撫で回さないでよ!」
 			CFLAG:9000 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -365,32 +377,33 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 	IF CFLAG:9001 == 0
 		;굴복각인Lv2이상
 		IF MARK:2 >= 2
-			PRINTFORMW 
+			PRINTFORMW 「う……あ……もっと,優しくして……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「きゃあ! どこ舐めてるのよ!」
 		ENDIF
 		CFLAG:9001 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9001 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あ,あふぁ……ああっ!」
+			PRINTFORMW 「も……もっとぉ」
 			CFLAG:9001 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9001 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふあぁぁ! カナの……いやらしいとこ……もっと舐めて!」
 			CFLAG:9001 = 3
 		;그 외
 		ELSEIF CFLAG:9001 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「うう…….また舐めるの?」
 			CFLAG:9001 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 ;이와시미즈
+[SKIPSTART]
 IF SELECTCOM == 611
 	;연모+노출벽 Lv3이상+C감각Lv3이상
 	IF TALENT:150 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:9611 <= 5 || FLAG:11 == 2)
@@ -415,6 +428,7 @@ IF SELECTCOM == 611
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 애무 CFLAG:9002
@@ -422,31 +436,32 @@ ENDIF
 IF SELECTCOM == 2
 	;처음
 	IF CFLAG:9002 == 0
-		PRINTFORMW 
+		PRINTFORMW 「きゃあ! そんなとこ触らないで!」
 		CFLAG:9002 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
 		;연모+윤활Lv2이상
 		IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あうっ……そ,そっちじゃないのに」
 			CFLAG:9002 = 5
 		;연모+윤활Lv2미만
 		ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「つっ!」
+			PRINTFORMW 「お願い,もっと優しくして」
 			CFLAG:9002 = 4
 		;윤활Lv2이상＋A감각Lv3이상
 		ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9002 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ああ……うあ……いい」
+			PRINTFORMW 「お尻で,お尻で気持ちよくなっちゃうの!」
 			CFLAG:9002 = 3
 		;그 외
 		ELSEIF CFLAG:9002 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「い,痛い……」
 			CFLAG:9002 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -457,30 +472,30 @@ IF SELECTCOM == 3
 	IF CFLAG:9003 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「おっぱいが好きなの……?」
+			PRINTFORMW 「いいよ.もっと,触って」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「そんなにおっぱいが好きなの? どうでもいいけど」
 		ENDIF
 		CFLAG:9003 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9003 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んぁ……もっと触って……」
 			CFLAG:9003 = 4
 		;B감각Lv3이상
 		ELSEIF ABL:3 >= 3 && (CFLAG:9003 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「やだ……私,おっぱいで感じてる……!」
 			CFLAG:9003 = 3
 		;그 외
 		ELSEIF CFLAG:9003 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「そんなとこ触ったって,全然気持ちよくないんだから」
 			CFLAG:9003 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -488,6 +503,7 @@ ENDIF
 ;G스팟 자극 CFLAG:9600
 ;-------------------------------------------------
 ;손가락 삽입
+[SKIPSTART]
 IF SELECTCOM == 4
 	;처음
 	IF CFLAG:9004 == 0
@@ -501,7 +517,6 @@ IF SELECTCOM == 4
 				 PRINTFORMW
 			ENDIF
 			CFLAG:9004 = 1
-			RETURN 0
 		;비처녀
 		ELSE
 			;연모
@@ -515,7 +530,6 @@ IF SELECTCOM == 4
 				PRINTFORMW 
 			ENDIF
 			CFLAG:9004 = 1
-			RETURN 0
 		ENDIF
 	;2회째 이후
 	ELSE
@@ -532,8 +546,8 @@ IF SELECTCOM == 4
 			PRINTFORMW 
 			CFLAG:9004 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 ;G스팟 자극
 IF SELECTCOM == 600
@@ -552,6 +566,7 @@ IF SELECTCOM == 600
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;펠라한다(후타나리/남자만) CFLAG:9005
@@ -561,30 +576,29 @@ IF SELECTCOM == 5
 	IF CFLAG:9005 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「んぁ! なにこれ!? こ,腰が動いちゃう!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「んっ…….男の人のって,こんなに気持ちよかったんだ」
 		ENDIF
 		CFLAG:9005 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9005 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「キモチイイ…….もっとぉ,もっとぉ」
 			CFLAG:9005 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9005 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「カナのおちんちん,溶けちゃう! おちんちんからドロドロに溶けちゃう!」
 			CFLAG:9005 = 3
 		;그 외
 		ELSEIF CFLAG:9005 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「いやぁ…….私,女の子なのに.こんなのって……」
 			CFLAG:9005 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -595,30 +609,33 @@ IF SELECTCOM == 6
 	IF CFLAG:9006 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「あ……ん……」
+			PRINTFORMW 「……ちゃんとしたキスするの,初めて」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「やだ,んっ!」
+			PRINTFORMW 「……好きな人としたかったのに」
 		ENDIF
 		CFLAG:9006 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9006 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んっ……」
+			PRINTFORMW 「お願い,もう一回……んっ……」
 			CFLAG:9006 = 4
 		;순종Lv2이상
 		ELSEIF ABL:10 >=2 && (CFLAG:9006 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あ……ん……」
 			CFLAG:9006 = 3
 		;그 외
 		ELSEIF CFLAG:9006 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「んっ! ……げほっ! げほっ!」
+			PRINTFORMW 「どうして好きでもない人とキスしなきゃいけないのよ……」
 			CFLAG:9006 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -629,58 +646,61 @@ ENDIF
 IF SELECTCOM == 7 && TEQUIP:54 == 0
 	;처음
 	IF CFLAG:9007 == 0
-		PRINTFORMW 
+		PRINTFORMW 「じ,自分で弄れだなんて……」
 		CFLAG:9007 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋자위중독Lv3이상
 		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:9007 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふわぁぁ……ご主人さま……見ててぇ」
+			PRINTFORMW 「カナの恥ずかしいオナニーを……もっと見てぇ」
 			CFLAG:9007 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9007 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「一人で……してろだ……なんて……」
+			PRINTFORMW 「ご主人さまのが……欲しいのに……!」
 			CFLAG:9007 = 4
 		;자위중독Lv3이상
 		ELSEIF ABL:30 >= 3 && (CFLAG:9007 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「キモチイイ,キモチイイ……気持ちいいよぅ」
+			PRINTFORMW 「止まんない.指,止まんないよぅ」
 			CFLAG:9007 = 3
 		;그 외
 		ELSEIF CFLAG:9007 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「う……ああ……見ないでよ」
 			CFLAG:9007 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;샤워기 자위
+[SKIPSTART]
 ELSEIF SELECTCOM == 7 && TEQUIP:54
 	;처음
 	IF CFLAG:8801 == 0
 		PRINTFORMW 
-		CFLAG:8800 = 1
-		RETURN 0
+		CFLAG:8801 = 1
 	;2회째 이후
 	ELSE
 		;연모＋자위중독Lv3이상
-		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8800 <= 4 || FLAG:11 == 2)
+		IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8801 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;연모
-		ELSEIF TALENT:150 && (CFLAG:8800 <= 3 || FLAG:11 == 2)
+		ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;자위중독Lv3이상
-		ELSEIF ABL:30 >= 3 && (CFLAG:8800 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:30 >= 3 && (CFLAG:8801 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;그 외
-		ELSEIF CFLAG:8800 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:8801 <= 1 || FLAG:11 == 2
 			PRINTFORMW 
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+[SKIPEND]
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -689,32 +709,34 @@ ENDIF
 IF SELECTCOM == 9
 	;처음
 	IF CFLAG:9009 == 0
+		PRINTFORMW 「…………?」
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「……どうしたの?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「……見ないでよ」
 		ENDIF
 		CFLAG:9009 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋욕정Lv3이상
 		IF TALENT:150 && PALAM:13 >= PALAMLV:3 && (CFLAG:9009 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「お願い……身体が疼くの」
+			PRINTFORMW 「焦らさないで……早く,してぇ」
 			CFLAG:9009 = 4
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9009 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「見てるだけなんて……ずるい」
+			PRINTFORMW 「こっちは,身体が,燃えるようなのに……」
 			CFLAG:9009 = 3
 		;그 외
 		ELSEIF CFLAG:9009 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「え? 見てるだけなの?」
 			CFLAG:9009 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -725,35 +747,40 @@ IF SELECTCOM == 10
 	IF CFLAG:9010 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「その小さいのはなに? おもちゃ?」
+			PRINTFORMW 「すごい震えてる……って,ひゃう!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「なによ,それ」
+			PRINTFORMW 「ちょっと! どこに当てる気なの……きゃあぁ!」
 		ENDIF
 		CFLAG:9010 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9010 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ほんとはご主人さまに触ってもらいたいけど……」
+			PRINTFORMW 「でも,そのおもちゃも好きぃ」
 			CFLAG:9010 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9010 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「びりびりする…….びりびりするよう……」
+			PRINTFORMW 「カナのあそこが,溶けちゃうよう」
 			CFLAG:9010 = 3
 		;그 외
 		ELSEIF CFLAG:9010 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やだ,変なもの当てないでよ!」
+			PRINTFORMW 「それ当てられると……おかしくなっちゃう」
 			CFLAG:9010 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;전기안마 CFLAG:9011
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 11
 	;처음
 	IF CFLAG:9011 == 0
@@ -765,7 +792,6 @@ IF SELECTCOM == 11
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9011 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -781,12 +807,13 @@ IF SELECTCOM == 11
 			PRINTFORMW 
 			CFLAG:9011 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;바이브 CFLAG:9012　CFLAG:8811
+;바이브 CFLAG:9012 CFLAG:8811
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 12 && TEQUIP:20
@@ -796,56 +823,62 @@ IF SELECTCOM == 12 && TEQUIP:20
 		IF TALENT:0 == 1
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「あぁう! うっ」
+				PRINTFORMW 「……初めては,ご主人さまに貰って欲しかったのに」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「それでなにをする気? まさか」
+				PRINTFORMW 「痛! いやぁぁぁ!」
+				PRINTFORMW 「私の初めてが……」
 			ENDIF
 		;비처녀
 		ELSE
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「これ,おちんちんの形?」
+				PRINTFORMW 「んっ! お,奥まで入る」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「それ……その形って,まさか」
+				PRINTFORMW 「んんあ! や,やだぁ」
 			ENDIF
 		ENDIF
 		CFLAG:9012 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9012 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「うあ……本当は,偽者じゃなくて……んっ,ご主人さまのが,欲しいんだけど」
 			CFLAG:9012 = 4
 		;V감각Lv3이상
 		ELSEIF ABL:1 >= 3 && (CFLAG:9012 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あっ,あっ,あふぅ」
+			PRINTFORMW 「奥まで……届いてる……」
 			CFLAG:9012 = 3
 		;그 외
 		ELSEIF CFLAG:9012 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「んんっ! こんな……おもちゃに……」
 			CFLAG:9012 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	;연모
 	IF TALENT:150 && (CFLAG:8811 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ひゃうっ!」
+		PRINTFORMW 「……次は……ご主人さまのを」
 		CFLAG:8811 = 2
 	;그 외
 	ELSEIF CFLAG:8811 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「ひゃうあ! 急に……抜かな……」
 		CFLAG:8811 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;애널바이브 CFLAG:9013　CFLAG:8812
+;애널바이브 CFLAG:9013 CFLAG:8812
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 13 && TEQUIP:25
@@ -853,56 +886,64 @@ IF SELECTCOM == 13 && TEQUIP:25
 	IF CFLAG:9013 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「え? それを,おしりに?」
+			PRINTFORMW 「う! く! は,入ったぁ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「そんな,そんなのおしりに入るわけないわ……」
+			PRINTFORMW 「うああぁ! 痛……」
 		ENDIF
 		CFLAG:9013 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상
 		IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9013 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ああうぁ! あん!」
+			PRINTFORMW 「ご主人さまぁ,おしりが気持ちいいよぉ」
 			CFLAG:9013 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9013 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「う……んあ!」
+			PRINTFORMW 「少しキツいけど……我慢する」
 			CFLAG:9013 = 4
 		;A감각Lv3이상
 		ELSEIF ABL:2 >= 3 && (CFLAG:9013 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んあああぁ……」
+			PRINTFORMW 「感じる…….おしりで感じる,変態さんになっちゃった……」
 			CFLAG:9013 = 3
 		;그 외
 		ELSEIF CFLAG:9013 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「あうっ! キツ……,早く取って……」
 			CFLAG:9013 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 	;연모
 	IF TALENT:150 && (CFLAG:8812 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「んあっ!」
+		PRINTFORMW 「おしりが,ヒクヒクしちゃってる」
 		CFLAG:8812 = 3
 	;A감각Lv3이상
 	ELSEIF ABL:2 >= 3 && (CFLAG:8812 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ふわ……」
+		PRINTFORMW 「やだ,抜かないで.……もう一回,入れて」
 		CFLAG:8812 = 2
 	;그 외
 	ELSEIF CFLAG:8812 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「うあっ!」
+		PRINTFORMW 「まだなにか入ってるみたい」
 		CFLAG:8812 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;클리캡 CFLAG:9014　CFLAG:8813
+;클리캡 CFLAG:9014 CFLAG:8813
 ;-------------------------------------------------
 ;개시시
+[SKIPSTART]
 IF SELECTCOM == 14 && TEQUIP:30
 	;처음
 	IF CFLAG:9014 == 0
@@ -914,7 +955,6 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9014 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -926,8 +966,8 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 
 			CFLAG:9014 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	;연모
@@ -941,11 +981,13 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;유두캡 CFLAG:9015　CFLAG:8814
+;유두캡 CFLAG:9015 CFLAG:8814
 ;-------------------------------------------------
 ;개시시
+[SKIPSTART]
 IF SELECTCOM == 15 && TEQUIP:35
 	;처음
 	IF CFLAG:9015 == 0
@@ -957,7 +999,6 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9015 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -969,8 +1010,8 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 
 			CFLAG:9015 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	;연모
@@ -984,11 +1025,13 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;오나홀(후타나리/남자만) CFLAG:9016　CFLAG:8815
+;오나홀(후타나리/남자만) CFLAG:9016 CFLAG:8815
 ;-------------------------------------------------
 ;개시시
+[SKIPSTART]
 IF SELECTCOM == 16 && TEQUIP:30
 	;처음
 	IF CFLAG:9016 == 0
@@ -1000,7 +1043,6 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9016 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1012,8 +1054,8 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 
 			CFLAG:9016 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	;연모
@@ -1027,6 +1069,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;정상위 CFLAG:9020
@@ -1038,44 +1081,48 @@ IF SELECTCOM == 20
 		IF TALENT:0 == 1
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「ご主人さま……」
+				PRINTFORMW 「初めてを,貰ってください」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「やだ……やだ……いやああああああああ!」
+				PRINTFORMW 「初めてだったのに……こんな奴に……」
 			ENDIF
 		;비처녀
 		ELSE
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「ああん! ご主人さまのが……入ってくる」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「あん! は,入ってくる……」
 			ENDIF
 		ENDIF
 		CFLAG:9020 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9020 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,ご主人さま,ご主人さまぁ!」
 			CFLAG:9020 = 5
 		;굴복각인Lv3＋V감각Lv3이상
 		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9020 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「いい! いいよぉ!」
+			PRINTFORMW 「カナの中の,もっと奥まで入ってきて!」
 			CFLAG:9020 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9020 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ん! う! ああ!」
+			PRINTFORMW 「カナの……中が……溶けちゃう」
 			CFLAG:9020 = 3
 		;그 외
 		ELSEIF CFLAG:9020 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「ん……ぐっ,ううっ」
+			PRINTFORMW 「早く,抜いて……」
 			CFLAG:9020 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1088,49 +1135,56 @@ IF SELECTCOM == 21
 		IF TALENT:0 == 1
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「んんああっ!」
+				PRINTFORMW 「痛い……けど,嬉しい…….ご主人さま」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「うぐあああぁぁ!」
+				PRINTFORMW 「やだぁ……,初めてが……」
 			ENDIF
 		;비처녀
 		ELSE
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「んっ!」
+				PRINTFORMW 「奥まで……ご主人さまを感じる」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「んあぁ!」
+				PRINTFORMW 「奥……まで……来てる」
 			ENDIF
 		ENDIF
 		CFLAG:9021 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9021 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あっ! んっ! ご主人さまっ!」
+			PRINTFORMW 「もっと! もっと突いて!」
 			CFLAG:9021 = 5
 		;굴복각인Lv3＋V감각Lv3이상
 		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9021 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あん! うあぁ! いい!」
+			PRINTFORMW 「いま,カナの中の,上のほうにゴリゴリって!」
 			CFLAG:9021 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9021 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んっ! んっ! んあっ!」
+			PRINTFORMW 「そんなに突いたら,カナ,壊れちゃうわ」
 			CFLAG:9021 = 3
 		;그 외
 		ELSEIF CFLAG:9021 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「んあ! そんなに激しく……しないで」
 			CFLAG:9021 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;대면좌위 CFLAG:9022
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 22
 	;처음
 	IF CFLAG:9022 == 0
@@ -1142,7 +1196,6 @@ IF SELECTCOM == 22
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9022 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1162,15 +1215,17 @@ IF SELECTCOM == 22
 			PRINTFORMW 
 			CFLAG:9022 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;배면좌위 CFLAG:9023
 ;노니는 모란 CFLAG:9612
 ;-------------------------------------------------
 ;배면좌위
+[SKIPSTART]
 IF SELECTCOM == 23
 	;처음
 	IF CFLAG:9023 == 0
@@ -1182,7 +1237,6 @@ IF SELECTCOM == 23
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9023 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1202,8 +1256,8 @@ IF SELECTCOM == 23
 			PRINTFORMW 
 			CFLAG:9023 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 ;노니는 모란
 IF SELECTCOM == 612
@@ -1217,7 +1271,6 @@ IF SELECTCOM == 612
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9612 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모+노출벽Lv3이상+V감각Lv3이상
@@ -1241,9 +1294,10 @@ IF SELECTCOM == 612
 			PRINTFORMW 
 			CFLAG:9612 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;기승위 CFLAG:9024
@@ -1255,50 +1309,54 @@ IF SELECTCOM == 24
 		IF TALENT:0 == 1
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「うあ,痛! くううううう……」
+				PRINTFORMW 「ご主人さまのが……突き刺さってる」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「あ,う,いやぁぁぁぁぁぁ!」
+				PRINTFORMW 「初めてなのに,こんなのって……」
 			ENDIF
 		;비처녀
 		ELSE
 			;연모
 			IF TALENT:150
-				PRINTFORMW 
+				PRINTFORMW 「あんんっ! ご主人さまのが……!」
 			;그 외
 			ELSE
-				PRINTFORMW 
+				PRINTFORMW 「こ,こんな姿勢で……んあああ!」
 			ENDIF
 		ENDIF
 		CFLAG:9024 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9024 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さまぁ……もっと突き上げてぇ……飛んでっちゃうくらい」
 			CFLAG:9024 = 5
 		;굴복각인Lv3+봉사정신Lv3이상＋V감각Lv3이상
 		ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:1 >= 3 && (CFLAG:9024 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んあっ! ああん!」
+			PRINTFORMW 「腰が止まんないよっ! カナの中にごつごつ当たってるうっ!」
 			CFLAG:9024 = 4
 		;굴복각인Lv3
 		ELSEIF MARK:2 == 3 && (CFLAG:9024 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「そ……んなに……突き上げ……ないで」
+			PRINTFORMW 「カナ……壊れちゃうから……」
 			CFLAG:9024 = 3
 		;그 외
 		ELSEIF CFLAG:9024 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「んっ んあっ,早く……下ろして」
 			CFLAG:9024 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;역강간 CFLAG:9025
 ;(주인이 비남자, 노예가 남자/후타나리만)
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 25
 	;처음
 	IF CFLAG:9025 == 0
@@ -1310,7 +1368,6 @@ IF SELECTCOM == 25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9025 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1322,13 +1379,15 @@ IF SELECTCOM == 25
 			PRINTFORMW 
 			CFLAG:9025 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;조수를 범한다 CFLAG:9026
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;처음
 	IF CFLAG:9026 == 0
@@ -1340,7 +1399,6 @@ IF SELECTCOM == 26
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9026 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1352,48 +1410,51 @@ IF SELECTCOM == 26
 			PRINTFORMW 
 			CFLAG:9026 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 섹스 CFLAG:9030
 ;정상위, 후배위를 나눠쓰기가 귀찮은 귀차니스트용
 ;체위마다 나눠쓰고 싶은 분은 이 항목을 삭제한 다음 각 체위별 대사를 써주세요
 ;-------------------------------------------------
-IF SELECTCOM == 30 || SELECTCOM == 31
+IF GROUPMATCH(SELECTCOM, 30, 31, 32, 33, 34, 37, 38)
 	;처음
 	IF CFLAG:9030 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「お,おしりの方なの!?」
+			PRINTFORMW 「つっ! でも,いいよ.ご主人さまになら」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「いた,痛い! やめて!」
+			PRINTFORMW 「そっち……違うのに……!」
 		ENDIF
 		CFLAG:9030 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상
-		IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:9030 = 5
+		;IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
+		;	PRINTFORMW 
+		;	CFLAG:9030 = 5
 		;연모
-		ELSEIF TALENT:150 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+		IF TALENT:150 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「ご主人さまぁ……もっと突いて……」
 			CFLAG:9030 = 4
 		;A감각Lv3이상
 		ELSEIF ABL:2 >= 3 && (CFLAG:9030 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んっ! あ! やだ……」
+			PRINTFORMW 「おしりなのに……おしりが気持ちいいっ!」
 			CFLAG:9030 = 3
 		;그 외
 		ELSEIF CFLAG:9030 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「うっ,いやっ! 早く,抜いて!」
 			CFLAG:9030 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;------------------------------------------------
@@ -1410,7 +1471,6 @@ ENDIF
 ;			PRINTFORMW 
 ;		ENDIF
 ;		CFLAG:9030 = 1
-;		RETURN 0
 ;	;2회째 이후
 ;	ELSE
 ;		LOCAL = PALAM:10 + UP:10
@@ -1431,8 +1491,8 @@ ENDIF
 ;			PRINTFORMW 
 ;			CFLAG:9030 = 2
 ;		ENDIF
-;		RETURN 0
 ;	ENDIF
+;	RETURN 0
 ;ENDIF
 
 ;-------------------------------------------------
@@ -1449,7 +1509,6 @@ ENDIF
 ;			PRINTFORMW 
 ;		ENDIF
 ;		CFLAG:9031 = 1
-;		RETURN 0
 ;	;2회째 이후
 ;	ELSE
 ;		LOCAL = PALAM:10 + UP:10
@@ -1470,13 +1529,14 @@ ENDIF
 ;			PRINTFORMW 
 ;			CFLAG:9031 = 2
 ;		ENDIF
-;		RETURN 0
 ;	ENDIF
+;	RETURN 0
 ;ENDIF
 
 ;-------------------------------------------------
 ;대면좌위애널 CFLAG:9032
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;처음
 	IF CFLAG:9032 == 0
@@ -1488,7 +1548,6 @@ IF SELECTCOM == 32
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9032 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
@@ -1509,13 +1568,15 @@ IF SELECTCOM == 32
 			PRINTFORMW 
 			CFLAG:9032 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;배면좌위애널 CFLAG:9033
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	;처음
 	IF CFLAG:9033 == 0
@@ -1527,7 +1588,6 @@ IF SELECTCOM == 33
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9033 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
@@ -1548,13 +1608,15 @@ IF SELECTCOM == 33
 			PRINTFORMW 
 			CFLAG:9033 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;기승위애널 CFLAG:9034
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	;처음
 	IF CFLAG:9034 == 0
@@ -1566,7 +1628,6 @@ IF SELECTCOM == 34
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9034 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		LOCAL = PALAM:10 + UP:10
@@ -1587,9 +1648,10 @@ IF SELECTCOM == 34
 			PRINTFORMW 
 			CFLAG:9034 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;수음 CFLAG:9040
@@ -1599,30 +1661,29 @@ IF SELECTCOM == 40
 	IF CFLAG:9040 == 0
 		;봉사정신Lv3이상
 		IF ABL:13 >= 3
-			PRINTFORMW 
+			PRINTFORMW 「う,すごい.熱くって,びくびくしてる」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「う……やだ,なんでこんなことしなくちゃ……」
 		ENDIF
 		CFLAG:9040 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋봉사정신Lv5
 		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,どう? 気持ちいい?」
 			CFLAG:9040 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9040 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「そんなに,気持ちいいの?」
 			CFLAG:9040 = 3
 		;그 외
 		ELSEIF CFLAG:9040 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「汚い……なんかぬめってきた」
 			CFLAG:9040 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1633,30 +1694,32 @@ IF SELECTCOM == 41
 	IF CFLAG:9041 == 0
 		;봉사정신Lv3이상
 		IF ABL:13 >= 3
-			PRINTFORMW 
+			PRINTFORMW 「お口が……気持ちいいの?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「う,ああ……汚い」
 		ENDIF
 		CFLAG:9041 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋봉사정신Lv5
 		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9041 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んっ,んっ,ちゅば,んふ」
+			PRINTFORMW 「ご主人さまぁ,お口の中で出して……」
 			CFLAG:9041 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9041 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んんっ,んむ……ちゅる」
+			PRINTFORMW 「……おいしい」
 			CFLAG:9041 = 3
 		;그 외
 		ELSEIF CFLAG:9041 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「んっ……んんっ……」
+			PRINTFORMW 「う,げほっ! ……もうやだ」
 			CFLAG:9041 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1667,30 +1730,31 @@ IF SELECTCOM == 42
 	IF CFLAG:9042 == 0
 		;봉사정신Lv3이상
 		IF ABL:13 >= 3
-			PRINTFORMW 
+			PRINTFORMW 「おっぱいでって……こんなやり方もあるんだ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「え,挟めって? ……変態」
 		ENDIF
 		CFLAG:9042 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋봉사정신Lv5
 		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9042 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「おっぱいで気持ちいい? ご主人さま」
+			PRINTFORMW 「早くいっぱい出して,たっぷりちょうだい」
 			CFLAG:9042 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9042 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ん,どう? 気持ちいい?」
+			PRINTFORMW 「ふふ,目の前でおちんちんが出たり入ったりしてる」
 			CFLAG:9042 = 3
 		;그 외
 		ELSEIF CFLAG:9042 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「ん……あ……早く……終わって」
 			CFLAG:9042 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1701,31 +1765,33 @@ IF SELECTCOM == 43
 	IF CFLAG:9043 == 0
 		;연모 있음
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「股に挟むの?」
+			PRINTFORMW 「ん,あっ.これ,おちんちんがこすれて,気持ちいい……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「挟む……だけよね? 入れちゃダメよ」
 		ENDIF
 		CFLAG:9043 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모 있음
 		IF TALENT:150 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「はぁっ,はぁん! ご主人さま」
+			PRINTFORMW 「中に……お願い,中に入れて」
 			CFLAG:9043 = 3
 		;그 외
 		ELSEIF CFLAG:9043 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「ん,あっ,あそこが……びりびりする」
 			CFLAG:9043 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;애널 봉사강제 CFLAG:9044
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;처음
 	IF CFLAG:9044 == 0
@@ -1737,7 +1803,6 @@ IF SELECTCOM == 44
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9044 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모+순종Lv5이상
@@ -1757,9 +1822,10 @@ IF SELECTCOM == 44
 			PRINTFORMW 
 			CFLAG:9044 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;로션 CFLAG:9060
@@ -1769,26 +1835,25 @@ IF SELECTCOM == 60
 	IF CFLAG:9060 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ヌルヌルしてて……んっ,気持ちいい」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「なにこれ? 気持ち悪い」
 		ENDIF
 		CFLAG:9060 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9060 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,準備ができたわ」
 			CFLAG:9060 = 3
 		;그 외
 		ELSEIF CFLAG:9060 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「またこのヌルヌル……やだあ」
 			CFLAG:9060 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1799,31 +1864,34 @@ IF SELECTCOM == 61
 	IF CFLAG:9061 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ん……あ……なにこれ」
+			PRINTFORMW 「体が……疼いて……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「うぁぁ……やだ,濡れて……」
 		ENDIF
 		CFLAG:9061 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9061 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふうぅ……はあぁ」
+			PRINTFORMW 「ご主人さまぁ……はやく,メチャクチャに犯してぇ」
 			CFLAG:9061 = 3
 		;그 외
 		ELSEIF CFLAG:9061 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「う,あ……またこの薬」
+			PRINTFORMW 「いやなのに……体が……」
 			CFLAG:9061 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;이뇨제 CFLAG:9062
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 62
 	;연모+오줌싸개
 	IF TALENT:150 && TALENT:45 && (CFLAG:9062 < 4 || FLAG:11 == 2)
@@ -1842,11 +1910,14 @@ IF SELECTCOM == 62
 		PRINTFORMW 
 		CFLAG:9062 = 1
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;알몸 에이프런(새댁 플레이) CFLAG:9090 해제 CFLAG:8823
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 90 && TEQUIP:59
 	;처음
@@ -1859,7 +1930,6 @@ IF SELECTCOM == 90 && TEQUIP:59
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9090 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1871,8 +1941,8 @@ IF SELECTCOM == 90 && TEQUIP:59
 			PRINTFORMW 
 			CFLAG:9090 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 	;처음
@@ -1885,7 +1955,6 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8823 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1897,9 +1966,10 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 			PRINTFORMW 
 			CFLAG:8823 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;비디오 촬영(비디오 카메라 사용) CFLAG:9100
@@ -1909,31 +1979,33 @@ IF SELECTCOM == 100 && TEQUIP:50
 	IF CFLAG:9100 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「え? それ,もしかしてカメラ?」
+			PRINTFORMW 「ちょっと恥ずかしいけど,ご主人さまとなら……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「それ……まさかカメラ?」
+			PRINTFORMW 「やだ! 撮らないで!」
 		ENDIF
 		CFLAG:9100 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9100 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ん……綺麗に撮ってね」
 			CFLAG:9100 = 3
 		;그 외
 		ELSEIF CFLAG:9100 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やめて……こんな姿,撮らないで……」
 			CFLAG:9100 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;수치 플레이 CFLAG:9103 해제 CFLAG:8822
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 103 && TEQUIP:56
 	;처음
 	IF CFLAG:9103 == 0
@@ -1948,7 +2020,6 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9103 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모+노출벽Lv3이상
@@ -1964,12 +2035,12 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 
 			CFLAG:9103 = 3
 		;그 외
-		ELSEIF CFLAG:272 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
 			PRINTFORMW 
 			CFLAG:9103 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 	;처음
@@ -1982,7 +2053,6 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8822 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -1994,52 +2064,53 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 			PRINTFORMW 
 			CFLAG:8822 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;야외 플레이 CFLAG:9104　CFLAG:8821
+;야외 플레이 CFLAG:9104 CFLAG:8821
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 104 && TEQUIP:52
 	;처음
 	IF CFLAG:9104 == 0
+		PRINT 「首輪
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW をつけてお散歩なんて……まるきりペットだね.ふふっ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW ……って,ええ!? この格好で外に出るの!?」
 		ENDIF
 		CFLAG:9104 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋노출벽Lv3이상
 		IF TALENT:150 && ABL:14 >= 3 && (CFLAG:9104 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふふ,ご主人さま.お散歩に行きたいわん!」
 			CFLAG:9104 = 4
 		;노출벽Lv3이상
 		ELSEIF ABL:14 >= 3 && (CFLAG:9104 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「誰かに見られたらって思うと……ぞくぞくする」
 			CFLAG:9104 = 3
 		;그 외
 		ELSEIF CFLAG:9104 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「もうやだ……恥ずかしくって……消えちゃいたい」
 			CFLAG:9104 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 	;연모
 	IF TALENT:150 && (CFLAG:8821 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「たまには外に出ると,気分がいいわ」
 		CFLAG:8821 = 2
 	;그 외
 	ELSEIF CFLAG:8821 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「こんなこと……二度とごめんよ」
 		CFLAG:8821 = 1
 	ENDIF
 	RETURN 0
@@ -2049,6 +2120,7 @@ ENDIF
 ;방뇨 CFLAG:9111
 ;강제방뇨 CFLAG:9620
 ;-------------------------------------------------
+[SKIPSTART]
 ;방뇨
 IF SELECTCOM == 111
 	;연모+오줌싸개+야외 플레이
@@ -2099,10 +2171,12 @@ IF SELECTCOM == 620
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널전극 개시시CFLAG:9171 종료시CFLAG:8851
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 171 && TEQUIP:25
 	;처음
@@ -2115,7 +2189,6 @@ IF SELECTCOM == 171 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9171 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2135,8 +2208,8 @@ IF SELECTCOM == 171 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9171 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	;연모
@@ -2154,10 +2227,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널비즈 개시시CFLAG:9172 종료시CFLAG:8852
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 172 && TEQUIP:25
 	;처음
@@ -2170,7 +2245,6 @@ IF SELECTCOM == 172 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9172 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2190,8 +2264,8 @@ IF SELECTCOM == 172 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9172 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	;연모
@@ -2209,10 +2283,12 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;확장 벌룬 개시시CFLAG:9173 종료시CFLAG:8853
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 173 && TEQUIP:25
 	;처음
@@ -2225,7 +2301,6 @@ IF SELECTCOM == 173 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9173 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2245,8 +2320,8 @@ IF SELECTCOM == 173 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9173 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	;연모
@@ -2264,10 +2339,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;관장 CFLAG:9174
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 174 && TEQUIP:25
 	;처음
@@ -2280,7 +2357,6 @@ IF SELECTCOM == 174 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9174 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2300,13 +2376,15 @@ IF SELECTCOM == 174 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9174 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;배설(관장 플레이) CFLAG:8851
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 174 && TEQUIP:25 == 0
 	;처음
 	IF CFLAG:8854 == 0
@@ -2318,7 +2396,6 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8854 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2338,14 +2415,16 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 			PRINTFORMW 
 			CFLAG:8854 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;공기관장 개시시CFLAG:9175 종료시CFLAG:8855
 ;-------------------------------------------------
 ;개시시
+[SKIPSTART]
 IF SELECTCOM == 175 && TEQUIP:25
 	;처음
 	IF CFLAG:9175 == 0
@@ -2357,7 +2436,6 @@ IF SELECTCOM == 175 && TEQUIP:25
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9175 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋A감각Lv3이상＋마조끼Lv3이상
@@ -2377,8 +2455,8 @@ IF SELECTCOM == 175 && TEQUIP:25
 			PRINTFORMW 
 			CFLAG:9175 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	;연모
@@ -2396,10 +2474,12 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 핥기 CFLAG:9180
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 180
 	;처음
 	IF CFLAG:9180 == 0
@@ -2411,7 +2491,6 @@ IF SELECTCOM == 180
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9180 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -2427,48 +2506,50 @@ IF SELECTCOM == 180
 			PRINTFORMW 
 			CFLAG:9180 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;착유기(모유 체질만) CFLAG:9191　CFLAG:8861
+;착유기(모유 체질만) CFLAG:9191 CFLAG:8861
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 191 && TEQUIP:35
 	;처음
 	IF CFLAG:9191 == 0
+		PRINTFORMW 「なに,その機械?」
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「やだ,おっぱいが! 吸われちゃう!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「いやぁ! おっぱいが……こっち見ないで!」
 		ENDIF
 		CFLAG:9191 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:9191 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふふっ,たくさんおっぱいが出てる」
+			PRINTFORMW 「できればご主人さまに飲んでもらいたいな」
 			CFLAG:9191 = 3
 		;그 외
 		ELSEIF CFLAG:9191 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「機械でなんて……いやぁ」
 			CFLAG:9191 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;탈착시
 ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	;연모
 	IF TALENT:150 && (CFLAG:8861 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「んあ! ……いっぱい出したら,おっぱいがすっきりしちゃった」
 		CFLAG:8861 = 2
 	;그 외
 	ELSEIF CFLAG:8861 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「うっ! おっぱいに,吸い跡がついちゃった」
 		CFLAG:8861 = 1
 	ENDIF
 	RETURN 0
@@ -2482,38 +2563,37 @@ IF SELECTCOM == 220
 	IF CFLAG:9220 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま……? ひゃうっ! ご,ごめんなさい!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「痛い! 痛い! おしり叩かないで!」
 		ENDIF
 		CFLAG:9220 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9220 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふあ,ああんっ! ご主人さま,もっとぶって……」
 			CFLAG:9220 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9220 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご,ご主人さま……痛いのに,気持ちいいです……はぁん!」
 			CFLAG:9220 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9220 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「うっ,ああ! ご主人さま,許して……」
 			CFLAG:9220 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9220 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「うっ! はぁん! 痛いのに……濡れちゃってる」
 			CFLAG:9220 = 3
 		;그 외
 		ELSEIF CFLAG:9220 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「痛! あとでおぼえておきなさいよ」
 			CFLAG:9220 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2524,38 +2604,38 @@ IF SELECTCOM == 221
 	IF CFLAG:9221 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「つっ! 鞭でだなんて,そんな……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「え,やだ,やめて…………痛いっ!」
 		ENDIF
 		CFLAG:9221 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9221 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「もっと,もっと鞭をっ! もっと強くぅ!」
 			CFLAG:9221 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9221 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま……痛いのに,濡れちゃいました」
 			CFLAG:9221 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9221 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「うあ! ご主人さま……ごめんなさい」
 			CFLAG:9221 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9221 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ああん! はぁん!」
+			PRINTFORMW 「……嘘.痛いのに,私,濡れちゃってる……」
 			CFLAG:9221 = 3
 		;그 외
 		ELSEIF CFLAG:9221 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「痛い! いやぁっ!」
 			CFLAG:9221 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -2566,42 +2646,41 @@ IF SELECTCOM == 222
 	IF CFLAG:9222 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「は,針? それをまさか……痛い!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「ちょっと,まさかその針で……きゃああっ!」
 		ENDIF
 		CFLAG:9222 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9222 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ふわぁ……ご主人さまぁ……もっといじめて」
 			CFLAG:9222 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9222 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「はぁぁぁ…….気持ちいいよぉ……」
 			CFLAG:9222 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9222 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,こんなことしてなにに……痛!」
 			CFLAG:9222 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9222 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んあ! 針が……こんなに気持ちいいなんて」
 			CFLAG:9222 = 3
 		;그 외
 		ELSEIF CFLAG:9222 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「もう……やめて…….うああああああ!」
 			CFLAG:9222 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;밧줄 CFLAG:9224　CFLAG:8872
+;밧줄 CFLAG:9224 CFLAG:8872
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 224 && TEQUIP:40
@@ -2609,10 +2688,12 @@ IF SELECTCOM == 224 && TEQUIP:40
 	IF CFLAG:9224 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「え,縛るの?」
+			PRINTFORMW 「……ご主人様の,正真正銘の所有物になった気分よ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「ちょっと,なんで縛るの!」
+			PRINTFORMW 「変な縛り方して.縄が股に食い込んじゃって……んっ」
 		ENDIF
 		CFLAG:9224 = 1
 		RETURN 0
@@ -2620,43 +2701,45 @@ IF SELECTCOM == 224 && TEQUIP:40
 	ELSE
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9224 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「縛られて感じている,いやらしいメス奴隷です……」
 			CFLAG:9224 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9224 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んっ! ああっ! ご主人さま,もっときつく!」
 			CFLAG:9224 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9224 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご,ご主人さま.苦しいから,もうちょっとゆるめて……」
 			CFLAG:9224 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9224 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「縄が食い込んでるところから,じんじんしびれてくる……」
 			CFLAG:9224 = 3
 		;그 외
 		ELSEIF CFLAG:9224 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「こんなことしなくても逃げないから.これ,解いてよ」
 			CFLAG:9224 = 2
 		ENDIF
 		RETURN 0
 	ENDIF
 ;종료시
 ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
+	SIF FLAG:11 == 2 || CFLAG:8872 < 1 + TALENT:150
+		PRINT 「体中に縄の跡が……
 	;연모
 	IF TALENT:150 && (CFLAG:8872 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTW ふふっ」
 		CFLAG:8872 = 2
 	;그 외
 	ELSEIF CFLAG:8872 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTW ひどい」
 		CFLAG:8872 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;아이마스크 CFLAG:9225　CFLAG:8871
+;아이마스크 CFLAG:9225 CFLAG:8871
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 225 && TEQUIP:41
@@ -2664,54 +2747,53 @@ IF SELECTCOM == 225 && TEQUIP:41
 	IF CFLAG:9225 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「え? 目隠しなんて,なんで?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「見えなくさせて,なにを企んでるの?」
 		ENDIF
 		CFLAG:9225 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9225 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご,ご主人さま……早くぅ……」
 			CFLAG:9225 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9225 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま……どこ……」
 			CFLAG:9225 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9225 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ねえ,どこ? どこにいるの?」
 			CFLAG:9225 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9225 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「まっくらで……ドキドキする」
 			CFLAG:9225 = 3
 		;그 외
 		ELSEIF CFLAG:9225 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「こんなことして何の意味があるの?」
 			CFLAG:9225 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 	;연모
 	IF TALENT:150 && (CFLAG:8871 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「あ,ご主人さまだ.よかったぁ」
 		CFLAG:8871 = 2
 	;그 외
 	ELSEIF CFLAG:8871 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「ん,まぶしい」
 		CFLAG:8871 = 1
 	ENDIF
 	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
-;볼 개그 CFLAG:9226　CFLAG:8872
+;볼 개그 CFLAG:9226 CFLAG:8872
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 226 && TEQUIP:42
@@ -2719,47 +2801,46 @@ IF SELECTCOM == 226 && TEQUIP:42
 	IF CFLAG:9226 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ん……んふ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「んんー! んー!」
 		ENDIF
 		CFLAG:9226 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9226 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んんっ! んっ」
 			CFLAG:9226 = 6
 		;연모＋마조끼Lv3이상
 		ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9226 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「……んっ」
 			CFLAG:9226 = 5
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9226 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「……?」
 			CFLAG:9226 = 4
 		;마조끼Lv3이상
 		ELSEIF ABL:21 >= 3 && (CFLAG:9226 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んんっ!」
 			CFLAG:9226 = 3
 		;그 외
 		ELSEIF CFLAG:9226 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「…………」
 			CFLAG:9226 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	;연모
 	IF TALENT:150 && (CFLAG:8872 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ふふっ,顔が唾でベタベタになっちゃった」
 		CFLAG:8872 = 2
 	;그 외
 	ELSEIF CFLAG:8873 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「……ぷはっ! 酷い目にあった」
 		CFLAG:8872 = 1
 	ENDIF
 	RETURN 0
@@ -2773,35 +2854,37 @@ IF SELECTCOM == 230
 	IF CFLAG:9230 == 0
 		;봉사정신Lv3이상
 		IF ABL:13 >= 3
-			PRINTFORMW 
+			PRINTFORMW 「あ,そんなに乱暴にしなくても……んっ,んむ,じゅる,じゅぷ」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「ちょっと,そんなもの近づけ……ぐっ,うぐ,じゅ……げほっ!」
 		ENDIF
 		CFLAG:9230 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋봉사정신Lv5
 		IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9230 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んん……じゅる……んむ……ちゅる」
+			PRINTFORMW 「ひもひひひへふか? ほふゅひんはふぁ」
 			CFLAG:9230 = 4
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:9230 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んじゅ……む……ちゅる……ちゅぱ」
 			CFLAG:9230 = 3
 		;그 외
 		ELSEIF CFLAG:9230 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「うっ……ぐっ,んっ……」
+			PRINTFORMW 「……げほっ! ごほごほっ!」
 			CFLAG:9230 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;피스트퍽 CFLAG:9231
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231
 	;처음
 	IF CFLAG:9231 == 0
@@ -2813,7 +2896,6 @@ IF SELECTCOM == 231
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9231 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2837,13 +2919,15 @@ IF SELECTCOM == 231
 			PRINTFORMW 
 			CFLAG:9231 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널피스트 CFLAG:9232
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 232
 	;처음
 	IF CFLAG:9232 == 0
@@ -2855,7 +2939,6 @@ IF SELECTCOM == 232
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9232 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2879,13 +2962,15 @@ IF SELECTCOM == 232
 			PRINTFORMW 
 			CFLAG:9232 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;양구멍피스트 CFLAG:9233
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 233
 	;처음
 	IF CFLAG:9233 == 0
@@ -2897,7 +2982,6 @@ IF SELECTCOM == 233
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9233 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋마조끼Lv5이상
@@ -2921,13 +3005,15 @@ IF SELECTCOM == 233
 			PRINTFORMW 
 			CFLAG:9233 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;목욕탕 플레이 CFLAG:9350 해제 CFLAG:8824
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 350 && TEQUIP:53
 	;처음
 	IF CFLAG:9350 == 0
@@ -2939,7 +3025,6 @@ IF SELECTCOM == 350 && TEQUIP:53
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9350 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -2951,8 +3036,8 @@ IF SELECTCOM == 350 && TEQUIP:53
 			PRINTFORMW 
 			CFLAG:9350 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 	;처음
@@ -2965,7 +3050,6 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 			PRINTFORMW 
 		ENDIF
 		CFLAG:8824 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -2977,13 +3061,15 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 			PRINTFORMW 
 			CFLAG:8824 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;샤워 CFLAG:9351
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 351 && TEQUIP:54
 	;처음
 	IF CFLAG:9351 == 0
@@ -2995,7 +3081,6 @@ IF SELECTCOM == 351 && TEQUIP:54
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9351 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -3007,13 +3092,15 @@ IF SELECTCOM == 351 && TEQUIP:54
 			PRINTFORMW 
 			CFLAG:9351 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;거품비비기 CFLAG:9352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 352
 	;처음
 	IF CFLAG:9352 == 0
@@ -3025,7 +3112,6 @@ IF SELECTCOM == 352
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9352 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모＋봉사정신Lv5
@@ -3041,12 +3127,13 @@ IF SELECTCOM == 352
 			PRINTFORMW 
 			CFLAG:9352 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
-;촉수소환 CFLAG:9500　CFLAG:8901
+;촉수소환 CFLAG:9500 CFLAG:8901
 ;-------------------------------------------------
 ;개시시
 IF SELECTCOM == 500 && TEQUIP:90
@@ -3054,43 +3141,49 @@ IF SELECTCOM == 500 && TEQUIP:90
 	IF CFLAG:9500 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ひゃあ! ご,ご主人さま.嘘でしょ?」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「やだ……なにこれ,怖い.やめてよぉ」
+			PRINTFORMW 「いやぁぁぁぁぁぁぁぁぁ!」
 		ENDIF
 		CFLAG:9500 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모+촉수경험 20 이상(소비 기본치가 3분의 1이 됨)
 		IF TALENT:150 && EXP:53 >= 20 && (CFLAG:9500 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んあ,あんんっ……これ,好きなの……」
+			PRINTFORMW 「あ.でも,ご主人さまの方が大事だから.安心して」
 			CFLAG:9500 = 4
 		;연모
 		ELSEIF TALENT:150 && (CFLAG:9500 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「やだ……やだよぉ」
+			PRINTFORMW 「助けて,ご主人さま……」
 			CFLAG:9500 = 3
 		;그 외
 		ELSEIF CFLAG:9500 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「ひっ……は,入ってくる……」
+			PRINTFORMW 「うう,気持ち悪い」
 			CFLAG:9500 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ;종료시
 ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
 	;연모+촉수경험 20 이상(소비 기본치가 3분의 1이 됨)
 	IF TALENT:150 && EXP:53 >= 20 && (CFLAG:8901 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「……え,もう終わり?」
+		PRINTFORMW 「やだあ,もっといっぱい触手が欲しいの」
 		CFLAG:8901 = 3
 	;연모
 	ELSEIF TALENT:150 && (CFLAG:8901 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ん…….何回やっても慣れない」
+		PRINTFORMW 「さあご主人さま.口直しに愛してください」
 		CFLAG:8901 = 2
 	;그 외
 	ELSEIF CFLAG:8901 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「う……ああ……」
+		PRINTFORMW 「あんな化け物に……」
 		CFLAG:8901 = 1
 	ENDIF
 	RETURN 0
@@ -3099,6 +3192,7 @@ ENDIF
 ;-------------------------------------------------
 ;식스나인 CFLAG:9602
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 602
 	;처음
 	IF CFLAG:9602 == 0
@@ -3110,7 +3204,6 @@ IF SELECTCOM == 602
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9602 = 1
-		RETURN 0
 	ELSE
 		;연모+봉사정신Lv3이상+C감각Lv3이상
 		IF TALENT:150 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:9602 <= 5 || FLAG:11 == 2)
@@ -3133,13 +3226,15 @@ IF SELECTCOM == 602
 			PRINTFORMW 
 			CFLAG:9602 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;３P CFLAG:9610
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;처음
 	IF CFLAG:9610 == 0
@@ -3151,7 +3246,6 @@ IF SELECTCOM == 610
 			PRINTFORMW 
 		ENDIF
 		CFLAG:9610 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
@@ -3171,10 +3265,10 @@ IF SELECTCOM == 610
 			PRINTFORMW 
 			CFLAG:9610 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
+	RETURN 0
 ENDIF
-
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_PALAMCNG 관계
@@ -3216,19 +3310,19 @@ IF LOCAL > PALAMLV:2 && CFLAG:8001 == 0
 	IF TALENT:150
 		;로션을 사용했을 경우
 		IF SELECTCOM == 60
-			PRINTFORMW 
+			PRINTFORMW 「もうビチャビチャ.そっか,これならすぐにできるもんね」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま……もう,こんなになっちゃってるわ」
 		ENDIF
 	;그 외
 	ELSE
 		;로션을 사용했을 경우
 		IF SELECTCOM == 60
-			PRINTFORMW 
+			PRINTFORMW 「股がヌルヌルして……ちょっと,まさか……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「あれ,おかしいな……股が……ヌルヌルする」
 		ENDIF
 	ENDIF
 	CFLAG:8001 = 1
@@ -3243,19 +3337,20 @@ IF LOCAL > PALAMLV:2 && CFLAG:8002 == 0
 	IF TALENT:150
 		;미약을 사용했을 경우
 		IF SELECTCOM == 61
-			PRINTFORMW 
+			PRINTFORMW 「ふあぁ……このお薬,気持ちいい……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「体が疼くよ……ご主人さま」
 		ENDIF
 	;그 외
 	ELSE
 		;미약을 사용했을 경우
 		IF SELECTCOM == 61
-			PRINTFORMW 
+			PRINTFORMW 「薬なんかに……負けない……」
+			PRINTFORMW 「ふああぁ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「んっ! なんか今,ビリってきた……」
 		ENDIF
 	ENDIF
 	CFLAG:8002 = 1
@@ -3268,10 +3363,10 @@ LOCAL = PALAM:15 + UP:15
 IF LOCAL > PALAMLV:2 && CFLAG:8003 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「ん……は,恥ずかしい」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「うあ,やだよぉ.なんでこんな目に」
 	ENDIF
 	CFLAG:8003 = 1
 ENDIF
@@ -3283,10 +3378,10 @@ LOCAL = PALAM:17 + UP:17
 IF LOCAL > PALAMLV:2 && CFLAG:8004 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「やだ,やだ,ご主人さまこわい!」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「お,お願い……もうやめて,許して……」
 	ENDIF
 	CFLAG:8004 = 1
 ENDIF
@@ -3297,10 +3392,10 @@ ENDIF
 IF NOWEX:0 > 0 && CFLAG:8005 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「ご,ご主人さま,なんだかもう……ああぁぁぁぁっ!」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「な,なにこれ,股が熱く……ふあぁぁぁぁぁぁっ!」
 	ENDIF
 	CFLAG:8005 = 1
 ENDIF
@@ -3311,10 +3406,10 @@ ENDIF
 IF NOWEX:1 > 0 && CFLAG:8006 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「中が溶けちゃう……中が溶けちゃううぅぅぅ!」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「うあ,やだ,なんかくる,なんかきちゃうぅぅ!」
 	ENDIF
 	CFLAG:8006 = 1
 ENDIF
@@ -3325,10 +3420,10 @@ ENDIF
 IF NOWEX:2 > 0 && CFLAG:8007 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「おしりで,おしりでイっちゃううぅぅっ!」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「いや,いや,感じてなんかいな……あああああぁぁんっ!」
 	ENDIF
 	CFLAG:8007 = 1
 ENDIF
@@ -3339,10 +3434,11 @@ ENDIF
 IF NOWEX:3 > 0 && CFLAG:8008 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さま……おっぱいでイっちゃう!」
 	;그 외
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「あれ……おかしいな.なんでこんなにおっぱいが痺れて……」
+		PRINTFORMW 「うあ,うわぁ,ふわぁぁぁぁ!」
 	ENDIF
 	CFLAG:8008 = 1
 ENDIF
@@ -3353,31 +3449,37 @@ ENDIF
 LOCAL = UP:20 + UP:21
 IF TFLAG:0 > 0 && CFLAG:8009 == 0
 	;연모에다 주인의 섹스로 처녀상실
-	IF TALENT:150 && TFLAG:2
+	IF TFLAG:2
 		;연모에다 반발각인 미취득
-		IF TALENT:150 && LOCAL < 500
-			PRINTFORMW 
+		IF LOCAL < 500
+			PRINTFORMW 「は,初めてをご主人さまに」
+			PRINTFORMW 「……嬉しい」
 		;연모에다 반발각인 취득
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「い,いたぁぁぁっ!」
+			PRINTFORMW 「ご主人さま……初めてだったのに」
 		ENDIF
 	;손가락 삽입으로 처녀상실(반감이 꽤 적음)
 	ELSEIF SELECTCOM == 4
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「う,あ……痛っ」
+			PRINTFORMW 「指だけなのに,こんなに……」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「う,あ,痛い!」
+			PRINTFORMW 「指が……刺さってる……」
 		ENDIF
 	;그 외 상황에서 처녀상실
 	ELSE
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,そこは……」
+			PRINTFORMW 「ひゃうあうんっ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「あぐっ! う……」
+			PRINTFORMW 「自分でも触ったことなかったのに……」
 		ENDIF
 	ENDIF
 	CFLAG:8009 = 1
@@ -3390,30 +3492,32 @@ ENDIF
 IF TFLAG:9 > 0
 	;연모
 	IF TALENT:150 && (CFLAG:8011 <= 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さまのが……たっぷり出てる」
 		CFLAG:8011 = 4
 	;굴복각인Lv3
 	ELSEIF MARK:2 == 3 && (CFLAG:8011 <= 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「出してぇ,カナのおしりにいっぱい出してぇ!」
 		CFLAG:8011 = 3
 	;그 외
 	ELSEIF CFLAG:8011 <= 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「うあっ!」
+		PRINTFORMW 「おしりの中で……出てる」
 		CFLAG:8011 = 2
 	ENDIF
 ;그 외(질내사정)
 ELSEIF TFLAG:10 > 0
 	;연모
 	IF TALENT:150 && (CFLAG:8010 <= 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さまの,せーえきがでてる……」
 		CFLAG:8010 = 4
 	;굴복각인Lv3
 	ELSEIF MARK:2 == 3 && (CFLAG:8010 <= 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「カナの,カナの中に注いでぇ!」
 		CFLAG:8010 = 3
 	;그 외
 	ELSEIF CFLAG:8010 <= 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「う,あ,やだ,出さないで……!」
+		PRINTFORMW 「……うあぁ,赤ちゃんできちゃうよぉ」
 		CFLAG:8010 = 2
 	ENDIF
 ENDIF
@@ -3424,15 +3528,17 @@ ENDIF
 IF TFLAG:12 > 0
 	;봉사정신Lv5
 	IF ABL:13 >= 5 && (CFLAG:8012 <= 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ふふ,びゅっびゅって出てる」
+		PRINTFORMW 「気持ちいい? よかった」
 		CFLAG:8012 = 3
 	;봉사정신Lv3
 	ELSEIF ABL:13 >= 3 && (CFLAG:8012 <= 1 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「う,顔にかかった」
+		PRINTFORMW 「すごい匂い」
 		CFLAG:8012 = 2
 	;그 외
 	ELSEIF CFLAG:8012 <= 0 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「やだ,もう手がベタベタ」
 		CFLAG:8012 = 1
 	ENDIF
 ENDIF
@@ -3445,34 +3551,40 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
 	IF SELECTCOM == 41 || SELECTCOM == 230 || SELECTCOM == 602
 		;정액중독Lv5
 		IF ABL:31 >= 5 && (CFLAG:8013 < 5 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ん……ちゅる……ちゅう」
+			PRINTFORMW 「おいしい……もっと飲ませて」
 			CFLAG:8013 = 5
 		;정액중독Lv3
 		ELSEIF ABL:31 >= 3 && (CFLAG:8013 < 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んぐ,ん……」
+			PRINTFORMW 「いい匂い……」
 			CFLAG:8013 = 3
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:8013 < 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ん,ぶ,んぐっ!」
+			PRINTFORMW 「全部……飲んであげるから」
 			CFLAG:8013 = 2
 		;그 외
 		ELSEIF CFLAG:8013 < 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「ん! ……ごほっ! おえぇ!」
+			PRINTFORMW 「ひどい,口の中で出すなんて」
 			CFLAG:8013 = 1
 		ENDIF
 	;파이즈리인 경우
 	ELSEIF SELECTCOM == 42 || SELECTCOM == 208 || SELECTCOM == 209
 		;봉사정신Lv5
 		IF ABL:13 >= 5 && (CFLAG:8014 < 3 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んふ……おっぱいで,気持ちよかった?」
 			CFLAG:8014 = 3
 		;봉사정신Lv3이상
 		ELSEIF ABL:13 >= 3 && (CFLAG:8014 < 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あ……出た」
+			PRINTFORMW 「おっぱいまでヌルヌル.ふふふ」
 			CFLAG:8014 = 2
 		;그 외
 		ELSEIF CFLAG:8014 < 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「あっ! うああぁ!」
+			PRINTFORMW 「うう,顔にまでかかった……臭い」
 			CFLAG:8014 = 1
 		ENDIF
 	ENDIF
@@ -3486,25 +3598,25 @@ IF TFLAG:30 > 0
 	IF CFLAG:8015 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「やだ……おちんちんから,出ちゃうっ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「うぁ,なんか出る,なんか出るよぉ!」
 		ENDIF
 		CFLAG:8015 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:8015 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「おちんちんから……せーえき出ちゃう!」
+			PRINTFORMW 「ご主人さま……男の人のって気持ちいい」
 			CFLAG:8015 = 3
 		;그 외
 		ELSEIF CFLAG:8015 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「う,うあぁっ!」
+			PRINTFORMW 「やだよぉ,私,女の子なのに……」
 			CFLAG:8015 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3516,25 +3628,27 @@ IF TFLAG:31 > 0
 	IF CFLAG:8016 == 0
 		;순종Lv4이상
 		IF ABL:10 >= 4
-			PRINTFORMW 
+			PRINTFORMW 「あ.うあ……これ,おっぱい?」
+			PRINTFORMW 「ふふ,お母さんになっちゃったのかな」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「これ,まさか……」
+			PRINTFORMW 「……赤ちゃんできちゃった」
 		ENDIF
 		CFLAG:8016 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;순종Lv4이상
 		IF ABL:10 >= 4 && (CFLAG:8016 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「あ.うあ……」
+			PRINTFORMW 「おっぱい出ちゃう,おっぱい出ちゃうよぉ!」
 			CFLAG:8016 = 3
 		;그 외
 		ELSEIF CFLAG:8016 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やだ,もう出したくないよぉ」
+			PRINTFORMW 「出したくないのに……いいぃぃぃ!」
 			CFLAG:8016 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3546,25 +3660,23 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	IF CFLAG:8017 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま……イっちゃう,イっちゃうよ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「うああ,股が,股がっ!」
 		ENDIF
 		CFLAG:8017 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:8017 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,気持ちいい……」
 			CFLAG:8017 = 3
 		;그 외
 		ELSEIF CFLAG:8017 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やだ,頭の中が……白くなるぅぅぅっ!」
 			CFLAG:8017 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3576,25 +3688,26 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	IF CFLAG:8018 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「もっと,もっと突いてぇ」
+			PRINTFORMW 「んあぁぁぁぁっ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「中がぁ……中から溶けちゃううぅぅぅ!」
 		ENDIF
 		CFLAG:8018 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:8018 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「んあ! もっといっぱい犯してぇ!」
+			PRINTFORMW 「頭おかしくなるくらい,もっとぉ!」
 			CFLAG:8018 = 3
 		;그 외
 		ELSEIF CFLAG:8018 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やだ,やだ,もうイきたくないのに」
+			PRINTFORMW 「んんんんんんんんっ!」
 			CFLAG:8018 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3606,25 +3719,26 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	IF CFLAG:8019 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「ご主人さま,おしりが,おしりがぁぁぁぁぁ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「やだ,気持ちいい……おしり溶けちゃう」
+			PRINTFORMW 「ふあああぁぁぁぁ!」
+			PRINTFORMW 「…………変態さんに,なっちゃった」
 		ENDIF
 		CFLAG:8019 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:8019 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「もっと,もっとおしりでイかせて……」
+			PRINTFORMW 「んあああぁぁ……!」
 			CFLAG:8019 = 3
 		;그 외
 		ELSEIF CFLAG:8019 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「気持ちいい,おしり気持ちいいよぉ」
 			CFLAG:8019 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3636,25 +3750,25 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	IF CFLAG:8020 == 0
 		;연모
 		IF TALENT:150
-			PRINTFORMW 
+			PRINTFORMW 「おっぱいが……おっぱいがぁぁぁぁ!」
 		;그 외
 		ELSE
-			PRINTFORMW 
+			PRINTFORMW 「もう……ちくびの先が,痺れて……」
+			PRINTFORMW 「ふわああぁぁぁぁぁ!」
 		ENDIF
 		CFLAG:8020 = 1
-		RETURN 0
 	;2회째 이후
 	ELSE
 		;연모
 		IF TALENT:150 && (CFLAG:8020 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+			PRINTFORMW 「いいよぉ……ご主人さま,おっぱいいいよぉ」
 			CFLAG:8020 = 3
 		;그 외
 		ELSEIF CFLAG:8020 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+			PRINTFORMW 「やだ,おっぱいだけでもう……」
+			PRINTFORMW 「んんんんんんああぁっ!」
 			CFLAG:8020 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3692,9 +3806,11 @@ SIF EQUIP:14 || TFLAG:899 > 0
 IF TFLAG:40 == 3 && CFLAG:8096 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「う……ぐ……」
+		PRINTFORMW 「ご主人さま……もう許して………」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「痛い,痛いよぉ」
+		PRINTFORMW 「もう耐えられない……」
 	ENDIF
 	CFLAG:8096 = 1
 ENDIF
@@ -3705,9 +3821,9 @@ ENDIF
 IF TFLAG:41 == 3 && CFLAG:8097 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さま,気持ちいい……気持ちいいよぉ」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「う……こんなにえっちな子に……なっちゃった」
 	ENDIF
 	CFLAG:8097 = 1
 ENDIF
@@ -3718,9 +3834,9 @@ ENDIF
 IF TFLAG:42 == 3 && CFLAG:8098 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「もう身も心も,ご主人さまの物です……」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「ダメぇ……カナ,堕ちちゃった……」
 	ENDIF
 	CFLAG:8098 = 1
 ENDIF
@@ -3731,9 +3847,11 @@ ENDIF
 IF TFLAG:44 == 3 && CFLAG:8099 == 0
 	;연모
 	IF TALENT:150
-		PRINTFORMW 
+		PRINTFORMW 「ひどい.ご主人さまは優しい人だって,思ってたのに」
+		PRINTFORMW 「近づかないで!」
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW 「ああ……いや,いやぁぁぁぁぁ!」
+		PRINTFORMW 「触らないで! 殺してやる!」
 	ENDIF
 	CFLAG:8099 = 1
 ENDIF
@@ -3741,6 +3859,7 @@ ENDIF
 ;-------------------------------------------------
 ;치욕각인 Lv3 취득 CFLAG:8100
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:46 == 3 && CFLAG:8100 == 0
 	;연모
 	IF TALENT:150
@@ -3750,6 +3869,7 @@ IF TFLAG:46 == 3 && CFLAG:8100 == 0
 	ENDIF
 	CFLAG:8100 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;이벤트 대사집 FLAG(TFLAG200의 내용물＋8100)
@@ -3758,6 +3878,7 @@ ENDIF
 ;-------------------------------------------------
 ;매각
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 130
 	;연모+반발각인Lv3미만
 	IF TALENT:150 && MARK:9 < 3
@@ -3773,6 +3894,7 @@ IF TFLAG:200 == 130
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;아침 펠라 CFLAG:8240
@@ -3780,15 +3902,18 @@ ENDIF
 IF TFLAG:200 == 140
 	;연모
 	IF TALENT:150 && (CFLAG:8240 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ん,ちゅば,ちゅぷ」
+		PRINTFORMW 「ふふ,おはようございます.ご主人さま」
 		CFLAG:8240 = 3
 	;봉사정신Lv5이상
 	ELSEIF ABL:13 >= 5 && (CFLAG:8240 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「んちゅ,ちゅる……ちゅば」
+		PRINTFORMW 「……気持ちよく起きられた?」
 		CFLAG:8240 = 2
 	;그 외
 	ELSEIF CFLAG:8240 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「ちゅむ……ちゅる……ん」
+		PRINTFORMW 「どう,目が覚めた?」
 		CFLAG:8240 = 1
 	ENDIF
 ENDIF
@@ -3799,11 +3924,12 @@ ENDIF
 IF TFLAG:200 == 150
 	;V감각Lv4이상
 	IF ABL:1 >= 4 && (CFLAG:8250 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「足りなかったの……」
+		PRINTFORMW 「んああっ! 気持ちいい! 幸せ……」
 		CFLAG:8250 = 2
 	;그 외
 	ELSEIF CFLAG:8250 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「もっと,もっといっぱい愛して……」
 		CFLAG:8250 = 1
 	ENDIF
 ENDIF
@@ -3814,15 +3940,15 @@ ENDIF
 IF TFLAG:200 == 151
 	;연모
 	IF TALENT:150 && (CFLAG:8251 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さま……ご主人さまぁ……」
 		CFLAG:8251 = 3
 	;자위중독Lv3이상
 	ELSEIF ABL:30 >= 3 && (CFLAG:8251 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「止まんない,指が止まんないよぉ」
 		CFLAG:8251 = 2
 	;그 외
 	ELSEIF CFLAG:8251 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「ちょっと触るだけなら……んああっ!」
 		CFLAG:8251 = 1
 	ENDIF
 ENDIF
@@ -3833,34 +3959,36 @@ ENDIF
 IF TFLAG:200 == 154
 	;연모
 	IF TALENT:150 && (CFLAG:8254 < 4 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「ご主人さま,ごめんなさい」
+		PRINTFORMW 「でも,足りないんです」
 		CFLAG:8254 = 4
 	;레즈중독Lv3이상
 	ELSEIF ABL:32 >= 3 && (CFLAG:8254 < 3 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「やっぱり,女の子の方が,好きぃ」
 		CFLAG:8254 = 3
 	;레즈끼 Lv3이상
 	ELSEIF ABL:22 >= 3 && (CFLAG:8254 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「女同士の方が……気持ちいい」
 		CFLAG:8254 = 2
 	;그 외
 	ELSEIF CFLAG:8254 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「やだ,女同士でなんて……ん!」
 		CFLAG:8254 = 1
 	ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;조교 후 밤에 덮치기　 CFLAG:8258
+;조교 후 밤에 덮치기  CFLAG:8258
 ;-------------------------------------------------
 IF TFLAG:200 == 158
 	;V감각Lv5이상
 	IF ABL:1 >= 5 && (CFLAG:8258 < 2 || FLAG:11 == 2)
-		PRINTFORMW 
+		PRINTFORMW 「中が疼いてしかたないの……」
+		PRINTFORMW 「お願い,もっとしてぇ!」
 		CFLAG:8258 = 2
 	;그 외
 	ELSEIF CFLAG:8258 < 1 || FLAG:11 == 2
-		PRINTFORMW 
+		PRINTFORMW 「ふふ,するのには慣れてても,されるのは苦手?」
 		CFLAG:8258 = 1
 	ENDIF
 ENDIF
@@ -3877,9 +4005,11 @@ ENDIF
 ;-------------------------------------------------
 ;붉은 목걸이 사용시
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 201
 	PRINTFORMW 
 ENDIF
+[SKIPEND]
 
 TFLAG:200 = 0
 RETURN 0

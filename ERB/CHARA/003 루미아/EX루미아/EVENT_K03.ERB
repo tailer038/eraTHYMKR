@@ -3113,13 +3113,13 @@ ELSEIF (SELECTCOM == 7 || SELECTCOM == 124 || SELECTCOM == 125 || SELECTCOM == 1
 			PRINTFORMW 「……온수를 내게 쏘면서 하라고?」
 			PRINTFORMW 「이거, 이런거에 사용하는 물건인거야……?」
 		ENDIF
-		CFLAG:8800 = 1
+		CFLAG:8801 = 1
 		RETURN 0
 	;二回目以降
 	ELSE
 		;음란
-		IF TALENT:170 && (CFLAG:8800 <= 4 || FLAG:11 == 2)
-		ELSEIF TALENT:150 && (CFLAG:8800 <= 3 || FLAG:11 == 2)
+		IF TALENT:170 && (CFLAG:8801 <= 4 || FLAG:11 == 2)
+		ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
 			IF CFLAG:0 == 1 && TALENT:159 == 0
 				PRINTFORMW 「기분 좋게 되고……응, 깨끗하게도, 되, 니, 까」
 				PRINTFORMW 「좋네, 이거어……」
@@ -3127,9 +3127,9 @@ ELSEIF (SELECTCOM == 7 || SELECTCOM == 124 || SELECTCOM == 125 || SELECTCOM == 1
 			ELSE
 				PRINTFORMW 루미아는 숨을 거칠게 내쉬면서 따뜻한 액체를 흘러넘치게 해, 자위에 몰두하고 있다……
 			ENDIF
-			CFLAG:8800 = 5
+			CFLAG:8801 = 5
 		;연모
-		ELSEIF TALENT:150 && (CFLAG:8800 <= 3 || FLAG:11 == 2)
+		ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
 			IF CFLAG:0 == 1 && TALENT:159 == 0
 				PRINTFORMW 「기분 좋게 되고……응, 깨끗하게도, 되, 니, 까」
 				PRINTFORMW 「좋네, 이거어……」
@@ -3137,24 +3137,24 @@ ELSEIF (SELECTCOM == 7 || SELECTCOM == 124 || SELECTCOM == 125 || SELECTCOM == 1
 			ELSE
 				PRINTFORMW 「에헤헤……깨끗하게 하고나서 하자……」
 			ENDIF
-			CFLAG:8800 = 4
+			CFLAG:8801 = 4
 		;自慰中毒Lv3이상
-		ELSEIF ABL:30 >= 3 && (CFLAG:8800 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:30 >= 3 && (CFLAG:8801 <= 2 || FLAG:11 == 2)
 			IF CFLAG:0 == 1 && TALENT:159 == 0
 				PRINTFORMW 「따뜻해서……기분 좋아……」
 				PRINTFORMW (뭘 하는걸까, 난……)
 			ELSE
 				PRINTFORMW 「따뜻해서……기분 좋을……지도」
 			ENDIF
-			CFLAG:8800 = 3
+			CFLAG:8801 = 3
 		;그 외
-		ELSEIF CFLAG:8800 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:8801 <= 1 || FLAG:11 == 2
 			IF CFLAG:0 == 1 && TALENT:159 == 0
 				PRINTFORMW 「더러움을 씻는것 만은 좋을까나……」
 			ELSE
 				PRINTFORMW 「응, 알았어……이, 아, 아우」
 			ENDIF
-			CFLAG:8800 = 2
+			CFLAG:8801 = 2
 		ENDIF
 			RETURN 0
 	ENDIF

@@ -2697,8 +2697,170 @@ IF SELECTCOM == 301
 	ENDIF
 ENDIF
 
+;-------------------------------------------------
+;사진 촬영 CFLAG9603
+;-------------------------------------------------
+IF SELECTCOM == 102
+	;처음
+	IF CFLAG:9603 == 0
+		;연모
+		IF TALENT:150 == 1
+			PRINTFORMW 「 나만을 찍는지? 주인님도 비치자구」
+			PRINTFORMW 몇번이나 몇번이나 키를 어떻게든 설득하고
+			PRINTFORMW 만이 비친 사진을 찍는 것에 성공했습니다.
+		;그 이외
+		ELSE
+			PRINTFORMW 「 나의 치태를 카메라에 담을 생각인가•••」
+			PRINTFORMW 일부러 흔들리므로 깨끗이 찍는데 고생했습니다.
+		ENDIF
+			CFLAG:9602 = 1
+			RETURN 0
+	ELSE
+		IF TALENT:150 == 1 && (CFLAG:9603 <= 5 || FLAG:11 == 2)
+			PRINTFORMW 「(이 사진은 무엇에 사용하는 것일까•••)」
+			PRINTFORMW 「(팔아 돈으로 하고 있는•••의 것인지, 그렇지 않으면 앨범에 끝내고 있는 거야•••)」
+			PRINTFORMW 「(혹시, 오카즈로 하고 있다고(면)인가•••)」
+			PRINTFORMW 「(그렇다면 좀 더 깨끗이 비치도록, 노력하지 않으면)」		
+			CFLAG:9603 = 6
+		;연모 다하고 첫회
+		ELSEIF TALENT:150 == 1 && (CFLAG:9603 <= 4 || FLAG:11 == 2)
+			PRINTFORMW 당신이 카메라를 꺼내면(자), 는 생각해 냈는지와 같이 묻었다.
+			PRINTFORMW 「, 주인님, 주인님의 사진을 한 장 주지 않는가?」
+			PRINTFORMW 「무엇에 사용한다 라고•••그렇다면 물론」
+			PRINTFORMW 「오카즈로 하는에 정해지고 있지? (사랑하는 주인님 물어 개에서도 곁에 있고 싶기 때문이다)」
+			PRINTFORMW 표면과 본심이 역이겠지•••와 당신은 한숨을 붙었다.
+			CFLAG:9603 = 5
+		;음란
+		ELSEIF TALENT:170 == 1 && (CFLAG:9603 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「이런 건은 어때?」
+			PRINTFORMW 는 카메라의 렌즈를 도발하는것 같이
+			PRINTFORMW 요염한 포즈를 이쪽에 과시해 온다.
+			CFLAG:9603 = 4
+		;굴복 각인 Lv3
+		ELSEIF MARK:2 == 3 && (CFLAG:9603 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「•••알았어, 찍혀 주군
+			PRINTFORMW 다만 "찍는 이상에는 아름답게" 를 유의해 주어라」
+			CFLAG:9603 = 3
+		;그 이외
+		ELSEIF CFLAG:9603 <= 1 || FLAG:11 == 2
+			PRINTFORMW 「능숙한 일 하는 것이다, 그렇게 사진을 뿌려
+			PRINTFORMW 나의 도망갈 장소를 잃을 생각이겠지?」
+			CFLAG:9603 = 2
+		ENDIF
+			RETURN 0
+	ENDIF
+ENDIF
+;사진 촬영 여기까지
 
+;-------------------------------------------------
+;알몸 에이프런 CFLAG9604
+;-------------------------------------------------
+;연모 친애 애정 경험 근처에서 분기
+IF SELECTCOM == 90
+	;처음
+	IF CFLAG:9604 == 0
+		;친애
+		IF TALENT:152 == 1
+			PRINTFORMW 「주인님도 음란하다•••알몸 위에 에이프런이라니」
+			PRINTFORMW 「내가 부엌 일하고 있는 뒤로부터•••는, 생각이라고 응이겠지?」
+			PRINTFORMW 능글능글 웃음인이 납치는 에이프런에 소매를 통했다.
+		;연모
+		ELSEIF TALENT:150 == 1
+			PRINTFORMW 「에이프런인가, 무엇인가 부부가 된 것 같아, 수줍지 말아라」
+				;남자
+				IF TALENT:MASTER:120 == 1
+					PRINTFORMW 「그러나 알몸 위에라고 하는 것은•••그 쪽이"돋우는"의 것인지?」
+				ELSE
+					PRINTFORMW 「남편, 주인님은 남자가 아니기 때문에 부부가 아닌가•••부부?」
+				ENDIF
+		;그 이외
+		ELSE
+			PRINTFORMW 「그것은•••에이프런? 가정부의 흉내라도 해라고 말하는지?」
+			PRINTFORMW 「알몸으로 입어라고? 가정부 쪽이 아직 좋었어•••」
+		ENDIF
+			CFLAG:9604 = 1
+			RETURN 0
+	ELSE
+		;친애
+		IF TALENT:152 == 1
+			PRINTFORMW 「후후, 어때, 어울리고 있어? 아••, 라고.」
+			PRINTFORMW 그렇게 말해, 눈앞에서 휙 회전해 보였다.
+		;연모
+		ELSEIF TALENT:150 == 1 && (CFLAG:9604 <= 4 || FLAG:11 == 2)
+			IF TALENT:MASTER:120 == 1
+				PRINTFORMW 「입었다구, 그런데, 무엇을 하면 좋다? 단•나•양」			
+			ELSE
+				PRINTFORMW 「입었다구, 그런데, 무엇을 하면 좋다? •양•양」	
+			ENDIF
+				PRINTFORMW 의 행동, 태도로부터, 알몸 에이프런이 잘 어울려 왔는지와 같이 보였다.
+			CFLAG:9604 = 5
+		;굴복 각인 Lv3+애정 경험 50이상
+		ELSEIF MARK:2 == 3 && EXP:21 >= 50 && (CFLAG:9604 <= 3 || FLAG:11 == 2)
+			PRINTFORMW 「남편, 또 반사를 하는지?」
+			PRINTFORMW 반사, 라고 심한 욕을 다하면서도, 는 만갱은 아닌 것 같다.
+			CFLAG:9604 = 4
+		;굴복 각인 Lv3
+		ELSEIF MARK:2 == 3 && (CFLAG:9604 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「•••입을 뿐(만큼)이라면 어떻게는 일 없는거야」
+			PRINTFORMW 싫어하는 헛 스윙을 보이지 않고, 에이프런에 소매를 통했다.
+			CFLAG:9604 = 3
+		;그 이외
+		ELSEIF CFLAG:9604 <= 1 || FLAG:11 == 2
+			PRINTFORMW 「변--해 기분 나쁜 것 같아 」
+			PRINTFORMW 「이것이라면 아직 알몸으로 있는 편이 마음 편하구나」
+			CFLAG:9604 = 2
+		ENDIF
+			RETURN 0
+	ENDIF
+ENDIF
 
+;-------------------------------------------------
+;채혈 주사 CFLAG9605
+;-------------------------------------------------
+IF SELECTCOM == 88
+	;처음
+	IF CFLAG:9605 == 0
+		IF TALENT:150 == 1
+			PRINTFORMW 「응? 그 주사는 무엇이다? 의사 곡코라도 하는지?」
+			PRINTFORMW 「채혈? 주인님도 바뀐 놀이를 생각하는 것이다」
+			DRAWLINE
+			PRINTFORMW 「이테테•••도, 좀 더 상냥하고•••」
+		;매저키스트 3이상
+		ELSEIF ABL:21 >= 3
+			PRINTFORMW 「무엇이다 그 주사는, 그 녀석으로 내를 어떻게 할 생각이야?」
+			PRINTFORMW 그렇게 말하면서도, 는 주사의 바늘에 기대의 시선을 따르고 있다•••
+			DRAWLINE
+			PRINTFORMW 「통•••지금의가 피를 뽑아지는 감각인가, 무엇인가 저리군•••」
+		ELSE
+			PRINTFORMW 「무엇이다 그 주사는, 그 녀석으로 내를 어떻게 할 생각이야?」
+			PRINTFORMW 「채혈? 건강진단에서도 해 주는지? 상냥한 일이다」
+			DRAWLINE
+			PRINTFORMW 「통•••이, 야부 의사째!」
+		ENDIF
+		CFLAG:9605 = 1
+		RETURN 0
+	;2번째 이후
+	ELSE
+		IF TALENT:150 == 1
+			PRINTFORMW 「또 채혈하는지? 나는 별로 좋은데」
+			PRINTFORMW 「별로 많이는 하지 말고 주어라, 빈혈로 놀 수 없게 되기 때문」
+			DRAWLINE
+			PRINTFORMW 「응•••하아•••나의 피는 어때? 깨끗한가?」
+		;매저키스트 3이상
+		ELSEIF ABL:21 >= 3
+			PRINTFORMW 「또 채혈인가? 그렇게 뒤숭숭한 것 꺼내며•••」
+			PRINTFORMW 의 눈동자는 주사바늘의 첨단을 응시하고 있다•••
+			DRAWLINE
+			PRINTFORMW 「통•••무엇인가, 버릇이 될 것 같구나」
+		ELSE
+			PRINTFORMW 「또 채혈인가? 그렇게 채혈하고 싶으면 의사에게라도 될 수 있어라•••」
+			PRINTFORMW 「싶고, 그 피도 무엇에 사용하는 것이든지•••」
+			DRAWLINE
+			PRINTFORMW 「똥•••속이 메스꺼워지군•••」
+		ENDIF
+		RETURN 0
+	ENDIF
+ENDIF
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_PALAMCNG 관계(X1를 캐릭터 번호에 치환)
@@ -3854,61 +4016,6 @@ IF TFLAG:200 == 450 || TFLAG:200 == 451
 ENDIF
 
 ;-------------------------------------------------
-;사진 촬영 CFLAG9603
-;-------------------------------------------------
-IF SELECTCOM == 102
-	;처음
-	IF CFLAG:9603 == 0
-		;연모
-		IF TALENT:150 == 1
-			PRINTFORMW 「 나만을 찍는지? 주인님도 비치자구」
-			PRINTFORMW 몇번이나 몇번이나 키를 어떻게든 설득하고
-			PRINTFORMW 만이 비친 사진을 찍는 것에 성공했습니다.
-		;그 이외
-		ELSE
-			PRINTFORMW 「 나의 치태를 카메라에 담을 생각인가•••」
-			PRINTFORMW 일부러 흔들리므로 깨끗이 찍는데 고생했습니다.
-		ENDIF
-			CFLAG:9602 = 1
-			RETURN 0
-	ELSE
-		IF TALENT:150 == 1 && (CFLAG:9603 <= 5 || FLAG:11 == 2)
-			PRINTFORMW 「(이 사진은 무엇에 사용하는 것일까•••)」
-			PRINTFORMW 「(팔아 돈으로 하고 있는•••의 것인지, 그렇지 않으면 앨범에 끝내고 있는 거야•••)」
-			PRINTFORMW 「(혹시, 오카즈로 하고 있다고(면)인가•••)」
-			PRINTFORMW 「(그렇다면 좀 더 깨끗이 비치도록, 노력하지 않으면)」		
-			CFLAG:9603 = 6
-		;연모 다하고 첫회
-		ELSEIF TALENT:150 == 1 && (CFLAG:9603 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 당신이 카메라를 꺼내면(자), 는 생각해 냈는지와 같이 묻었다.
-			PRINTFORMW 「, 주인님, 주인님의 사진을 한 장 주지 않는가?」
-			PRINTFORMW 「무엇에 사용한다 라고•••그렇다면 물론」
-			PRINTFORMW 「오카즈로 하는에 정해지고 있지? (사랑하는 주인님 물어 개에서도 곁에 있고 싶기 때문이다)」
-			PRINTFORMW 표면과 본심이 역이겠지•••와 당신은 한숨을 붙었다.
-			CFLAG:9603 = 5
-		;음란
-		ELSEIF TALENT:170 == 1 && (CFLAG:9603 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「이런 건은 어때?」
-			PRINTFORMW 는 카메라의 렌즈를 도발하는것 같이
-			PRINTFORMW 요염한 포즈를 이쪽에 과시해 온다.
-			CFLAG:9603 = 4
-		;굴복 각인 Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9603 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「•••알았어, 찍혀 주군
-			PRINTFORMW 다만 "찍는 이상에는 아름답게" 를 유의해 주어라」
-			CFLAG:9603 = 3
-		;그 이외
-		ELSEIF CFLAG:9603 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「능숙한 일 하는 것이다, 그렇게 사진을 뿌려
-			PRINTFORMW 나의 도망갈 장소를 잃을 생각이겠지?」
-			CFLAG:9603 = 2
-		ENDIF
-			RETURN 0
-	ENDIF
-ENDIF
-;사진 촬영 여기까지
-
-;-------------------------------------------------
 ;요리를 만들게 하는 애정 요리 TFLAG200 == 111
 ;-------------------------------------------------
 ;분기 조건 친애:서로 사랑함:　연모:망신:복종 반발 그 이외로 분기
@@ -4045,116 +4152,6 @@ ENDIF
 			ENDIF
 		ENDIF
 	ENDIF
-
-;-------------------------------------------------
-;알몸 에이프런 CFLAG9604
-;-------------------------------------------------
-;연모 친애 애정 경험 근처에서 분기
-IF SELECTCOM == 90
-	;처음
-	IF CFLAG:9604 == 0
-		;친애
-		IF TALENT:152 == 1
-			PRINTFORMW 「주인님도 음란하다•••알몸 위에 에이프런이라니」
-			PRINTFORMW 「내가 부엌 일하고 있는 뒤로부터•••는, 생각이라고 응이겠지?」
-			PRINTFORMW 능글능글 웃음인이 납치는 에이프런에 소매를 통했다.
-		;연모
-		ELSEIF TALENT:150 == 1
-			PRINTFORMW 「에이프런인가, 무엇인가 부부가 된 것 같아, 수줍지 말아라」
-				;남자
-				IF TALENT:MASTER:120 == 1
-					PRINTFORMW 「그러나 알몸 위에라고 하는 것은•••그 쪽이"돋우는"의 것인지?」
-				ELSE
-					PRINTFORMW 「남편, 주인님은 남자가 아니기 때문에 부부가 아닌가•••부부?」
-				ENDIF
-		;그 이외
-		ELSE
-			PRINTFORMW 「그것은•••에이프런? 가정부의 흉내라도 해라고 말하는지?」
-			PRINTFORMW 「알몸으로 입어라고? 가정부 쪽이 아직 좋었어•••」
-		ENDIF
-			CFLAG:9604 = 1
-			RETURN 0
-	ELSE
-		;친애
-		IF TALENT:152 == 1
-			PRINTFORMW 「후후, 어때, 어울리고 있어? 아••, 라고.」
-			PRINTFORMW 그렇게 말해, 눈앞에서 휙 회전해 보였다.
-		;연모
-		ELSEIF TALENT:150 == 1 && (CFLAG:9604 <= 4 || FLAG:11 == 2)
-			IF TALENT:MASTER:120 == 1
-				PRINTFORMW 「입었다구, 그런데, 무엇을 하면 좋다? 단•나•양」			
-			ELSE
-				PRINTFORMW 「입었다구, 그런데, 무엇을 하면 좋다? •양•양」	
-			ENDIF
-				PRINTFORMW 의 행동, 태도로부터, 알몸 에이프런이 잘 어울려 왔는지와 같이 보였다.
-			CFLAG:9604 = 5
-		;굴복 각인 Lv3+애정 경험 50이상
-		ELSEIF MARK:2 == 3 && EXP:21 >= 50 && (CFLAG:9604 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「남편, 또 반사를 하는지?」
-			PRINTFORMW 반사, 라고 심한 욕을 다하면서도, 는 만갱은 아닌 것 같다.
-			CFLAG:9604 = 4
-		;굴복 각인 Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9604 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「•••입을 뿐(만큼)이라면 어떻게는 일 없는거야」
-			PRINTFORMW 싫어하는 헛 스윙을 보이지 않고, 에이프런에 소매를 통했다.
-			CFLAG:9604 = 3
-		;그 이외
-		ELSEIF CFLAG:9604 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「변--해 기분 나쁜 것 같아 」
-			PRINTFORMW 「이것이라면 아직 알몸으로 있는 편이 마음 편하구나」
-			CFLAG:9604 = 2
-		ENDIF
-			RETURN 0
-	ENDIF
-ENDIF
-
-;-------------------------------------------------
-;채혈 주사 CFLAG9605
-;-------------------------------------------------
-IF SELECTCOM == 88
-	;처음
-	IF CFLAG:9605 == 0
-		IF TALENT:150 == 1
-			PRINTFORMW 「응? 그 주사는 무엇이다? 의사 곡코라도 하는지?」
-			PRINTFORMW 「채혈? 주인님도 바뀐 놀이를 생각하는 것이다」
-			DRAWLINE
-			PRINTFORMW 「이테테•••도, 좀 더 상냥하고•••」
-		;매저키스트 3이상
-		ELSEIF ABL:21 >= 3
-			PRINTFORMW 「무엇이다 그 주사는, 그 녀석으로 내를 어떻게 할 생각이야?」
-			PRINTFORMW 그렇게 말하면서도, 는 주사의 바늘에 기대의 시선을 따르고 있다•••
-			DRAWLINE
-			PRINTFORMW 「통•••지금의가 피를 뽑아지는 감각인가, 무엇인가 저리군•••」
-		ELSE
-			PRINTFORMW 「무엇이다 그 주사는, 그 녀석으로 내를 어떻게 할 생각이야?」
-			PRINTFORMW 「채혈? 건강진단에서도 해 주는지? 상냥한 일이다」
-			DRAWLINE
-			PRINTFORMW 「통•••이, 야부 의사째!」
-		ENDIF
-		CFLAG:9605 = 1
-		RETURN 0
-	;2번째 이후
-	ELSE
-		IF TALENT:150 == 1
-			PRINTFORMW 「또 채혈하는지? 나는 별로 좋은데」
-			PRINTFORMW 「별로 많이는 하지 말고 주어라, 빈혈로 놀 수 없게 되기 때문」
-			DRAWLINE
-			PRINTFORMW 「응•••하아•••나의 피는 어때? 깨끗한가?」
-		;매저키스트 3이상
-		ELSEIF ABL:21 >= 3
-			PRINTFORMW 「또 채혈인가? 그렇게 뒤숭숭한 것 꺼내며•••」
-			PRINTFORMW 의 눈동자는 주사바늘의 첨단을 응시하고 있다•••
-			DRAWLINE
-			PRINTFORMW 「통•••무엇인가, 버릇이 될 것 같구나」
-		ELSE
-			PRINTFORMW 「또 채혈인가? 그렇게 채혈하고 싶으면 의사에게라도 될 수 있어라•••」
-			PRINTFORMW 「싶고, 그 피도 무엇에 사용하는 것이든지•••」
-			DRAWLINE
-			PRINTFORMW 「똥•••속이 메스꺼워지군•••」
-		ENDIF
-		RETURN 0
-	ENDIF
-ENDIF
 
 ;-------------------------------------------------
 ;약혼 반지 사용시

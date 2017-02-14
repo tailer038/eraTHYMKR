@@ -12794,10 +12794,10 @@ ENDIF
 ;----------------------------------------------------------------
 IF TFLAG:200 == 110
 	;성공
-	IF H == 1
+	IF TFLAG:99 == 1
 		PRINTFORMW 「있지, %K11CO()% 봤어 봤어? 플랑, 힘냈다구♪」
 	;실패
-	ELSEIF H == 0
+	ELSEIF TFLAG:99 == 0
 		PRINTFORMW 「…모두, 플랑이, 싫은걸까나…?」
 	ENDIF
 	TFLAG:200 = 0
@@ -12815,7 +12815,7 @@ ENDIF
 IF TFLAG:200 == 4
 DRAWLINE
 	;成功
-	IF S == 3
+	IF TFLAG:99 == 3
 		;연모
 		IF TALENT:150
 			PRINTFORML 「모두, 고마워엇」
@@ -12826,7 +12826,7 @@ DRAWLINE
 			PRINTFORMW 「정말 좋아해♪ 우후후…」
 		ENDIF
 	ELSEIF TALENT:140 == 1
-		IF E > 0
+		IF TFLAG:1
 			PRINTFORMW 「아, 안 돼에! 지금 플랑 배 안의 아기 있다구우!!」
 			PRINTFORML 그 절규를 들은 군중은, 얼마든지 질내 사정해도 괜찮다고 인식했는지, 
 			PRINTFORMW 대단히 기뻐하며 플랑의 바기나를 범하기로 했다
@@ -12840,7 +12840,7 @@ DRAWLINE
 	ELSE
 		;처녀 
 		;식い破られた時
-		IF CFLAG:5802 == 0 && TALENT:0 == 1 && E > 0
+		IF CFLAG:5802 == 0 && TALENT:0 == 1 && TFLAG:1
 			PRINTFORMW 「%K11CO()%, 도, 도와 주풋, 싫, 시러어!」
 			PRINTFORML 플랑의 어린 지체는 눈 깜짝할 사이에 군중의 와중에 던져 진다
 			PRINTFORMW 그러자 그곳에서 플랑을 기다리고 있는 것은, 눈을 충혈된 자들의 몇개의 남근이었다
@@ -12908,7 +12908,7 @@ DRAWLINE
 			PRINTFORMW 「정마알, 빨리 해줘어♪ 제대로 모두랑 놀아줄 테니깐 안심해줘…♪」
 			PRINTFORMW 「거기다…플랑의 구멍은 다른 것도 아직 있으니깐…♪」
 		ELSEIF TALENT:170 == 1
-			IF S == 1
+			IF TFLAG:99 == 1
 			PRINTFORMW 「모두우, 플랑의 라이브 어땠어?」
 			PRINTFORMW 「우응, 잔뜩 상 주세요♪」
 			ELSE
@@ -12935,7 +12935,7 @@ ENDIF
 IF TFLAG:200 == 9
 DRAWLINE
 	;인간계
-	IF S == 1 || S == 3
+	IF TFLAG:99 == 1 || TFLAG:99 == 3
 			IF TALENT:140 == 1
 				IF RAND:3 == 0
 					PRINTFORMW 남자는 길고 두꺼운 장대로 플랑의 자궁에 대량으로 쏟아 부으며 그 독점욕에 취한다
@@ -12976,6 +12976,10 @@ DRAWLINE
 									PRINTFORMW 『우, 응웃…… 내 처녀는 %조사처리(CALLNAME:MASTER,"가")% 받아 준거네…기뻐…』
 									PRINTFORMW 레밀리아는 자신의 파과의 피를 보며 얼굴을 붉게 하면서 깊게 %CALLNAME:MASTER%에게 껴 안긴다
 									PRINTFORMW 여동생과 같은 시간, 같은 장소, 다른 상대에게 언니는 순결을 바쳤다
+									IF TALENT:ASSI:0 == 1
+										CFLAG:ASSI:500 = 1
+										CSTR:ASSI:5 = %CALLNAME:MASTER%
+									ENDIF
 									TALENT:ASSI:0 = 0
 									EXP:ASSI:0 += 1
 								ELSE
@@ -13024,6 +13028,10 @@ DRAWLINE
 									PRINTFORMW 이제 애무도 필요 없을 정도 젖은 두툼한 세로 스지를 상냥히 꿰뚫어, 여동생과 같은 시간 같은 장소에서 순결을 없앴다
 									PRINTFORML 『우, 응웃……내 처녀는 %조사처리(CALLNAME:MASTER,"가")% 받아 준거네…기뻐…』
 									PRINTFORMW 레밀리아는 자신의 파과의 피를 보며 얼굴을 붉게 하면서 깊게 %CALLNAME:MASTER%에게 껴 안겼다
+									IF TALENT:ASSI:0 == 1
+										CFLAG:ASSI:500 = 1
+										CSTR:ASSI:5 = %CALLNAME:MASTER%
+									ENDIF
 									TALENT:ASSI:0 = 0
 									EXP:ASSI:0 += 1
 								ELSE
@@ -13254,7 +13262,7 @@ ENDIF
 
 
 ;-------------------------------------------------
-;조교후 자위 CFLAG261 
+;조교후 자위 CFLAG261 ;추후 수정 필요. T
 ;-------------------------------------------------
 IF TFLAG:200 == 151
 	;넣은 채로  위로부터 두 구멍, 애널, 바이브
@@ -13365,7 +13373,7 @@ IF TFLAG:200 == 151
 			PRINTFORMW 「하아……하아………」
 			PRINTFORMW 플랑은 임신한 배를 끌어 안으면서도 %조사처리(CALLNAME:MASTER,"를")% 생각하면서 자위에 빠지고 있다……
 		ENDIF
-		CFLAG:5261 = 5
+		CFLAG:5261 = 4
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5261 < 3 || FLAG:11 == 2)
 			IF RAND:3 == 0
@@ -13381,7 +13389,7 @@ IF TFLAG:200 == 151
 				PRINTFORMW 플랑은 눈을 감고서 『%CALLNAME:MASTER%』의 애무를 계속하고 있다
 				PRINTFORMW 「%K11CO()% 그렇게 빠르게 문지르면…응웃…! 꾸욱 해버려어어!」
 			ENDIF
-		CFLAG:5261 = 4
+		CFLAG:5261 = 3
 	;자위중독Lv2이상
 	ELSEIF ABL:30 >= 2 && (CFLAG:5261 < 2 || FLAG:11 == 2)
 		IF RAND:2 == 0
@@ -13424,7 +13432,7 @@ IF TFLAG:200 == 151
 ENDIF
 
 ;-------------------------------------------------
-;조교후  아나니─ CFLAG261
+;조교후  아나니─ CFLAG261 ;추후 수정 필요. T
 ;-------------------------------------------------
 IF TFLAG:200 == 152
 	;넣은 채로  위로부터 두 구멍, 애널, 바이브
@@ -13517,7 +13525,7 @@ IF TFLAG:200 == 152
 			PRINTFORMW 「하아……하아………」
 			PRINTFORMW 플랑은 임신한 배를 끌어 안으면서도 %조사처리(CALLNAME:MASTER,"를")% 생각하면서 자위에 빠지고 있다……
 		ENDIF
-		CFLAG:5261 = 5
+		CFLAG:5261 = 4
 	;연모
 	ELSEIF TALENT:150 == 1 && (CFLAG:5261 < 3 || FLAG:11 == 2)
 		IF RAND:3 == 0
@@ -13533,7 +13541,7 @@ IF TFLAG:200 == 152
 			PRINTFORMW 플랑은 눈을 감고서 『%CALLNAME:MASTER%』의 애무를 계속하고 있다
 			PRINTFORMW 「%K11CO()% 플랑의 엉덩이 츄푸츄푸 해버리면, 응웃…! 안 된다구우!」
 		ENDIF
-		CFLAG:5261 = 4
+		CFLAG:5261 = 3
 	;자위중독Lv2이상
 	ELSEIF ABL:30 >= 2 && (CFLAG:5261 < 2 || FLAG:11 == 2)
 		IF RAND:2 == 0
@@ -14173,14 +14181,14 @@ IF CFLAG:5835 == 0
 	CFLAG:5835 = 1
 ELSE
 	PRINTFORMW 「요리 하면 되는 거야?」
-	IF (K == 2 || K == 14 || (K == 0 && ABL:70 >= 4)) && TALENT:150 == 1
+	IF (TFLAG:99 == 2 || TFLAG:99 == 14 || (TFLAG:99 == 0 && ABL:70 >= 4)) && TALENT:150 == 1
 		PRINTFORMW 「우응, %조사처리(K11CO(),"를")% 위해서 힘낼테니깟, 만들어 지면 함께 먹도록 하잣♪」
 		PRINTFORMW 「――그리고, 좋다면 그 뒤……」
 		PRINTFORMW 「엣찌하고 싶다……라면서♪」
 		PRINTFORMW 「……안 돼?」
 		SIF TALENT:170 == 1
 		PRINTFORMW 이미 그것을 상상하고 있는 것인가, 플랑은 뺨을 물들여 머뭇머뭇 신체를 흔들고 있다
-	ELSEIF (ITEM:61 > 0 && TALENT:170) && ((K == 8 || K == 9) || (K == 0 && ABL:70 >= 4))
+	ELSEIF (ITEM:61 > 0 && TALENT:170) && ((TFLAG:99 == 8 || TFLAG:99 == 9) || (TFLAG:99 == 0 && ABL:70 >= 4))
 		PRINTFORMW 「아, 그렇지. 응…좋앗 %K11CO()%, 다 만들면 함께 먹자앗♪」
 		PRINTFORMW 「에헤헤…좋은거 생각해 버렸다아─♪」
 		PRINTFORMW 플랑은 어딘가 신명난 모습으로 부엌으로 사라져 갔다
@@ -14297,31 +14305,31 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 401
 	;삽입실패 연모で처녀の時, 기승위 しようとして실패します
-	IF R == 1
+	IF GET_NIGHT_KOJO(0) == 1
 		PRINTFORMW 「……아, 나 지금, 무얼 하려고 하고 있었더라」
 		PRINTFORMW 「뭔가 무서워어 %K11CO()%……」
 	;역 레이프, 기승위로 무리하게 깨운다.  연모もしくは음란, 비처녀, 엣찌に積極的なキャラのみ
-	ELSEIF R == 2
+	ELSEIF GET_NIGHT_KOJO(0) == 2
 		PRINTFORMW 「아, %K11CO()%… 자지 참을 수 없었던 거야아……」
 		PRINTFORMW 「있지잇, 찔러줘엇, 플랑의 보지, %K11CO()%의 자지로 잔뜩 해줘엇♪」
 	;펠라치오 연모もしくは음란, 消極的なキャラなら펠라치오だけします
-	ELSEIF R == 3
+	ELSEIF GET_NIGHT_KOJO(0) == 3
 		PRINTFORMW 「아하, %K11CO()%의 자지 작은 채다아♪ 하믓」
 		PRINTFORMW 「츄, 쥬르, 응, 쯔푸……구, 츄포, 츄포」
 		PRINTFORMW 「응, 응굿, 응웃!? ………꿀, 꿀꺽♪」
 	;眠っている主人で자위, 연모음란無し, または主人にモノが付いていないときは강제的にこちらに
 	;Fが90이상で堂々とやり, それ이하だとこっそりやります
-	ELSEIF R == 4
+	ELSEIF GET_NIGHT_KOJO(0) == 4
 ;		消極的
-		IF 90 > F
+		IF 90 > GET_AGG(TARGET)
 			PRINTFORMW 「하, 아……응……손, 플랑의 손보다 크다아……」
 ;		積極的
-		ELSEIF F >= 90
+		ELSEIF GET_AGG(TARGET) >= 90
 			PRINTFORMW 「%K11CO()%의 손이, 플랑의 팬티의 안에서 보지 만지고 있어어……」
 			PRINTFORMW 「우응우!? 후아, 아……즙이 흘러 나와 버려어, %K11CO()%……」
 		ENDIF
 	;貞操帯が付いている場合の口上. 보통の플레이では滅多に表示されることは無いでしょう
-	ELSEIF R == 5
+	ELSEIF GET_NIGHT_KOJO(0) == 5
 		PRINTFORMW 「%K11CO()%, 일어나, 지 않은 거지……이거, 나 제대로 달고 있어, %K11CO()%」
 	ENDIF
 ENDIF
@@ -14349,15 +14357,15 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 404
 	;夜식の招待された후, そのまま嫁も식べます
-	IF R == 1
+	IF GET_NIGHT_KOJO(0) == 1
 		PRINTFORMW 「%K11CO()%, 플랑에게 상 주는 거얏?」
 		PRINTFORMW 「우응, 잔뜩, 잔뜩 상 주세욧!♪」
 	;통상 신부와의 섹스입니다.
-	ELSEIF R == 2
+	ELSEIF GET_NIGHT_KOJO(0) == 2
 		PRINTFORMW 「새색시의 일으은, 남편분이 바람피지 않도록, 잔뜩 엣찌 하는 것인 거야아♪」
 		PRINTFORMW 「%K11CO()%, 플랑 준비 해왔으니까안, 빨리, 빨리 하자앗. 꺄악♪」
 	;엣찌한 しの, プラトニックな時間を嫁と過ごします. 甘甘シチュが可能です
-	ELSEIF R == 3
+	ELSEIF GET_NIGHT_KOJO(0) == 3
 		IF RAND:4 == 0
 			PRINTFORMW 「%K11CO()%, 플랑과 결혼했다는 건, %조사처리(K11CO(),"가")% 작은 아이가 좋아서 인 거야?」
 			PRINTFORMW 「후후……에헤헤」
@@ -14392,21 +14400,21 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 405
 	;極めて消極的의 경우. 主人に捕まって무리하게 されます
-	IF R == 1
+	IF GET_NIGHT_KOJO(0) == 1
 		PRINTFORMW 「싫엇! 그만둬엇!」
 
 		PRINTFORMW 「엣찌한 거엇, 후앗……필요 없는데엣…!」
 	;消極的의 경우
-	ELSEIF R == 2
+	ELSEIF GET_NIGHT_KOJO(0) == 2
 		PRINTFORMW 「저기 있지, 저기……」
 		PRINTFORMW 「……응, 해줘」
 	;積極的의 경우
-	ELSEIF R == 3
+	ELSEIF GET_NIGHT_KOJO(0) == 3
 		PRINTFORMW 「있지이 있지, 엣찌하자아～」
 		PRINTFORMW 「엣찌하지 않으면, 오늘은 푹 잘 수 없을꺼야아♪」
 	;기승위로 자신의 처녀を貫いてしまった口上. 연모など付いた状態で約3％の確率で発生
 	;※書き込むだけ時間の無駄です(ぉ
-	ELSEIF R == 4
+	ELSEIF GET_NIGHT_KOJO(0) == 4
 		PRINTFORMW 「우, 구……아, %K11CO()%……」
 		PRINTFORMW 「지금까지 중에서, 제일, 많이, %조사처리(K11CO(),"를")% 느끼고, 있어……」
 		PRINTFORMW 「나, 드디어 %조사처리(K11CO(),"랑")% 하나가, 되었다아…♪」
@@ -14428,8 +14436,8 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 406
 	;連れてきた상대도연모, 음란付いていた場合の純粋な３Ｐ. シチュは全て口上側に一任
-	IF R == 1
-		IF NO:M == 10
+	IF GET_NIGHT_KOJO(0) == 1
+		IF NO:GET_CHARA_M() == 10
 			IF RAND:2 == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121)
 				PRINTFORML 「아하핫, 이것 봐봐 언니, %K11CO()%의 거 벌써 이렇게 커다랗게 됐어」
 				PRINTFORMW 『우와아… 이렇게 빳빳해선. 너무 기대하고 있다니깐, 호색한 자지』
@@ -14438,8 +14446,8 @@ IF TFLAG:200 == 406
 			ELSE
 				;결국, これがやりたかっただけじゃないのか俺は？
 				IF TALENT:MASTER:120 || TALENT:MASTER:121
-					IF (TALENT:M:0 >= 1 && TALENT:0 == 0) || (TALENT:0 >= 1 && TALENT:M:0 == 0)
-						IF TALENT:M:0 >= 1 && TALENT:0 == 0
+					IF (TALENT:GET_CHARA_M():0 >= 1 && TALENT:0 == 0) || (TALENT:0 >= 1 && TALENT:GET_CHARA_M():0 == 0)
+						IF TALENT:GET_CHARA_M():0 >= 1 && TALENT:0 == 0
 							PRINTFORMW 「응, 쥬, 쥬르, 쮸쥬……후훗, 준비 다 됐다아♪ 언니 봐줘엇」
 							PRINTFORML 아직 처녀인 채로의 언니의 눈 앞에서 여동생은 곤두선 강직을, 미발달된 성기의 한계까지 물어 간다
 							PRINTFORMW 그리고 표본인 것처럼, 음미하게 격렬한 기승위를 시작해 보였다
@@ -14460,8 +14468,8 @@ IF TFLAG:200 == 406
 							PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 솟아 오른 클리토리스를 강하게 빨아 들이면서, 수축하는 성기의 제일 안쪽까지 찔러 올렸다
 							PRINTFORML 「앗, 앗, 후앗앗!!♪ 하, 앗, 하아, 대단히 안, 나오고, 있어어♪」
 							PRINTFORMW 『응, 응구우우우우읏～～～!! 하앗, 하앗……플랑……좋겠다아』
-							PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 대량으로 플랑에게 쏟자 %조사처리(CALLNAME:M,"는")% 거친 숨을 쉬면서 부러운 듯이 그것을 바라봤다
-						ELSEIF TALENT:0 >= 1 && TALENT:M:0 == 0
+							PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 대량으로 플랑에게 쏟자 %조사처리(CALLNAME:GET_CHARA_M(0),"는")% 거친 숨을 쉬면서 부러운 듯이 그것을 바라봤다
+						ELSEIF TALENT:0 >= 1 && TALENT:GET_CHARA_M():0 == 0
 							PRINTFORML 「에, 엣, 플랑의 앞에서, 나만…?」
 							PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 아직도 처녀인 플랑에게 , 섹스를 가르쳐 주자고 레밀리아에게 말했다
 							PRINTFORMW 레밀리아의 , 여동생과 다를게 없는 작은 균열을 익숙하게 해 정상위로 노장(怒張)을 찔러넣어 간다
@@ -14517,27 +14525,27 @@ IF TFLAG:200 == 406
 									PRINTFORML 「시러엉!♪ 언니와 교대로, 응웃! 처음의 자지, 되어 버린닷♪」
 									PRINTFORMW 『아, 아앙, 플랑과 , 같이, 이런, 아앗! 꿈만 같아앗♪』
 									TALENT:0 = 0
-									TALENT:M:0 = 0
+									TALENT:GET_CHARA_M():0 = 0
 									EXP:0 += 1
-									EXP:M:0 += 1
+									EXP:GET_CHARA_M():0 += 1
 								ELSEIF RESULT == 1
 									PRINTL 　
 									PRINTFORML 두 명의 의견을 무시하고, %조사처리(CALLNAME:MASTER,"는")% 강하게 허리를 계속 흔든다
 									PRINTFORML 「후아아! 정마알, %K11CO()% 얼버무리지 말아줘엇, 꺄웃♪」
 									PRINTFORMW 『아앙! 정말이지, 의지가 없다니까앗, 응굿♪』
-									PRINTFORMW 플랑과 %조사처리(CALLNAME:M,"는")% 불만인 것 같지만, 이윽고 달콤한 소리를 겹치기 시작했다……
+									PRINTFORMW 플랑과 %조사처리(CALLNAME:GET_CHARA_M(),"는")% 불만인 것 같지만, 이윽고 달콤한 소리를 겹치기 시작했다……
 								ELSE
 									GOTO INPUT_LOOP_19
 								ENDIF
 							ELSE
-								PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 물이 솓아 오르는 육창(肉槍)에 교대로 플랑과 %CALLNAME:M%의 비소를 즐겼다……
+								PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 물이 솓아 오르는 육창(肉槍)에 교대로 플랑과 %CALLNAME:GET_CHARA_M()%의 비소를 즐겼다……
 								PRINTFORML 「아, 아앗! 언니잇! 나, %K11CO()%에게 잔뜩 엣찌 당하고 있어엇!♪」
 								PRINTFORMW 『플랑, 나도옷! 잔뜩 , 해줘엇…꺄우웃!♪』
 							ENDIF
 						ELSE
 							PRINTFORML 「후아, 아뭇, 쥿, 츗, 쥬, 할짝, 츗, 쯔푸 , 응」
 							PRINTFORMW 『하믓, 응무, 핫, 하앗, 츗, 쪽, 쥿쥬, 쿠챠』
-							PRINTFORMW 플랑과 %CALLNAME:M%는 열심인 펠라로 %CALLNAME:MASTER%의 정액을 몇버이나 마셔 갔다……
+							PRINTFORMW 플랑과 %CALLNAME:GET_CHARA_M()%는 열심인 펠라로 %CALLNAME:MASTER%의 정액을 몇버이나 마셔 갔다……
 						ENDIF
 					ENDIF
 				ELSE
@@ -14548,7 +14556,7 @@ IF TFLAG:200 == 406
 		ENDIF
 	;데려온 상대가 연모, 음란이 없을 경우 보여주는 3P가 됩니다
 	ELSE
-		IF NO:M == 10
+		IF NO:GET_CHARA_M() == 10
 			PRINTFORMW 「하아, 아아아앙!♪ %K11CO()%, 좀 더엇!!♪」
 			PRINTFORMW 『읏! ……프, 플랑……? ……어째서, 어째서야……』
 			PRINTFORMW 「후아앗! 간닷, 간다앗! %K11CO()%, 꾸욱 해줘어어엇!♪」
@@ -14562,7 +14570,7 @@ ENDIF
 ;対象は{M}に格納されています. 条件文は上を見てください
 ;-------------------------------------------------
 IF TFLAG:200 == 407
-	IF NO:M == 10
+	IF NO:GET_CHARA_M() == 10
 		PRINTFORMW 「언니……오늘은 언니가 원하게 되어버렸어……괜찮지?」
 		PRINTFORMW 『응. 오늘은 두 명이서 쭈─욱 놀아보자, 플랑……』
 	ENDIF
@@ -14573,22 +14581,22 @@ ENDIF
 ;もしこちら側を埋めるつもりなら, 上のIF～ENDIFの7行はばっさり消してください
 IF TFLAG:200 == 407
 	;襲撃했다側が삽입한다口上. レイプ
-	IF R == 1
-		IF ABL:M:22 >= 2
+	IF GET_NIGHT_KOJO(0) == 1
+		IF ABL:GET_CHARA_M():22 >= 2
 ;			PRINTFORMW 
 		ELSE
 ;			PRINTFORMW 
 		ENDIF
 	;襲撃された側が삽입한다口上. 역 레이프
-	ELSEIF R == 2
-		IF ABL:M:22 >= 2
+	ELSEIF GET_NIGHT_KOJO(0) == 2
+		IF ABL:GET_CHARA_M():22 >= 2
 ;			PRINTFORMW 
 		ELSE
 ;			PRINTFORMW 
 		ENDIF
 	;보통の襲撃레즈플레이
 	ELSE
-		IF ABL:M:22 >= 2
+		IF ABL:GET_CHARA_M():22 >= 2
 ;			PRINTFORMW 
 		ELSE
 ;			PRINTFORMW 
@@ -14604,9 +14612,9 @@ ENDIF
 ;将来的に잔뜩 書き込まれれば楽しくなるんじゃないかなぁ─, と予想
 ;-------------------------------------------------
 IF TFLAG:200 == 408
-	IF N == 1
+	IF TFLAG:99 == 1
 		PRINTFORMW 플랑 「있지이 %K11CO()%, 플랑과 잔뜩 할거지?」
-	ELSEIF N >= 2
+	ELSEIF TFLAG:99 >= 2
 		IF RAND:2 == 0
 			PRINTFORMW 「우후후…… %K11CO()%」
 			PRINTFORMW 「다 같이 잔뜩 기분 좋게 되자아♪」
@@ -14624,7 +14632,7 @@ ENDIF
 ;一応%CALLNAME:G%で相手の名前を参照できますが, 相手は相性の良い奴隷に限らないので使うなら地の文で止めておくと無難です
 ;-------------------------------------------------
 IF TFLAG:200 == 409
-	IF R == 0
+	IF TFLAG:99 == 0
 		;嫉妬자위
 		IF TALENT:150 == 1
 			PRINTFORMW 「있지이 %K11CO()%, 플랑과 놀아줘」

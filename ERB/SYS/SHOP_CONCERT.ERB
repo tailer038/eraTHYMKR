@@ -3048,9 +3048,71 @@ SELECTCASE NO:TARGET
 
 	;이사미
 	CASE 139
-		PRINT 『주정뱅이 블루스』
-		ARG -= 41
-		ARG += RAND:41
+		LOCAL:3 = RAND:2
+		IF LOCAL:3 == 0
+			PRINT 『일본 전국 술고래 음두』
+			ARG -= 23
+			ARG += RAND:86
+		ELSE
+			PRINT 『주정뱅이 블루스』
+			ARG -= 41
+			ARG += RAND:41
+		ENDIF
+		RETURN ARG
+
+	;타츠미
+	CASE 140
+		LOCAL:3 = RAND:2
+		IF LOCAL:3 == 0
+			PRINT 『황혼방면대가』
+			ARG -= 8
+			ARG += RAND:56
+		ELSE
+			PRINT 『군함（초밥적인 의미로）행진곡』
+			ARG -= 13
+			ARG += RAND:91
+		ENDIF
+		RETURN ARG
+
+	;루미
+	CASE 141
+		LOCAL:3 = RAND:3
+		IF LOCAL:3 == 0
+			PRINT 『차재대왕 ～외상값은 갚아라～』
+			ARG -= 32
+			ARG += RAND:256
+		ELSEIF LOCAL:3 == 1
+			PRINT 『엉덩이 걷어차기 01』
+			ARG -= 64
+			ARG += RAND:512
+		ELSE
+			PRINT 『술과 눈물과 남자와 여자와 외상과 M남과 매도와 발길질과 방과 와이셔츠와 나』
+			ARG -= 128
+			ARG += RAND:16
+		ENDIF
+		RETURN ARG
+
+	;텐지
+	CASE 142
+		LOCAL:3 = RAND:2
+		;土曜の夜は俺とお前でＷフィーバー！！　衣玖さんがいないとソロフィーバー！
+		IF DAY:7 >= 7 && TIME == 1 && ASSI >= 0 && NO:ASSI == 51
+			PRINT 『새러데이 나이트 더블 피버！！』
+			ARG -= 111
+			ARG += RAND:1111
+		ELSEIF DAY:7 >= 7 && TIME == 1
+			PRINT 『새러데이 나이트 피버！』
+			ARG -= 77
+			ARG += RAND:777
+		ELSEIF LOCAL:3 == 0
+			PRINT 『자이브 토킹』
+			ARG -= 102
+			ARG += RAND:801 / 4
+		ELSE
+			PRINT 『스테잉 얼라이브』
+			ARG -= 102
+			ARG += RAND:801 / 10
+		ENDIF
 		RETURN ARG
 
 	;사츠키 린

@@ -13,6 +13,7 @@
 ;逆口上における（主人の）人格の呼び出しなど
 ;--------------------------------------------------
 @JINKAKU_REVERSE
+[SKIPSTART]
 IF CFLAG:44 == 0
 	CALL DEFINE_JINKAKU_REVERSE
 	CFLAG:44 = RESULT
@@ -24,10 +25,22 @@ ELSE
 	STR:404 = %CSTR:20%
 	TFLAG:196 = CFLAG:44
 ENDIF
+[SKIPEND]
+
+SIF CFLAG:44 == 0
+	CALL DEFINE_JINKAKU_REVERSE, TARGET
+
+STR:400 = %CSTR:16%
+STR:401 = %CSTR:17%
+STR:402 = %CSTR:18%
+STR:403 = %CSTR:19%
+STR:404 = %CSTR:20%
+TFLAG:196 = CFLAG:44
 
 ;--------------------------------------------------
 ;（主人の）人格の決定
 ;--------------------------------------------------
+[SKIPSTART]
 @DEFINE_JINKAKU_REVERSE
 ;一人称(STR:400)を決定
 ;性転換でオトコになった存在の場合元の性別の人格を見る, あと元々オトコの場合は性転換してもオトコ扱い
@@ -213,6 +226,7 @@ CSTR:19 = %STR:403%
 CSTR:20 = %STR:404%
 
 RETURN TFLAG:196
+[SKIPEND]
 
 ;=============================================================================
 ;汎用逆口上ジェネレ―タ―調教コマンド初回判定管理処理
