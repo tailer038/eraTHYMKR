@@ -1215,21 +1215,21 @@ ELSEIF SELECTCOM == 230
 		ENDIF
 ELSEIF GROUPMATCH (SELECTCOM, 54, 303, 304, 601, 602, 604, 610)
 	PRINTFORMW 「으읏……콜록…쿨럭…！」
-ENDIF
 
 ;-------------------------------------------------
 ;胸に射精
 ;-------------------------------------------------
-@K243_MESSAGE_EJAC_PLAYER_16
-;연모
-IF TALENT:연모
-	PRINTFORMW 「………」
-	PRINTFORMW 「잔뜩 나왔어…기분 좋았어?」
-;その他
+;@K243_MESSAGE_EJAC_PLAYER_16
 ELSE
-	PRINTFORMW 「…가슴에…」
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 「………」
+		PRINTFORMW 「잔뜩 나왔어…기분 좋았어?」
+	;その他
+	ELSE
+		PRINTFORMW 「…가슴에…」
+	ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;腹に射精
 ;-------------------------------------------------
