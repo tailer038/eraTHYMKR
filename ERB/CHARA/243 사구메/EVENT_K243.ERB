@@ -30,57 +30,57 @@ RETURN 1
 ;========================================================
 @SET_CHARA_KOJO_EXTRA_K243
 IF CFLAG:7001 == 0
-	PRINTL そういやサグメさんって처녀？
-	PRINTL [0] 当然（素質：처녀を獲得）
-	PRINTL [1] 意外とエッチ（変化なし）
+	PRINTL 그러고보니 사구메씨는 처녀？
+	PRINTL [0] 당연 (소질 : 처녀를 획득)
+	PRINTL [1] 의외로 엣찌 (변화 없음)
 	$INPUT_LOOP0
 	INPUT
 	IF RESULT == 0
-		PRINTFORMW ―素質、能力を変更します―
+		PRINTFORMW ―소질, 능력을 변경합니다―
 		TALENT:TARGET:처녀 = 1
 		EXP:TARGET:자위경험 = 0
 		EXP:TARGET:키스경험 = 0
 		ABL:TARGET:레즈끼 = 0
 		EXP:TARGET:레즈경험 = 0
 	ELSEIF RESULT == 1
-		PRINTFORMW ―通常モードで調教を開始します―
+		PRINTFORMW ―통상모드로 조교를 개시합니다―
 	ELSE
 		GOTO INPUT_LOOP0
 	ENDIF
 
 	PRINTL 
-	PRINTL サグメさんのおっぱいの大きさは？
-	PRINTL [0] 乳神サグメ（거유）
-	PRINTL [1] 普通乳（デフォルト）
-	PRINTL [2] 貧乳（貧乳）
+	PRINTL 사구메씨의 가슴 크기는?
+	PRINTL [0] 슴신 사구메（거유）
+	PRINTL [1] 보통가슴（디폴트）
+	PRINTL [2] 빈유（빈유）
 	$INPUT_LOOP1
 	INPUT
 	IF RESULT == 0
-		PRINTFORMW ―素質、能力を変更します―
+		PRINTFORMW ―소질, 능력을 변경합니다―
 		TALENT:TARGET:거유 = 1
 	ELSEIF RESULT == 1
-		PRINTFORMW ―通常モードで調教を開始します―
+		PRINTFORMW ―통상모드로 조교를 개시합니다―
 	ELSEIF RESULT == 2
-		PRINTFORMW ―素質、能力を変更します―
+		PRINTFORMW ―소질, 능력을 변경합니다―
 		TALENT:TARGET:빈유 = 1
 	ELSE
 		GOTO INPUT_LOOP1
 	ENDIF
 
 	PRINTL 
-	PRINTL ところでサグメさんの音感は？
-	PRINTL [0] ある（音感を獲得）
-	PRINTL [1] ない（素質の変動は起こりません）
-	PRINTL [2] 音痴（音痴獲得）
+	PRINTL 그런데 사구메씨의 음감은?
+	PRINTL [0] 있다（음감을 획득）
+	PRINTL [1] 없다（소질의 변화는 일어나지 않습니다）
+	PRINTL [2] 음치（음치획득）
 	$INPUT_LOOP2
 	INPUT
 	IF RESULT == 0
-		PRINTFORMW ―素質、能力を変更します―
+		PRINTFORMW ―소질, 능력을 변경합니다―
 		TALENT:TARGET:음감 = 1
 	ELSEIF RESULT == 1
-		PRINTFORMW ―通常モードで調教を開始します―
+		PRINTFORMW ―통상모드로 조교를 개시합니다―
 	ELSEIF RESULT == 2
-		PRINTFORMW ―素質、能力を変更します―
+		PRINTFORMW ―소질, 능력을 변경합니다―
 		TALENT:TARGET:음치 = 1
 	ELSE
 		GOTO INPUT_LOOP2
@@ -127,15 +127,15 @@ IF CFLAG:5201 == 0
 	PRINTFORMW 「…」
 	PRINTFORMW 「……」
 	PRINTFORMW 「………」
-	PRINTFORMW （何故私は拘束されているのだろうか…）
-	PRINTFORMW 「…そこの貴方、これは一体どういうことなのですか？」
+	PRINTFORMW （왜 나는 구속되어 있는걸까…）
+	PRINTFORMW 「…거기 당신, 이건 대체 어찌 된 일입니까?」
 	PRINTFORMW 「…」
 	PRINTFORMW 「……！？！？！？」
-	PRINTFORMW この場と自身の周りでは能力が使えないこと、奴隷商人から買ってきたことをサグメに伝えた
-	PRINTFORMW 「そ、そうですか…大枚叩いて私を買い付けてきて慰み者にすると」
-	PRINTFORMW 「そこまで言ってない？…わかるものですよそういうの」
-	PRINTFORMW 「ともかく下賎な地上人の慰み者に成り下がるつもりはありませんよ」
-	PRINTFORMW 「精々粋がる事ですね」
+	PRINTFORMW 이 장소와 자신의 주위에서는 능력을 사용할수 없다는것, 사구메가 노예상인에게서 팔려왔다는것을 전했다
+	PRINTFORMW 「그, 그런가요…거금으로 저를 사들여 노리개로 삼겠다는건가요」
+	PRINTFORMW 「거기까진 말하지 않았다고요?…그런건 알고 있어요」
+	PRINTFORMW 「어쨌든 미천한 지상인의 노리개 따위로 전락할 생각은 없습니다」
+	PRINTFORMW 「헛수고 열심히 하시길」
 	CFLAG:5201 = 1
 	RETURN 1
 ENDIF
@@ -146,39 +146,39 @@ ENDIF
 @K243_MESSAGE_START_2
 ;상애
 IF CFLAG:5201 < 4 && TALENT:상애
-	PRINTFORMW 「あ、おはようございます%CALLNAME:MASTER%」
-	PRINTFORMW 「あら？どうしたのかしら、随分と喋るんだなって表情で」
-	PRINTFORMW 「別に話すことそのものは嫌いじゃないですし」
-	PRINTFORMW 「能力が発動してしまわないかって？」
-	PRINTFORMW 「…意外と心配症ね」
+	PRINTFORMW 「아, 안녕하세요 %CALLNAME:MASTER%」
+	PRINTFORMW 「어라? 무슨일인가요, "얘가 왠 말을 다 하고있지."라는듯한 그 표정은?」
+	PRINTFORMW 「별로 말하는것 자체는 싫어하지 않아요」
+	PRINTFORMW 「능력이 발동해버릴것 같지 않냐구요?」
+	PRINTFORMW 「…의외로 걱정쟁이네요」
 	PRINTFORMW 「………」
-	PRINTFORMW 「…貴方となら何があっても構わないもの、それだけよ」
+	PRINTFORMW 「…당신과 함께라면 무슨일이 있어도 괜찮다, 그뿐이에요」
 	CFLAG:5201 = 4
 	RETURN 1
 ;연모
 ELSEIF CFLAG:5201 < 3 && TALENT:연모
 	PRINTFORMW 「…」
 	PRINTFORMW 「……」
-	PRINTFORMW サグメはぼうっとこちらを見ながら何か考えている
+	PRINTFORMW 사구메는 멍하니 이쪽을 보며 뭔가를 생각하고있다
 	PRINTFORMW 「…」
 	PRINTFORMW 「……」
 	PRINTFORMW 「………」
-	PRINTFORMW 何も言わずにサグメは抱きついてきた
+	PRINTFORMW 아무 말 없이 사구메는 안겨왔다
 	PRINTFORMW 「…」
-	PRINTFORMW 「好きです…」
-	PRINTFORMW 「…あ、貴方のことが…忘れられなくて…」
-	PRINTFORMW 「%CALLNAME:MASTER%…私を…見て…」
-	PRINTFORMW 「貴方となら…どこまでも堕ちてもいい、貴方となら誰に弓を引くことになってもかまわない」
-	PRINTFORMW 「%CALLNAME:MASTER%…私は貴方のことが好きなの」
-	PRINTFORMW 「だから…どうか私と―――」
-	PRINTFORMW 「―――ずっと一緒に―――」
+	PRINTFORMW 「좋아해요…」
+	PRINTFORMW 「…다, 당신에 대한걸…잊고싶지 않아서…」
+	PRINTFORMW 「%CALLNAME:MASTER%…저를…봐줘요…」
+	PRINTFORMW 「당신과 함께라면…어떤 나락에 빠져도 괜찮아, 당신과 함께라면 다른 누구가 내게 등을 돌려도 상관없어」
+	PRINTFORMW 「%CALLNAME:MASTER%…저는 당신을 좋아합니다」
+	PRINTFORMW 「그러니…부디 저와―――」
+	PRINTFORMW 「―――계속 함께―――」
 	CFLAG:5201 = 3
 	RETURN 1
 ;굴복각인Lv3
 ELSEIF CFLAG:5201 < 2 && MARK:굴복각인 == 3
-	PRINTFORMW 「ん…ああ…」
-	PRINTFORMW 「もう…好きにすればいいじゃない…」
-	PRINTFORMW 「…変態…」
+	PRINTFORMW 「응…아아…」
+	PRINTFORMW 「이제…좋을대로 하면 되잖아…」
+	PRINTFORMW 「…변태…」
 	CFLAG:5201 = 2
 	RETURN 1
 
@@ -196,44 +196,44 @@ ELSEIF NO:ASSI == 242
 	IF CFLAG:5202 == 0
 		;2人に연모
 		IF TALENT:연모 && TALENT:ASSI:연모
-			PRINTFORMW 『おや、こんなところでも会いましたか』
-			PRINTFORMW 「貴方も…こんなところに居たのですね」
-			PRINTFORMW 『ここでは色々なモノを視ることが出来ますからね』
-			PRINTFORMW 『夢の中では視れないモノも色々と』
-			PRINTFORMW 「…そういう趣味を持っていたのね、貴方」
-			PRINTFORMW 「まぁ私も人のことは言えないのだけれど」
-			PRINTFORMW 『月人でも欲求貯まる時ってあるのですね、楽しい事になりそうね』
-			PRINTFORMW 「…そういう所で波長が合っているのかしらね」
+			PRINTFORMW 『어머, 이런곳에서도 만나게 되나요』
+			PRINTFORMW 「당신도…이런곳에 있었군요」
+			PRINTFORMW 『여기에선 여러가지를 볼 수 있으니까요』
+			PRINTFORMW 『꿈속에선 볼수 없는 것도 여러가지로』
+			PRINTFORMW 「…당신, 그런 취미를 가지고 있었군요」
+			PRINTFORMW 「뭐, 저도 남 말할 처지는 아니지만」
+			PRINTFORMW 『월인이라도 욕구가 쌓일때가 있군요, 즐거운 일이 되겠네요』
+			PRINTFORMW 「…그런곳은 서로 통하는것같네요」
 		;サグメのみ연모
 		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
-			PRINTFORMW 「あら？夢の支配者も桃源郷への욕망には堪え切れなかったの？」
-			PRINTFORMW 『…言葉も出ませんね』
-			PRINTFORMW 『月人ともあろうものがこのような所で快楽に溺れるだなんて』
-			PRINTFORMW 『まぁあまり期待はしていませんでしたが』
-			PRINTFORMW 「…どの道快楽を忘れ享楽に生きるなどできる者は限られている」
-			PRINTFORMW 「日々の安寧より一時の快楽ですよ」
-			PRINTFORMW 「それともそういうのは好みじゃないの？」
-			PRINTFORMW 『ああ…これが夢だったならどれだけいいことか…』
+			PRINTFORMW 「어머? 꿈의 지배자도 도원향을 향한 욕망은 참을수 없었던거야?」
+			PRINTFORMW 『…말도 나오지 않네요』
+			PRINTFORMW 『월인이나 되어서 이런곳에서 쾌락에 빠져버리다니』
+			PRINTFORMW 『뭐, 그다지 기대는 하지 않았지만요』
+			PRINTFORMW 「…어차피 쾌락을 잊고 향락에 살수있는 사람은 소수일 뿐이지요」
+			PRINTFORMW 「매일의 안녕보다 한순간의 쾌락이에요」
+			PRINTFORMW 「아니면 그런건 취향이 아닌건가요?」
+			PRINTFORMW 『아아…이것이 꿈이었다면 얼마나 좋을까…』
 		;ドレミーのみ연모
 		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
-			PRINTFORMW 『おや？このような所で会うとは奇遇ですね』
+			PRINTFORMW 『어머? 이런곳에서 만나다니 기우네요』
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは呆然とした様子で弱々しく知り合いに話しかける
-			PRINTFORMW 「…何故…貴方…」
-			PRINTFORMW 『その節はどうも、この度もよろしく』
-			PRINTFORMW 『終わらない夢、結局生きている限りは続くのです』
-			PRINTFORMW 『別にここで悪夢終わるというわけはないとなれば』
-			PRINTFORMW 『快楽に応じ享楽に耽り淫夢に堕ちるのもまた一つの手です』
+			PRINTFORMW 사구메는  망연자실한 모습으로 말을 건다
+			PRINTFORMW 「…어째서…당신…」
+			PRINTFORMW 『예전엔 정말 신세졌네요, 앞으로도 잘 부닥해요』
+			PRINTFORMW 『끝나지 않는 꿈, 결국 살아있는한 계속되는거에요』
+			PRINTFORMW 『별로 여기에서 악몽이 끝나는것이 아니라면』
+			PRINTFORMW 『쾌락에 따라 향락에 잠겨 저속해지는것도 하나의 방법입니다』
 			PRINTFORMW 「………」
 		;その他
 		ELSE
 			PRINTFORMW 「…」
 			PRINTFORMW 「………」
-			PRINTFORMW 『まぁ、淫夢かと思えば悪夢ですか』
-			PRINTFORMW 「…私が…」
-			PRINTFORMW 『別に貴方が悪いというわけでは…』
-			PRINTFORMW 『どうにかしたい所ではあるけど…』
-			PRINTFORMW （何としてでも…ここから…）
+			PRINTFORMW 『이런, 음몽인가 했더니 악몽인가요』
+			PRINTFORMW 「…제가…」
+			PRINTFORMW 『별로 당신이 나쁘다는건…』
+			PRINTFORMW 『이 상황을 어떻게든하고싶은건 맞지만…』
+			PRINTFORMW （어떻게 해서든…여기에서…）
 		ENDIF
 		CFLAG:5202 = 1
 		RETURN 1
@@ -242,47 +242,47 @@ ELSEIF NO:ASSI == 242
 		;2人に연모
 		IF TALENT:연모 && TALENT:ASSI:연모
 			IF RAND:3 == 0
-				PRINTFORMW 『あら、もう我慢出来ないという風ね』
-				PRINTFORMW 「………二人同時では吸い尽くされてしまいますよ？」
+				PRINTFORMW 『어라, 벌써 참을수 없어 보이는것 같네』
+				PRINTFORMW 「………두사람 동시라면 전부 먹혀버릴거에요?」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「………淫魔と一緒、というのも妬けるわね」
-				PRINTFORMW 『寵愛を独り占めというのはあまり良くないものね』
+				PRINTFORMW 「………음마와 함께, 라는것도 샘이나네요」
+				PRINTFORMW 『총애를 독차지하는건 별로 좋지 않아요』
 			ELSE
-				PRINTFORMW 「…流石に知り合いに見られながらというのは…」
-				PRINTFORMW 『そういう恥じらいが男を奮い立たせるのかしらね』
+				PRINTFORMW 「…아무리 그래도 아는사람한테 보여지는것은…」
+				PRINTFORMW 『그런 수줌음이 남자를 달아오르게 하는걸까나』
 			ENDIF
 		;サグメのみ연모
 		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
 			IF RAND:3 == 0
 				PRINTFORMW 「………」
-				PRINTFORMW 『…黙っていても…その目は分かりやすいわね』
+				PRINTFORMW 『…입을 다물고 있어도…그 눈은 알기 쉽네』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「夢の支配者が淫夢には慣れていない、というのは面白いわね」
+				PRINTFORMW 「꿈의 지배자가 음몽엔 익숙하지 않다는건 재미있네」
 				PRINTFORMW 『………』
 			ELSE
-				PRINTFORMW 『どうしてこうなってしまったのでしょう…』
-				PRINTFORMW 「享楽に耽ることは悪いことでもないでしょう…」
+				PRINTFORMW 『어째서 이렇게 되어버린 걸까요…』
+				PRINTFORMW 「향락에 빠지는 것이 나쁜일은 아니겠지요…」
 			ENDIF
 		;永琳のみ연모
 		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
 			IF RAND:3 == 0
-				PRINTFORMW 「……どうにかならないの…」
-				PRINTFORMW 『どうもこうも淫夢のまっただ中で何をするかといえば』
-				PRINTFORMW 『常識的な判断で非常識を生きるべきなのよ』
+				PRINTFORMW 「……어떻게든 안되는거야…」
+				PRINTFORMW 『이래저래 음몽속에서 무얼 하나 했더니』
+				PRINTFORMW 『상식적인 판단으로 비상식을 살아야 한다는 거야』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 『もう少し素直な方が可愛らしいわよ』
+				PRINTFORMW 『좀더 솔직한 편이 사랑스러울거야』
 				PRINTFORMW 「………」
 			ELSE
-				PRINTFORMW 『状況に対応できないならできないなりに行動するべきなのよ』
+				PRINTFORMW 『상황에 대응할수 없다면 할수 없는대로 행동하면 되는거야』
 				PRINTFORMW 「………」
 			ENDIF
 		;その他
 		ELSE
 			IF RAND:2 == 0
 				PRINTFORMW 「………」
-				PRINTFORMW 『私だけなら…まだよかったのに…』
+				PRINTFORMW 『나뿐만이라면…아직 괜찮았을텐데…』
 			ELSE
-				PRINTFORMW 『あまり好きではないわね、この状況』
+				PRINTFORMW 『이런상황, 별로 좋아하지 않아』
 				PRINTFORMW 「………」
 			ENDIF
 		ENDIF
@@ -295,49 +295,49 @@ ELSEIF NO:ASSI == 29
 	IF CFLAG:5203 == 0
 		;2人に연모
 		IF TALENT:연모 && TALENT:ASSI:연모
-			PRINTFORMW 『あら、月人がまた一人』
-			PRINTFORMW 「八意様…こちらにいらしたのですね…」
-			PRINTFORMW 『そんなに固くならなくてもいいわよ』
-			PRINTFORMW 『どの道こうしていられる幸せというものが長く続くかは疑問だけど』
-			PRINTFORMW 「そうは言いましても私としてはこのままで構いませんよ」
-			PRINTFORMW 「打破できない状況で挙句よりかはご主人様に仕えているほうが幸せですから」
-			PRINTFORMW 『殊勝な態度ね、虐め甲斐がないわ』
-			PRINTFORMW 「そ、そんなこと言われましても…困ります…」
+			PRINTFORMW 『어머, 월인이 또 한명』
+			PRINTFORMW 「야고코로님…이런곳에 계셨군요…」
+			PRINTFORMW 『그렇게 굳어있지 않아도 괜찮아』
+			PRINTFORMW 『어찌됐든 이렇게 있을수 있다는 행복이 계속될지는 의문이지만』
+			PRINTFORMW 「그렇게 말씀하셔도 저로서는 이대로도 상관없어요」
+			PRINTFORMW 「타파할수 없는 상황에서 끝나는것 보다는 주인님께 봉사하는편이 기쁨이니까요」
+			PRINTFORMW 『기특한 태도네, 괴롭힐 보람이 없잖아』
+			PRINTFORMW 「그, 그런말씀 하셔도…곤란합니다…」
 		;サグメのみ연모
 		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
-			PRINTFORMW 「あら？八意様、こちらにいらしたのですか？」
-			PRINTFORMW 『生と死と穢を忌み嫌う月人がこのような所で何をしているのか』
-			PRINTFORMW 『言わなくてもいいけれど、あまり面白くはないわね』
-			PRINTFORMW 『…ここから出る策でもあるといいのだけれど』
-			PRINTFORMW 「あはっ…何を言っておられるのですか八意様」
-			PRINTFORMW 「ご主人様から離れるわけないじゃないですか」
-			PRINTFORMW 「何故、ここから出る必要でもあるのですか？」
-			PRINTFORMW 『そうね…ごめんなさい、私あなたのこと嫌いではないわ』
+			PRINTFORMW 「어머? 야고코로님, 이런곳에 계셨습니까?」
+			PRINTFORMW 『생과 사와 더러움을 혐오하는 월인이 이런곳에서 뭐하고있는거야』
+			PRINTFORMW 『말하지 않아도 괜찮지만, 그다지 재미는 없네』
+			PRINTFORMW 『…여기서 나가는 책이라도 있다면 좋겠지만』
+			PRINTFORMW 「아핫…무슨말씀을 하시는 건가요 야고코로님」
+			PRINTFORMW 「주인님을 떠날리가 없잖아요」
+			PRINTFORMW 「여기에서 나갈 필요라도 있으신가요?」
+			PRINTFORMW 『그렇네…미안해, 난 당신이 싫지는 않아』
 			PRINTFORMW 「？」
-			PRINTFORMW 永琳は引きつった表情を浮かべながらサグメに話しかけている
+			PRINTFORMW 에이린은 경직된 표정으로 사구메에게 말을 걸고있다
 		;永琳のみ연모
 		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
-			PRINTFORMW 『ああ、今日の患者さん？』
+			PRINTFORMW 『아, 오늘의 환자?』
 			PRINTFORMW 「………！？」
-			PRINTFORMW サグメは絶望的な表情を浮かべ、ぺたんと座り込んでしまった
-			PRINTFORMW 「…何故…なんで…八意様…が…」
-			PRINTFORMW 『ああ、私が何故ここにいるか？』
-			PRINTFORMW 『構わないでしょう？千年の恋が冷めないものだからここにいても』
-			PRINTFORMW 『あなたもしばらくすればわかるわよ』
-			PRINTFORMW 『そうは言っても慣れないときついかもしれないけど、何かあれば私が治してあげるわ』
+			PRINTFORMW 사구메는 절망적인 표정을 지으며 털썩 주저앉아버렸다
+			PRINTFORMW 「…어째서…왜…야고코로님…이…」
+			PRINTFORMW 『아아, 내가 왜 여기에 있냐고?』
+			PRINTFORMW 『상관없잖아? 여기에 있어도 천년의 사랑은 식지 않으니까』
+			PRINTFORMW 『당신도 조금 있으면 알게 될거야』
+			PRINTFORMW 『그렇긴 해도 익숙해지지 않으면 힘들지도 모르지만, 무슨일 있으면 내가 고쳐줄게』
 			PRINTFORMW 「………」
-			PRINTFORMW 「………あ………」
-			PRINTFORMW 「ああ…ｸﾞｽｯ……ﾋｸﾞｯ……あああああ…」
-			PRINTFORMW サグメは床に手を付けて座り込みながらすすり泣いている
+			PRINTFORMW 「………아………」
+			PRINTFORMW 「아아…흑……흐윽……아아아아아…」
+			PRINTFORMW 사구메는 바닥에 손을 대고 주저앉아 흐느끼고있다
 		;その他
 		ELSE
 			PRINTFORMW 「…」
-			PRINTFORMW 「………なんで…？」
-			PRINTFORMW 『これはまた…悪夢を見ているようだわ』
-			PRINTFORMW 「なんで…八意…様…」
-			PRINTFORMW 『ごめんなさいね、今の私にはどうすることもできない』
-			PRINTFORMW 『だけどせめて…』
-			PRINTFORMW 「…私も尽力します…ですからここから―――」
+			PRINTFORMW 「………어째서…？」
+			PRINTFORMW 『이건 또…악몽을 꾸고있는것같네』
+			PRINTFORMW 「어째서…야고코로…님…」
+			PRINTFORMW 『미안해, 지금의 나에겐 어쩔수없어』
+			PRINTFORMW 『하지만 적어도…』
+			PRINTFORMW 「…나도 노력할게…그러니 여기에서―――」
 		ENDIF
 		CFLAG:5203 = 1
 		RETURN 1
@@ -346,48 +346,48 @@ ELSEIF NO:ASSI == 29
 		;2人に연모
 		IF TALENT:연모 && TALENT:ASSI:연모
 			IF RAND:3 == 0
-				PRINTFORMW 『今日も三人で？数寄者ね』
-				PRINTFORMW 「………構わない、ですが…恥ずかしい…」
+				PRINTFORMW 『오늘도 세명이서? 이런거 정말 좋아하네』
+				PRINTFORMW 「………상관없어、하지만…부끄러워…」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「………あまり体を他人に見られたくないのですが」
-				PRINTFORMW 『いいじゃないの、いい体しているんだから、減るもんじゃないし』
+				PRINTFORMW 「………별로 몸을 타인에게 보여주고싶지 않은데요」
+				PRINTFORMW 『괜찮잖아, 좋은 몸 하고있으니까, 닳아 없어지는것도 아니고』
 			ELSE
-				PRINTFORMW 「…流石に八意様にこうジロジロと見られるのは…」
-				PRINTFORMW 『そういう恥じらいのある所、素敵よ』
+				PRINTFORMW 「…아무리 그래도 야고코로님께 이렇게 빤히 보여지는것은…」
+				PRINTFORMW 『그런 수줍음이 있다는건 멋지네』
 			ENDIF
 		;サグメのみ연모
 		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
 			IF RAND:3 == 0
-				PRINTFORMW 「八意様もこういうのに早く慣れたほうがいいですよ」
-				PRINTFORMW 『…こんなに喋る子だったかしら…』
+				PRINTFORMW 「야고코로님도 이런것에 빨리 익숙해지는 편이 좋아요」
+				PRINTFORMW 『…이렇게 말이 많던 아이였던가…』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「今日は何をなさいますか？ご主人様？」
-				PRINTFORMW 『…ひどく頭が痛いわ…獏に夢を食べてもらいたいわね…』
+				PRINTFORMW 「오늘은 어떻게 할까요? 주인님?」
+				PRINTFORMW 『…머리가 굉장히 아파…바쿠에게 꿈을 먹혀지고 싶을정도야…』
 			ELSE
-				PRINTFORMW 『せめて起きた時に全てが夢になっていればいいのに…』
-				PRINTFORMW 「生憎と夢の世界が平和だとは限らないのですよ八意様」
+				PRINTFORMW 『적어도 일어났을때 모든게 꿈이었다면 좋을텐데…』
+				PRINTFORMW 「공교롭게도 꿈의 세계가 평화롭지만은 않은거에요 야고코로님」
 			ENDIF
 		;永琳のみ연모
 		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
 			IF RAND:3 == 0
-				PRINTFORMW 「……なんで…こんな…」
-				PRINTFORMW 『セックスは生と死の始まりでしょう？』
-				PRINTFORMW 『もっとも神話の世界だと木の股から生まれてもおかしくないけど』
+				PRINTFORMW 「……어째서…이런…」
+				PRINTFORMW 『섹스는 생사의 시작이잖아?』
+				PRINTFORMW 『무엇보다 신화의 세계라면 나무의 가랑이에서 태어나는것도 이상한일이 아니잖아』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 『自分が愛しているもののために身を捧げることは不自然ではないのよ』
+				PRINTFORMW 『자신이 사랑하는 사람을 위해 몸을 바치는것은 부자연스럽지 않다는거야』
 				PRINTFORMW 「………」
-				PRINTFORMW (この状況のどこに自然なものがあるというのか…！)
+				PRINTFORMW (이 상황의 어디에 자연스러운게 있다는겁니까…！)
 			ELSE
-				PRINTFORMW 『あんなにぐちょぐちょにされてまだ抵抗するの？もったいないなぁ』
-				PRINTFORMW 「もうやだぁ…誰か…助けて…」
+				PRINTFORMW 『그렇게 질척질척하게 되어서도 저항하는거야? 아깝네』
+				PRINTFORMW 「더는 싫어…누군가…도와줘…」
 			ENDIF
 		;その他
 		ELSE
 			IF RAND:2 == 0
 				PRINTFORMW 「………」
-				PRINTFORMW 『貴女までこんなことになるなんてね…』
+				PRINTFORMW 『당신까지 이렇게 되다니…』
 			ELSE
-				PRINTFORMW 『違うのよ…まったく…どうしてこんなことに…』
+				PRINTFORMW 『아니야…정말이지…어째서 이런일이…』
 				PRINTFORMW 「………」
 			ENDIF
 		ENDIF
@@ -406,48 +406,48 @@ ENDIF
 ;상애
 IF TALENT:상애
 	IF RAND:4 == 0
-		PRINTFORMW 「…では、よろしくお願いします」
-		PRINTFORMW 「私はこういう事、慣れてないから…相も変わらず下手だと思うから…」
-		PRINTFORMW 「だから…リードして、下さい…」
+		PRINTFORMW 「…그러면, 잘 부탁드립니다」
+		PRINTFORMW 「저는 이런일이 익숙하지 않으니까… 변함없이 서투르다고 생각하니까…」
+		PRINTFORMW 「그러니… 리드해… 주세요…」
 	ELSEIF RAND:3 == 0
-		PRINTFORMW 「ごきげんよう今日も元気そうね」
-		PRINTFORMW 「…こういうの、うまくいえないけど」
-		PRINTFORMW 「………気持よく…してね…」
+		PRINTFORMW 「안녕하세요, 오늘도 기운이 넘치시네요」
+		PRINTFORMW 「…이런 말, 잘 말할수는 없지만」
+		PRINTFORMW 「………기분좋게…해줘…」
 		PRINTFORMW 「………」
-		PRINTFORMW 「………ダメ？」
+		PRINTFORMW 「………안돼?」
 	ELSEIF RAND:2 == 0
 		PRINTFORMW 「………」
-		PRINTFORMW 「…このまま貴方と永遠に居られるのならどれほど嬉しいことか…」
+		PRINTFORMW 「…이대로 당신과 영원히 지낸다면 얼마나 기쁜 일일지…」
 	ELSE
 		PRINTFORMW 「…」
 		PRINTFORMW 「……」
 		PRINTFORMW 「………」
-		PRINTFORMW 「………優しくしてね？」
+		PRINTFORMW 「………상냥하게 부탁해요」
 	ENDIF
 	RETURN 1
 ;연모2回目以降
 ELSEIF TALENT:연모
 	IF RAND:5 == 0
-		PRINTFORMW 「…おはようございます」
-		PRINTFORMW 「……喋る子の方がお好みですか？」
+		PRINTFORMW 「…안녕하세요」
+		PRINTFORMW 「……말이 많은 쪽이 좋으신가요?」
 	ELSEIF RAND:4 == 0
-		PRINTFORMW 「………あ…」
-		PRINTFORMW 「今日は…何をするの…？」
+		PRINTFORMW 「………아…」
+		PRINTFORMW 「오늘은…어떤걸 하나요…?」
 		PRINTFORMW 「………」
-		PRINTFORMW 「まぁ、好きにして下さい…」
-		PRINTFORMW 「…できるだけ、ご奉仕させていただきますから…」
+		PRINTFORMW 「뭐, 좋을대로 해주세요…」
+		PRINTFORMW 「…가능한 한, 봉사해 드릴테니까…」
 	ELSEIF RAND:3 == 0
 		PRINTFORMW 「～♪～～～♪～～♪～」
 		PRINTFORMW 「…！」
-		PRINTFORMW 「…聞いていたの…？」
-		PRINTFORMW 「…能力の関係で歌などあまり歌えないから」
-		PRINTFORMW 「一杯歌えたらさぞかし気持ちいいのでしょうね」
+		PRINTFORMW 「…듣고있었나요…?」
+		PRINTFORMW 「…능력때문에 노래는 그다지 부르지 않으니까」
+		PRINTFORMW 「잔뜩 노래하면 분명 기분이 좋아지겠지요」
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 「…他の子の所へいっちゃダメよ」
-		PRINTFORMW 「あまり浮気すると私が嫌いになってしまうから…」
+		PRINTFORMW 「…다른 아이에게 가면 안돼요」
+		PRINTFORMW 「바람피고 그러면 내가 싫어질 지도 모르니까…」
 	ELSE
-		PRINTFORMW 「…やはりこういった退廃的な行為は…」
-		PRINTFORMW 「あまり好きじゃないわね…」
+		PRINTFORMW 「…역시 이런 퇴폐적인 행위는…」
+		PRINTFORMW 「별로 좋아하지 않아…」
 	ENDIF
 	RETURN 1
 ;반발각인Lv3
@@ -455,58 +455,58 @@ ELSEIF MARK:반발각인 == 3
 	IF RAND:3 == 0
 		PRINTFORMW 「……」
 		PRINTFORMW 「………」
-		PRINTFORMW サグメこちらをは気丈に睨みつけている
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ELSEIF RAND:2 == 0
-		PRINTFORMW 「…こんな非道を…」
-		PRINTFORMW 「…人の体を好きにして…」
-		PRINTFORMW サグメは珍しく声を上げて怒鳴りつけてくる
-		PRINTFORMW 「…天津神を怒らせたことを後悔するといい…！」
+		PRINTFORMW 「…이런 심한짓을…」
+		PRINTFORMW 「…사람의 몸을 멋대로…」
+		PRINTFORMW 사구메는 드물게도 언성을 높이며 윽박질렀다
+		PRINTFORMW 「…천신을 노하게 한 것을 후회하는게 좋을거야…!」
 	ELSE
-		PRINTFORMW 「来ないで！」
-		PRINTFORMW サグメは声を荒げながら丸くなって体を守ろうとしている
-		PRINTFORMW しかし抵抗むなしく押し倒されてしまった
+		PRINTFORMW 「오지마!」
+		PRINTFORMW 사구메는 목소리를 높이며 둥글게 몸을 지키려 하고있다
+		PRINTFORMW 하지만 저항은 허무하게도 밀어 넘어뜨려졌다
 	ENDIF
 	RETURN 1
 ;굴복각인Lv1
 ELSEIF MARK:굴복각인 == 1
 	IF RAND:2 == 0
 		PRINTFORMW 「………」
-		PRINTFORMW 「…分かったから…もう抵抗しないから…」
-		PRINTFORMW 「お願い…優しくして…」
+		PRINTFORMW 「…알았으니까…더는 저항하지 않을테니까…」
+		PRINTFORMW 「부탁해…부드럽게해줘…」
 	ELSE
 		PRINTFORMW 「…」
-		PRINTFORMW 「…黙っていても私の体を弄ぶのでしょう？」
-		PRINTFORMW 「もう…好きにして…」
+		PRINTFORMW 「…가만히 있어도 내 몸을 가지고 놀거잖아？」
+		PRINTFORMW 「이제…좋을대로 해…」
 	ENDIF
 	RETURN 1
 ;굴복각인Lv2
 ELSEIF MARK:굴복각인 == 2
 	IF RAND:2 == 0
-		PRINTFORMW 「…こういったことをしていて虚しくならないの？」
-		PRINTFORMW 「まぁ…ならないからやっているのでしょうね…」
-		PRINTFORMW 「もう…好きにすればいい…」
-		PRINTFORMW 「だからせめて…優しく…して…」
+		PRINTFORMW 「…이런짓을 하면 허무해지지않아?」
+		PRINTFORMW 「뭐…그렇지 않으니까 계속하는거겠찌…」
+		PRINTFORMW 「이제…좋을대로 해…」
+		PRINTFORMW 「그러니까 적어도…부드럽게…해줘…」
 	ELSE
-		PRINTFORMW （この人は一体何を考えているのだろうか
-		PRINTFORMW 私にこんなことをして……私は…）
+		PRINTFORMW （이사람은 대체 무슨 생각을 하는걸까
+		PRINTFORMW 내게 이런짓을 하고……나느ㅡㄴ…）
 	ENDIF
 	RETURN 1
 ;굴복각인Lv3
 ELSEIF MARK:굴복각인 == 3
 	IF RAND:2 == 0
-		PRINTFORMW 「ああ、貴方ですか…」
-		PRINTFORMW 「さあ、狂宴を始めましょう…？」
+		PRINTFORMW 「아아, 당신입니까…」
+		PRINTFORMW 「자아, 광연을 시작할까요…？」
 	ELSE
-		PRINTFORMW 「おはよう…」
-		PRINTFORMW 「どうするの？さっさと始めないの？」
-		PRINTFORMW 「まぁ…貴方の好きにすればいいわ」
+		PRINTFORMW 「안녕…」
+		PRINTFORMW 「어떻게할거야? 바로 시작할거야?」
+		PRINTFORMW 「뭐…당신 좋을대로 하면 되겠지」
 	ENDIF
 	RETURN 1
 ;その他
 ELSE
 	IF RAND:2 == 0
 		PRINTFORMW 「………」
-		PRINTFORMW 「…頼むから…優しく…」
+		PRINTFORMW 「…부탁이니…부드럽게…」
 	ELSE
 		PRINTFORMW 「………」
 	ENDIF
@@ -546,7 +546,7 @@ TRYCALL K243_MESSAGE_END
 	IF PREVCOM == -1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「もう…終わり…？」
+			PRINTFORMW 「벌써…끝…?」
 		;その他
 		ELSE
 			PRINTFORMW 「………？」
@@ -556,99 +556,99 @@ TRYCALL K243_MESSAGE_END
 		;体力500未満
 		IF BASE:0 < 500
 			IF RAND:2 == 0
-				PRINTFORMW 「ん…流石に…疲れた…」
+				PRINTFORMW 「응…역시…지쳤어…」
 			ELSE
-				PRINTFORMW 「あっ…ん…」
-				PRINTFORMW 「%CALLNAME:MASTER%…今日は終わり…？」
+				PRINTFORMW 「앗…응…」
+				PRINTFORMW 「%CALLNAME:MASTER%… 오늘은 끝…?」
 			ENDIF
 		;体力500以上
 		ELSE
 			IF RAND:3 == 0
-				PRINTFORMW 「もう…終わり…？」
-				PRINTFORMW 「ちゃんと体力つけないとダメよ」
+				PRINTFORMW 「벌써… 끝…?」
+				PRINTFORMW 「제대로 체력을 키우지 않으면 안돼」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「今日はこれでお終い？」
-				PRINTFORMW 「…また…呼んでくださいね…」
-				PRINTFORMW 「他の仕事もお手伝いしますから…」
-				PRINTFORMW 「だから、だからまた―――」
+				PRINTFORMW 「오늘은 이걸로 끝?」
+				PRINTFORMW 「…또…불러주세요…」
+				PRINTFORMW 「다른 일도 도와드릴테니까…」
+				PRINTFORMW 「그러니, 그러니까 또―――」
 			ELSE
-				PRINTFORMW 「今日はこれで終わり？」
-				PRINTFORMW 「私はまだ出来るのだけど…」
+				PRINTFORMW 「오늘은 이걸로 끝?」
+				PRINTFORMW 「나는 아직 괜찮은데…」
 			ENDIF
 		ENDIF
 	;연모
 	ELSEIF TALENT:연모 == 1
 		;体力500未満
 		IF BASE:0 < 500
-			PRINTFORMW 「あっ…終わり？」
-			PRINTFORMW 「そこまで体力に自信はなかったのだけれど…ここまでとはね…」
-			PRINTFORMW 「…できたらだけど…」
-			PRINTFORMW 「このまま一緒に寝てくれない？」
-			PRINTFORMW 「体が寂しいのよ…お願い…」
+			PRINTFORMW 「앗… 끝?」
+			PRINTFORMW 「체력엔 별로 자신은 없었지만… 이정도일 줄이야…」
+			PRINTFORMW 「…괜찮으면…」
+			PRINTFORMW 「이대로 함께 자 주지 않을래?」
+			PRINTFORMW 「몸이 외로워…부탁해요…」
 		;その他
 		ELSE
 			IF RAND:3 == 0
-				PRINTFORMW 「終わり？」
+				PRINTFORMW 「끝?」
 				PRINTFORMW 「………」
-				PRINTFORMW 「ねえ…もう少し…このままで…」
-				PRINTFORMW （この人と…一緒なら…）
+				PRINTFORMW 「저기…조금만 더…이대로…」
+				PRINTFORMW （이 사람과… 함께라면…）
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「あ…」
-				PRINTFORMW 「これで…終わり…？」
-				PRINTFORMW （次は…もっとうまく…）
+				PRINTFORMW 「아…」
+				PRINTFORMW 「이걸로… 끝…?」
+				PRINTFORMW （다음은… 좀더 잘…）
 			ELSE
-				PRINTFORMW 「あ…今日は終わり？」
-				PRINTFORMW 「いや…なんでもない…」
+				PRINTFORMW 「아… 오늘은 끝?」
+				PRINTFORMW 「아니… 아무것도 아니야…」
 			ENDIF
 		ENDIF
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		;体力500未満
 		IF BASE:0 < 500
-			PRINTFORMW 「もう…ダメ…」
-			PRINTFORMW 「お願いだから…やめて…」
+			PRINTFORMW 「더는… 안돼…」
+			PRINTFORMW 「부탁이니… 그만…」
 		;体力500以上
 		ELSE
 			IF RAND:2 == 0
-				PRINTFORMW 「月は…どうなってるのかな…」
-				PRINTFORMW 「私がいなくても…問題なければ…いいのだけれど…」
+				PRINTFORMW 「달은…어떻게 되고 있을까…」
+				PRINTFORMW 「내가 없어져도…문제없다면…좋을텐데…」
 			ELSE
-				PRINTFORMW 「まぁこういう状況を受け入れて楽しむのも一つの策なのでしょうけど」
-				PRINTFORMW 「どうにもこうにも忌避意識が…受け入れられませんね」
-				PRINTFORMW 「いっそ楽には…してくれないんでしょうね…」
+				PRINTFORMW 「이런상황을 받아들여 즐기는것도 또 하나의 책이겠지만」
+				PRINTFORMW 「기피의식이…용납하지 않아요」
+				PRINTFORMW 「차라리 편하게…해줄린 없지요…」
 			ENDIF
 		ENDIF
 	;굴복각인Lv2
 	ELSEIF MARK:굴복각인 == 2
 		IF RAND:2 == 0
-			PRINTFORMW 「どうしてあなたはこんなことをしているの？」
-			PRINTFORMW 「持てる力を調和と協調に使えば国の一つでも興せたのかもしれないのに」
+			PRINTFORMW 「어째서 당신은 이런짓을 하는거야?」
+			PRINTFORMW 「가진 힘을 조화와 협조에 사용하면 나라 하나라도 일으킬 수 있었을지도 모르는데」
 		ELSE
-			PRINTFORMW （こんなの…いつまで…）
+			PRINTFORMW （이런짓… 언제까지…）
 		ENDIF
 	;굴복각인Lv1
 	ELSEIF MARK:굴복각인 == 1
 		IF RAND:2 == 0
-			PRINTFORMW 「…何？」
-			PRINTFORMW 「…大人しくしていれば…優しくしてくれるの？」
-			PRINTFORMW サグメは虚ろな目でそう問いかけてきた
+			PRINTFORMW 「…뭐야?」
+			PRINTFORMW 「…얌전히 있으면…부드럽게 해주는거야?」
+			PRINTFORMW 사구메는 공허한 눈으로 그렇게 물어왔다
 		ELSE
 			PRINTFORMW 「…」
-			PRINTFORMW （抵抗するだけ無駄なのだろうか…）
+			PRINTFORMW （저항은 무의미한 것일까…）
 		ENDIF
 	;반발각인Lv3
 	ELSEIF MARK:반발각인 == 3
 		PRINTFORMW 「…」
 		PRINTFORMW 「……」
-		PRINTFORMW 「………殺す…！」
+		PRINTFORMW 「………죽여버리겠어…！」
 	;その他
 	ELSE
 		IF RAND:2 == 0
-			PRINTFORMW 「…うぅ…」
-			PRINTFORMW 「………あ…」
+			PRINTFORMW 「…우으…」
+			PRINTFORMW 「………아…」
 		ELSE
 			PRINTFORMW 「…」
-			PRINTFORMW サグメは未だ気丈にこちらを睨みつけている
+			PRINTFORMW 사구메는 아직 이쪽을 노려보고 있다
 		ENDIF
 	ENDIF
 ;========================================================
@@ -702,11 +702,11 @@ IF TFLAG:0 > 0 && CFLAG:9009 == 0
 				PRINTFORMW 「…」
 				PRINTFORMW 「……」
 				PRINTFORMW 「………」
-				PRINTFORMW 「………もう…離さない…」
+				PRINTFORMW 「………이제…놓지 않아…」
 			;その他の場合
 			ELSE
 				PRINTFORMW 「…」
-				PRINTFORMW 「…許さない、から…」
+				PRINTFORMW 「…용서하지 않을테니까…」
 			ENDIF
 			CFLAG:9009 = 5
 		;その他の場合
@@ -719,17 +719,17 @@ IF TFLAG:0 > 0 && CFLAG:9009 == 0
 			;コマンド騎乗位
 			IF SELECTCOM == 24
 				PRINTFORMW 「………」
-				PRINTFORMW 「…こういう形で처녀を捧げたからには…」
-				PRINTFORMW 「責任取ってもらうからね…」
+				PRINTFORMW 「…이런 형태로 처녀를 바치게 되었으니…」
+				PRINTFORMW 「책임지게 할테니까…」
 			;コマンドが挿入系列
 			ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
 				PRINTFORMW 「……」
-				PRINTFORMW 「…初めてって…こんなに…」
-				PRINTFORMW 「…変な声してたら…ごめんね…」
+				PRINTFORMW 「…처음이…이렇게…」
+				PRINTFORMW 「…이상한 소리했다면…미안해…」
 			;その他の場合
 			ELSE
-				PRINTFORMW 「こんな…」
-				PRINTFORMW 「こんなあっさり……」
+				PRINTFORMW 「이렇게…」
+				PRINTFORMW 「이렇게 쉽게……」
 			ENDIF
 		;その他の場合
 		ELSE
@@ -739,25 +739,25 @@ IF TFLAG:0 > 0 && CFLAG:9009 == 0
 	ELSEIF MARK:굴복각인 == 3 && CFLAG:9009 < 3
 		;コマンド騎乗位
 		IF SELECTCOM == 24
-			PRINTFORMW 「こんな形で…無理やりさせて…」
-			PRINTFORMW 「満足なんでしょう…」
+			PRINTFORMW 「이런 형태로…억지로…」
+			PRINTFORMW 「만족했나요…」
 		;その他の場合
 		ELSE
 			PRINTFORMW 「…」
 			PRINTFORMW 「……」
-			PRINTFORMW 「……許さない…」
+			PRINTFORMW 「……용서하지않아…」
 		ENDIF
 		CFLAG:9009 = 3
 	;その他の場合
 	ELSE
 		;前コマンドが挿入系列
 		IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
-			PRINTFORMW 「やだ…止めて…」
-			PRINTFORMW 「…お願いだから…もう…」
-			PRINTFORMW 「…あああ…」
+			PRINTFORMW 「싫어…그만둬…」
+			PRINTFORMW 「…부탁이니까…더는…」
+			PRINTFORMW 「…아아아…」
 		;その他の場合
 		ELSE
-			PRINTFORMW 「…こんな…簡単に…」
+			PRINTFORMW 「…이렇게…간단히…」
 		ENDIF
 		CFLAG:9009 = 2
 	ENDIF
@@ -776,11 +776,11 @@ IF (PALAM:10 + UP:10) > PALAMLV:2 && CFLAG:5330 == 0
 		RETURN 0
 	;前コマンドローション
 	ELSEIF SELECTCOM == 60
-		PRINTFORMW 「…ぬるぬる…」
+		PRINTFORMW 「…미끌미끌…」
 	;その他の場合
 	ELSE
-		PRINTFORMW 「…っ…！」
-		PRINTFORMW （体が勝手に…発情してる…）
+		PRINTFORMW 「…읏…！」
+		PRINTFORMW （몸이 멋대로…발정하고있어…）
 	ENDIF
 	CFLAG:5330 = 1
 ENDIF
@@ -796,11 +796,11 @@ IF (PALAM:13 + UP:13) > PALAMLV:2 && CFLAG:5333 == 0
 	;前コマンド媚薬
 	ELSEIF SELECTCOM == 61
 		PRINTFORMW 「………」
-		PRINTFORMW （体が熱くなってきた…アレのせいか…）
+		PRINTFORMW （몸이 뜨거워졌어…저것때문일까…）
 	;その他の場合
 	ELSE
 		PRINTFORMW 「…？」
-		PRINTFORMW （なんだか…ぼうっとして…体が…）
+		PRINTFORMW （어쩐지…몸이…멍하게…）
 	ENDIF
 	CFLAG:5333 = 1
 ENDIF
@@ -810,7 +810,7 @@ ENDIF
 ;-------------------------------------------------
 @K243_MESSAGE_OVERLV2_15
 IF (PALAM:15 + UP:15) > PALAMLV:2 && CFLAG:5335 == 0
-	PRINTFORMW 「…見ないで！…こんな…こんな私…」
+	PRINTFORMW 「…보지마!…이런…이런 나를…」
 	CFLAG:5335 = 1
 ENDIF
 
@@ -825,10 +825,10 @@ IF (PALAM:17 + UP:17) > PALAMLV:2 && CFLAG:5337 == 0
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		PRINTFORMW 「…」
-		PRINTFORMW 「………やめて！…お願いだから優しくして…」
+		PRINTFORMW 「………그만!…부탁이니 부드럽게 해줘…」
 	;その他の場合
 	ELSE
-		PRINTFORMW 「…あああああ！…やだ…来ないでよ…！」
+		PRINTFORMW 「…아아아아아!…싫어…오지마…!」
 	ENDIF
 	CFLAG:5337 = 1
 ENDIF
@@ -845,20 +845,20 @@ ENDIF
 IF CFLAG:5300 == 0
 	;굴복각인Lv3
 	IF MARK:굴복각인 == 3
-		PRINTFORMW 「…………んんっ！…」
+		PRINTFORMW 「…………으응!…」
 	;その他の場合
 	ELSE
-		PRINTFORMW 「……あっ……あぁあっあ！」
-		PRINTFORMW 「…やだ…ぁぁぁぁ！！！」
+		PRINTFORMW 「……앗……아아앗！」
+		PRINTFORMW 「…싫어…아아아아!!!」
 	ENDIF
 	CFLAG:5300 = 1
 ;２回目以降
 ELSE
 	;今回の調教でのＣ絶頂が50以上
 	IF EX:0 >= 50
-		PRINTFORMW 「…っううぅううぅ……あんんっ！ぁあ！！！」
+		PRINTFORMW 「…읏으으으으……아아앙! 아아!!!」
 	ELSE
-		PRINTFORMW 「…っあっぁあっぁあっんんっ！…」
+		PRINTFORMW 「…읏, 아앗, 아 아앙!…」
 	ENDIF
 ENDIF
 
@@ -874,52 +874,52 @@ IF CFLAG:5301 == 0
 		IF TFLAG:11 > 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28)
 			;Ｖ경험 1以上
 			IF EXP:Ｖ경험 >= 1
-				PRINTFORMW 「…！？……ぁあああぁっ！！」
-				PRINTFORMW （こんなに…気持ちいいなんて…）
-				PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+				PRINTFORMW 「…!?……아아아앗!!」
+				PRINTFORMW （이렇게…기분좋다니…）
+				PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 			;その他の場合
 			ELSE
-				PRINTFORMW 「……んんんっ！あっ…」
-				PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+				PRINTFORMW 「……으으으응! 앗…」
+				PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 			ENDIF
 		;コマンドが挿入系列
 		ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
 			;Ｖ경험 1以上
 			IF EXP:Ｖ경험 >= 1
-				PRINTFORMW 「っあっ……んんっ！」
-				PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+				PRINTFORMW 「으앗……으응!」
+				PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 			;その他の場合
 			ELSE
-				PRINTFORMW 「………っっぁあっ！」
-				PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+				PRINTFORMW 「………읏, 앗!」
+				PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 			ENDIF
 		;その他の場合
 		ELSE
-			PRINTFORMW 「やだ…あっあううぅあっんんっ！」
-			PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+			PRINTFORMW 「싫어…앗, 아으, 아아아앙!」
+			PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 		ENDIF
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		;コマンドが挿入系列
 		IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
-			PRINTFORMW 「…あん……んううぅあぁあっううぅ！」
-			PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+			PRINTFORMW 「…앙……으응, 아 아아읏!」
+			PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 		;その他の場合
 		ELSE
-			PRINTFORMW 「ぁあっん……んんっ！…ダメ…これ以上は…あぁ！」
-			PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+			PRINTFORMW 「아아응……으응!…안돼…더이상은…아아!」
+			PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 		ENDIF
 	;その他の場合
 	ELSE
 		;前コマンドが挿入系列
 		IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
 			PRINTFORMW 「…あっふわっあううぅううぅふわっあっあっ……！」
-			PRINTFORMW 「い、今…私…イって…」
-			PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+			PRINTFORMW 「지, 지금…나…가버리지…」
+			PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 		;その他の場合
 		ELSE
-			PRINTFORMW 「んんっ！…っんんっ！…あっ！」
-			PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+			PRINTFORMW 「으응!…으으응!…앗!」
+			PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 		ENDIF
 	ENDIF
 	CFLAG:5301 = 1
@@ -927,11 +927,11 @@ IF CFLAG:5301 == 0
 ELSE
 	;今回の調教でのＶ絶頂が50以上
 	IF EX:1 >= 50
-		PRINTFORMW 「…ううぅぁあっっっぁあ！」
-		PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+		PRINTFORMW 「…으으으으…아아아아！」
+		PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 	ELSE
-		PRINTFORMW 「やぁぁ…ぁあっ…………ぁうあっっ！」
-		PRINTFORMW サグメは口に手を当てて声を押し殺そうとしているがうまくできないでいる
+		PRINTFORMW 「싫엇…아앗…………아아앗！」
+		PRINTFORMW 사구메는 입에 손을대고 목소리가 새지않게 하고 있지만 잘 해내지 못하고 있다
 	ENDIF
 ENDIF
 
@@ -945,38 +945,38 @@ IF CFLAG:5302 == 0
 	IF TALENT:연모 == 1
 		;アナル中出し
 		IF TFLAG:12 > 0 && (SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38)
-			PRINTFORMW 「…はぁっくっうふっううぅううぅはぁっああっ！」
-			PRINTFORMW 「やだ…こんなとこ…見ないで…」
+			PRINTFORMW 「…하아…크으읏, 후우아아아아아앗!」
+			PRINTFORMW 「싫엇…이런거…보지마…」
 		;アナル挿入系列
 		ELSEIF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-			PRINTFORMW 「くっう…あああああ！！」
-			PRINTFORMW 「お尻…が…馬鹿になる…！」
+			PRINTFORMW 「크으…아아아아！！」
+			PRINTFORMW 「엉덩이…가…바보가 되어버려…!」
 		;その他の場合
 		ELSE
-			PRINTFORMW 「こんな…不浄の穴で…くっ……ううぅ……ふっうっ！」
+			PRINTFORMW 「이런…부정한 구멍으로…큿……우으으……후읏!」
 		ENDIF
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		;アナル挿入
 		IF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-			PRINTFORMW 「う……ふっはぁはぁっあぁはぁっはぁぐっ！？」
-			PRINTFORMW 「……くっああっ！」
+			PRINTFORMW 「우……후아아아아앗, 하윽!?」
+			PRINTFORMW 「……으아앗!」
 		;その他の場合
 		ELSE
-			PRINTFORMW 「うぅはぁっふっぐっはぁっくっううぅぅ！」
+			PRINTFORMW 「으아앗, 흐극… 크으으읏！」
 		ENDIF
 	;その他の場合
 	ELSE
-		PRINTFORMW 「うっ！…ううぅああっあぁふっああっぐっふっ……！」
+		PRINTFORMW 「읏!…우으앗, 아흣… 아그으윽!」
 	ENDIF
 	CFLAG:5302 = 1
 ;２回目以降
 ELSE
 	;今回の調教でのＡ絶頂が50以上
 	IF EX:2 >= 50
-		PRINTFORMW 「お尻で…いくっう……！」
+		PRINTFORMW 「엉덩이로…가버려……！」
 	ELSE
-		PRINTFORMW 「……ふっうっ！…はぁっああっ……！」
+		PRINTFORMW 「……흐윽！…하아아앗……！」
 	ENDIF
 ENDIF
 
@@ -988,19 +988,19 @@ ENDIF
 IF CFLAG:5303 == 0
 	;굴복각인Lv3
 	IF MARK:굴복각인 == 3
-		PRINTFORMW 「やだ…胸…変に…！」
+		PRINTFORMW 「싫어…가슴…이상하게…!」
 	;その他の場合
 	ELSE
-		PRINTFORMW 「んっ…胸…気持ち…良く…！」
+		PRINTFORMW 「응…가슴…기분…좋아…!」
 	ENDIF
 	CFLAG:5303 = 1
 ;２回目以降
 ELSE
 	;今回の調教でのＢ絶頂が50以上
 	IF EX:3 >= 50
-		PRINTFORMW 「…んふわっ……ぁ！」
+		PRINTFORMW 「…후앗……아!」
 	ELSE
-		PRINTFORMW 「あ…あ………っ…………ぁあっあっ！」
+		PRINTFORMW 「아…아………읏…………아아앗!」
 	ENDIF
 ENDIF
 
@@ -1013,11 +1013,11 @@ IF CFLAG:5304 == 0
 	;연모
 	IF TALENT:연모 == 1
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「妊娠したの…か…？」
+		PRINTFORMW 「임신한…걸까…？」
 	;それ以外
 	ELSE
 		PRINTFORMW 「……！？！！？！？」
-		PRINTFORMW 「胸が…？……嘘…！」
+		PRINTFORMW 「가슴이…？……거짓말…！」
 	ENDIF
 		CFLAG:5304 = 1
 ;２回目以降
@@ -1025,24 +1025,24 @@ ELSE
 	;연모
 	IF TALENT:연모 == 1
 		IF RAND:2 == 0
-			PRINTFORMW 「ん…はぅ…ん…♪」
+			PRINTFORMW 「응…하으…응…♪」
 		ELSE
-			PRINTFORMW 「はぁっう…ん…♪」
+			PRINTFORMW 「하읏…응…♪」
 		ENDIF
 		CFLAG:5304 = 4
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		IF RAND:2 == 0
 			PRINTFORMW 「………」
-			PRINTFORMW 「…こんなの…やだ…」
+			PRINTFORMW 「…이런거…싫어…」
 		ELSE
-			PRINTFORMW 「…ん…」
-			PRINTFORMW 「………どうして…」
+			PRINTFORMW 「…응…」
+			PRINTFORMW 「………어째서…」
 		ENDIF
 		CFLAG:5304 = 3
 	;それ以外
 	ELSE
-		PRINTFORMW 「…なんで…胸が…」
+		PRINTFORMW 「…어째서…가슴이…」
 		CFLAG:5304 = 2
 	ENDIF
 ENDIF
@@ -1056,11 +1056,11 @@ SIF SELECTCOM == 111 || SELECTCOM == 620
 	RETURN 0
 ;初めて
 IF CFLAG:5306 == 0
-	;PRINTFORMW 「…ダメ…み、見ないで…！」
+	;PRINTFORMW 「…안돼…보, 보지마…！」
 	;CFLAG:5306 = 1
 ;２回目以降
 ELSE
-	PRINTFORMW 「あ…う…ん…はぁ…」
+	PRINTFORMW 「아…으…응…하아…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1073,25 +1073,25 @@ IF TFLAG:35
 	IF TALENT:연모
 		IF RAND:3 == 0
 			PRINTFORMW 「…！！」
-			PRINTFORMW 「…子供…出来るかな…」
+			PRINTFORMW 「…애…생길까나…」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「ん…貴方の…いっぱい…」
+			PRINTFORMW 「응…당신의 것…잔뜩…」
 		ELSE
-			PRINTFORMW 「…気持ち良かった？」
+			PRINTFORMW 「…기분 좋았어?」
 		ENDIF
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		IF RAND:2 == 0
-			PRINTFORMW 「…子供…」
+			PRINTFORMW 「…아이…」
 		ELSE
-			PRINTFORMW 「………あ…膣内で…」
+			PRINTFORMW 「………아…질내에…」
 		ENDIF
 	;その他
 	ELSE
 		IF RAND:2 == 0
-			PRINTFORMW 「…やだ…こんなの…」
+			PRINTFORMW 「…싫어…이런거…」
 		ELSE
-			PRINTFORMW （…こんなに…出されて…）
+			PRINTFORMW （…이렇게나…싸버리면…）
 		ENDIF
 	ENDIF
 ;それ以外
@@ -1108,22 +1108,22 @@ IF TFLAG:35
 	;연모
 	IF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「ん…お尻に…熱いの…」
+			PRINTFORMW 「응…엉덩이에…뜨거운거…」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「…お尻は妊娠しませんよ」
+			PRINTFORMW 「…엉덩이는 임신하지 않아요」
 		ELSE
-			PRINTFORMW 「…んあっ……」
+			PRINTFORMW 「…응앗……」
 		ENDIF
 	;굴복각인Lv3
 	ELSEIF MARK:굴복각인 == 3
 		IF RAND:2 == 0
-			PRINTFORMW 「…こんな…屈辱的な…」
+			PRINTFORMW 「…이런…굴욕적인…」
 		ELSE
-			PRINTFORMW 「…お尻で…イカれて…」
+			PRINTFORMW 「…엉덩이로…가버려서…」
 		ENDIF
 	;その他
 	ELSE
-		PRINTFORMW 「…変態……」
+		PRINTFORMW 「…변태……」
 	ENDIF
 ;それ以外
 ELSE
@@ -1136,11 +1136,11 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_16
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「…別にいいけど」
-	PRINTFORMW 「気乗りはしない…絡んだりしないの？」
+	PRINTFORMW 「…괜찮지만」
+	PRINTFORMW 「내키지 않은건…아니야?」
 ;その他
 ELSE
-	PRINTFORMW 「………気持ち悪い…」
+	PRINTFORMW 「………기분 나빠…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1150,10 +1150,10 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_14
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「ん…いっぱい出しすぎです！」
+	PRINTFORMW 「응…너무 많이쌌어!」
 ;その他
 ELSE
-	PRINTFORMW 「こんなの…臭い付いちゃう…」
+	PRINTFORMW 「이런거…냄새가 배여버려…」
 ENDIF
 [SKIPEND]
 
@@ -1165,56 +1165,56 @@ ENDIF
 IF SELECTCOM == 41
 		;精液中毒Lv5+정애미각
 		IF ABL:31 >= 5 && TALENT:정애미각 == 1
-			PRINTFORMW 「ん…あ…う…美味しい…」
-			PRINTFORMW サグメは喉に染み込ませるようにザーメンを味わっている
+			PRINTFORMW 「응…아…우…맛있어…」
+			PRINTFORMW 사구메는 목에 스며드는 정액을 맛보고있다
 		;정애미각
 		ELSEIF TALENT:TARGET:정애미각 == 1
-			PRINTFORMW 「…あ…う…ん…もっと…美味しいの…」
-			PRINTFORMW サグメは口内の精液を味わいながら恍惚としている
+			PRINTFORMW 「…아…으…응…좀더…맛있는거…」
+			PRINTFORMW 사구메는 입속의 정액을 맛보며 활홀해 하고있다
 		;精液中毒Lv5
 		ELSEIF ABL:31 >= 5
-			PRINTFORMW 「…ザーメン…口の中で…いっぱい…」
-			PRINTFORMW サグメは口の中の精液を味わうように飲み込んでいる
+			PRINTFORMW 「…정액…입속에…잔뜩…」
+			PRINTFORMW 사구메는 입속의 정액을 맛보며 삼키고 있다
 		;精液中毒Lv3
 		ELSEIF ABL:31 >= 3
-			PRINTFORMW 「ん…これ…おいし…」
+			PRINTFORMW 「응…이거…맛있어…」
 		;봉사정신Lv3以上
 		ELSEIF ABL:13 >= 3
-			PRINTFORMW 「あ…ん…もっと…出して…」
+			PRINTFORMW 「아…응…좀더…싸줘…」
 		;それ以外
 		ELSE 
-			PRINTFORMW 「…ん！…げほっ…ごほっ…！ 」
+			PRINTFORMW 「…응!…콕록…콜록…!」
 		ENDIF
 ;イマラチオ
 ELSEIF SELECTCOM == 230
 		;精液中毒Lv5+정애미각
 		IF ABL:31 >= 5 && TALENT:정애미각 == 1
-			PRINTFORMW 「ん…ご…ゲホッ…ごほっ…じゅる…！」
-			PRINTFORMW サグメは喉に流し込まれながら恍惚としている
+			PRINTFORMW 「응…콜록…콜록…!」
+			PRINTFORMW 사구메는 목구멍에 정액을 흘려넘기며 황홀해하고있다
 		;정애미각
 		ELSEIF TALENT:TARGET:정애미각 == 1
-			PRINTFORMW 「…ん…がはっ…ん…じゅる…」
-			PRINTFORMW サグメは喉に流し込まれた精液を恍惚としながら受け入れている
+			PRINTFORMW 「…응…카학…응…」
+			PRINTFORMW 사구메는 목구멍에 흘려넘겨지는 정액을 황홀하게 받아들이고 있다
 		;精液中毒Lv5
 		ELSEIF ABL:31 >= 5
-			PRINTFORMW 「んが…あ…ぐ…」
-			PRINTFORMW サグメは喉奥に突き込まれた陰茎から精液を流し込まれて恍惚としている
+			PRINTFORMW 「응…아…읏…」
+			PRINTFORMW 사구메는 목구멍 속에 들어온 음경에서 나오는 정액에 황홀해하고있다
 			CFLAG:5233 = 5
 		;精液中毒Lv3
 		ELSEIF ABL:31 >= 3
-			PRINTFORMW 「んが…ぐ…ごほっ…」
+			PRINTFORMW 「응긋…긋…콜록…」
 			CFLAG:5233 = 3
 		;봉사정신Lv3以上
 		ELSEIF ABL:13 >= 3
-			PRINTFORMW 「げほっ…ごほっ…ん…あ…」
+			PRINTFORMW 「콜록…콜록…우…아…」
 			CFLAG:5233 = 2
 		;それ以外
 		ELSE 
-			PRINTFORMW 「がぁ…ぐ…が…げほっ…」
+			PRINTFORMW 「가아…긋…앗…콜록…」
 			CFLAG:5233 = 1
 		ENDIF
 ELSEIF GROUPMATCH (SELECTCOM, 54, 303, 304, 601, 602, 604, 610)
-	PRINTFORMW 「んくっ……ごほっ…ゲホッ…！」
+	PRINTFORMW 「으읏……콜록…쿨럭…！」
 ENDIF
 
 ;-------------------------------------------------
@@ -1224,10 +1224,10 @@ ENDIF
 ;연모
 IF TALENT:연모
 	PRINTFORMW 「………」
-	PRINTFORMW 「一杯でた…気持よかった？」
+	PRINTFORMW 「잔뜩 나왔어…기분 좋았어?」
 ;その他
 ELSE
-	PRINTFORMW 「…胸に…」
+	PRINTFORMW 「…가슴에…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1236,11 +1236,11 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_15
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「……あ…」
-	PRINTFORMW 「お腹…」
+	PRINTFORMW 「……아…」
+	PRINTFORMW 「배…」
 ;その他
 ELSE
-	PRINTFORMW 「…こんなとこに…」
+	PRINTFORMW 「…이런곳에…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1249,8 +1249,8 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_20
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「……巫女の脇が空いているのはこういう理由ですか」
-	PRINTFORMW 「まあいいですけど…気持ち良かったみたいで」
+	PRINTFORMW 「……무녀의 겨드랑이가 비어있는 것은 이런 이유입니까」
+	PRINTFORMW 「뭐, 기분좋아 보이니… 괜찮지만요…」
 ;その他
 ELSE
 	PRINTFORMW 「……！」
@@ -1262,11 +1262,11 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_12
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「手に…」
-	PRINTFORMW 「うまく…できた？」
+	PRINTFORMW 「손에…」
+	PRINTFORMW 「잘…되었어?」
 ;その他
 ELSE
-	PRINTFORMW 「………気持ち悪い…」
+	PRINTFORMW 「………기분나빠…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1276,13 +1276,13 @@ ENDIF
 ;연모
 IF TALENT:연모
 	IF RAND:2 == 0
-		PRINTFORMW 「……これ…ん…うまく出来た？」
+		PRINTFORMW 「……이거…응…잘 되었어?」
 	ELSE
-		PRINTFORMW 「…中で出してもいいけど…」
+		PRINTFORMW 「…안에 싸도 괜찮은데…」
 	ENDIF
 ;その他
 ELSE
-	PRINTFORMW （…妊娠しない…はずだけど…）
+	PRINTFORMW （…임신하지…않을테지만…）
 ENDIF
 
 ;-------------------------------------------------
@@ -1297,10 +1297,10 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_8
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「…尻で…ね…いいけど…」
+	PRINTFORMW 「…엉덩이에…괜찮지만…」
 ;その他
 ELSE
-	PRINTFORMW 「…気持ち悪い…なんで…」
+	PRINTFORMW 「…기분나빠…어째서…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1310,7 +1310,7 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_23
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「…こんなところに…でも妊娠してしまいそう…」
+	PRINTFORMW 「…이런곳에…하지만 임신해버릴것같아…」
 ;その他
 ELSE
 	PRINTFORMW 「………？」
@@ -1323,10 +1323,10 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_19
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「こ、こんな風で…いいの？」
+	PRINTFORMW 「이, 이렇게하면…좋은거야?」
 ;その他
 ELSE
-	PRINTFORMW 「…足で…変態…！」
+	PRINTFORMW 「…발로…변태…!」
 ENDIF
 
 ;-------------------------------------------------
@@ -1336,17 +1336,17 @@ ENDIF
 ;키스마
 IF TALENT:키스마
 	IF RAND:2 == 0
-		PRINTFORMW 「………ふふ…」
-		PRINTFORMW 「こういうの…好きよ」
+		PRINTFORMW 「………후후…」
+		PRINTFORMW 「이런거…좋아해」
 	ELSE
-		PRINTFORMW 「…キスだけでイクなんて…」
-		PRINTFORMW 「わかるわよ…気持ちいいもの」
+		PRINTFORMW 「…키스만으로 가버리다니…」
+		PRINTFORMW 「알아…기분좋은걸」
 	ENDIF
 ;その他
 ELSEIF RAND:2 == 0
-	PRINTFORMW 「ちょ…ちょっと…！？」
+	PRINTFORMW 「자…잠깐…!?」
 ELSE
-	PRINTFORMW （この人…ド変態ね…）
+	PRINTFORMW （이사람…엄청난 변태야…）
 ENDIF
 
 ;-------------------------------------------------
@@ -1362,11 +1362,11 @@ ENDIF
 @K243_MESSAGE_EJAC_PLAYER_28
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「…あ…」
-	PRINTFORMW サグメは子種の溜まったコンドームを物欲しげ見つめている
+	PRINTFORMW 「…아…」
+	PRINTFORMW 사구메는 정액이 모인 콘돔을 탐내듯 바라보고있다
 ;その他
 ELSE
-	PRINTFORMW 「…そういう道具もあるのですね」
+	PRINTFORMW 「…그런 도구도 있군요」
 ENDIF
 [SKIPEND]
 
@@ -1404,48 +1404,48 @@ NEXT
 ;苦痛刻印取得 CFLAG:5310
 ;-------------------------------------------------
 @K243_MESSAGE_MARK0_1
-PRINTFORMW 「あぐ…がぁ…ああ！」
+PRINTFORMW 「아그…가아…아아！」
 CFLAG:5310 = 1
 
 @K243_MESSAGE_MARK0_2
-PRINTFORMW 「………止めて…お願いだから…」
+PRINTFORMW 「………그만…부탁이니까…」
 CFLAG:5310 = 2
 
 @K243_MESSAGE_MARK0_3
-PRINTFORMW 「があ゛あ゛あ゛あ゛あ゛！！！」
-PRINTFORMW 「やめて…もう…あああああ！」
+PRINTFORMW 「그앗?아?아?아?아?！！！」
+PRINTFORMW 「그만…더는…아아아아아！」
 CFLAG:5310 = 3
 
 ;-------------------------------------------------
 ;快楽刻印取得 CFLAG:5311
 ;-------------------------------------------------
 @K243_MESSAGE_MARK1_1
-PRINTFORMW 「あっ…あっ…ん…♪」
+PRINTFORMW 「앗…앗…앙…♪」
 CFLAG:5311 = 1
 
 @K243_MESSAGE_MARK1_2
-PRINTFORMW 「も、もう…ダメ…気持ちいい…の…♪」
+PRINTFORMW 「더, 더는…안돼…기분 좋…아…♪」
 CFLAG:5311 = 2
 
 @K243_MESSAGE_MARK1_3
-PRINTFORMW （このまま…快楽に溺れてしまえば…）
+PRINTFORMW （이대로…쾌락에 빠져버린다면…）
 CFLAG:5311 = 3
 
 ;-------------------------------------------------
 ;굴복각인取得 CFLAG:5312
 ;-------------------------------------------------
 @K243_MESSAGE_MARK2_1
-PRINTFORMW 「…これじゃ…このままだと…」
+PRINTFORMW 「…이러면…이대로라면…」
 CFLAG:5312 = 1
 
 @K243_MESSAGE_MARK2_2
-PRINTFORMW （…いっそ身を委ねれば…）
-PRINTFORMW （だけど…それは…）
+PRINTFORMW （…차라리 몸을 맡겨버리면…）
+PRINTFORMW （하지만…그건…）
 CFLAG:5312 = 2
 
 @K243_MESSAGE_MARK2_3
-PRINTFORMW 「あ…」
-PRINTFORMW （もう…このまま…）
+PRINTFORMW 「아…」
+PRINTFORMW （이젠…이대로…）
 
 CFLAG:5312 = 3
 
@@ -1453,49 +1453,49 @@ CFLAG:5312 = 3
 ;恐怖刻印取得 CFLAG:5313
 ;-------------------------------------------------
 @K243_MESSAGE_MARK3_1
-PRINTFORMW 「…来るな！」
+PRINTFORMW 「…오지마!」
 CFLAG:5313 = 1
 
 @K243_MESSAGE_MARK3_2
-PRINTFORMW 「…近寄るな…！」
-PRINTFORMW サグメはスタイルのいい体を震わせながらおびえた目でこちらを睨みつけている…
+PRINTFORMW 「…다가오지마…！」
+PRINTFORMW 사구메는 스타일 좋은 몸을 떨며 겁먹은 눈으로 이쪽을 노려보고있다…
 CFLAG:5313 = 2
 
 @K243_MESSAGE_MARK3_3
-PRINTFORMW 「いや…こんなの…」
-PRINTFORMW 「やめて！もう！来ないで！」
-PRINTFORMW サグメは恐怖と恥辱にまみれた表情で半狂乱に陥っている
+PRINTFORMW 「싫어…이런거…」
+PRINTFORMW 「그만! 싫어! 오지마!」
+PRINTFORMW 사구메는 공포와 치욕투성이의 표정으로 반쯤 광란에 빠져있다
 CFLAG:5313 = 3
 
 ;-------------------------------------------------
 ;반발각인取得 CFLAG:5314
 ;-------------------------------------------------
 @K243_MESSAGE_MARK4_1
-PRINTFORMW 「こんな…どうかしてる…」
+PRINTFORMW 「이런거…이상해…」
 CFLAG:5314 = 1
 
 @K243_MESSAGE_MARK4_2
-PRINTFORMW 「貴様の思い通りなんかに…」
+PRINTFORMW 「네놈의 마음대로는…」
 CFLAG:5314 = 2
 
 @K243_MESSAGE_MARK4_3
-PRINTFORMW 「いつか…殺す…」
+PRINTFORMW 「언젠가…죽여버릴거야…」
 CFLAG:5314 = 3
 
 ;-------------------------------------------------
 ;恥辱刻印取得 CFLAG:5316
 ;-------------------------------------------------
 @K243_MESSAGE_MARK6_1
-PRINTFORMW 「こんな…辱めを…」
+PRINTFORMW 「이런…치욕을…」
 CFLAG:5316 = 1
 
 @K243_MESSAGE_MARK6_2
-PRINTFORMW 「…見ないで！」
+PRINTFORMW 「…보지마!」
 CFLAG:5316 = 2
 
 @K243_MESSAGE_MARK6_3
-PRINTFORMW 「…やだ…もう…」
-PRINTFORMW サグメは辱めを受けて放心している
+PRINTFORMW 「…싫어…더는…」
+PRINTFORMW 사구메는 치욕을 받고 방심하고있다
 CFLAG:5316 = 3
 
 ;==================================================
@@ -1557,11 +1557,11 @@ TRYCALLFORM K243_MESSAGE_EVENT_{(TFLAG:200)}
 @IMPRESSION_K243
 IF TALENT:연모
 	IF RAND:3 == 0
-		PRINTFORML 「……まだかな…」
+		PRINTFORML 「……아직일까나…」
 	ELSEIF RAND:2 == 0
-		PRINTFORML 「……来ないの…」
+		PRINTFORML 「……오지않네…」
 	ELSE
-		PRINTFORML 「……何しようかしら…」
+		PRINTFORML 「……뭘 할까…」
 	ENDIF
 ;その他
 ELSE
@@ -1583,30 +1583,30 @@ ENDIF
 ;-------------------------------------------------
 @SINGLE_ENDING_K243
 DRAWLINE
-PRINTFORMW ―――単体エンド条件達成―――
+PRINTFORMW ―――단체엔딩 조건달성―――
 PRINTFORMW …………
 PRINTFORMW ………
 PRINTFORMW ……
-PRINTFORMW 「おはよう、%CALLNAME:MASTER%」
-PRINTFORMW 「今日も元気そうね、さて、どうする？」
-PRINTFORMW 「貴方の顔を見ていると何でも出来る気がするの」
-PRINTFORMW 「結局の所ここに落ち着く運命だったわけだけど」
-PRINTFORMW 「なんだか分からない内にここに連れてこられて」
-PRINTFORMW 「その内に貴方といることが楽しいことだって思うようになったの」
-PRINTFORMW 「何が起こるかわからない、という意味では今も昔も変わらないけど」
-PRINTFORMW 「どの道同じなら貴方といる方が、ね」
-PRINTFORMW 「…柄にもなく喋りすぎたわ」
-PRINTFORMW 「まあでも、こんな日があってもいいでしょう？」
-PRINTFORMW 「お互い、このままでいられる時間はそう長くない」
-PRINTFORMW 「そう思ってしまうとね、饒舌にもなるのよ」
-PRINTFORMW 「たまにはこうやって吐き出さないと」
-PRINTFORMW 「不安で押しつぶされてしまいそうになるしね」
-PRINTFORMW 「それで、今日はどうしたいの？」
+PRINTFORMW 「안녕, %CALLNAME:MASTER%」
+PRINTFORMW 「오늘도 건강해보이네, 그러면, 어떻게할래?」
+PRINTFORMW 「당신의 얼굴을 보고있으면 뭐든지 할수있을것 같은 기분이 들어」
+PRINTFORMW 「결국엔 이곳에 자리잡을 운명이었지만」
+PRINTFORMW 「왠지 모르는사이에 이곳에 오게되어」
+PRINTFORMW 「그동안 당신과 함께있는것이 즐겁다는걸 알게되었어」
+PRINTFORMW 「무엇이 일어날지 모른다는건 예나 지금이나 다름없지만」
+PRINTFORMW 「어찌되든 결과가 같다면 당신과 함께 있는편이…」
+PRINTFORMW 「…격에 맞지 않게 말이 너무 많았네」
+PRINTFORMW 「그래도, 이런날이 있어도 좋지않을까?」
+PRINTFORMW 「부탁이야, 이대로 있을수 있는 시간은 그리 길지않아」
+PRINTFORMW 「그렇게 생각해 버리면 말도 많아져 버리는 거야」
+PRINTFORMW 「가끔은 이렇게 토해내지 않으면」
+PRINTFORMW 「불안에 짓눌려져 버릴것 같으니까」
+PRINTFORMW 「그래서, 오늘은 무슨일이야?」
 PRINTFORMW 
-PRINTFORMW 「…本当に？」
-PRINTFORMW 「ではお言葉に甘えて今日は一日寝ましょう、二人っきりで」
+PRINTFORMW 「…정말로?」
+PRINTFORMW 「그럼 말한대로 오늘은 하루종일 잠을자자, 단둘이서」
 PRINTFORMW 
-PRINTFORMW 　　　　　　　　―― Ending No.1243 (サグメエンド)
+PRINTFORMW 　　　　　　　　―― Ending No.1243 (사구메 엔드)
 RETURN 0
 ;-------------------------------------------------
 ;@KOJO_X_MESSAGE_SINGLE_ENDING_AFTER関係
@@ -1622,30 +1622,30 @@ RETURN 0
 ;-------------------------------------------------
 @SLAVE_ENDING_K243
 DRAWLINE
-PRINTFORMW ―――奴隷エンド条件達成―――
+PRINTFORMW ―――노예엔딩 조건달성―――
 PRINTFORMW …………
 PRINTFORMW ………
 PRINTFORMW ……
-PRINTFORMW いつもの通りの日常、変わらない現実
-PRINTFORMW 結局の所人の性というのは多少のことでは変化しない
-PRINTFORMW しかしここの所少しばかり面白いことはあった
-PRINTFORMW 「おはようございます、貴方、仕事進んでる？」
-PRINTFORMW 月人の一人、稀神サグメ、割合無口な彼女も奴隷としての役割に目覚めたようだ
+PRINTFORMW 평소와 같은 일상, 변하지 않는 현실
+PRINTFORMW 결국 사람의 본성이란건 다소의 것으로는 변화하지 않는다
+PRINTFORMW 하지만 이곳에, 약간이지만 재미있는것은 있다
+PRINTFORMW 「안녕하세요, 당신, 일은 잘 되고 있어?」
+PRINTFORMW 월인중 한명인 키신 사구메, 꽤나 과묵한 그녀도 노예로서의 역할에 눈을 뜬것같다
 PRINTFORMW 「………」
-PRINTFORMW 「どうかした？今日の売却の予定は済んだでしょう？」
-PRINTFORMW 「ん…何？急に抱きついてきて」
-PRINTFORMW 「…職業柄奴隷に愛情を抱くのはあまりよした方が…」
-PRINTFORMW 「まあその辺りは貴方の自由だけど…」
-PRINTFORMW 「私も…いつああなるのか…」
-PRINTFORMW 「その時は…どうか…」
-PRINTFORMW 「どうか…」
+PRINTFORMW 「무슨일 있어? 오늘의 매각 예정은 끝났지 않아?」
+PRINTFORMW 「응…무슨일이야? 갑자기 안겨오곤」
+PRINTFORMW 「…직업상 노예에게 애정을 품는것은 그리 좋지않아…」
+PRINTFORMW 「뭐, 그런부분은 당신의 자유이긴 하지만…」
+PRINTFORMW 「나도…언제 저렇게 될지…」
+PRINTFORMW 「그때엔…부디…」
+PRINTFORMW 「부디…」
 PRINTFORMW 「………」
-PRINTFORMW 「…なんでもないわ、その代わり、今は」
-PRINTFORMW 「今だけは優しくして、お願い」
-PRINTFORMW そう言うとサグメはキスを求めてきた
-PRINTFORMW 「ん…ちゅ…甘い…」
+PRINTFORMW 「…아무것도 아니야、그대신、지금은」
+PRINTFORMW 「지금만은 상냥하게 부탁해」
+PRINTFORMW 그렇게 말하며 사구메는 키스를 요구해왔다
+PRINTFORMW 「응…츄웁…달아…」
 PRINTFORMW 
-PRINTFORMW 　　　　　　　　―― Ending No.1243 (サグメエンド)
+PRINTFORMW 　　　　　　　　―― Ending No.1243 (사구메 엔드)
 RETURN 0
 ;-------------------------------------------------
 ;@KOJO_X_MESSAGE_SLAVE_ENDING_AFTER関係
