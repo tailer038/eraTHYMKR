@@ -3317,7 +3317,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 54
 	;初めて
-	IF CFLAG:90543 == 0
+	IF CFLAG:9054 == 0
 		;恋慕有り
 		IF TALENT:150
 			PRINTFORMW 
@@ -3763,7 +3763,7 @@ ELSEIF SELECTCOM == 170 && TEQUIP:25 == 0
 		PRINTFORMW 
 		CFLAG:8850 = 3
 	;それ以外
-	ELSEIF CFLAG:88500 <= 1 || FLAG:11 == 2
+	ELSEIF CFLAG:8850 <= 1 || FLAG:11 == 2
 		PRINTFORMW 
 		CFLAG:8850 = 2
 	ENDIF
