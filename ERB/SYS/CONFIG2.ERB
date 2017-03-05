@@ -5,7 +5,7 @@
 LOCALS:0 = ×
 LOCALS:1 = ○
 ;항목 전부 ON
-LOCAL = 511
+LOCAL = 1023
 PRINTL 현재, 조교 모드 확장 기능 설정은 이하와 같이 되어 있습니다.
 $INPUT_LOOP_0
 PRINTL 변경하고 싶은 내용을 선택해 주세요.
@@ -43,6 +43,8 @@ ENDIF
 PRINTFORML %LOCALS:((FLAG:14 & 128) > 0)%[12] 후타나리 이벤트 억제
 ;-------------------------------------------------
 PRINTFORML %LOCALS:((FLAG:14 & 256) > 0)%[13] 조교배설경험 억제
+;-------------------------------------------------
+PRINTFORML %LOCALS:((FLAG:14 & 512) > 0)%[14] 인체개조 패치
 ;-------------------------------------------------
 SIF FLAG:14 < LOCAL
 	PRINTL 　[98] 전부 유효
@@ -107,6 +109,9 @@ ELSEIF RESULT == 12
 ELSEIF RESULT == 13
 	PRINTFORMW 조교배설경험의 습득을 \@(FLAG:14 & 256) ? 유효 # 무효\@로 합니다.
 	FLAG:14 ^= 256
+ELSEIF RESULT == 14
+	PRINTFORMW 각종 인체개조를 \@(FLAG:14 & 512) ? 무효 # 유효\@로 합니다.
+	FLAG:14 ^= 512
 ELSE
 	CLEARLINE 1
 	REUSELASTLINE 올바른 값을 입력해 주세요.

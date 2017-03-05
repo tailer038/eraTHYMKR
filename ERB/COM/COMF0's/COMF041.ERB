@@ -29,8 +29,8 @@ SIF TALENT:54 && (ABL:12 < 5 || ABL:13 < 4 || ABL:10 < 3)
 ;밧줄 사용 중에는 목분리시만 가능
 SIF TEQUIP:40 && TALENT:230 == 0
 	RETURN 0
-;볼 개그 사용중은 불가
-SIF TEQUIP:42
+;볼 개그 사용중은 불가(개구기 제외)
+SIF TEQUIP:42 != 0 && TEQUIP:42 != 3
 	RETURN 0
 ;승마 중에는 불가
 SIF TEQUIP:43 && TALENT:230 == 0

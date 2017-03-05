@@ -33,6 +33,10 @@ IF FLAG:13 & 1
 		PRINTLC [25]〔수면제〕(2000원)
 	SIF TARGET >= 0 && TALENT:229
 		PRINTLC [26]〔인어공주의 약〕(10만원)
+	SIF FLAG:14 & 512 && TALENT:MASTER:56
+		PRINTLC [27]〔유두확장약〕(5만원)
+	SIF FLAG:14 & 512 && TALENT:MASTER:56
+		PRINTLC [28]〔탈자궁유도약〕(10만원)
 ENDIF
 PRINTLC [30]〔빨간사탕〕(2만원)
 PRINTLC [31]〔파란사탕〕(2만원)
@@ -125,6 +129,16 @@ ELSEIF RESULT == 26 && FLAG:13 & 1
 	PRINTL 〔인어공주의 약〕：＜인어＞가＜인간＞으로 전생합니다
 	PRINTL 마시면 [음치]가 되어버리는 부작용이 있는 약.
 	PRINTL 동화에 따르면 【인어의 목소리】가 대가라고 한다.
+	LOCAL:9 = 100000
+ELSEIF RESULT == 27 && FLAG:13 & 1
+	PRINTL 〔유두확장약〕：유두와 유선을 변이시켜 확장시킵니다
+	PRINTL 마시면 [확장유두]와 [모유체질]이 되어버리는 약.
+	PRINTL 뒷세계에서 촉수의 특수한 호르몬을 재료로 만들었단 소문이 있다.
+	LOCAL:9 = 50000
+ELSEIF RESULT == 28 && FLAG:13 & 1
+	PRINTL 〔탈자궁유도약〕：질을 이완시켜 자궁탈을 일으킵니다
+	PRINTL 마시면 [탈자궁]이 되어버리는 약.
+	PRINTL 정체모를 불법 의료실험에 의해 발명되었다는 듯하다.
 	LOCAL:9 = 100000
 ELSEIF RESULT == 30
 	PRINTL 〔붉은 사탕〕：＜처녀막＞이 재생됩니다
@@ -278,8 +292,8 @@ REPEAT CHARANUM
 	;縮胸剤は対象が既に絶壁かオトコの場合は使えない
 	ELSEIF LOCAL == 21 && (TALENT:COUNT:110 || TALENT:COUNT:120)
 		CONTINUE
-	;止乳剤は対象が母乳体質じゃないかオトコの場合, さらに妊娠中か育児中, 抱卵中の場合は使えない
-	ELSEIF LOCAL == 22 && (TALENT:COUNT:120 || TALENT:COUNT:134 == 0 || TALENT:COUNT:140 || TALENT:COUNT:141 || TALENT:COUNT:143)
+	;지유제는 対象が母乳体質じゃないかオトコの場合, さらに妊娠中か育児中, 抱卵中の場合は使えない
+	ELSEIF LOCAL == 22 && (TALENT:COUNT:2 || TALENT:COUNT:120 || TALENT:COUNT:134 == 0 || TALENT:COUNT:140 || TALENT:COUNT:141 || TALENT:COUNT:143)
 		CONTINUE
 	;尿漏れ改善薬は対象がおもらし癖ではない場合は使えない
 	ELSEIF LOCAL == 23 && TALENT:COUNT:45 == 0
@@ -289,6 +303,12 @@ REPEAT CHARANUM
 		CONTINUE
 	;人魚姫の薬は対象が主人もしくは対象が抱卵中か懐卵中だと使えない
 	ELSEIF LOCAL == 26 && (COUNT == MASTER || TALENT:COUNT:143 || TALENT:COUNT:145 || TALENT:COUNT:229 == 0 )
+		CONTINUE
+	;유두확장약은 대상이 확장유두이거나 절벽이거나 남자이면 사용불가
+	ELSEIF LOCAL == 27 && (TALENT:COUNT:2 || TALENT:COUNT:110 || TALENT:COUNT:120)
+		CONTINUE
+	;탈자궁유도약은 대상이 탈자궁이거나 남자이면 사용불가
+	ELSEIF LOCAL == 28 && (TALENT:COUNT:3 || TALENT:COUNT:120)
 		CONTINUE
 	;赤の飴玉は対象に処女膜がある, あるいはオトコ, 妊娠中, 抱卵中, 懐卵中または奴隷管理用貞操帯を装着していると使えない
 	ELSEIF LOCAL == 30 && (TALENT:COUNT:0 || TALENT:COUNT:120 || TALENT:COUNT:140 || TALENT:COUNT:143 || TALENT:COUNT:145 || CFLAG:COUNT:42 & 2)

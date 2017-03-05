@@ -17,8 +17,8 @@ SIF TALENT:54
 ;주인이 [금단의 지식]持ちじゃないとき, 体格差が2段階以内か조교자가 [금단의 지식]持ちじゃないとダメ
 SIF TALENT:MASTER:56 == 0 && COMMON_BODYSIZE_CHECK(PLAYER, TARGET) == 0
 	RETURN 0
-;순종, 욕망의 합계가 6이상 없으면 안 됨
-SIF ABL:10 + ABL:11 < 6
+;순종, 욕망의 합계가 6이상 없을 경우 개구기 및 밧줄을 쓰지 않으면 불가. T(170214)
+SIF ABL:10 + ABL:11 < 6 && (TEQUIP:42 != 3 || TEQUIP:40 == 0)
 	RETURN 0
 ;수면 중에는 불가
 SIF EQUIP:14
@@ -26,8 +26,8 @@ SIF EQUIP:14
 ;실신 중에는 불가
 SIF TFLAG:899 > 0
 	RETURN 0
-;볼 개그 사용 중에는 불가
-SIF TEQUIP:42
+;볼 개그 사용 중에는 불가(개구기 제외). T(170214)
+SIF TEQUIP:42 != 0 && TEQUIP:42 != 3
 	RETURN 0
 ;승마 중에는 불가
 SIF TEQUIP:43
@@ -85,9 +85,9 @@ ELSE
 ENDIF
 
 ;-------------------------------------------------
-;실행할 수 있을까의 판정
+;실행할 수 있을까의 판정(개구기 및 속박이 있을 경우 무시. T(170214))
 ;-------------------------------------------------
-IF TFLAG:699 == 0
+IF TFLAG:699 == 0 && TEQUIP:42 == 0 && TEQUIP:40 == 0
 	CALL COM_ORDER
 	;실행할 수 없다
 	SIF RESULT == 0

@@ -86,8 +86,8 @@ IF PREVCOM == 610
 	ENDIF
 ;조교자가 전회:조수로 이번:주인인가, 전회:주인으로 이번:조수 때
 ELSEIF (ASSIPLAY && TFLAG:133 == 0) || (ASSIPLAY == 0 && TFLAG:133)
-	;전회의 조교가 후배위 애널인가 펠라치오나 이라마치오 때 둘이서 범하는에
-	IF PREVCOM == 31 || PREVCOM == 41 || PREVCOM == 230
+	;전회의 조교가 정상위이거나 정상위 애널이거나 펠라치오이거나 이라마치오일 때 둘이서 범하기로
+	IF GROUPMATCH(PREVCOM, 20, 30, 41, 230)
 		CALL EXCOM_ABLE610
 		SIF RESULT == 1
 			JUMP COM610
