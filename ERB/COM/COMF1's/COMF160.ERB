@@ -307,35 +307,35 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 
 IF TEQUIP:20 == 8
 	IF ASSIPLAY == 0
-		PRINTFORML %조사선택(CALLNAME:MASTER, "는")% 손으로 %CALLNAME:TARGET%의 자궁구를 밀어넣었다.
+		PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 손으로 %CALLNAME:TARGET%의 자궁구를 밀어넣었다.
 	ELSE
 		PRINTFORML %조사선택(CALLNAME:ASSI, "는")% 손으로 %CALLNAME:TARGET%의 자궁구를 밀어넣었다.
 	ENDIF
-	IF ABL:1 <= 2
-		PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 상당히 지친 듯하다.
-	ELSEIF ABL:1 >= 3
-		PRINTFORMW %CALLNAME:TARGET%의 질벽이 조여와서 애 좀 먹었다.
-	ELSEIF EXP:47 <= EXPLV:2
-		PRINTFORMW %CALLNAME:TARGET%의 자궁은 꽤나 부드럽게 들어갔다.
-	ELSEIF ABL:1 == 5 && EXP:47 >= EXPLV:3
+	IF ABL:1 == 5 && EXP:47 >= EXPLV:3
 		PRINTL 자궁구에 자꾸 손가락이 들어가 도로 집어넣기가 꽤나 힘들었다.
 		PRINTFORMW 마치 %CALLNAME:TARGET%의 자궁이 손가락을 삼키려는 것 같았다.
+	ELSEIF ABL:1 == 5
+		PRINTFORMW %CALLNAME:TARGET%의 자궁은 꽤나 부드럽게 들어갔다.
+	ELSEIF ABL:1 >= 3
+		PRINTFORMW %CALLNAME:TARGET%의 질벽이 조여와서 애 좀 먹었다.
+	ELSE
+		PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 상당히 지친 듯하다.
 	ENDIF
 ELSE
 	IF ASSIPLAY == 0
-		PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 손으로 %CALLNAME:TARGET%의 질을 파고들어 자궁구를 끄집어냈다.
+		PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 손으로 %CALLNAME:TARGET%의 질을 파고들어 자궁구를 끄집어냈다.
 	ELSE
 		PRINTFORML %조사선택(CALLNAME:ASSI, "는")% 손으로 %CALLNAME:TARGET%의 질을 파고들어 자궁구를 끄집어냈다.
 	ENDIF
-	PRINTFORM %CALLNAME:TARGET%
-	IF ABL:1 <= 2
-		PRINTW 의 자궁구가 빠진 보지는 움찔움찔 경련하고 있다.
-	ELSEIF ABL:1 >= 3
-		PRINTW 의 보지는 음란하게 자신의 자궁구를 무방비하게 늘어놓고 있다.
-	ELSEIF EXP:47 <= EXPLV:2
-		PRINTW 의 자궁구멍은 뻐끔대면서 무언가를 기다리는 것 같다.
-	ELSEIF ABL:1 == 5 && EXP:47 >= EXPLV:3
-		PRINTL 의 자궁은 꽤나 길게 나왔다.
+	PRINTFORM %CALLNAME:TARGET%의 
+	IF ABL:1 == 5 && EXP:47 >= EXPLV:3
+		PRINTL 자궁은 꽤나 길게 나왔다.
 		PRINTFORMW 뒤집힌 질벽으로 이루어진 %CALLNAME:TARGET%의 자궁의 구멍은 크게 벌려진 채 성욕을 갈망하고 있다.
+	ELSEIF ABL:1 == 5
+		PRINTW 자궁구멍은 뻐끔대면서 무언가를 기다리는 것 같다.
+	ELSEIF ABL:1 >= 3
+		PRINTW 보지는 음란하게 자신의 자궁구를 무방비하게 늘어놓고 있다.
+	ELSE
+		PRINTW 자궁구가 빠진 보지는 움찔움찔 경련하고 있다.
 	ENDIF
 ENDIF
