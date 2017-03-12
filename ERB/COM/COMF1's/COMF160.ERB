@@ -306,11 +306,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 	RETURN 0
 
 IF TEQUIP:20 == 8
-	IF ASSIPLAY == 0
-		PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 손으로 %CALLNAME:TARGET%의 자궁구를 밀어넣었다.
-	ELSE
-		PRINTFORML %조사선택(CALLNAME:ASSI, "는")% 손으로 %CALLNAME:TARGET%의 자궁구를 밀어넣었다.
-	ENDIF
+	PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 손으로 %CALLNAME:TARGET%의 자궁구를 밀어넣었다.
 	IF ABL:1 == 5 && EXP:47 >= EXPLV:3
 		PRINTL 자궁구에 자꾸 손가락이 들어가 도로 집어넣기가 꽤나 힘들었다.
 		PRINTFORMW 마치 %CALLNAME:TARGET%의 자궁이 손가락을 삼키려는 것 같았다.
@@ -322,11 +318,7 @@ IF TEQUIP:20 == 8
 		PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 상당히 지친 듯하다.
 	ENDIF
 ELSE
-	IF ASSIPLAY == 0
-		PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 손으로 %CALLNAME:TARGET%의 질을 파고들어 자궁구를 끄집어냈다.
-	ELSE
-		PRINTFORML %조사선택(CALLNAME:ASSI, "는")% 손으로 %CALLNAME:TARGET%의 질을 파고들어 자궁구를 끄집어냈다.
-	ENDIF
+	PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 손으로 %CALLNAME:TARGET%의 질을 파고들어 자궁구를 끄집어냈다.
 	PRINTFORM %CALLNAME:TARGET%의 
 	IF ABL:1 == 5 && EXP:47 >= EXPLV:3
 		PRINTL 자궁은 꽤나 길게 나왔다.
