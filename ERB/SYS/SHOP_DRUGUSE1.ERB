@@ -551,12 +551,10 @@ RETURN 1
 @USE_DRUG_34, ARG, ARG:1
 IF ARG == MASTER
 	PRINTFORML ＜%조사처리(CALLNAME:ARG,"가")% 요정이 되겠습니까?＞
-	PRINTFORM ※다시 되돌릴 수 
 ELSE
 	PRINTFORML ＜%조사처리(CALLNAME:ARG,"를")% 요정화시키겠습니까?＞
-	PRINTFORM ※다시 되돌릴 수 
 ENDIF
-PRINTW 없으므로 신중하게 판단하세요!
+PRINTW ※다시 되돌릴 수 없으므로 신중하게 판단하세요!
 DRAWLINE
 PRINTL [0] - 그만둔다
 IF ARG == MASTER
