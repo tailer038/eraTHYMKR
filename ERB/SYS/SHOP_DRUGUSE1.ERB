@@ -303,7 +303,61 @@ ELSE
 ENDIF
 RETURN 1
 
-
+;-------------------------------------------------
+;유두확장약
+;-------------------------------------------------
+@USE_DRUG_27, ARG, ARG:1
+PRINTFORML ＜%CALLNAME:ARG%의 유두를 개조하시겠습니까?＞
+PRINTW ※두 번 다시 되돌아갈 수 없게 됩니다! 잘 생각해주세요!
+DRAWLINE
+PRINTL [0] - 지금은 그만둔다
+PRINTFORML [1] - 유두를 개조한다
+DRAWLINE
+$INPUT_LOOP
+INPUT
+IF RESULT == 1
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? [유두확장약]을 먹었다. # %CALLNAME:ARG%에게 [유두확장약]을 먹였다.\@
+SIF ARG != MASTER
+	CALL SELF_KOJO, ARG, 327, 0
+PRINTFORMW ＜%CALLNAME:ARG%의 유두가 개조되고 모유가 흐르게 되었다.＞
+TALENT:ARG:2 = 1
+TALENT:ARG:134 = 1
+CALL COMMON_UP_EXP, ARG, 50, 1, 0, 1
+SIF ARG != MASTER
+	CALL SELF_KOJO, ARG, 327, 1
+ELSEIF RESULT == 0
+	RETURN 0
+ELSE
+	GOTO INPUT_LOOP
+ENDIF
+RETURN 1
+;-------------------------------------------------
+;탈자궁유도약
+;-------------------------------------------------
+@USE_DRUG_28, ARG, ARG:1
+PRINTFORML ＜%CALLNAME:ARG%의 자궁을 끄집어냅니까?＞
+PRINTW ※두 번 다시 되돌아갈 수 없게 됩니다! 잘 생각해주세요!
+DRAWLINE
+PRINTL [0] - 지금은 그만둔다
+PRINTFORML [1] - Meet the Cervix
+DRAWLINE
+$INPUT_LOOP
+INPUT
+IF RESULT == 1
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? [탈자궁유도약]을 먹었다. # %CALLNAME:ARG%에게 [탈자궁유도약]을 먹였다.\@
+SIF ARG != MASTER
+	CALL SELF_KOJO, ARG, 328, 0
+PRINTFORMW ＜%CALLNAME:ARG%의 자궁구가 체외로 모습을 드러낼 수 있게 되었다.＞
+TALENT:ARG:3 = 1
+CALL COMMON_UP_EXP, ARG, 50, 1, 0, 1
+SIF ARG != MASTER
+	CALL SELF_KOJO, ARG, 328, 1
+ELSEIF RESULT == 0
+	RETURN 0
+ELSE
+	GOTO INPUT_LOOP
+ENDIF
+RETURN 1
 ;-------------------------------------------------
 ;赤の飴玉(処女膜再生)
 ;-------------------------------------------------
