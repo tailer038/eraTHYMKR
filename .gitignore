@@ -4,4 +4,4 @@ global.sav
 save[0-9]+.sav
 
 # Log File
-[^.].log
+emuera.log

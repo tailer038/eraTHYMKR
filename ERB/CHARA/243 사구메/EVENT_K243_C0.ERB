@@ -40,8 +40,8 @@
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「も…もっと…体…」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「조…좀더…몸을…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
@@ -51,12 +51,12 @@ IF RESULT:1 == 1
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「ん…こういうの…好き…」
-		PRINTFORMW 「…っ…」
+		PRINTFORMW 「응…이런거…좋아…」
+		PRINTFORMW 「…읏…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -68,36 +68,36 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…ん！？」
-		PRINTFORMW 「…汚いわよ…そこ…」
+		PRINTFORMW 「…응！？」
+		PRINTFORMW 「…더러운곳이야…거긴…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは汚物を見るような目で蔑んでいる
+		PRINTFORMW 사구메는 오물을 보는듯한 눈으로 멸시하고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:0 >= 5
-		PRINTFORMW 「……ひあっ…ん…！」
-		PRINTFORMW 「…あっっんんっ！」
+		PRINTFORMW 「……햐앙…응…！」
+		PRINTFORMW 「…앗, 으응, 으읏！」
 	ELSEIF TALENT:연모 && ABL:0 >= 3 
-		PRINTFORMW 「………ん…！」
-		PRINTFORMW 「や…そこ…！」
+		PRINTFORMW 「………응…！」
+		PRINTFORMW 「앗…거기…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「……あっ…ん…」
-		PRINTFORMW 「……もっとお願い…」
+		PRINTFORMW 「……아앙…응…」
+		PRINTFORMW 「……좀더 부탁해…」
 	;その他
 	ELSEIF ABL:0 >= 5
-		PRINTFORMW 「……あっ…ん…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……앗…응…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:0 >= 3
 		PRINTFORMW 「………ん…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -109,36 +109,36 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「いいけど…そんなところ…」
-		PRINTFORMW 「汚く…ない？…ひあ！？」
+		PRINTFORMW 「괜찮지만…그런곳을…」
+		PRINTFORMW 「더럽지…않아？…히앗！？」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは養豚場の豚を見るような目でこちらを睨みつけている
+		PRINTFORMW 사구메는 양돈장의 돼지를 보는듯한 눈으로 이쪽을 노려보고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「……ひあっ…ん…！」
-		PRINTFORMW 「…あっ…ひんっ…や…！」
+		PRINTFORMW 「……햐앗…응…！」
+		PRINTFORMW 「…앗…히잇…아…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あ…ん…！」
-		PRINTFORMW 「や…お尻…変なの…！」
+		PRINTFORMW 「……아…응…！」
+		PRINTFORMW 「앗…엉덩이…이상해…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「……あっ…そこ…ん…」
-		PRINTFORMW 「……汚いのに…」
+		PRINTFORMW 「……앗…거기…응…」
+		PRINTFORMW 「……더러운데도…」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……うあっ…ん…くっ！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……우앗…응…큿！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「………くっ…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「………큿…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -151,35 +151,35 @@ IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「……」
-		PRINTFORMW 「私のでよければ…ん…」
+		PRINTFORMW 「내 것으로 좋다면…응…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメはゴミクズを見る目でこちらを睨みつけている
+		PRINTFORMW 사구메는 쓰레기를 보는듯한 눈으로 이쪽을 노려보고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:3 >= 5
-		PRINTFORMW 「……いっ…ん…！」
-		PRINTFORMW 「…あっ…もうっ……！」
+		PRINTFORMW 「……잇…응…！」
+		PRINTFORMW 「…앗…정말이지……！」
 	ELSEIF TALENT:연모 && ABL:3 >= 3 
-		PRINTFORMW 「……あ…やん…！」
-		PRINTFORMW 「や…あ…！」
+		PRINTFORMW 「……아…아앙…！」
+		PRINTFORMW 「앗…아…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「……胸…ん…」
-		PRINTFORMW 「…気持ちいい…」
+		PRINTFORMW 「……가슴…응…」
+		PRINTFORMW 「…기분좋아…」
 	;その他
 	ELSEIF ABL:3 >= 5
-		PRINTFORMW 「……あっ……ひっ…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……앗……히잇…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:3 >= 3
-		PRINTFORMW 「………くふっ…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「………크흣…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -191,36 +191,36 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「あなたの…指…ん…」
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「당신의…손가락…응…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメはクズを見る目でこちらを睨みつけている
+		PRINTFORMW 사구메는 쓰레기를 보는듯한 눈으로 이쪽을 노려보고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「……いっ…ん…！」
-		PRINTFORMW 「…あっ…指…気持よくて…！」
+		PRINTFORMW 「……으읏…응…！」
+		PRINTFORMW 「…앗…손가락…기분좋앗…！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あ…そこ…！」
-		PRINTFORMW 「や…ぁあふわっ…！」
+		PRINTFORMW 「……아…거긴…！」
+		PRINTFORMW 「아…아아, 후아앙…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あなたの…指…ん…！」
-		PRINTFORMW 「…気持よくて…」
+		PRINTFORMW 「…당신의…손가락…응…！」
+		PRINTFORMW 「…기분좋앗…」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「……ひあっ……ひっ…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……히앗……힛…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「……ふぁ…くっ…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……후아…큿…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -238,37 +238,37 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……ん…ちゅ…」
-		PRINTFORMW 「…唇…柔らかい…」
+		PRINTFORMW 「……응…츄우…」
+		PRINTFORMW 「…입술…부드러워…」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「…あ……私…」
-		PRINTFORMW サグメは動揺した様子で無意識に涙を流しながらこちらを睨みつけている
+		PRINTFORMW 「…아……내가…」
+		PRINTFORMW 사구메는 동요한채 무의식적으로 눈물을 흘리며 이쪽을 노려보고 있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && Exp:23 >= 100
-		PRINTFORMW 「……ん…あっ…」
-		PRINTFORMW 「…貴方とのキス…好きよ…ん…」
+		PRINTFORMW 「……응…앗…」
+		PRINTFORMW 「…당신과의 키스…좋아해……」
 	ELSEIF TALENT:연모 && Exp:23 >= 50 
-		PRINTFORMW 「……あ…ん…」
-		PRINTFORMW 「や…もっと…頂戴…！」
+		PRINTFORMW 「……아…앙…」
+		PRINTFORMW 「아…좀더…해줘…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あなたのキス…ん！」
-		PRINTFORMW 「…あ…」
+		PRINTFORMW 「…당신의 키스…응！」
+		PRINTFORMW 「…아…」
 	;その他
 	ELSEIF Exp:23 >= 100
-		PRINTFORMW 「……あっ……ん…！」
-		PRINTFORMW サグメは押さえつけられたまま唇を奪われて必死に抵抗している
+		PRINTFORMW 「……앗……응…！」
+		PRINTFORMW 사구메는 억압된채 입술을 빼앗기면서도 필사적으로 저항하고있다
 	ELSEIF Exp:23 >= 50
 		PRINTFORMW 「…ひ…くっ…！」
-		PRINTFORMW サグメは押さえつけられたまま唇を奪われて抵抗している
+		PRINTFORMW 사구메는 억압된채 입술을 빼앗기면서도 저항하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは押さえつけられたまま唇を奪われて抵抗している
+		PRINTFORMW 사구메는 억압된채 입술을 빼앗기면서도 저항하고있다
 	ENDIF
 ENDIF
 
@@ -280,37 +280,37 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「わ、分かった…けど…」
-		PRINTFORMW 「…うまく…出来るか…ん…！」
+		PRINTFORMW 「아, 알겠…는데도…」
+		PRINTFORMW 「…잘…할수있을까…응…！」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「…そんなこと言われても…」
-		PRINTFORMW サグメはこちらを睨みつけながら自慰行為を始めた
+		PRINTFORMW 「…그렇게 말해도…」
+		PRINTFORMW 사구메는 이쪽을 노려보며 자위를 시작했다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && Exp:10 >= 100
-		PRINTFORMW 「……う…ん…！」
-		PRINTFORMW 「…あっ…あんんっ！…！」
+		PRINTFORMW 「……우…응…！」
+		PRINTFORMW 「…앗…아아앙！…！」
 	ELSEIF TALENT:연모 && Exp:10 >= 50 
-		PRINTFORMW 「……あ…ここ…！」
-		PRINTFORMW 「や…ぁあ…ダメ…っ…！」
+		PRINTFORMW 「……아…여기…！」
+		PRINTFORMW 「앗…아아…안돼…엣…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…！」
-		PRINTFORMW 「…気持よくて…」
+		PRINTFORMW 「…읏…！」
+		PRINTFORMW 「…기분좋아져…」
 	;その他
 	ELSEIF Exp:10 >= 100
-		PRINTFORMW 「……ひぐっ……言われて…言われてやってるのに…！」
-		PRINTFORMW サグメは必死に片手で口を押さえて声を出さないようにしている
+		PRINTFORMW 「……흐극……명령때문에…명령때문에 하는건데…！」
+		PRINTFORMW 사구메는 필사적으로 한손으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF Exp:10 >= 50
-		PRINTFORMW 「……ふぇ…ひんっ…！」
-		PRINTFORMW サグメは片手で口を押さえて声を出さないようにしている
+		PRINTFORMW 「……후에…히잇…！」
+		PRINTFORMW 사구메는 한손으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「………っ」
-		PRINTFORMW サグメは片手で口を押さえて声を出さないようにしている
+		PRINTFORMW 「………읏」
+		PRINTFORMW 사구메는 한손으로 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -322,7 +322,7 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「何もしないの…？」
+		PRINTFORMW 「아무것도 안하는거야…？」
 	;その他
 	ELSE
 		PRINTFORMW 「…？」
@@ -334,7 +334,7 @@ ELSE
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「…」
-		PRINTFORMW 「…どうかしました？」
+		PRINTFORMW 「…무슨일 있나요？」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
@@ -348,36 +348,36 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……あん…！」
-		PRINTFORMW 「これ…気持ちいい…！」
+		PRINTFORMW 「……앙…！」
+		PRINTFORMW 「이거…기분좋아아…！」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは生ゴミを見る目でこちらを睨みつけている
+		PRINTFORMW 사구메는 음식물 쓰레기를 보는듯한 눈으로 이쪽을 노려보고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:0 >= 5
-		PRINTFORMW 「……いっ…ん…あ…！」
-		PRINTFORMW 「…あっ…これ…気持いい…！」
+		PRINTFORMW 「……잇…응…아…！」
+		PRINTFORMW 「…앗…이거…기분좋아…！」
 	ELSEIF TALENT:연모 && ABL:0 >= 3 
-		PRINTFORMW 「……あ…これ…！」
-		PRINTFORMW 「や…ぁああ…！」
+		PRINTFORMW 「……아…이거…！」
+		PRINTFORMW 「아…아아아…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…！」
-		PRINTFORMW 「…この玩具で…ん…！」
+		PRINTFORMW 「…응…！」
+		PRINTFORMW 「…장난감으로…응…！」
 	;その他
 	ELSEIF ABL:0 >= 5
-		PRINTFORMW 「……あっ……ひっ…ん…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……앗……힛…응…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:0 >= 3
-		PRINTFORMW 「……ん…………んんっ！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……응…………으읏！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -389,36 +389,36 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……あ…！」
-		PRINTFORMW 「これ…すごい…！」
+		PRINTFORMW 「……아…！」
+		PRINTFORMW 「이거…굉장해…！」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは生ゴミを見る目でこちらを睨みつけている
+		PRINTFORMW 사구메는 음식물 쓰레기를 보는듯한 눈으로 이쪽을 노려보고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:0 >= 5
-		PRINTFORMW 「……いっ…ん…あ…！」
-		PRINTFORMW 「…あっ…これ…気持いい…！」
+		PRINTFORMW 「……잇…응…아…！」
+		PRINTFORMW 「…앗…이거…기분좋아…！」
 	ELSEIF TALENT:연모 && ABL:0 >= 3 
-		PRINTFORMW 「……あ…これ…！」
-		PRINTFORMW 「や…ぁああ…！」
+		PRINTFORMW 「……아…이거…！」
+		PRINTFORMW 「아…아아아…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…！」
-		PRINTFORMW 「…この玩具で…ん…！」
+		PRINTFORMW 「…응…！」
+		PRINTFORMW 「…장난감으로…응…！」
 	;その他
 	ELSEIF ABL:0 >= 5
-		PRINTFORMW 「……あっ……ひっ…ん…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……앗……히잇…응…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:0 >= 3
-		PRINTFORMW 「……ん…………んんっ！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……응…………으읏！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -433,35 +433,35 @@ IF TEQUIP:20 == 0
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……ん…」
-			PRINTFORMW 「抜いちゃうの…それ…」
+			PRINTFORMW 「……응…」
+			PRINTFORMW 「그거…뽑아버리는거야?…」
 		;その他
 		ELSE
 			PRINTFORMW 「………ん…」
-			PRINTFORMW サグメは膣から異物を抜かれて安堵している
+			PRINTFORMW 사구메는 질에서 이물을 뽑혀져 안도하고있다
 		ENDIF
 
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:1 >= 5
-			PRINTFORMW 「……あ…」
-			PRINTFORMW 「…抜かなくても…」
+			PRINTFORMW 「……아…」
+			PRINTFORMW 「…뽑지 않아도…」
 		ELSEIF TALENT:연모 && ABL:1 >= 3 
-			PRINTFORMW 「……あ…」
+			PRINTFORMW 「……아…」
 		ELSEIF TALENT:연모
 			PRINTFORMW 「……！」
-			PRINTFORMW 「…次は…あなたの…を…」
+			PRINTFORMW 「…당신은…당신의…것을…」
 		;その他
 		ELSEIF ABL:1 >= 5
-			PRINTFORMW 「……あっ……ぐっ…！」
-			PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+			PRINTFORMW 「……앗……그읏…！」
+			PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 		ELSEIF ABL:1 >= 3
-			PRINTFORMW 「……っあ…！」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 「……우아…！」
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ENDIF
 	ENDIF
 ;装着時
@@ -470,36 +470,36 @@ ELSE
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……んあ…」
-			PRINTFORMW 「あなたの…方がいいのに…」
+			PRINTFORMW 「……아앙…」
+			PRINTFORMW 「당신의 것…쪽이 좋은데…」
 		;その他
 		ELSE
-			PRINTFORMW 「………あ…」
-			PRINTFORMW サグメは異物を挿入されて戸惑っている
+			PRINTFORMW 「………아…」
+			PRINTFORMW 사구메는 이물을 삽입당해 혼란해하고있다
 		ENDIF
 
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:1 >= 5
-			PRINTFORMW 「……いっ…ん…！」
-			PRINTFORMW 「…これ…入れられると…変になっちゃう…！」
+			PRINTFORMW 「……잇…응…！」
+			PRINTFORMW 「…이거…넣어지면…이상해져버렷…！」
 		ELSEIF TALENT:연모 && ABL:1 >= 3 
-			PRINTFORMW 「……あ…これ…！」
-			PRINTFORMW 「や…ぁあっ…！」
+			PRINTFORMW 「……아…이거…！」
+			PRINTFORMW 「아…아앗…！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…あなたの……ん…！」
-			PRINTFORMW 「…物でいいのに…！」
+			PRINTFORMW 「…당신의……응…！」
+			PRINTFORMW 「…것이 좋은데…！」
 		;その他
 		ELSEIF ABL:1 >= 5
-			PRINTFORMW 「……ひあっ……ぐっ…！」
-			PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+			PRINTFORMW 「……히앗……읏…！」
+			PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 		ELSEIF ABL:1 >= 3
-			PRINTFORMW 「……っ…！」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 「……읏…！」
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ENDIF
 	ENDIF
 ENDIF
@@ -515,35 +515,35 @@ IF TEQUIP:25 == 0
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……んぐ…」
-			PRINTFORMW 「…はぁ…」
+			PRINTFORMW 「……으응…」
+			PRINTFORMW 「…하아…」
 		;その他
 		ELSE
-			PRINTFORMW 「………くふ…う…」
-			PRINTFORMW サグメは異物をアナルから抜き去られて困惑している
+			PRINTFORMW 「………크후…우…」
+			PRINTFORMW 사구메는 애널에서 이물을 뽑혀 당황하고있다
 		ENDIF
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:2 >= 5
-			PRINTFORMW 「……いっ…く…！」
-			PRINTFORMW 「…もっと…！」
+			PRINTFORMW 「……가…버려…！」
+			PRINTFORMW 「…좀더…！」
 		ELSEIF TALENT:연모 && ABL:2 >= 3 
-			PRINTFORMW 「……あ…くぅ…！」
-			PRINTFORMW 「や……！」
+			PRINTFORMW 「……아…크읏…！」
+			PRINTFORMW 「앙……！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…これ……あ…！」
-			PRINTFORMW 「…ふぅ…！」
+			PRINTFORMW 「…이거……아…！」
+			PRINTFORMW 「…후우…！」
 		;その他
 		ELSEIF ABL:2 >= 5
-			PRINTFORMW 「……ぎあっ……っ…！」
-			PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+			PRINTFORMW 「……가앗……읏…！」
+			PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 		ELSEIF ABL:2 >= 3
-			PRINTFORMW 「……が…ふぅ…！」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 「……그…후읏…！」
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ELSE
-			PRINTFORMW 「……ぐ…」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 「……긋…」
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ENDIF
 	ENDIF
 ;装着時
@@ -552,35 +552,35 @@ ELSE
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……んぐ…」
-			PRINTFORMW 「お尻に…きつい…」
+			PRINTFORMW 「……으윽…」
+			PRINTFORMW 「엉덩이가…꽉 껴서…」
 		;その他
 		ELSE
-			PRINTFORMW 「………ぐぁ…」
-			PRINTFORMW サグメは異物をアナルに挿入されて戸惑っている
+			PRINTFORMW 「………구…앗…」
+			PRINTFORMW 사구메는 애널에 이물을 삽입당해 혼란해하고있다
 		ENDIF
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:2 >= 5
-			PRINTFORMW 「……いっ…ぎ…！」
-			PRINTFORMW 「…これ……お尻…来る…！」
+			PRINTFORMW 「……으…윽…！」
+			PRINTFORMW 「…이거……엉덩이…뭔가가…！」
 		ELSEIF TALENT:연모 && ABL:2 >= 3 
-			PRINTFORMW 「……あ…がぅ…！」
-			PRINTFORMW 「や…がぁあっ…！」
+			PRINTFORMW 「……아…그윽…！」
+			PRINTFORMW 「아…아아앗…！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…これ……ん…！」
-			PRINTFORMW 「…太い…！」
+			PRINTFORMW 「…이거……응…！」
+			PRINTFORMW 「…굵어…！」
 		;その他
 		ELSEIF ABL:2 >= 5
-			PRINTFORMW 「……ぐあっ……がっ…！」
-			PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+			PRINTFORMW 「……우아앗……아앗…！」
+			PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 		ELSEIF ABL:2 >= 3
-			PRINTFORMW 「……ぐぎ…あ…！」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 「……으윽…아…！」
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ELSE
-			PRINTFORMW 「……っく…」
-			PRINTFORMW サグメは口を押さえて声を出さないようにしている
+			PRINTFORMW 「……크읏…」
+			PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 		ENDIF
 	ENDIF
 ENDIF
@@ -596,26 +596,26 @@ IF TEQUIP:30 == 0
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……ん…」
-			PRINTFORMW 「着けたまんまでも…」
+			PRINTFORMW 「……응…」
+			PRINTFORMW 「찬 채로도…」
 		;その他
 		ELSE
-			PRINTFORMW 「………ひん！」
+			PRINTFORMW 「………히잉！」
 		ENDIF
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:0 >= 5
-			PRINTFORMW 「…これ……」
+			PRINTFORMW 「…이거……」
 		ELSEIF TALENT:연모 && ABL:0 >= 3 
-			PRINTFORMW 「や…っ…！」
+			PRINTFORMW 「아…앗…！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…ん…」
+			PRINTFORMW 「…응…」
 		;その他
 		ELSEIF ABL:0 >= 5
-			PRINTFORMW 「……ひあっ……っ…！」
+			PRINTFORMW 「……히앙……읏…！」
 		ELSEIF ABL:0 >= 3
-			PRINTFORMW 「………あ…」
+			PRINTFORMW 「………아…」
 		ELSE
 			PRINTFORMW 「………」
 		ENDIF
@@ -626,8 +626,8 @@ ELSE
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……んあ…」
-			PRINTFORMW 「…これ…」
+			PRINTFORMW 「……아앙…」
+			PRINTFORMW 「…이거…」
 		;その他
 		ELSE
 			PRINTFORMW 「………！」
@@ -636,18 +636,18 @@ ELSE
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:0 >= 5
-			PRINTFORMW 「…これ…気持ち…いいの…！」
+			PRINTFORMW 「…이거…기분…좋아앗…！」
 		ELSEIF TALENT:연모 && ABL:0 >= 3 
-			PRINTFORMW 「あ…っ…！」
+			PRINTFORMW 「아…앗…！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…ん…これ…好き…」
+			PRINTFORMW 「…앙…이거…좋아…」
 		;その他
 		ELSEIF ABL:0 >= 5
-			PRINTFORMW 「……ひあっ…あっ…！」
+			PRINTFORMW 「……하앗…앗…！」
 		ELSEIF ABL:0 >= 3
-			PRINTFORMW 「……んあ…！」
+			PRINTFORMW 「……아앙…！」
 		ELSE
-			PRINTFORMW 「……ん…」
+			PRINTFORMW 「……응…」
 		ENDIF
 	ENDIF
 ENDIF
@@ -663,26 +663,26 @@ IF TEQUIP:35 == 0
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……ん…」
-			PRINTFORMW 「…おっぱい…」
+			PRINTFORMW 「……응…」
+			PRINTFORMW 「…가슴…」
 		;その他
 		ELSE
-			PRINTFORMW 「………ん…！」
+			PRINTFORMW 「………응…！」
 		ENDIF
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:3 >= 5
-			PRINTFORMW 「…これ…着けてても…」
+			PRINTFORMW 「…이거…붙인채로도…」
 		ELSEIF TALENT:연모 && ABL:3 >= 3 
-			PRINTFORMW 「や…胸…おかしく…！」
+			PRINTFORMW 「아…가슴…이상해져…！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…ん…着けててもいいのに・・」
+			PRINTFORMW 「…응…붙인채로도 괜찮은데…」
 		;その他
 		ELSEIF ABL:3 >= 5
-			PRINTFORMW 「……ひっ……っ…！」
+			PRINTFORMW 「……힛……읏…！」
 		ELSEIF ABL:3 >= 3
-			PRINTFORMW 「………あ…」
+			PRINTFORMW 「………아…」
 		ELSE
 			PRINTFORMW 「………」
 		ENDIF
@@ -693,8 +693,8 @@ ELSE
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「……ん…胸に…」
-			PRINTFORMW 「…これ…」
+			PRINTFORMW 「……응…가슴에…」
+			PRINTFORMW 「…이거…」
 		;その他
 		ELSE
 			PRINTFORMW 「………？」
@@ -703,18 +703,18 @@ ELSE
 	ELSE
 		;연모
 		IF TALENT:연모 && ABL:3 >= 5
-			PRINTFORMW 「…これ…胸…いい…！」
+			PRINTFORMW 「…이거…가슴…좋아…！」
 		ELSEIF TALENT:연모 && ABL:3 >= 3 
-			PRINTFORMW 「…っ…！」
+			PRINTFORMW 「…읏…！」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「…ん…これ…胸変になる…」
+			PRINTFORMW 「…응…이거…가슴이 이상해져버려…」
 		;その他
 		ELSEIF ABL:3 >= 5
-			PRINTFORMW 「……あっ…あっ…！」
+			PRINTFORMW 「……앗…앗…！」
 		ELSEIF ABL:3 >= 3
-			PRINTFORMW 「……あ…！」
+			PRINTFORMW 「……아…！」
 		ELSE
-			PRINTFORMW 「……ん…これ…」
+			PRINTFORMW 「……앙…이거…」
 		ENDIF
 	ENDIF
 ENDIF
@@ -753,45 +753,45 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「では…よろしくお願いします…」
-		PRINTFORMW そう言うとサグメは%CALLNAME:MASTER%の首に手を回し体を委ねてきた
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「그러면…잘 부탁드립니다…」
+		PRINTFORMW 그렇게 말하며 사구메는 %CALLNAME:MASTER%의 목에 손을 걸고 몸을 맡겨왔다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「貴方…止め…！」
-		PRINTFORMW サグメは貞操を守ろうとするがあえなく押さえつけられあえなく秘所に挿入された
+		PRINTFORMW 「당신…멈춰…！」
+		PRINTFORMW 사구메는 정조를 지키려고하지만 억눌러진채로 쉽사리 음부에 삽입당했다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「貴方になら…抱かれてもいい…」
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「당신에게라면…안겨져도 좋아…」
 	;その他
 	ELSE
-		PRINTFORMW 「……っ…」
-		PRINTFORMW サグメはゴミを見る目でこちらを睨みつけている
+		PRINTFORMW 「……읏…」
+		PRINTFORMW 사구메는 쓰레기를 보는듯한 눈으로 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…んっ…あ…！」
-		PRINTFORMW 「…あっ…あぁ…！」
+		PRINTFORMW 「…으응…아…！」
+		PRINTFORMW 「…앗…아아…！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あ…そこ…！」
-		PRINTFORMW 「や…ぁあふわっ…！」
+		PRINTFORMW 「……아…거기…！」
+		PRINTFORMW 「아…아아 후아앗…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…んんっ！…ううぅ…ん…！」
-		PRINTFORMW 「…あぁんんっ！」
+		PRINTFORMW 「…으응！…우우으…응…！」
+		PRINTFORMW 「…아아아앙！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「……ひあっ…ぐ…んっ…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……히앗…그…으응…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「……ふぁ…くっ…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……후아…큿…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -803,45 +803,45 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「後ろからですか…よろしくお願いします…」
-		PRINTFORMW そう言うとサグメは%CALLNAME:MASTER%の四つん這いになって体を委ねてきた
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「뒤에서 말이군요…잘 부탁드립니다…」
+		PRINTFORMW 그렇게 말하며 사구네는 %CALLNAME:MASTER%의 앞에 엎드린채 몸을 맡겨왔다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「こんな…こんな獣みたいな…！」
-		PRINTFORMW サグメは諦めたように四つん這いになり尻を差し出してきた
+		PRINTFORMW 「이런…이런 짐승같은…！」
+		PRINTFORMW 사구메는 체념한듯이 엎드리고 엉덩이를 내밀어왔다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「こういうの…好きなの？」
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「이런거…좋아해？」
 	;その他
 	ELSE
-		PRINTFORMW 「……っ…」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……읏…」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…んんっ！ぁんんっ！あっぁあっ…！」
-		PRINTFORMW 「ううぅぁあっううぅあっあっぁあっ………！」
+		PRINTFORMW 「…으응！아아앙！앗, 아앗…！」
+		PRINTFORMW 「우우우 아아, 우아아아앗………！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あっあんふわっ…バックで…！」
-		PRINTFORMW 「や…っ…！」
+		PRINTFORMW 「……앗 하앙, 후앗…뒤로…！」
+		PRINTFORMW 「앗…아…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…んんっ！…ううぅ…ん…！」
-		PRINTFORMW 「…ぁんんっ！…ひんっ！」
+		PRINTFORMW 「…으응！…우으으…응…！」
+		PRINTFORMW 「…아으응！…히잇！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「……ひあっ…ぁ………！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……히앗…아………！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「……やぁ…ぅんんっ！…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아아…우으응！…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -853,45 +853,45 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「貴方の顔…よく見える…」
-		PRINTFORMW そう言うとサグメは%CALLNAME:MASTER%の首に手を回しゆっくりと体を重ねてきた
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「당신의 얼굴…잘 보여…」
+		PRINTFORMW 그렇게 말하며 사구메는 %CALLNAME:MASTER%의 목에 손을 걸고 천천히 몸을 겹쳐왔다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「や…やめて…お願いだから…」
-		PRINTFORMW サグメは弱々しい声でそう言いながらも抵抗せずに腰を下ろしてきた
+		PRINTFORMW 「그…그만둬…부탁이니까…」
+		PRINTFORMW 사구메는 약한 목소리로 그렇게 말하면서도 저항하지 않고 허리를 내려왔다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あ…ん…」
-		PRINTFORMW 「貴方の顔よく見ると…」
+		PRINTFORMW 「…아…응…」
+		PRINTFORMW 「당신의 얼굴이 잘 보여…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは無言でこちらを睨みつけている
+		PRINTFORMW 사구메는 말없이 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…んんっ！ぁあっ…！」
-		PRINTFORMW 「…あっぁあっ…う……！」
+		PRINTFORMW 「…으응！아앗…！」
+		PRINTFORMW 「…앗, 아앗…우……！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あっあんっ…このっまま…！」
-		PRINTFORMW 「や…っ…！」
+		PRINTFORMW 「……앗, 아앙…이대로…！」
+		PRINTFORMW 「앗…읏…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…ううぅ…が…！」
-		PRINTFORMW 「…ぁんんっ！…んっ！」
+		PRINTFORMW 「…응…우으…아…！」
+		PRINTFORMW 「…아으응！…응！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「……えぅぅくっ………はぁっ！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아으읏………하앗！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「…ぐぁ…えぅぐぁ………！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…우아…아으윽………！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -903,45 +903,45 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「後ろから…顔見えない…けど…」
-		PRINTFORMW そう言いながらサグメは%CALLNAME:MASTER%の後ろを向いて腰を下ろしてきた
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「뒤에선…얼굴이 안보이는…데도…」
+		PRINTFORMW 그렇게 말하며 사구메는 %CALLNAME:MASTER%를 뒤로향하고 허리를 내려왔다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………」
-		PRINTFORMW 「や…やめて……よ…」
-		PRINTFORMW サグメは弱々しい声でそう言いながらも抵抗せずに腰を下ろしてきた
+		PRINTFORMW 「그…그만……둬…」
+		PRINTFORMW 사구메는 약한 목소리로 그렇게 말하면서도 저항하지 않고 허리를 내려왔다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あ…ん…」
-		PRINTFORMW 「……くっ…」
+		PRINTFORMW 「…아…응…」
+		PRINTFORMW 「……긋…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは無言でこちらを睨みつけている
+		PRINTFORMW 사구메는 말없이 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…っぁあっふわっ………！」
-		PRINTFORMW 「…んんっ！……っ！」
+		PRINTFORMW 「…읏, 아앗…후아앗………！」
+		PRINTFORMW 「…으응！……읏！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あっ…！」
-		PRINTFORMW 「ぁあああ…………ぁあっあっ！」
+		PRINTFORMW 「……앗…！」
+		PRINTFORMW 「아아아아…………아앗, 앗！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…ぁあっううぅ！」
-		PRINTFORMW 「…ぁんんっ！ぁあっふわっううぅ…！」
+		PRINTFORMW 「…응…아앗, 우으으으！」
+		PRINTFORMW 「…아아앙！아앗, 후아아으아…！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「…ぁぁ……んんっ！！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「…아아……으응！！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「…あっあ…っん…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…앗, 아…으응…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -953,43 +953,43 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……ん…あ…」
-		PRINTFORMW 「では…よろしくお願いします…」
-		PRINTFORMW そう言うとサグメは%CALLNAME:MASTER%に처녀を捧げてきた
+		PRINTFORMW 「……응…아…」
+		PRINTFORMW 「그러면…잘 부탁드립니다…」
+		PRINTFORMW 그렇게 말하며 사구메는 %CALLNAME:MASTER%에게 처녀를 바쳐왔다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「こんな…こんな…」
-		PRINTFORMW サグメは弱々しい声でそう言いながらも抵抗せずに腰を下ろしてきた
+		PRINTFORMW 「이런…이렇게…」
+		PRINTFORMW 사구메는 약한 목소리로 그렇게 말하면서도 저항하지 않고 허리를 내려왔다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あ…ん…」
-		PRINTFORMW 「奉仕しろ…って？いいわよ」
+		PRINTFORMW 「…아…응…」
+		PRINTFORMW 「봉사하라…고？알겠어」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐ…」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……긋…」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…んんっ！これ…気持ちいい…？」
+		PRINTFORMW 「…으응！이거…기분좋아…？」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あっ…んっ…こんな感じで…いいの…？」
+		PRINTFORMW 「……앗…응…이런느낌으로…괜찮아…？」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…う…ふぅ…！」
-		PRINTFORMW 「…これで…どう…んっ！」
+		PRINTFORMW 「…응…으…후우…！」
+		PRINTFORMW 「…이걸로…어때…으응！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「……ううぅんんっ！………っ！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……우으으으응！………읏！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「…ぐぁ………あっあううぅ………！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…그아………앗, 아우으으………！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1008,49 +1008,49 @@ IF NO:ASSI == 29
 		;2人に연모
 		IF TALENT:연모 && TALENT:ASSI:연모
 			IF RAND:3 == 0
-				PRINTFORMW 『んっ…うん…ああっ…』
-				PRINTFORMW 「八意様ばかり…」
+				PRINTFORMW 『응…우응…아아앗…』
+				PRINTFORMW 「야고코로님만…」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「こういうのは焦らしプレイというやつなのでしょうか…」
-				PRINTFORMW 『ん…あ…ぁああぁんあ……！』
+				PRINTFORMW 「이런게 애태우기 플레이란 건가요…」
+				PRINTFORMW 『응…아…아아아앙, 아……！』
 			ELSE
 				PRINTFORMW 「………」
-				PRINTFORMW （見ているだけで…こんなにも…）
-				PRINTFORMW 『あ、あ、あぁあっんんっ！』
+				PRINTFORMW （보고있을 뿐인데…이렇게나…）
+				PRINTFORMW 『아, 아, 아아앙, 읏, 아아！』
 			ENDIF
 		;サグメのみ연모
 		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
 			IF RAND:3 == 0
-				PRINTFORMW 「ああ…八意様…羨ましい…」
-				PRINTFORMW 『や、やめ…サグメ…あなた…えぅううぅ！！？』
+				PRINTFORMW 「아아…야고코로님…부러워요…」
+				PRINTFORMW 『그, 그만…사구메…당신…아으으윽！！？』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「ああ、八意様…」
-				PRINTFORMW 『知り合いに見られながらの…この屈辱…最悪ね…』
+				PRINTFORMW 「아아, 야고코로님…」
+				PRINTFORMW 『아는사람에게 보여지는…이 굴욕…최악이야…』
 			ELSE
-				PRINTFORMW 『えぐっあがっ！』
-				PRINTFORMW 「大人しくしておけば…気持よくなれますよ？」
+				PRINTFORMW 『아윽, 아아악！』
+				PRINTFORMW 「얌전히 있으면…기분 좋아질거에요？」
 			ENDIF
 		;永琳のみ연모
 		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
 			IF RAND:3 == 0
 				PRINTFORMW 「………」
-				PRINTFORMW 『あら、ん…よく見ておきなさい…』
+				PRINTFORMW 『어머, 응…잘 보고 있으라구…』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ご主人様からの寵愛を受けて、未だに気丈なのは可愛いけど…』
-				PRINTFORMW 「どうして…どうしてこんなことに…」
+				PRINTFORMW 『주인님의 총애를 받고도 아직까지 저항하는 모습은 귀엽지만…』
+				PRINTFORMW 「어째서…어째서 이런일이…」
 			ELSE
-				PRINTFORMW 『あら…こちらの行為を見ているだけじゃ不満？』
-				PRINTFORMW 「やめてよ…もう…お願いだからこんなことは！」
+				PRINTFORMW 『어라…이쪽의 행위를 보고만 있는건은 불만？』
+				PRINTFORMW 「그만해…더는…제발 이런짓은！」
 			ENDIF
 		;その他
 		ELSE
 			IF RAND:2 == 0
-				PRINTFORMW 「だ…駄目です…！私が…」
-				PRINTFORMW 『いいの…これで…』
+				PRINTFORMW 「아…안돼요…！제가…」
+				PRINTFORMW 『괜찮아…이걸로…』
 			ELSE
-				PRINTFORMW 『私…がこの子の代わりに…』
+				PRINTFORMW 『내…가 이 아이를 대신해서…』
 				PRINTFORMW 「………」
-				PRINTFORMW サグメは無言でただ涙を流している
+				PRINTFORMW 사구메는 그저 말없이 눈물을 흘리고있다
 			ENDIF
 		ENDIF
 		RETURN 1
@@ -1065,45 +1065,45 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……あ…」
-		PRINTFORMW 「これ…好き…」
-		PRINTFORMW そう言うとサグメは%CALLNAME:MASTER%の首に手を回しゆっくりと体を重ねてきた
+		PRINTFORMW 「……아…」
+		PRINTFORMW 「이거…좋아…」
+		PRINTFORMW 그렇게 말하며 사구메는 %CALLNAME:MASTER%의 목에 손을 걸치고 천천히 몸을 겹쳐왔다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………」
-		PRINTFORMW 「お…お願いだから…」
-		PRINTFORMW サグメは弱々しい声でそう言いながらも抵抗せずに体を重ねてきた
+		PRINTFORMW 「부…부탁이니까…」
+		PRINTFORMW 사구메는 약한 목소리로 그렇게 말하면서도 저항하지 않고 허리를 내려왔다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あ…これ…」
-		PRINTFORMW 「…少し恥ずかしいですね…」
+		PRINTFORMW 「…아…이거…」
+		PRINTFORMW 「…조금 부끄럽네요…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは無言でこちらを睨みつけている
+		PRINTFORMW 사구메는 말없이 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…んっ！…ぁあっ…！」
-		PRINTFORMW 「…ぅあううぅ…う……！」
+		PRINTFORMW 「…으응！…아앗…！」
+		PRINTFORMW 「…우아, 우으으…웃……！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あっあんっ…これ…凄い…！」
-		PRINTFORMW 「や…あううぅぁっ…！」
+		PRINTFORMW 「……앗, 아앙…이거…굉장해…！」
+		PRINTFORMW 「아…아우우으, 앗…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…うぅ…ん…！」
-		PRINTFORMW 「…ぁんっ！…あっ！」
+		PRINTFORMW 「…응…우으…응…！」
+		PRINTFORMW 「…아앙！…앗！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「……えぅぅくっ………ぁ…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아으으윽………아…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「…ぐ…えぅ…く……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…윽…아윽…큭……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1115,45 +1115,45 @@ ENDIF
 IF RESULT:1 == 1
 	;연모+처녀
 	IF TALENT:연모 && TALENT;처녀
-		PRINTFORMW 「……ん…」
-		PRINTFORMW 「後ろから…初めて…」
-		PRINTFORMW そう言いながらサグメは%CALLNAME:MASTER%の後ろを向いて腰を突き出してきた
+		PRINTFORMW 「……응…」
+		PRINTFORMW 「뒤로…처음이라니…」
+		PRINTFORMW 그렇게 말하며 사구메는 %CALLNAME:MASTER%를 뒤로하고 허리를 내밀었다
 	;처녀
 	ELSEIF TALENT:처녀
 		PRINTFORMW 「………」
-		PRINTFORMW 「や…だ…お願いだから…」
-		PRINTFORMW サグメは弱々しい声でそう言いながらも抵抗せずに突き出してきた
+		PRINTFORMW 「싫…어…부탁이니까…」
+		PRINTFORMW 사구메는 약한 목소리로 그렇게 말하면서도 저항하지 않고 허리를 내밀었다
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…あ…う…」
-		PRINTFORMW 「……っ…」
+		PRINTFORMW 「…아…우…」
+		PRINTFORMW 「……읏…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは無言でこちらを睨みつけている
+		PRINTFORMW 사구메는 말없이 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:1 >= 5
-		PRINTFORMW 「…っぁあっ……！」
-		PRINTFORMW 「…んんっ！…これ…っ！」
+		PRINTFORMW 「…읏, 아앙……！」
+		PRINTFORMW 「…으으응！…이거…읏！」
 	ELSEIF TALENT:연모 && ABL:1 >= 3 
-		PRINTFORMW 「……あっ…！」
-		PRINTFORMW 「ぁあ…んぁあっ！」
+		PRINTFORMW 「……앗…！」
+		PRINTFORMW 「아아…아아앙！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…ぁあっううぅ！」
-		PRINTFORMW 「…ぁんんっ！ぁあっふわっううぅ…！」
+		PRINTFORMW 「…응…아앗, 우으으！」
+		PRINTFORMW 「…아아앙！아앗, 후아아아앗…！」
 	;その他
 	ELSEIF ABL:1 >= 5
-		PRINTFORMW 「…ぁぁ……くんっ！！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「…아……크윽！！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:1 >= 3
-		PRINTFORMW 「…くっあ…っん…！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…크앗…으응…！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1165,35 +1165,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…こ…この体勢で…お尻に…？」
-		PRINTFORMW 「…入れにくくない？…いいけど…」
+		PRINTFORMW 「…이…이 자세로…엉덩이에…？」
+		PRINTFORMW 「…넣기 힘들지 않아？…괜찮지만…」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐぁ…が…」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……우아…앗…」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…んっ！…ひっ…！」
-		PRINTFORMW 「…う…が…！」
+		PRINTFORMW 「…으응！…힛…！」
+		PRINTFORMW 「…우…악…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あっあんっ…！」
-		PRINTFORMW 「や…えぐっえぅ…グス…」
+		PRINTFORMW 「……앗, 아앙…！」
+		PRINTFORMW 「아…아흐윽…으읏…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…えぅ！」
-		PRINTFORMW 「…ぁ…がっ……！」
+		PRINTFORMW 「…응…아우！」
+		PRINTFORMW 「…아…아윽……！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……えぅっ！…ぁあ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아윽！…아아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…っあふっ！…く……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…읏, 하읏！…큭……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「……ぎ…ぁ…」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……그…앗…」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1205,35 +1205,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…う、後ろから…お尻に…？」
-		PRINTFORMW 「…わ、分かったから！…優しくして…」
+		PRINTFORMW 「…으, 뒤에서…엉덩이에…？」
+		PRINTFORMW 「…아, 알았으니까！…부드럽게 해줘…」
 	;その他
 	ELSE
-		PRINTFORMW 「…がぁ…！」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「…아악…！」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…んっ！…ぁっ…！」
-		PRINTFORMW 「…ぅあ…ぐ…が…はぁ…！」
+		PRINTFORMW 「…으응！…앗…！」
+		PRINTFORMW 「…우아…그…아…하아…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「…ぐ…んっ…！」
-		PRINTFORMW 「や…だ…えぐっ…！」
+		PRINTFORMW 「…그…으응…！」
+		PRINTFORMW 「아…앙…아윽…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…えぅ…ぐ…！」
-		PRINTFORMW 「…ぁ…が…！」
+		PRINTFORMW 「…응…아윽…윽…！」
+		PRINTFORMW 「…아…아…！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「…えぅ！…ぁあ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「…아우！…아아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…っあ！…く……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…읏, 아！…큭……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「……ぐ…ぁ…」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……윽…아…」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1245,35 +1245,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…お…お尻に…？」
-		PRINTFORMW 「…いいけど…これ…入るの…？」
+		PRINTFORMW 「…어…엉덩이에…？」
+		PRINTFORMW 「…괜찮지만…이거…넣을수 있는거야…？」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐ…」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……윽…」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…んっ！…ぁっ…！」
-		PRINTFORMW 「…ぅあ…う…が…！」
+		PRINTFORMW 「…아앙！…앗…！」
+		PRINTFORMW 「…우아…우…앗…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あっあんっ…！」
-		PRINTFORMW 「や…えぐっえぅ…！」
+		PRINTFORMW 「……앗, 아응…！」
+		PRINTFORMW 「아…아우욱…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…えぅぎっえぅ！」
-		PRINTFORMW 「…ぁ…がっ……！」
+		PRINTFORMW 「…응…아그으윽！」
+		PRINTFORMW 「…아…아윽……！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……えぅあっ！…ぁあ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아우앗！…아아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…ぐふっぐふっあ！…く……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…그흑, 그하앗！…큭……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「……ぎ…ぁ…」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……그…아…」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1285,35 +1285,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…尻を出せ…って…」
-		PRINTFORMW 「…これ…入れるの…？…ぐっ…！」
+		PRINTFORMW 「…엉덩이를 내밀라…니…」
+		PRINTFORMW 「…이거…넣을수 있는거야…？…으윽…！」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐぁ…」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……그앗…」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…んっ！…ぁっ…！」
-		PRINTFORMW 「…ぅあ…後ろから…が…！」
+		PRINTFORMW 「…으응！…앗…！」
+		PRINTFORMW 「…우아…뒤로…라니…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あっ…ぐぁ…！」
-		PRINTFORMW 「や…ぐっ…えぅ…！」
+		PRINTFORMW 「……앗…우앗…！」
+		PRINTFORMW 「아…그윽…아우…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…えぅ…えぅ！」
-		PRINTFORMW 「…ぁ…がっ…お尻…！」
+		PRINTFORMW 「…응…아우…으으！」
+		PRINTFORMW 「…아…아윽…엉덩이…！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……えぅあぐ…！…ぁあ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아아윽…！…아아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…ふっあっ…！…く……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…후아앗…！…윽……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「……く…ぁ…」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……크…앗…」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1325,35 +1325,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…尻に…？」
-		PRINTFORMW 「…いいけど…ほら、立てないと入れられないわよ？」
+		PRINTFORMW 「…엉덩이에…？」
+		PRINTFORMW 「…괜찮지만…자, 세우지 않으면 못넣는다구？」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐぁ…！」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……그아…！」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…んっ！…ぁっ…！」
-		PRINTFORMW 「…ぅあ…う…が…！」
+		PRINTFORMW 「…으응！…앗…！」
+		PRINTFORMW 「…우아…우…갓…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あっ…お尻…！」
-		PRINTFORMW 「や…後ろから…えぅ…！」
+		PRINTFORMW 「……앗…엉덩이…！」
+		PRINTFORMW 「아…뒤로…아윽…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…っえぅ！」
-		PRINTFORMW 「…ぁ…ぐっ……！」
+		PRINTFORMW 「…응…아우윽！」
+		PRINTFORMW 「…아…크읏……！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……えぅあがっ！…ひっ…ぁあ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……아으, 아아악！…힛…아아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…っ…っああ！…く……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…읏…우아앗！…큭……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「……ぎ…ぁ…」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……그…아…」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1372,49 +1372,49 @@ IF NO:ASSI == 29
 		;2人に연모
 		IF TALENT:연모 && TALENT:ASSI:연모
 			IF RAND:3 == 0
-				PRINTFORMW 『んっ…がっ…ああっ…ぐっ…』
-				PRINTFORMW 「八意様…不浄の穴で…」
+				PRINTFORMW 『으응…앗…아앗…크윽…』
+				PRINTFORMW 「야고코로님의…부정한 구멍으로…」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「こういった行為というものは慣れませんね」
-				PRINTFORMW 『ん…あ…ぁああぁんあ……！』
+				PRINTFORMW 「이런 행위는 익숙하지 않네요」
+				PRINTFORMW 『응…아…아아아앙, 아……！』
 			ELSE
 				PRINTFORMW 「………」
-				PRINTFORMW （流石にちょっと…焦らされたままでは…）
-				PRINTFORMW 『あ、あ、あぁあっんんっ！』
+				PRINTFORMW （역시 조금…애태우고 있는게…）
+				PRINTFORMW 『아, 아, 아아아앙, 으앗！』
 			ENDIF
 		;サグメのみ연모
 		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
 			IF RAND:3 == 0
-				PRINTFORMW 「ああ…八意様のお尻に…」
-				PRINTFORMW 『や、やめ…がぁあ！！？』
+				PRINTFORMW 「아아…야고코로님의 엉덩이에…」
+				PRINTFORMW 『그, 그만…아아악！！？』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「ああ、八意様…お尻にいっぱい…」
-				PRINTFORMW 『…この状況…悪い冗談だと…』
+				PRINTFORMW 「아아, 야고코로님…엉덩이에 가득…」
+				PRINTFORMW 『…이 상황…나쁜 농담이라고…』
 			ELSE
-				PRINTFORMW 『えぐっ…あがっ…ぎぁ…！』
-				PRINTFORMW 「いい加減に慣れた方がいいのでは？」
+				PRINTFORMW 『아윽…아그윽…아악…！』
+				PRINTFORMW 「슬슬 익숙해 지는 편이 좋아요？」
 			ENDIF
 		;サグメのみ연모
 		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
 			IF RAND:3 == 0
 				PRINTFORMW 「………」
-				PRINTFORMW 『あら、ん…よく見ておきなさい…』
+				PRINTFORMW 『어머, 응…잘 봐두렴…』
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ん…こういった行為にもいい加減なれて…ぐ…』
-				PRINTFORMW 「………できません…」
+				PRINTFORMW 『응…이런 행위에도 슬슬 익숙해 졌…지…으윽…』
+				PRINTFORMW 「………않습니다…」
 			ELSE
-				PRINTFORMW 『あら…アナルも慣れれば気持ちいいわよ？』
-				PRINTFORMW 「やめて下さい…そんな姿…」
+				PRINTFORMW 『어머…애널도 익숙해지면 기분좋다고？』
+				PRINTFORMW 「그만해주세요…그런모습…」
 			ENDIF
 		;その他
 		ELSE
 			IF RAND:2 == 0
-				PRINTFORMW 「…私が…八意様の代わりに…」
-				PRINTFORMW 『…そんなこと…私が…』
+				PRINTFORMW 「…내가…야고코로님 대신에…」
+				PRINTFORMW 『…그런건…내가…』
 			ELSE
-				PRINTFORMW 『私…の…ぐ…ぁぁああああ！』
+				PRINTFORMW 『나…의…그…아아아아아아！』
 				PRINTFORMW 「………」
-				PRINTFORMW サグメは無言でただ涙を流している
+				PRINTFORMW 사구메는 말없이 그저 눈물을 흘리고있다
 			ENDIF
 		ENDIF
 		RETURN 1
@@ -1429,35 +1429,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……アナルに？」
-		PRINTFORMW 「…こういうの、慣れないわね…」
+		PRINTFORMW 「……애널에？」
+		PRINTFORMW 「…이런거, 익숙하지 않은데…」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぁ…」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 「……아…」
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…ん！…っく…！」
-		PRINTFORMW 「…ぅあ…あ…！」
+		PRINTFORMW 「…응！…으윽…！」
+		PRINTFORMW 「…우아…아…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あっあんっ…！」
-		PRINTFORMW 「ああ…ぐっ……！」
+		PRINTFORMW 「……앗, 아앙…！」
+		PRINTFORMW 「아아…으윽……！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…お尻に…えぅ！」
-		PRINTFORMW 「…ぁ…がっ…ぐ…！」
+		PRINTFORMW 「…응…엉덩이에…아으！」
+		PRINTFORMW 「…아…아윽…윽…！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……えっ！…あ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……엣！…아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…っ…がっああああく……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…읏…아앗, 아아아아악……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
-		PRINTFORMW 「……ぐぁ…」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「……우앗…」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1469,35 +1469,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…後ろ向けって」
-		PRINTFORMW 「…気持よく頼む…」
+		PRINTFORMW 「…뒤로 돌라니」
+		PRINTFORMW 「…기분좋게 부탁해…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメはこちらを睨みつけている
+		PRINTFORMW 사구메는 이쪽을 노려보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「……っくはっ…！」
-		PRINTFORMW 「…ぅあああああ…！」
+		PRINTFORMW 「……으읏 하앗…！」
+		PRINTFORMW 「…우아아아아아…！」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「……あっ…！」
-		PRINTFORMW 「ああ…ぐっ…がっ…！」
+		PRINTFORMW 「……앗…！」
+		PRINTFORMW 「아아…그윽…악…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ん…お尻…や！」
-		PRINTFORMW 「…ぁ…ぐが…！」
+		PRINTFORMW 「…응…엉덩이…아！」
+		PRINTFORMW 「…아…아윽…！」
 	;その他
 	ELSEIF ABL:2 >= 5
-		PRINTFORMW 「……ぎっ！…あ！…！」
-		PRINTFORMW サグメは必死に口を押さえて声を出さないようにしている
+		PRINTFORMW 「……끄윽！…아！…！」
+		PRINTFORMW 사구메는 필사적으로 입을 막아 소리를 내지 않으려고 하고있다
 	ELSEIF ABL:2 >= 3
-		PRINTFORMW 「…っ…がっああああ……！」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 「…읏…아아아아악……！」
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは口を押さえて声を出さないようにしている
+		PRINTFORMW 사구메는 입을 막아 소리를 내지 않으려고 하고있다
 	ENDIF
 ENDIF
 
@@ -1509,35 +1509,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…手で？」
-		PRINTFORMW 「気持ちよく出来るかわからないけど」
+		PRINTFORMW 「…손으로？」
+		PRINTFORMW 「기분좋게 할수있을지는 잘 모르겠지만」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは不快そうにこちらを睨みつけている
+		PRINTFORMW 사구메는 불쾌한듯 이쪽을 노려봤다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…それにしても大きい…」
-		PRINTFORMW 「…気持ちいい？」
+		PRINTFORMW 「…그건 그렇고 커다랗네…」
+		PRINTFORMW 「…기분 좋아？」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「手でって…こんな感じ？」
-		PRINTFORMW 「ん…固くなってる…」
+		PRINTFORMW 「손으로 라니…이런느낌？」
+		PRINTFORMW 「응…단단해졌어…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「気持よくしてあげるから…」
-		PRINTFORMW 「痛かったら言ってね？」
+		PRINTFORMW 「기분좋게 해줄테니까…」
+		PRINTFORMW 「아프면 말해야해？」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま陰茎を擦りあげている
+		PRINTFORMW 사구메는 입을 다문채 음경을 문지르고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは身を引きつつ陰茎を擦りあげている
+		PRINTFORMW 사구메는 몸을 경직시킨채 음경을 문지르고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは嫌そうな顔をしながら陰茎を擦りあげている
+		PRINTFORMW 사구메는 싫다는 표정을 지으며 음경을 문지르고있다
 	ENDIF
 ENDIF
 
@@ -1549,33 +1549,33 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…ん…頂きます…」
-		PRINTFORMW 「じゅぷっ……んぐっずっ！」
+		PRINTFORMW 「…응…잘 먹겠습니다…」
+		PRINTFORMW 「쥬붑……응, 우읍！」
 	;その他
 	ELSE
-		PRINTFORMW 「……れろ…」
-		PRINTFORMW サグメはこちらを睨みつけながら大人しく陰茎をくわえ込んだ
+		PRINTFORMW 「……할짝…」
+		PRINTFORMW 사구메는 이쪽을 노려보며 얌전하게 음경을 입에 물었다
 	ENDIF
 ELSE
 	;精液中毒Lv5+정애미각
 	IF ABL:31 >= 5 && TALENT:정애미각 == 1
-		PRINTFORMW 「ん…じゅぷっんちゅずぶっずずっ…」
-		PRINTFORMW 「…んちゅずっ！」
+		PRINTFORMW 「응…쥬웁, 츄우웁, 쥬르읍…」
+		PRINTFORMW 「…응, 츄읍！」
 	;정애미각
 	ELSEIF TALENT:TARGET:정애미각 == 1
-		PRINTFORMW 「…あ………ちゅっんぐっずっ！」
+		PRINTFORMW 「…아………츄웁, 츄르릅！」
 	;精液中毒Lv5
 	ELSEIF ABL:31 >= 5
-		PRINTFORMW 「…んっんちゅんぐっんちゅ…！」
+		PRINTFORMW 「…으응, 우읍, 쥬르릅, 츄…！」
 	;精液中毒Lv3
 	ELSEIF ABL:31 >= 3
-		PRINTFORMW 「んふ……んむ！」
+		PRINTFORMW 「후응……으음！」
 	;봉사정신Lv3以上
 	ELSEIF ABL:13 >= 3
-		PRINTFORMW 「…んちゅあむっ…！」
+		PRINTFORMW 「…응 츄웁, 우음…！」
 	;それ以外
 	ELSE 
-		PRINTFORMW 「………っちゅ…れろ… 」
+		PRINTFORMW 「………츕…할짝… 」
 	ENDIF
 ENDIF
 
@@ -1587,35 +1587,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「胸で？」
-		PRINTFORMW 「いいけど、こういうの気持ちいいの？」
+		PRINTFORMW 「가슴으로？」
+		PRINTFORMW 「괜찮지만, 이런거 기분 좋은거야？」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは不快そうに陰茎を胸で擦り始めた
+		PRINTFORMW 사구메는 불쾌한듯 음경을 가슴으로 문지르기 시작했다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…胸…ん…」
-		PRINTFORMW 「…これ…気持ちいい？」
+		PRINTFORMW 「…가슴…응…」
+		PRINTFORMW 「…이거…기분좋아？」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…こう？」
-		PRINTFORMW 「ん…胸に挟んで…あ…」
+		PRINTFORMW 「…이렇게？」
+		PRINTFORMW 「응…가슴에 끼워서…아…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「こういうの…よくわからないけど…」
-		PRINTFORMW 「ん…」
+		PRINTFORMW 「이런거…잘 모르겠지만…」
+		PRINTFORMW 「응…」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま胸で陰茎を擦りあげている
+		PRINTFORMW 사구메는 입을 다문채 가슴으로 음경을 문지르고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って胸で挟んだ陰茎を見つめながら擦りあげている
+		PRINTFORMW 사구메는 조용히 가슴으로 음경을 바라보며 문지르고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは嫌そうな顔をしながら陰茎を胸で擦りあげている
+		PRINTFORMW 사구메는 싫은듯한 얼굴로 음경을 가슴으로 문지르고있다
 	ENDIF
 ENDIF
 
@@ -1627,35 +1627,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「素股？」
-		PRINTFORMW 「いいけど、挿入しても…」
+		PRINTFORMW 「스마타？」
+		PRINTFORMW 「삽입해도…괜찮은데…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは不快そうに陰茎を股に挟んで擦り始めた
+		PRINTFORMW 사구메는 불쾌한듯 음경을 다리사이에 끼우고 문지르기 시작했다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「…これで…どう？」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「…이걸로…어때？」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…こうして…」
-		PRINTFORMW 「ん…あ…」
+		PRINTFORMW 「…이렇게…」
+		PRINTFORMW 「응…아…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…こういう感じで…いいの？」
-		PRINTFORMW 「ん…あ…」
+		PRINTFORMW 「…이런느낌으로…괜찮아？」
+		PRINTFORMW 「응…아…」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま股で陰茎を擦りあげている
+		PRINTFORMW 사구메는 입을 다문채 허벅지로 음경을 문지르고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って股で挟んだ陰茎を見つめながら擦りあげている
+		PRINTFORMW 사구메는 입을 다물고 다리 사이에 끼운 음경을 바라보며 문지르고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは嫌そうな顔をしながら股で陰茎を擦りあげている
+		PRINTFORMW 사구메는 싫은듯한 얼굴로 다리 사이로 음경을 문지르고있다
 	ENDIF
 ENDIF
 
@@ -1667,35 +1667,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「俺の尻を舐めろ？」
-		PRINTFORMW 「…じゃあ、お尻、こっち向けて」
+		PRINTFORMW 「애널을 핥으라고？」
+		PRINTFORMW 「…그럼, 엉덩이, 이쪽을 향해줘」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW サグメは絶望的な表情でアナルに顔を近づけてきた
+		PRINTFORMW 사구메는 절망적인 표정으로 애널에 얼굴을 가져다댔다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「…れろ…ちゅ…」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「…할짝…츄웁…」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…ちゅ…れろ…」
-		PRINTFORMW 「ん…あ…」
+		PRINTFORMW 「…츄웁…할짝…」
+		PRINTFORMW 「응…아…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…くちゅ…れろ…」
-		PRINTFORMW 「…あ…ん…」
+		PRINTFORMW 「…츄릅…할짝…」
+		PRINTFORMW 「…아…응…」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったままアナルに舌を這わせている
+		PRINTFORMW 사구메는 침묵한채 애널에 혀를 가져다댔다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙ってアナルに舌を這わせている
+		PRINTFORMW 사구메는 입을 다물고 애널에 혀를 가져다댔다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情でアナルに舌を這わせている
+		PRINTFORMW 사구메는 굴욕적인 표정으로 애널에 혀를 가져다댔다
 	ENDIF
 ENDIF
 
@@ -1707,34 +1707,34 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「はい…私のアナル…使って下さい…」
+		PRINTFORMW 「네… 제 에널… 사용해주세요…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で自らアナルを拡げている
+		PRINTFORMW 사구메는 굴욕적인 표정으로 스스로 애널을 벌리고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:2 >= 5
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「…どうか…使って…」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「…부디…사용해…」
 	ELSEIF TALENT:연모 && ABL:2 >= 3 
-		PRINTFORMW 「…あ…」
-		PRINTFORMW 「ん…早く…」
+		PRINTFORMW 「…아…」
+		PRINTFORMW 「응…빨리…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…お尻…」
-		PRINTFORMW 「…入れて…」
+		PRINTFORMW 「…엉덩이…」
+		PRINTFORMW 「…넣어줘…」
 	;その他
 	ELSEIF ABL:2 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま尻穴を拡げてこちらに見せつけている
+		PRINTFORMW 사구메는 입을 다문채로 항문을 벌리며 이쪽을 바라보고있다
 	ELSEIF ABL:2 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って尻穴を拡げてこちらに向けている
+		PRINTFORMW 사구메는 입을 다문채 항문을 벌려 이쪽을 향했다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で尻穴を拡げている
+		PRINTFORMW 사구메는 굴욕적인 표정으로 항문을 벌렸다
 	ENDIF
 ENDIF
 
@@ -1746,34 +1746,34 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「はい…では…おみ足を…」
+		PRINTFORMW 「네…그러면…부디 발을…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは大人しく差し出された足を舐めている
+		PRINTFORMW 사구메는 얌전하게 내민 발을 핥고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「…ちゅ…」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「…츄웁…」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…ちゅ…ん…」
-		PRINTFORMW 「ん…あ…れろ…」
+		PRINTFORMW 「…츕…응…」
+		PRINTFORMW 「응…아…할짝…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ちゅ…れろ…」
-		PRINTFORMW 「…あ…れろ…」
+		PRINTFORMW 「…츄…할짝…」
+		PRINTFORMW 「…아…할짝…」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま差し出された足に舌を這わせている
+		PRINTFORMW 사구메는 입을 다문채로 내민 발에 혀를 가져다댔다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って足に舌を這わせている
+		PRINTFORMW 사구메는 입을 다물고 발에 혀를 가져다댔다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で差し出された足に舌を這わせている
+		PRINTFORMW 사구메는 굴욕적인 표정으로 내민 발에 혀를 다져다댔다
 	ENDIF
 ENDIF
 
@@ -1785,34 +1785,34 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「ん…じゃあ出して…」
+		PRINTFORMW 「응…그럼 싸줘…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは蔑むように陰茎を足で弄っている
+		PRINTFORMW 사구메는 경멸하듯 음결을 발로 만지작거리고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「…こう？…足で…ね」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「…이렇게？…발…로」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…あ…」
-		PRINTFORMW 「びくびくしてる…」
+		PRINTFORMW 「…아…」
+		PRINTFORMW 「움찔거리고있어…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…変なの…」
-		PRINTFORMW 「…あ……」
+		PRINTFORMW 「…이상해…」
+		PRINTFORMW 「…아……」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま差し出された陰茎を足で擦っている
+		PRINTFORMW 사구메는 입을 다문채 내밀어진 음경을 발로 문지르고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って足で陰茎を擦っている
+		PRINTFORMW 사구메는 입을 다물고 발로 음경을 문지르고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で差し出された足で陰茎を擦っている
+		PRINTFORMW 사구메는 굴욕적인 표정을 지으며 발을 내밀어 음경을 문지르고있다
 	ENDIF
 ENDIF
 
@@ -1824,35 +1824,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「髪の毛で？」
-		PRINTFORMW 「…あまり汚さないでね」
+		PRINTFORMW 「머리카락으로？」
+		PRINTFORMW 「…너무 더럽히지는 마」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは蔑むように行為を見つめている
+		PRINTFORMW 사구메는 경멸하는듯 행위를 바라보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「これ気持ちいいの？」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「이거 기분좋아？」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
 		PRINTFORMW 「………」
-		PRINTFORMW 「…絡んだりしないの？」
+		PRINTFORMW 「…얽히지는 않아？」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…変態…」
+		PRINTFORMW 「…변태…」
 		PRINTFORMW 「………」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま行為を見つめている
+		PRINTFORMW 사구메는 입을 다문채 행위를 바라보고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って頭を差し出している
+		PRINTFORMW 사구메는 입을 다물고 머리를 내밀고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で涙を流している
+		PRINTFORMW 사구메는 굴욕적인 표정으로 눈물을 흘리고있다
 	ENDIF
 ENDIF
 
@@ -1864,35 +1864,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「わ、腋で？」
-		PRINTFORMW 「いいけど…こんなのしたこと無いから…」
+		PRINTFORMW 「겨, 겨드랑이로？」
+		PRINTFORMW 「괜찮지만…이런거 해본적 없으니까…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは蔑むように行為を見つめている
+		PRINTFORMW 사구메는 경멸하듯이 행위를 바라보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…んあ…」
-		PRINTFORMW 「これで…どう？」
+		PRINTFORMW 「…우앗…」
+		PRINTFORMW 「이걸로…어때？」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「……あ…」
-		PRINTFORMW 「…気持ちいい？」
+		PRINTFORMW 「……아…」
+		PRINTFORMW 「…기분좋아？」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…変態みたいな事…」
+		PRINTFORMW 「…변태같은짓을…」
 		PRINTFORMW 「………」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま行為を見つめている
+		PRINTFORMW 사구메는 입을 다문채 행위를 바라보고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って腋に出し入れされている陰茎を見つめている
+		PRINTFORMW 사구메는 입을 다물고 겨드랑이에 나와있는 음경을 바라보고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で涙を流しながら睨みつけている
+		PRINTFORMW 사구메는 굴욕적인 표정으로 눈물을 흘리며 노려보고있다
 	ENDIF
 ENDIF
 
@@ -1904,35 +1904,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「いいわよ、ほら」
-		PRINTFORMW 「体中に塗りたくって…」
+		PRINTFORMW 「좋아, 자」
+		PRINTFORMW 「온몸에 잔뜩…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは不快極まりないといった表情で見つめている
+		PRINTFORMW 사구메는 불쾌하기 그지없다는 듯한 표정으로 바라보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…ん…」
-		PRINTFORMW 「変な…気分…」
+		PRINTFORMW 「…응…응…」
+		PRINTFORMW 「이상한…기분…」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…これ…あ…」
-		PRINTFORMW 「…気持ちいい…？」
+		PRINTFORMW 「…이거…아…」
+		PRINTFORMW 「…기분 좋아…？」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…変態…」
-		PRINTFORMW 「…別に…いいけど…」
+		PRINTFORMW 「…변태…」
+		PRINTFORMW 「…별로…괜찮지만…」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま行為を見つめている
+		PRINTFORMW 사구메는 입을 다문채 행위를 바라보고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って全身を這うペニスを眺めている
+		PRINTFORMW 사구메는 입을 다물고 전신을 기어가는 페니스를 바라보고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは屈辱的な表情で涙を流しながら睨みつけている
+		PRINTFORMW 사구메는 굴욕적인 표정으로 눈물을 흘리며 노려보고있다
 	ENDIF
 ENDIF
 
@@ -1944,35 +1944,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……お尻で？」
-		PRINTFORMW 「はい、どうぞ…優しくね？」
+		PRINTFORMW 「……엉덩이로？」
+		PRINTFORMW 「네, 부디… 부드럽게해줘？」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは不快極まりないといった表情で見つめている
+		PRINTFORMW 사구메는 불쾌하기 그지없다는 표정으로 바라보고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん……」
-		PRINTFORMW 「…お尻…あ…」
+		PRINTFORMW 「…응……」
+		PRINTFORMW 「…엉덩이…아…」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…これ…ん…」
-		PRINTFORMW 「…お尻に…いっぱい…」
+		PRINTFORMW 「…이거…응…」
+		PRINTFORMW 「…엉덩이에…잔뜩…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…こういうの…」
-		PRINTFORMW 「……いいけど…お尻ばっかり…」
+		PRINTFORMW 「…이런거…」
+		PRINTFORMW 「……괜찮지만…엉덩이에만…」
 	;その他
 	ELSEIF ABL:13 >= 5
-		PRINTFORMW 「……ん…」
-		PRINTFORMW サグメは黙りこくったまま尻を突き出している
+		PRINTFORMW 「……응…」
+		PRINTFORMW 사구메는 입을 다물고 엉덩이를 내밀고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って屈辱的な表情で四つん這いになっている
+		PRINTFORMW 사구메는 입을 다문채 굴욕적인 표정으로 엎드리고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは涙を流しながら四つん這いになっている
+		PRINTFORMW 사구메는 눈물을 흘리며 엎드리고있다
 	ENDIF
 ENDIF
 
@@ -1990,35 +1990,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……これ？」
-		PRINTFORMW 「ん…おっきい…」
+		PRINTFORMW 「……이거?」
+		PRINTFORMW 「응…커다래…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは不快極まりないといった玉を揉んでいる
+		PRINTFORMW 사구메는 불쾌하기 짝이없는 구슬을 문지르고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん……」
-		PRINTFORMW 「…これ…固くなってる…」
+		PRINTFORMW 「…응……」
+		PRINTFORMW 「…이거…단단해지고있어…」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…これ…ん…」
-		PRINTFORMW 「…溜まってるの…？」
+		PRINTFORMW 「…이거…응…」
+		PRINTFORMW 「…많이 쌓여있었어…？」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…痛くない…？」
-		PRINTFORMW 「……大丈夫？…力加減とか…」
+		PRINTFORMW 「…아프진 않아…？」
+		PRINTFORMW 「……괜찮아？…힘조절 할테니까…」
 	;その他
 	ELSEIF ABL:13 >= 5
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙りこくったまま玉を揉んでいる
+		PRINTFORMW 사구메는 입을 다문채 구슬을 문지르고있다
 	ELSEIF ABL:13 >= 3
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは黙って玉を揉みながら陰茎を見つめている
+		PRINTFORMW 사구메는 입을 다물고 구슬을 문지르며 음경을 바라보고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは嫌そうに玉を揉んでいる
+		PRINTFORMW 사구메는 싫은듯이 구슬을 문지르고있다
 	ENDIF
 ENDIF
 
@@ -2030,35 +2030,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……はむっ…」
-		PRINTFORMW 「ん…じゅる…」
+		PRINTFORMW 「……하음…」
+		PRINTFORMW 「응…쥬룹…」
 	;その他
 	ELSE
-		PRINTFORMW 「……れろ…」
-		PRINTFORMW サグメは不快極まりないといった表情で玉を舐めている
+		PRINTFORMW 「……할짝…」
+		PRINTFORMW 사구메는 불쾌하기 그지없다는 표정으로 구슬을 핥고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…ん…れろ…」
-		PRINTFORMW 「…んむあむっ…」
+		PRINTFORMW 「…응…할짝…」
+		PRINTFORMW 「…응, 음, 아음…」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…これ…あ…」
-		PRINTFORMW 「…中に…いっぱい…」
+		PRINTFORMW 「…이거…아…」
+		PRINTFORMW 「…안에…잔뜩…」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…これ…ん…」
-		PRINTFORMW 「……いっぱい詰まってて…固くなってる…」
+		PRINTFORMW 「…이거…응…」
+		PRINTFORMW 「……잔뜩 차서…단단해지고있어…」
 	;その他
 	ELSEIF ABL:13 >= 5
-		PRINTFORMW 「…れろ…ちゅ…ん…」
-		PRINTFORMW サグメは黙りこくったまま玉を舐めている
+		PRINTFORMW 「…할짝…츄…응…」
+		PRINTFORMW 사구메는 입을 다문채 구슬을 핥고있다
 	ELSEIF ABL:13 >= 3
-		PRINTFORMW 「…ん…あむ…」
-		PRINTFORMW サグメは黙って玉を舐めている
+		PRINTFORMW 「…응…아웁…」
+		PRINTFORMW 이구메는 입을 다물고 구슬을 핥고있다
 	ELSE
-		PRINTFORMW 「……れろ…」
-		PRINTFORMW サグメは屈辱的な表情で玉を舐めている
+		PRINTFORMW 「……할짝…」
+		PRINTFORMW 사구메는 굴욕적인 표정으로 구슬을 핥고있다
 	ENDIF
 ENDIF
 
@@ -2070,35 +2070,35 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……こう…？」
-		PRINTFORMW 「ん…気持ちいい？」
+		PRINTFORMW 「……이렇게…？」
+		PRINTFORMW 「응…기분좋아？」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは呆れながらアナルを愛撫してくる
+		PRINTFORMW 사구메는 기가막혀하며 애널을 애무하고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:13 >= 5
-		PRINTFORMW 「…あ…」
-		PRINTFORMW 「…ここ…気持ちいい？」
+		PRINTFORMW 「…아…」
+		PRINTFORMW 「…여기…기분좋아？」
 	ELSEIF TALENT:연모 && ABL:13 >= 3 
-		PRINTFORMW 「…お尻だして」
-		PRINTFORMW 「…これでどう？」
+		PRINTFORMW 「…엉덩이 내밀어봐」
+		PRINTFORMW 「…이건 어때？」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…ここ…ん…」
-		PRINTFORMW 「……弄くられて楽しい？」
+		PRINTFORMW 「…여기…응…」
+		PRINTFORMW 「……이렇게 만지작거리니 좋아？」
 	;その他
 	ELSEIF ABL:13 >= 5
-		PRINTFORMW 「……ん…」
-		PRINTFORMW サグメは黙りこくったままアナルを愛撫してくる
+		PRINTFORMW 「……응…」
+		PRINTFORMW 사구메는 입을 다문채 애널을 애무하고있다
 	ELSEIF ABL:13 >= 3
-		PRINTFORMW 「…ん…あ…」
-		PRINTFORMW サグメは黙ってアナルを愛撫している
+		PRINTFORMW 「…응…아…」
+		PRINTFORMW 사구메는 입을 다물고 애널을 애무하고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは嫌そうにアナルを愛撫している
+		PRINTFORMW 사구메는 싫다는듯이 애널을 애무하고있다
 	ENDIF
 ENDIF
 
@@ -2111,34 +2111,34 @@ IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「………」
-		PRINTFORMW 「…胸…無いけど…」
+		PRINTFORMW 「…가슴…없지만…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは呆れながら無い胸を陰茎に擦り付けている
+		PRINTFORMW 사구메는 황당해하며 없는 가슴을 음경에 문지르고있다
 	ENDIF
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모 && ABL:3 >= 5
-		PRINTFORMW 「…あ…」
-		PRINTFORMW 「…これ…気持ちよくなる…！」
+		PRINTFORMW 「…아…」
+		PRINTFORMW 「…이거…기분좋아져…！」
 	ELSEIF TALENT:연모 && ABL:3 >= 3 
-		PRINTFORMW 「…あ…ん…」
-		PRINTFORMW 「…乳首に…擦れて…！」
+		PRINTFORMW 「…아…응…」
+		PRINTFORMW 「…유두에…스쳐서…！」
 	ELSEIF TALENT:연모
-		PRINTFORMW 「…こう…ん…」
-		PRINTFORMW 「……胸の大きい人ならもっと気持ちよく出来るんでしょうね」
+		PRINTFORMW 「…이렇게…응…」
+		PRINTFORMW 「……가슴이 큰 사람이라면 더 기분좋게 할수있겠지
 	;その他
 	ELSEIF ABL:3 >= 5
-		PRINTFORMW 「……ん…ああ…」
-		PRINTFORMW サグメは大人しく無い胸で陰茎を擦りあげている
+		PRINTFORMW 「……응…그래…」
+		PRINTFORMW 사구메는 얌전히 없는 가슴을 음경에 문지르고있다
 	ELSEIF ABL:3 >= 3
-		PRINTFORMW 「…ん…く…」
-		PRINTFORMW サグメは黙って無い胸で陰茎を擦りあげている
+		PRINTFORMW 「…응…큿…」
+		PRINTFORMW 사구메는 입을 다물고 없는 가슴을 음경에 문지르고있다
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは嫌そうに無い胸で陰茎を擦りあげている
+		PRINTFORMW 사구메는 싫다는듯이 없는 가슴을 음경에 문지르고있다
 	ENDIF
 ENDIF
 
@@ -2150,20 +2150,20 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「ん…そんなに濡れてない？」
+		PRINTFORMW 「응…그렇게나 젖지 않았어？」
 	;その他
 	ELSE
-		PRINTFORMW 「ん…！？これ…」
+		PRINTFORMW 「응…！？이거…」
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…ん…これ…あんまり…」
+		PRINTFORMW 「…응…이거…그다지…」
 	;その他
 	ELSE
-		PRINTFORMW 「…ぬるぬる…これで優しくしてくれるのならいいのだけれど」
+		PRINTFORMW 「…미끌미끌…이걸로 부드럽게 해준다면 괜찮지만」
 	ENDIF
 ENDIF
 
@@ -2175,24 +2175,24 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「あ…ふぅ…」
-		PRINTFORMW 「ん…抱いて…♪」
+		PRINTFORMW 「아…후우…」
+		PRINTFORMW 「응…안아줘…♪」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW （…盛られた…！？）
+		PRINTFORMW （…말도안돼…！？）
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……あ…」
-		PRINTFORMW 「ん…優しく…お願い…」
+		PRINTFORMW 「……아…」
+		PRINTFORMW 「응…부드럽게…부탁해…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW （これは…まずい…）
+		PRINTFORMW （이건…위험해…）
 	ENDIF
 ENDIF
 
@@ -2205,23 +2205,23 @@ IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「………！？」
-		PRINTFORMW 「あの…トイレに…」
+		PRINTFORMW 「그…화장실에…」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW （おしっこ…）
+		PRINTFORMW （오줌…）
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……あ…」
-		PRINTFORMW 「あの…トイレに…」
+		PRINTFORMW 「……아…」
+		PRINTFORMW 「그…화장실에…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW （トイレに…行かせてもらえないんだろうな…）
+		PRINTFORMW （화장실에…보내주지 않을까나…）
 	ENDIF
 ENDIF
 
@@ -2233,24 +2233,24 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「あ…ぐ…」
-		PRINTFORMW 「ん…ちょっと…」
+		PRINTFORMW 「아…흑…」
+		PRINTFORMW 「응…잠깐…」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐふっ…！？」
-		PRINTFORMW サグメは大人しく座薬を挿入されている
+		PRINTFORMW 「……그흑…！？」
+		PRINTFORMW 사구메는 얌전히 좌약을 삽입당하고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…え…あ…」
-		PRINTFORMW 「何の薬…？」
+		PRINTFORMW 「…에…아…」
+		PRINTFORMW 「무슨 약이야…？」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐ…」
-		PRINTFORMW （これは…何…？）
+		PRINTFORMW 「……큿…」
+		PRINTFORMW （이게…뭐야…？）
 	ENDIF
 ENDIF
 
@@ -2262,24 +2262,24 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「あ…ぐ…」
-		PRINTFORMW 「ん…ちょっと…」
+		PRINTFORMW 「아…윽…」
+		PRINTFORMW 「응…잠깐…」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐふっ…！？」
-		PRINTFORMW サグメは大人しく座薬を挿入されている
+		PRINTFORMW 「……그흑…！？」
+		PRINTFORMW 사구메는 얌전히 좌약을 삽입당하고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…え…あ…」
-		PRINTFORMW 「何の薬…？」
+		PRINTFORMW 「…에…아…」
+		PRINTFORMW 「무슨 약이야…？」
 	;その他
 	ELSE
-		PRINTFORMW 「……ぐ…」
-		PRINTFORMW （これは…何…？）
+		PRINTFORMW 「……윽…」
+		PRINTFORMW （이게…뭐야…？）
 	ENDIF
 ENDIF
 
@@ -2297,24 +2297,24 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「あ…ん…」
-		PRINTFORMW 「…子供欲しいの？」
+		PRINTFORMW 「아…응…」
+		PRINTFORMW 「…아이를 원해？」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは何を盛られたのかわかっていないようだ
+		PRINTFORMW 사구메는 무엇이 담겨있는지 모르는것같다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……あ…」
-		PRINTFORMW 「これ…」
+		PRINTFORMW 「……아…」
+		PRINTFORMW 「이거…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは何を盛られたのかわかっていないようだ
+		PRINTFORMW 사구메는 무엇이 담겨있는지 모르는것같다
 	ENDIF
 ENDIF
 
@@ -2327,23 +2327,23 @@ IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「………」
-		PRINTFORMW 「別にいいけど…」
+		PRINTFORMW 「별로 괜찮은데…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは少し安心した表情をしている
+		PRINTFORMW 사구메는 조금 안심한 표정을 하고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「……あ…」
-		PRINTFORMW 「貴方のなら…」
+		PRINTFORMW 「……아…」
+		PRINTFORMW 「당신의……라면…」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW （優しさ…なのだろうか）
+		PRINTFORMW （친절… 인 것일까）
 	ENDIF
 ENDIF
 
@@ -2367,24 +2367,24 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「あ…は…」
-		PRINTFORMW 「ん…これ…はぁ…♪」
+		PRINTFORMW 「아…하…」
+		PRINTFORMW 「응…이거…하아…♪」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW サグメは自身の体の異変に身悶えしている
+		PRINTFORMW 사구메는 자신의 몸의 이변에 몸부림치고있다
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…ん…」
-		PRINTFORMW 「あ…気持よく…して…♪」
+		PRINTFORMW 「…응…」
+		PRINTFORMW 「아…기분좋게…해줘…♪」
 	;その他
 	ELSE
-		PRINTFORMW 「……ん…！？」
-		PRINTFORMW サグメは体が発情していることに身悶えしている
+		PRINTFORMW 「……응…！？」
+		PRINTFORMW 사구메는 몸이 발정하고 있는것에 몸부림치고있다
 	ENDIF
 ENDIF
 
@@ -2403,24 +2403,24 @@ ENDIF
 IF RESULT:1 == 1
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「あ…はぅ…」
-		PRINTFORMW 「ん…く…♪」
+		PRINTFORMW 「아…하으…」
+		PRINTFORMW 「응…큿…♪」
 	;その他
 	ELSE
 		PRINTFORMW 「………！？」
-		PRINTFORMW （…これ…体中…！？）
+		PRINTFORMW （…이거…온몸이…！？）
 	ENDIF
 
 ;2回目以降
 ELSE
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…く…あ…」
-		PRINTFORMW 「ん……お願い…♪」
+		PRINTFORMW 「…큿…아…」
+		PRINTFORMW 「응……부탁해…♪」
 	;その他
 	ELSE
-		PRINTFORMW 「……あ…！？」
-		PRINTFORMW （体が…敏感に…！？）
+		PRINTFORMW 「……아…！？」
+		PRINTFORMW （몸이…민감하게…！？）
 	ENDIF
 ENDIF
 
@@ -2433,65 +2433,65 @@ IF TFLAG:99 == 0
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「……」
-		PRINTFORMW 「ん…いい匂い…」
+		PRINTFORMW 「응…좋은 냄새…」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは異臭に不審な顔をしている
+		PRINTFORMW 사구메는 이취에 불안한 표정을 짓고있다
 	ENDIF
 ;ペパーミント
 ELSEIF TFLAG:99 == 1
 		;연모
 	IF TALENT:연모
-		PRINTFORMW 「…これ…」
-		PRINTFORMW 「…いい匂い…」
+		PRINTFORMW 「…이거…」
+		PRINTFORMW 「…좋은 냄새…」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは異臭に不審な顔をしている
+		PRINTFORMW 사구메는 이취에 불안한 표정을 짓고있다
 	ENDIF
 ;ジャスミン
 ELSEIF TFLAG:99 == 2
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「……？」
-		PRINTFORMW 「…これ…何の匂い？」
+		PRINTFORMW 「…이거…무슨냄새？」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは異臭に不審な顔をしている
+		PRINTFORMW 사구메는 이취에 불안한 표정을 짓고있다
 	ENDIF
 ;ラヴェンダー
 ELSEIF TFLAG:99 == 3
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「……」
-		PRINTFORMW 「…いい香り…」
+		PRINTFORMW 「…좋은 향기…」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは異臭に不審な顔をしている
+		PRINTFORMW 사구메는 이취에 불안한 표정을 짓고있다
 	ENDIF
 ;ムスク
 ELSEIF TFLAG:99 == 4
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「……」
-		PRINTFORMW 「…これ何？いい香りね…」
+		PRINTFORMW 「…이거 뭐야？좋은 향기네…」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは異臭に不審な顔をしている
+		PRINTFORMW 사구메는 이취에 불안한 표정을 짓고있다
 	ENDIF
 ;フランキンセンス
 ELSEIF TFLAG:99 == 5
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…好きよ、こういうの…」
+		PRINTFORMW 「…좋아해, 이런거…」
 	;その他
 	ELSE
 		PRINTFORMW 「………？」
-		PRINTFORMW サグメは異臭に不審な顔をしている
+		PRINTFORMW 사구메는 이취에 불안한 표정을 짓고있다
 	ENDIF
 ENDIF
 
@@ -2554,24 +2554,24 @@ IF TEQUIP:59 == 0
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「もう…終わり？」
-			PRINTFORMW 「…例えフリでもお嫁さんで良かったのに…」
+			PRINTFORMW 「이제…끝이야？」
+			PRINTFORMW 「…가장이라도 부인인 편이 좋았는데…」
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは無言でエプロンを外した
+			PRINTFORMW 사구메는 말없이 에이프런을 벗고있다
 		ENDIF
 
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「…分かった…」
-			PRINTFORMW サグメは残念そうにエプロンを脱いでいった
+			PRINTFORMW 「…알았어…」
+			PRINTFORMW 사구메는 아쉬운듯 에이프런을 벗고있다
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは無言でエプロンを外した
+			PRINTFORMW 사구메는 말없이 에이프런을 벗었다サグメは無言でエプロンを外した
 		ENDIF
 	ENDIF
 ;装着時
@@ -2580,24 +2580,24 @@ ELSE
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「これ…」
-			PRINTFORMW 「…ご飯にする？お風呂にする？それとも―――」
+			PRINTFORMW 「이거…」
+			PRINTFORMW 「…식사부터？ 목욕부터 할래？ 아니면―――」
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは恥ずかしそうにエプロンを着た
+			PRINTFORMW 사구메는 부끄러워하면 에이프런을 입었다
 		ENDIF
 
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「…これで本当に…」
-			PRINTFORMW サグメはどこか楽しそうにエプロンを着けた
+			PRINTFORMW 「…이걸로 정말로…」
+			PRINTFORMW 사구메는 어딘가 즐거웃듯 에이프런을 입었다
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは無言でエプロンを着けた
+			PRINTFORMW 사구메는 말없이 에이프런을 입었다
 		ENDIF
 	ENDIF
 ENDIF
@@ -2613,23 +2613,23 @@ IF TEQUIP:59 == 0
 		;연모
 		IF TALENT:연모
 			PRINTFORMW 「………」
-			PRINTFORMW 「…これ…結構…サイズが…」
+			PRINTFORMW 「…이거…꽤…사이즈가…」
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは無言でスク水を脱いだ
+			PRINTFORMW 사구메는 말없이 학교수영복을 벗었다
 		ENDIF
 
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「…キツかった…」
-			PRINTFORMW サグメはスク水を脱いだ
+			PRINTFORMW 「…정말 꽉 꼈어…」
+			PRINTFORMW 사구메는 학교수영복을 벗었다
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは無言でスク水を外した
+			PRINTFORMW 사구메는 말없이 학교수영복을 벗었다
 		ENDIF
 	ENDIF
 ;装着時
@@ -2638,25 +2638,25 @@ ELSE
 	IF RESULT:1 == 1
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「これ…サイズ…」
-			PRINTFORMW 「…キツい…伸縮性はあるけど…」
-			PRINTFORMW サグメは名札に『さぐめ』と書かれたスク水を着た
+			PRINTFORMW 「이거…사이즈…」
+			PRINTFORMW 「…꽉끼네…신축성은 있지만…」
+			PRINTFORMW 사구메는 명찰에『사구메』라고 적힌 학교수영복을 입었다
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは恥ずかしそうに名札に『さぐめ』と書かれたスク水を着た
+			PRINTFORMW 사구메는 부끄러운듯 명찰에『사구메』라고 적힌 학교수영복을 입었다
 		ENDIF
 
 	;2回目以降
 	ELSE
 		;연모
 		IF TALENT:연모
-			PRINTFORMW 「…これ…やっぱり…」
-			PRINTFORMW サグメはどこか楽しそうに名札に『さぐめ』と書かれたスク水を着た
+			PRINTFORMW 「…이거…역시…」
+			PRINTFORMW 사구메는 왠지 즐거운듯 명찰에『사구메』라고 적힌 학교수영복을 입었다
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは無言で名札に『さぐめ』と書かれたスク水を着た
+			PRINTFORMW 사구메는 말없이 명찰에『사구메』라고 적힌 학교수영복을 입었다
 		ENDIF
 	ENDIF
 ENDIF
@@ -2671,22 +2671,22 @@ IF TEQUIP:57 == 0
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「………」
-		PRINTFORMW 「…変な所…無かった？」
+		PRINTFORMW 「…이상한데…없었어？」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメはホッとしたように胸を撫で下ろした
+		PRINTFORMW 사구메는 안심한듯 가슴을 쓸어내렸다
 	ENDIF
 ;装着時
 ELSE
 	;연모
 	IF TALENT:연모
 		PRINTFORMW 「………」
-		PRINTFORMW 「…フリでしょうけど緊張するわね」
+		PRINTFORMW 「…진짜는 아니지만 긴장되네」
 	;その他
 	ELSE
 		PRINTFORMW 「………」
-		PRINTFORMW サグメは恐る恐る胸を突き出してきた
+		PRINTFORMW 사구메는 조심스럽게 가슴을 내밀었다
 	ENDIF
 ENDIF
 
@@ -2698,156 +2698,156 @@ ENDIF
 ;解除時
 IF TEQUIP:59 == 0
 	PRINTFORMW 「………」
-	PRINTFORMW サグメは少し残念そうに衣装を脱いだ
+	PRINTFORMW 사구메는 조금 아쉬운듯 옷을 벗었다
 ;装着時
 ELSE
 	;コスプレ 女教師
 	IF TEQUIP:59 == 3
 		IF TALENT:연모
-			PRINTFORMW 「…何を教えてほしい？何でも教えてあげるわ」
+			PRINTFORMW 「…뭘 가르쳐줄까？ 뭐든지 가르쳐줄게」
 		;その他
 		ELSE
-			PRINTFORMW 「…無知蒙昧な貴方に私が何かを教えるとでも？」
+			PRINTFORMW 「…무지몽매한 당신에게 내가 뭐라도 가르칠것 같나요？」
 		ENDIF
 	;コスプレ 和服
 	ELSEIF TEQUIP:59 == 4
 		IF TALENT:연모
-			PRINTFORMW 「灰桜？…好きよ、こういう色」
+			PRINTFORMW 「잿빛 벚꽃？…좋아해, 이런색」
 		;その他
 		ELSE
-			PRINTFORMW 「…こういうのを着て…性行為をするのは…」
+			PRINTFORMW 「…이런 옷을 입고…성행위를 하는건…」
 		ENDIF
 	;コスプレ メイド服
 	ELSEIF TEQUIP:59 == 5
 		IF TALENT:연모
-			PRINTFORMW 「なんなりとお申し付けくださいませ、ご主人様」
+			PRINTFORMW 「뭐든지 명령만 내려주세요, 주인님」
 		;その他
 		ELSE
-			PRINTFORMW 「これを着た所で貴方に命令される謂れは…」
+			PRINTFORMW 「이걸 입었다고 해서 당신의 명령에 따를 이유는…」
 		ENDIF
 	;コスプレ 体操服+ブルマ
 	ELSEIF TEQUIP:59 == 6
 		IF TALENT:연모
-			PRINTFORMW 「…これ運動着？…意外と露出しているけど」
+			PRINTFORMW 「…이게 운동복？…의외로 노출이 많은데」
 		;その他
 		ELSE
-			PRINTFORMW 「随分と…面白い趣味で…」
+			PRINTFORMW 「꽤나…재미있는 취를 가졌네…」
 		ENDIF
 	;コスプレ ナース服
 	ELSEIF TEQUIP:59 == 7
 		IF TALENT:연모
-			PRINTFORMW 「…診察しましょうか？」
+			PRINTFORMW 「…진찰해드릴까요？」
 		;その他
 		ELSE
-			PRINTFORMW 「どこが悪いの？頭？それとも性根？」
+			PRINTFORMW 「어디가 안좋은데？ 머리？ 아니면 근성？」
 		ENDIF
 	;コスプレ チャイナ服
 	ELSEIF TEQUIP:59 == 8
 		IF TALENT:연모
-			PRINTFORMW 「…スリットが深いですね…」
+			PRINTFORMW 「…슬릿이 깊네…」
 		;その他
 		ELSE
-			PRINTFORMW 「…意外と涼しいですね、この服」
+			PRINTFORMW 「…의외로 서늘하네, 이 옷」
 		ENDIF
 	;コスプレ セーラー服
 	ELSEIF TEQUIP:59 == 9
 		IF TALENT:연모
-			PRINTFORMW 「学生服？…そういう趣味だったの？」
+			PRINTFORMW 「학생복？…그런 취미가 있었어？」
 		;その他
 		ELSE
-			PRINTFORMW （…あまり似合わない気がする…）
+			PRINTFORMW （…별로 어울리지 않는것같다…）
 		ENDIF
 	;コスプレ ネグリジェ
 	ELSEIF TEQUIP:59 == 10
 		IF NO:ASSI == 242
 			IF TALENT:연모 && TALENT:ASSI:연모
-				PRINTFORMW 『あら、似合ってるわよ』
-				PRINTFORMW 「………そんなこと…ない…」
-				PRINTFORMW サグメは顔を真赤にして恥ずかしがっている
+				PRINTFORMW 『어머, 어울리잖아』
+				PRINTFORMW 「………그럴리가…없어…」
+				PRINTFORMW 사구메는 얼굴을 새빨갛게 물들이고 부끄러워 하고있다
 			ENDIF
 		ELSEIF TALENT:연모
-			PRINTFORMW 「寝巻き？いいけど…」
+			PRINTFORMW 「잠옷？괜찮은데…」
 		;その他
 		ELSE
-			PRINTFORMW 「これが夢ならどれだけいいことか…」
+			PRINTFORMW 「이것이 꿈이라면 얼마나 좋을까…」
 		ENDIF
 	;コスプレ 裸Yシャツ
 	ELSEIF TEQUIP:59 == 11
 		IF TALENT:연모
-			PRINTFORMW 「Yシャツ一枚は流石に寒いわね…温めてくれる？」
+			PRINTFORMW 「Y셔츠 한장은 역시 춥네…따뜻하게 해줄래？」
 		;その他
 		ELSE
-			PRINTFORMW （寒い…）
+			PRINTFORMW （추워…）
 		ENDIF
 	;コスプレ ビキニ
 	ELSEIF TEQUIP:59 == 12
 		IF TALENT:연모
-			PRINTFORMW 「…海にでも連れて行ってくれるの？まぁ良くて風呂でしょうけど」
+			PRINTFORMW 「…바다라도 데려다 줄래？ 뭐, 목욕탕 이겠지만」
 		;その他
 		ELSE
-			PRINTFORMW サグメは恥ずかしそうに胸の前で手を組んでいる
+			PRINTFORMW 사구메는 부끄러운듯 가슴앞을 손으로 가리고있다
 		ENDIF
 	;コスプレ 危ないレオタード
 	ELSEIF TEQUIP:59 == 13
 		IF TALENT:연모
-			PRINTFORMW 「これは…流石に…」
+			PRINTFORMW 「이건…아무리그래도…」
 		;その他
 		ELSE
-			PRINTFORMW サグメは羞恥心のあまり顔を真赤にして涙ぐんでいる
+			PRINTFORMW 사구메는 수치심에 얼굴을 빨갛게 하고 눈물을 글썽이고있다
 		ENDIF
 	;コスプレ バニースーツ
 	ELSEIF TEQUIP:59 == 14
 		IF TALENT:연모
-			PRINTFORMW 「ん…さて、いかが致しましょうか…」
+			PRINTFORMW 「응…그러면, 어떻게 하시겠습니까…」
 		;その他
 		ELSE
-			PRINTFORMW （胸…足りてよかった…）
+			PRINTFORMW （가슴…모자라서 다행이야…）
 		ENDIF
 	;コスプレ ボンテージ
 	ELSEIF TEQUIP:59 == 15
 		IF TALENT:연모
-			PRINTFORMW 「どうする？鞭とかで叩けばいいの？」
+			PRINTFORMW 「어떻게 할까？채찍으로 치면 될까？」
 		;その他
 		ELSE
-			PRINTFORMW 「どっちが奴隷なんだか…」
+			PRINTFORMW 「어느쪽이 노예인건지…」
 		ENDIF
 	;コスプレ 園児服
 	ELSEIF TEQUIP:59 == 16
 		IF TALENT:연모
-			PRINTFORMW 「こういうのは…いいけど別に…」
+			PRINTFORMW 「이런건…딱히 괜찮지만…」
 		;その他
 		ELSE
 			PRINTFORMW 「………」
-			PRINTFORMW サグメは不服そうにこちらを睨みつけている
+			PRINTFORMW 사구메는 불만인듯 이쪽을 노려보고있다
 		ENDIF
 	;コスプレ 褌だけ
 	ELSEIF TEQUIP:59 == 17
 		IF TALENT:연모
-			PRINTFORMW 「まぁトップレスでこういうのもいいとは思うけど、太鼓持ってきてくれる？」
+			PRINTFORMW 「뭐, 톱리스로 이런것도 좋다고는 생각하지만, 태고라도 가져다줄래？」
 		;その他
 		ELSE
-			PRINTFORMW サグメは恥ずかしそうに胸を腕で隠している
+			PRINTFORMW 사구메는 부끄러운듯 가슴을 팔로 감추고있다
 		ENDIF
 	;コスプレ 軍服
 	ELSEIF TEQUIP:59 == 18
 		IF TALENT:연모
-			PRINTFORMW 「どういう風に鍛えてほしい？」
+			PRINTFORMW 「어떤식으로 단련시켜줄까？」
 		;その他
 		ELSE
-			PRINTFORMW 「…月は少し遠すぎたわね」
+			PRINTFORMW 「…달은 조금 많이 멀었지」
 		ENDIF
 	;コスプレ ウェディングドレス
 	ELSEIF TEQUIP:59 == 19
 		IF TALENT:연모
-			PRINTFORMW 「…こういうの好きだけど…性行為をするのは…」
+			PRINTFORMW 「…이런건 좋아하지만… 성행위를 하는건…」
 		;その他
 		ELSE
-			PRINTFORMW サグメは大人しくウェディングドレスに着替えている
+			PRINTFORMW 사구메는 얌전히 웨딩드레스로 갈아입고있다
 		ENDIF
 	;コスプレ ゴシックロリータ
 	ELSEIF TEQUIP:59 == 20
 		IF TALENT:연모
-			PRINTFORMW 「あまり趣味ではないのだけれど…」
+			PRINTFORMW 「이런거 취미는 아니지만…」
 		;その他
 		ELSE
 			PRINTFORMW 「………」
@@ -2855,18 +2855,18 @@ ELSE
 	;コスプレ 裸サスペンダー
 	ELSEIF TEQUIP:59 == 21
 		IF TALENT:연모
-			PRINTFORMW 「…相変わらず露出の多いことで」
+			PRINTFORMW 「…변함없이 노출이 많네」
 		;その他
 		ELSE
-			PRINTFORMW サグメは恥ずかしそうに顔を赤らめている
+			PRINTFORMW 사구메는 부끄러운듯 얼굴을 빨갛게 물들였다
 		ENDIF
 	;コスプレ 巫女装束
 	ELSEIF TEQUIP:59 == 22
 		IF TALENT:연모
-			PRINTFORMW 「私にこういうのは似合わないわよ、信託を捻じ曲げるから」
+			PRINTFORMW 「나에게 이런건 어울리지 않아, 신탁을 왜곡시켜버리니까」
 		;その他
 		ELSE
-			PRINTFORMW 「…あまり好きじゃない…脇開いてるし…」
+			PRINTFORMW 「…별로 좋아하지 않아… 겨드랑이가 서늘해…」
 		ENDIF
 	ENDIF
 ENDIF
