@@ -2346,7 +2346,8 @@ IF SELECTCOM == 26
 				;조수에 연모
 				IF TALENT:ASSI:150 == 1 && (CFLAG:7168 <= 2 || FLAG:11 == 2)
 					PRINTFORMW 「큿……이런 녀석을!　어째서!」
-					PRINTFORMW %조사처리(CALLNAME:ASSI,"가")% 황홀한 표정을 짓는데 비해, 미마는 치를 떨며 분노하는 표정을 지었다					CFLAG:7168 = 3
+					PRINTFORMW %조사처리(CALLNAME:ASSI,"가")% 황홀한 표정을 짓는데 비해, 미마는 치를 떨며 분노하는 표정을 지었다
+					CFLAG:7168 = 3
 				;그 이외
 				ELSEIF CFLAG:7168 <= 1 || FLAG:11 == 2
 					PRINTFORMW 「큿……또……」
