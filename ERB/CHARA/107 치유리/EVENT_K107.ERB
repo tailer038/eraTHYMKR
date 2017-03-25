@@ -2368,7 +2368,7 @@ ENDIF
 ;목욕탕 플레이 CFLAG9350 해제 CFLAG8824
 ;-------------------------------------------------
 ;재료가 떠오르는 대로 수납 예정
-
+[SKIPSTART]
 IF SELECTCOM == 350 && TEQUIP:53
 	;처음
 	IF CFLAG:9350 == 0
@@ -2421,10 +2421,12 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;새댁 플레이 CFLAG9090 해제 CFLAG8823
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 90 && TEQUIP:59
 	;처음
@@ -2478,6 +2480,7 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;방뇨 CFLAG9111
@@ -3230,6 +3233,7 @@ ENDIF
 ;-------------------------------------------------
 ;C감각 Lv5로 C절정 50이상 CFLAG8017
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;처음
 	IF CFLAG:8017 == 0
@@ -3256,6 +3260,7 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;V감각 Lv5로 V절정 50이상 CFLAG8018
@@ -3267,23 +3272,23 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 		IF TALENT:150 == 1
 			PRINTFORMW 「해, 자궁구가 , 자궁구가!」
 		;그 이외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:8018 = 1
 			RETURN 0
 	;2회째 이후
-	ELSE
+	;ELSE
 		;연모
-		IF TALENT:150 == 1 && (CFLAG:8018 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:8018 = 3
+		;IF TALENT:150 == 1 && (CFLAG:8018 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:8018 = 3
 		;그 이외
-		ELSEIF CFLAG:8018 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:8018 = 2
-		ENDIF
-			RETURN 0
+		;ELSEIF CFLAG:8018 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:8018 = 2
+		;ENDIF
+			;RETURN 0
 	ENDIF
 ENDIF
 
@@ -3303,17 +3308,17 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			CFLAG:8019 = 1
 			RETURN 0
 	;2회째 이후
-	ELSE
+	;ELSE
 		;연모
-		IF TALENT:150 == 1 && (CFLAG:8019 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:8019 = 3
+		;IF TALENT:150 == 1 && (CFLAG:8019 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:8019 = 3
 		;그 이외
-		ELSEIF CFLAG:8019 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:8019 = 2
-		ENDIF
-			RETURN 0
+		;ELSEIF CFLAG:8019 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:8019 = 2
+		;ENDIF
+			;RETURN 0
 	ENDIF
 ENDIF
 
@@ -3995,9 +4000,9 @@ IF TFLAG:200 == 400
 	IF TALENT:150 == 1
 		PRINTFORMW 「이런 밤에, 혼자서 자다니 너무 외롭군」
 		PRINTFORMW 「방해 시켜 준다고 할까•••」
-	ELSE
-		PRINTFORMW 「」
-		PRINTFORMW 「」
+	;ELSE
+		;PRINTFORMW 「」
+		;PRINTFORMW 「」
 	ENDIF
 ENDIF
 

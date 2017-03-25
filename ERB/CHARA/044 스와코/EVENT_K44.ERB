@@ -3385,6 +3385,7 @@ ENDIF
 ;逆レイプ CFLAG328
 ;(主人が非オトコ, 奴隷がオトコ/ふたなりのみ)
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 25
 	;처음
 	IF CFLAG:5328 == 0
@@ -3411,6 +3412,7 @@ IF SELECTCOM == 25
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;手淫 CFLAG329
@@ -5505,6 +5507,7 @@ ENDIF
 ;指挿入れ CFLAG355
 ;Gスポット刺激 CFLAG356
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 4
 	;Gスポット刺激
 	IF PREVCOM == 4 && ABL:PLAYER:12 >= 3 || PREVCOM == 600
@@ -5571,6 +5574,7 @@ IF SELECTCOM == 4
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;シャワ― CFLAG357
@@ -5609,6 +5613,7 @@ ENDIF
 ;-------------------------------------------------
 ;対面座位 CFLAG358
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 22
 	;처음
 	IF CFLAG:5358 == 0
@@ -5643,11 +5648,13 @@ IF SELECTCOM == 22
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;背面座位 CFLAG359
 ;乱れ牡丹 CFLAG360
 ;-------------------------------------------------
+[SKIPSTART]
 ;背面座位
 IF SELECTCOM == 23 && TEQUIP:56 == 0
 	;처음
@@ -5721,6 +5728,7 @@ ELSEIF SELECTCOM == 23 && TEQUIP:56
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;泡踊り CFLAG361
@@ -6272,6 +6280,7 @@ ENDIF
 ;放尿 CFLAG369
 ;強制放尿 CFLAG370
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 111
 	;強制放尿
 	IF (TALENT:45 && ABL:10 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:12 == 0)
@@ -6321,6 +6330,7 @@ IF SELECTCOM == 111
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・アナル関連 CFLAG371以降を使用
@@ -6329,6 +6339,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナル舐め CFLAG371
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 180
 	;처음
 	IF CFLAG:5371 == 0
@@ -6359,10 +6370,12 @@ IF SELECTCOM == 180
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナルビ―ズ 開始時CFLAG372 終了時CFLAG373
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 172 && TEQUIP:25 == 5
 	;처음
@@ -6414,10 +6427,12 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;------------------------------------------------
 ;正常位アナル CFLAG374
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 30
 	;처음
 	IF CFLAG:5374 == 0
@@ -6453,10 +6468,12 @@ IF SELECTCOM == 30
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;後背位アナル CFLAG375
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 31
 	;처음
 	IF CFLAG:5375 == 0
@@ -6492,10 +6509,12 @@ IF SELECTCOM == 31
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;対面座位アナル CFLAG376
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;처음
 	IF CFLAG:5376 == 0
@@ -6531,10 +6550,12 @@ IF SELECTCOM == 32
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;背面座位アナル CFLAG377
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	;처음
 	IF CFLAG:5377 == 0
@@ -6570,10 +6591,12 @@ IF SELECTCOM == 33
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;騎乗位アナル CFLAG378
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	;처음
 	IF CFLAG:5378 == 0
@@ -6609,10 +6632,12 @@ IF SELECTCOM == 34
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;空気浣腸 開始時CFLAG379 終了時CFLAG380
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 175 && TEQUIP:25 == 8
 	;처음
@@ -6664,10 +6689,12 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;拡張バル―ン 開始時CFLAG381 終了時CFLAG382
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 173 && TEQUIP:25 == 6
 	;처음
@@ -6719,10 +6746,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル電極 開始時CFLAG383 終了時CFLAG384
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 171 && TEQUIP:25 == 4
 	;처음
@@ -6774,10 +6803,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル奉仕強制 CFLAG385
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;처음
 	IF CFLAG:5385 == 0
@@ -6812,6 +6843,7 @@ IF SELECTCOM == 44
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;レズ調教コマンド
@@ -6820,6 +6852,7 @@ ENDIF
 ;-------------------------------------------------
 ;３P CFLAG386
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;처음
 	IF CFLAG:5386 == 0
@@ -6854,6 +6887,7 @@ IF SELECTCOM == 610
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;シックスナイン CFLAG387　CFLAG397
@@ -7638,6 +7672,7 @@ IF SELECTCOM == 307
 				ENDIF
 			;ペニスバンドあり
 			ELSEIF TALENT:121 == 0 && ITEM:4 == 1
+[SKIPSTART]
 				;조수 사나에
 				IF ASSINO() == 42
 					PRINTFORMW 
@@ -7654,10 +7689,12 @@ IF SELECTCOM == 307
 				ELSEIF ASSINO() == 43
 					PRINTFORMW 
 				ENDIF
+[SKIPEND]
 			ENDIF
 			CFLAG:5391 = 4
 		;연모
 		ELSEIF TALENT:150 == 1 && ASSI > 0 && ASSIPLAY && (CFLAG:5391 <= 2 || FLAG:11 == 2)
+[SKIPSTART]
 			;諏訪子ふたなり
 			IF TALENT:121 == 1
 				;조수 사나에
@@ -7686,6 +7723,7 @@ IF SELECTCOM == 307
 					PRINTFORMW 
 				ENDIF
 			ENDIF
+[SKIPEND]
 			CFLAG:5391 = 3
 		;レズ中毒Lv5以上
 		ELSEIF ABL:32 >= 5 && ASSI > 0 && ASSIPLAY
@@ -7718,6 +7756,7 @@ IF SELECTCOM == 307
 						PRINTFORMW 「그렇게 심술궂게 말하지말고……더 이상은 참을 수 없어……!」
 					ENDIF
 				ENDIF
+[SKIPSTART]
 			;ペニスバンドあり
 			ELSEIF TALENT:121 == 0 && ITEM:4 == 1
 				;조수 사나에
@@ -7736,7 +7775,9 @@ IF SELECTCOM == 307
 				ELSEIF ASSINO() == 43
 					PRINTFORMW 
 				ENDIF
+[SKIPEND]
 			ENDIF
+[SKIPSTART]
 		;그 외
 		ELSEIF ASSI > 0 && ASSIPLAY && (CFLAG:5391 <= 1 || FLAG:11 == 2)
 			;諏訪子ふたなり
@@ -7768,6 +7809,7 @@ IF SELECTCOM == 307
 				ENDIF
 			ENDIF
 			CFLAG:5391 = 2
+[SKIPEND]
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -8579,6 +8621,7 @@ ENDIF
 ;-------------------------------------------------
 ;射精した(ふたなり/オトコのみ) CFLAG233
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:30 > 0
 	;처음
 	IF CFLAG:5233 == 0
@@ -8605,6 +8648,7 @@ IF TFLAG:30 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;噴乳した(母乳体質のみ) CFLAG234
@@ -8664,6 +8708,7 @@ ENDIF
 ;-------------------------------------------------
 ;Ｃ感覚Lv5でＣ절정50以上 CFLAG235
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;처음
 	IF CFLAG:5235 == 0
@@ -8690,10 +8735,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ절정50以上 CFLAG236
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;처음
 	IF CFLAG:5236 == 0
@@ -8720,10 +8767,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ절정50以上 CFLAG237
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;처음
 	IF CFLAG:5237 == 0
@@ -8750,10 +8799,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｂ感覚Lv5でＢ절정50以上 CFLAG238
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;처음
 	IF CFLAG:5238 == 0
@@ -8780,6 +8831,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG関係(X1をキャラ番号に置換)
@@ -9334,9 +9386,9 @@ ENDIF
 ;-------------------------------------------------
 ;약혼 반지 사용시
 ;-------------------------------------------------
-IF TFLAG:200 == 200
-	PRINTFORMW 
-ENDIF
+;IF TFLAG:200 == 200
+;	PRINTFORMW 
+;ENDIF
 	TFLAG:200 = 0
 	RETURN 0
 

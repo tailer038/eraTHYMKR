@@ -618,6 +618,7 @@ IF SELECTCOM == 611
 		PRINTFORMW 허리를 내려 %CALLNAME:MASTER%의 입술에 음부를 눌러대며, 허리를 움직이고 있다
 		CFLAG:5303 = 6
 	;연모
+[SKIPSTART]
 	ELSEIF TALENT:150 == 1 && (CFLAG:5303 <= 4 || FLAG:11 == 2)
 		PRINTFORMW 
 		CFLAG:5303 = 5
@@ -633,6 +634,7 @@ IF SELECTCOM == 611
 	ELSEIF CFLAG:5303 <= 1 || FLAG:11 == 2
 		PRINTFORMW 
 		CFLAG:5303 = 2
+[SKIPEND]
 	ENDIF
 		RETURN 0
 ENDIF
@@ -1155,13 +1157,13 @@ IF SELECTCOM == 11
 			ENDIF
 				CFLAG:5314 = 4
 		;굴복각인 Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:5314 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5314 = 3
+		;ELSEIF MARK:2 == 3 && (CFLAG:5314 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5314 = 3
 		;그 외
-		ELSEIF CFLAG:5314 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5314 = 2
+		;ELSEIF CFLAG:5314 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5314 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1316,8 +1318,8 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 「주인님…그거, 어디에 쓰는 거에요?」
 			PRINTFORMW 「에？클리토리스에? 야앙……기분이 너무 좋아서, 야한 액체를 듬뿍 내버릴지도……♪」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5317 = 1
 			;음구지식 습득 이벤트용 플래그
@@ -1345,9 +1347,9 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 		PRINTFORMW 소악마는 애액을 손가락에 묻혀, 빨간 혀로 그것을 맛보며, 음란한 미소를 짓고 있다….
 		CFLAG:5318 = 2
 	;그 외
-	ELSEIF CFLAG:5318 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5318 = 1
+	;ELSEIF CFLAG:5318 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5318 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -1364,8 +1366,8 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 「에？유두에…요?」
 			PRINTFORMW 「너무 기분 좋아서 가슴이 이상해져 버리면, 책임져주세요♪」 
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5319 = 1
 			;음구지식 습득 이벤트용 플래그
@@ -1378,9 +1380,9 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 「응후…… 이거 붙이면… 가슴 앞부터 감미롭게 녹아버릴 것 같아요…♪」
 			CFLAG:5319 = 3
 		;그 외
-		ELSEIF CFLAG:5319 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5319 = 2
+		;ELSEIF CFLAG:5319 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5319 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1392,9 +1394,9 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 		PRINTFORMW 「다음은 주인님의 손이랑 입으로, 제 가슴을 괴롭혀주세요?」
 		CFLAG:5320 = 2
 	;그 외
-	ELSEIF CFLAG:5320 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5320 = 1
+	;ELSEIF CFLAG:5320 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5320 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -1411,8 +1413,8 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 「우와, 대단해요…안쪽이 쭈글쭈글하고 오돌토돌해서……기분 좋아보여……」
 			PRINTFORMW 「네, 그 오나홀로, 저의 야한 정액, 잔뜩 짜내주세요♪」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5323 = 1
 			;음구지식 습득 이벤트용 플래그
@@ -1427,9 +1429,9 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 소악마는 사정의 쾌락을 기대하고 있는지, 쿠퍼액을 마구 흘리며 음란하게 허리를 흔들고 있다
 			CFLAG:5323 = 3
 		;그 외
-		ELSEIF CFLAG:5323 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5323 = 2
+		;ELSEIF CFLAG:5323 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5323 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1443,9 +1445,9 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 쓴웃음을 지으면서도 그 미소에 만족해, 다시금 소악마를 넘어뜨렸다…
 		CFLAG:5324 = 2
 	;그 외
-	ELSEIF CFLAG:5324 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5324 = 1
+	;ELSEIF CFLAG:5324 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5324 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -3717,8 +3719,8 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 「나, 보여버려……저의 부끄러운 곳이 전부 비춰서, 봐버리는구나…」
 			PRINTFORMW 소악마는 수치에 떨어, 붉게 상기된 얼굴로 음란한 한숨을 토해내고 있다…
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5363 = 1
 			RETURN 0
@@ -3736,13 +3738,13 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 소악마는 부끄러워 하는듯 하면서도, %조사처리(CALLNAME:MASTER,"가")% 말한대로 거울 앞에 앉았다
 			CFLAG:5363 = 4
 		;노출벽Lv3이상
-		ELSEIF ABL:14 >= 3
-			PRINTFORMW 
-			CFLAG:5363 = 3
+		;ELSEIF ABL:14 >= 3
+			;PRINTFORMW 
+			;CFLAG:5363 = 3
 		;그 외
-		ELSEIF CFLAG:5272 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5363 = 2
+		;ELSEIF CFLAG:5272 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5363 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -3755,8 +3757,8 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 			PRINTFORMW 「우우…괴, 굉장히 부끄러웠어요…」
 			PRINTFORMW 「그래도, 어쩐지 버릇이 돼 버릴지도…」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5364 = 1
 			RETURN 0
@@ -3769,9 +3771,9 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 			PRINTFORMW 「저도…자기의 야한 곳을 보니까, 무지 흥분했을지도……」
 			CFLAG:5364 = 3
 		;그 외
-		ELSEIF CFLAG:5364 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5364 = 2
+		;ELSEIF CFLAG:5364 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5364 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -3898,6 +3900,7 @@ ENDIF
 ;-------------------------------------------------
 ;로터 삽입
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 151 && TEQUIP:20 == 3
 	;처음
@@ -3915,10 +3918,12 @@ IF SELECTCOM == 151 && TEQUIP:20 == 3
 ELSEIF SELECTCOM == 151
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 전극 개시시 CFLAG:9171 종료시 CFLAG:8851
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 171 && TEQUIP:25
 	;처음
@@ -3936,6 +3941,7 @@ IF SELECTCOM == 171 && TEQUIP:25
 ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널 비즈 개시시 CFLAG372 종료시 CFLAG373
@@ -3949,8 +3955,8 @@ IF SELECTCOM == 172 && TEQUIP:25
 			PRINTFORMW 「……? 둥그런게 잔뜩… 주인님, 그거, 어디에 넣는 건가요?」
 			PRINTFORMW 「에엣? 어, 엉덩이에? 뽑을 때 굉장할거 같아요……」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5372 = 1
 			;음구지식 습득 이벤트용 플래그
@@ -3971,13 +3977,13 @@ IF SELECTCOM == 172 && TEQUIP:25
 			PRINTFORMW 소악마는 애처롭게 떨면서, 조금 젖은 눈동자로 %조사처리(CALLNAME:MASTER,"를")% 응시하고 있다.
 			CFLAG:5372 = 4
 		;A감각Lv3이상＋마조끼Lv3이상
-		ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5372 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5372 = 3
+		;ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5372 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5372 = 3
 		;그 외
-		ELSEIF  CFLAG:5372 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5372 = 2
+		;ELSEIF  CFLAG:5372 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5372 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -3995,9 +4001,9 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 		PRINTFORMW 소악마는 배설쾌락에 몸을 떨면서, 질구에서도 대량의 애액을 흘리며 좋아하고 있다….
 		CFLAG:5373 = 2
 	;그 외
-	ELSEIF CFLAG:5373 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5373 = 1
+	;ELSEIF CFLAG:5373 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5373 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -4017,8 +4023,8 @@ IF SELECTCOM == 174 && TEQUIP:25
 			PRINTFORMW 「그, 그래도… 주인님이 바라신다면, 나…… 그래도… 아우우……」
 			PRINTFORMW 소악마는 내심 싫은 듯한 얼굴을 했지만, %CALLNAME:MASTER%에게 엉덩이를 내밀었다.
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5343 = 1
 			RETURN 0
@@ -4036,13 +4042,13 @@ IF SELECTCOM == 174 && TEQUIP:25
 			PRINTFORMW 소악마는 눈꼬리에 눈물을 고이면서, 마지못한 듯한 모습으로 엉덩이를 내밀었다
 			CFLAG:5343 = 4
 		;A감각Lv3이상＋마조끼Lv3이상
-		ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5343 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5343 = 3
+		;ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5343 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5343 = 3
 		;그 외
-		ELSEIF  CFLAG:5343 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5343 = 2
+		;ELSEIF  CFLAG:5343 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5343 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4058,8 +4064,8 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 		IF TALENT:150 == 1
 			PRINTFORMW 「싫어어… 나와, 나와버려어엇! 주인님 보지 말아줘! 아, 아아아아아앗!!」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5344 = 1
 			RETURN 0
@@ -4076,13 +4082,13 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 			PRINTFORMW 「흑, 싫어…… 보지 말아줘 보지 말아줘어어어……」
 			CFLAG:5344 = 4
 		;A감각Lv3이상＋마조끼Lv3이상
-		ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5344 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5344 = 3
+		;ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5344 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5344 = 3
 		;그 외
-		ELSEIF  CFLAG:5344 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5344 = 2
+		;ELSEIF  CFLAG:5344 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5344 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4098,8 +4104,8 @@ IF SELECTCOM == 180
 		IF TALENT:150 == 1
 			PRINTFORMW 「후아앗？주, 주인님…거기, 더러워요……」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5371 = 1
 			RETURN 0
@@ -4116,9 +4122,9 @@ IF SELECTCOM == 180
 			PRINTFORMW 잘 개발된 애널에 혀를 넣자, 소악마는 엉덩이를 들어 배설감을 닮은 쾌감에 떨었다
 			CFLAG:5371 = 3
 		;그 외
-		ELSEIF CFLAG:5371 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5371 = 2
+		;ELSEIF CFLAG:5371 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5371 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4127,6 +4133,7 @@ ENDIF
 ;-------------------------------------------------
 ;유두 로터 CFLAG9190
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 190
 	;처음
 	IF CFLAG:9190 == 0
@@ -4140,6 +4147,7 @@ IF SELECTCOM == 190
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;착유기(모유 체질만) CFLAG:9191 CFLAG:8861
@@ -4153,8 +4161,8 @@ IF SELECTCOM == 191 && TEQUIP:35
 			PRINTFORMW 「에…? 밀크, 짜주시는거예요?」
 			PRINTFORMW 「기뻐… 잔뜩 잔뜩 짜내주세요?」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5321 = 1
 			;음구지식 습득 이벤트용 플래그
@@ -4168,9 +4176,9 @@ IF SELECTCOM == 191 && TEQUIP:35
 			PRINTFORMW 「저는 주인님 전용 우유담당이네요? 잔뜩 짜내주세요」
 			CFLAG:5321 = 3
 		;그 외
-		ELSEIF CFLAG:5321 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5321 = 2
+		;ELSEIF CFLAG:5321 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5321 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4188,9 +4196,9 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 		ENDIF
 			CFLAG:5322 = 2
 	;그 외
-	ELSEIF CFLAG:5322 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5322 = 1
+	;ELSEIF CFLAG:5322 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5322 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -4334,13 +4342,13 @@ IF SELECTCOM == 222
 			PRINTFORMW 눈꼬리에 눈물이 고여있지만, 상냥한 눈동자로 %조사처리(CALLNAME:MASTER,"를")% 바라본다…
 			CFLAG:5336 = 4
 		;마조끼Lv3이상
-		ELSEIF ABL:21 >= 3 && (CFLAG:5336 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5336 = 3
+		;ELSEIF ABL:21 >= 3 && (CFLAG:5336 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5336 = 3
 		;그 외
-		ELSEIF CFLAG:5336 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5336 = 2
+		;ELSEIF CFLAG:5336 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5336 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4357,8 +4365,8 @@ IF (SELECTCOM == 224 && TEQUIP:40) || SELECTCOM == 622
 		IF TALENT:150 == 1
 			PRINTFORMW 「에, 무… 묶는 건가요？저, 주인님한테 이것저것 당하는 거네요…?」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5339 = 1
 			RETURN 0
@@ -4381,13 +4389,13 @@ IF (SELECTCOM == 224 && TEQUIP:40) || SELECTCOM == 622
 			PRINTFORMW 「우―…알겠습니다. 그래도, 그렇게 강하게 묶진 말아주세요…?」
 			CFLAG:5339 = 4
 		;마조끼Lv3이상
-		ELSEIF ABL:21 >= 3 && (CFLAG:5339 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5339 = 3
+		;ELSEIF ABL:21 >= 3 && (CFLAG:5339 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5339 = 3
 		;그 외
-		ELSEIF CFLAG:5339 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5339 = 2
+		;ELSEIF CFLAG:5339 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5339 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4399,9 +4407,9 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
 		PRINTFORMW 줄을 풀자, 소악마는 참을 수 없다는 듯이 %조사처리(CALLNAME:MASTER,"를")% 껴안아 왔다
 		CFLAG:5340 = 2
 	;그 외
-	ELSEIF CFLAG:5340 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5340 = 1
+	;ELSEIF CFLAG:5340 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5340 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -4417,8 +4425,8 @@ IF SELECTCOM == 225 && TEQUIP:41
 		IF TALENT:150 == 1
 			PRINTFORMW 「눈가리개요? 주인님의 얼굴이 보이는 쪽이 좋은데…」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5337 = 1
 			RETURN 0
@@ -4444,9 +4452,9 @@ IF SELECTCOM == 225 && TEQUIP:41
 			PRINTFORMW 아무래도 이제부터 당할 일을 상상해서, 흥분한 모양이다……
 			CFLAG:5337 = 3
 		;그 외
-		ELSEIF CFLAG:5337 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5337 = 2
+		;ELSEIF CFLAG:5337 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5337 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4458,9 +4466,9 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 		PRINTFORMW 아이마스크를 치우자, 소악마는 기쁜 듯이 껴안아왔다
 		CFLAG:5338 = 2
 	;그 외
-	ELSEIF CFLAG:5338 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5338 = 1
+	;ELSEIF CFLAG:5338 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5338 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -4476,8 +4484,8 @@ IF SELECTCOM == 226 && TEQUIP:42
 		IF TALENT:150 == 1
 			PRINTFORMW 「입을 막는 건가요？우― …주인님이랑 키스하거나, 자지를 빨거나 할 수 없을 거 같아요…」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5341 = 1
 			RETURN 0
@@ -4498,13 +4506,13 @@ IF SELECTCOM == 226 && TEQUIP:42
 			PRINTFORMW 소악마는 아직 볼 마개에 익숙하지 않은건지, 조금 불만인 듯한 얼굴로 바라봤다
 			CFLAG:5341 = 4
 		;마조끼Lv3이상
-		ELSEIF ABL:21 >= 3 && (CFLAG:5341 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5341 = 3
+		;ELSEIF ABL:21 >= 3 && (CFLAG:5341 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5341 = 3
 		;그 외
-		ELSEIF CFLAG:5341 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5341 = 2
+		;ELSEIF CFLAG:5341 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5341 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -4516,9 +4524,9 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 		PRINTFORMW 「자지를 빨게 해줘도 좋습니다만…♪」
 		CFLAG:5342 = 2
 	;그 외
-	ELSEIF CFLAG:5342 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5342 = 1
+	;ELSEIF CFLAG:5342 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5342 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -4799,8 +4807,8 @@ IF SELECTCOM == 602
 			PRINTFORMW 「에헤헤―…♪ 주인님의 자지를 핥으면서, 주인님한테 보지를 만져지다니…」
 			PRINTFORMW 「어쩐지 진짜 흥분돼 버려요……♪」
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5387 = 1
 			RETURN 0
@@ -4820,21 +4828,21 @@ IF SELECTCOM == 602
 			ENDIF
 				CFLAG:5387 = 6
 		;연모
-		ELSEIF TALENT:150 == 1 && (CFLAG:5387 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5387 = 5
+		;ELSEIF TALENT:150 == 1 && (CFLAG:5387 <= 4 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5387 = 5
 		;굴복각인 Lv3+봉사정신Lv3이상+C감각Lv3이상
-		ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:5387 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5387 = 4
+		;ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:5387 <= 3 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5387 = 4
 		;굴복각인 Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:5387 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5387 = 3
+		;ELSEIF MARK:2 == 3 && (CFLAG:5387 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5387 = 3
 		;그 외
-		ELSEIF CFLAG:5387 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5387 = 2
+		;ELSEIF CFLAG:5387 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5387 = 2
 		ENDIF
 			RETURN 0
 	ENDIF

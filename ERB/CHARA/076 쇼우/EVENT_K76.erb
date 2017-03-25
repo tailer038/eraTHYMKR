@@ -285,61 +285,59 @@ SIF NO:TARGET != 76
 ;--------------------------------------------------
 ;反発刻印Lv3
 IF MARK:9 == 3
-	PRINTFORMW 조교가 끝나자, 쇼는 중얼거리며 뭔가 외우고 있다. 
-	PRINTFORMW 그것은 비사문천에 대한 기원인 동시에, %조사처리(CALLNAME:MASTER,"를")% 원망하는 저주였다. 
+	;恋慕+反発刻印Lv3
+	IF TALENT:150 == 1
+		PRINTFORMW 「용무는 끝났죠? 빨리, 혼자 있게 해주세요…」
+	ELSE
+		PRINTFORMW 조교가 끝나자, 쇼는 중얼거리며 뭔가 외우고 있다. 
+		PRINTFORMW 그것은 비사문천에 대한 기원인 동시에, %조사처리(CALLNAME:MASTER,"를")% 원망하는 저주였다. 
+	ENDIF
 	RETURN 1
 ;その他の場合
 ELSE
-	;恋慕+反発刻印Lv3
-	IF TALENT:150 == 1 && MARK:9 == 3
-		PRINTFORMW 「용무는 끝났죠? 빨리, 혼자 있게 해주세요…」
-	;その他の場合
-	ELSE
-		;恋慕or服従
-		IF TALENT:150 == 1 || TALENT:160 == 1
-			;まだ未経験
-			IF EXP:0 == 0
-				PRINTFORMW 「앗… 벌써, 끝…?」 
-				PRINTFORMW 쇼는 뭔가 말하고 싶은게 있어 보였지만, 입 밖으로 내기 직전에 멈추었다. 
-			;その他の場合
-			ELSE
-				;体力500未満
-				IF BASE:0 < 500
-					PRINTFORMW 「앗… 핫, 하앙… 앗…당신……」
-					PRINTFORMW 쇼는 격렬한 행위의 여운으로 몸을 움직이지 못한채, 녹을듯한 목소리로 %조사처리(CALLNAME:MASTER,"를")% 부르며 키스했다. 
-					PRINTFORMW 「응…. 이젠 움직일 수 없어요…. 그치만… 멋졌, 어요…당신…」
-				;その他の場合
-				ELSE
-					PRINTFORMW 「아앙! 하앗… 하아… 아, 벌써… 끝입니까…?」 
-					PRINTFORMW 쇼는 음란한 얼굴로 %CALLNAME:MASTER%에게 달라붙으며, 원하는게 있는듯이 볼을 부벼왔다. 
-					PRINTFORMW 「아직, 저는 괜찮으니까… 그… 좀 더 사랑해주셔도…」
-				ENDIF
-			ENDIF
+	;恋慕or服従
+	IF TALENT:150 == 1 || TALENT:160 == 1
+		;まだ未経験
+		IF EXP:0 == 0
+			PRINTFORMW 「앗… 벌써, 끝…?」 
+			PRINTFORMW 쇼는 뭔가 말하고 싶은게 있어 보였지만, 입 밖으로 내기 직전에 멈추었다. 
 		;その他の場合
 		ELSE
-			;屈服刻印Lv3
-			IF MARK:2 == 3
-				;体力500未満
-				IF BASE:0 < 500
-					PRINTFORMW 「히잇… 앗… 하, 아아… 응……」
-					PRINTFORMW 쇼는 누워서, 만족한듯 허덕이고 있다. 
-				;その他の場合
-				ELSE
-					PRINTFORMW 「아… 끝, 입니까?」 
-					PRINTFORMW 쇼는 뭔가 부족한 듯이 말했지만, 금방 자신의 음란한 생각을 깨닫고, 새빨간 얼굴로 전언을 철회했다. 
-				ENDIF
-			;屈服刻印Lv2
-			ELSEIF MARK:2 == 2
-				PRINTFORMW 「하아… 하앗…… 아, 네…. 끝내기로… 알겠습니다, 금방… 원래대로……」
-				PRINTFORMW 그렇게 말하면서도, 쇼는 조교의 여운에서 좀처럼 회복할 수 없었다. 
-			;屈服刻印Lv1
-			ELSEIF MARK:2 == 1
-				PRINTFORMW 「끝났나요…. 그럼 원래대로 정리할테니, %조사처리(CALLNAME:MASTER,"는")% 거기 계셔주세요」
-
+			;体力500未満
+			IF BASE:0 < 500
+				PRINTFORMW 「앗… 핫, 하앙… 앗…당신……」
+				PRINTFORMW 쇼는 격렬한 행위의 여운으로 몸을 움직이지 못한채, 녹을듯한 목소리로 %조사처리(CALLNAME:MASTER,"를")% 부르며 키스했다. 
+				PRINTFORMW 「응…. 이젠 움직일 수 없어요…. 그치만… 멋졌, 어요…당신…」
 			;その他の場合
 			ELSE
-				PRINTFORMW 「…끝, 입니까…?」 
+				PRINTFORMW 「아앙! 하앗… 하아… 아, 벌써… 끝입니까…?」 
+				PRINTFORMW 쇼는 음란한 얼굴로 %CALLNAME:MASTER%에게 달라붙으며, 원하는게 있는듯이 볼을 부벼왔다. 
+				PRINTFORMW 「아직, 저는 괜찮으니까… 그… 좀 더 사랑해주셔도…」
 			ENDIF
+		ENDIF
+	;その他の場合
+	ELSE
+		;屈服刻印Lv3
+		IF MARK:2 == 3
+			;体力500未満
+			IF BASE:0 < 500
+				PRINTFORMW 「히잇… 앗… 하, 아아… 응……」
+				PRINTFORMW 쇼는 누워서, 만족한듯 허덕이고 있다. 
+			;その他の場合
+			ELSE
+				PRINTFORMW 「아… 끝, 입니까?」 
+				PRINTFORMW 쇼는 뭔가 부족한 듯이 말했지만, 금방 자신의 음란한 생각을 깨닫고, 새빨간 얼굴로 전언을 철회했다. 
+			ENDIF
+		;屈服刻印Lv2
+		ELSEIF MARK:2 == 2
+			PRINTFORMW 「하아… 하앗…… 아, 네…. 끝내기로… 알겠습니다, 금방… 원래대로……」
+			PRINTFORMW 그렇게 말하면서도, 쇼는 조교의 여운에서 좀처럼 회복할 수 없었다. 
+		;屈服刻印Lv1
+		ELSEIF MARK:2 == 1
+			PRINTFORMW 「끝났나요…. 그럼 원래대로 정리할테니, %조사처리(CALLNAME:MASTER,"는")% 거기 계셔주세요」
+		;その他の場合
+		ELSE
+			PRINTFORMW 「…끝, 입니까…?」 
 		ENDIF
 	ENDIF
 ENDIF
@@ -663,6 +661,7 @@ ENDIF
 ;-------------------------------------------------
 ;フェラする	CFLAG:5205
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 5
 	DRAWLINE
 	;初めて
@@ -674,6 +673,7 @@ IF SELECTCOM == 5
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;キスする	CFLAG:5206
 ;-------------------------------------------------
@@ -781,6 +781,7 @@ ENDIF
 ;-------------------------------------------------
 ;二穴バイブオナニー	CFLAG:5208
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -792,6 +793,7 @@ IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUI
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バイブオナニー	CFLAG:5209
 ;-------------------------------------------------
@@ -855,6 +857,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナルバイブオナニー	CFLAG:5210
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -866,9 +869,11 @@ IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUI
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;センズリ	CFLAG:5211
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:30 == 2
 	DRAWLINE
 	;初めて
@@ -880,9 +885,11 @@ IF SELECTCOM == 7 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUI
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開オナニー	CFLAG:5212
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:50
 	DRAWLINE
 	;初めて
@@ -894,9 +901,11 @@ IF SELECTCOM == 7 &&  TEQUIP:50
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開二穴バイブオナニー	CFLAG:5213
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -908,9 +917,11 @@ IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開バイブオナニー	CFLAG:5214
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -922,9 +933,11 @@ IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:20 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開アナルバイブオナニー	CFLAG:5215
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -936,9 +949,11 @@ IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開センズリ	CFLAG:5216
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:30 == 2
 	DRAWLINE
 	;初めて
@@ -950,9 +965,11 @@ IF SELECTCOM == 7 &&  TEQUIP:50 && TEQUIP:30 == 2
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外オナニー	CFLAG:5217
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:52
 	DRAWLINE
 	;初めて
@@ -964,9 +981,11 @@ IF SELECTCOM == 7 &&  TEQUIP:52
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外二穴バイブオナニー	CFLAG:5218
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -978,9 +997,11 @@ IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外バイブオナニー	CFLAG:5219
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -992,9 +1013,11 @@ IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:20 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外アナルバイブオナニー	CFLAG:5220
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -1006,9 +1029,11 @@ IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外センズリ	CFLAG:5221
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:30 == 2
 	DRAWLINE
 	;初めて
@@ -1020,9 +1045,11 @@ IF SELECTCOM == 7 &&  TEQUIP:52 && TEQUIP:30 == 2
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;シャワーオナニー	CFLAG:5222
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 7 && TEQUIP:54
 	DRAWLINE
 	;初めて
@@ -1034,6 +1061,7 @@ IF SELECTCOM == 7 && TEQUIP:54
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;何もしない	CFLAG:5223
 ;-------------------------------------------------
@@ -1125,6 +1153,7 @@ ENDIF
 ;-------------------------------------------------
 ;電気按摩	CFLAG:5225
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 11
 	DRAWLINE
 	;初めて
@@ -1136,6 +1165,7 @@ IF SELECTCOM == 11
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バイブ	CFLAG:5226
 ;-------------------------------------------------
@@ -1327,6 +1357,7 @@ ENDIF
 ;-------------------------------------------------
 ;クリキャップ	CFLAG:5228
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 14
 	DRAWLINE
 	;初めて
@@ -1338,9 +1369,11 @@ IF SELECTCOM == 14
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ニプルキャップ	CFLAG:5229
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 15
 	DRAWLINE
 	;初めて
@@ -1352,9 +1385,11 @@ IF SELECTCOM == 15
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;オナホール	CFLAG:5230
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 16
 	DRAWLINE
 	;初めて
@@ -1366,6 +1401,7 @@ IF SELECTCOM == 16
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;正常位	CFLAG:5231
 ;-------------------------------------------------
@@ -1555,6 +1591,7 @@ ENDIF
 ;-------------------------------------------------
 ;対面座位	CFLAG:5233
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 22
 	DRAWLINE
 	;初めて
@@ -1607,9 +1644,11 @@ IF SELECTCOM == 22
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;背面座位	CFLAG:5234
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 23
 	DRAWLINE
 	;初めて
@@ -1621,9 +1660,11 @@ IF SELECTCOM == 23
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;騎乗位	CFLAG:5235
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 24
 	DRAWLINE
 	;初めて
@@ -1635,9 +1676,11 @@ IF SELECTCOM == 24
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;逆レイプ	CFLAG:5236
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 25
 	DRAWLINE
 	;初めて
@@ -1649,9 +1692,11 @@ IF SELECTCOM == 25
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;助手を犯す	CFLAG:5237
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	DRAWLINE
 	;初めて
@@ -1663,9 +1708,11 @@ IF SELECTCOM == 26
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;対面立位	CFLAG:5238
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 27
 	DRAWLINE
 	;初めて
@@ -1677,9 +1724,11 @@ IF SELECTCOM == 27
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;背面立位	CFLAG:5239
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 28
 	DRAWLINE
 	;初めて
@@ -1691,9 +1740,11 @@ IF SELECTCOM == 28
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;正常位アナル	CFLAG:5240
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 30
 	DRAWLINE
 	;初めて
@@ -1705,9 +1756,11 @@ IF SELECTCOM == 30
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;後背位アナル	CFLAG:5241
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 31
 	DRAWLINE
 	;初めて
@@ -1719,9 +1772,11 @@ IF SELECTCOM == 31
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;対面座位アナル	CFLAG:5242
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	DRAWLINE
 	;初めて
@@ -1733,9 +1788,11 @@ IF SELECTCOM == 32
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;背面座位アナル	CFLAG:5243
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	DRAWLINE
 	;初めて
@@ -1747,9 +1804,11 @@ IF SELECTCOM == 33
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;騎乗位アナル	CFLAG:5244
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	DRAWLINE
 	;初めて
@@ -1761,9 +1820,11 @@ IF SELECTCOM == 34
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;逆アナルレイプ	CFLAG:5245
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 35
 	DRAWLINE
 	;初めて
@@ -1775,9 +1836,11 @@ IF SELECTCOM == 35
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;助手のＡを犯す	CFLAG:5246
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 36
 	DRAWLINE
 	;初めて
@@ -1789,9 +1852,11 @@ IF SELECTCOM == 36
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;対面立位アナル	CFLAG:5247
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 37
 	DRAWLINE
 	;初めて
@@ -1803,9 +1868,11 @@ IF SELECTCOM == 37
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;背面立位アナル	CFLAG:5248
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 38
 	DRAWLINE
 	;初めて
@@ -1817,6 +1884,7 @@ IF SELECTCOM == 38
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;手淫	CFLAG:5249
 ;-------------------------------------------------
@@ -1933,6 +2001,7 @@ ENDIF
 ;-------------------------------------------------
 ;パイズリ	CFLAG:5251
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 42
 	DRAWLINE
 	;初めて
@@ -1944,9 +2013,11 @@ IF SELECTCOM == 42
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;素股	CFLAG:5252
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 43
 	DRAWLINE
 	;初めて
@@ -1958,9 +2029,11 @@ IF SELECTCOM == 43
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル舐め強制	CFLAG:5253
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	DRAWLINE
 	;初めて
@@ -1972,9 +2045,11 @@ IF SELECTCOM == 44
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナルおねだり	CFLAG:5254
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 45
 	DRAWLINE
 	;初めて
@@ -1986,9 +2061,11 @@ IF SELECTCOM == 45
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;足舐め強制	CFLAG:5255
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 46
 	DRAWLINE
 	;初めて
@@ -2000,9 +2077,11 @@ IF SELECTCOM == 46
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;足扱き	CFLAG:5256
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 47
 	DRAWLINE
 	;初めて
@@ -2014,9 +2093,11 @@ IF SELECTCOM == 47
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;髪扱き	CFLAG:5257
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 48
 	DRAWLINE
 	;初めて
@@ -2028,9 +2109,11 @@ IF SELECTCOM == 48
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;腋扱き	CFLAG:5258
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 49
 	DRAWLINE
 	;初めて
@@ -2042,9 +2125,11 @@ IF SELECTCOM == 49
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;全身扱き	CFLAG:5259
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 50
 	DRAWLINE
 	;初めて
@@ -2056,9 +2141,11 @@ IF SELECTCOM == 50
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;尻扱き	CFLAG:5260
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 51
 	DRAWLINE
 	;初めて
@@ -2070,9 +2157,11 @@ IF SELECTCOM == 51
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;竿扱き	CFLAG:5261
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 52
 	DRAWLINE
 	;初めて
@@ -2084,9 +2173,11 @@ IF SELECTCOM == 52
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;玉揉み強制	CFLAG:5262
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 53
 	DRAWLINE
 	;初めて
@@ -2098,9 +2189,11 @@ IF SELECTCOM == 53
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;玉舐め強制	CFLAG:5263
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 54
 	DRAWLINE
 	;初めて
@@ -2112,9 +2205,11 @@ IF SELECTCOM == 54
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル愛撫強制	CFLAG:5264
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 55
 	DRAWLINE
 	;初めて
@@ -2126,6 +2221,7 @@ IF SELECTCOM == 55
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ローション	CFLAG:5265
 ;-------------------------------------------------
@@ -2169,6 +2265,7 @@ ENDIF
 ;-------------------------------------------------
 ;媚薬	CFLAG:5266
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 61
 	DRAWLINE
 	;初めて
@@ -2180,9 +2277,11 @@ IF SELECTCOM == 61
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;利尿剤	CFLAG:5267
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 62
 	DRAWLINE
 	;初めて
@@ -2194,9 +2293,11 @@ IF SELECTCOM == 62
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;座薬挿入	CFLAG:5268
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 63
 	DRAWLINE
 	;初めて
@@ -2208,9 +2309,11 @@ IF SELECTCOM == 63
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;座薬追加挿入	CFLAG:5269
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 63 &&  TEQUIP:15 & 1
 	DRAWLINE
 	;初めて
@@ -2222,9 +2325,11 @@ IF SELECTCOM == 63 &&  TEQUIP:15 & 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;座薬(膣)挿入	CFLAG:5270
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 64
 	DRAWLINE
 	;初めて
@@ -2236,9 +2341,11 @@ IF SELECTCOM == 64
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;座薬(膣)追加挿入	CFLAG:5271
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 	DRAWLINE
 	;初めて
@@ -2250,9 +2357,11 @@ IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;強精神薬	CFLAG:5272
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 65
 	DRAWLINE
 	;初めて
@@ -2264,9 +2373,11 @@ IF SELECTCOM == 65
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;排卵誘発剤	CFLAG:5273
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 66
 	DRAWLINE
 	;初めて
@@ -2278,9 +2389,11 @@ IF SELECTCOM == 66
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;緊急避妊薬	CFLAG:5274
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 67
 	DRAWLINE
 	;初めて
@@ -2292,9 +2405,11 @@ IF SELECTCOM == 67
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;産卵促進剤	CFLAG:5275
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 68
 	DRAWLINE
 	;初めて
@@ -2306,9 +2421,11 @@ IF SELECTCOM == 68
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;陰核成長剤	CFLAG:5276
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 69
 	DRAWLINE
 	;初めて
@@ -2320,9 +2437,11 @@ IF SELECTCOM == 69
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;クリトリス注射	CFLAG:5277
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 80
 	DRAWLINE
 	;初めて
@@ -2334,9 +2453,11 @@ IF SELECTCOM == 80
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ヴァギナ注射	CFLAG:5278
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 81
 	DRAWLINE
 	;初めて
@@ -2348,9 +2469,11 @@ IF SELECTCOM == 81
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル注射	CFLAG:5279
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 82
 	DRAWLINE
 	;初めて
@@ -2362,9 +2485,11 @@ IF SELECTCOM == 82
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バスト注射	CFLAG:5280
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 83
 	DRAWLINE
 	;初めて
@@ -2376,9 +2501,11 @@ IF SELECTCOM == 83
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;尿道注射	CFLAG:5281
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 84
 	DRAWLINE
 	;初めて
@@ -2390,9 +2517,11 @@ IF SELECTCOM == 84
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;Ｃ肥大注射	CFLAG:5282
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 85
 	DRAWLINE
 	;初めて
@@ -2404,9 +2533,11 @@ IF SELECTCOM == 85
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;裸エプロン	CFLAG:5283
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 90
 	DRAWLINE
 	;初めて
@@ -2418,9 +2549,11 @@ IF SELECTCOM == 90
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;スク水プレイ	CFLAG:5284
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 91
 	DRAWLINE
 	;初めて
@@ -2432,9 +2565,11 @@ IF SELECTCOM == 91
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;お医者プレイ	CFLAG:5285
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 92
 	DRAWLINE
 	;初めて
@@ -2446,9 +2581,11 @@ IF SELECTCOM == 92
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ビデオ撮影	CFLAG:5286
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 100
 	DRAWLINE
 	;初めて
@@ -2460,9 +2597,11 @@ IF SELECTCOM == 100
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ビデオ鑑賞	CFLAG:5287
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 101
 	DRAWLINE
 	;初めて
@@ -2474,9 +2613,11 @@ IF SELECTCOM == 101
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;写真撮影	CFLAG:5288
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 102
 	DRAWLINE
 	;初めて
@@ -2488,9 +2629,11 @@ IF SELECTCOM == 102
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;羞恥プレイ	CFLAG:5289
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 103
 	DRAWLINE
 	;初めて
@@ -2502,9 +2645,11 @@ IF SELECTCOM == 103
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外プレイ	CFLAG:5290
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 104
 	DRAWLINE
 	;初めて
@@ -2516,9 +2661,11 @@ IF SELECTCOM == 104
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開露出ライブ	CFLAG:5291
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 105
 	DRAWLINE
 	;初めて
@@ -2530,9 +2677,11 @@ IF SELECTCOM == 105
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公衆肉便器プレイ	CFLAG:5292
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 106
 	DRAWLINE
 	;初めて
@@ -2544,9 +2693,11 @@ IF SELECTCOM == 106
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;裸体盛り	CFLAG:5293
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 107
 	DRAWLINE
 	;初めて
@@ -2558,9 +2709,11 @@ IF SELECTCOM == 107
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ベビープレイ	CFLAG:5294
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 108
 	DRAWLINE
 	;初めて
@@ -2572,9 +2725,11 @@ IF SELECTCOM == 108
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;秘貝開帳	CFLAG:5295
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 110
 	DRAWLINE
 	;初めて
@@ -2586,9 +2741,11 @@ IF SELECTCOM == 110
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;放尿	CFLAG:5296
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 111
 	DRAWLINE
 	;初めて
@@ -2600,9 +2757,11 @@ IF SELECTCOM == 111
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;剃毛	CFLAG:5297
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 112
 	DRAWLINE
 	;初めて
@@ -2614,9 +2773,11 @@ IF SELECTCOM == 112
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;毛抜き	CFLAG:5298
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 113
 	DRAWLINE
 	;初めて
@@ -2628,9 +2789,11 @@ IF SELECTCOM == 113
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;毛を抜かせる	CFLAG:5299
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 114
 	DRAWLINE
 	;初めて
@@ -2642,9 +2805,11 @@ IF SELECTCOM == 114
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;自慰みせつけ	CFLAG:5300
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 115
 	DRAWLINE
 	;初めて
@@ -2656,9 +2821,11 @@ IF SELECTCOM == 115
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;二人自慰見せつけ	CFLAG:5301
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 116
 	DRAWLINE
 	;初めて
@@ -2670,9 +2837,11 @@ IF SELECTCOM == 116
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;焦らしプレイ	CFLAG:5302
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 120
 	DRAWLINE
 	;初めて
@@ -2684,9 +2853,11 @@ IF SELECTCOM == 120
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;射精止め	CFLAG:5303
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 121
 	DRAWLINE
 	;初めて
@@ -2698,9 +2869,11 @@ IF SELECTCOM == 121
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;豆責め	CFLAG:5304
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 122
 	DRAWLINE
 	;初めて
@@ -2712,9 +2885,11 @@ IF SELECTCOM == 122
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;豆絞り	CFLAG:5305
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 123
 	DRAWLINE
 	;初めて
@@ -2726,9 +2901,11 @@ IF SELECTCOM == 123
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ローター自慰	CFLAG:5306
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0
 	DRAWLINE
 	;初めて
@@ -2740,9 +2917,11 @@ IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;二穴バイブローターオナニー	CFLAG:5307
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2754,9 +2933,11 @@ IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQ
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バイブローターオナニー	CFLAG:5308
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -2768,9 +2949,11 @@ IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQ
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナルバイブローターオナニー	CFLAG:5309
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2782,9 +2965,11 @@ IF SELECTCOM == 124 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQ
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開ローターオナニー	CFLAG:5310
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:50
 	DRAWLINE
 	;初めて
@@ -2796,9 +2981,11 @@ IF SELECTCOM == 124 &&  TEQUIP:50
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開二穴バイブローターオナニー	CFLAG:5311
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:50 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2810,9 +2997,11 @@ IF SELECTCOM == 124 &&  TEQUIP:50 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開バイブローターオナニー	CFLAG:5312
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:50 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -2824,9 +3013,11 @@ IF SELECTCOM == 124 &&  TEQUIP:50 && TEQUIP:20 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開アナルバイブローターオナニー	CFLAG:5313
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:50 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2838,9 +3029,11 @@ IF SELECTCOM == 124 &&  TEQUIP:50 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外ローターオナニー	CFLAG:5314
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:52
 	DRAWLINE
 	;初めて
@@ -2852,9 +3045,11 @@ IF SELECTCOM == 124 &&  TEQUIP:52
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外二穴バイブローターオナニー	CFLAG:5315
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:52 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2866,9 +3061,11 @@ IF SELECTCOM == 124 &&  TEQUIP:52 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外バイブローターオナニー	CFLAG:5316
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:52 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -2880,9 +3077,11 @@ IF SELECTCOM == 124 &&  TEQUIP:52 && TEQUIP:20 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外アナルバイブローターオナニー	CFLAG:5317
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 &&  TEQUIP:52 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2894,9 +3093,11 @@ IF SELECTCOM == 124 &&  TEQUIP:52 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;シャワーローターオナニー	CFLAG:5318
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 124 && TEQUIP:54
 	DRAWLINE
 	;初めて
@@ -2908,9 +3109,11 @@ IF SELECTCOM == 124 && TEQUIP:54
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;電マ自慰	CFLAG:5319
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0
 	DRAWLINE
 	;初めて
@@ -2922,9 +3125,11 @@ IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;二穴バイブ電マオナニー	CFLAG:5320
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2936,9 +3141,11 @@ IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQ
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バイブ電マオナニー	CFLAG:5321
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -2950,9 +3157,11 @@ IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQ
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナルバイブ電マオナニー	CFLAG:5322
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2964,9 +3173,11 @@ IF SELECTCOM == 125 && TEQUIP:50 == 0 && TEQUIP:52 == 0 && TEQUIP:54 == 0 && TEQ
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開電マオナニー	CFLAG:5323
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:50
 	DRAWLINE
 	;初めて
@@ -2978,9 +3189,11 @@ IF SELECTCOM == 125 &&  TEQUIP:50
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開二穴バイブ電マオナニー	CFLAG:5324
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:50 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -2992,9 +3205,11 @@ IF SELECTCOM == 125 &&  TEQUIP:50 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開バイブ電マオナニー	CFLAG:5325
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:50 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -3006,9 +3221,11 @@ IF SELECTCOM == 125 &&  TEQUIP:50 && TEQUIP:20 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開アナルバイブ電マオナニー	CFLAG:5326
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:50 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -3020,9 +3237,11 @@ IF SELECTCOM == 125 &&  TEQUIP:50 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外電マオナニー	CFLAG:5327
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:52
 	DRAWLINE
 	;初めて
@@ -3034,9 +3253,11 @@ IF SELECTCOM == 125 &&  TEQUIP:52
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外二穴バイブ電マオナニー	CFLAG:5328
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:52 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -3048,9 +3269,11 @@ IF SELECTCOM == 125 &&  TEQUIP:52 && TEQUIP:20 == 1 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外バイブ電マオナニー	CFLAG:5329
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:52 && TEQUIP:20 == 1
 	DRAWLINE
 	;初めて
@@ -3062,9 +3285,11 @@ IF SELECTCOM == 125 &&  TEQUIP:52 && TEQUIP:20 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;野外アナルバイブ電マオナニー	CFLAG:5330
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 &&  TEQUIP:52 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -3076,9 +3301,11 @@ IF SELECTCOM == 125 &&  TEQUIP:52 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;シャワー電マオナニー	CFLAG:5331
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 125 && TEQUIP:54
 	DRAWLINE
 	;初めて
@@ -3090,9 +3317,11 @@ IF SELECTCOM == 125 && TEQUIP:54
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;顔面騎乗	CFLAG:5332
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 126
 	DRAWLINE
 	;初めて
@@ -3104,9 +3333,11 @@ IF SELECTCOM == 126
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;陰核クリップ	CFLAG:5333
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 130
 	DRAWLINE
 	;初めて
@@ -3118,9 +3349,11 @@ IF SELECTCOM == 130
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;陰核測定	CFLAG:5334
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 135
 	DRAWLINE
 	;初めて
@@ -3132,9 +3365,11 @@ IF SELECTCOM == 135
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;割礼	CFLAG:5335
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 136
 	DRAWLINE
 	;初めて
@@ -3146,9 +3381,11 @@ IF SELECTCOM == 136
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;射精機能開発	CFLAG:5336
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 137
 	DRAWLINE
 	;初めて
@@ -3160,9 +3397,11 @@ IF SELECTCOM == 137
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;尿道綿棒	CFLAG:5337
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 140
 	DRAWLINE
 	;初めて
@@ -3174,9 +3413,11 @@ IF SELECTCOM == 140
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;カテーテル	CFLAG:5338
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 141
 	DRAWLINE
 	;初めて
@@ -3188,9 +3429,11 @@ IF SELECTCOM == 141
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;採尿器	CFLAG:5339
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 142
 	DRAWLINE
 	;初めて
@@ -3202,9 +3445,11 @@ IF SELECTCOM == 142
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バルーンカテーテル	CFLAG:5340
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 143
 	DRAWLINE
 	;初めて
@@ -3216,9 +3461,11 @@ IF SELECTCOM == 143
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;電極カテーテル	CFLAG:5341
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 144
 	DRAWLINE
 	;初めて
@@ -3230,9 +3477,11 @@ IF SELECTCOM == 144
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;クスコ	CFLAG:5342
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 150
 	DRAWLINE
 	;初めて
@@ -3244,9 +3493,11 @@ IF SELECTCOM == 150
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ローター挿入	CFLAG:5343
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 151
 	DRAWLINE
 	;初めて
@@ -3258,9 +3509,11 @@ IF SELECTCOM == 151
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ローターＡ挿入	CFLAG:5344
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 170
 	DRAWLINE
 	;初めて
@@ -3272,9 +3525,11 @@ IF SELECTCOM == 170
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル電極	CFLAG:5345
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 171
 	DRAWLINE
 	;初めて
@@ -3286,9 +3541,11 @@ IF SELECTCOM == 171
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナルビーズ	CFLAG:5346
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 172
 	DRAWLINE
 	;初めて
@@ -3300,9 +3557,11 @@ IF SELECTCOM == 172
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;拡張バルーン	CFLAG:5347
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 173
 	DRAWLINE
 	;初めて
@@ -3314,9 +3573,11 @@ IF SELECTCOM == 173
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;浣腸プレイ	CFLAG:5348
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 174
 	DRAWLINE
 	;初めて
@@ -3328,9 +3589,11 @@ IF SELECTCOM == 174
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;空気浣腸	CFLAG:5349
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 175
 	DRAWLINE
 	;初めて
@@ -3342,9 +3605,11 @@ IF SELECTCOM == 175
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル舐め	CFLAG:5350
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 180
 	DRAWLINE
 	;初めて
@@ -3356,9 +3621,11 @@ IF SELECTCOM == 180
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル綿棒	CFLAG:5351
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 181
 	DRAWLINE
 	;初めて
@@ -3370,9 +3637,11 @@ IF SELECTCOM == 181
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナニー	CFLAG:5352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 182 && TEQUIP:50 == 0 && TEQUIP:25 == 0
 	DRAWLINE
 	;初めて
@@ -3384,9 +3653,11 @@ IF SELECTCOM == 182 && TEQUIP:50 == 0 && TEQUIP:25 == 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;バイブアナニー	CFLAG:5353
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 182 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -3398,9 +3669,11 @@ IF SELECTCOM == 182 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ビーズアナニー	CFLAG:5354
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 182 && TEQUIP:25 == 5
 	DRAWLINE
 	;初めて
@@ -3412,9 +3685,11 @@ IF SELECTCOM == 182 && TEQUIP:25 == 5
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開アナニー	CFLAG:5355
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 182 && TEQUIP:50 && TEQUIP:25 == 0
 	DRAWLINE
 	;初めて
@@ -3426,9 +3701,11 @@ IF SELECTCOM == 182 && TEQUIP:50 && TEQUIP:25 == 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開バイブアナニー	CFLAG:5356
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 182 && TEQUIP:50 && TEQUIP:25 == 1
 	DRAWLINE
 	;初めて
@@ -3440,9 +3717,11 @@ IF SELECTCOM == 182 && TEQUIP:50 && TEQUIP:25 == 1
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開ビーズアナニー	CFLAG:5357
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 182 && TEQUIP:50 && TEQUIP:25 == 5
 	DRAWLINE
 	;初めて
@@ -3454,9 +3733,11 @@ IF SELECTCOM == 182 && TEQUIP:50 && TEQUIP:25 == 5
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;尻愛撫	CFLAG:5358
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 186
 	DRAWLINE
 	;初めて
@@ -3468,9 +3749,11 @@ IF SELECTCOM == 186
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;顔面騎乗アナル	CFLAG:5359
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 187
 	DRAWLINE
 	;初めて
@@ -3482,9 +3765,11 @@ IF SELECTCOM == 187
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳首ローター	CFLAG:5360
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 190
 	DRAWLINE
 	;初めて
@@ -3496,9 +3781,11 @@ IF SELECTCOM == 190
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;搾乳機	CFLAG:5361
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 191
 	DRAWLINE
 	;初めて
@@ -3510,9 +3797,11 @@ IF SELECTCOM == 191
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳腺開発	CFLAG:5362
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 192
 	DRAWLINE
 	;初めて
@@ -3524,9 +3813,11 @@ IF SELECTCOM == 192
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳房電極	CFLAG:5363
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 193
 	DRAWLINE
 	;初めて
@@ -3538,9 +3829,11 @@ IF SELECTCOM == 193
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;サラシ	CFLAG:5364
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 194
 	DRAWLINE
 	;初めて
@@ -3552,9 +3845,11 @@ IF SELECTCOM == 194
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳首クリップ	CFLAG:5365
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 195
 	DRAWLINE
 	;初めて
@@ -3566,9 +3861,11 @@ IF SELECTCOM == 195
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;胸揉み	CFLAG:5366
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 200
 	DRAWLINE
 	;初めて
@@ -3580,9 +3877,11 @@ IF SELECTCOM == 200
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳首責め	CFLAG:5367
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 201
 	DRAWLINE
 	;初めて
@@ -3594,9 +3893,11 @@ IF SELECTCOM == 201
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳首舐め	CFLAG:5368
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 202
 	DRAWLINE
 	;初めて
@@ -3608,9 +3909,11 @@ IF SELECTCOM == 202
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳首吸い	CFLAG:5369
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 203
 	DRAWLINE
 	;初めて
@@ -3622,9 +3925,11 @@ IF SELECTCOM == 203
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;母乳飲み	CFLAG:5370
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 204
 	DRAWLINE
 	;初めて
@@ -3636,9 +3941,11 @@ IF SELECTCOM == 204
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;胸自慰	CFLAG:5371
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 205
 	DRAWLINE
 	;初めて
@@ -3650,9 +3957,11 @@ IF SELECTCOM == 205
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;公開胸自慰	CFLAG:5372
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 205 && TEQUIP:50
 	DRAWLINE
 	;初めて
@@ -3664,9 +3973,11 @@ IF SELECTCOM == 205 && TEQUIP:50
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳スパンキング	CFLAG:5373
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 206
 	DRAWLINE
 	;初めて
@@ -3678,9 +3989,11 @@ IF SELECTCOM == 206
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳ファック	CFLAG:5374
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 207
 	DRAWLINE
 	;初めて
@@ -3692,9 +4005,11 @@ IF SELECTCOM == 207
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;縦パイズリ	CFLAG:5375
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 208
 	DRAWLINE
 	;初めて
@@ -3706,9 +4021,11 @@ IF SELECTCOM == 208
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;パイズリフェラ	CFLAG:5376
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 209
 	DRAWLINE
 	;初めて
@@ -3720,9 +4037,11 @@ IF SELECTCOM == 209
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;スパンキング	CFLAG:5377
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 220
 	DRAWLINE
 	;初めて
@@ -3734,9 +4053,11 @@ IF SELECTCOM == 220
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;鞭	CFLAG:5378
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 221
 	DRAWLINE
 	;初めて
@@ -3748,9 +4069,11 @@ IF SELECTCOM == 221
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;針	CFLAG:5379
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 222
 	DRAWLINE
 	;初めて
@@ -3762,9 +4085,11 @@ IF SELECTCOM == 222
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;蝋燭	CFLAG:5380
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 223
 	DRAWLINE
 	;初めて
@@ -3776,9 +4101,11 @@ IF SELECTCOM == 223
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;縄	CFLAG:5381
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 224
 	DRAWLINE
 	;初めて
@@ -3790,9 +4117,11 @@ IF SELECTCOM == 224
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アイマスク	CFLAG:5382
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 225
 	DRAWLINE
 	;初めて
@@ -3804,9 +4133,11 @@ IF SELECTCOM == 225
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ボールギャグ	CFLAG:5383
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 226
 	DRAWLINE
 	;初めて
@@ -3818,9 +4149,11 @@ IF SELECTCOM == 226
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;罵倒	CFLAG:5384
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 227
 	DRAWLINE
 	;初めて
@@ -3832,9 +4165,11 @@ IF SELECTCOM == 227
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;鼻フック	CFLAG:5385
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 228
 	DRAWLINE
 	;初めて
@@ -3846,9 +4181,11 @@ IF SELECTCOM == 228
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;強制開口器	CFLAG:5386
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 229
 	DRAWLINE
 	;初めて
@@ -3860,9 +4197,11 @@ IF SELECTCOM == 229
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;イラマチオ	CFLAG:5387
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 230
 	DRAWLINE
 	;初めて
@@ -3874,9 +4213,11 @@ IF SELECTCOM == 230
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;フィストファック	CFLAG:5388
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231
 	DRAWLINE
 	;初めて
@@ -3888,9 +4229,11 @@ IF SELECTCOM == 231
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナルフィスト	CFLAG:5389
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 232
 	DRAWLINE
 	;初めて
@@ -3902,9 +4245,11 @@ IF SELECTCOM == 232
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;両穴フィスト	CFLAG:5390
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 233
 	DRAWLINE
 	;初めて
@@ -3916,9 +4261,11 @@ IF SELECTCOM == 233
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ヴァギナダイビング	CFLAG:5391
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 234
 	DRAWLINE
 	;初めて
@@ -3930,9 +4277,11 @@ IF SELECTCOM == 234
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナルダイビング	CFLAG:5392
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 235
 	DRAWLINE
 	;初めて
@@ -3944,9 +4293,11 @@ IF SELECTCOM == 235
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ツボを突く	CFLAG:5393
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 236
 	DRAWLINE
 	;初めて
@@ -3958,9 +4309,11 @@ IF SELECTCOM == 236
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;足で踏む	CFLAG:5394
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 240
 	DRAWLINE
 	;初めて
@@ -3972,9 +4325,11 @@ IF SELECTCOM == 240
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;腹パン	CFLAG:5395
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 241
 	DRAWLINE
 	;初めて
@@ -3986,9 +4341,11 @@ IF SELECTCOM == 241
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;三角木馬	CFLAG:5396
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 242
 	DRAWLINE
 	;初めて
@@ -4000,9 +4357,11 @@ IF SELECTCOM == 242
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ナイフ	CFLAG:5397
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 244
 	DRAWLINE
 	;初めて
@@ -4014,9 +4373,11 @@ IF SELECTCOM == 244
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ビンタを張る	CFLAG:5398
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 251
 	DRAWLINE
 	;初めて
@@ -4028,9 +4389,11 @@ IF SELECTCOM == 251
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;コンドーム	CFLAG:5399
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 290
 	DRAWLINE
 	;初めて
@@ -4042,9 +4405,11 @@ IF SELECTCOM == 290
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;コンドーム精飲(奴)	CFLAG:5400
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 291
 	DRAWLINE
 	;初めて
@@ -4056,9 +4421,11 @@ IF SELECTCOM == 291
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;コンドーム精飲(助)	CFLAG:5401
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 292
 	DRAWLINE
 	;初めて
@@ -4070,9 +4437,11 @@ IF SELECTCOM == 292
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ザーメンキス	CFLAG:5402
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 293
 	DRAWLINE
 	;初めて
@@ -4084,9 +4453,11 @@ IF SELECTCOM == 293
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;クンニ強制	CFLAG:5403
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 300
 	DRAWLINE
 	;初めて
@@ -4098,9 +4469,11 @@ IF SELECTCOM == 300
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;貝あわせ	CFLAG:5404
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 301
 	DRAWLINE
 	;初めて
@@ -4112,9 +4485,11 @@ IF SELECTCOM == 301
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;足コキする	CFLAG:5405
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 302
 	DRAWLINE
 	;初めて
@@ -4126,9 +4501,11 @@ IF SELECTCOM == 302
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ダブルフェラ	CFLAG:5406
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 303
 	DRAWLINE
 	;初めて
@@ -4140,9 +4517,11 @@ IF SELECTCOM == 303
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;Ｗフェラ	CFLAG:5407
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 304
 	DRAWLINE
 	;初めて
@@ -4154,9 +4533,11 @@ IF SELECTCOM == 304
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ダブル素股	CFLAG:5408
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 305
 	DRAWLINE
 	;初めて
@@ -4168,9 +4549,11 @@ IF SELECTCOM == 305
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ダブルパイズリ	CFLAG:5409
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 306
 	DRAWLINE
 	;初めて
@@ -4182,9 +4565,11 @@ IF SELECTCOM == 306
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;助手を犯させる	CFLAG:5410
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 307
 	DRAWLINE
 	;初めて
@@ -4196,9 +4581,11 @@ IF SELECTCOM == 307
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;助手のＡを犯させる	CFLAG:5411
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 308
 	DRAWLINE
 	;初めて
@@ -4210,9 +4597,11 @@ IF SELECTCOM == 308
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;助手とキスする	CFLAG:5412
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 309
 	DRAWLINE
 	;初めて
@@ -4224,9 +4613,11 @@ IF SELECTCOM == 309
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;優しくする	CFLAG:5413
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 320
 	DRAWLINE
 	;初めて
@@ -4238,9 +4629,11 @@ IF SELECTCOM == 320
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;手淫する	CFLAG:5414
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 321
 	DRAWLINE
 	;初めて
@@ -4252,9 +4645,11 @@ IF SELECTCOM == 321
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;パイズリする	CFLAG:5415
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 322
 	DRAWLINE
 	;初めて
@@ -4266,9 +4661,11 @@ IF SELECTCOM == 322
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;正常位させる	CFLAG:5416
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 323
 	DRAWLINE
 	;初めて
@@ -4280,9 +4677,11 @@ IF SELECTCOM == 323
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;後背位させる	CFLAG:5417
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 324
 	DRAWLINE
 	;初めて
@@ -4294,9 +4693,11 @@ IF SELECTCOM == 324
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;騎乗位する	CFLAG:5418
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 325
 	DRAWLINE
 	;初めて
@@ -4308,9 +4709,11 @@ IF SELECTCOM == 325
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ペニバン挿入	CFLAG:5419
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 326
 	DRAWLINE
 	;初めて
@@ -4322,9 +4725,11 @@ IF SELECTCOM == 326
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;指チュパ	CFLAG:5420
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 327
 	DRAWLINE
 	;初めて
@@ -4336,9 +4741,11 @@ IF SELECTCOM == 327
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;首筋耳裏責め	CFLAG:5421
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 328
 	DRAWLINE
 	;初めて
@@ -4350,9 +4757,11 @@ IF SELECTCOM == 328
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;玉愛撫	CFLAG:5422
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 329
 	DRAWLINE
 	;初めて
@@ -4364,9 +4773,11 @@ IF SELECTCOM == 329
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;玉を舐める	CFLAG:5423
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 330
 	DRAWLINE
 	;初めて
@@ -4378,9 +4789,11 @@ IF SELECTCOM == 330
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;二人でフェラする	CFLAG:5424
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 331
 	DRAWLINE
 	;初めて
@@ -4392,9 +4805,11 @@ IF SELECTCOM == 331
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ぱふぱふ	CFLAG:5425
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 340
 	DRAWLINE
 	;初めて
@@ -4406,9 +4821,11 @@ IF SELECTCOM == 340
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;胸枕	CFLAG:5426
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 341
 	DRAWLINE
 	;初めて
@@ -4420,9 +4837,11 @@ IF SELECTCOM == 341
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳繰り合う	CFLAG:5427
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 342
 	DRAWLINE
 	;初めて
@@ -4434,9 +4853,11 @@ IF SELECTCOM == 342
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳ビンタ	CFLAG:5428
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 343
 	DRAWLINE
 	;初めて
@@ -4448,9 +4869,11 @@ IF SELECTCOM == 343
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳の揉み合い	CFLAG:5429
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 344
 	DRAWLINE
 	;初めて
@@ -4462,9 +4885,11 @@ IF SELECTCOM == 344
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;お風呂を楽しむ	CFLAG:5430
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 345
 	DRAWLINE
 	;初めて
@@ -4476,9 +4901,11 @@ IF SELECTCOM == 345
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;お外を楽しむ	CFLAG:5431
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 346
 	DRAWLINE
 	;初めて
@@ -4490,9 +4917,11 @@ IF SELECTCOM == 346
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;お嫁さんで楽しむ	CFLAG:5432
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 347
 	DRAWLINE
 	;初めて
@@ -4504,9 +4933,11 @@ IF SELECTCOM == 347
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;お酒を飲ませる	CFLAG:5433
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 348
 	DRAWLINE
 	;初めて
@@ -4518,9 +4949,11 @@ IF SELECTCOM == 348
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ふぉーゆーっ! 	CFLAG:5434
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 349
 	DRAWLINE
 	;初めて
@@ -4532,9 +4965,11 @@ IF SELECTCOM == 349
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;お風呂場プレイ	CFLAG:5435
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 350
 	DRAWLINE
 	;初めて
@@ -4546,9 +4981,11 @@ IF SELECTCOM == 350
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;シャワー	CFLAG:5436
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 351
 	DRAWLINE
 	;初めて
@@ -4560,9 +4997,11 @@ IF SELECTCOM == 351
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;泡踊り	CFLAG:5437
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 352
 	DRAWLINE
 	;初めて
@@ -4574,9 +5013,11 @@ IF SELECTCOM == 352
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;蟲風呂	CFLAG:5438
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 360
 	DRAWLINE
 	;初めて
@@ -4588,9 +5029,11 @@ IF SELECTCOM == 360
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;鰻風呂	CFLAG:5439
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 361
 	DRAWLINE
 	;初めて
@@ -4602,9 +5045,11 @@ IF SELECTCOM == 361
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ローション風呂	CFLAG:5440
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 362
 	DRAWLINE
 	;初めて
@@ -4616,9 +5061,11 @@ IF SELECTCOM == 362
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;スライム風呂	CFLAG:5441
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 363
 	DRAWLINE
 	;初めて
@@ -4630,9 +5077,11 @@ IF SELECTCOM == 363
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;媚薬風呂	CFLAG:5442
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 364
 	DRAWLINE
 	;初めて
@@ -4644,9 +5093,11 @@ IF SELECTCOM == 364
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;水牢	CFLAG:5443
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 365
 	DRAWLINE
 	;初めて
@@ -4658,9 +5109,11 @@ IF SELECTCOM == 365
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;精液風呂	CFLAG:5444
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 366
 	DRAWLINE
 	;初めて
@@ -4672,9 +5125,11 @@ IF SELECTCOM == 366
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;酒風呂	CFLAG:5445
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 367
 	DRAWLINE
 	;初めて
@@ -4686,9 +5141,11 @@ IF SELECTCOM == 367
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;トロロ風呂	CFLAG:5446
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 368
 	DRAWLINE
 	;初めて
@@ -4700,9 +5157,11 @@ IF SELECTCOM == 368
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;毛玉風呂	CFLAG:5447
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 369
 	DRAWLINE
 	;初めて
@@ -4714,9 +5173,11 @@ IF SELECTCOM == 369
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;蒸し風呂	CFLAG:5448
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 370
 	DRAWLINE
 	;初めて
@@ -4728,9 +5189,11 @@ IF SELECTCOM == 370
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;国士無双の薬風呂	CFLAG:5449
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 371
 	DRAWLINE
 	;初めて
@@ -4742,9 +5205,11 @@ IF SELECTCOM == 371
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;厄毒風呂	CFLAG:5450
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 372
 	DRAWLINE
 	;初めて
@@ -4756,9 +5221,11 @@ IF SELECTCOM == 372
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;岩盤浴	CFLAG:5451
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 373
 	DRAWLINE
 	;初めて
@@ -4770,9 +5237,11 @@ IF SELECTCOM == 373
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;吸血	CFLAG:5452
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 400
 	DRAWLINE
 	;初めて
@@ -4784,9 +5253,11 @@ IF SELECTCOM == 400
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;暗闇	CFLAG:5453
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 401
 	DRAWLINE
 	;初めて
@@ -4798,9 +5269,11 @@ IF SELECTCOM == 401
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;尻子玉抜き	CFLAG:5454
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 402
 	DRAWLINE
 	;初めて
@@ -4812,9 +5285,11 @@ IF SELECTCOM == 402
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;焼芋責め	CFLAG:5455
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 403
 	DRAWLINE
 	;初めて
@@ -4826,9 +5301,11 @@ IF SELECTCOM == 403
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;巨峰責め	CFLAG:5456
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 404
 	DRAWLINE
 	;初めて
@@ -4840,9 +5317,11 @@ IF SELECTCOM == 404
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;石勺柏責め	CFLAG:5457
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 405
 	DRAWLINE
 	;初めて
@@ -4854,9 +5333,11 @@ IF SELECTCOM == 405
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;荊で緊縛	CFLAG:5458
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 406
 	DRAWLINE
 	;初めて
@@ -4868,9 +5349,11 @@ IF SELECTCOM == 406
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;荊の鞭	CFLAG:5459
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 407
 	DRAWLINE
 	;初めて
@@ -4882,9 +5365,11 @@ IF SELECTCOM == 407
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;蜘蛛の糸	CFLAG:5460
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 408
 	DRAWLINE
 	;初めて
@@ -4896,9 +5381,11 @@ IF SELECTCOM == 408
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;独楽回し	CFLAG:5461
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 409
 	DRAWLINE
 	;初めて
@@ -4910,9 +5397,11 @@ IF SELECTCOM == 409
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;蜘蛛脚愛撫	CFLAG:5462
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 410
 	DRAWLINE
 	;初めて
@@ -4924,9 +5413,11 @@ IF SELECTCOM == 410
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;人形愛撫	CFLAG:5463
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 411
 	DRAWLINE
 	;初めて
@@ -4938,9 +5429,11 @@ IF SELECTCOM == 411
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;操りの糸	CFLAG:5464
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 412
 	DRAWLINE
 	;初めて
@@ -4952,9 +5445,11 @@ IF SELECTCOM == 412
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;豆炙り	CFLAG:5465
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 413
 	DRAWLINE
 	;初めて
@@ -4966,9 +5461,11 @@ IF SELECTCOM == 413
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;乳豆炙り	CFLAG:5466
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 414
 	DRAWLINE
 	;初めて
@@ -4980,9 +5477,11 @@ IF SELECTCOM == 414
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;読心	CFLAG:5467
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 415
 	DRAWLINE
 	;初めて
@@ -4994,9 +5493,11 @@ IF SELECTCOM == 415
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;思姦	CFLAG:5468
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 416
 	DRAWLINE
 	;初めて
@@ -5008,9 +5509,11 @@ IF SELECTCOM == 416
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;筆責め	CFLAG:5469
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 417
 	DRAWLINE
 	;初めて
@@ -5022,9 +5525,11 @@ IF SELECTCOM == 417
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;時間停止	CFLAG:5470
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 418
 	DRAWLINE
 	;初めて
@@ -5036,9 +5541,11 @@ IF SELECTCOM == 418
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;狂気の目	CFLAG:5471
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 419
 	DRAWLINE
 	;初めて
@@ -5050,9 +5557,11 @@ IF SELECTCOM == 419
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;鈴蘭の毒	CFLAG:5472
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 420
 	DRAWLINE
 	;初めて
@@ -5064,9 +5573,11 @@ IF SELECTCOM == 420
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;昆虫採集セットの薬	CFLAG:5473
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 421
 	DRAWLINE
 	;初めて
@@ -5078,9 +5589,11 @@ IF SELECTCOM == 421
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;わかめ酒	CFLAG:5474
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 424
 	DRAWLINE
 	;初めて
@@ -5092,9 +5605,11 @@ IF SELECTCOM == 424
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;かりちゅまがーど	CFLAG:5475
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 425
 	DRAWLINE
 	;初めて
@@ -5106,9 +5621,11 @@ IF SELECTCOM == 425
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;陰毛炙り	CFLAG:5476
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 427
 	DRAWLINE
 	;初めて
@@ -5120,9 +5637,11 @@ IF SELECTCOM == 427
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;御所車	CFLAG:5477
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 430
 	DRAWLINE
 	;初めて
@@ -5134,9 +5653,11 @@ IF SELECTCOM == 430
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;フォーオブアカインド	CFLAG:5478
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 431
 	DRAWLINE
 	;初めて
@@ -5148,9 +5669,11 @@ IF SELECTCOM == 431
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;氷柱責め	CFLAG:5479
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 432
 	DRAWLINE
 	;初めて
@@ -5162,9 +5685,11 @@ IF SELECTCOM == 432
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル卒塔婆	CFLAG:5480
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 433
 	DRAWLINE
 	;初めて
@@ -5176,9 +5701,11 @@ IF SELECTCOM == 433
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;角愛撫	CFLAG:5481
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 434
 	DRAWLINE
 	;初めて
@@ -5190,9 +5717,11 @@ IF SELECTCOM == 434
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;角挿入	CFLAG:5482
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 435
 	DRAWLINE
 	;初めて
@@ -5204,9 +5733,11 @@ IF SELECTCOM == 435
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;角アナル挿入	CFLAG:5483
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 436
 	DRAWLINE
 	;初めて
@@ -5218,9 +5749,11 @@ IF SELECTCOM == 436
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;ヴァギナ要石	CFLAG:5484
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 437
 	DRAWLINE
 	;初めて
@@ -5232,9 +5765,11 @@ IF SELECTCOM == 437
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;アナル要石	CFLAG:5485
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 438
 	DRAWLINE
 	;初めて
@@ -5246,9 +5781,11 @@ IF SELECTCOM == 438
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;両穴要石	CFLAG:5486
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 439
 	DRAWLINE
 	;初めて
@@ -5260,9 +5797,11 @@ IF SELECTCOM == 439
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;半霊を犯す	CFLAG:5487
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 440
 	DRAWLINE
 	;初めて
@@ -5274,9 +5813,11 @@ IF SELECTCOM == 440
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;半霊を挿入(前)	CFLAG:5488
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 441
 	DRAWLINE
 	;初めて
@@ -5288,9 +5829,11 @@ IF SELECTCOM == 441
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;半霊を挿入(後)	CFLAG:5489
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 442
 	DRAWLINE
 	;初めて
@@ -5302,9 +5845,11 @@ IF SELECTCOM == 442
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;幽明の苦輪	CFLAG:5490
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 443
 	DRAWLINE
 	;初めて
@@ -5316,9 +5861,11 @@ IF SELECTCOM == 443
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;半霊再構成	CFLAG:5491
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 444
 	DRAWLINE
 	;初めて
@@ -5330,9 +5877,11 @@ IF SELECTCOM == 444
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;薀蓄語り	CFLAG:5492
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 445
 	DRAWLINE
 	;初めて
@@ -5344,9 +5893,11 @@ IF SELECTCOM == 445
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;説教を受ける	CFLAG:5493
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 446
 	DRAWLINE
 	;初めて
@@ -5358,9 +5909,11 @@ IF SELECTCOM == 446
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;傘を愛撫する	CFLAG:5494
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 447
 	DRAWLINE
 	;初めて
@@ -5372,9 +5925,11 @@ IF SELECTCOM == 447
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手召喚	CFLAG:5495
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 500
 	DRAWLINE
 	;初めて
@@ -5386,9 +5941,11 @@ IF SELECTCOM == 500
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手挿入	CFLAG:5496
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 501
 	DRAWLINE
 	;初めて
@@ -5400,9 +5957,11 @@ IF SELECTCOM == 501
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手アナル挿入	CFLAG:5497
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 502
 	DRAWLINE
 	;初めて
@@ -5414,9 +5973,11 @@ IF SELECTCOM == 502
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手クリ責め	CFLAG:5498
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 503
 	DRAWLINE
 	;初めて
@@ -5428,9 +5989,11 @@ IF SELECTCOM == 503
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手乳首責め	CFLAG:5499
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 504
 	DRAWLINE
 	;初めて
@@ -5442,9 +6005,11 @@ IF SELECTCOM == 504
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手ペニス責め	CFLAG:5500
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 505
 	DRAWLINE
 	;初めて
@@ -5456,9 +6021,11 @@ IF SELECTCOM == 505
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手口辱	CFLAG:5501
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 506
 	DRAWLINE
 	;初めて
@@ -5470,9 +6037,11 @@ IF SELECTCOM == 506
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手緊縛	CFLAG:5502
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 507
 	DRAWLINE
 	;初めて
@@ -5484,9 +6053,11 @@ IF SELECTCOM == 507
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手鼻穴挿入	CFLAG:5503
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 508
 	DRAWLINE
 	;初めて
@@ -5498,9 +6069,11 @@ IF SELECTCOM == 508
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手メイデン	CFLAG:5504
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 509
 	DRAWLINE
 	;初めて
@@ -5512,9 +6085,11 @@ IF SELECTCOM == 509
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手寄生	CFLAG:5505
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 510
 	DRAWLINE
 	;初めて
@@ -5526,9 +6101,11 @@ IF SELECTCOM == 510
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手くすぐり	CFLAG:5506
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 511
 	DRAWLINE
 	;初めて
@@ -5540,9 +6117,11 @@ IF SELECTCOM == 511
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手秘貝開き	CFLAG:5507
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 512
 	DRAWLINE
 	;初めて
@@ -5554,9 +6133,11 @@ IF SELECTCOM == 512
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手パイズリ	CFLAG:5508
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 513
 	DRAWLINE
 	;初めて
@@ -5568,9 +6149,11 @@ IF SELECTCOM == 513
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手素股	CFLAG:5509
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 514
 	DRAWLINE
 	;初めて
@@ -5582,9 +6165,11 @@ IF SELECTCOM == 514
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手Ｇスポ責め	CFLAG:5510
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 520
 	DRAWLINE
 	;初めて
@@ -5596,9 +6181,11 @@ IF SELECTCOM == 520
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手子宮責め	CFLAG:5511
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 521
 	DRAWLINE
 	;初めて
@@ -5610,9 +6197,11 @@ IF SELECTCOM == 521
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手浣腸	CFLAG:5512
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 522
 	DRAWLINE
 	;初めて
@@ -5624,9 +6213,11 @@ IF SELECTCOM == 522
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手貫通	CFLAG:5513
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 524
 	DRAWLINE
 	;初めて
@@ -5638,9 +6229,11 @@ IF SELECTCOM == 524
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手搾乳	CFLAG:5514
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 525
 	DRAWLINE
 	;初めて
@@ -5652,9 +6245,11 @@ IF SELECTCOM == 525
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手乳腺挿入	CFLAG:5515
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 526
 	DRAWLINE
 	;初めて
@@ -5666,9 +6261,11 @@ IF SELECTCOM == 526
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手カテーテル	CFLAG:5516
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 527
 	DRAWLINE
 	;初めて
@@ -5680,9 +6277,11 @@ IF SELECTCOM == 527
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手採尿	CFLAG:5517
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 528
 	DRAWLINE
 	;初めて
@@ -5694,9 +6293,11 @@ IF SELECTCOM == 528
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手耳穴挿入	CFLAG:5518
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 529
 	DRAWLINE
 	;初めて
@@ -5708,9 +6309,11 @@ IF SELECTCOM == 529
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手ヴァギナ拡張	CFLAG:5519
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 530
 	DRAWLINE
 	;初めて
@@ -5722,9 +6325,11 @@ IF SELECTCOM == 530
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手アナル拡張	CFLAG:5520
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 531
 	DRAWLINE
 	;初めて
@@ -5736,9 +6341,11 @@ IF SELECTCOM == 531
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手両穴拡張	CFLAG:5521
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 532
 	DRAWLINE
 	;初めて
@@ -5750,9 +6357,11 @@ IF SELECTCOM == 532
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手産卵	CFLAG:5522
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 533
 	DRAWLINE
 	;初めて
@@ -5764,9 +6373,11 @@ IF SELECTCOM == 533
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手アナル産卵	CFLAG:5523
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 534
 	DRAWLINE
 	;初めて
@@ -5778,9 +6389,11 @@ IF SELECTCOM == 534
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手口内洗浄	CFLAG:5524
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 540
 	DRAWLINE
 	;初めて
@@ -5792,9 +6405,11 @@ IF SELECTCOM == 540
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手膣内洗浄	CFLAG:5525
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 541
 	DRAWLINE
 	;初めて
@@ -5806,9 +6421,11 @@ IF SELECTCOM == 541
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手腸内洗浄	CFLAG:5526
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 542
 	DRAWLINE
 	;初めて
@@ -5820,9 +6437,11 @@ IF SELECTCOM == 542
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手膀胱洗浄	CFLAG:5527
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 543
 	DRAWLINE
 	;初めて
@@ -5834,9 +6453,11 @@ IF SELECTCOM == 543
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手鼻腔洗浄	CFLAG:5528
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 544
 	DRAWLINE
 	;初めて
@@ -5848,9 +6469,11 @@ IF SELECTCOM == 544
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手耳穴洗浄	CFLAG:5529
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 545
 	DRAWLINE
 	;初めて
@@ -5862,9 +6485,11 @@ IF SELECTCOM == 545
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手催眠	CFLAG:5530
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 550
 	DRAWLINE
 	;初めて
@@ -5876,9 +6501,11 @@ IF SELECTCOM == 550
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手鞭打ち	CFLAG:5531
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 551
 	DRAWLINE
 	;初めて
@@ -5890,9 +6517,11 @@ IF SELECTCOM == 551
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手針責め	CFLAG:5532
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 552
 	DRAWLINE
 	;初めて
@@ -5904,9 +6533,11 @@ IF SELECTCOM == 552
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手放電	CFLAG:5533
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 553
 	DRAWLINE
 	;初めて
@@ -5918,9 +6549,11 @@ IF SELECTCOM == 553
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手吸血	CFLAG:5534
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 554
 	DRAWLINE
 	;初めて
@@ -5932,9 +6565,11 @@ IF SELECTCOM == 554
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手強制回復	CFLAG:5535
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 560
 	DRAWLINE
 	;初めて
@@ -5946,9 +6581,11 @@ IF SELECTCOM == 560
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手排卵誘発	CFLAG:5536
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 561
 	DRAWLINE
 	;初めて
@@ -5960,9 +6597,11 @@ IF SELECTCOM == 561
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手避妊膜塗布	CFLAG:5537
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 562
 	DRAWLINE
 	;初めて
@@ -5974,9 +6613,11 @@ IF SELECTCOM == 562
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手発毛剤	CFLAG:5538
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 563
 	DRAWLINE
 	;初めて
@@ -5988,9 +6629,11 @@ IF SELECTCOM == 563
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手脱毛剤	CFLAG:5539
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 564
 	DRAWLINE
 	;初めて
@@ -6002,9 +6645,11 @@ IF SELECTCOM == 564
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手読心責め	CFLAG:5540
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 580
 	DRAWLINE
 	;初めて
@@ -6016,9 +6661,11 @@ IF SELECTCOM == 580
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手潮干狩り	CFLAG:5541
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 581
 	DRAWLINE
 	;初めて
@@ -6030,9 +6677,11 @@ IF SELECTCOM == 581
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手幽霊膣鏡	CFLAG:5542
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 582
 	DRAWLINE
 	;初めて
@@ -6044,9 +6693,11 @@ IF SELECTCOM == 582
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手強制飲酒	CFLAG:5543
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 583
 	DRAWLINE
 	;初めて
@@ -6058,9 +6709,11 @@ IF SELECTCOM == 583
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手精神制御	CFLAG:5544
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 584
 	DRAWLINE
 	;初めて
@@ -6072,9 +6725,11 @@ IF SELECTCOM == 584
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手厄落とし	CFLAG:5545
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 585
 	DRAWLINE
 	;初めて
@@ -6086,9 +6741,11 @@ IF SELECTCOM == 585
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手腸内撮影	CFLAG:5546
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 586
 	DRAWLINE
 	;初めて
@@ -6100,9 +6757,11 @@ IF SELECTCOM == 586
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手言葉責め	CFLAG:5547
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 587
 	DRAWLINE
 	;初めて
@@ -6114,9 +6773,11 @@ IF SELECTCOM == 587
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手鈴蘭媚薬	CFLAG:5548
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 588
 	DRAWLINE
 	;初めて
@@ -6128,9 +6789,11 @@ IF SELECTCOM == 588
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手官能図書	CFLAG:5549
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 589
 	DRAWLINE
 	;初めて
@@ -6142,9 +6805,11 @@ IF SELECTCOM == 589
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手妖精按摩	CFLAG:5550
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 590
 	DRAWLINE
 	;初めて
@@ -6156,9 +6821,11 @@ IF SELECTCOM == 590
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手氷精手淫	CFLAG:5551
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 591
 	DRAWLINE
 	;初めて
@@ -6170,9 +6837,11 @@ IF SELECTCOM == 591
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;触手淫脈探査	CFLAG:5552
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 592
 	DRAWLINE
 	;初めて
@@ -6184,6 +6853,7 @@ IF SELECTCOM == 592
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_PALAMCNG関係
 ;パラメータ変動をトリガーにした口上
@@ -6560,27 +7230,27 @@ ENDIF
 ;-------------------------------------------------
 ;Ｃ感覚Lv5でＣ절정50以上	CFLAG:8015
 ;-------------------------------------------------
-IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
-	DRAWLINE
-ENDIF
+;IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ절정50以上	CFLAG:8016
 ;-------------------------------------------------
-IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
-	DRAWLINE
-ENDIF
+;IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ절정50以上	CFLAG:8017
 ;-------------------------------------------------
-IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
-	DRAWLINE
-ENDIF
+;IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;Ｂ感覚Lv5でＢ절정50以上	CFLAG:8018
 ;-------------------------------------------------
-IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
-	DRAWLINE
-ENDIF
+;IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG関係(X1をキャラ番号に置換)
 ;刻印変動をトリガーにした口上
@@ -6671,81 +7341,81 @@ ENDIF
 ;-------------------------------------------------
 ;公開露出ライブ(大成功)	CFLAG:8151
 ;-------------------------------------------------
-IF (TFLAG:200 == 4 && TFLAG:99 == 3)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 4 && TFLAG:99 == 3)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公開露出ライブ(成功して犯された)	CFLAG:8152
 ;-------------------------------------------------
-IF (TFLAG:200 == 4 && TFLAG:99 == 1)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 4 && TFLAG:99 == 1)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公開露出ライブ(失敗)	CFLAG:8153
 ;-------------------------------------------------
-IF TFLAG:200 == 4
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 4
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公衆便所プレイ(人間)	CFLAG:8154
 ;-------------------------------------------------
-IF (TFLAG:200 == 5 && TFLAG:99 == 0)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 5 && TFLAG:99 == 0)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公衆便所プレイ(妖精)	CFLAG:8155
 ;-------------------------------------------------
-IF (TFLAG:200 == 5 && TFLAG:99 == 1)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 5 && TFLAG:99 == 1)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公衆便所プレイ(兎)	CFLAG:8156
 ;-------------------------------------------------
-IF (TFLAG:200 == 5 && TFLAG:99 == 2)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 5 && TFLAG:99 == 2)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公衆便所プレイ(河童)	CFLAG:8157
 ;-------------------------------------------------
-IF (TFLAG:200 == 5 && TFLAG:99 == 3)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 5 && TFLAG:99 == 3)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;公衆便所プレイ(天狗)	CFLAG:8158
 ;-------------------------------------------------
-IF (TFLAG:200 == 5 && TFLAG:99 >= 4)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 5 && TFLAG:99 >= 4)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;酒恥肉倫(人間)	CFLAG:8159
 ;-------------------------------------------------
-IF (TFLAG:200 == 9 && S == 1)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 9 && S == 1)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;酒恥肉倫(妖精)	CFLAG:8160
 ;-------------------------------------------------
-IF (TFLAG:200 == 9 && S == 2)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 9 && S == 2)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;酒恥肉倫(兎)	CFLAG:8161
 ;-------------------------------------------------
-IF (TFLAG:200 == 9 && S == 3)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 9 && S == 3)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;酒恥肉倫(天狗)	CFLAG:8162
 ;-------------------------------------------------
-IF (TFLAG:200 == 9 && S == 4)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 9 && S == 4)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;酒恥肉倫(魔界人)	CFLAG:8163
 ;-------------------------------------------------
-IF (TFLAG:200 == 9 && S == 5)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 9 && S == 5)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;朝フェラ	CFLAG:8164
 ;-------------------------------------------------
@@ -6834,15 +7504,15 @@ ENDIF
 ;-------------------------------------------------
 ;朝搾乳	CFLAG:8168
 ;-------------------------------------------------
-IF TFLAG:200 == 144
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 144
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;朝新妻プレイ	CFLAG:8169
 ;-------------------------------------------------
-IF TFLAG:200 == 145
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 145
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;調教後セックス	CFLAG:8170
 ;-------------------------------------------------
@@ -6877,39 +7547,39 @@ ENDIF
 ;-------------------------------------------------
 ;調教後アナニー	CFLAG:8172
 ;-------------------------------------------------
-IF TFLAG:200 == 152
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 152
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;調教後自慰搾乳	CFLAG:8173
 ;-------------------------------------------------
-IF TFLAG:200 == 153
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 153
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;レズプレイ	CFLAG:8174
 ;-------------------------------------------------
-IF TFLAG:200 == 154
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 154
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;レズプレイ(69)	CFLAG:8175
 ;-------------------------------------------------
-IF TFLAG:200 == 155
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 155
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;ＢＬプレイ	CFLAG:8176
 ;-------------------------------------------------
-IF TFLAG:200 == 156
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 156
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;ＢＬプレイ(69)	CFLAG:8177
 ;-------------------------------------------------
-IF TFLAG:200 == 157
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 157
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;夜這い	CFLAG:8178
 ;-------------------------------------------------
@@ -6931,105 +7601,105 @@ ENDIF
 ;-------------------------------------------------
 ;夜這いキス用/元76	CFLAG:8179
 ;-------------------------------------------------
-IF TFLAG:200 == 159
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 159
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;自慰できないことによる悶絶	CFLAG:8180
 ;-------------------------------------------------
-IF TFLAG:200 == 160
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 160
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;触手に襲われる	CFLAG:8181
 ;-------------------------------------------------
-IF TFLAG:200 == 161
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 161
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;添い寝	CFLAG:8182
 ;-------------------------------------------------
-IF TFLAG:200 == 400
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 400
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;夜這い騎乗位(失敗)	CFLAG:8183
 ;-------------------------------------------------
-IF (TFLAG:200 == 401 && R == 1)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 401 && R == 1)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;夜這い騎乗位(騎乗位)	CFLAG:8184
 ;-------------------------------------------------
-IF (TFLAG:200 == 401 && R == 2)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 401 && R == 2)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;夜這い騎乗位(思いとどまる)	CFLAG:8185
 ;-------------------------------------------------
-IF (TFLAG:200 == 401 && R == 3)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 401 && R == 3)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;夜這い騎乗位(オナニー)	CFLAG:8186
 ;-------------------------------------------------
-IF (TFLAG:200 == 401 && R == 4)
-	DRAWLINE
-ENDIF
+;IF (TFLAG:200 == 401 && R == 4)
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;添い寝成功	CFLAG:8187
 ;-------------------------------------------------
-IF TFLAG:200 == 402
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 402
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;添い寝失敗	CFLAG:8188
 ;-------------------------------------------------
-IF TFLAG:200 == 403
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 403
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;嫁との一夜	CFLAG:8189
 ;-------------------------------------------------
-IF TFLAG:200 == 404
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 404
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;夜襲撃成功	CFLAG:8190
 ;-------------------------------------------------
-IF TFLAG:200 == 405
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 405
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;３Ｐ	CFLAG:8191
 ;-------------------------------------------------
-IF TFLAG:200 == 406
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 406
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;襲撃レズプレイ	CFLAG:8192
 ;-------------------------------------------------
-IF TFLAG:200 == 407
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 407
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;多人数PT 乱交	CFLAG:8193
 ;-------------------------------------------------
-IF TFLAG:200 == 408
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 408
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;覗き見オナニー	CFLAG:8194
 ;-------------------------------------------------
-IF TFLAG:200 == 409
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 409
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;おねしょ(おもらし癖取得)	CFLAG:8195
 ;-------------------------------------------------
-IF TFLAG:200 == 102
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 102
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;妊娠	CFLAG:8196
 ;-------------------------------------------------
@@ -7205,21 +7875,21 @@ ENDIF
 ;-------------------------------------------------
 ;エンゲージリング使用	CFLAG:8198
 ;-------------------------------------------------
-IF TFLAG:200 == 200
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 200
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;赤い首輪使用	CFLAG:8199
 ;-------------------------------------------------
-IF TFLAG:200 == 201
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 201
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;隷属の証使用	CFLAG:8200
 ;-------------------------------------------------
-IF TFLAG:200 == 202
-	DRAWLINE
-ENDIF
+;IF TFLAG:200 == 202
+;	DRAWLINE
+;ENDIF
 ;-------------------------------------------------
 ;@単体エンディング関係(X1, X2をキャラ番号に置換する)
 ;-------------------------------------------------

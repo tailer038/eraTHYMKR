@@ -92,6 +92,7 @@ IF CFLAG:5001 == 0
 ;-------------------------------------------------
 ;조교 개시시(1회만) CFLAG:5001
 ;-------------------------------------------------
+[SKIPSTART]
 
 ;굴복각인Lv1
 ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
@@ -124,6 +125,7 @@ ELSEIF CFLAG:5001 < 5 && TALENT:150
 ;조수 유무를 체크(없을 경우엔 2회째 이후로 넘어감)
 ELSEIF ASSI < 0 
 	CALL K53_KOJO2
+[SKIPEND]
 
 ;-------------------------------------------------
 ;간이 조수 대사 CFLAG:5002
@@ -180,14 +182,15 @@ ELSEIF ASSI < 0
 ;			RETURN 1
 ;	ENDIF
 ;대사가 있는 조수가 없을 경우엔 통상의 2회째 이후 대사로 넘어감
-ELSE
-	CALL K53_KOJO2
+;ELSE
+	;CALL K53_KOJO2
 ENDIF
 
 
 ;-------------------------------------------------
 ;조교 개시시(2회째 이후) CFLAG 없음
 ;-------------------------------------------------
+[SKIPSTART]
 @K53_KOJO2
 ;반발각인Lv3
 IF MARK:9 == 3 && FLAG:11 == 2
@@ -232,11 +235,13 @@ ELSEIF TALENT:150 && FLAG:11 == 2
 	RETURN 1
 ENDIF
 RETURN 0
+[SKIPEND]
 
 ;-------------------------------------------------
 ;EVENTEND 관계
 ;조교 종료시 대사
 ;-------------------------------------------------
+[SKIPSTART]
 @EVENTEND
 SIF FLAG:11 == 0
 	RETURN 0
@@ -294,11 +299,13 @@ ELSEIF TALENT:150
 	RETURN 1
 ENDIF
 RETURN 0
+[SKIPEND]
 
 ;--------------------------------------------------
 ;@KOJO_MESSAGE_COM 관계
 ;커맨드 실행시에 출력됩니다
 ;--------------------------------------------------
+[SKIPSTART]
 @KOJO_MESSAGE_COM_53
 ;조수가 조교했을 때에 대사를 스킵한다(취향에 따라 사용. 행 첫머리의 ;를 지우면 스킵하게 됨)
 ;SIF ASSI > 0 && ASSIPLAY
@@ -3182,13 +3189,14 @@ IF SELECTCOM == 610
 		RETURN 0
 	ENDIF
 ENDIF
-
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_PALAMCNG 관계
 ;패러미터 변동이 방아쇠인 대사
 ;패러미터 변동 후에 대사를 발동합니다
 ;-------------------------------------------------
+[SKIPSTART]
 @KOJO_MESSAGE_PALAMCNG_53
 ;조수가 조교했을 때에 대사를 스킵한다(취향에 따라 사용. 행 첫머리의 ;를 지우면 스킵하게 됨)
 ;SIF ASSI > 0 && ASSIPLAY
@@ -3665,12 +3673,14 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG 관계
 ;각인 변동이 방아쇠인 대사
 ;각인 변동 후에 대사를 발동합니다.
 ;-------------------------------------------------
+[SKIPSTART]
 @KOJO_MESSAGE_MARKCNG_53
 ;조수가 조교했을 때에 대사를 스킵한다(취향에 따라 사용. 행 첫머리의 ;를 지우면 스킵하게 됨)
 ;SIF ASSI > 0 && ASSIPLAY
@@ -3758,10 +3768,12 @@ IF TFLAG:46 == 3 && CFLAG:8100 == 0
 	ENDIF
 	CFLAG:8100 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;이벤트 대사집 FLAG(TFLAG200의 내용물＋8100)
 ;-------------------------------------------------
+[SKIPSTART]
 @SELF_KOJO_K53
 ;-------------------------------------------------
 ;매각
@@ -3889,20 +3901,21 @@ ENDIF
 
 TFLAG:200 = 0
 RETURN 0
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@단독 엔딩 관계
 ;-------------------------------------------------
-@SINGLE_ENDING_K53
-DRAWLINE
-PRINTFORMW ―――단독 엔딩 조건 달성―――
-PRINTFORMW …………
-PRINTFORMW ………
-PRINTFORMW ……
-PRINTFORMW 
+;@SINGLE_ENDING_K53
+;DRAWLINE
+;PRINTFORMW ―――단독 엔딩 조건 달성―――
+;PRINTFORMW …………
+;PRINTFORMW ………
+;PRINTFORMW ……
+;PRINTFORMW 
 
-PRINTFORMW 
-PRINTFORMW 　　　　　　　　―― Ending No.1053 (토요히메 엔딩)
+;PRINTFORMW 
+;PRINTFORMW 　　　　　　　　―― Ending No.1053 (토요히메 엔딩)
 
 ;RETURN 0
 

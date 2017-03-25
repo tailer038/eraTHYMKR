@@ -2618,7 +2618,7 @@ IF SELECTCOM == 90 && TEQUIP:59
 			RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 59 && TEQUIP:59 == 0
+ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 	;初めて
 	IF CFLAG:5325 == 0
 		;恋慕
@@ -3421,9 +3421,9 @@ ENDIF
 ;-------------------------------------
 ;エンゲイジ!!リング……『彼』＝主人公視点
 ;-------------------------------------
-IF TFLAG:200 == 200
-	PRINTFORMW
-ENDIF
+;IF TFLAG:200 == 200
+;	PRINTFORMW
+;ENDIF
 	TFLAG:200 = 0
 	RETURN 0
 ;

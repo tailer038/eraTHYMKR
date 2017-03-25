@@ -881,7 +881,7 @@ SIF TALENT:167
 	RETURN 0
 
 ;커멘드 첫회 판정을 갱신
-CALL COM_FLAG
+;CALL COM_FLAG
 ;PANCTION내의 장비품 말보완 함수를 사용한다
 SIF FLAG:10 == 1
 	TRYCALL EQUIPTEXT
@@ -916,7 +916,7 @@ SIF RESULT == 0
 ;愛撫 CFLAG:9000
 ;-------------------------------------------------
 @K48_MESSAGE_COM_0
-IF RESULT:1 == 1
+IF CFLAG:9000 == 0
 	;굴복각인Lv2以上
 	IF MARK:2 >= 2
 		PRINTFORML 「하, 우……」
@@ -926,10 +926,11 @@ IF RESULT:1 == 1
 		PRINTFORML 「더러운 입을 가져다 대지 마세요……!」
 		PRINTFORMW 아큐는 입술을 단단하게 닫고 거절하고 있다…
 	ENDIF
+	CFLAG:9000++
 ;二回目以降
 ELSE
 	;음란
-	IF TALENT:170 
+	IF TALENT:170 && (CFLAG:9000 < 6 || FLAG:11 == 2)
 		IF RAND:2 == 0
 			PRINTFORML 「아, 응, 으으읏」
 			PRINTFORMW 손가락으로 아래쪽을 만지며 입술을 마주치자, 발정한 고양이 같은 소리를 냈다…
@@ -937,20 +938,25 @@ ELSE
 			PRINTFORML 민감한 클리토리스를 만지자, 애액이 뚝뚝 흘러 %CALLNAME:MASTER%의 손가락에 실을 만들었다
 			PRINTFORMW 그것을 아큐의 눈 앞에 보여주자, 부끄러운듯 고개를 숙였다…
 		ENDIF
+		CFLAG:9000 = 6
 	;굴복각인Lv3＋C感覚Lv3
-	ELSEIF MARK:2 == 3 && ABL:0 >= 3 
+	ELSEIF MARK:2 == 3 && ABL:0 >= 3 && (CFLAG:9000 < 5 || FLAG:11 == 2)
 		PRINTFORML 「앗, 거긴, 아우……」
 		PRINTFORMW 무저항인 몸을 만지자, 깜짝 놀라며 튀어 올랐다…
+		CFLAG:9000 = 5
 	;굴복각인Lv3
-	ELSEIF MARK:2 == 3
+	ELSEIF MARK:2 == 3 && (CFLAG:9000 < 4 || FLAG:11 == 2)
 		PRINTFORML 「으응…」
 		PRINTFORMW 무저항인 몸을 만지자 조그맣게 움찔 거렸다…
+		CFLAG:9000 = 4
 	;굴복각인Lv2か연모
-	ELSEIF (MARK:2 == 2 || TALENT:150)
+	ELSEIF (MARK:2 == 2 || TALENT:150) && (CFLAG:9000 < 3 || FLAG:11 == 2)
 		PRINTFORMW 아큐는 홍조를 띄운 얼굴을 보이지 않으려는 듯 외면했다…
+		CFLAG:9000 = 3
 	;그 외
-	ELSEIF MARK:2 <= 1
+	ELSEIF CFLAG:9000 < 2 || FLAG:11 == 2
 		PRINTFORMW 아큐는 얼굴을 돌리고, 조교가 빨리 끝나기를 기다리고 있다…
+		CFLAG:9000 = 2
 	ENDIF
 ENDIF
 
@@ -961,148 +967,137 @@ ENDIF
 ;-------------------------------------------------
 ;クンニ
 @K48_MESSAGE_COM_1
-IF SELECTCOM == 1 && TEQUIP:56 == 0
-	;初めて
-	IF CFLAG:9001 == 0
-		;굴복각인Lv2以上
-		IF MARK:2 >= 2
-			PRINTFORML 「싫어어…」
-			PRINTFORMW 아큐는 핥아지는 부분을 멍하니 보고 있다…
-		;그 외
-		ELSE
-			PRINTFORML 「이, 이익……」
-			PRINTFORMW 아큐는 %CALLNAME:PLAYER% 의 머리에 손을 뻗쳐 막으려 하고 있다…
-		ENDIF
-		CFLAG:9001 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9001 == 0
+	;굴복각인Lv2以上
+	IF MARK:2 >= 2
+		PRINTFORML 「싫어어…」
+		PRINTFORMW 아큐는 핥아지는 부분을 멍하니 보고 있다…
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9001 <= 5 || FLAG:11 == 2)
-			IF RAND:2 == 0
-				PRINTFORML 「응……좀 더 핥아 주세요……」
-				PRINTFORMW 아큐는 부끄러운듯 애무를 졸라온다…
-			ELSE
-				PRINTFORML 「후아앗, 좋아, 좋아……」
-				PRINTFORMW 미성숙한 성기에서 애액이 흘러나오는 갭이 욕정을 일으킨다…
-			ENDIF
-			CFLAG:9001 = 6
-		;굴복각인Lv3＋C感覚Lv3
-		ELSEIF MARK:2 == 3 && ABL:0 >= 3 && (CFLAG:9001 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「아……젖었어……」
-			PRINTFORMW 아큐의 보지에서 입을 떼자, 섭섭한듯 애액이 흘러 넘쳤다…
-			CFLAG:9001 = 5
-		;굴복각인Lv3か연모
-		ELSEIF (MARK:2 == 3 || TALENT:150) && (CFLAG:9001 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「아우……」
-			PRINTFORMW 아큐의 보지가 혀로 유린되어 반응 하고 있다…
-			CFLAG:9001 = 4
-		;굴복각인Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:9001 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「이제, 그만둬 주세요……」
-			CFLAG:9001 = 3
-		;그 외
-		ELSEIF CFLAG:9001 <= 1 || FLAG:11 == 2
-			IF RAND:2 == 0
-				PRINTFORML 「～～～읏」
-				PRINTFORMW 아큐는 홍조를 띄운 얼굴을 보이지 않도록 옆으로 돌아 보았다…
-			ELSE
-				PRINTFORMW 「이런, 더러워……」
-			ENDIF
-			CFLAG:9001 = 2
+		PRINTFORML 「이, 이익……」
+		PRINTFORMW 아큐는 %CALLNAME:PLAYER% 의 머리에 손을 뻗쳐 막으려 하고 있다…
+	ENDIF
+	CFLAG:9001 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9001 <= 5 || FLAG:11 == 2)
+		IF RAND:2 == 0
+			PRINTFORML 「응……좀 더 핥아 주세요……」
+			PRINTFORMW 아큐는 부끄러운듯 애무를 졸라온다…
+		ELSE
+			PRINTFORML 「후아앗, 좋아, 좋아……」
+			PRINTFORMW 미성숙한 성기에서 애액이 흘러나오는 갭이 욕정을 일으킨다…
 		ENDIF
-		RETURN 0
+		CFLAG:9001 = 6
+	;굴복각인Lv3＋C感覚Lv3
+	ELSEIF MARK:2 == 3 && ABL:0 >= 3 && (CFLAG:9001 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「아……젖었어……」
+		PRINTFORMW 아큐의 보지에서 입을 떼자, 섭섭한듯 애액이 흘러 넘쳤다…
+		CFLAG:9001 = 5
+	;굴복각인Lv3か연모
+	ELSEIF (MARK:2 == 3 || TALENT:150) && (CFLAG:9001 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「아우……」
+		PRINTFORMW 아큐의 보지가 혀로 유린되어 반응 하고 있다…
+		CFLAG:9001 = 4
+	;굴복각인Lv2
+	ELSEIF MARK:2 == 2 && (CFLAG:9001 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「이제, 그만둬 주세요……」
+		CFLAG:9001 = 3
+	;그 외
+	ELSEIF CFLAG:9001 <= 1 || FLAG:11 == 2
+		IF RAND:2 == 0
+			PRINTFORML 「～～～읏」
+			PRINTFORMW 아큐는 홍조를 띄운 얼굴을 보이지 않도록 옆으로 돌아 보았다…
+		ELSE
+			PRINTFORMW 「이런, 더러워……」
+		ENDIF
+		CFLAG:9001 = 2
 	ENDIF
 ENDIF
 @K48_MESSAGE_COM_611
 ;岩清水
-IF SELECTCOM == 611
-	;음란+露出癖Lv3以上+C感覚Lv3以上
-	IF TALENT:170 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:9611 <= 6 || FLAG:11 == 2)
-		PRINTFORML 「아아아, 저, 그곳 빨려서 이상한 얼굴 이예요……!」
-		PRINTFORMW 아큐는 거울에 비친 자신의 치태를 보고 도착적인 쾌락에 빠져 들었다…
-		CFLAG:9611 = 7
-	;음란
-	ELSEIF TALENT:170 == 1 && (CFLAG:9611 <= 5 || FLAG:11 == 2)
-		PRINTFORML 「후우읏, 이거, 대단햇……!」
-		PRINTFORMW 아큐는 거울에 비친 자신의 치태를 보고 발정 했다…
-		CFLAG:9611 = 6
-	;굴복각인Lv3+露出癖Lv3以上+C感覚Lv3以上
-	ELSEIF MARK:2 == 3 && ABL:0 >= 3 && ABL:14 >= 3 && (CFLAG:9611 <= 4 || FLAG:11 == 2)
-		PRINTFORML 「후아……이렇게 넘쳐서……」
-		PRINTFORMW 아큐는 거울에 비친 자신의 보지의 상태를 물끄러미 보고 있다…
-		CFLAG:9611 = 5
-	;굴복각인Lv3か연모
-	ELSEIF (MARK:2 == 3 || TALENT:150) && (CFLAG:9611 <= 3 || FLAG:11 == 2)
-		PRINTFORML 「아우,……전부, 빨리고 있어요……」
-		PRINTFORMW 넘쳐나는 애액을 소리내 빨자, 아큐는 뺨을 붉혔다…
-		CFLAG:9611 = 4
-	;屈服2
-	ELSEIF CFLAG:9611 == 2 && (CFLAG:9611 <= 2 || FLAG:11 == 2)
-		PRINTFORMW 「히크윽……이런건, 싫어어……」
-		CFLAG:9611 = 3
-	;그 외
-	ELSEIF CFLAG:9611 <= 1 || FLAG:11 == 2
-		PRINTFORMW 「소, 소리내지 말아 주세요……」
-		CFLAG:9611 = 2
-	ENDIF
-	RETURN 0
+;음란+露出癖Lv3以上+C感覚Lv3以上
+IF TALENT:170 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:9611 <= 6 || FLAG:11 == 2)
+	PRINTFORML 「아아아, 저, 그곳 빨려서 이상한 얼굴 이예요……!」
+	PRINTFORMW 아큐는 거울에 비친 자신의 치태를 보고 도착적인 쾌락에 빠져 들었다…
+	CFLAG:9611 = 7
+;음란
+ELSEIF TALENT:170 == 1 && (CFLAG:9611 <= 5 || FLAG:11 == 2)
+	PRINTFORML 「후우읏, 이거, 대단햇……!」
+	PRINTFORMW 아큐는 거울에 비친 자신의 치태를 보고 발정 했다…
+	CFLAG:9611 = 6
+;굴복각인Lv3+露出癖Lv3以上+C感覚Lv3以上
+ELSEIF MARK:2 == 3 && ABL:0 >= 3 && ABL:14 >= 3 && (CFLAG:9611 <= 4 || FLAG:11 == 2)
+	PRINTFORML 「후아……이렇게 넘쳐서……」
+	PRINTFORMW 아큐는 거울에 비친 자신의 보지의 상태를 물끄러미 보고 있다…
+	CFLAG:9611 = 5
+;굴복각인Lv3か연모
+ELSEIF (MARK:2 == 3 || TALENT:150) && (CFLAG:9611 <= 3 || FLAG:11 == 2)
+	PRINTFORML 「아우,……전부, 빨리고 있어요……」
+	PRINTFORMW 넘쳐나는 애액을 소리내 빨자, 아큐는 뺨을 붉혔다…
+	CFLAG:9611 = 4
+;屈服2
+ELSEIF CFLAG:9611 == 2 && (CFLAG:9611 <= 2 || FLAG:11 == 2)
+	PRINTFORMW 「히크윽……이런건, 싫어어……」
+	CFLAG:9611 = 3
+;그 외
+ELSEIF CFLAG:9611 <= 1 || FLAG:11 == 2
+	PRINTFORMW 「소, 소리내지 말아 주세요……」
+	CFLAG:9611 = 2
 ENDIF
 
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG:9002
 ;-------------------------------------------------
 @K48_MESSAGE_COM_2
-IF SELECTCOM == 2
-	;初めて
-	IF CFLAG:9002 == 0
-		PRINTFORMW 「에, 거긴 더러운……!」
-		PRINTFORML 엷은 복숭아빛 구멍에 손을 가져다 대자, 꾹 하고 조여 왔다…
-		CFLAG:9002 = 1
-		RETURN 0
-	;二回目以降
-	ELSE
-		LOCAL = PALAM:10 + UP:10
-		;음란＋潤滑2＋A感覚5
-		IF TALENT:170 == 1 && ABL:2 >= 5 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 6 || FLAG:11 == 2)
-			IF TEQUIP:25 == 0 && TEQUIP:25 == 0
-				PRINTFORML 「후우우웃, 손가락 만으로 가버려어어어엇!……!」
-				PRINTFORMW 아큐의 항분은 개발되어 분명히 약간의 충격 만으로도 절정에 도달했다…
-			ELSE
-				PRINTFORML 「하앗, 문질러 져서, 머리 새하얗게 돼버려요옷……!」
-				PRINTFORMW 아큐의 민감한 아날은 강렬한 자극을 받자 바로 절정에 도달 했다…
-			ENDIF
-			CFLAG:9002 = 7
-		;음란+潤滑Lv2以上
-		ELSEIF TALENT:170 == 1 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 5 || FLAG:11 == 2)
-			PRINTFORML 「하, 하우우우, 싸고 있어……좋아요옷……!」
-			PRINTFORMW 아큐는 입을 야무지지 못하게 벌리고 쾌락의 목소리를 높여갔다…
-			CFLAG:9002 = 6
-		;음란+潤滑Lv2미만
-		ELSEIF TALENT:170 == 1 && LOCAL < PALAMLV:2 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
-			PRINTFORMW 「아팟……아직, 젖지 않았으니까……」
-			CFLAG:9002 = 5
-		;潤滑Lv2以上＋A感覚Lv3以上
-		ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「아우우, 질척질척해서……크으으응」
-			IF TEQUIP:25 == 0 && TEQUIP:25 == 0
-				PRINTFORMW 아큐의 항문은 순조롭게 손가락을 받아 들였다…
-			ELSE
-				PRINTFORMW 아큐의 항문은 순조롭게 이물을 받아 들였다…
-			ENDIF
-			CFLAG:9002 = 4
-		;屈伏3か연모
-		ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9002 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「으응, 으으으응……」
-			PRINTFORMW 아큐는 익숙하지 않은 감각에 놀랐다…
-			CFLAG:9002 = 3
-		;그 외
-		ELSEIF CFLAG:9002 <= 1 || FLAG:11 == 2
-			PRINTFORML 「이, 변탯……!」
-			PRINTFORMW 배설에만 사용되는 기관을 희롱 당해 아큐는 굴욕으로 얼굴을 일그러 트렸다…
-			CFLAG:9002 = 2
+;初めて
+IF CFLAG:9002 == 0
+	PRINTFORMW 「에, 거긴 더러운……!」
+	PRINTFORML 엷은 복숭아빛 구멍에 손을 가져다 대자, 꾹 하고 조여 왔다…
+	CFLAG:9002 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란＋潤滑2＋A感覚5
+	IF TALENT:170 == 1 && ABL:2 >= 5 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 6 || FLAG:11 == 2)
+		IF TEQUIP:25 == 0 && TEQUIP:25 == 0
+			PRINTFORML 「후우우웃, 손가락 만으로 가버려어어어엇!……!」
+			PRINTFORMW 아큐의 항분은 개발되어 분명히 약간의 충격 만으로도 절정에 도달했다…
+		ELSE
+			PRINTFORML 「하앗, 문질러 져서, 머리 새하얗게 돼버려요옷……!」
+			PRINTFORMW 아큐의 민감한 아날은 강렬한 자극을 받자 바로 절정에 도달 했다…
 		ENDIF
-		RETURN 0
+		CFLAG:9002 = 7
+	;음란+潤滑Lv2以上
+	ELSEIF TALENT:170 == 1 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 5 || FLAG:11 == 2)
+		PRINTFORML 「하, 하우우우, 싸고 있어……좋아요옷……!」
+		PRINTFORMW 아큐는 입을 야무지지 못하게 벌리고 쾌락의 목소리를 높여갔다…
+		CFLAG:9002 = 6
+	;음란+潤滑Lv2미만
+	ELSEIF TALENT:170 == 1 && LOCAL < PALAMLV:2 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
+		PRINTFORMW 「아팟……아직, 젖지 않았으니까……」
+		CFLAG:9002 = 5
+	;潤滑Lv2以上＋A感覚Lv3以上
+	ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「아우우, 질척질척해서……크으으응」
+		IF TEQUIP:25 == 0 && TEQUIP:25 == 0
+			PRINTFORMW 아큐의 항문은 순조롭게 손가락을 받아 들였다…
+		ELSE
+			PRINTFORMW 아큐의 항문은 순조롭게 이물을 받아 들였다…
+		ENDIF
+		CFLAG:9002 = 4
+	;屈伏3か연모
+	ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9002 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「으응, 으으으응……」
+		PRINTFORMW 아큐는 익숙하지 않은 감각에 놀랐다…
+		CFLAG:9002 = 3
+	;그 외
+	ELSEIF CFLAG:9002 <= 1 || FLAG:11 == 2
+		PRINTFORML 「이, 변탯……!」
+		PRINTFORMW 배설에만 사용되는 기관을 희롱 당해 아큐는 굴욕으로 얼굴을 일그러 트렸다…
+		CFLAG:9002 = 2
 	ENDIF
 ENDIF
 
@@ -1110,62 +1105,58 @@ ENDIF
 ;胸愛撫 CFLAG:9003
 ;-------------------------------------------------
 @K48_MESSAGE_COM_3
-IF SELECTCOM == 3
-	;初めて
-	IF CFLAG:9003 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORMW 뭐랄까……새삼 만져 지니까, 긴장 되네요, 응…」
-		;그 외
-		ELSE
-			PRINTFORMW 「「응, 후읏……그렇게, 만지지 말아 주세요……」
-		ENDIF
-		CFLAG:9003 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9003 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORMW 뭐랄까……새삼 만져 지니까, 긴장 되네요, 응…」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 && (CFLAG:9003 <= 3 || FLAG:11 == 2)
-			IF TEQUIP:59 == 2
-				PRINTFORML 수영복의 천 위로 가슴을 빨자, 아큐는 소리높여 반응했다…
-				PRINTFORMW 「히야읏, 젖꼭지 빨면, 안 돼요옷……!」
+		PRINTFORMW 「「응, 후읏……그렇게, 만지지 말아 주세요……」
+	ENDIF
+	CFLAG:9003 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 && (CFLAG:9003 <= 3 || FLAG:11 == 2)
+		IF TEQUIP:59 == 2
+			PRINTFORML 수영복의 천 위로 가슴을 빨자, 아큐는 소리높여 반응했다…
+			PRINTFORMW 「히야읏, 젖꼭지 빨면, 안 돼요옷……!」
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORMW 「아앙, 혀 굴리는거, 반칙……」
 			ELSE
-				IF RAND:2 == 0
-					PRINTFORMW 「아앙, 혀 굴리는거, 반칙……」
-				ELSE
-					PRINTFORML 「아, 응, 꺄흣……」
-					PRINTFORMW 침을 묻히며 빠르게 문지르자, 아큐의 몸이 튄다…
-				ENDIF
+				PRINTFORML 「아, 응, 꺄흣……」
+				PRINTFORMW 침을 묻히며 빠르게 문지르자, 아큐의 몸이 튄다…
 			ENDIF
-			CFLAG:9003 = 4
-		;B感覚Lv3以上
-		ELSEIF ABL:3 >= 3 && (CFLAG:9003 <= 2 || FLAG:11 == 2)
-			IF TEQUIP:59 == 2
-				PRINTFORML 수영복의 위로 가슴을 애무하자, 팟 하고 유두가 섰다…
-				PRINTFORMW 「이, 이건, 생리 현상으로……크, 흣」
-			ELSE
-				IF RAND:2 == 0
-					PRINTFORML 「거기, 만져지는건, 싫지 않아요……」
-					PRINTFORMW 여자아이 특유의 탱글거리는 옆구리를 만지자, 아큐는 부끄러운듯 말했다…
-				ELSE
-					PRINTFORML 「앗, 웃」
-					PRINTFORMW 애무하자 소녀의입에선 뜨거운 한숨이 새어 나온다…
-				ENDIF
-			ENDIF
-			CFLAG:9003 = 3
-		;그 외
-		ELSEIF CFLAG:9003 <= 1 || FLAG:11 == 2
-			IF TEQUIP:59 == 2
-				PRINTFORML 「으읏」
-				PRINTFORMW 수영복의 위로 유륜을 문지르자, 아큐는 간지러운 듯 한 소리를 냈다…
-			ELSEIF TALENT:PLAYER:120 == 1
-				PRINTFORMW 「남자 분은 가슴을 좋아한다는게, 사실 이었네요……」
-			ELSE
-				PRINTFORMW 「제 가슴 같은걸 만져서 즐겁나요…?」
-			ENDIF
-			CFLAG:9003 = 2
 		ENDIF
-		RETURN 0
+		CFLAG:9003 = 4
+	;B感覚Lv3以上
+	ELSEIF ABL:3 >= 3 && (CFLAG:9003 <= 2 || FLAG:11 == 2)
+		IF TEQUIP:59 == 2
+			PRINTFORML 수영복의 위로 가슴을 애무하자, 팟 하고 유두가 섰다…
+			PRINTFORMW 「이, 이건, 생리 현상으로……크, 흣」
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORML 「거기, 만져지는건, 싫지 않아요……」
+				PRINTFORMW 여자아이 특유의 탱글거리는 옆구리를 만지자, 아큐는 부끄러운듯 말했다…
+			ELSE
+				PRINTFORML 「앗, 웃」
+				PRINTFORMW 애무하자 소녀의입에선 뜨거운 한숨이 새어 나온다…
+			ENDIF
+		ENDIF
+		CFLAG:9003 = 3
+	;그 외
+	ELSEIF CFLAG:9003 <= 1 || FLAG:11 == 2
+		IF TEQUIP:59 == 2
+			PRINTFORML 「으읏」
+			PRINTFORMW 수영복의 위로 유륜을 문지르자, 아큐는 간지러운 듯 한 소리를 냈다…
+		ELSEIF TALENT:PLAYER:120 == 1
+			PRINTFORMW 「남자 분은 가슴을 좋아한다는게, 사실 이었네요……」
+		ELSE
+			PRINTFORMW 「제 가슴 같은걸 만져서 즐겁나요…?」
+		ENDIF
+		CFLAG:9003 = 2
 	ENDIF
 ENDIF
 
@@ -1175,134 +1166,123 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_4
 ;指挿入れ
-IF SELECTCOM == 4
-	;初めて
-	IF CFLAG:9004 == 0
-		;処女
-		IF TALENT:0 == 1
-			;음란
-			IF TALENT:170 == 1
-				PRINTFORML 「앗, %CALLNAME:PLAYER%의 손가락이……들어와요……」
-				PRINTFORMW 아큐의 질은 첫 삽입임에도 불구하고 문어같이 달라붙어왔다…
-			;그 외
-			ELSE
-				PRINTFORML 「우그읏, 좁아……」
-				PRINTFORMW 손가락을 있는 힘껏 밀어넣자, 뭔가 찢어지는 감촉이 나고 저항이 없어졌다…
-			ENDIF
-			CFLAG:9004 = 1
-			RETURN 0
-		;非処女
+;初めて
+IF CFLAG:9004 == 0
+	;処女
+	IF TALENT:0 == 1
+		;음란
+		IF TALENT:170 == 1
+			PRINTFORML 「앗, %CALLNAME:PLAYER%의 손가락이……들어와요……」
+			PRINTFORMW 아큐의 질은 첫 삽입임에도 불구하고 문어같이 달라붙어왔다…
+		;그 외
 		ELSE
-			;음란
-			IF TALENT:170 == 1
-					PRINTFORML 「아하……더 안쪽까지, 만져주세요……」
-					PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 애무를 받아들이고 있다…
-			;V감각 Lv3 이상
-			ELSEIF ABL:1 >= 3
-					PRINTFORML 「하앗, 손가락, 능숙……!」
-					PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 교묘하게 질내를 애무하자, 아큐는 창녀같이 흐트러졌다…
-			;그 이외
-			ELSE
-					PRINTFORML 「다, 다치게 하진 말아주세요……」
-					PRINTFORMW 아큐는 아직 질내를 만져지는 것을 무서워하는 것 같다…
-			ENDIF
-			CFLAG:9004 = 1
-			RETURN 0
+			PRINTFORML 「우그읏, 좁아……」
+			PRINTFORMW 손가락을 있는 힘껏 밀어넣자, 뭔가 찢어지는 감촉이 나고 저항이 없어졌다…
 		ENDIF
-	;二回目以降
+		CFLAG:9004 = 1
+	;非処女
 	ELSE
 		;음란
-		IF TALENT:170 == 1 && (CFLAG:9004 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「입구도, 천정도, 기분 좋아요……」
-			PRINTFORMW 아큐는 밀려드는 쾌락에 몸을 떨고 있다…
-			CFLAG:9004 = 4
-		;V感覚Lv3以上
-		ELSEIF ABL:1 >= 3 && (CFLAG:9004 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「그, 그렇게 휘젓지 말아줘……」
-			PRINTFORMW 아큐는 격렬한 쾌감에 떨고 있는 것 같다…
-			CFLAG:9004 = 3
-		;그 외
-		ELSEIF CFLAG:9004 <= 1 || FLAG:11 == 2
-			PRINTFORML 「크, 우우우웃」
-			PRINTFORMW 가장 무방비한 장소를 만지는 것에는 아직 저항이 있는 것 같다…
-			CFLAG:9004 = 2
-		ENDIF		
-		RETURN 0
+		IF TALENT:170 == 1
+				PRINTFORML 「아하……더 안쪽까지, 만져주세요……」
+				PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 애무를 받아들이고 있다…
+		;V감각 Lv3 이상
+		ELSEIF ABL:1 >= 3
+				PRINTFORML 「하앗, 손가락, 능숙……!」
+				PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 교묘하게 질내를 애무하자, 아큐는 창녀같이 흐트러졌다…
+		;그 이외
+		ELSE
+				PRINTFORML 「다, 다치게 하진 말아주세요……」
+				PRINTFORMW 아큐는 아직 질내를 만져지는 것을 무서워하는 것 같다…
+		ENDIF
+		CFLAG:9004 = 1
 	ENDIF
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9004 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「입구도, 천정도, 기분 좋아요……」
+		PRINTFORMW 아큐는 밀려드는 쾌락에 몸을 떨고 있다…
+		CFLAG:9004 = 4
+	;V感覚Lv3以上
+	ELSEIF ABL:1 >= 3 && (CFLAG:9004 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「그, 그렇게 휘젓지 말아줘……」
+		PRINTFORMW 아큐는 격렬한 쾌감에 떨고 있는 것 같다…
+		CFLAG:9004 = 3
+	;그 외
+	ELSEIF CFLAG:9004 <= 1 || FLAG:11 == 2
+		PRINTFORML 「크, 우우우웃」
+		PRINTFORMW 가장 무방비한 장소를 만지는 것에는 아직 저항이 있는 것 같다…
+		CFLAG:9004 = 2
+	ENDIF		
 ENDIF
+
 @K48_MESSAGE_COM_600
 ;Gスポット刺激
-IF SELECTCOM == 600
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9600 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「읏, 꺄후웃, 가버려엇……!!」
-			CFLAG:9600 = 4
-		;V感覚Lv3以上
-		ELSEIF ABL:1 >= 3 && (CFLAG:9600 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「앗, 큿, 꺄웃!? 지, 지금 거, 굉장했어…」
-			CFLAG:9600 = 3
-		;그 외
-		ELSEIF CFLAG:9600 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「앗, 헷！？? 뭐, 뭔가요 방금꺼……!?」
-		CFLAG:9600 = 2
-	ENDIF
-	RETURN 0
+;음란
+IF TALENT:170 == 1 && (CFLAG:9600 <= 3 || FLAG:11 == 2)
+	PRINTFORMW 「읏, 꺄후웃, 가버려엇……!!」
+	CFLAG:9600 = 4
+;V感覚Lv3以上
+ELSEIF ABL:1 >= 3 && (CFLAG:9600 <= 2 || FLAG:11 == 2)
+	PRINTFORMW 「앗, 큿, 꺄웃!? 지, 지금 거, 굉장했어…」
+	CFLAG:9600 = 3
+;그 외
+ELSEIF CFLAG:9600 <= 1 || FLAG:11 == 2
+	PRINTFORMW 「앗, 헷！？? 뭐, 뭔가요 방금꺼……!?」
+CFLAG:9600 = 2
 ENDIF
 
 ;-------------------------------------------------
 ;フェラする(ふたなり/オトコのみ) CFLAG:9005
 ;-------------------------------------------------
 @K48_MESSAGE_COM_5
-IF SELECTCOM == 5
-	;初めて
-	IF CFLAG:9005 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 「에, 참……아, 아아아아앗!? 싫엇…끝을 핥작 하고……응아, 안 돼, 이 이상은 안 돼요」
-			PRINTFORMW 「앗, 응, 읏, 으으으으응♪ 안된다고 했는데, 핥지 마세요오……기분 좋앗……」
-		;그 외
-		ELSE
-			PRINTFORML 「!? 으앗, 앗, 앗, 아앗!? 도대체, 찌릿하고 왔어……」
-			PRINTFORMW 「싫, 안 돼요, 그런 거 핥으면 이상하게 돼버려욧」
-		ENDIF
-		CFLAG:9005 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9005 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 「에, 참……아, 아아아아앗!? 싫엇…끝을 핥작 하고……응아, 안 돼, 이 이상은 안 돼요」
+		PRINTFORMW 「앗, 응, 읏, 으으으으응♪ 안된다고 했는데, 핥지 마세요오……기분 좋앗……」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9005 <= 3 || FLAG:11 == 2)
-			IF RAND:5 == 0
-				PRINTFORML 「아앙, 싸버려, 싸버려요옷……으으으응 ! ! !」
-				PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 머리를 누르고, 무아지경으로 허리를 떨었다…
-			ELSEIF RAND:4 == 0
-				PRINTFORML 「아웃……거기, 핥아줘어 ……뒤도 앞도 쪽쪽 해 줘엇……」
-				PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 페니스를 핥아주자, 아큐는 달콤한 목소리를 흘리며 반응 한다…
-			ELSEIF RAND:3 == 0
-				PRINTFORML 「후앗, 빨아져서, 대단해욧……! 이, 이제, 싸버려어엇!……!!」
-				PRINTFORMW 아큐는 침을 흘리면서 격렬하게 반응하고 있다…
-			ELSEIF RAND:2 == 0
-				PRINTFORML 「아하……또 정액 쌀테니까, 마셔 주세요……. 응, 크훗……」
-				PRINTFORMW 소녀의 눈동자는 이상한 쾌락에 홀린 자의 그것 이었다…
-			ELSE
-				PRINTFORML 「응읏, 앞에만 쪽쪽 하며 시러어……좀 더 안쪽까지 핥아 주세……후, 우으으으으응」
-				PRINTFORMW 아큐의 귀여운 페니스가%CALLNAME:PLAYER%의 입 안에서 떨린다…
-			ENDIF
-			CFLAG:9005 = 4
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9005 <= 2 || FLAG:11 == 2)
-			IF RAND:2 == 0
-				PRINTFORMW 「응후……끈적끈적 핥으니까, 자지가 징징 거려 버리잖아요오……아, 웃, 우우웃」
-			ELSE
-				PRINTFORML 「하앗……하앗……」
-				PRINTFORMW 아큐의 자지는 번들번들 빛나고, 너무나 바라는듯 부들부들 떨리고 있다…
-			ENDIF
-			CFLAG:9005 = 3
-		;그 외
-		ELSEIF CFLAG:9005 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「응읏, 우웃, 하앙, 안 돼, 이거 괴로우니까 그만둬 주세요……응후아아아앗」
-			CFLAG:9005 = 2
+		PRINTFORML 「!? 으앗, 앗, 앗, 아앗!? 도대체, 찌릿하고 왔어……」
+		PRINTFORMW 「싫, 안 돼요, 그런 거 핥으면 이상하게 돼버려욧」
+	ENDIF
+	CFLAG:9005 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9005 <= 3 || FLAG:11 == 2)
+		IF RAND:5 == 0
+			PRINTFORML 「아앙, 싸버려, 싸버려요옷……으으으응 ! ! !」
+			PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 머리를 누르고, 무아지경으로 허리를 떨었다…
+		ELSEIF RAND:4 == 0
+			PRINTFORML 「아웃……거기, 핥아줘어 ……뒤도 앞도 쪽쪽 해 줘엇……」
+			PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 페니스를 핥아주자, 아큐는 달콤한 목소리를 흘리며 반응 한다…
+		ELSEIF RAND:3 == 0
+			PRINTFORML 「후앗, 빨아져서, 대단해욧……! 이, 이제, 싸버려어엇!……!!」
+			PRINTFORMW 아큐는 침을 흘리면서 격렬하게 반응하고 있다…
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「아하……또 정액 쌀테니까, 마셔 주세요……. 응, 크훗……」
+			PRINTFORMW 소녀의 눈동자는 이상한 쾌락에 홀린 자의 그것 이었다…
+		ELSE
+			PRINTFORML 「응읏, 앞에만 쪽쪽 하며 시러어……좀 더 안쪽까지 핥아 주세……후, 우으으으으응」
+			PRINTFORMW 아큐의 귀여운 페니스가%CALLNAME:PLAYER%의 입 안에서 떨린다…
 		ENDIF
-		RETURN 0
+		CFLAG:9005 = 4
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9005 <= 2 || FLAG:11 == 2)
+		IF RAND:2 == 0
+			PRINTFORMW 「응후……끈적끈적 핥으니까, 자지가 징징 거려 버리잖아요오……아, 웃, 우우웃」
+		ELSE
+			PRINTFORML 「하앗……하앗……」
+			PRINTFORMW 아큐의 자지는 번들번들 빛나고, 너무나 바라는듯 부들부들 떨리고 있다…
+		ENDIF
+		CFLAG:9005 = 3
+	;그 외
+	ELSEIF CFLAG:9005 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「응읏, 우웃, 하앙, 안 돼, 이거 괴로우니까 그만둬 주세요……응후아아아앗」
+		CFLAG:9005 = 2
 	ENDIF
 ENDIF
 
@@ -1310,48 +1290,44 @@ ENDIF
 ;キスする CFLAG:9006
 ;-------------------------------------------------
 @K48_MESSAGE_COM_6
-IF SELECTCOM == 6
-	;初めて
-	IF CFLAG:9006 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORMW 「응응응……%CALLNAME:PLAYER%의 혀, 마시서혀어……」
-			PRINTFORMW 아큐는 불타는 표정을 띄운다…
-		;屈服3か연모
-		ELSEIF TALENT:150 || MARK:2 == 3
-			PRINTFORMW 「읍, 응, ……」
-			PRINTFORMW 아큐는 저항도 하지 않고 %CALLNAME:PLAYER%의 혀를 받아들이고 있다…
-		;그 외
-		ELSE
-			PRINTFORML 「읍!? 음, 으무으읏, 으으응!! 우, 븟, 푸아아……」
-			PRINTFORML 강제로 아큐의 입 안에 침을 흘려넣고, 마시도록 명령했다
-			PRINTFORMW 아큐는 머리를 흔들며, 거부 했지만, 뱉어낼수도 없었기 때문에 삼켰다…
-		ENDIF
-		CFLAG:9006 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9006 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORMW 「응응응……%CALLNAME:PLAYER%의 혀, 마시서혀어……」
+		PRINTFORMW 아큐는 불타는 표정을 띄운다…
+	;屈服3か연모
+	ELSEIF TALENT:150 || MARK:2 == 3
+		PRINTFORMW 「읍, 응, ……」
+		PRINTFORMW 아큐는 저항도 하지 않고 %CALLNAME:PLAYER%의 혀를 받아들이고 있다…
+	;그 외
 	ELSE
-		;음란
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9006 <= 3 || FLAG:11 == 2)
-			IF RAND:2 == 0 && TALENT:PLAYER:120 == 1
-				PRINTFORML 아큐는 %CALLNAME:MASTER%의 자지를 가볍게 만지며 입을 마주쳤다…
-				PRINTFORMW 「츄붓, 츄웃, 쮸웁……아, 대단해, 키스 만으로 이렇게 되다니……」
-			ELSE
-				PRINTFORML 「후뭇……응……바앗, 츄우우……」
-				PRINTFORMW 아큐는 %CALLNAME:MASTER%의 혀를 탐내듯 요구 해 온다…
-			ENDIF
-			CFLAG:9006 = 4
-		;従順Lv2以上
-		ELSEIF ABL:10 >= 2 && (CFLAG:9006 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「응……츄우……」
-			PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 혀로 아큐의 혀를 건드리자, 반응 하듯이 얽어온다…
-			CFLAG:9006 = 3
-		;그 외
-		ELSEIF CFLAG:9006 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「으붓……우우우……」
-			CFLAG:9006 = 2
+		PRINTFORML 「읍!? 음, 으무으읏, 으으응!! 우, 븟, 푸아아……」
+		PRINTFORML 강제로 아큐의 입 안에 침을 흘려넣고, 마시도록 명령했다
+		PRINTFORMW 아큐는 머리를 흔들며, 거부 했지만, 뱉어낼수도 없었기 때문에 삼켰다…
+	ENDIF
+	CFLAG:9006 = 1
+;二回目以降
+ELSE
+	;음란
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9006 <= 3 || FLAG:11 == 2)
+		IF RAND:2 == 0 && TALENT:PLAYER:120 == 1
+			PRINTFORML 아큐는 %CALLNAME:MASTER%의 자지를 가볍게 만지며 입을 마주쳤다…
+			PRINTFORMW 「츄붓, 츄웃, 쮸웁……아, 대단해, 키스 만으로 이렇게 되다니……」
+		ELSE
+			PRINTFORML 「후뭇……응……바앗, 츄우우……」
+			PRINTFORMW 아큐는 %CALLNAME:MASTER%의 혀를 탐내듯 요구 해 온다…
 		ENDIF
-		RETURN 0
+		CFLAG:9006 = 4
+	;従順Lv2以上
+	ELSEIF ABL:10 >= 2 && (CFLAG:9006 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「응……츄우……」
+		PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 혀로 아큐의 혀를 건드리자, 반응 하듯이 얽어온다…
+		CFLAG:9006 = 3
+	;그 외
+	ELSEIF CFLAG:9006 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「으붓……우우우……」
+		CFLAG:9006 = 2
 	ENDIF
 ENDIF
 
@@ -1361,12 +1337,11 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_7
 ;二穴バイブオナニー
-IF SELECTCOM == 7 && TEQUIP:25 == 1 && TEQUIP:20 == 1
+IF TEQUIP:25 == 1 && TEQUIP:20 == 1
 	;初めて
 	IF CFLAG:5452 == 0
 		PRINTFORMW 「두, 두 개를 동시에……응, 앗, 크, 앗, 크으으응!!」
 		CFLAG:5452 = 1
-		RETURN 0
 	ELSE
 		IF TALENT:170 == 1 && (ABL:1 >= 3 && ABL:2 >= 3) && (CFLAG:5452 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「응, 응, 읏, 대단해, 거기도 엉덩이도, 대단해욧, 흐아아아앗♪」
@@ -1379,16 +1354,14 @@ IF SELECTCOM == 7 && TEQUIP:25 == 1 && TEQUIP:20 == 1
 			PRINTFORMW 「핫, 크, 갓……양쪽이라니 역시 무리예요……!」
 			CFLAG:5452 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;アナルバイブオナニー
-ELSEIF SELECTCOM == 7 && TEQUIP:25 == 1
+ELSEIF TEQUIP:25 == 1
 	;初めて
 	IF CFLAG:5450 == 0
 		PRINTFORML 「이걸 집어넣는 건가요……? ……심한 명령……」
 		PRINTFORMW 「웃……훗……응, 큿 웃 아아앗」
 		CFLAG:5450 = 1
-		RETURN 0
 	ELSE
 		;음란＋A感覚Lv3以上
 		IF TALENT:170 == 1 && ABL:2 >= 3 && (CFLAG:5450 <= 3 || FLAG:11 == 2)
@@ -1403,16 +1376,14 @@ ELSEIF SELECTCOM == 7 && TEQUIP:25 == 1
 			PRINTFORMW 「우와아아앗……괴로워엇……!」
 			CFLAG:5450 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;バイブオナニー
-ELSEIF SELECTCOM == 7 && TEQUIP:20 == 1
+ELSEIF TEQUIP:20 == 1
 	;初めて
 	IF CFLAG:5451 == 0
 		PRINTFORML 「무, 무리예요! 들어간것 만으로 이렇게 괴로운도, 이 이상 움직수 있을리 없잖아요……!」
 		PRINTFORMW 「역시, 하지 않으면 안되나요……? 흐윽……아, 우우웃, 아, 팟……」
 		CFLAG:5451 = 1
-		RETURN 0
 	ELSE
 		;음란＋V感覚Lv3以上
 		IF TALENT:170 == 1 && ABL:1 >= 3 && (CFLAG:5451 <= 3 || FLAG:11 == 2)
@@ -1427,15 +1398,13 @@ ELSEIF SELECTCOM == 7 && TEQUIP:20 == 1
 			PRINTFORMW 「우웃, 뱃속이, 괴로웟……」
 			CFLAG:5451 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;シャワーオナニー
-ELSEIF SELECTCOM == 7 && TEQUIP:54
+ELSEIF TEQUIP:54
 	;初めて
 	IF CFLAG:8801 == 0
 		PRINTFORMW 「이, 이거, 이상해요……. 앗, 하아아……」
 		CFLAG:8801 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란＋自慰中毒Lv3以上
@@ -1461,17 +1430,15 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 			PRINTFORMW 「우우웃, 미끈미끈, 빠질것 같아…」
 			CFLAG:8801 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;通常自慰(シャワー無し)
-ELSEIF SELECTCOM == 7
+ELSE
 	;初めて
 	IF CFLAG:9007 == 0
 		PRINTFORML 「우우, 너무 보지 말아 주세요……. 응……」
 		PRINTFORML 츄웃…하고 손가락을 타액으로 적시고, 조심조심 보지로 가져가기 시작했다
 		PRINTFORMW 어린 소녀가 한숨을 내뱉으며 스스로를 위로하는 광경은, 몹시 음란했다…
 		CFLAG:9007 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란＋自慰中毒Lv3以上
@@ -1509,7 +1476,6 @@ ELSEIF SELECTCOM == 7
 			ENDIF
 			CFLAG:9007 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -1517,34 +1483,30 @@ ENDIF
 ;何もしない CFLAG:9009
 ;-------------------------------------------------
 @K48_MESSAGE_COM_9
-IF SELECTCOM == 9
-	;初めて
-	IF CFLAG:9009 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORMW 「어째서 멈추는 건가요오……?」
-		;그 외
-		ELSE
-			PRINTFORMW 「…이번엔 뭘 꾸미고 있는 건가요」
-		ENDIF
-		CFLAG:9009 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9009 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORMW 「어째서 멈추는 건가요오……?」
+	;그 외
 	ELSE
-		;음란＋欲情Lv3以上
-		IF TALENT:170 == 1 && PALAM:13 >= PALAMLV:3 && (CFLAG:9009 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「심술쟁이, 네요……」
-			CFLAG:9009 = 4
-		;음란
-		ELSEIF TALENT:170 == 1 && (CFLAG:9009 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「읏, 하아……아무것도 하지 않는건가요……?」
-			CFLAG:9009 = 3
-		;그 외
-		ELSEIF CFLAG:9009 <= 1 || FLAG:11 == 2
-			PRINTFORMW 아큐는 %조사처리(CALLNAME:PLAYER,"가")% 손을 뻗어오지 않는것을 의심스럽게 생각하고 있다…
-			CFLAG:9009 = 2
-		ENDIF
-		RETURN 0
+		PRINTFORMW 「…이번엔 뭘 꾸미고 있는 건가요」
+	ENDIF
+	CFLAG:9009 = 1
+;二回目以降
+ELSE
+	;음란＋欲情Lv3以上
+	IF TALENT:170 == 1 && PALAM:13 >= PALAMLV:3 && (CFLAG:9009 <= 3 || FLAG:11 == 2)
+		PRINTFORMW 「심술쟁이, 네요……」
+		CFLAG:9009 = 4
+	;음란
+	ELSEIF TALENT:170 == 1 && (CFLAG:9009 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「읏, 하아……아무것도 하지 않는건가요……?」
+		CFLAG:9009 = 3
+	;그 외
+	ELSEIF CFLAG:9009 <= 1 || FLAG:11 == 2
+		PRINTFORMW 아큐는 %조사처리(CALLNAME:PLAYER,"가")% 손을 뻗어오지 않는것을 의심스럽게 생각하고 있다…
+		CFLAG:9009 = 2
 	ENDIF
 ENDIF
 
@@ -1552,36 +1514,32 @@ ENDIF
 ;ローター CFLAG:9010
 ;-------------------------------------------------
 @K48_MESSAGE_COM_10
-IF SELECTCOM == 10
-	;初めて
-	IF CFLAG:9010 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1
-			PRINTFORML 「이번엔, 그걸로 절 괴롭히는 거네요…. 정말……」
-			PRINTFORMW 「응, 흣, 대단해, 이거, 진동 빨라앗」
-		;그 외
-		ELSE
-			PRINTFORML 「저기, 도구는 가능하다면 봐 주실수 없……힛, 우읏!?」
-			PRINTFORMW 볼록 튀어나온 돌기를 괴롭히자, 괴로운듯한 소리를 흘렸다…
-		ENDIF
-		CFLAG:9010 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9010 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1
+		PRINTFORML 「이번엔, 그걸로 절 괴롭히는 거네요…. 정말……」
+		PRINTFORMW 「응, 흣, 대단해, 이거, 진동 빨라앗」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9010 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「하앗, 허리, 맘대로 튀어버려……!」
-			CFLAG:9010 = 4
-		;굴복각인Lv3
-		ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9010 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「안 돼요오, 그건 자극이 너무 심하니까……」
-			CFLAG:9010 = 3
-		;그 외
-		ELSEIF CFLAG:9010 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「이, 이런걸로…전혀 기분 좋다거나 하지…!」
-			CFLAG:9010 = 2
-		ENDIF
-		RETURN 0
+		PRINTFORML 「저기, 도구는 가능하다면 봐 주실수 없……힛, 우읏!?」
+		PRINTFORMW 볼록 튀어나온 돌기를 괴롭히자, 괴로운듯한 소리를 흘렸다…
+	ENDIF
+	CFLAG:9010 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9010 <= 3 || FLAG:11 == 2)
+		PRINTFORMW 「하앗, 허리, 맘대로 튀어버려……!」
+		CFLAG:9010 = 4
+	;굴복각인Lv3
+	ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9010 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「안 돼요오, 그건 자극이 너무 심하니까……」
+		CFLAG:9010 = 3
+	;그 외
+	ELSEIF CFLAG:9010 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「이, 이런걸로…전혀 기분 좋다거나 하지…!」
+		CFLAG:9010 = 2
 	ENDIF
 ENDIF
 
@@ -1589,35 +1547,31 @@ ENDIF
 ;電気按摩 CFLAG:9011
 ;-------------------------------------------------
 @K48_MESSAGE_COM_11
-IF SELECTCOM == 11
-	;初めて
-	IF CFLAG:9011 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 아큐는 거친 장난감을 보면서 침을 삼켰다…
-			PRINTFORMW 「저, 저기……상냥하게, 부탁드리겠습니다……」
-		;그 외
-		ELSE
-			PRINTFORMW 「싫어, 이, 이건 고문이예요……!」
-		ENDIF
-		CFLAG:9011 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9011 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 아큐는 거친 장난감을 보면서 침을 삼켰다…
+		PRINTFORMW 「저, 저기……상냥하게, 부탁드리겠습니다……」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9011 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「흐아앗, 거깃, 민감, 하니까, 바로 가버려어어엇……!!」
-			CFLAG:9011 = 4
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9011 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「그걸 써버리면 이상하게 돼버리는데……」
-			CFLAG:9011 = 3
-		;그 외
-		ELSEIF CFLAG:9011 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「그거, 머리, 새하얗게 되니까 안대……응, 후으읏」
-			CFLAG:9011 = 2
-		ENDIF
-		RETURN 0
+		PRINTFORMW 「싫어, 이, 이건 고문이예요……!」
+	ENDIF
+	CFLAG:9011 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9011 <= 3 || FLAG:11 == 2)
+		PRINTFORMW 「흐아앗, 거깃, 민감, 하니까, 바로 가버려어어엇……!!」
+		CFLAG:9011 = 4
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9011 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「그걸 써버리면 이상하게 돼버리는데……」
+		CFLAG:9011 = 3
+	;그 외
+	ELSEIF CFLAG:9011 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「그거, 머리, 새하얗게 되니까 안대……응, 후으읏」
+		CFLAG:9011 = 2
 	ENDIF
 ENDIF
 
@@ -1626,7 +1580,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_12
 ;開始時
-IF SELECTCOM == 12 && TEQUIP:20
+IF TEQUIP:20
 	;初めて
 	IF CFLAG:9012 == 0
 		;処女
@@ -1659,7 +1613,6 @@ IF SELECTCOM == 12 && TEQUIP:20
 			ENDIF
 		ENDIF
 		CFLAG:9012 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란+V感覚LV5
@@ -1686,10 +1639,9 @@ IF SELECTCOM == 12 && TEQUIP:20
 			PRINTFORMW 「응으으읏, 안에서 난폭하게……!」
 			CFLAG:9012 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;脱着時
-ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8811 < 2 || FLAG:11 == 2)
 		PRINTFORMW 「응……지, 질 안에서 걸렷……으으으으읏!」
@@ -1699,7 +1651,6 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 		PRINTFORMW 「앙……안이, 찌릿찌릿……」
 		CFLAG:8811 = 1
 	ENDIF
-	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1707,7 +1658,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_13
 ;開始時
-IF SELECTCOM == 13 && TEQUIP:25
+IF TEQUIP:25
 	;初めて
 	IF CFLAG:9013 == 0
 		;음란か연모
@@ -1728,7 +1679,6 @@ IF SELECTCOM == 13 && TEQUIP:25
 			PRINTFORMW 「아, 아, 싫어어엇……엉덩이에서 뭔가가, 움직이고 있어……!」
 		ENDIF
 		CFLAG:9013 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란＋A感覚Lv3以上
@@ -1748,10 +1698,9 @@ IF SELECTCOM == 13 && TEQUIP:25
 			PRINTFORMW 「제 알겠으니까, 빼 주세요……크으윽……」
 			CFLAG:9013 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;脱着時
-ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8812 < 3 || FLAG:11 == 2)
 		PRINTFORMW 「앙, 빼버리면, 또 가버려요오……」
@@ -1765,7 +1714,6 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 		PRINTFORMW 「아, 우우웃……」
 		CFLAG:8812 = 1
 	ENDIF
-	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1773,7 +1721,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_14
 ;開始時
-IF SELECTCOM == 14 && TEQUIP:30
+IF TEQUIP:30
 	;初めて
 	IF CFLAG:9014 == 0
 		;음란
@@ -1784,7 +1732,6 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 「아아앗, 강제로 당해서, 서버려어……!!」
 		ENDIF
 		CFLAG:9014 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란
@@ -1796,10 +1743,9 @@ IF SELECTCOM == 14 && TEQUIP:30
 			PRINTFORMW 「그거 붙이면, 이상하게 돼버려요오……흐, 으으응」
 			CFLAG:9014 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;脱着時
-ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8813 < 2 || FLAG:11 == 2)
 		PRINTFORML 「하, 으으읏」
@@ -1811,7 +1757,6 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 		PRINTFORMW 뗄 때의 자극이 심했던것 같다…
 		CFLAG:8813 = 1
 	ENDIF
-	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1819,7 +1764,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_15
 ;開始時
-IF SELECTCOM == 15 && TEQUIP:35
+IF TEQUIP:35
 	;初めて
 	IF CFLAG:9015 == 0
 		;음란
@@ -1830,7 +1775,6 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 「이 이, 이번에는 가슴이라니……절 어떻게 할 작정인가요오……」
 		ENDIF
 		CFLAG:9015 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란
@@ -1842,10 +1786,9 @@ IF SELECTCOM == 15 && TEQUIP:35
 			PRINTFORMW 「하으, 응, 이상하게 커 버리면 어떻게 하실 거예요오」
 			CFLAG:9015 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;脱着時
-ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8814 < 2 || FLAG:11 == 2)
 		PRINTFORMW 「응, 후으으으」
@@ -1855,7 +1798,6 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 		PRINTFORMW 「큭, 좀 더 상냥하게 떼 주세요…」
 		CFLAG:8814 = 1
 	ENDIF
-	RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -1863,7 +1805,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_16
 ;開始時
-IF SELECTCOM == 16 && TEQUIP:30
+IF TEQUIP:30
 	;初めて
 	IF CFLAG:9016 == 0
 		;음란
@@ -1874,7 +1816,6 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 「흐아, 하아아앙!? 꾹꾹 대단해애앳……!」
 		ENDIF
 		CFLAG:9016 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란
@@ -1886,10 +1827,9 @@ IF SELECTCOM == 16 && TEQUIP:30
 			PRINTFORMW 「안 돼애, 또, 부드러운게, 앗, 아아아앗」
 			CFLAG:9016 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8815 < 2 || FLAG:11 == 2)
 		PRINTFORMW 「앗……쯔법쯔법 하고, 빠져나와……」
@@ -1899,13 +1839,12 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 		PRINTFORMW 「읏……후우, 후우, 아, 아직도, 자지가 민감해요……」
 		CFLAG:8815 = 1
 	ENDIF
-	RETURN 0
 ENDIF
 ;-------------------------------------------------
 ;シャワー CFLAG357
 ;-------------------------------------------------
-@K48_MESSAGE_COM_18
-IF SELECTCOM == 351 && TEQUIP:54
+@K48_MESSAGE_COM_351
+IF TEQUIP:54
 		;음란
 		IF TALENT:170 == 1 && (CFLAG:5357 <= 2 || FLAG:11 == 2)
 			PRINTFORML 「이런걸로 느끼다니, 안되는데도……」
@@ -1917,111 +1856,106 @@ IF SELECTCOM == 351 && TEQUIP:54
 			PRINTFORMW 아큐는 익숙하지 못한듯 입을 뻐끔뻐끔거리고 있다…
 			CFLAG:5357 = 2
 		ENDIF
-			RETURN 0
 ENDIF
 ;-------------------------------------------------
 ;正常位 CFLAG:9020
 ;-------------------------------------------------
 @K48_MESSAGE_COM_20
-IF SELECTCOM == 20
-	;初めて
-	IF CFLAG:9020 == 0
-		;処女
-		IF TALENT:0 == 1
-			;음란か연모で反発不快合計が500以上
-			IF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) >= 500
-				PRINTFORML 「자, 잠깐만 기다려 주세요」
-				PRINTFORML 삽입 직전, 풀려 있던 눈동자에 머뭇거리는 눈빛이 떠오른다
-				PRINTFORML 「처음인데 이런건……싫어요……」
-				PRINTFORML 아큐는 조심스레 속삭이지만, %조사처리(CALLNAME:PLAYER,"는")% 발사 직전의 자지를 계속 훑는다…
-				PRINTFORML 「아, 핫……우우, 그, 보통으로 하는건, 괜찮으니까……앗, 에, 우아앗……!?」
-				PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 참을수 없게 되어 아큐의 말을 끊고 자지를 질 안에 쑤셔박았다…
-			;음란か연모で反発不快合計500以下
-			ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) < 500
-					PRINTFORML 「아하……드디어, 하나가 되는 거에요……. 좋아요, ……와 주세요…………」
-				IF TEQUIP:59 == 2
-					PRINTFORML 아큐의 몸에 밀착해, 수영복의 천을 밀어내고 자지를 질내로 삽입했다
-				ELSE
-					PRINTFORML 아큐의 몸에 밀착해, 자지를 질내로 삽입했다
-				ENDIF
-					PRINTFORMW 도중에 걸리는 느낌이 있었지만, 약간의 저항을 꿰뚫자 따뜻한 질에 녹을것 같았다…
-			ELSEIF MARK:2 == 3
-				PRINTFORML 「아……우……」
-				IF TEQUIP:59 == 2
-					PRINTFORML 수영복의 천을 밀어내고 자지를 쑤셔박자, 생기 없는 눈동자에 약간의 의지가 돌아왔다
-				ELSE
-					PRINTFORML 아큐에 보지에 자지를 쑤셔박자, 생기 없는 눈동자에 약간의 의지가 돌아왔다
-				ENDIF
-					PRINTFORML 입구에 벽과 같은것에 부딛혔지만, 그걸 뿌직뿌직 찢으며 안으로 삽입해간다…
-					PRINTFORML 「읏……우우우우웃, 아파, 아, 싫어……싫어어어어어……」
-					PRINTFORML 파과의 고통인지, 아니면 처녀를 빼앗긴 쇼크인지, 아큐는 눈물을 조금 흘렸다
-					PRINTFORMW 아큐의 질은 자지가 잘려나갈 정도로 작고, 꾹 꾹 하고 강하게 조여오고 있다…
-			;그 외
+;初めて
+IF CFLAG:9020 == 0
+	;処女
+	IF TALENT:0 == 1
+		;음란か연모で反発不快合計が500以上
+		IF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) >= 500
+			PRINTFORML 「자, 잠깐만 기다려 주세요」
+			PRINTFORML 삽입 직전, 풀려 있던 눈동자에 머뭇거리는 눈빛이 떠오른다
+			PRINTFORML 「처음인데 이런건……싫어요……」
+			PRINTFORML 아큐는 조심스레 속삭이지만, %조사처리(CALLNAME:PLAYER,"는")% 발사 직전의 자지를 계속 훑는다…
+			PRINTFORML 「아, 핫……우우, 그, 보통으로 하는건, 괜찮으니까……앗, 에, 우아앗……!?」
+			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 참을수 없게 되어 아큐의 말을 끊고 자지를 질 안에 쑤셔박았다…
+		;음란か연모で反発不快合計500以下
+		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) < 500
+				PRINTFORML 「아하……드디어, 하나가 되는 거에요……. 좋아요, ……와 주세요…………」
+			IF TEQUIP:59 == 2
+				PRINTFORML 아큐의 몸에 밀착해, 수영복의 천을 밀어내고 자지를 질내로 삽입했다
 			ELSE
-				IF TEQUIP:59 == 2
-					PRINTFORML 수영복의 천을 밀어내고, 자지를 성기에 문지르자 아큐의 안색이 바뀌었다
-				ELSE
-					PRINTFORML 자지를 성기에 문지르자, 아큐의 안색이 바뀌었다
-				ENDIF
-					PRINTFORML 「앗, 저기, 저 아직 숫쳐녀예요…! 손이나 입이라면 얼마든지 해 드릴테니까, 거긴, 제발……!」
-					PRINTFORML 아큐의 얼굴은 공포에 질려 활짝 열린 두 다리가 부들부들 떨고 있다
-					PRINTFORMW 필사적으로 용서를 구하는 목소리를 흘려 들으며, 쑤걱 하고 자지를 질내에 쑤셔박았다…
+				PRINTFORML 아큐의 몸에 밀착해, 자지를 질내로 삽입했다
 			ENDIF
-		;非処女
+				PRINTFORMW 도중에 걸리는 느낌이 있었지만, 약간의 저항을 꿰뚫자 따뜻한 질에 녹을것 같았다…
+		ELSEIF MARK:2 == 3
+			PRINTFORML 「아……우……」
+			IF TEQUIP:59 == 2
+				PRINTFORML 수영복의 천을 밀어내고 자지를 쑤셔박자, 생기 없는 눈동자에 약간의 의지가 돌아왔다
+			ELSE
+				PRINTFORML 아큐에 보지에 자지를 쑤셔박자, 생기 없는 눈동자에 약간의 의지가 돌아왔다
+			ENDIF
+				PRINTFORML 입구에 벽과 같은것에 부딛혔지만, 그걸 뿌직뿌직 찢으며 안으로 삽입해간다…
+				PRINTFORML 「읏……우우우우웃, 아파, 아, 싫어……싫어어어어어……」
+				PRINTFORML 파과의 고통인지, 아니면 처녀를 빼앗긴 쇼크인지, 아큐는 눈물을 조금 흘렸다
+				PRINTFORMW 아큐의 질은 자지가 잘려나갈 정도로 작고, 꾹 꾹 하고 강하게 조여오고 있다…
+		;그 외
 		ELSE
-			;음란
-			IF TALENT:170 == 1 || TALENT:150 == 1
-				PRINTFORML 「%CALLNAME:PLAYER%의 자지……이렇게 커졌네요……. 제대로 들어가면, 좋겠지만……」
-				PRINTFORML 아큐의 몸을 위로 향하자 서로의 몸을 자세하 관찰할수 있게 되었다
-				PRINTFORML 귀두를 균열에 눌러, 꾹꾹 힘을주어 삽입해 간다
-				PRINTFORML 「아, 크, 핫……! 응, 좋아요, 좀 더 세게 해도……응, 크, 으으읏……아, 들어와아……」
-				PRINTFORMW 아큐의 체형으로는 끝까지 넣어도 자지가 남는다, 아큐는 어쩐지 멍하게 보고 있다…
-			;그 외
+			IF TEQUIP:59 == 2
+				PRINTFORML 수영복의 천을 밀어내고, 자지를 성기에 문지르자 아큐의 안색이 바뀌었다
 			ELSE
-				PRINTFORML 아큐의 몸을 위로 향하게 하고, 아직 열리지 않은 균열의 안으로 넣었다…
-				PRINTFORML 「하, 우, 우, 웃……! 괴로워요옷……!」
-				PRINTFORMW 아큐는 얼굴을 손으로 가리고, 고통의 눈물을 흘리고 있다…
+				PRINTFORML 자지를 성기에 문지르자, 아큐의 안색이 바뀌었다
 			ENDIF
+				PRINTFORML 「앗, 저기, 저 아직 숫쳐녀예요…! 손이나 입이라면 얼마든지 해 드릴테니까, 거긴, 제발……!」
+				PRINTFORML 아큐의 얼굴은 공포에 질려 활짝 열린 두 다리가 부들부들 떨고 있다
+				PRINTFORMW 필사적으로 용서를 구하는 목소리를 흘려 들으며, 쑤걱 하고 자지를 질내에 쑤셔박았다…
 		ENDIF
-		CFLAG:9020 = 1
-		RETURN 0
-	;二回目以降
+	;非処女
 	ELSE
 		;음란
-		IF TALENT:170 == 1 && (CFLAG:9020 <= 5 || FLAG:11 == 2)
-			IF RAND:3 == 0
-				PRINTFORML 질의 천장을 비비듯 자지를 움직이자, 아큐는 침을 흘리며 늘어져 간다…
-				PRINTFORMW 「앗, 응아앗……핫, 하아……이런건, 너무해요오……」
-			ELSEIF RAND:2 == 0
-				PRINTFORML 아큐의 양 다리를 새우처럼 말아, 전력으로 허리를 움직인다…
-				PRINTFORMW 「핫, 하앗, 격력하게 당해서, 또 바로 가버려엇……응, 으응응!!」
-			ELSE
-				PRINTFORML 「으으응, 대단해, 끝의 끝까지 자지가 문질러져욧……!」
-				PRINTFORMW 아큐의 안은 부드러운 살과 애액으로 꽉 차있, 극상의 꿀단지의 맛 이었다…
-			ENDIF
-			CFLAG:9020 = 6
-		;굴복각인Lv3＋V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9020 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「아, 아, 아, 우아……?」
-			PRINTFORMW 찌를때 마다 안이 애액으로 젖자, 아큐의 눈이 놀라움을 띤다…
-			CFLAG:9020 = 5
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9020 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「아, 우, 우, 우……」
-			PRINTFORMW 아큐는 저항할 힘을 잃고, 범해지고 있다…
-			CFLAG:9020 = 4
-		;V感覚Lv3
-		ELSEIF ABL:1 >= 3 && (CFLAG:9020 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「앗, 큭, 이런걸론, 느끼지 않습니다……!」
-			PRINTFORMW 자궁 입구를 두드릴때마다, 아큐는 쾌감에 어금니를 물었다…
-			CFLAG:9020 = 3
+		IF TALENT:170 == 1 || TALENT:150 == 1
+			PRINTFORML 「%CALLNAME:PLAYER%의 자지……이렇게 커졌네요……. 제대로 들어가면, 좋겠지만……」
+			PRINTFORML 아큐의 몸을 위로 향하자 서로의 몸을 자세하 관찰할수 있게 되었다
+			PRINTFORML 귀두를 균열에 눌러, 꾹꾹 힘을주어 삽입해 간다
+			PRINTFORML 「아, 크, 핫……! 응, 좋아요, 좀 더 세게 해도……응, 크, 으으읏……아, 들어와아……」
+			PRINTFORMW 아큐의 체형으로는 끝까지 넣어도 자지가 남는다, 아큐는 어쩐지 멍하게 보고 있다…
 		;그 외
-		ELSEIF CFLAG:9020 <= 1 || FLAG:11 == 2
-			PRINTFORML 「싫어요, 빼, 빼 주세요옷」
-			PRINTFORMW 아큐는 위에서 오는 몸을 밀쳐내려 하지만 움직임은 멈추지 않았다…
-			CFLAG:9020 = 2
+		ELSE
+			PRINTFORML 아큐의 몸을 위로 향하게 하고, 아직 열리지 않은 균열의 안으로 넣었다…
+			PRINTFORML 「하, 우, 우, 웃……! 괴로워요옷……!」
+			PRINTFORMW 아큐는 얼굴을 손으로 가리고, 고통의 눈물을 흘리고 있다…
 		ENDIF
-		RETURN 0
+	ENDIF
+	CFLAG:9020 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9020 <= 5 || FLAG:11 == 2)
+		IF RAND:3 == 0
+			PRINTFORML 질의 천장을 비비듯 자지를 움직이자, 아큐는 침을 흘리며 늘어져 간다…
+			PRINTFORMW 「앗, 응아앗……핫, 하아……이런건, 너무해요오……」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 아큐의 양 다리를 새우처럼 말아, 전력으로 허리를 움직인다…
+			PRINTFORMW 「핫, 하앗, 격력하게 당해서, 또 바로 가버려엇……응, 으응응!!」
+		ELSE
+			PRINTFORML 「으으응, 대단해, 끝의 끝까지 자지가 문질러져욧……!」
+			PRINTFORMW 아큐의 안은 부드러운 살과 애액으로 꽉 차있, 극상의 꿀단지의 맛 이었다…
+		ENDIF
+		CFLAG:9020 = 6
+	;굴복각인Lv3＋V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9020 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「아, 아, 아, 우아……?」
+		PRINTFORMW 찌를때 마다 안이 애액으로 젖자, 아큐의 눈이 놀라움을 띤다…
+		CFLAG:9020 = 5
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9020 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「아, 우, 우, 우……」
+		PRINTFORMW 아큐는 저항할 힘을 잃고, 범해지고 있다…
+		CFLAG:9020 = 4
+	;V感覚Lv3
+	ELSEIF ABL:1 >= 3 && (CFLAG:9020 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「앗, 큭, 이런걸론, 느끼지 않습니다……!」
+		PRINTFORMW 자궁 입구를 두드릴때마다, 아큐는 쾌감에 어금니를 물었다…
+		CFLAG:9020 = 3
+	;그 외
+	ELSEIF CFLAG:9020 <= 1 || FLAG:11 == 2
+		PRINTFORML 「싫어요, 빼, 빼 주세요옷」
+		PRINTFORMW 아큐는 위에서 오는 몸을 밀쳐내려 하지만 움직임은 멈추지 않았다…
+		CFLAG:9020 = 2
 	ENDIF
 ENDIF
 
@@ -2029,99 +1963,95 @@ ENDIF
 ;後背位 CFLAG:9021
 ;-------------------------------------------------
 @K48_MESSAGE_COM_21
-IF SELECTCOM == 21
-	;初めて
-	IF CFLAG:9021 == 0
-		;処女
-		IF TALENT:0 == 1
-			;음란か연모で反発不快合計が500以上
-			IF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) >= 500
-				PRINTFORML 「자, 잠깐 기다려 주세요……」
-				PRINTFORML 처녀를 잃기 직전이 되자, 아큐의 눈에 희미한 빛이 들어왔다
-				PRINTFORML 「처, 처음으로 이렇게 하는건……싫어요……」
-				PRINTFORML 약하게 거절 하지만 끓어오르는 욕망엔 반항할수 없다. 문질문질 입구 근처를 문지를 때마다, 아큐의 어깨가 떨렸다
-				PRINTFORMW 「아, 우우……펴, 평범하게 해도 안되니까……펴, 평범하게 해도 안되니까……에, 크윽……!?」
-			;음란
-			ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && A < 500
-					PRINTFORML 「앗……네……. 부디, 아큐의 처녀를 뒤로 범해 주세요……」
-				IF TEQUIP:59 == 2
-					PRINTFORML 아큐는 엎드린 자세로 스스로 수영복의 천을 치우고 성기를 열어 기다린다
-				ELSE
-					PRINTFORML 아큐는 엎드린 자세로 스스로 성기를 열어 기다린다
-				ENDIF
-					PRINTFORML 쭈욱 넓혀진 비순에서 기대로 떠는 것 처럼 꿀이 흘러 넘친다
-					PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 부드러운 육호에 자신의 자지를 넣어간다…
-			ELSEIF MARK:2 == 3
-				IF TEQUIP:59 == 2
-					PRINTFORML 엎드려 있는 아큐의 엉덩이를 양손으로 고정하고, 수영복을 치우고 쯔컥쯔컥 자지를 묻어간다…
-				ELSE
-					PRINTFORML 엎드려 있는 아큐의 엉덩이를 양손으로 고정하고, 쯔컥쯔컥 자지를 묻어간다…
-				ENDIF
-					PRINTFORML 「우……웃, 우우웃, 드, 들, 어오고……드, 들, 어오고……」
-					PRINTFORMW 도중에 처녀막을 찢자, 무표정했던 아큐가 공포의 색을 띄운다
-			;그 외
+;初めて
+IF CFLAG:9021 == 0
+	;処女
+	IF TALENT:0 == 1
+		;음란か연모で反発不快合計が500以上
+		IF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) >= 500
+			PRINTFORML 「자, 잠깐 기다려 주세요……」
+			PRINTFORML 처녀를 잃기 직전이 되자, 아큐의 눈에 희미한 빛이 들어왔다
+			PRINTFORML 「처, 처음으로 이렇게 하는건……싫어요……」
+			PRINTFORML 약하게 거절 하지만 끓어오르는 욕망엔 반항할수 없다. 문질문질 입구 근처를 문지를 때마다, 아큐의 어깨가 떨렸다
+			PRINTFORMW 「아, 우우……펴, 평범하게 해도 안되니까……펴, 평범하게 해도 안되니까……에, 크윽……!?」
+		;음란
+		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && A < 500
+				PRINTFORML 「앗……네……. 부디, 아큐의 처녀를 뒤로 범해 주세요……」
+			IF TEQUIP:59 == 2
+				PRINTFORML 아큐는 엎드린 자세로 스스로 수영복의 천을 치우고 성기를 열어 기다린다
 			ELSE
-				IF TEQUIP:59 == 2
-					PRINTFORML 아큐의 머리를 지면에 누르고, 수영복을 치워 자지를 밀어 넣었다
-				ELSE
-					PRINTFORML 아큐의 머리를 지면에 누르고, 비소에 자지를 밀어넣었다
-				ENDIF
-					PRINTFORML 「힉!? 빼, 빼줘, 빼줘어어어엇!!」
-					PRINTFORML 머리카락을 흐트러뜨리며 울어서, 엉덩이를 손바닥으로 때린다
-					PRINTFORML 몇 번이나 고통을 가하자, 단념하고 엉덩이를 높이 치켜들었다
-					PRINTFORMW 「웃……훌쩍……너무해, 이런건, 지금까지 아무에게도 당한적 없었는데……우아아앙……」
+				PRINTFORML 아큐는 엎드린 자세로 스스로 성기를 열어 기다린다
 			ENDIF
-		;非処女
+				PRINTFORML 쭈욱 넓혀진 비순에서 기대로 떠는 것 처럼 꿀이 흘러 넘친다
+				PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 부드러운 육호에 자신의 자지를 넣어간다…
+		ELSEIF MARK:2 == 3
+			IF TEQUIP:59 == 2
+				PRINTFORML 엎드려 있는 아큐의 엉덩이를 양손으로 고정하고, 수영복을 치우고 쯔컥쯔컥 자지를 묻어간다…
+			ELSE
+				PRINTFORML 엎드려 있는 아큐의 엉덩이를 양손으로 고정하고, 쯔컥쯔컥 자지를 묻어간다…
+			ENDIF
+				PRINTFORML 「우……웃, 우우웃, 드, 들, 어오고……드, 들, 어오고……」
+				PRINTFORMW 도중에 처녀막을 찢자, 무표정했던 아큐가 공포의 색을 띄운다
+		;그 외
 		ELSE
-			;음란
-			IF TALENT:170 == 1 || TALENT:150 == 1
-				PRINTFORML 「으응……두근거리네요, 이 자세……」
-				PRINTFORML 엎드려서 내민 엉덩이 사이로 보지가 원하는 듯 침을 흘린다
-				PRINTFORML 찌꺽 하고 입구에 귀두를 가져다 대자, 그대로 단숨에 가장 깊은곳 까지 찔러넣었다
-				PRINTFORMW 「……읏! 아, 하아앗, 크으으으응♪ %CALLNAME:PLAYER%의 자지가 들어왔어요……」
-			;그 외
+			IF TEQUIP:59 == 2
+				PRINTFORML 아큐의 머리를 지면에 누르고, 수영복을 치워 자지를 밀어 넣었다
 			ELSE
-				PRINTFORML 아큐의 몸을 돌려, 허리를 높이 올리게 해서 삽입했다…
-				PRINTFORML 「우, 크윽……그만, 안까지 넣지 말아줘……!」
-				PRINTFORMW 자지는 소녀의 몸 속 깊은곳에 파묻혀 자궁구를 두드렸다…
+				PRINTFORML 아큐의 머리를 지면에 누르고, 비소에 자지를 밀어넣었다
 			ENDIF
+				PRINTFORML 「힉!? 빼, 빼줘, 빼줘어어어엇!!」
+				PRINTFORML 머리카락을 흐트러뜨리며 울어서, 엉덩이를 손바닥으로 때린다
+				PRINTFORML 몇 번이나 고통을 가하자, 단념하고 엉덩이를 높이 치켜들었다
+				PRINTFORMW 「웃……훌쩍……너무해, 이런건, 지금까지 아무에게도 당한적 없었는데……우아아앙……」
 		ENDIF
-		CFLAG:9021 = 1
-		RETURN 0
-	;二回目以降
+	;非処女
 	ELSE
 		;음란
-		IF TALENT:170 == 1 && (CFLAG:9021 <= 5 || FLAG:11 == 2)
-			IF RAND:2 == 0
-				PRINTFORML 자지를 뺐다가 넣을때 마다 아큐의 엉덩이와 골반이 서로 부딪친다…
-				PRINTFORMW 「후읏, 응읏, 좀 더 깊은곳까지, 넣어줘요! 제일, 깊은곳이 아니면 안 돼요……앗, 앗, 앗 !」
-			ELSE
-				PRINTFORML 「하아, 후우, 으응, 키하앗……」
-				PRINTFORMW 그렇지 않아도 좁은 장내가 찌를때마다 꼭 죄어, 젖자를 짜내려 한다…
-			ENDIF
-			CFLAG:9021 = 6
-		;굴복각인Lv3＋V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9021 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「앗, 웃, 앗, 아앙, 안까지 닿아……」
-			PRINTFORMW 아큐는 후배위로 범해지면서 달콤한 소리를 낸다…
-			CFLAG:9021 = 5
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9021 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「응……흐웃……」
-			PRINTFORMW 아큐는 리듬에 맞춰 괴로운듯이 숨을 쉰다…
-			CFLAG:9021 = 4
-		;V感覚Lv3
-		ELSEIF ABL:1 >= 3 && (CFLAG:9021 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「싫엇, 느끼고 싶지 않아, 느끼고 싶지 않은데……」
-			PRINTFORMW 아큐의 의사에 반하는 질은 자지를 강하게 죈다…
-			CFLAG:9021 = 3
+		IF TALENT:170 == 1 || TALENT:150 == 1
+			PRINTFORML 「으응……두근거리네요, 이 자세……」
+			PRINTFORML 엎드려서 내민 엉덩이 사이로 보지가 원하는 듯 침을 흘린다
+			PRINTFORML 찌꺽 하고 입구에 귀두를 가져다 대자, 그대로 단숨에 가장 깊은곳 까지 찔러넣었다
+			PRINTFORMW 「……읏! 아, 하아앗, 크으으으응♪ %CALLNAME:PLAYER%의 자지가 들어왔어요……」
 		;그 외
-		ELSEIF CFLAG:9021 <= 1 || FLAG:11 == 2
-			PRINTFORML 얌전해진 소녀의 질에 자지를 삽입해, 몇 번이고 몇 번이고 꿰뚫는다…
-			PRINTFORMW 「죄송해요, 죄송해요……우, 아아앗……」
-			CFLAG:9021 = 2
+		ELSE
+			PRINTFORML 아큐의 몸을 돌려, 허리를 높이 올리게 해서 삽입했다…
+			PRINTFORML 「우, 크윽……그만, 안까지 넣지 말아줘……!」
+			PRINTFORMW 자지는 소녀의 몸 속 깊은곳에 파묻혀 자궁구를 두드렸다…
 		ENDIF
-		RETURN 0
+	ENDIF
+	CFLAG:9021 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9021 <= 5 || FLAG:11 == 2)
+		IF RAND:2 == 0
+			PRINTFORML 자지를 뺐다가 넣을때 마다 아큐의 엉덩이와 골반이 서로 부딪친다…
+			PRINTFORMW 「후읏, 응읏, 좀 더 깊은곳까지, 넣어줘요! 제일, 깊은곳이 아니면 안 돼요……앗, 앗, 앗 !」
+		ELSE
+			PRINTFORML 「하아, 후우, 으응, 키하앗……」
+			PRINTFORMW 그렇지 않아도 좁은 장내가 찌를때마다 꼭 죄어, 젖자를 짜내려 한다…
+		ENDIF
+		CFLAG:9021 = 6
+	;굴복각인Lv3＋V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9021 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「앗, 웃, 앗, 아앙, 안까지 닿아……」
+		PRINTFORMW 아큐는 후배위로 범해지면서 달콤한 소리를 낸다…
+		CFLAG:9021 = 5
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9021 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「응……흐웃……」
+		PRINTFORMW 아큐는 리듬에 맞춰 괴로운듯이 숨을 쉰다…
+		CFLAG:9021 = 4
+	;V感覚Lv3
+	ELSEIF ABL:1 >= 3 && (CFLAG:9021 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「싫엇, 느끼고 싶지 않아, 느끼고 싶지 않은데……」
+		PRINTFORMW 아큐의 의사에 반하는 질은 자지를 강하게 죈다…
+		CFLAG:9021 = 3
+	;그 외
+	ELSEIF CFLAG:9021 <= 1 || FLAG:11 == 2
+		PRINTFORML 얌전해진 소녀의 질에 자지를 삽입해, 몇 번이고 몇 번이고 꿰뚫는다…
+		PRINTFORMW 「죄송해요, 죄송해요……우, 아아앗……」
+		CFLAG:9021 = 2
 	ENDIF
 ENDIF
 
@@ -2129,52 +2059,48 @@ ENDIF
 ;対面座位 CFLAG:9022
 ;-------------------------------------------------
 @K48_MESSAGE_COM_22
-IF SELECTCOM == 22
-	;初めて
-	IF CFLAG:9022 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 「그럼, 허리, 내릴게요……. 으긋, 으앗, 오고 있어……」
-			PRINTFORML 아큐는 %조사처리(CALLNAME:PLAYER,"과")% 서로 껴안고, 천천히 서로 성기를 접합한다…
-			PRINTFORMW 「읏……자아, 질퍽질퍽하고 야한 소리, 나고 있어요……」
-		;그 외
-		ELSE
-			PRINTFORML 「얼굴, 가깝다니깐요……으우……」
-			PRINTFORML 아큐에게 허리를 내리게 하고, 페니스를 어린 성기에 넣어간다…
-			PRINTFORMW 「들어왔, 어요……앗, 으훗……」
-		ENDIF
-		CFLAG:9022 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9022 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 「그럼, 허리, 내릴게요……. 으긋, 으앗, 오고 있어……」
+		PRINTFORML 아큐는 %조사처리(CALLNAME:PLAYER,"과")% 서로 껴안고, 천천히 서로 성기를 접합한다…
+		PRINTFORMW 「읏……자아, 질퍽질퍽하고 야한 소리, 나고 있어요……」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9022 <= 4 || FLAG:11 == 2)
-			IF RAND:3 == 0
-			PRINTFORML 아큐의 가슴을 애무하자, 꿀단지가 한층 더 강하게 조여온다…
-			PRINTFORMW 「앙, 동시에 만지는건 안 돼앳, 안되는데……」
-			ELSEIF RAND:2 == 0
-			PRINTFORML 아큐는 삽입한 그대로의 자세로, 적극적으로 혀를 얽혀오고 있다…
-			PRINTFORML 「응……츄르……후앗, 으훗……」
-			ELSE
-			PRINTFORML %CALLNAME:PLAYER%의 피스톤질에 맞춰, 아큐의 허리가 격렬하게 부딪혀 온다…
-			PRINTFORML 「으앗, 좋앗, 좋앗, 좋앗, 좋아욧, 후그으으읏!」
-			ENDIF
-			CFLAG:9022 = 5
-		;굴복각인Lv3＋V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9022 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「부탁이야, 떼놓지 말아줘……앙, 읏, 으읏……」
-			PRINTFORMW 아큐의 몸을 꽉 껴안고 피스톤질을 하면, 관능의 비명이 울렸다…
-			CFLAG:9022 = 4
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9022 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「응, 츕……푸핫, 아, 앗 앗」
-			CFLAG:9022 = 3
-		;그 외
-		ELSEIF CFLAG:9022 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「찌걱찌걱하고, 안으로 밀려오고 있어요……」
-			CFLAG:9022 = 2
+		PRINTFORML 「얼굴, 가깝다니깐요……으우……」
+		PRINTFORML 아큐에게 허리를 내리게 하고, 페니스를 어린 성기에 넣어간다…
+		PRINTFORMW 「들어왔, 어요……앗, 으훗……」
+	ENDIF
+	CFLAG:9022 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9022 <= 4 || FLAG:11 == 2)
+		IF RAND:3 == 0
+		PRINTFORML 아큐의 가슴을 애무하자, 꿀단지가 한층 더 강하게 조여온다…
+		PRINTFORMW 「앙, 동시에 만지는건 안 돼앳, 안되는데……」
+		ELSEIF RAND:2 == 0
+		PRINTFORML 아큐는 삽입한 그대로의 자세로, 적극적으로 혀를 얽혀오고 있다…
+		PRINTFORML 「응……츄르……후앗, 으훗……」
+		ELSE
+		PRINTFORML %CALLNAME:PLAYER%의 피스톤질에 맞춰, 아큐의 허리가 격렬하게 부딪혀 온다…
+		PRINTFORML 「으앗, 좋앗, 좋앗, 좋앗, 좋아욧, 후그으으읏!」
 		ENDIF
-		RETURN 0
+		CFLAG:9022 = 5
+	;굴복각인Lv3＋V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9022 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「부탁이야, 떼놓지 말아줘……앙, 읏, 으읏……」
+		PRINTFORMW 아큐의 몸을 꽉 껴안고 피스톤질을 하면, 관능의 비명이 울렸다…
+		CFLAG:9022 = 4
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9022 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「응, 츕……푸핫, 아, 앗 앗」
+		CFLAG:9022 = 3
+	;그 외
+	ELSEIF CFLAG:9022 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「찌걱찌걱하고, 안으로 밀려오고 있어요……」
+		CFLAG:9022 = 2
 	ENDIF
 ENDIF
 
@@ -2184,97 +2110,90 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_23
 ;背面座位
-IF SELECTCOM == 23
-	;初めて
-	IF CFLAG:9023 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 「하, 아, 우, 긋, 다리, 부들부들, 해버려어」
-			PRINTFORMW 허리를 움직일 때마다 체액이 뚝뚝 떨어져, 웅덩이를 만들었다…
-		;그 외
-		ELSE
-			PRINTFORML %조사처리(CALLNAME:PLAYER,"는")% 아큐를 무릎에 앉게하고, 움켜쥐어서 비소 안으로 파고 들었다…
-			PRINTFORMW 「하, 아, 훗………! 안에, 닿고 있어……」
-		ENDIF
-		CFLAG:9023 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9023 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 「하, 아, 우, 긋, 다리, 부들부들, 해버려어」
+		PRINTFORMW 허리를 움직일 때마다 체액이 뚝뚝 떨어져, 웅덩이를 만들었다…
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9023 <= 4 || FLAG:11 == 2)
-			IF RAND:3 == 0
-				PRINTFORML 「앗, 크힛, 아깃, 부들부들, 해버린다니깐요」
-				PRINTFORMW 허리를 움직일 때마다 체액이 뚝뚝 떨어져, 웅덩이를 만들었다…
-			ELSEIF RAND:2 == 0
-				PRINTFORML 「아웃, 후, 우우웃……사, 상냥하게 해주시면, 이상하게 돼버려요……」
-				PRINTFORMW 아큐의 자그마한 몸을 무릎에 얹고 천천히 교접했다…
-			ELSE
-				PRINTFORML 「앗 앗 앗 앗 앗, 잠깐, 조금 천천히……바보, 바보가 돼버릴 것, 후우웅」
-				PRINTFORMW 아큐의 자그마한 몸을 뒤에서 껴안고, 몇 번이나 허리를 흔들어 댔다…
-			ENDIF
-			CFLAG:9023 = 5
-		;굴복각인Lv3＋V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9023 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「읏, 읏, 읏, 으우우웃……너무, 강하게 하지마……」
-			PRINTFORMW 부드러운 엉덩이의 탄력을 맛보면서 천천히 페니스를 움직인다…
-			CFLAG:9023 = 4
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9023 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「앗……햔대, 레……」
-			PRINTFORMW 얌전해진 아큐의 입 안에 손가락을 넣고 놀았다…
-			CFLAG:9023 = 3
-		;그 외
-		ELSEIF CFLAG:9023 <= 1 || FLAG:11 == 2
-			PRINTFORML 「믓, 응, 으ー읏, 으우웃ーー!」
-			PRINTFORMW 아큐의 입을 막아, 흐트러진 절규를 들으면서 허리를 움직였다…
-			CFLAG:9023 = 2
+		PRINTFORML %조사처리(CALLNAME:PLAYER,"는")% 아큐를 무릎에 앉게하고, 움켜쥐어서 비소 안으로 파고 들었다…
+		PRINTFORMW 「하, 아, 훗………! 안에, 닿고 있어……」
+	ENDIF
+	CFLAG:9023 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9023 <= 4 || FLAG:11 == 2)
+		IF RAND:3 == 0
+			PRINTFORML 「앗, 크힛, 아깃, 부들부들, 해버린다니깐요」
+			PRINTFORMW 허리를 움직일 때마다 체액이 뚝뚝 떨어져, 웅덩이를 만들었다…
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「아웃, 후, 우우웃……사, 상냥하게 해주시면, 이상하게 돼버려요……」
+			PRINTFORMW 아큐의 자그마한 몸을 무릎에 얹고 천천히 교접했다…
+		ELSE
+			PRINTFORML 「앗 앗 앗 앗 앗, 잠깐, 조금 천천히……바보, 바보가 돼버릴 것, 후우웅」
+			PRINTFORMW 아큐의 자그마한 몸을 뒤에서 껴안고, 몇 번이나 허리를 흔들어 댔다…
 		ENDIF
-		RETURN 0
+		CFLAG:9023 = 5
+	;굴복각인Lv3＋V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9023 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「읏, 읏, 읏, 으우우웃……너무, 강하게 하지마……」
+		PRINTFORMW 부드러운 엉덩이의 탄력을 맛보면서 천천히 페니스를 움직인다…
+		CFLAG:9023 = 4
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9023 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「앗……햔대, 레……」
+		PRINTFORMW 얌전해진 아큐의 입 안에 손가락을 넣고 놀았다…
+		CFLAG:9023 = 3
+	;그 외
+	ELSEIF CFLAG:9023 <= 1 || FLAG:11 == 2
+		PRINTFORML 「믓, 응, 으ー읏, 으우웃ーー!」
+		PRINTFORMW 아큐의 입을 막아, 흐트러진 절규를 들으면서 허리를 움직였다…
+		CFLAG:9023 = 2
 	ENDIF
 ENDIF
+
 ;乱れ牡丹
 @K48_MESSAGE_COM_612
-IF SELECTCOM == 612
-	;初めて
-	IF CFLAG:9612 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORMW 「앗……굉장해애, 안까지, 자지가 닿고 있어…」
-			;그 외
-		ELSE
-			PRINTFORML 「엣, 거짓말, 농담은 그만둬 주세요!」
-			PRINTFORMW 아큐는 다리를 벌리고 페니스를 받아 들이고 있는 자신의 모습을 보고 치욕을 느끼고 있다…
-		ENDIF
-		CFLAG:9612 = 1
-		RETURN 0
-	;二回目以降
-	ELSE
-		;음란+露出癖Lv3以上+V感覚Lv3以上
-		IF TALENT:170 == 1 && ABL:14 >= 3 && ABL:1 >= 3 && (CFLAG:9612 <= 5 || FLAG:11 == 2)
-			PRINTFORML 「아하핫, 질척질척하고 부딪히고 있어요……!」
-			PRINTFORMW 아큐는 페니스가 들락이는 곳을 기쁜듯이 보고 있다……
-			CFLAG:9612 = 6
-		;음란
-		ELSEIF TALENT:170 == 1 && (CFLAG:9612 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「아앗, 이거, 음란해요……」
-			PRINTFORMW 아큐는 허리를 흔들고 있는 자신의 치태를 눈으로 보고 있다…
-			CFLAG:9612 = 5
-		;굴복각인Lv3+露出癖Lv3以上+V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && ABL:14 >= 3 && (CFLAG:9612 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「어째서……머리 안이, 둥실해요……햐앙」
-			PRINTFORMW 아큐는 자신의 흐트러진 모습을 보고 흥분하고 있다…
-			CFLAG:9612 = 4
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9612 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「아, 우……뻐끔뻐끔……」
-			PRINTFORMW 결합부에서는 %조사처리(CALLNAME:PLAYER,"과")% 아큐의 체액이 섞여 백탁하게 되서 떨어지고 있다…
-			CFLAG:9612 = 3
+;初めて
+IF CFLAG:9612 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORMW 「앗……굉장해애, 안까지, 자지가 닿고 있어…」
 		;그 외
-		ELSEIF CFLAG:9612 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「이런 거, 놀림거리잖아요……!」
-			CFLAG:9612 = 2
-		ENDIF
-		RETURN 0
+	ELSE
+		PRINTFORML 「엣, 거짓말, 농담은 그만둬 주세요!」
+		PRINTFORMW 아큐는 다리를 벌리고 페니스를 받아 들이고 있는 자신의 모습을 보고 치욕을 느끼고 있다…
+	ENDIF
+	CFLAG:9612 = 1
+;二回目以降
+ELSE
+	;음란+露出癖Lv3以上+V感覚Lv3以上
+	IF TALENT:170 == 1 && ABL:14 >= 3 && ABL:1 >= 3 && (CFLAG:9612 <= 5 || FLAG:11 == 2)
+		PRINTFORML 「아하핫, 질척질척하고 부딪히고 있어요……!」
+		PRINTFORMW 아큐는 페니스가 들락이는 곳을 기쁜듯이 보고 있다……
+		CFLAG:9612 = 6
+	;음란
+	ELSEIF TALENT:170 == 1 && (CFLAG:9612 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「아앗, 이거, 음란해요……」
+		PRINTFORMW 아큐는 허리를 흔들고 있는 자신의 치태를 눈으로 보고 있다…
+		CFLAG:9612 = 5
+	;굴복각인Lv3+露出癖Lv3以上+V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:1 >= 3 && ABL:14 >= 3 && (CFLAG:9612 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「어째서……머리 안이, 둥실해요……햐앙」
+		PRINTFORMW 아큐는 자신의 흐트러진 모습을 보고 흥분하고 있다…
+		CFLAG:9612 = 4
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9612 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「아, 우……뻐끔뻐끔……」
+		PRINTFORMW 결합부에서는 %조사처리(CALLNAME:PLAYER,"과")% 아큐의 체액이 섞여 백탁하게 되서 떨어지고 있다…
+		CFLAG:9612 = 3
+	;그 외
+	ELSEIF CFLAG:9612 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「이런 거, 놀림거리잖아요……!」
+		CFLAG:9612 = 2
 	ENDIF
 ENDIF
 
@@ -2282,86 +2201,82 @@ ENDIF
 ;騎乗位 CFLAG:9024
 ;-------------------------------------------------
 @K48_MESSAGE_COM_24
-IF SELECTCOM == 24
-	;初めて
-	IF CFLAG:9024 == 0
-		;処女
-		IF TALENT:0 == 1
-			;음란・연모だが反発つき
-			IF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) >= 500
-				PRINTFORML 「자, 잠깐 기다려 주세요……」
-				PRINTFORML 처녀를 빼앗기기 전에, 아큐의 눈에 희미하게 빛이 돌아왔다
-				PRINTFORML 「처, 첫 경험이 이 상황인건 조금……싫어요……」
-				PRINTFORML 약하게 거절하곤 있지만, 솟아오르는 욕망을 억누를 순 없다. 미끈미끈하고 입구 주변을 비빌 때 마다, 아큐의 어깨가 떨렸다
-				PRINTFORMW 「아, 우우……펴, 평범하게 해도 상관 없으니……앗……에, 크읏……!?」
-			;음란・연모で反発なし
-			ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) < 500
-				PRINTFORML 「쿡, 여기서라면 %CALLNAME:PLAYER%의 얼굴이 잘 보여요……」
-				PRINTFORML 아큐는 심술궃게 입술을 비틀고, %CALLNAME:PLAYER%의 위에 앉는다…
-				PRINTFORMW 「잔뜩, 제 안에서 기분 좋아져 주세요♪ 응, 으으응……아, 하아앗……」
-			;그 외
-			ELSE
-				PRINTFORML 스스로 삽입하라고 명했지만, 용서를 빌며 울고 있기만 해 진행이 되지 않는다
-				PRINTFORML 이대로는 죽도 밥도 안되므로, %조사처리(CALLNAME:PLAYER,"는")% 알았다며 고개를 끄덕였다
-				PRINTFORML 「앗……. 아, 알아주신 건가요……앗, 큿……!?」
-				PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 아큐의 가는 허리를 잡고, 있는 힘껏 잡아당겨 삽입을 달성했다
-				PRINTFORMW 중간에 막이 걸렸지만, 단단해진 페니스는 간단히 그것을 찢는다…
-			ENDIF
-		;非処女
-		ELSE
-			;음란・연모
-			IF TALENT:170 == 1 || TALENT:150 == 1
-				PRINTFORML 「에……다음은, 앉는거군요. 알겠습니다……응……」
-				PRINTFORML 아큐는 녹을 것 같이 명령에 따라, %CALLNAME:PLAYER%의 위에 앉는다…
-				PRINTFORML (아……이거, 주변이 잘 보여서 좋을지도……)
-				PRINTFORML 아큐의 비소가 귀두에 닿으면, 삼키는 것도 기다리지 못하고 달라 붙었다…
-				PRINTFORMW 「응…♪ 그럼, 삽입할게요……으응……」
-			;그 외
-			ELSE
-				PRINTFORML 「스, 스스로, 라니……. 아, 알겠습니다, 하면 되잖아요……」
-				PRINTFORML 아큐는 눈물 지으면서 우뚝 솟아있는 페니스를 잡아 위치를 맞춘다
-				PRINTFORMW 그래도 허리를 떨어뜨려, 활활 타오르는 육봉을 받아들여 갔다…
-			ENDIF
-		ENDIF
-		CFLAG:9024 = 1
-		RETURN 0
-	;二回目以降
-	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9024 <= 5 || FLAG:11 == 2)
-			IF RAND:3 == 0
-			PRINTFORML 「응 아아앗, 자지 못 참겠어요……」
-			PRINTFORMW 아큐는 칠칠맞지 못하게 침을 흘리며 계속 허리를 흔든다…
-			ELSEIF RAND:2 == 0
-			PRINTFORML 「후아아앗…… 그렇게 찔러대면, 부서져버려요……!」
-			PRINTFORMW 배 위에서 흐트러지는 소녀의 모습은 매우 선정적이였다…
-			ELSE
-			PRINTFORML 「아핫, 좋은 얼굴……♪ 좀 더 느끼게 해줄께요……응, 햣」
-			PRINTFORMW 아큐는 서로 가장 기분 좋은 장소를 스치듯이 허리를 움직인다…
-			ENDIF
-			CFLAG:9024 = 6
-		;굴복각인Lv3+奉仕精神Lv3以上＋V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:1 >= 3 && (CFLAG:9024 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「아, 왠지……왠지, 좋앗……」
-			PRINTFORMW 체액으로 젖은 육봉을 찌르자, 무의식 중에 움직임을 맞춰왔다…
-			CFLAG:9024 = 5
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9024 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「깊, 어……굉장해……」
-			PRINTFORMW 아큐는 눈초리를 빙글하고 움직이며, 결합의 감각을 맛보고 있다…
-			CFLAG:9024 = 4
-		;V感覚Lv3
-		ELSEIF ABL:1 >= 3 && (CFLAG:9024 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「아, 움직이지 말아줘, 움직이지 말아줘……」
-			PRINTFORMW 부드러운 질내를 휘젓자, 아큐는 견딜 수 없게 되었는지 허덕이며 소리를 내고 있다…
-			CFLAG:9024 = 3
+;初めて
+IF CFLAG:9024 == 0
+	;処女
+	IF TALENT:0 == 1
+		;음란・연모だが反発つき
+		IF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) >= 500
+			PRINTFORML 「자, 잠깐 기다려 주세요……」
+			PRINTFORML 처녀를 빼앗기기 전에, 아큐의 눈에 희미하게 빛이 돌아왔다
+			PRINTFORML 「처, 첫 경험이 이 상황인건 조금……싫어요……」
+			PRINTFORML 약하게 거절하곤 있지만, 솟아오르는 욕망을 억누를 순 없다. 미끈미끈하고 입구 주변을 비빌 때 마다, 아큐의 어깨가 떨렸다
+			PRINTFORMW 「아, 우우……펴, 평범하게 해도 상관 없으니……앗……에, 크읏……!?」
+		;음란・연모で反発なし
+		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (UP:20 + UP:21) < 500
+			PRINTFORML 「쿡, 여기서라면 %CALLNAME:PLAYER%의 얼굴이 잘 보여요……」
+			PRINTFORML 아큐는 심술궃게 입술을 비틀고, %CALLNAME:PLAYER%의 위에 앉는다…
+			PRINTFORMW 「잔뜩, 제 안에서 기분 좋아져 주세요♪ 응, 으으응……아, 하아앗……」
 		;그 외
-		ELSEIF CFLAG:9024 <= 1 || FLAG:11 == 2
-			PRINTFORML 「웃, 크, 훗……!」
-			PRINTFORMW 아큐는 페니스를 받아 들인 것만으로도 힘든 것 같다…
-			CFLAG:9024 = 2
+		ELSE
+			PRINTFORML 스스로 삽입하라고 명했지만, 용서를 빌며 울고 있기만 해 진행이 되지 않는다
+			PRINTFORML 이대로는 죽도 밥도 안되므로, %조사처리(CALLNAME:PLAYER,"는")% 알았다며 고개를 끄덕였다
+			PRINTFORML 「앗……. 아, 알아주신 건가요……앗, 큿……!?」
+			PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 아큐의 가는 허리를 잡고, 있는 힘껏 잡아당겨 삽입을 달성했다
+			PRINTFORMW 중간에 막이 걸렸지만, 단단해진 페니스는 간단히 그것을 찢는다…
 		ENDIF
-		RETURN 0
+	;非処女
+	ELSE
+		;음란・연모
+		IF TALENT:170 == 1 || TALENT:150 == 1
+			PRINTFORML 「에……다음은, 앉는거군요. 알겠습니다……응……」
+			PRINTFORML 아큐는 녹을 것 같이 명령에 따라, %CALLNAME:PLAYER%의 위에 앉는다…
+			PRINTFORML (아……이거, 주변이 잘 보여서 좋을지도……)
+			PRINTFORML 아큐의 비소가 귀두에 닿으면, 삼키는 것도 기다리지 못하고 달라 붙었다…
+			PRINTFORMW 「응…♪ 그럼, 삽입할게요……으응……」
+		;그 외
+		ELSE
+			PRINTFORML 「스, 스스로, 라니……. 아, 알겠습니다, 하면 되잖아요……」
+			PRINTFORML 아큐는 눈물 지으면서 우뚝 솟아있는 페니스를 잡아 위치를 맞춘다
+			PRINTFORMW 그래도 허리를 떨어뜨려, 활활 타오르는 육봉을 받아들여 갔다…
+		ENDIF
+	ENDIF
+	CFLAG:9024 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9024 <= 5 || FLAG:11 == 2)
+		IF RAND:3 == 0
+		PRINTFORML 「응 아아앗, 자지 못 참겠어요……」
+		PRINTFORMW 아큐는 칠칠맞지 못하게 침을 흘리며 계속 허리를 흔든다…
+		ELSEIF RAND:2 == 0
+		PRINTFORML 「후아아앗…… 그렇게 찔러대면, 부서져버려요……!」
+		PRINTFORMW 배 위에서 흐트러지는 소녀의 모습은 매우 선정적이였다…
+		ELSE
+		PRINTFORML 「아핫, 좋은 얼굴……♪ 좀 더 느끼게 해줄께요……응, 햣」
+		PRINTFORMW 아큐는 서로 가장 기분 좋은 장소를 스치듯이 허리를 움직인다…
+		ENDIF
+		CFLAG:9024 = 6
+	;굴복각인Lv3+奉仕精神Lv3以上＋V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:1 >= 3 && (CFLAG:9024 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「아, 왠지……왠지, 좋앗……」
+		PRINTFORMW 체액으로 젖은 육봉을 찌르자, 무의식 중에 움직임을 맞춰왔다…
+		CFLAG:9024 = 5
+	;굴복각인Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9024 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「깊, 어……굉장해……」
+		PRINTFORMW 아큐는 눈초리를 빙글하고 움직이며, 결합의 감각을 맛보고 있다…
+		CFLAG:9024 = 4
+	;V感覚Lv3
+	ELSEIF ABL:1 >= 3 && (CFLAG:9024 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「아, 움직이지 말아줘, 움직이지 말아줘……」
+		PRINTFORMW 부드러운 질내를 휘젓자, 아큐는 견딜 수 없게 되었는지 허덕이며 소리를 내고 있다…
+		CFLAG:9024 = 3
+	;그 외
+	ELSEIF CFLAG:9024 <= 1 || FLAG:11 == 2
+		PRINTFORML 「웃, 크, 훗……!」
+		PRINTFORMW 아큐는 페니스를 받아 들인 것만으로도 힘든 것 같다…
+		CFLAG:9024 = 2
 	ENDIF
 ENDIF
 
@@ -2369,80 +2284,76 @@ ENDIF
 ;背面立位 CFLAG:9028
 ;-------------------------------------------------
 @K48_MESSAGE_COM_28
-IF SELECTCOM == 28
-	;初めて
-	IF CFLAG:9028 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150
-			PRINTFORMW 「손을 뒤에 붙이고 이렇게 하는건가요?」
-			PRINTFORMW 아큐는 기대하면서 %조사처리(CALLNAME:PLAYER,"가")% 명령한 포즈를 취한다
-			IF TEQUIP:59 == 2
-				PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 옆구리를 잡고, 발기 한 페니스를 수영복에 문지른다
-				PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
-				PRINTFORMW 기다릴 수  없는지 애액을 흘려 보내는 아큐의 질에,%조사처리(CALLNAME:PLAYER,"는")% 수영복을 살짝 벗기고 페니스를 삽입했다…
-			ELSE
-				PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그그 옆구리를 잡고, 발기 한 페니스를 야큐의 균열에 문지른다
-				PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
-				PRINTFORMW 기다릴 수  없는지 애액을 흘려 보내는 아큐의 질에,%조사처리(CALLNAME:PLAYER,"는")% 페니스를 삽입했다…
-			ENDIF
-			PRINTFORMW 「하, 아, 훗………! 안에, 닿고 있어……」
-		;그 외
+;初めて
+IF CFLAG:9028 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150
+		PRINTFORMW 「손을 뒤에 붙이고 이렇게 하는건가요?」
+		PRINTFORMW 아큐는 기대하면서 %조사처리(CALLNAME:PLAYER,"가")% 명령한 포즈를 취한다
+		IF TEQUIP:59 == 2
+			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 옆구리를 잡고, 발기 한 페니스를 수영복에 문지른다
+			PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
+			PRINTFORMW 기다릴 수  없는지 애액을 흘려 보내는 아큐의 질에,%조사처리(CALLNAME:PLAYER,"는")% 수영복을 살짝 벗기고 페니스를 삽입했다…
 		ELSE
-			PRINTFORMW 「손을 뒤에 붙이고 이렇게 하는건가요?」
-			PRINTFORMW 아큐는 기대하면서 %조사처리(CALLNAME:PLAYER,"가")% 명령한 포즈를 취한다
-			IF TEQUIP:59 == 2
-				PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 옆구리를 잡고, 발기 한 페니스를 수영복에 문지른다
-				PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
-				PRINTFORMW 건방진 말을 하는 아큐를 가르치기 위해,%조사처리(CALLNAME:PLAYER,"는")% 수영복을 살짝 벗기고 페니스를 삽입했다…
-			ELSE
-				PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 옆구리를 잡고, 발기 한 페니스를 야큐의 균열에 문지른다
-				PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
-				PRINTFORMW 건방진 말을 하는 아큐를 가르치기 위해,%조사처리(CALLNAME:PLAYER,"는")% 페니스를 삽입했다…
-			ENDIF
-			PRINTFORMW 「하, 아, 훗………! 안에, 닿고 있어……」
+			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그그 옆구리를 잡고, 발기 한 페니스를 야큐의 균열에 문지른다
+			PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
+			PRINTFORMW 기다릴 수  없는지 애액을 흘려 보내는 아큐의 질에,%조사처리(CALLNAME:PLAYER,"는")% 페니스를 삽입했다…
 		ENDIF
-		CFLAG:9028 = 1
-		RETURN 0
-	;二回目以降
+		PRINTFORMW 「하, 아, 훗………! 안에, 닿고 있어……」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9028 <= 4 || FLAG:11 == 2)
-			IF RAND:3 == 0
-				IF TEQUIP:52
-					PRINTFORML 아큐의 손을 뒤로 돌려두고 페니스를 찔러 넣는다…
-					PRINTFORML 「후아아앗……그렇게 찔러대면, 부서져버려요……!」
-				ELSE
-					PRINTFORML 아큐의 손을 벽에 대게 하고 페니스를 찔러 넣는다…
-					PRINTFORML 「후아아앗……그렇게 찔러대면, 부서져버려요……!」
-				ENDIF
-			ELSEIF RAND:2 == 0
-				PRINTFORML 「아,……, 응응응」
-				PRINTFORML 아큐는 등을 돌리고 있어 그 표정은 엿볼 수 없다
-				PRINTFORMW 그러나,%조사처리(CALLNAME:PLAYER,"가")% 허리를 크게 튕길때마다 뒷머리카락이 흐트러져 땀이 밴 등에 찰싹 붙은 모양은 충분히 선정적이다.
+		PRINTFORMW 「손을 뒤에 붙이고 이렇게 하는건가요?」
+		PRINTFORMW 아큐는 기대하면서 %조사처리(CALLNAME:PLAYER,"가")% 명령한 포즈를 취한다
+		IF TEQUIP:59 == 2
+			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 옆구리를 잡고, 발기 한 페니스를 수영복에 문지른다
+			PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
+			PRINTFORMW 건방진 말을 하는 아큐를 가르치기 위해,%조사처리(CALLNAME:PLAYER,"는")% 수영복을 살짝 벗기고 페니스를 삽입했다…
+		ELSE
+			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 그 옆구리를 잡고, 발기 한 페니스를 야큐의 균열에 문지른다
+			PRINTFORMW 「웃, 크, 훗… 삽입할 거면……빨리 하세요」
+			PRINTFORMW 건방진 말을 하는 아큐를 가르치기 위해,%조사처리(CALLNAME:PLAYER,"는")% 페니스를 삽입했다…
+		ENDIF
+		PRINTFORMW 「하, 아, 훗………! 안에, 닿고 있어……」
+	ENDIF
+	CFLAG:9028 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9028 <= 4 || FLAG:11 == 2)
+		IF RAND:3 == 0
+			IF TEQUIP:52
+				PRINTFORML 아큐의 손을 뒤로 돌려두고 페니스를 찔러 넣는다…
+				PRINTFORML 「후아아앗……그렇게 찔러대면, 부서져버려요……!」
 			ELSE
-				PRINTFORML 「아, 움직이지 말아줘, 움직이지 말아줘……」
-				PRINTFORML %조사처리(CALLNAME:PLAYER,"가")% 너무나 격렬하게 피스톤 하므로, 아큐의 양 다리가 붕 떠 버린다
-				PRINTFORMW 그러면 한층 더 깊게까지 박히므로, 아큐는 덮쳐 오는 쾌락으로 다리를 붙일 틈이 없다.
+				PRINTFORML 아큐의 손을 벽에 대게 하고 페니스를 찔러 넣는다…
+				PRINTFORML 「후아아앗……그렇게 찔러대면, 부서져버려요……!」
 			ENDIF
-			CFLAG:9028 = 5
-		;굴복각인Lv3＋V感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9028 <= 3 || FLAG:11 == 2)
+		ELSEIF RAND:2 == 0
 			PRINTFORML 「아,……, 응응응」
 			PRINTFORML 아큐는 등을 돌리고 있어 그 표정은 엿볼 수 없다
 			PRINTFORMW 그러나,%조사처리(CALLNAME:PLAYER,"가")% 허리를 크게 튕길때마다 뒷머리카락이 흐트러져 땀이 밴 등에 찰싹 붙은 모양은 충분히 선정적이다.
-			CFLAG:9028 = 4
-		;굴복 각인 Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9028 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「아,우 , 아……!」
-			PRINTFORMW 아큐의 표정은 텅 빈것처럼 보이고 뒤에서 오는 충격을 그대로 받는것처럼 보인다.
-			CFLAG:9028 = 3
-		;그 이외
-		ELSEIF CFLAG:9028 <= 1 || FLAG:11 == 2
-			PRINTFORML 「웃, 크, 훗……!」
-			PRINTFORMW 아큐는 얼굴을 빨갛게 물들이고 고개를 젓고 있다.
-			CFLAG:9028 = 2
+		ELSE
+			PRINTFORML 「아, 움직이지 말아줘, 움직이지 말아줘……」
+			PRINTFORML %조사처리(CALLNAME:PLAYER,"가")% 너무나 격렬하게 피스톤 하므로, 아큐의 양 다리가 붕 떠 버린다
+			PRINTFORMW 그러면 한층 더 깊게까지 박히므로, 아큐는 덮쳐 오는 쾌락으로 다리를 붙일 틈이 없다.
 		ENDIF
-		RETURN 0
+		CFLAG:9028 = 5
+	;굴복각인Lv3＋V感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9028 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「아,……, 응응응」
+		PRINTFORML 아큐는 등을 돌리고 있어 그 표정은 엿볼 수 없다
+		PRINTFORMW 그러나,%조사처리(CALLNAME:PLAYER,"가")% 허리를 크게 튕길때마다 뒷머리카락이 흐트러져 땀이 밴 등에 찰싹 붙은 모양은 충분히 선정적이다.
+		CFLAG:9028 = 4
+	;굴복 각인 Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9028 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「아,우 , 아……!」
+		PRINTFORMW 아큐의 표정은 텅 빈것처럼 보이고 뒤에서 오는 충격을 그대로 받는것처럼 보인다.
+		CFLAG:9028 = 3
+	;그 이외
+	ELSEIF CFLAG:9028 <= 1 || FLAG:11 == 2
+		PRINTFORML 「웃, 크, 훗……!」
+		PRINTFORMW 아큐는 얼굴을 빨갛게 물들이고 고개를 젓고 있다.
+		CFLAG:9028 = 2
 	ENDIF
 ENDIF
 
@@ -2450,37 +2361,33 @@ ENDIF
 ;助手を犯す CFLAG:9026
 ;-------------------------------------------------
 @K48_MESSAGE_COM_26
-IF SELECTCOM == 26
-	;初めて
-	IF CFLAG:9026 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 「에……저는, 내버려두나요? 그런……」
-			PRINTFORML 아큐는 %조사처리(CALLNAME:ASSI,"가")% 교접하는 모습을 부러운듯이 바라보고 있다…
-			PRINTFORMW 「아아……좋겠다, 기분 좋아보여……」
-		;処女で음란なし
-		ELSEIF TALENT:0 == 1 && TALENT:170 == 0 
-			PRINTFORML 「잠깐, 다른 사람 앞에서 뭘……엣, 거짓말, 에엣, 우와……」
-			PRINTFORML 아큐는 %조사처리(CALLNAME:ASSI,"가")% 섹스하는 모습을 보고 숨을 삼킨다
-			PRINTFORML 「굉장, 해……저렇게, 되는건가요……」
-			PRINTFORMW 아큐의 망막에는 음란한 광경이 조용히 새겨졌다…
-		ENDIF
-		CFLAG:9026 = 1
-		RETURN 0
-	;二回目以降
-	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9026 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「하아……치, 치사해요……응……」
-			PRINTFORMW 아큐의 손은 자연스럽게 고간에 뻗어있다…
-			CFLAG:9026 = 3
-		;処女で음란なし
-		ELSEIF TALENT:0 == 1 && TALENT:170 == 0 && (CFLAG:9026 <= 1 || FLAG:11 == 2)
-			PRINTFORML 「이런 거, 계속 보고 있으면 독이에요……」
-			PRINTFORMW %CALLNAME:ASSI%의 교성이 아큐의 귀청을 울려, 상식과 윤리관을 범해간다…
-			CFLAG:9026 = 2
-		ENDIF
-		RETURN 0
+;初めて
+IF CFLAG:9026 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 「에……저는, 내버려두나요? 그런……」
+		PRINTFORML 아큐는 %조사처리(CALLNAME:ASSI,"가")% 교접하는 모습을 부러운듯이 바라보고 있다…
+		PRINTFORMW 「아아……좋겠다, 기분 좋아보여……」
+	;処女で음란なし
+	ELSEIF TALENT:0 == 1 && TALENT:170 == 0 
+		PRINTFORML 「잠깐, 다른 사람 앞에서 뭘……엣, 거짓말, 에엣, 우와……」
+		PRINTFORML 아큐는 %조사처리(CALLNAME:ASSI,"가")% 섹스하는 모습을 보고 숨을 삼킨다
+		PRINTFORML 「굉장, 해……저렇게, 되는건가요……」
+		PRINTFORMW 아큐의 망막에는 음란한 광경이 조용히 새겨졌다…
+	ENDIF
+	CFLAG:9026 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9026 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「하아……치, 치사해요……응……」
+		PRINTFORMW 아큐의 손은 자연스럽게 고간에 뻗어있다…
+		CFLAG:9026 = 3
+	;処女で음란なし
+	ELSEIF TALENT:0 == 1 && TALENT:170 == 0 && (CFLAG:9026 <= 1 || FLAG:11 == 2)
+		PRINTFORML 「이런 거, 계속 보고 있으면 독이에요……」
+		PRINTFORMW %CALLNAME:ASSI%의 교성이 아큐의 귀청을 울려, 상식과 윤리관을 범해간다…
+		CFLAG:9026 = 2
 	ENDIF
 ENDIF
 
@@ -2488,60 +2395,56 @@ ENDIF
 ;正常位アナル CFLAG:9030
 ;-------------------------------------------------
 @K48_MESSAGE_COM_30
-IF SELECTCOM == 30
-	;初めて
-	IF CFLAG:9030 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1
-			PRINTFORML 「어, 엉덩이……부디, 마음대로 범해주세요……」
-			PRINTFORML 아큐는 기대와 불안이 섞인 모습으로 스스로의 항문을 내민다
-			PRINTFORMW 「응……! %CALLNAME:PLAYER%의 자지, 들어와……응, 으응」
-		;V処女
-		ELSEIF TALENT:0 == 1
-			PRINTFORML 작은 꽃봉오리에 자지를 가져다 대자 아큐의 눈이 공포로 흔들렸다
-			PRINTFORML 「제……제발……. 이쪽의 구, 구멍……으로 만족 해 주신다면……」
-			PRINTFORML 처녀를 빼앗기는것 보다는 낫다, 라고 기특하게 타협했다
-			PRINTFORML 그 호의를 받아들여 항문을 자지로 뀌뚫는다…
-			PRINTFORMW 「아……크, 우우웃……크, 흐긋……! 아아아, 엉덩이에 들어와버렸어……」
-		;그 외
-		ELSE
-			PRINTFORML 「어, 엉덩이에 넣는건가요? 바뀐건 그다……가 아니라, 무리예욧!」
-			PRINTFORML 날뛰는 몸을 붙잡아 항문에 강제로 푹푹 삽입한다
-			PRINTFORML 「하, 히얏, 아아우우우……! 무리, 무리잇!」
-			PRINTFORML 아큐는 앞으로 기어 도망가려고 하지만 잡혀있어 움직일 수가 없다…
-		ENDIF
-		CFLAG:9030 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9030 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1
+		PRINTFORML 「어, 엉덩이……부디, 마음대로 범해주세요……」
+		PRINTFORML 아큐는 기대와 불안이 섞인 모습으로 스스로의 항문을 내민다
+		PRINTFORMW 「응……! %CALLNAME:PLAYER%의 자지, 들어와……응, 으응」
+	;V処女
+	ELSEIF TALENT:0 == 1
+		PRINTFORML 작은 꽃봉오리에 자지를 가져다 대자 아큐의 눈이 공포로 흔들렸다
+		PRINTFORML 「제……제발……. 이쪽의 구, 구멍……으로 만족 해 주신다면……」
+		PRINTFORML 처녀를 빼앗기는것 보다는 낫다, 라고 기특하게 타협했다
+		PRINTFORML 그 호의를 받아들여 항문을 자지로 뀌뚫는다…
+		PRINTFORMW 「아……크, 우우웃……크, 흐긋……! 아아아, 엉덩이에 들어와버렸어……」
+	;그 외
 	ELSE
-		LOCAL = PALAM:10 + UP:10
-		;음란+潤滑Lv2以上+A感覚LV3以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
-			IF RAND:2 == 0
-				PRINTFORML 「하앙, 좋앗, 쑤걱쑤걱하는거, 좋아욧……!」
-				PRINTFORMW 아큐의 장내는 미끌미끌 잘 미끄러져, 성감대가 아님에도 느끼고 있다…
-			ELSE
-				PRINTFORML 「후아아앗, 나, 아직 처녀인데, 뒤로 가버려엇……!」
-				PRINTFORMW 아큐는 완전히 애널 섹스의 포로가 되어, 침을 흘리며 페니스를 탐하고 있다…
-			ENDIF
-			CFLAG:9030 = 5
-		;음란+潤滑Lv2미만
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL < PALAMLV:2 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「크우우웃……! 이, 이거, 빠져버릴 것 같아요……」
-			PRINTFORMW 아직 조금 서투르지만, 아큐의 애널은 삽입을 받아들이기 시작하고 있다…
-			CFLAG:9030 = 4
-		;潤滑Lv2以上＋A感覚Lv3以上
-		ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9030 <= 2 || FLAG:11 == 2)
-			PRINTFORML 아큐의 장벽은 삽입에 익숙해져, 음란하게 페니스를 감싸 움직인다…
-			PRINTFORMW 「하아, 후아아앗……달라, 나는, 뒤로 느낄리가, 하, 후우우웃」
-			CFLAG:9030 = 3
-		;그 외
-		ELSEIF CFLAG:9030 <= 1 || FLAG:11 == 2
-			PRINTFORML 「우웃, 이런, 이런 건 없어……!」
-			PRINTFORMW 아큐는 뒷구멍에 몇 번이고 들락날락해져, 굴욕으로 뺨을 붉히고 있다…
-			CFLAG:9030 = 2
+		PRINTFORML 「어, 엉덩이에 넣는건가요? 바뀐건 그다……가 아니라, 무리예욧!」
+		PRINTFORML 날뛰는 몸을 붙잡아 항문에 강제로 푹푹 삽입한다
+		PRINTFORML 「하, 히얏, 아아우우우……! 무리, 무리잇!」
+		PRINTFORML 아큐는 앞으로 기어 도망가려고 하지만 잡혀있어 움직일 수가 없다…
+	ENDIF
+	CFLAG:9030 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란+潤滑Lv2以上+A感覚LV3以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
+		IF RAND:2 == 0
+			PRINTFORML 「하앙, 좋앗, 쑤걱쑤걱하는거, 좋아욧……!」
+			PRINTFORMW 아큐의 장내는 미끌미끌 잘 미끄러져, 성감대가 아님에도 느끼고 있다…
+		ELSE
+			PRINTFORML 「후아아앗, 나, 아직 처녀인데, 뒤로 가버려엇……!」
+			PRINTFORMW 아큐는 완전히 애널 섹스의 포로가 되어, 침을 흘리며 페니스를 탐하고 있다…
 		ENDIF
-		RETURN 0
+		CFLAG:9030 = 5
+	;음란+潤滑Lv2미만
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9030 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「크우우웃……! 이, 이거, 빠져버릴 것 같아요……」
+		PRINTFORMW 아직 조금 서투르지만, 아큐의 애널은 삽입을 받아들이기 시작하고 있다…
+		CFLAG:9030 = 4
+	;潤滑Lv2以上＋A感覚Lv3以上
+	ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9030 <= 2 || FLAG:11 == 2)
+		PRINTFORML 아큐의 장벽은 삽입에 익숙해져, 음란하게 페니스를 감싸 움직인다…
+		PRINTFORMW 「하아, 후아아앗……달라, 나는, 뒤로 느낄리가, 하, 후우우웃」
+		CFLAG:9030 = 3
+	;그 외
+	ELSEIF CFLAG:9030 <= 1 || FLAG:11 == 2
+		PRINTFORML 「우웃, 이런, 이런 건 없어……!」
+		PRINTFORMW 아큐는 뒷구멍에 몇 번이고 들락날락해져, 굴욕으로 뺨을 붉히고 있다…
+		CFLAG:9030 = 2
 	ENDIF
 ENDIF
 
@@ -2549,51 +2452,47 @@ ENDIF
 ;後背位アナル CFLAG:9031
 ;-------------------------------------------------
 @K48_MESSAGE_COM_31
-IF SELECTCOM == 31
-	;初めて
-	IF CFLAG:5375 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1
-			PRINTFORML 아큐의 배설기관은 움찔거리며 무언가를 원하는듯이 수축하고 있다…
-			PRINTFORMW 「자, 오세요……아큐의 항문으로, 원하시는 만큼 기분 좋아져주세요……읏, 으으웃♪」
-		;그 외
-		ELSE
-			PRINTFORML 엎드려 있는 아큐의 엉덩이를 들게 해, 딱딱해진 물건을 꽂아 넣는다
-			PRINTFORML 「핫, 큿……! 싫어, 찢어져어엇……!」
-			PRINTFORMW 아큐는 장내에 삽입당한 쇼크로 흐느끼며 울었다…
-		ENDIF
-			CFLAG:5375 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9031 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1
+		PRINTFORML 아큐의 배설기관은 움찔거리며 무언가를 원하는듯이 수축하고 있다…
+		PRINTFORMW 「자, 오세요……아큐의 항문으로, 원하시는 만큼 기분 좋아져주세요……읏, 으으웃♪」
+	;그 외
 	ELSE
-		P = PALAM:10 + UP:10
-		;음란+潤滑Lv2以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5375 <= 4 || FLAG:11 == 2)
-			IF RAND:2 == 0
-			PRINTFORML 「앗, 아앗, 으아아앗, 그렇게 난폭하게 하면, 엉덩이 구멍 망가져어어엇!!」
-			PRINTFORMW 욕망이 이끄는대로 장내에 페니스를 쑤셔넣었다…
-			ELSE
-			PRINTFORML 「하아, 이거, 무지하게 느껴져서……흥분, 돼요……. 아하하, 나, 변태네……」
-			PRINTFORMW 소녀는 완전히 항문 성교의 노예가 되어 있다…
-			ENDIF
-			CFLAG:5375 = 5
-		;음란+潤滑Lv2미만
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && P < PALAMLV:2 && (CFLAG:5375 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「그, 그렇게 서두르지 말아주세요……으아앗!」
-			PRINTFORMW 아큐의 장내는 아직 매끄럽지 못한지, 그만큼 %CALLNAME:PLAYER%의 페니스는 잘 짜여졌다…
-			CFLAG:5375 = 4
-		;潤滑Lv2以上＋A感覚Lv3以上
-		ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5375 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「아, 우……응, 읏…………응……」
-			PRINTFORMW 허리의 움직임에 맞춰 토하는 한숨에는, 또 다른 억양이 섞이기 시작하고 있다…
-			CFLAG:5375 = 3
-		;그 외
-		ELSEIF CFLAG:5375 <= 1 || FLAG:11 == 2
-			PRINTFORML 「나……히에다의 아이인데……아레의 아이인데…………」
-			PRINTFORMW 아큐는 뒷구멍을 유린당하면서, 자존심도 산산조각이 나고 있다…
-			CFLAG:5375 = 2
+		PRINTFORML 엎드려 있는 아큐의 엉덩이를 들게 해, 딱딱해진 물건을 꽂아 넣는다
+		PRINTFORML 「핫, 큿……! 싫어, 찢어져어엇……!」
+		PRINTFORMW 아큐는 장내에 삽입당한 쇼크로 흐느끼며 울었다…
+	ENDIF
+		CFLAG:9031 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란+潤滑Lv2以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9031 <= 4 || FLAG:11 == 2)
+		IF RAND:2 == 0
+		PRINTFORML 「앗, 아앗, 으아아앗, 그렇게 난폭하게 하면, 엉덩이 구멍 망가져어어엇!!」
+		PRINTFORMW 욕망이 이끄는대로 장내에 페니스를 쑤셔넣었다…
+		ELSE
+		PRINTFORML 「하아, 이거, 무지하게 느껴져서……흥분, 돼요……. 아하하, 나, 변태네……」
+		PRINTFORMW 소녀는 완전히 항문 성교의 노예가 되어 있다…
 		ENDIF
-			RETURN 0
+		CFLAG:9031 = 5
+	;음란+潤滑Lv2미만
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9031 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「그, 그렇게 서두르지 말아주세요……으아앗!」
+		PRINTFORMW 아큐의 장내는 아직 매끄럽지 못한지, 그만큼 %CALLNAME:PLAYER%의 페니스는 잘 짜여졌다…
+		CFLAG:9031 = 4
+	;潤滑Lv2以上＋A感覚Lv3以上
+	ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9031 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「아, 우……응, 읏…………응……」
+		PRINTFORMW 허리의 움직임에 맞춰 토하는 한숨에는, 또 다른 억양이 섞이기 시작하고 있다…
+		CFLAG:9031 = 3
+	;그 외
+	ELSEIF CFLAG:9031 <= 1 || FLAG:11 == 2
+		PRINTFORML 「나……히에다의 아이인데……아레의 아이인데…………」
+		PRINTFORMW 아큐는 뒷구멍을 유린당하면서, 자존심도 산산조각이 나고 있다…
+		CFLAG:9031 = 2
 	ENDIF
 ENDIF
 
@@ -2601,148 +2500,140 @@ ENDIF
 ;対面座位アナル CFLAG:9032
 ;-------------------------------------------------
 @K48_MESSAGE_COM_32
-	;初めて
-	IF CFLAG:5376 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1
-			PRINTFORML (아……숨이, 닿을거 같아……)
-			PRINTFORMW 아큐는 뺨을 붉히며 항문에 %CALLNAME:PLAYER%의 페니스를 이끈다…
-		;그 외
-		ELSE
-			PRINTFORML 「하, 크……읏, 싫엇, 얼굴, 가까이 하지 말아줘……」
-			PRINTFORMW %CALLNAME:PLAYER%의 손에서 도망치려 하는 아큐를 붙잡아, 억지로 아날을 범했다…
-		ENDIF
-			CFLAG:5376 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9032 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1
+		PRINTFORML (아……숨이, 닿을거 같아……)
+		PRINTFORMW 아큐는 뺨을 붉히며 항문에 %CALLNAME:PLAYER%의 페니스를 이끈다…
+	;그 외
 	ELSE
-		P = PALAM:10 + UP:10
-		;음란+潤滑Lv2以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5376 <= 4 || FLAG:11 == 2)
-			IF RAND:2 == 0
-			PRINTFORML 소녀의 중량감을 온몸으로 느끼면서, 페니스를 넣어갔다…
-			PRINTFORMW 「앗……하……질퍽해서……으긋……」
-			ELSE
-			PRINTFORML 「안 돼엣, 몸, 놓지 않으면, 기분 좋은게 멈추지 않아!!」
-			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 아큐의 몸을 껴안아, 강제적으로 달아오르게 한다…
-			ENDIF
-			CFLAG:5376 = 5
-		;음란+潤滑Lv2미만
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && P < PALAMLV:2 && (CFLAG:5376 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「크으읏, 굵어어……」
-			PRINTFORMW 아큐는 삽입의 고통에 눈물을 고이면서 %CALLNAME:PLAYER%에게 안겨온다…
-			CFLAG:5376 = 4
-		;潤滑Lv2以上＋A感覚Lv3以上
-		ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5376 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「후으읏, 엉덩이로 기분 좋을 리가, 없어……!」
-			PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 어깨를 강하게 잡고 필사적으로 참고 있다…
-			CFLAG:5376 = 3
-		;그 외
-		ELSEIF CFLAG:5376 <= 1 || FLAG:11 == 2
-			PRINTFORML 껴안은 채로 %조사처리(CALLNAME:PLAYER,"가")% 입술을 빼앗자, 아큐는 혐오스런 시선을 보냈다…
-			PRINTFORMW 「후긋……이런 거, 원한 적 없어……」
-			CFLAG:5376 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「하, 크……읏, 싫엇, 얼굴, 가까이 하지 말아줘……」
+		PRINTFORMW %CALLNAME:PLAYER%의 손에서 도망치려 하는 아큐를 붙잡아, 억지로 아날을 범했다…
 	ENDIF
+		CFLAG:9032 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란+潤滑Lv2以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9032 <= 4 || FLAG:11 == 2)
+		IF RAND:2 == 0
+		PRINTFORML 소녀의 중량감을 온몸으로 느끼면서, 페니스를 넣어갔다…
+		PRINTFORMW 「앗……하……질퍽해서……으긋……」
+		ELSE
+		PRINTFORML 「안 돼엣, 몸, 놓지 않으면, 기분 좋은게 멈추지 않아!!」
+		PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 아큐의 몸을 껴안아, 강제적으로 달아오르게 한다…
+		ENDIF
+		CFLAG:9032 = 5
+	;음란+潤滑Lv2미만
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9032 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「크으읏, 굵어어……」
+		PRINTFORMW 아큐는 삽입의 고통에 눈물을 고이면서 %CALLNAME:PLAYER%에게 안겨온다…
+		CFLAG:9032 = 4
+	;潤滑Lv2以上＋A感覚Lv3以上
+	ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9032 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「후으읏, 엉덩이로 기분 좋을 리가, 없어……!」
+		PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 어깨를 강하게 잡고 필사적으로 참고 있다…
+		CFLAG:9032 = 3
+	;그 외
+	ELSEIF CFLAG:9032 <= 1 || FLAG:11 == 2
+		PRINTFORML 껴안은 채로 %조사처리(CALLNAME:PLAYER,"가")% 입술을 빼앗자, 아큐는 혐오스런 시선을 보냈다…
+		PRINTFORMW 「후긋……이런 거, 원한 적 없어……」
+		CFLAG:9032 = 2
+	ENDIF
+ENDIF
 
 ;-------------------------------------------------
 ;背面座位アナル CFLAG:9033
 ;-------------------------------------------------
 @K48_MESSAGE_COM_33
-	;初めて
-	IF CFLAG:5377 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1
-			PRINTFORML 「앉듯이……큿……」
-			PRINTFORMW 역시 뒷쪽 구멍은 좁아, 아픈만큼 페니스를 조여온다…
-		;그 외
-		ELSE
-			PRINTFORML 「이런 굵은거, 안 들어간다니깐요……! 그, 으, 으으ー읏……!」
-			PRINTFORMW 작은 항문에 반 억지로 넣자, 아큐는 얼굴이 고통으로 일그러졌다…
-		ENDIF
-			CFLAG:5377 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9033 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1
+		PRINTFORML 「앉듯이……큿……」
+		PRINTFORMW 역시 뒷쪽 구멍은 좁아, 아픈만큼 페니스를 조여온다…
+	;그 외
 	ELSE
-		P = PALAM:10 + UP:10
-		;음란+潤滑Lv2以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5377 <= 4 || FLAG:11 == 2)
-			IF RAND:2 == 0
-			PRINTFORML 아큐의 매끈한 옆구리를 잡아, 조금씩 허리를 움직이면서 장벽을 자극했다…
-			PRINTFORMW 「읏, 아아아, 이거, 버릇될 거 같아……!」
-			ELSE
-			PRINTFORML 등 뒤에서 가슴을 잡아, 유두와 아날을 동시에 괴롭혔다…
-			PRINTFORMW 「핫, 훗, ……읏! 부셔, 혀……」
-			ENDIF
-			CFLAG:5377 = 5
-		;음란+潤滑Lv2미만
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && P < PALAMLV:2 && (CFLAG:5377 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「흐으으읏……마치, 배설하는 것 같아……」
-			PRINTFORMW 부드러운 육벽을 페니스가 밀어내, 연결되어 있는 두 사람에게 쾌락을 준다…
-			CFLAG:5377 = 4
-		;潤滑Lv2以上＋A感覚Lv3以上
-		ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5377 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「싫어어어, 엉덩이 움직이면 앙대에에에!!」
-			PRINTFORMW 아큐는 장내를 왕복당하면서 쾌락을 얻은 것에 당황하고 있다…
-			CFLAG:5377 = 3
-		;그 외
-		ELSEIF CFLAG:5377 <= 1 || FLAG:11 == 2
-			PRINTFORML 「하앗, 큿, 이런, 이런 거……!」
-			PRINTFORMW 고간을 아큐의 자그마한 엉덩이에 밀착시켜, 장내를 페니스로 깎듯이 왕복했다…
-			CFLAG:5377 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「이런 굵은거, 안 들어간다니깐요……! 그, 으, 으으ー읏……!」
+		PRINTFORMW 작은 항문에 반 억지로 넣자, 아큐는 얼굴이 고통으로 일그러졌다…
 	ENDIF
+		CFLAG:9033 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란+潤滑Lv2以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9033 <= 4 || FLAG:11 == 2)
+		IF RAND:2 == 0
+		PRINTFORML 아큐의 매끈한 옆구리를 잡아, 조금씩 허리를 움직이면서 장벽을 자극했다…
+		PRINTFORMW 「읏, 아아아, 이거, 버릇될 거 같아……!」
+		ELSE
+		PRINTFORML 등 뒤에서 가슴을 잡아, 유두와 아날을 동시에 괴롭혔다…
+		PRINTFORMW 「핫, 훗, ……읏! 부셔, 혀……」
+		ENDIF
+		CFLAG:9033 = 5
+	;음란+潤滑Lv2미만
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9033 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「흐으으읏……마치, 배설하는 것 같아……」
+		PRINTFORMW 부드러운 육벽을 페니스가 밀어내, 연결되어 있는 두 사람에게 쾌락을 준다…
+		CFLAG:9033 = 4
+	;潤滑Lv2以上＋A感覚Lv3以上
+	ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9033 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「싫어어어, 엉덩이 움직이면 앙대에에에!!」
+		PRINTFORMW 아큐는 장내를 왕복당하면서 쾌락을 얻은 것에 당황하고 있다…
+		CFLAG:9033 = 3
+	;그 외
+	ELSEIF CFLAG:9033 <= 1 || FLAG:11 == 2
+		PRINTFORML 「하앗, 큿, 이런, 이런 거……!」
+		PRINTFORMW 고간을 아큐의 자그마한 엉덩이에 밀착시켜, 장내를 페니스로 깎듯이 왕복했다…
+		CFLAG:9033 = 2
+	ENDIF
+ENDIF
 
 ;-------------------------------------------------
 ;騎乗位アナル CFLAG:9034
 ;-------------------------------------------------
 @K48_MESSAGE_COM_34
-IF SELECTCOM == 34
-	;初めて
-	IF CFLAG:5378 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1
-			PRINTFORML 「하ー, 하ー……후후, 엉덩이의 조임은 어떤가요? 주인님…」
-			PRINTFORMW 아큐의 아날은 굵고 훌륭한 기둥을 삼켜, 음란하게 달라붙어 왔다…
-		;그 외
-		ELSE
-			PRINTFORML 「어째서 이런 걸……웃, 후웃……아파아……」
-			PRINTFORMW 아큐는 허리를 내리면서, 직장을 넓히는 고통을 참고 있다…
-		ENDIF
-			CFLAG:5378 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9034 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1
+		PRINTFORML 「하ー, 하ー……후후, 엉덩이의 조임은 어떤가요? 주인님…」
+		PRINTFORMW 아큐의 아날은 굵고 훌륭한 기둥을 삼켜, 음란하게 달라붙어 왔다…
+	;그 외
 	ELSE
-		P = PALAM:10 + UP:10
-		;음란+潤滑Lv2以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5378 <= 4 || FLAG:11 == 2)
-			IF RAND:2 == 0
-			PRINTFORML 「이번엔, 이 쪽에서 움직일 차례네요……읏, 으응!」
-			PRINTFORMW 아큐는 교묘하게 허리를 흔들어, %CALLNAME:PLAYER%의 페니스를 조여온다…
-			ELSE
-			PRINTFORML 「햐후웅, 엉덩이 찔러줘……! 안까지 비벼줘!」
-			PRINTFORMW 아큐는 완전이 아날로 느끼는 몸이 되어있다…
-			ENDIF
-			CFLAG:5378 = 5
-		;음란+潤滑Lv2미만
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && P < PALAMLV:2 && (CFLAG:5378 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「아, 우……응, 읏…………응……」
-			PRINTFORMW 아큐의 가느다란 몸이 허리를 움직일 때마다 춤을춰, 가학심을 일으킨다…
-			CFLAG:5378 = 4
-		;潤滑Lv2以上＋A感覚Lv3以上
-		ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:5378 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「읏……훗, 꾹꾹하고……」
-			PRINTFORMW 아큐의 장내는 삽입에 익숙해져, 매끄럽게 움직일 수 있게 되었다…
-			CFLAG:5378 = 3
-		;그 외
-		ELSEIF CFLAG:5378 <= 1 || FLAG:11 == 2
-			PRINTFORML 「이젠, 무리……용서해주세요……흐, 그, 우에에엥……」
-			PRINTFORMW 아큐는 덮쳐오는 고통과 굴욕에 코를 훌쩍이며 흐느껴 울고 있다…
-			CFLAG:5378 = 2
+		PRINTFORML 「어째서 이런 걸……웃, 후웃……아파아……」
+		PRINTFORMW 아큐는 허리를 내리면서, 직장을 넓히는 고통을 참고 있다…
+	ENDIF
+		CFLAG:9034 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란+潤滑Lv2以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9034 <= 4 || FLAG:11 == 2)
+		IF RAND:2 == 0
+		PRINTFORML 「이번엔, 이 쪽에서 움직일 차례네요……읏, 으응!」
+		PRINTFORMW 아큐는 교묘하게 허리를 흔들어, %CALLNAME:PLAYER%의 페니스를 조여온다…
+		ELSE
+		PRINTFORML 「햐후웅, 엉덩이 찔러줘……! 안까지 비벼줘!」
+		PRINTFORMW 아큐는 완전이 아날로 느끼는 몸이 되어있다…
 		ENDIF
-			RETURN 0
+		CFLAG:9034 = 5
+	;음란+潤滑Lv2미만
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9034 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「아, 우……응, 읏…………응……」
+		PRINTFORMW 아큐의 가느다란 몸이 허리를 움직일 때마다 춤을춰, 가학심을 일으킨다…
+		CFLAG:9034 = 4
+	;潤滑Lv2以上＋A感覚Lv3以上
+	ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9034 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「읏……훗, 꾹꾹하고……」
+		PRINTFORMW 아큐의 장내는 삽입에 익숙해져, 매끄럽게 움직일 수 있게 되었다…
+		CFLAG:9034 = 3
+	;그 외
+	ELSEIF CFLAG:9034 <= 1 || FLAG:11 == 2
+		PRINTFORML 「이젠, 무리……용서해주세요……흐, 그, 우에에엥……」
+		PRINTFORMW 아큐는 덮쳐오는 고통과 굴욕에 코를 훌쩍이며 흐느껴 울고 있다…
+		CFLAG:9034 = 2
 	ENDIF
 ENDIF
 
@@ -2750,83 +2641,79 @@ ENDIF
 ;背面立位アナル CFLAG9038	RR口上のアナルセックスをリサイクル
 ;-------------------------------------------------
 @K48_MESSAGE_COM_38
-IF SELECTCOM == 38
-	;初めて
-	IF CFLAG:9038 == 0
-		;음란か연모
-		IF TALENT:170 == 1 || TALENT:150
-			PRINTFORMW 「당신 , 엉덩이……받아 주세요, 원하는 만큼 범해 주세요……」
-			PRINTFORMW 아큐는 기대와 불안이 섞인 모습으로 스스로 국문을 내민다
-			PRINTFORMW 「응……!　%CALLNAME:PLAYER%가, 들어가……, 응응」
-		;V処女
-		ELSEIF TALENT:0 == 1
-			PRINTFORMW 아큐의 눈동자가 공포에 흔들거렸다
-			PRINTFORMW 「……받아 주세요……. 이쪽의 , 구멍……에서 만족해 준다면……」
-			PRINTFORMW 처녀를 빼앗아지는 것보단 낫다고 타협한듯하다.
-			PRINTFORMW 호의를 받아들여 엉덩이에 자지를 찔러 넣었다…
-			PRINTFORMW 「아……, 우우……구, ……!　아, 엉덩이에 들어와 버린다 ……」
-		;그 외
-		ELSE
-			PRINTFORMW 「이걸, 엉덩이에 넣습니까?　뭔가 이상……이 아니고, 무리여요!」
-			PRINTFORMW 날뛰는 몸을 누르고 항문에 자지를 삽입한다
-			PRINTFORMW 「어째서 이런 걸……웃, 후웃……아파아……」
-			PRINTFORMW 아큐는 피하려고 하지만, 허리를 단단히 붙잡혀서 움직일 수 없다…
-		ENDIF
-			CFLAG:9038 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9038 == 0
+	;음란か연모
+	IF TALENT:170 == 1 || TALENT:150
+		PRINTFORMW 「당신 , 엉덩이……받아 주세요, 원하는 만큼 범해 주세요……」
+		PRINTFORMW 아큐는 기대와 불안이 섞인 모습으로 스스로 국문을 내민다
+		PRINTFORMW 「응……!　%CALLNAME:PLAYER%가, 들어가……, 응응」
+	;V処女
+	ELSEIF TALENT:0 == 1
+		PRINTFORMW 아큐의 눈동자가 공포에 흔들거렸다
+		PRINTFORMW 「……받아 주세요……. 이쪽의 , 구멍……에서 만족해 준다면……」
+		PRINTFORMW 처녀를 빼앗아지는 것보단 낫다고 타협한듯하다.
+		PRINTFORMW 호의를 받아들여 엉덩이에 자지를 찔러 넣었다…
+		PRINTFORMW 「아……, 우우……구, ……!　아, 엉덩이에 들어와 버린다 ……」
+	;그 외
 	ELSE
-		LOCAL = PALAM:10 + UP:10
-		;음란+潤滑Lv2以上+A感覚Lv3以上
-		IF TALENT:170 == 1 && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9038 <= 6 || FLAG:11 == 2)
-			IF TALENT:0 == 1
-				IF RAND:3 == 0
-					PRINTFORML 「아 아, 나, 아직 처녀인데, 뒤로 느껴버려 ……!」
-					PRINTFORMW 아큐는 완전히 아날의 노예가 되었다.
-				ELSEIF RAND:2 == 0
-					PRINTFORML 「흐으으읏……마치, 배설하는 것 같아……」
-					PRINTFORMW 부드러운 육벽을 페니스가 밀어내, 연결되어 있는 두 사람에게 쾌락을 준다…
-				ELSE
-					PRINTFORML 불쑥 내민 아큐의 엉덩이에 돌진하여, 욕망대로 페니스를 왕복한다…
-					PRINTFORMW 「우우, 무리하게 범해져 , 엉덩이 찔러줘……! 안까지 비벼줘!」
-				ENDIF
+		PRINTFORMW 「이걸, 엉덩이에 넣습니까?　뭔가 이상……이 아니고, 무리여요!」
+		PRINTFORMW 날뛰는 몸을 누르고 항문에 자지를 삽입한다
+		PRINTFORMW 「어째서 이런 걸……웃, 후웃……아파아……」
+		PRINTFORMW 아큐는 피하려고 하지만, 허리를 단단히 붙잡혀서 움직일 수 없다…
+	ENDIF
+		CFLAG:9038 = 1
+;二回目以降
+ELSE
+	LOCAL = PALAM:10 + UP:10
+	;음란+潤滑Lv2以上+A感覚Lv3以上
+	IF TALENT:170 == 1 && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9038 <= 6 || FLAG:11 == 2)
+		IF TALENT:0 == 1
+			IF RAND:3 == 0
+				PRINTFORML 「아 아, 나, 아직 처녀인데, 뒤로 느껴버려 ……!」
+				PRINTFORMW 아큐는 완전히 아날의 노예가 되었다.
+			ELSEIF RAND:2 == 0
+				PRINTFORML 「흐으으읏……마치, 배설하는 것 같아……」
+				PRINTFORMW 부드러운 육벽을 페니스가 밀어내, 연결되어 있는 두 사람에게 쾌락을 준다…
 			ELSE
-				IF RAND:2 == 0
-					PRINTFORML 「흐으으읏……마치, 배설하는 것 같아……」
-					PRINTFORMW 부드러운 육벽을 페니스가 밀어내, 연결되어 있는 두 사람에게 쾌락을 준다…
-				ELSE
-					PRINTFORML 불쑥 내민 아큐의 엉덩이에 돌진하여, 욕망대로 페니스를 왕복한다…
-					PRINTFORMW 「우우, 무리하게 범해져 , 엉덩이 찔러줘……! 안까지 비벼줘!」
-				ENDIF
+				PRINTFORML 불쑥 내민 아큐의 엉덩이에 돌진하여, 욕망대로 페니스를 왕복한다…
+				PRINTFORMW 「우우, 무리하게 범해져 , 엉덩이 찔러줘……! 안까지 비벼줘!」
 			ENDIF
-			CFLAG:9038 = 7
-		;음란+潤滑Lv2以上
-		ELSEIF TALENT:170 == 1 && LOCAL >= PALAMLV:2 && (CFLAG:9038 <= 5 || FLAG:11 == 2)
-			PRINTFORML 「읏……훗, 꾹꾹하고……」
-			PRINTFORMW 아큐의 장내는 아직 서투르지만 삽입에 조금 익숙해진것 같다.
-			CFLAG:9038 = 6
-		;윤활 Lv2 이상+굴복 각인 Lv3＋A감각 Lv3 이상
-		ELSEIF MARK:2 == 3 && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9038 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「아, , 응, 아……?　아, 야 , 아 아」
-			PRINTFORMW 항학의 기쁨에 눈을 떴는지, 생기가 없는 눈에 쾌락의 색이 머물고 있다…
-			CFLAG:9038 = 5
-		;윤활 Lv2 이상+A감각 Lv3 이상
-		ELSEIF ABL:2 >= 3 && LOCAL >= PALAMLV:2 && (CFLAG:9038 <= 3 || FLAG:11 == 2)
-			PRINTFORML 아큐의 장벽은 삽입에 익숙해 불쾌하게 페니스를 감싸 연동 한다…
-			PRINTFORMW 「후~, 아 아……다른, 나는, 뒤로 느끼거나무슨 , 는, 우우」
-			CFLAG:9038 = 4
-		;굴복 각인 Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:9038 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「, 우우, 우우」
-			PRINTFORMW 저항은 하지 않게 되었지만, 아직 애널에 삽입되는 것은 괴로움을 따르는 것 같다…
-			CFLAG:9038 = 4
-		;그 이외
-		ELSEIF  CFLAG:9038 <= 1 || FLAG:11 == 2
-			PRINTFORML 「우우, 이런, 이런 건은 없다……!」
-			PRINTFORMW 아큐는 뒤의 구멍에 몇 번이나 출납되어 굴욕에 뺨을 적신다…
-			CFLAG:9038 = 2
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORML 「흐으으읏……마치, 배설하는 것 같아……」
+				PRINTFORMW 부드러운 육벽을 페니스가 밀어내, 연결되어 있는 두 사람에게 쾌락을 준다…
+			ELSE
+				PRINTFORML 불쑥 내민 아큐의 엉덩이에 돌진하여, 욕망대로 페니스를 왕복한다…
+				PRINTFORMW 「우우, 무리하게 범해져 , 엉덩이 찔러줘……! 안까지 비벼줘!」
+			ENDIF
 		ENDIF
-			RETURN 0
+		CFLAG:9038 = 7
+	;음란+潤滑Lv2以上
+	ELSEIF TALENT:170 == 1 && LOCAL >= PALAMLV:2 && (CFLAG:9038 <= 5 || FLAG:11 == 2)
+		PRINTFORML 「읏……훗, 꾹꾹하고……」
+		PRINTFORMW 아큐의 장내는 아직 서투르지만 삽입에 조금 익숙해진것 같다.
+		CFLAG:9038 = 6
+	;윤활 Lv2 이상+굴복 각인 Lv3＋A감각 Lv3 이상
+	ELSEIF MARK:2 == 3 && LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9038 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「아, , 응, 아……?　아, 야 , 아 아」
+		PRINTFORMW 항학의 기쁨에 눈을 떴는지, 생기가 없는 눈에 쾌락의 색이 머물고 있다…
+		CFLAG:9038 = 5
+	;윤활 Lv2 이상+A감각 Lv3 이상
+	ELSEIF ABL:2 >= 3 && LOCAL >= PALAMLV:2 && (CFLAG:9038 <= 3 || FLAG:11 == 2)
+		PRINTFORML 아큐의 장벽은 삽입에 익숙해 불쾌하게 페니스를 감싸 연동 한다…
+		PRINTFORMW 「후~, 아 아……다른, 나는, 뒤로 느끼거나무슨 , 는, 우우」
+		CFLAG:9038 = 4
+	;굴복 각인 Lv3
+	ELSEIF MARK:2 == 3 && (CFLAG:9038 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「, 우우, 우우」
+		PRINTFORMW 저항은 하지 않게 되었지만, 아직 애널에 삽입되는 것은 괴로움을 따르는 것 같다…
+		CFLAG:9038 = 4
+	;그 이외
+	ELSEIF  CFLAG:9038 <= 1 || FLAG:11 == 2
+		PRINTFORML 「우우, 이런, 이런 건은 없다……!」
+		PRINTFORMW 아큐는 뒤의 구멍에 몇 번이나 출납되어 굴욕에 뺨을 적신다…
+		CFLAG:9038 = 2
 	ENDIF
 ENDIF
 
@@ -2834,76 +2721,72 @@ ENDIF
 ;手淫 CFLAG:9040
 ;-------------------------------------------------
 @K48_MESSAGE_COM_40
-IF SELECTCOM == 40
-	;初めて
-	IF CFLAG:9040 == 0
-		;奉仕精神Lv3以上
-		IF ABL:13 >= 3
-			PRINTFORML 「아……이게, 페니스……. 뜨겁고, 딱딱해서……조금 무섭지만, 해보겠습니다」
-			PRINTFORMW 「응……꺄, 미끈, 미끈……」
-		;그 외
-		ELSE
-			PRINTFORML 「이게 자지……. 채, 책에서 본 것보다 작네요……」
-			PRINTFORML 「엣, 왓, 와왓……불끈불끈 커지기 시작했……는데, 에에엣!?」
-			PRINTFORMW 아큐는 팽창한 페니스를 괴물을 보는 듯한 눈으로 보고 있다…
-		ENDIF
-		CFLAG:9040 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9040 == 0
+	;奉仕精神Lv3以上
+	IF ABL:13 >= 3
+		PRINTFORML 「아……이게, 페니스……. 뜨겁고, 딱딱해서……조금 무섭지만, 해보겠습니다」
+		PRINTFORMW 「응……꺄, 미끈, 미끈……」
+	;그 외
 	ELSE
-		;음란＋奉仕精神Lv5＋サドっ気1以上
-		IF TALENT:170 && ABL:13 >= 5 && ABL:20 >= 1 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
-			IF RAND:6 == 0
-				PRINTFORML 「아하……수음, 좋아하시는군요? 저도 주도권을 잡은 것 같은 기분이 들어서, 좋아해요」
-				PRINTFORMW 「읏, 훗, 응……이 귀두가 불끈하고 커지는 부분이, 보고 있으면 재미있네요. 우후후」
-			ELSEIF RAND:5 == 0
-				PRINTFORML 「언제나 손만으로 하는건 불쌍하니까, 조금 침으로 적셔 줄게요. 에이……미끈, 미끈」
-				PRINTFORMW 「후후, 기분 좋아보이네요……무릎이 떨리고 있어요? 미끈, 미끄르, 콕, 미끌……」
-			ELSEIF RAND:4 == 0
-				PRINTFORML 아큐의 말랑말랑한 손바닥으로 음경을 감싸인다…
-				PRINTFORMW 「응, 미끈미끈, 응, 훗……자아 자아, 빨리 정자 싸주세요……」
-			ELSEIF RAND:3 == 0
-				PRINTFORML 「저기, 가끔씩은 만지기만 하는게 아니라, 이런 식으로……자, 아래 갓의 경계를 자극해 드릴께요」
-				PRINTFORMW 「쓱, 쓱……아, 굉장해, 엄청나졌어요……후후, 자아, 슬금슬금, 쓰다듬 쓰다듬……」
-			ELSEIF RAND:2 == 0
-				PRINTFORML 「네……그럼, 잔뜩 만져드릴께요……. 말랑말랑, 빙글빙글……」
-				PRINTFORMW 「빙글빙글, 끈적, 콕콕, 꾹 꾹. 아, 언제 사정해도 좋아요……」
-			ELSE
-				PRINTFORML 「에이, 얏……쿡, 그렇게 좋은 얼굴하고, 이쪽은 제대로 하지도 않았어요……훗」
-				PRINTFORMW 「응, 응, 응……미끈, 미끌, 미끄르……츄파츄파, 쮸르르……」
-			ENDIF
-			CFLAG:9040 = 4
-		;奉仕精神Lv3以上
-		ELSEIF ABL:13 >= 3 && (CFLAG:9040 <= 2 || FLAG:11 == 2)
-			IF RAND:5 == 0
-			PRINTFORML 「아, 기분 좋게 하는 법, 발견했을지도……」
-			PRINTFORMW 아큐의 손놀림은 급속히 능숙해져 가고 있다…
-			ELSEIF RAND:4 == 0
-			PRINTFORMW 「어라, 끝에서 투명한 즙이 나오고 있어……. 이거, 느끼고 있단건가요?」
-			ELSEIF RAND:3 == 0
-			PRINTFORMW (움직일 때마다 두근거려……그렇게 좋은 걸까요……)
-			ELSEIF RAND:2 == 0
-			PRINTFORMW (아, 손 안에서 움찔움찔……. 어라……? 나, 욕정하고 있어……?)
-			ELSE
-			PRINTFORMW 「문질문질, 문질문질……에, 에 또, 이렇게 하면 되는건가요……」
-			ENDIF
-			CFLAG:9040 = 3
-		;그 외
-		ELSEIF CFLAG:9040 <= 1 || FLAG:11 == 2
-			IF RAND:4 == 0
-				PRINTFORMW 「큿……손이 질척해져서 기분 나빠요……」
-			ELSEIF RAND:4 == 0
-				PRINTFORMW 「에이, 꾸욱 꾸욱……아, 아프셨나요, 죄송해요……. 라니 뭘 사과하고 있는걸까요 저는」
-			ELSEIF RAND:4 == 0
-				PRINTFORMW 「손으로 할테니까, 그걸로 만족해 주세요……」
-				PRINTFORMW 아큐는 혐오로 뒤틀린 얼굴로 어색하게 페니스를 다루고 있다…
-			ELSE
-				PRINTFORML 「우웃……여자아이의 손에 이런 걸 만지게해서 어떻게 책임지실건가요. 그렇게까지 해서 사정하고 싶다니 바보같잖아요」
-				PRINTFORMW 아큐는 노골적으로 불쾌해하며 페니스를 다루고 있다…
-			ENDIF
-			CFLAG:9040 = 2
+		PRINTFORML 「이게 자지……. 채, 책에서 본 것보다 작네요……」
+		PRINTFORML 「엣, 왓, 와왓……불끈불끈 커지기 시작했……는데, 에에엣!?」
+		PRINTFORMW 아큐는 팽창한 페니스를 괴물을 보는 듯한 눈으로 보고 있다…
+	ENDIF
+	CFLAG:9040 = 1
+;二回目以降
+ELSE
+	;음란＋奉仕精神Lv5＋サドっ気1以上
+	IF TALENT:170 && ABL:13 >= 5 && ABL:20 >= 1 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
+		IF RAND:6 == 0
+			PRINTFORML 「아하……수음, 좋아하시는군요? 저도 주도권을 잡은 것 같은 기분이 들어서, 좋아해요」
+			PRINTFORMW 「읏, 훗, 응……이 귀두가 불끈하고 커지는 부분이, 보고 있으면 재미있네요. 우후후」
+		ELSEIF RAND:5 == 0
+			PRINTFORML 「언제나 손만으로 하는건 불쌍하니까, 조금 침으로 적셔 줄게요. 에이……미끈, 미끈」
+			PRINTFORMW 「후후, 기분 좋아보이네요……무릎이 떨리고 있어요? 미끈, 미끄르, 콕, 미끌……」
+		ELSEIF RAND:4 == 0
+			PRINTFORML 아큐의 말랑말랑한 손바닥으로 음경을 감싸인다…
+			PRINTFORMW 「응, 미끈미끈, 응, 훗……자아 자아, 빨리 정자 싸주세요……」
+		ELSEIF RAND:3 == 0
+			PRINTFORML 「저기, 가끔씩은 만지기만 하는게 아니라, 이런 식으로……자, 아래 갓의 경계를 자극해 드릴께요」
+			PRINTFORMW 「쓱, 쓱……아, 굉장해, 엄청나졌어요……후후, 자아, 슬금슬금, 쓰다듬 쓰다듬……」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「네……그럼, 잔뜩 만져드릴께요……. 말랑말랑, 빙글빙글……」
+			PRINTFORMW 「빙글빙글, 끈적, 콕콕, 꾹 꾹. 아, 언제 사정해도 좋아요……」
+		ELSE
+			PRINTFORML 「에이, 얏……쿡, 그렇게 좋은 얼굴하고, 이쪽은 제대로 하지도 않았어요……훗」
+			PRINTFORMW 「응, 응, 응……미끈, 미끌, 미끄르……츄파츄파, 쮸르르……」
 		ENDIF
-		RETURN 0
+		CFLAG:9040 = 4
+	;奉仕精神Lv3以上
+	ELSEIF ABL:13 >= 3 && (CFLAG:9040 <= 2 || FLAG:11 == 2)
+		IF RAND:5 == 0
+		PRINTFORML 「아, 기분 좋게 하는 법, 발견했을지도……」
+		PRINTFORMW 아큐의 손놀림은 급속히 능숙해져 가고 있다…
+		ELSEIF RAND:4 == 0
+		PRINTFORMW 「어라, 끝에서 투명한 즙이 나오고 있어……. 이거, 느끼고 있단건가요?」
+		ELSEIF RAND:3 == 0
+		PRINTFORMW (움직일 때마다 두근거려……그렇게 좋은 걸까요……)
+		ELSEIF RAND:2 == 0
+		PRINTFORMW (아, 손 안에서 움찔움찔……. 어라……? 나, 욕정하고 있어……?)
+		ELSE
+		PRINTFORMW 「문질문질, 문질문질……에, 에 또, 이렇게 하면 되는건가요……」
+		ENDIF
+		CFLAG:9040 = 3
+	;그 외
+	ELSEIF CFLAG:9040 <= 1 || FLAG:11 == 2
+		IF RAND:4 == 0
+			PRINTFORMW 「큿……손이 질척해져서 기분 나빠요……」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「에이, 꾸욱 꾸욱……아, 아프셨나요, 죄송해요……. 라니 뭘 사과하고 있는걸까요 저는」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「손으로 할테니까, 그걸로 만족해 주세요……」
+			PRINTFORMW 아큐는 혐오로 뒤틀린 얼굴로 어색하게 페니스를 다루고 있다…
+		ELSE
+			PRINTFORML 「우웃……여자아이의 손에 이런 걸 만지게해서 어떻게 책임지실건가요. 그렇게까지 해서 사정하고 싶다니 바보같잖아요」
+			PRINTFORMW 아큐는 노골적으로 불쾌해하며 페니스를 다루고 있다…
+		ENDIF
+		CFLAG:9040 = 2
 	ENDIF
 ENDIF
 
@@ -2911,221 +2794,216 @@ ENDIF
 ;フェラチオ・雁が首 CFLAG:9041
 ;-------------------------------------------------
 @K48_MESSAGE_COM_41
-IF SELECTCOM == 41 || SELECTCOM == 604
-	;初めて
-	IF CFLAG:9041 == 0
-		;奉仕精神Lv3以上
-		IF ABL:13 >= 3 || TALENT:170 == 1
-			PRINTFORML 「네……입으로 잔뜩 기분 좋게 해드릴께요……? ……응, 츕……」
-			PRINTFORML %조사처리(CALLNAME:PLAYER,"가")% 재폭하자 아큐는 음경을 핥기 시작했다…
-			PRINTFORML 「하아, 우후……츄파, 낼름낼름……응, 후, 응, 으ーー읏, 입 안에서, 움찔거리고 이써효……」
-			PRINTFORMW 「응, 뻐끔, 응 츄르, 츄우, 츄우우～～웁, 츄븝, 츄브브브……」
-		ELSEIF MARK:2 == 3 || TALENT:150 == 1
-			PRINTFORML 발기한 페니스를 아큐 앞에 내밀자, 아큐는 조용히 빨기 시작했다
-			PRINTFORML 「응……후, 츄르, 츕……핥짝, 츄브……」
-			PRINTFORMW 아기 고양이가 어미 고양이의 젖을 빨듯이, 츄우 츄우 귀두를 빨아낸다…
-		;그 외
-		ELSE
-			PRINTFORML 「응, 으읏, 더러운걸 가까이 대지 말아주세요……!」
-			PRINTFORML 페니스를 얼굴 가까이에 대 강요하지만, 아큐는 강하게 거부했다
-			PRINTFORML 어쩔 수 없이 억지로 입을 벌려, 머리를 잡고 앞뒤로 격렬하게 흔들었다…
-			PRINTFORML 「응 후그읏!? 케흑, 우에……하ー, 후, 응, 으우우……츄르, 츄파……」
-			PRINTFORML 입안은 타버릴 듯이 뜨거워, 속속들이 %CALLNAME:PLAYER%에게 쾌감을 준다
-			PRINTFORMW 아직 혀놀림은 미숙하지만, 봉사노예의 소질을 충분히 느끼게 했다…
-		ENDIF
-		CFLAG:9041 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9041 == 0
+	;奉仕精神Lv3以上
+	IF ABL:13 >= 3 || TALENT:170 == 1
+		PRINTFORML 「네……입으로 잔뜩 기분 좋게 해드릴께요……? ……응, 츕……」
+		PRINTFORML %조사처리(CALLNAME:PLAYER,"가")% 재폭하자 아큐는 음경을 핥기 시작했다…
+		PRINTFORML 「하아, 우후……츄파, 낼름낼름……응, 후, 응, 으ーー읏, 입 안에서, 움찔거리고 이써효……」
+		PRINTFORMW 「응, 뻐끔, 응 츄르, 츄우, 츄우우～～웁, 츄븝, 츄브브브……」
+	ELSEIF MARK:2 == 3 || TALENT:150 == 1
+		PRINTFORML 발기한 페니스를 아큐 앞에 내밀자, 아큐는 조용히 빨기 시작했다
+		PRINTFORML 「응……후, 츄르, 츕……핥짝, 츄브……」
+		PRINTFORMW 아기 고양이가 어미 고양이의 젖을 빨듯이, 츄우 츄우 귀두를 빨아낸다…
+	;그 외
 	ELSE
-		;음란＋奉仕精神Lv5＋サドっ気1以上
-		IF TALENT:170 == 1 && ABL:13 >= 5 && ABL:20 >= 1 && (CFLAG:9041 <= 3 || FLAG:11 == 2)
-			;技巧5以上で調教者が小柄体型
-			IF ABL:12 >= 5 && TALENT:PLAYER:128 == 1
-				IF RAND:14 == 0
-					PRINTFORML 「우후후……」
-					PRINTFORML 아큐는 자신의 머리카락을 한 올 뽑아, 그걸로 페니스의 뿌리를 묶고 부드러운 손으로 잡았다
-					PRINTFORML 「이걸로 됐, 다. 가고 싶어져도 참아주세요? 꾹, 말랑말랑, 츕 츕……」
-					PRINTFORML 「……미끈, 미끈, 츄, 츄……왜 그러시나요, 괴로운 것 같은 얼굴 하고. 좀 더 강하게 하는게 좋나요? 에잇, 츕 츄……」
-					PRINTFORML 절묘한 손놀림으로 성감은 높아지지만, 뿌리가 속박되어 있어 절정에 달할 수 없다. 아큐는 그런 모습을 보고 짖궃게 웃고 있다…
-					PRINTFORML 「어머, 귀두가 팡팡하고 붓고 있어요. 침이라도 발라서 치료하죠……응 풋」
-					PRINTFORML 귀두에 끈적한 혓바닥이 달라붙어, 가차없이 점막을 자극한다
-					PRINTFORML 「츄르, 츄파, 응, 츄 츕, 낼름낼름……왜 그러히나요, 언제라도 입에 퓩퓩해도 된다고효? 쿡 쿡」
-					PRINTFORML 「응 후, 낼름, 응, 응～……츕 츕 츄……츄르, 스츄, 스릅……푸핫♪ …그럼, 슬슬 풀어 드릴게요, 이거」
-					PRINTFORML 페니스의 구속이 풀리면, 쌓인 욕망이 마그마 같이 요도를 타고 올라간다
-					PRINTFORMW 「좋아요, 전부 싸주세요……! 응, 츄르르르, 츄읍! 츄읍, 츄ーー웁……!」
-				ELSEIF RAND:13 == 0
-					PRINTFORML 「우와아, 쪼끄매……게다가 가죽도 안 벗겨졌고……쿡 쿡, 미숙한 자지네요」
-					PRINTFORML 「불쌍하니까, 입으로 벗겨 드릴게요, 응 훗……응 츄, 츄르, 낼름낼름, 자아, 완성」
-					PRINTFORMW 「어머, 그렇게 침을 흘리곤, 벌써 참을 수 없어졌어요? 살짝 핥았을 뿐인데? 어쩔 수 없네요……응, 후뭇, 츄르츄르, 꿀꺽, 츄우웃, 츄르르릅」
-				ELSE
-					CALL K48_FELLATIO
-				ENDIF
-			;小柄体型のみ
-			ELSEIF TALENT:PLAYER:128 == 1
-				IF RAND:13 == 0
-					PRINTFORML 「우와아, 쪼끄매……게다가 가죽도 안 벗겨졌고……쿡 쿡, 미숙한 자지네요」
-					PRINTFORML 「불쌍하니까, 입으로 벗겨 드릴게요, 응 훗……응 츄, 츄르, 낼름낼름, 자아, 완성」
-					PRINTFORMW 「어머, 그렇게 침을 흘리곤, 벌써 참을 수 없어졌어요? 살짝 핥았을 뿐인데? 어쩔 수 없네요……응, 후뭇, 츄르츄르, 꿀꺽, 츄우웃, 츄르르릅」
-				ELSE
-					CALL K48_FELLATIO
-				ENDIF
-			;技巧５のみ
-			ELSEIF ABL:12 >= 5
-				IF RAND:13 == 0
-					PRINTFORML 「우후후……」
-					PRINTFORML 아큐는 자신의 머리카락을 한 올 뽑아, 그걸로 페니스의 뿌리를 묶고 부드러운 손으로 잡았다
-					PRINTFORML 「이걸로 됐, 다. 가고 싶어져도 참아주세요? 꾹, 말랑말랑, 츕 츕……」
-					PRINTFORML 「……미끈, 미끈, 츄, 츄……왜 그러시나요, 괴로운 것 같은 얼굴 하고. 좀 더 강하게 하는게 좋나요? 에잇, 츕 츄……」
-					PRINTFORML 절묘한 손놀림으로 성감은 높아지지만, 뿌리가 속박되어 있어 절정에 달할 수 없다. 아큐는 그런 모습을 보고 짖궃게 웃고 있다…
-					PRINTFORML 「어머, 귀두가 팡팡하고 붓고 있어요. 침이라도 발라서 치료하죠……응 풋」
-					PRINTFORML 귀두에 끈적한 혓바닥이 달라붙어, 가차없이 점막을 자극한다
-					PRINTFORML 「츄르, 츄파, 응, 츄 츕, 낼름낼름……왜 그러히나요, 언제라도 입에 퓩퓩해도 된다고효? 쿡 쿡」
-					PRINTFORML 「응 후, 낼름, 응, 응～……츕 츕 츄……츄르, 스츄, 스릅……푸핫♪ …그럼, 슬슬 풀어 드릴게요, 이거」
-					PRINTFORML 페니스의 구속이 풀리면, 쌓인 욕망이 마그마 같이 요도를 타고 올라간다
-					PRINTFORMW 「좋아요, 전부 싸주세요……! 응, 츄르르르, 츄읍! 츄읍, 츄ーー웁……!」
-				ELSE
-					CALL K48_FELLATIO
-				ENDIF
-			;그 외
+		PRINTFORML 「응, 으읏, 더러운걸 가까이 대지 말아주세요……!」
+		PRINTFORML 페니스를 얼굴 가까이에 대 강요하지만, 아큐는 강하게 거부했다
+		PRINTFORML 어쩔 수 없이 억지로 입을 벌려, 머리를 잡고 앞뒤로 격렬하게 흔들었다…
+		PRINTFORML 「응 후그읏!? 케흑, 우에……하ー, 후, 응, 으우우……츄르, 츄파……」
+		PRINTFORML 입안은 타버릴 듯이 뜨거워, 속속들이 %CALLNAME:PLAYER%에게 쾌감을 준다
+		PRINTFORMW 아직 혀놀림은 미숙하지만, 봉사노예의 소질을 충분히 느끼게 했다…
+	ENDIF
+	CFLAG:9041 = 1
+;二回目以降
+ELSE
+	;음란＋奉仕精神Lv5＋サドっ気1以上
+	IF TALENT:170 == 1 && ABL:13 >= 5 && ABL:20 >= 1 && (CFLAG:9041 <= 3 || FLAG:11 == 2)
+		;技巧5以上で調教者が小柄体型
+		IF ABL:12 >= 5 && TALENT:PLAYER:128 == 1
+			IF RAND:14 == 0
+				PRINTFORML 「우후후……」
+				PRINTFORML 아큐는 자신의 머리카락을 한 올 뽑아, 그걸로 페니스의 뿌리를 묶고 부드러운 손으로 잡았다
+				PRINTFORML 「이걸로 됐, 다. 가고 싶어져도 참아주세요? 꾹, 말랑말랑, 츕 츕……」
+				PRINTFORML 「……미끈, 미끈, 츄, 츄……왜 그러시나요, 괴로운 것 같은 얼굴 하고. 좀 더 강하게 하는게 좋나요? 에잇, 츕 츄……」
+				PRINTFORML 절묘한 손놀림으로 성감은 높아지지만, 뿌리가 속박되어 있어 절정에 달할 수 없다. 아큐는 그런 모습을 보고 짖궃게 웃고 있다…
+				PRINTFORML 「어머, 귀두가 팡팡하고 붓고 있어요. 침이라도 발라서 치료하죠……응 풋」
+				PRINTFORML 귀두에 끈적한 혓바닥이 달라붙어, 가차없이 점막을 자극한다
+				PRINTFORML 「츄르, 츄파, 응, 츄 츕, 낼름낼름……왜 그러히나요, 언제라도 입에 퓩퓩해도 된다고효? 쿡 쿡」
+				PRINTFORML 「응 후, 낼름, 응, 응～……츕 츕 츄……츄르, 스츄, 스릅……푸핫♪ …그럼, 슬슬 풀어 드릴게요, 이거」
+				PRINTFORML 페니스의 구속이 풀리면, 쌓인 욕망이 마그마 같이 요도를 타고 올라간다
+				PRINTFORMW 「좋아요, 전부 싸주세요……! 응, 츄르르르, 츄읍! 츄읍, 츄ーー웁……!」
+			ELSEIF RAND:13 == 0
+				PRINTFORML 「우와아, 쪼끄매……게다가 가죽도 안 벗겨졌고……쿡 쿡, 미숙한 자지네요」
+				PRINTFORML 「불쌍하니까, 입으로 벗겨 드릴게요, 응 훗……응 츄, 츄르, 낼름낼름, 자아, 완성」
+				PRINTFORMW 「어머, 그렇게 침을 흘리곤, 벌써 참을 수 없어졌어요? 살짝 핥았을 뿐인데? 어쩔 수 없네요……응, 후뭇, 츄르츄르, 꿀꺽, 츄우웃, 츄르르릅」
 			ELSE
 				CALL K48_FELLATIO
 			ENDIF
-			CFLAG:9041 = 4
-		;奉仕精神Lv3以上
-		ELSEIF (ABL:13 >= 3 || TALENT:150 == 1) && (CFLAG:9041 <= 2 || FLAG:11 == 2)
-			IF RAND:8 == 0
-			PRINTFORMW 「응, 후, 크, 츄파……저기, 기분 좋으신가요……」
-			ELSEIF RAND:7 == 0
-			PRINTFORMW 「으～읍, 꿀꺽꿀꺽, 푸하……우에에, 역시 쓴맛 나요…」
-			ELSEIF RAND:6 == 0
-			PRINTFORMW 「정말, 빨리 가버려 주세요……응긋, 츕……츄르르……」
-			ELSEIF RAND:5 == 0
-			PRINTFORMW (아……움찔하고 뛰었다. 지금 거, 좋았다는 걸까?)
-			ELSEIF RAND:4 == 0
-			PRINTFORMW 「응～, 도망치지 않을테니까, 손 치워주세요……차암, 응 츄……츕 츕……」
-			ELSEIF RAND:3 == 0
-			PRINTFORMW (이 사람, 엄청 흥분하고 있어……. 내 입, 도움되고 있는 걸까나……)
-			ELSEIF RAND:2 == 0
-			PRINTFORMW 「네헤, 손이랑 혀를 동시에 써서……응츄, 츄우……스르릅……」
+		;小柄体型のみ
+		ELSEIF TALENT:PLAYER:128 == 1
+			IF RAND:13 == 0
+				PRINTFORML 「우와아, 쪼끄매……게다가 가죽도 안 벗겨졌고……쿡 쿡, 미숙한 자지네요」
+				PRINTFORML 「불쌍하니까, 입으로 벗겨 드릴게요, 응 훗……응 츄, 츄르, 낼름낼름, 자아, 완성」
+				PRINTFORMW 「어머, 그렇게 침을 흘리곤, 벌써 참을 수 없어졌어요? 살짝 핥았을 뿐인데? 어쩔 수 없네요……응, 후뭇, 츄르츄르, 꿀꺽, 츄우웃, 츄르르릅」
 			ELSE
-			PRINTFORMW 「응, 츄, 푸푸……헤? 올려다 보면서 하는 쪽이 좋은가요? 알겠습니다……응, 하믓, 낼름」
+				CALL K48_FELLATIO
 			ENDIF
-			CFLAG:9041 = 3
+		;技巧５のみ
+		ELSEIF ABL:12 >= 5
+			IF RAND:13 == 0
+				PRINTFORML 「우후후……」
+				PRINTFORML 아큐는 자신의 머리카락을 한 올 뽑아, 그걸로 페니스의 뿌리를 묶고 부드러운 손으로 잡았다
+				PRINTFORML 「이걸로 됐, 다. 가고 싶어져도 참아주세요? 꾹, 말랑말랑, 츕 츕……」
+				PRINTFORML 「……미끈, 미끈, 츄, 츄……왜 그러시나요, 괴로운 것 같은 얼굴 하고. 좀 더 강하게 하는게 좋나요? 에잇, 츕 츄……」
+				PRINTFORML 절묘한 손놀림으로 성감은 높아지지만, 뿌리가 속박되어 있어 절정에 달할 수 없다. 아큐는 그런 모습을 보고 짖궃게 웃고 있다…
+				PRINTFORML 「어머, 귀두가 팡팡하고 붓고 있어요. 침이라도 발라서 치료하죠……응 풋」
+				PRINTFORML 귀두에 끈적한 혓바닥이 달라붙어, 가차없이 점막을 자극한다
+				PRINTFORML 「츄르, 츄파, 응, 츄 츕, 낼름낼름……왜 그러히나요, 언제라도 입에 퓩퓩해도 된다고효? 쿡 쿡」
+				PRINTFORML 「응 후, 낼름, 응, 응～……츕 츕 츄……츄르, 스츄, 스릅……푸핫♪ …그럼, 슬슬 풀어 드릴게요, 이거」
+				PRINTFORML 페니스의 구속이 풀리면, 쌓인 욕망이 마그마 같이 요도를 타고 올라간다
+				PRINTFORMW 「좋아요, 전부 싸주세요……! 응, 츄르르르, 츄읍! 츄읍, 츄ーー웁……!」
+			ELSE
+				CALL K48_FELLATIO
+			ENDIF
 		;그 외
-		ELSEIF CFLAG:9041 <= 1 || FLAG:11 == 2
-			IF RAND:5 == 0
-				PRINTFORMW 「응ー, 응 믓ー, 츄르……츄, 스, 스, 스ー읍……」
-			ELSEIF A == 1
-				PRINTFORMW 「우우……츄파……더러워, 냄새 나……우붓, 츄르르……」
-			ELSEIF A == 2
-				PRINTFORMW 「사탕을 핥듯이…? 이, 이렇게인가요? 츄팟, 츄……」
-			ELSEIF A == 3
-				PRINTFORMW 「우그읏……너무 커서, 들어가지 않아효……응 츄, 르……」
-			ELSE
-				PRINTFORMW 「선조님, 죄송합니다……. 저는, 역할도 완수하지 못하고 이런 물걸을 핥고 있어효……우긋, 응 츄……」
-			ENDIF
-			CFLAG:9041 = 2
+		ELSE
+			CALL K48_FELLATIO
 		ENDIF
-		RETURN 0
+		CFLAG:9041 = 4
+	;奉仕精神Lv3以上
+	ELSEIF (ABL:13 >= 3 || TALENT:150 == 1) && (CFLAG:9041 <= 2 || FLAG:11 == 2)
+		IF RAND:8 == 0
+		PRINTFORMW 「응, 후, 크, 츄파……저기, 기분 좋으신가요……」
+		ELSEIF RAND:7 == 0
+		PRINTFORMW 「으～읍, 꿀꺽꿀꺽, 푸하……우에에, 역시 쓴맛 나요…」
+		ELSEIF RAND:6 == 0
+		PRINTFORMW 「정말, 빨리 가버려 주세요……응긋, 츕……츄르르……」
+		ELSEIF RAND:5 == 0
+		PRINTFORMW (아……움찔하고 뛰었다. 지금 거, 좋았다는 걸까?)
+		ELSEIF RAND:4 == 0
+		PRINTFORMW 「응～, 도망치지 않을테니까, 손 치워주세요……차암, 응 츄……츕 츕……」
+		ELSEIF RAND:3 == 0
+		PRINTFORMW (이 사람, 엄청 흥분하고 있어……. 내 입, 도움되고 있는 걸까나……)
+		ELSEIF RAND:2 == 0
+		PRINTFORMW 「네헤, 손이랑 혀를 동시에 써서……응츄, 츄우……스르릅……」
+		ELSE
+		PRINTFORMW 「응, 츄, 푸푸……헤? 올려다 보면서 하는 쪽이 좋은가요? 알겠습니다……응, 하믓, 낼름」
+		ENDIF
+		CFLAG:9041 = 3
+	;그 외
+	ELSEIF CFLAG:9041 <= 1 || FLAG:11 == 2
+		IF RAND:5 == 0
+			PRINTFORMW 「응ー, 응 믓ー, 츄르……츄, 스, 스, 스ー읍……」
+		ELSEIF A == 1
+			PRINTFORMW 「우우……츄파……더러워, 냄새 나……우붓, 츄르르……」
+		ELSEIF A == 2
+			PRINTFORMW 「사탕을 핥듯이…? 이, 이렇게인가요? 츄팟, 츄……」
+		ELSEIF A == 3
+			PRINTFORMW 「우그읏……너무 커서, 들어가지 않아효……응 츄, 르……」
+		ELSE
+			PRINTFORMW 「선조님, 죄송합니다……. 저는, 역할도 완수하지 못하고 이런 물걸을 핥고 있어효……우긋, 응 츄……」
+		ENDIF
+		CFLAG:9041 = 2
 	ENDIF
 ENDIF
+
+@K48_MESSAGE_COM_604
+CALL K48_MESSAGE_COM_41
 
 ;-------------------------------------------------
 ;パイズリ CFLAG:9042
 ;-------------------------------------------------
 @K48_MESSAGE_COM_42
-IF SELECTCOM == 42
-	;初めて
-	IF CFLAG:9042 == 0
-		;奉仕精神Lv3以上
-		IF ABL:13 >= 3
-			PRINTFORMW 「저어, 부끄러우니까 그다지 보지 말아주세요……」
-		;그 외
-		ELSE
-			PRINTFORMW 「가슴으로 비비는게 좋다니……이상한 취미네요……」
-		ENDIF
-		CFLAG:9042 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9042 == 0
+	;奉仕精神Lv3以上
+	IF ABL:13 >= 3
+		PRINTFORMW 「저어, 부끄러우니까 그다지 보지 말아주세요……」
+	;그 외
 	ELSE
-		;음란＋奉仕精神Lv5＋サドっ気1以上
-		IF TALENT:170 == 1 && ABL:13 >= 5 && ABL:20 >= 1 && (CFLAG:9042 <= 3 || FLAG:11 == 2)
-			;貧乳か絶壁
-			IF TALENT:111 == 1 || TALENT:110 == 1
-				IF RAND:8 == 0
-					PRINTFORML 「후후, 가슴으로 비벼지면서 가는건가요? 당하는 걸 좋아하시네요」
-					PRINTFORMW 아큐는 멍하니 상기하면서 납작한 가슴으로 봉사하고 있다…
-				ELSEIF RAND:8 == 0
-					PRINTFORML 「말랑말랑, 말랑말랑……. 이렇게 하면, 조금 더 어른스러운 체형이 될려나…」
-					PRINTFORMW 아큐는 작게 부푼 가슴을 대고 부비부비 페니스를 끼우고 있다…
-				ELSEIF RAND:8 == 0
-					PRINTFORML 「킥, 좋다고요? 저를 %CALLNAME:PLAYER%의 정액으로 더럽혀주세요……핫, 응」
-					PRINTFORMW 아큐의 가슴에서 두근두근하고 뜨거운 고동이 전해져 온다…
-				ELSEIF RAND:8 == 0
-					PRINTFORML 「쓰ー윽……자, 미끌미끌해졌어요? 에잇, 미끈, 미끈미끈……」
-					PRINTFORMW 혀에서 늘어뜨린 타액을 발라, 마찰의 쾌감을 높이고 있다…
-				ELSEIF RAND:8 == 0
-					PRINTFORML 「움찔움찔해선, 불쌍해…. 기분 좋게 해드릴께요……하, 아, 훗, 으응」
-					PRINTFORMW 아큐는 헌신적으로 가슴으로 봉사하고 있다…
-				ELSEIF RAND:8 == 0
-					PRINTFORML 「빠는 것도 같이 하면 반응이 재밌네…. 낼름낼름, 낼～름 낼～름, 츄릅♪」
-					PRINTFORMW 「에잇, 끈적끈적, 미끈미끈, 핥짝, 스릅, ……아, 끝이 새빨게요……곧 있으면 사정하는거네요♪」
-				ELSEIF RAND:8 == 0
-					PRINTFORML 「자아, 유두 단단해진거 알겠어요? 스치면 자지가 기뻐하고 있는걸요♪」
-					PRINTFORMW 「영, 찻, 콕 콕……앗, 왠지, 이쪽도 달아올랐어요, 핫, 후아, 앙……」
-				ELSE
-					PRINTFORML 「아, 긋…! 자, 잠깐, 그렇게 강하게 하면, 가슴이 이상한 기분이……후아앗!」
-					PRINTFORMW 뜨겁게 날뛰는 자지를 가슴에 누르고 비비자, 아큐의 성감을 자극한 것 같다…
-				ENDIF
-			;普通か巨乳
-			ELSE
-				IF RAND:8 == 0
-				PRINTFORML 「말랑말랑……응, 이 크기, 익숙해지지 않네요……영, 차」
-				PRINTFORMW 아큐는 부드러운 두 덩어리로 페니스를 사이에 끼우고 훑어내고 있다…
-				ELSEIF RAND:7 == 0
-				PRINTFORML 「후후……압박받는게, 그렇게 좋나요? 야한 얼굴 하고 있어요…」
-				PRINTFORMW 아큐는 부풀어 있는 곳에 페니스를 두고 부비부비하고 있다…
-				ELSEIF RAND:6 == 0
-				PRINTFORML 「좋아요, 저를 %CALLNAME:PLAYER%의 정액으로 더럽혀주세요, 핫, 으응」
-				PRINTFORMW 아큐의 가슴에서 두근두근 뜨거운 고동이 전해져 온다…
-				ELSEIF RAND:5 == 0
+		PRINTFORMW 「가슴으로 비비는게 좋다니……이상한 취미네요……」
+	ENDIF
+	CFLAG:9042 = 1
+;二回目以降
+ELSE
+	;음란＋奉仕精神Lv5＋サドっ気1以上
+	IF TALENT:170 == 1 && ABL:13 >= 5 && ABL:20 >= 1 && (CFLAG:9042 <= 3 || FLAG:11 == 2)
+		;貧乳か絶壁
+		IF TALENT:111 == 1 || TALENT:110 == 1
+			IF RAND:8 == 0
+				PRINTFORML 「후후, 가슴으로 비벼지면서 가는건가요? 당하는 걸 좋아하시네요」
+				PRINTFORMW 아큐는 멍하니 상기하면서 납작한 가슴으로 봉사하고 있다…
+			ELSEIF RAND:8 == 0
+				PRINTFORML 「말랑말랑, 말랑말랑……. 이렇게 하면, 조금 더 어른스러운 체형이 될려나…」
+				PRINTFORMW 아큐는 작게 부푼 가슴을 대고 부비부비 페니스를 끼우고 있다…
+			ELSEIF RAND:8 == 0
+				PRINTFORML 「킥, 좋다고요? 저를 %CALLNAME:PLAYER%의 정액으로 더럽혀주세요……핫, 응」
+				PRINTFORMW 아큐의 가슴에서 두근두근하고 뜨거운 고동이 전해져 온다…
+			ELSEIF RAND:8 == 0
 				PRINTFORML 「쓰ー윽……자, 미끌미끌해졌어요? 에잇, 미끈, 미끈미끈……」
 				PRINTFORMW 혀에서 늘어뜨린 타액을 발라, 마찰의 쾌감을 높이고 있다…
-				ELSEIF RAND:4 == 0
-				PRINTFORML 「びくびくして, 可哀想…. 気持ち良くしてあげますね……は, あ, ふっ, んん」
-				PRINTFORMW 阿求は献身的に胸で奉仕している…
-				ELSEIF RAND:3 == 0
+			ELSEIF RAND:8 == 0
+				PRINTFORML 「움찔움찔해선, 불쌍해…. 기분 좋게 해드릴께요……하, 아, 훗, 으응」
+				PRINTFORMW 아큐는 헌신적으로 가슴으로 봉사하고 있다…
+			ELSEIF RAND:8 == 0
 				PRINTFORML 「빠는 것도 같이 하면 반응이 재밌네…. 낼름낼름, 낼～름 낼～름, 츄릅♪」
 				PRINTFORMW 「에잇, 끈적끈적, 미끈미끈, 핥짝, 스릅, ……아, 끝이 새빨게요……곧 있으면 사정하는거네요♪」
-				ELSEIF RAND:2 == 0
+			ELSEIF RAND:8 == 0
 				PRINTFORML 「자아, 유두 단단해진거 알겠어요? 스치면 자지가 기뻐하고 있는걸요♪」
 				PRINTFORMW 「영, 찻, 콕 콕……앗, 왠지, 이쪽도 달아올랐어요, 핫, 후아, 앙……」
-				ELSE
+			ELSE
 				PRINTFORML 「아, 긋…! 자, 잠깐, 그렇게 강하게 하면, 가슴이 이상한 기분이……후아앗!」
 				PRINTFORMW 뜨겁게 날뛰는 자지를 가슴에 누르고 비비자, 아큐의 성감을 자극한 것 같다…
-				ENDIF
 			ENDIF
-			CFLAG:9042 = 4
-		;奉仕精神Lv3以上
-		ELSEIF ABL:13 >= 3 && (CFLAG:9042 <= 2 || FLAG:11 == 2)
-			IF RAND:3 == 0
-				PRINTFORMW 「유두로 비비나요……? 으응, 잘 안되네…」
+		;普通か巨乳
+		ELSE
+			IF RAND:8 == 0
+			PRINTFORML 「말랑말랑……응, 이 크기, 익숙해지지 않네요……영, 차」
+			PRINTFORMW 아큐는 부드러운 두 덩어리로 페니스를 사이에 끼우고 훑어내고 있다…
+			ELSEIF RAND:7 == 0
+			PRINTFORML 「후후……압박받는게, 그렇게 좋나요? 야한 얼굴 하고 있어요…」
+			PRINTFORMW 아큐는 부풀어 있는 곳에 페니스를 두고 부비부비하고 있다…
+			ELSEIF RAND:6 == 0
+			PRINTFORML 「좋아요, 저를 %CALLNAME:PLAYER%의 정액으로 더럽혀주세요, 핫, 으응」
+			PRINTFORMW 아큐의 가슴에서 두근두근 뜨거운 고동이 전해져 온다…
+			ELSEIF RAND:5 == 0
+			PRINTFORML 「쓰ー윽……자, 미끌미끌해졌어요? 에잇, 미끈, 미끈미끈……」
+			PRINTFORMW 혀에서 늘어뜨린 타액을 발라, 마찰의 쾌감을 높이고 있다…
+			ELSEIF RAND:4 == 0
+			PRINTFORML 「びくびくして, 可哀想…. 気持ち良くしてあげますね……は, あ, ふっ, んん」
+			PRINTFORMW 阿求は献身的に胸で奉仕している…
+			ELSEIF RAND:3 == 0
+			PRINTFORML 「빠는 것도 같이 하면 반응이 재밌네…. 낼름낼름, 낼～름 낼～름, 츄릅♪」
+			PRINTFORMW 「에잇, 끈적끈적, 미끈미끈, 핥짝, 스릅, ……아, 끝이 새빨게요……곧 있으면 사정하는거네요♪」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「…앗, 후……잠깐, 이거……간질간질해요……」
+			PRINTFORML 「자아, 유두 단단해진거 알겠어요? 스치면 자지가 기뻐하고 있는걸요♪」
+			PRINTFORMW 「영, 찻, 콕 콕……앗, 왠지, 이쪽도 달아올랐어요, 핫, 후아, 앙……」
 			ELSE
-				PRINTFORMW 「응, 우읏, 응……목소리가, 나와버려……으응, 응, 응훗」
+			PRINTFORML 「아, 긋…! 자, 잠깐, 그렇게 강하게 하면, 가슴이 이상한 기분이……후아앗!」
+			PRINTFORMW 뜨겁게 날뛰는 자지를 가슴에 누르고 비비자, 아큐의 성감을 자극한 것 같다…
 			ENDIF
-			CFLAG:9042 = 3
-		;그 외
-		ELSEIF CFLAG:9042 <= 1 || FLAG:11 == 2
-			IF TALENT:111 == 1
-				PRINTFORMW 「어차피 빈약하다고요…」
-			ELSE
-				PRINTFORMW 「지칠 뿐이에요, 이 방식…」
-			ENDIF
-			CFLAG:9042 = 2
 		ENDIF
-		RETURN 0
+		CFLAG:9042 = 4
+	;奉仕精神Lv3以上
+	ELSEIF ABL:13 >= 3 && (CFLAG:9042 <= 2 || FLAG:11 == 2)
+		IF RAND:3 == 0
+			PRINTFORMW 「유두로 비비나요……? 으응, 잘 안되네…」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…앗, 후……잠깐, 이거……간질간질해요……」
+		ELSE
+			PRINTFORMW 「응, 우읏, 응……목소리가, 나와버려……으응, 응, 응훗」
+		ENDIF
+		CFLAG:9042 = 3
+	;그 외
+	ELSEIF CFLAG:9042 <= 1 || FLAG:11 == 2
+		IF TALENT:111 == 1
+			PRINTFORMW 「어차피 빈약하다고요…」
+		ELSE
+			PRINTFORMW 「지칠 뿐이에요, 이 방식…」
+		ENDIF
+		CFLAG:9042 = 2
 	ENDIF
 ENDIF
 
@@ -3133,64 +3011,60 @@ ENDIF
 ;素股 CFLAG:9043
 ;-------------------------------------------------
 @K48_MESSAGE_COM_43
-IF SELECTCOM == 43
-	;初めて
-	IF CFLAG:9043 == 0
-		;음란有り
-		IF TALENT:170 == 1
-			PRINTFORML 「헤에, 이렇게 하는 방법도 있군요. 응……단단한게, 스치고 있어요……」
-		;処女
-		ELSEIF TALENT:0 == 1
-			PRINTFORML 「너, 넣지 말아주세요? 크, 으응, 스치고 있어……」
-		;그 외
-		ELSE
-			PRINTFORML 「싫엇, 단단한 자지가 닿고 있어……」
-		ENDIF
-		IF TEQUIP:59 == 2
-			PRINTFORMW 거칠거칠한 수영복의 다리부분에 흥분한 페니스를 문지른다…
-		ELSE
-			PRINTFORMW 아큐의 미끈미끈한 가랑이에 흥분해버린 페니스를 문지른다…
-		ENDIF
-		CFLAG:9043 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9043 == 0
+	;음란有り
+	IF TALENT:170 == 1
+		PRINTFORML 「헤에, 이렇게 하는 방법도 있군요. 응……단단한게, 스치고 있어요……」
+	;処女
+	ELSEIF TALENT:0 == 1
+		PRINTFORML 「너, 넣지 말아주세요? 크, 으응, 스치고 있어……」
+	;그 외
 	ELSE
-		;음란有り
-		IF TALENT:170 == 1 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
-			IF TEQUIP:59 == 2
-				IF RAND:2 == 0
-				PRINTFORML 아큐를 위로 들고, 수영복의 스커트 부분의 틈새에 페니스를 넣고 움직였다…
-				PRINTFORMW 「엣……응, 햣……정말로 삽입한 것 같아요……」
-				ELSE
-				PRINTFORML 거칠거칠한 수영복의 고간 부분에 페니스를 대고 격렬히 움직였다…
-				PRINTFORMW 「응, 후웃, 응……아, 싫어, 나까지 젖어버려……」
-				ENDIF
+		PRINTFORML 「싫엇, 단단한 자지가 닿고 있어……」
+	ENDIF
+	IF TEQUIP:59 == 2
+		PRINTFORMW 거칠거칠한 수영복의 다리부분에 흥분한 페니스를 문지른다…
+	ELSE
+		PRINTFORMW 아큐의 미끈미끈한 가랑이에 흥분해버린 페니스를 문지른다…
+	ENDIF
+	CFLAG:9043 = 1
+;二回目以降
+ELSE
+	;음란有り
+	IF TALENT:170 == 1 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
+		IF TEQUIP:59 == 2
+			IF RAND:2 == 0
+			PRINTFORML 아큐를 위로 들고, 수영복의 스커트 부분의 틈새에 페니스를 넣고 움직였다…
+			PRINTFORMW 「엣……응, 햣……정말로 삽입한 것 같아요……」
 			ELSE
-				IF RAND:4 == 0
-					PRINTFORML 아큐는 벽에 손을 짚고, 허리를 %CALLNAME:PLAYER%에게 내밀고 유혹하고 있다…
-					PRINTFORMW 「자, 마음껏 사용해 주세요……. 응, 후웃, 자지, 미끄러지고 있어요……」
-				ELSEIF RAND:3 == 0
-					PRINTFORML 「앗……삽입하지 않는건가요……? 응, 하앗, 하앗」
-					PRINTFORMW 「굉장해……그 곳, %CALLNAME:PLAYER%랑 내 액체로 질척질척……훗, 으웃」
-				ELSEIF RAND:2 == 0
-					PRINTFORML 「이쪽에서도 움직여, 드릴께요……에이, 응, 응……질퍽, 질퍽」
-					PRINTFORMW 「어떻습니까……? ……아, 벌써 아슬아슬해선 참을 수 있을 거 같지 않네요……응 큿」
-				ELSE
-					PRINTFORML 「왠지 모르게, 요령이 잡혔어요…. 이렇게, 허벅지로 사이에 끼고 괴롭히는 거에요, 응……」
-					PRINTFORMW 「자, 마음껏 사정해 버려도 좋아요? 아큐의 미끈미끈한 몸에, 하얀 걸 뿌려보고 싶지 않나요? 자, 자아…」…」
-				ENDIF
-			CFLAG:9043 = 3
+			PRINTFORML 거칠거칠한 수영복의 고간 부분에 페니스를 대고 격렬히 움직였다…
+			PRINTFORMW 「응, 후웃, 응……아, 싫어, 나까지 젖어버려……」
 			ENDIF
-		;그 외
-		ELSEIF CFLAG:9043 <= 1 || FLAG:11 == 2
-			IF TEQUIP:59 == 2
-				PRINTFORMW 「읏, 수영복 옷감 너머로 스쳐서, 이상한 느낌이에……」
+		ELSE
+			IF RAND:4 == 0
+				PRINTFORML 아큐는 벽에 손을 짚고, 허리를 %CALLNAME:PLAYER%에게 내밀고 유혹하고 있다…
+				PRINTFORMW 「자, 마음껏 사용해 주세요……. 응, 후웃, 자지, 미끄러지고 있어요……」
+			ELSEIF RAND:3 == 0
+				PRINTFORML 「앗……삽입하지 않는건가요……? 응, 하앗, 하앗」
+				PRINTFORMW 「굉장해……그 곳, %CALLNAME:PLAYER%랑 내 액체로 질척질척……훗, 으웃」
+			ELSEIF RAND:2 == 0
+				PRINTFORML 「이쪽에서도 움직여, 드릴께요……에이, 응, 응……질퍽, 질퍽」
+				PRINTFORMW 「어떻습니까……? ……아, 벌써 아슬아슬해선 참을 수 있을 거 같지 않네요……응 큿」
 			ELSE
-				PRINTFORMW 「이, 이거, 크리토리스에 닿아버려요……」
+				PRINTFORML 「왠지 모르게, 요령이 잡혔어요…. 이렇게, 허벅지로 사이에 끼고 괴롭히는 거에요, 응……」
+				PRINTFORMW 「자, 마음껏 사정해 버려도 좋아요? 아큐의 미끈미끈한 몸에, 하얀 걸 뿌려보고 싶지 않나요? 자, 자아…」…」
 			ENDIF
-			CFLAG:9043 = 2
+		CFLAG:9043 = 3
 		ENDIF
-		RETURN 0
+	;그 외
+	ELSEIF CFLAG:9043 <= 1 || FLAG:11 == 2
+		IF TEQUIP:59 == 2
+			PRINTFORMW 「읏, 수영복 옷감 너머로 스쳐서, 이상한 느낌이에……」
+		ELSE
+			PRINTFORMW 「이, 이거, 크리토리스에 닿아버려요……」
+		ENDIF
+		CFLAG:9043 = 2
 	ENDIF
 ENDIF
 
@@ -3198,45 +3072,41 @@ ENDIF
 ;アナル奉仕強制 CFLAG:9044
 ;-------------------------------------------------
 @K48_MESSAGE_COM_44
-IF SELECTCOM == 44
-	;初めて
-	IF CFLAG:5385 == 0
-		;음란
-		IF TALENT:170 == 1 || TALENT:150 == 1 || MARK:2 == 3
-			PRINTFORML 「어, 엉덩이를……. 네, 핥겠, 습니다……」
-			PRINTFORMW 아큐는 눈을 감고, 조심조심 %CALLNAME:PLAYER%의 항문에 혀를 댄다…
-		;그 외
-		ELSE
-			PRINTFORML 「……이 외도, 귀축, 비겁자……! 우우, 더, 더러워……」
-			PRINTFORML 아날을 핥으라고 명령하자, 아큐는 한바탕 매도한 후 흠칫흠칫 혀를 내밀었다
-			PRINTFORMW 「응, 츄파, 스릅……우에에, 그대로 봐버렸어요……우긋」
-		ENDIF
-			CFLAG:5385 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9044 == 0
+	;음란
+	IF TALENT:170 == 1 || TALENT:150 == 1 || MARK:2 == 3
+		PRINTFORML 「어, 엉덩이를……. 네, 핥겠, 습니다……」
+		PRINTFORMW 아큐는 눈을 감고, 조심조심 %CALLNAME:PLAYER%의 항문에 혀를 댄다…
+	;그 외
 	ELSE
-		;음란+従順Lv5以上
-		IF TALENT:170 == 1 && ABL:10 >= 5 && (CFLAG:5385 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「네……아큐의 혀를, 사용해주세요……응, 낼름……」
-			PRINTFORMW 아큐는 뺨을 붉히며, 민감한 부위를 열심히 혀로 청소한다…
-			CFLAG:5385 = 5
-		;음란
-		ELSEIF TALENT:170 == 1 && (CFLAG:5385 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「읏, 츄릅, 스릅, 우긋」
-			PRINTFORMW 아큐는 봉사에 집중하고 있다…
-			CFLAG:5385 = 4
-		;奉仕精神Lv3以上
-		ELSEIF (ABL:13 >= 3 || TALENT:150 == 1) && (CFLAG:5385 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「응, 후우……츄르, 크츕……」
-			PRINTFORMW 아큐는 개처럼 혀를 내밀고, 부정한 구멍을 정중히 핥고 있다…
-			CFLAG:5385 = 3
-		;그 외
-		ELSEIF CFLAG:5385 <= 1 || FLAG:11 == 2
-			PRINTFORML 「우브으으읍, 처, 청소, 진심을 담아, 노력하겠습니다……」
-			PRINTFORMW 아큐는 마음에도 없는 말을 하며, 어두운 충족이 %조사처리(CALLNAME:PLAYER,"를")% 채운다…
-			CFLAG:5385 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「……이 외도, 귀축, 비겁자……! 우우, 더, 더러워……」
+		PRINTFORML 아날을 핥으라고 명령하자, 아큐는 한바탕 매도한 후 흠칫흠칫 혀를 내밀었다
+		PRINTFORMW 「응, 츄파, 스릅……우에에, 그대로 봐버렸어요……우긋」
+	ENDIF
+		CFLAG:9044 = 1
+;二回目以降
+ELSE
+	;음란+従順Lv5以上
+	IF TALENT:170 == 1 && ABL:10 >= 5 && (CFLAG:9044 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「네……아큐의 혀를, 사용해주세요……응, 낼름……」
+		PRINTFORMW 아큐는 뺨을 붉히며, 민감한 부위를 열심히 혀로 청소한다…
+		CFLAG:9044 = 5
+	;음란
+	ELSEIF TALENT:170 == 1 && (CFLAG:9044 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「읏, 츄릅, 스릅, 우긋」
+		PRINTFORMW 아큐는 봉사에 집중하고 있다…
+		CFLAG:9044 = 4
+	;奉仕精神Lv3以上
+	ELSEIF (ABL:13 >= 3 || TALENT:150 == 1) && (CFLAG:9044 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「응, 후우……츄르, 크츕……」
+		PRINTFORMW 아큐는 개처럼 혀를 내밀고, 부정한 구멍을 정중히 핥고 있다…
+		CFLAG:9044 = 3
+	;그 외
+	ELSEIF CFLAG:9044 <= 1 || FLAG:11 == 2
+		PRINTFORML 「우브으으읍, 처, 청소, 진심을 담아, 노력하겠습니다……」
+		PRINTFORMW 아큐는 마음에도 없는 말을 하며, 어두운 충족이 %조사처리(CALLNAME:PLAYER,"를")% 채운다…
+		CFLAG:9044 = 2
 	ENDIF
 ENDIF
 
@@ -3244,34 +3114,30 @@ ENDIF
 ;ローション CFLAG:9060
 ;-------------------------------------------------
 @K48_MESSAGE_COM_60
-IF SELECTCOM == 60
-	;初めて
-	IF CFLAG:9060 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORMW 「오늘은, 미끈미끈한걸 원하시나요……?」
-		;그 외
-		ELSE
-			PRINTFORMW 「뭐, 뭔가요 이거……미끈미끈해요……」
-		ENDIF
-		CFLAG:9060 = 1
-		RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9060 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORMW 「오늘은, 미끈미끈한걸 원하시나요……?」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9060 <= 2 || FLAG:11 == 2)
-			IF RAND:2 == 0
-			PRINTFORMW 「아핫, 마치 요리 밑준비 같아요……」
-			ELSE
-			PRINTFORMW 「아, 오늘은 잔뜩 붙어 있는거군요……응, 훗」
-			ENDIF
-			CFLAG:9060 = 3
-		;그 외
-		ELSEIF CFLAG:9060 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「우우, 끈적끈적……」
-			CFLAG:9060 = 2
+		PRINTFORMW 「뭐, 뭔가요 이거……미끈미끈해요……」
+	ENDIF
+	CFLAG:9060 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9060 <= 2 || FLAG:11 == 2)
+		IF RAND:2 == 0
+		PRINTFORMW 「아핫, 마치 요리 밑준비 같아요……」
+		ELSE
+		PRINTFORMW 「아, 오늘은 잔뜩 붙어 있는거군요……응, 훗」
 		ENDIF
-		RETURN 0
+		CFLAG:9060 = 3
+	;그 외
+	ELSEIF CFLAG:9060 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「우우, 끈적끈적……」
+		CFLAG:9060 = 2
 	ENDIF
 ENDIF
 
@@ -3279,31 +3145,27 @@ ENDIF
 ;媚薬 CFLAG:9061
 ;-------------------------------------------------
 @K48_MESSAGE_COM_61
-IF SELECTCOM == 61
-	;初めて
-	IF CFLAG:9061 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORMW 「이번엔 약으로 노는건가요…? 응……」
-		;그 외
-		ELSE
-			PRINTFORMW 「읏, 츄릅……켈록 켈록, 뭘, 뭘 마시게 한건가요」
-		ENDIF
-			CFLAG:9061 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9061 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORMW 「이번엔 약으로 노는건가요…? 응……」
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:9061 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「모처럼이니까 좀 더……응」
-			PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 입 안에 약이 없어졌는데도 키스를 졸라왔다…
-			CFLAG:9061 = 3
-		;그 외
-		ELSEIF CFLAG:9061 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「응……푸하……」
-			CFLAG:9061 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORMW 「읏, 츄릅……켈록 켈록, 뭘, 뭘 마시게 한건가요」
+	ENDIF
+		CFLAG:9061 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9061 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「모처럼이니까 좀 더……응」
+		PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 입 안에 약이 없어졌는데도 키스를 졸라왔다…
+		CFLAG:9061 = 3
+	;그 외
+	ELSEIF CFLAG:9061 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「응……푸하……」
+		CFLAG:9061 = 2
 	ENDIF
 ENDIF
 
@@ -3311,32 +3173,30 @@ ENDIF
 ;利尿剤 CFLAG:9062
 ;-------------------------------------------------
 @K48_MESSAGE_COM_62
-IF SELECTCOM == 62
-	;음란+おもらし癖
-	IF TALENT:170 && TALENT:45 && (CFLAG:9062 < 5 || FLAG:11 == 2)
-		PRINTFORML 「아하, 오줌 싸는게 보고 싶은가요……? 응……」
-		PRINTFORMW 아큐는 꿀꺽하고 약을 삼켰다…
-		CFLAG:9062 = 5
-	;음란
-	ELSEIF TALENT:170 && (CFLAG:9062 < 4 || FLAG:11 == 2)
-		PRINTFORML 「아아, 또 뭔갈 해주시는거군요……♪」
-		PRINTFORMW 아큐의 눈은 기대로 젖어있다…
-		CFLAG:9062 = 4
-	;굴복각인Lv3
-	ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9062 < 3 || FLAG:11 == 2)
-		PRINTFORML 「응, 츕……」
-		PRINTFORMW 아큐는 저항하지 않고 약을 삼켰다…
-		CFLAG:9062 = 3
-	;그 외＋おもらし癖
-	ELSEIF TALENT:45 && (CFLAG:9062 < 2 || FLAG:11 == 2)
-		PRINTFORML 「싫어, 이젠 오줌싸기는 싫……으긋……!」
-		PRINTFORMW 싫어하는 아큐의 입에 억지로 이뇨제를 마시게 했다…
-		CFLAG:9062 = 2
-	;그 외
-	ELSEIF CFLAG:9062 < 1 || FLAG:11 == 2
-		PRINTFORMW 「읏, 콜록콜록……우ー, 지금 먹게 한건 뭔가요……?」
-		CFLAG:9062 = 1
-	ENDIF
+;음란+おもらし癖
+IF TALENT:170 && TALENT:45 && (CFLAG:9062 < 5 || FLAG:11 == 2)
+	PRINTFORML 「아하, 오줌 싸는게 보고 싶은가요……? 응……」
+	PRINTFORMW 아큐는 꿀꺽하고 약을 삼켰다…
+	CFLAG:9062 = 5
+;음란
+ELSEIF TALENT:170 && (CFLAG:9062 < 4 || FLAG:11 == 2)
+	PRINTFORML 「아아, 또 뭔갈 해주시는거군요……♪」
+	PRINTFORMW 아큐의 눈은 기대로 젖어있다…
+	CFLAG:9062 = 4
+;굴복각인Lv3
+ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9062 < 3 || FLAG:11 == 2)
+	PRINTFORML 「응, 츕……」
+	PRINTFORMW 아큐는 저항하지 않고 약을 삼켰다…
+	CFLAG:9062 = 3
+;그 외＋おもらし癖
+ELSEIF TALENT:45 && (CFLAG:9062 < 2 || FLAG:11 == 2)
+	PRINTFORML 「싫어, 이젠 오줌싸기는 싫……으긋……!」
+	PRINTFORMW 싫어하는 아큐의 입에 억지로 이뇨제를 마시게 했다…
+	CFLAG:9062 = 2
+;그 외
+ELSEIF CFLAG:9062 < 1 || FLAG:11 == 2
+	PRINTFORMW 「읏, 콜록콜록……우ー, 지금 먹게 한건 뭔가요……?」
+	CFLAG:9062 = 1
 ENDIF
 
 ;-------------------------------------------------
@@ -3344,30 +3204,27 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_90
 ;開始時
-IF SELECTCOM == 90 && TEQUIP:59
+IF TEQUIP:59
 	;初めて
-	IF CFLAG:5367 == 0
+	IF CFLAG:9090 == 0
 		PRINTFORMW 「헤에, 이게 에이프런인가요. 서양 옷은 그다지 없으니까 신선하네요」
-		CFLAG:5367 = 1
-		RETURN 0
+		CFLAG:9090 = 1
 	;二回目以降
 	ELSE
 		PRINTFORMW 「조금 귀엽네요, 이 옷……」
-		RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
+ELSEIF CFLAG:8823 < 1 || FLAG:11 == 2
 	PRINTFORML 「아……벌써 벗어야 하나요?」
 	PRINTFORMW 아무래도 에이프런이 마음에 든 것 같다…
-	CFLAG:5368 = 1
-	RETURN 0
+	CFLAG:8823 = 1
 ENDIF
 
 ;-------------------------------------------------
 ;ビデオ撮影(ビデオカメラ使用) CFLAG:9100
 ;-------------------------------------------------
 @K48_MESSAGE_COM_100
-IF SELECTCOM == 100 && TEQUIP:50
+IF TEQUIP:50
 	;初めて
 	IF CFLAG:9100 == 0
 		;음란
@@ -3383,7 +3240,6 @@ IF SELECTCOM == 100 && TEQUIP:50
 			PRINTFORMW 「……정말로, 최저네요……」
 		ENDIF
 		CFLAG:9100 = 1
-		RETURN 0
 	;二回目以降
 	ELSE
 		;음란＋露出癖３
@@ -3404,7 +3260,6 @@ IF SELECTCOM == 100 && TEQUIP:50
 			PRINTFORMW 아큐는 무기질인 렌즈를 두려워하고 있다…
 			CFLAG:9100 = 2
 		ENDIF
-		RETURN 0
 	ENDIF
 ENDIF
 
@@ -3412,7 +3267,7 @@ ENDIF
 ;羞恥プレイ CFLAG:9103 解除 CFLAG:8822
 ;-------------------------------------------------
 @K48_MESSAGE_COM_103
-IF SELECTCOM == 103 && TEQUIP:56
+IF TEQUIP:56
 	;初めて
 	IF CFLAG:9103 == 0
 		;음란
@@ -3427,7 +3282,6 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 「거울이라니……어디까지, 어디까지 욕보여야……!」
 		ENDIF
 			CFLAG:9103 = 1
-			RETURN 0
 	;二回目以降
 	ELSE
 		;음란
@@ -3446,7 +3300,6 @@ IF SELECTCOM == 103 && TEQUIP:56
 			PRINTFORMW 아큐는 치욕을 보이는 것을 무서워하고 있다…
 			CFLAG:9103 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ENDIF
 
@@ -3455,7 +3308,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_104
 ;開始時
-IF SELECTCOM == 104 && TEQUIP:52
+IF TEQUIP:52
 	;初めて
 	IF CFLAG:9104 == 0
 		;昼でスク水着用時
@@ -3477,7 +3330,6 @@ IF SELECTCOM == 104 && TEQUIP:52
 			PRINTFORMW 우물거리는걸 멈추게하고, 저택 밖으로 데려갔다…
 		ENDIF
 			CFLAG:9104 = 1
-			RETURN 0
 	;二回目以降
 	ELSE
 		;昼でスク水着用時
@@ -3507,10 +3359,9 @@ IF SELECTCOM == 104 && TEQUIP:52
 			PRINTFORMW 말대답하지 못하게 목걸이의 줄을 강하게 당겼다…
 			CFLAG:9104 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8821 < 3 || FLAG:11 == 2)
 		PRINTFORMW 「「와아……방 안에서, 야한 냄새……」
@@ -3524,7 +3375,6 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 		PRINTFORMW 「하아……밖은 심장에 나빠요……」
 		CFLAG:8821 = 1
 	ENDIF
-		RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -3533,55 +3383,50 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_111
 ;放尿
-IF SELECTCOM == 111
-		;음란+おもらし癖+野外プレイ
-		IF TALENT:170 && TALENT:45 && TEQUIP:52 && (CFLAG:5369 < 5 || FLAG:11 == 2)
-			PRINTFORMW 「하, 후, 우웃……이런 곳 사람한테 보이면, 변명거리도 없어요……」
-			CFLAG:5369 = 5
-		;음란+おもらし癖
-		ELSEIF TALENT:170 && TALENT:45 && (CFLAG:5369 < 4 || FLAG:11 == 2)
-			PRINTFORMW (아……소리가 들려……내, 오줌 소리……)
-			CFLAG:5369 = 4
-		;露出癖Lv5
-		ELSEIF ABL:14 >= 5 && (CFLAG:5369 < 3 || FLAG:11 == 2)
-			PRINTFORMW 「싫어……나, 오줌 보여서……젖어버렸어요……」
-			CFLAG:5369 = 3
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:5369 < 2 || FLAG:11 == 2)
-			PRINTFORMW (아……보고 있어……내, 오줌 싸는 곳……)
-			CFLAG:5369 = 2
-		;그 외
-		ELSEIF CFLAG:5369 < 1 || FLAG:11 == 2
-			PRINTFORMW 「하, 우우……보지 말아……주세요……」
-			CFLAG:5369 = 1
-		ENDIF
-	RETURN 0
+;음란+おもらし癖+野外プレイ
+IF TALENT:170 && TALENT:45 && TEQUIP:52 && (CFLAG:9111 < 5 || FLAG:11 == 2)
+	PRINTFORMW 「하, 후, 우웃……이런 곳 사람한테 보이면, 변명거리도 없어요……」
+	CFLAG:9111 = 5
+;음란+おもらし癖
+ELSEIF TALENT:170 && TALENT:45 && (CFLAG:9111 < 4 || FLAG:11 == 2)
+	PRINTFORMW (아……소리가 들려……내, 오줌 소리……)
+	CFLAG:9111 = 4
+;露出癖Lv5
+ELSEIF ABL:14 >= 5 && (CFLAG:9111 < 3 || FLAG:11 == 2)
+	PRINTFORMW 「싫어……나, 오줌 보여서……젖어버렸어요……」
+	CFLAG:9111 = 3
+;굴복각인Lv3
+ELSEIF MARK:2 == 3 && (CFLAG:9111 < 2 || FLAG:11 == 2)
+	PRINTFORMW (아……보고 있어……내, 오줌 싸는 곳……)
+	CFLAG:9111 = 2
+;그 외
+ELSEIF CFLAG:9111 < 1 || FLAG:11 == 2
+	PRINTFORMW 「하, 우우……보지 말아……주세요……」
+	CFLAG:9111 = 1
 ENDIF
+
 ;強制放尿
 @K48_MESSAGE_COM_620
-IF SELECTCOM == 620
-	;음란+おもらし癖+野外プレイ
-		IF TALENT:170 && TALENT:45 && TEQUIP:52 && (CFLAG:5370 < 5 || FLAG:11 == 2)
-			PRINTFORMW 「그러언, 아, 후아앗, 새어버려, 밖에서 거기 만지작거리면서 오줌, 싸버려어엇」
-			CFLAG:5370 = 5
-		;음란+おもらし癖
-		ELSEIF TALENT:170 && TALENT:45 && (CFLAG:5370 < 4 || FLAG:11 == 2)
-			PRINTFORMW 「그러니까, 그렇게 만져대면, 안 돼……아, 웃, 나와, 오줌 나와버려……」
-			CFLAG:5370 = 4
-		;露出癖Lv5
-		ELSEIF ABL:14 >= 5 && (CFLAG:5370 < 3 || FLAG:11 == 2)
-			PRINTFORMW 「아, 후, 싫엇, 나, 보여지면서 가버릴 것 같아……아, 아아앗!」
-			CFLAG:5370 = 3
-		;굴복각인Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:5370 < 2 || FLAG:11 == 2)
-			PRINTFORMW 「아, 우, 새어버려……」
-			CFLAG:5370 = 2
-		;그 외
-		ELSEIF CFLAG:5370 < 1 || FLAG:11 == 2
-			PRINTFORMW 「안 돼요, 자극당하면, 오줌 나와버려요……! 후아, 후아아앗!!」
-			CFLAG:5370 = 1
-	ENDIF
-	RETURN 0
+;음란+おもらし癖+野外プレイ
+IF TALENT:170 && TALENT:45 && TEQUIP:52 && (CFLAG:9620 < 5 || FLAG:11 == 2)
+	PRINTFORMW 「그러언, 아, 후아앗, 새어버려, 밖에서 거기 만지작거리면서 오줌, 싸버려어엇」
+	CFLAG:9620 = 5
+;음란+おもらし癖
+ELSEIF TALENT:170 && TALENT:45 && (CFLAG:9620 < 4 || FLAG:11 == 2)
+	PRINTFORMW 「그러니까, 그렇게 만져대면, 안 돼……아, 웃, 나와, 오줌 나와버려……」
+	CFLAG:9620 = 4
+;露出癖Lv5
+ELSEIF ABL:14 >= 5 && (CFLAG:9620 < 3 || FLAG:11 == 2)
+	PRINTFORMW 「아, 후, 싫엇, 나, 보여지면서 가버릴 것 같아……아, 아아앗!」
+	CFLAG:9620 = 3
+;굴복각인Lv3
+ELSEIF MARK:2 == 3 && (CFLAG:9620 < 2 || FLAG:11 == 2)
+	PRINTFORMW 「아, 우, 새어버려……」
+	CFLAG:9620 = 2
+;그 외
+ELSEIF CFLAG:9620 < 1 || FLAG:11 == 2
+	PRINTFORMW 「안 돼요, 자극당하면, 오줌 나와버려요……! 후아, 후아아앗!!」
+	CFLAG:9620 = 1
 ENDIF
 
 ;-------------------------------------------------
@@ -3589,9 +3434,9 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_172
 ;開始時
-IF SELECTCOM == 172 && TEQUIP:25
+IF TEQUIP:25
 	;初めて
-	IF CFLAG:5372 == 0
+	IF CFLAG:9172 == 0
 		;음란
 		IF TALENT:170 == 1 || TALENT:150
 			PRINTFORMW 「아앗, 꼬리, 꼬리가 들어오고 있어요……♪」
@@ -3602,135 +3447,127 @@ IF SELECTCOM == 172 && TEQUIP:25
 		ELSE
 			PRINTFORMW 「큿……구슬이 쑤욱 쑤욱, 악취미네요……훗, 우웃!」
 		ENDIF
-			CFLAG:5372 = 1
-			RETURN 0
+			CFLAG:9172 = 1
 	;二回目以降
 	ELSE
 		;음란＋A感覚Lv3以上＋マゾっ気Lv3以上
-		IF TALENT:170 == 1 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5372 <= 4 || FLAG:11 == 2)
+		IF TALENT:170 == 1 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 「하앗……이젠, 넣은 것만으로 이상해져 버려요……후우웃!」
-			CFLAG:5372 = 5
+			CFLAG:9172 = 5
 		;음란
-		ELSEIF TALENT:170 == 1 && (CFLAG:5372 <= 3 || FLAG:11 == 2)
+		ELSEIF TALENT:170 == 1 && (CFLAG:9172 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 「아우……하나씩, 들어오고 있어요……」
-			CFLAG:5372 = 4
+			CFLAG:9172 = 4
 		;A感覚Lv3以上＋マゾっ気Lv3以上
-		ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5372 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「응, 아, 반응할 때마다 안에서 빙글빙글 움직여……후아앗!」
-			CFLAG:5372 = 3
+			CFLAG:9172 = 3
 		;그 외
-		ELSEIF  CFLAG:5372 <= 1 || FLAG:11 == 2
+		ELSEIF  CFLAG:9172 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「앗……퓽, 퓽하고 들어와요……」
-			CFLAG:5372 = 2
+			CFLAG:9172 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;脱着時
-ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
+ELSE
 	;음란
-	IF TALENT:170 == 1 && (CFLAG:5373 < 3 || FLAG:11 == 2)
+	IF TALENT:170 == 1 && (CFLAG:8852 < 3 || FLAG:11 == 2)
 		PRINTFORMW 「하, 응, 후아아, 아゛～～앗♪」
-		CFLAG:5373 = 3
+		CFLAG:8852 = 3
 	;A感覚Lv3以上＋マゾっ気Lv3以上
-	ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:5373 < 2 || FLAG:11 == 2)
+	ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8852 < 2 || FLAG:11 == 2)
 		PRINTFORML 「시러, 뺄 때 삐걱거리는 거, 버릇 들거 같아……」
-		CFLAG:5373 = 2
+		CFLAG:8852 = 2
 	;그 외
-	ELSEIF CFLAG:5373 < 1 || FLAG:11 == 2
+	ELSEIF CFLAG:8852 < 1 || FLAG:11 == 2
 		PRINTFORMW 「하웃……」
-		CFLAG:5373 = 1
+		CFLAG:8852 = 1
 	ENDIF
-		RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;アナル舐め CFLAG:9180
 ;-------------------------------------------------
 @K48_MESSAGE_COM_180
-	;初めて
-	IF CFLAG:5371 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 「앗, 에……아아앗!? 이거, 머리, 반짝반짝해……후아아……」
-			PRINTFORMW 치정과 항문을 향한 자극이 섞여 아큐의 사고를 범하고 있다…
-		;屈伏3か연모
-		ELSEIF MARK:2 == 3 || TALENT:150 == 1
-			PRINTFORML 「응, 꺄훗……! 더, 더러워요……」
-			PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 갑작스런 행동에 매우 놀라고 있다…
-		;그 외
-		ELSE
-			PRINTFORML 「꺄아앗!? 엣, 아, 히잇……!?」
-			PRINTFORML %조사처리(CALLNAME:PLAYER,"는")% 엉덩이에 얼굴을 묻고, 낼름낼름하고 핥기 시작했다…
-			PRINTFORML 「거, 거짓말, 이 사람……엉덩이 핥고 있어……!? 어째서, 어째서……!?」
-			PRINTFORMW 이해를 넘은 행동에, 아큐는 혼란해 버렸다…
-		ENDIF
-			CFLAG:5371 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9180 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 「앗, 에……아아앗!? 이거, 머리, 반짝반짝해……후아아……」
+		PRINTFORMW 치정과 항문을 향한 자극이 섞여 아큐의 사고를 범하고 있다…
+	;屈伏3か연모
+	ELSEIF MARK:2 == 3 || TALENT:150 == 1
+		PRINTFORML 「응, 꺄훗……! 더, 더러워요……」
+		PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 갑작스런 행동에 매우 놀라고 있다…
+	;그 외
 	ELSE
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:5371 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 「아, 하우우……나, 엉덩이 핥아지고 있는데……는데……」
-			CFLAG:5371 = 4
-		;A感覚Lv3以上
-		ELSEIF ABL:2 >= 3 && (CFLAG:5371 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「응, 큿……왠지, 불끈불끈해져……?」
-			CFLAG:5371 = 3
-		;그 외
-		ELSEIF CFLAG:5371 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「우…우우……그러니까, 거기 더럽다니깐요……」
-			CFLAG:5371 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「꺄아앗!? 엣, 아, 히잇……!?」
+		PRINTFORML %조사처리(CALLNAME:PLAYER,"는")% 엉덩이에 얼굴을 묻고, 낼름낼름하고 핥기 시작했다…
+		PRINTFORML 「거, 거짓말, 이 사람……엉덩이 핥고 있어……!? 어째서, 어째서……!?」
+		PRINTFORMW 이해를 넘은 행동에, 아큐는 혼란해 버렸다…
 	ENDIF
+		CFLAG:9180 = 1
+;二回目以降
+ELSE
+	;음란
+	IF TALENT:170 == 1 && (CFLAG:9180 <= 3 || FLAG:11 == 2)
+		PRINTFORMW 「아, 하우우……나, 엉덩이 핥아지고 있는데……는데……」
+		CFLAG:9180 = 4
+	;A感覚Lv3以上
+	ELSEIF ABL:2 >= 3 && (CFLAG:9180 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「응, 큿……왠지, 불끈불끈해져……?」
+		CFLAG:9180 = 3
+	;그 외
+	ELSEIF CFLAG:9180 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「우…우우……그러니까, 거기 더럽다니깐요……」
+		CFLAG:9180 = 2
+	ENDIF
+		RETURN 0
+ENDIF
 
 ;-------------------------------------------------
 ;スパンキング CFLAG:9220
 ;-------------------------------------------------
 @K48_MESSAGE_COM_220
-IF SELECTCOM == 220
-	;初めて
-	IF CFLAG:9220 == 0
-		;음란
-		IF (TALENT:170 == 1 || TALENT:150 == 1)
-			PRINTFORML 「으큿! 이, 이건 벌인건가요…?」
-			PRINTFORMW 아큐는 직접폭행에 당황하고 있다…
-		;그 외
-		ELSE
-			PRINTFORML 「가, 갑자기 뭘……앗, 아팟!?」
-			PRINTFORMW 아큐의 둥근 엉덩이에 자국이 남을 대까지 손바닥을 쳤다……
-		ENDIF
-			CFLAG:9220 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9220 == 0
+	;음란
+	IF (TALENT:170 == 1 || TALENT:150 == 1)
+		PRINTFORML 「으큿! 이, 이건 벌인건가요…?」
+		PRINTFORMW 아큐는 직접폭행에 당황하고 있다…
+	;그 외
 	ELSE
-		;음란＋マゾっ気Lv5以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 5 && (CFLAG:9220 <= 5 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「앗, 아아앗! 더, 더 때려주세요♪」
-			PRINTFORMW 아큐는 눈을 뒤집으면서, 고통에 빠져있다…
-			CFLAG:9220 = 6
-		;음란＋マゾっ気Lv3以上
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 3 && (CFLAG:9220 <= 4 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「앗, 크으으, 이거, 버릇 될 것 같아요……!」
-			PRINTFORMW 아큐는 피학의 쾌감에 눈을 뜨고 있는 것 같다…
-			CFLAG:9220 = 5
-		;음란
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9220 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「읏, 크앗」
-			PRINTFORMW 성행위와는 다른 아픔에 아큐는 몸을 뒤로 젖히고 고통스러워하고 있다…
-			CFLAG:9220 = 4
-		;マゾっ気Lv3以上
-		ELSEIF ABL:21 >= 3 && (CFLAG:9220 <= 2 || FLAG:11 == 2)
-			PRINTFORML 엉덩이를 때리자, 원하는 듯이 허리가 실룩였다…
-			PRINTFORMW (싫어, 어째서……?)
-			CFLAG:9220 = 3
-		;그 외
-		ELSEIF CFLAG:9220 <= 1 || FLAG:11 == 2
-			PRINTFORML 「후그읏, 우웃……」
-			PRINTFORMW 아큐는 얼굴을 비뚤어뜨리고 고통을 참고 있다…
-			CFLAG:9220 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「가, 갑자기 뭘……앗, 아팟!?」
+		PRINTFORMW 아큐의 둥근 엉덩이에 자국이 남을 대까지 손바닥을 쳤다……
+	ENDIF
+		CFLAG:9220 = 1
+;二回目以降
+ELSE
+	;음란＋マゾっ気Lv5以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 5 && (CFLAG:9220 <= 5 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「앗, 아아앗! 더, 더 때려주세요♪」
+		PRINTFORMW 아큐는 눈을 뒤집으면서, 고통에 빠져있다…
+		CFLAG:9220 = 6
+	;음란＋マゾっ気Lv3以上
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 3 && (CFLAG:9220 <= 4 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「앗, 크으으, 이거, 버릇 될 것 같아요……!」
+		PRINTFORMW 아큐는 피학의 쾌감에 눈을 뜨고 있는 것 같다…
+		CFLAG:9220 = 5
+	;음란
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9220 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「읏, 크앗」
+		PRINTFORMW 성행위와는 다른 아픔에 아큐는 몸을 뒤로 젖히고 고통스러워하고 있다…
+		CFLAG:9220 = 4
+	;マゾっ気Lv3以上
+	ELSEIF ABL:21 >= 3 && (CFLAG:9220 <= 2 || FLAG:11 == 2)
+		PRINTFORML 엉덩이를 때리자, 원하는 듯이 허리가 실룩였다…
+		PRINTFORMW (싫어, 어째서……?)
+		CFLAG:9220 = 3
+	;그 외
+	ELSEIF CFLAG:9220 <= 1 || FLAG:11 == 2
+		PRINTFORML 「후그읏, 우웃……」
+		PRINTFORMW 아큐는 얼굴을 비뚤어뜨리고 고통을 참고 있다…
+		CFLAG:9220 = 2
 	ENDIF
 ENDIF
 
@@ -3738,54 +3575,50 @@ ENDIF
 ;鞭 CFLAG:9221
 ;-------------------------------------------------
 @K48_MESSAGE_COM_221
-IF SELECTCOM == 221
-	;初めて
-	IF CFLAG:9221 == 0
-		;음란
-		IF (TALENT:170 == 1 || TALENT:150 == 1)
-			PRINTFORML 「사랑의 채찍이란건가요, 아하핫……아, 킷……!?」
-			PRINTFORMW 몸도 마음도 저속해졌다곤 해도, 고통에는 역시 눈썹을 찡그린다…
-		;그 외
-		ELSE
-			PRINTFORML 「아긋! 그, 그만둬! 히기잇!」
-			PRINTFORMW 얼굴을 막으려고 뻗은 양팔을 거침없이 채찍으로 내리쳤다…
-		ENDIF
-			CFLAG:9221 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9221 == 0
+	;음란
+	IF (TALENT:170 == 1 || TALENT:150 == 1)
+		PRINTFORML 「사랑의 채찍이란건가요, 아하핫……아, 킷……!?」
+		PRINTFORMW 몸도 마음도 저속해졌다곤 해도, 고통에는 역시 눈썹을 찡그린다…
+	;그 외
 	ELSE
-		;음란＋マゾっ気Lv5以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 5 && (CFLAG:9221 <= 6 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「아하앗, 더, 더 강하게 해주세요……!」
-			PRINTFORMW 아큐는 망가져, 이미 고통을 쾌락으로 밖에 느끼지 않는 몸이 되어 있다…
-			CFLAG:9221 = 7
-		;음란＋マゾっ気Lv3以上
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 3 && (CFLAG:9221 <= 5 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「앗……주인님……」
-			PRINTFORMW 납작 엎드린 아큐에게 채찍을 휘두르면, 개가 꼬리를 흔들듯이 몸을 흔들었다…
-			CFLAG:9221 = 6
-		;음란
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9221 <= 4 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「아하……제 몸에, 당신이 만든 상처가 잔뜩……」
-			PRINTFORMW 아큐는 고통으로 표정을 비틀면서도, 어딘가 만족한 것 같다…
-			CFLAG:9221 = 5
-		;マゾっ気Lv3以上
-		ELSEIF ABL:21 >= 3 && (CFLAG:9221 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「하웃, 우깃! 아팟……!」
-			PRINTFORMW (어, 어라……호, 혹시, 거기……젖고 있어……?)
-			CFLAG:9221 = 4
-		;屈伏3
-		ELSEIF MARK:2 == 3 && (CFLAG:9221 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「아웃, 크읏」
-			PRINTFORMW 아큐는 힘이 빠지고 있지만, 채찍을 휘두를 때 마다 고통에 소리를 높인다…
-			CFLAG:9221 = 3
-		;그 외
-		ELSEIF CFLAG:9221 <= 1 || FLAG:11 == 2
-			PRINTFORML 「웃, 아긋, 도, 도와줘……누군가……」
-			PRINTFORMW 하얀 피부에 몇개씩 지렁이 자국이 생겨, 아파보이는 모습이 되어있다…
-			CFLAG:9221 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「아긋! 그, 그만둬! 히기잇!」
+		PRINTFORMW 얼굴을 막으려고 뻗은 양팔을 거침없이 채찍으로 내리쳤다…
+	ENDIF
+		CFLAG:9221 = 1
+;二回目以降
+ELSE
+	;음란＋マゾっ気Lv5以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 5 && (CFLAG:9221 <= 6 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「아하앗, 더, 더 강하게 해주세요……!」
+		PRINTFORMW 아큐는 망가져, 이미 고통을 쾌락으로 밖에 느끼지 않는 몸이 되어 있다…
+		CFLAG:9221 = 7
+	;음란＋マゾっ気Lv3以上
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 3 && (CFLAG:9221 <= 5 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「앗……주인님……」
+		PRINTFORMW 납작 엎드린 아큐에게 채찍을 휘두르면, 개가 꼬리를 흔들듯이 몸을 흔들었다…
+		CFLAG:9221 = 6
+	;음란
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9221 <= 4 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「아하……제 몸에, 당신이 만든 상처가 잔뜩……」
+		PRINTFORMW 아큐는 고통으로 표정을 비틀면서도, 어딘가 만족한 것 같다…
+		CFLAG:9221 = 5
+	;マゾっ気Lv3以上
+	ELSEIF ABL:21 >= 3 && (CFLAG:9221 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「하웃, 우깃! 아팟……!」
+		PRINTFORMW (어, 어라……호, 혹시, 거기……젖고 있어……?)
+		CFLAG:9221 = 4
+	;屈伏3
+	ELSEIF MARK:2 == 3 && (CFLAG:9221 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「아웃, 크읏」
+		PRINTFORMW 아큐는 힘이 빠지고 있지만, 채찍을 휘두를 때 마다 고통에 소리를 높인다…
+		CFLAG:9221 = 3
+	;그 외
+	ELSEIF CFLAG:9221 <= 1 || FLAG:11 == 2
+		PRINTFORML 「웃, 아긋, 도, 도와줘……누군가……」
+		PRINTFORMW 하얀 피부에 몇개씩 지렁이 자국이 생겨, 아파보이는 모습이 되어있다…
+		CFLAG:9221 = 2
 	ENDIF
 ENDIF
 
@@ -3794,56 +3627,52 @@ ENDIF
 ;針 CFLAG:9222
 ;-------------------------------------------------
 @K48_MESSAGE_COM_222
-IF SELECTCOM == 222
-	;初めて
-	IF CFLAG:9222 == 0
-		;음란
-		IF (TALENT:170 == 1 || TALENT:150 == 1)
-			PRINTFORML 「부……부디……」
-			PRINTFORML 아큐는 공포로 이빨을 딱딱거리면서도, %조사처리(CALLNAME:MASTER,"를")% 위해 그걸 견디고 있다…
-			PRINTFORMW 「……읏! 아……캇……이기잇……!!」
-		;그 외
-		ELSE
-			PRINTFORML 날뛰지 못하게 구속하고, 말 없이 뾰족한 바늘을 꺼내마 아큐는 핏기가 가셨다…
-			PRINTFORML 「……힉……그, 그거, 농담이죠……? 제발……위험하니까 끝내주세요……」
-			PRINTFORMW 냉철히 바늘을 찌르자, 귀을 찌르는 비명이 울려 퍼졌다…
-		ENDIF
-			CFLAG:9222 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9222 == 0
+	;음란
+	IF (TALENT:170 == 1 || TALENT:150 == 1)
+		PRINTFORML 「부……부디……」
+		PRINTFORML 아큐는 공포로 이빨을 딱딱거리면서도, %조사처리(CALLNAME:MASTER,"를")% 위해 그걸 견디고 있다…
+		PRINTFORMW 「……읏! 아……캇……이기잇……!!」
+	;그 외
 	ELSE
-		;음란＋マゾっ気Lv5以上
-		IF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 5 && (CFLAG:9222 <= 6 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「～～～읏……! 이젠, 안 돼……가버려욧……! 응, 으으으응♪」
-			PRINTFORMW 민감한 부위를 찌르자, 아큐는 전신을 떨면서 교성을 냈다…
-			CFLAG:9222 = 7
-		;음란＋マゾっ気Lv3以上
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 3 && (CFLAG:9222 <= 5 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 어느샌가 유두나 클리토리스도 고통을 주자 단단히 발기하게 되었다…
-			PRINTFORMW 「앗……이, 이건, 그, 우큿……! 그치만, 몇 번이나, 아프게 하니까……」
-			CFLAG:9222 = 6
-		;음란
-		ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9222 <= 4 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
-			PRINTFORML 「아, 크, 우……! ……에, 에헤, 아직, 당신 기분이 풀릴 때까지, 괜찮아요……?」
-			PRINTFORMW 아큐는 식은 땀을 흘리면서도, 노예로서 온순히 고통을 받아들인다…
-			CFLAG:9222 = 5
-		;マゾっ気Lv3以上
-		ELSEIF ABL:21 >= 3 && (CFLAG:9222 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「앗……캇, 하…………앗!!」
-			PRINTFORMW 아큐는 눈을 뒤집고, 전신을 부들부들 떨고 있다…
-			CFLAG:9222 = 4
-		;屈伏3
-		ELSEIF MARK:2 == 3 && (CFLAG:9222 <= 2 || FLAG:11 == 2)
-			PRINTFORML 「……읏！! ……읏, ………읏!!」
-			PRINTFORMW 아큐는 몸을 젖히고, 일순간 기절했다…
-			CFLAG:9222 = 3
-		;그 외
-		ELSEIF CFLAG:9222 <= 1 || FLAG:11 == 2
-			PRINTFORML 「싫어어어엇, 바늘은 싫어어어어엇!!」
-			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 담담히 바늘을 사용해, 절규와 비명의 콘서트를 연주한다…
-			CFLAG:9222 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 날뛰지 못하게 구속하고, 말 없이 뾰족한 바늘을 꺼내마 아큐는 핏기가 가셨다…
+		PRINTFORML 「……힉……그, 그거, 농담이죠……? 제발……위험하니까 끝내주세요……」
+		PRINTFORMW 냉철히 바늘을 찌르자, 귀을 찌르는 비명이 울려 퍼졌다…
+	ENDIF
+		CFLAG:9222 = 1
+;二回目以降
+ELSE
+	;음란＋マゾっ気Lv5以上
+	IF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 5 && (CFLAG:9222 <= 6 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「～～～읏……! 이젠, 안 돼……가버려욧……! 응, 으으으응♪」
+		PRINTFORMW 민감한 부위를 찌르자, 아큐는 전신을 떨면서 교성을 냈다…
+		CFLAG:9222 = 7
+	;음란＋マゾっ気Lv3以上
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && ABL:21 >= 3 && (CFLAG:9222 <= 5 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 어느샌가 유두나 클리토리스도 고통을 주자 단단히 발기하게 되었다…
+		PRINTFORMW 「앗……이, 이건, 그, 우큿……! 그치만, 몇 번이나, 아프게 하니까……」
+		CFLAG:9222 = 6
+	;음란
+	ELSEIF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:9222 <= 4 || FLAG:11 == 2) && (UP:20 + UP:21) < 500
+		PRINTFORML 「아, 크, 우……! ……에, 에헤, 아직, 당신 기분이 풀릴 때까지, 괜찮아요……?」
+		PRINTFORMW 아큐는 식은 땀을 흘리면서도, 노예로서 온순히 고통을 받아들인다…
+		CFLAG:9222 = 5
+	;マゾっ気Lv3以上
+	ELSEIF ABL:21 >= 3 && (CFLAG:9222 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「앗……캇, 하…………앗!!」
+		PRINTFORMW 아큐는 눈을 뒤집고, 전신을 부들부들 떨고 있다…
+		CFLAG:9222 = 4
+	;屈伏3
+	ELSEIF MARK:2 == 3 && (CFLAG:9222 <= 2 || FLAG:11 == 2)
+		PRINTFORML 「……읏！! ……읏, ………읏!!」
+		PRINTFORMW 아큐는 몸을 젖히고, 일순간 기절했다…
+		CFLAG:9222 = 3
+	;그 외
+	ELSEIF CFLAG:9222 <= 1 || FLAG:11 == 2
+		PRINTFORML 「싫어어어엇, 바늘은 싫어어어어엇!!」
+		PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 담담히 바늘을 사용해, 절규와 비명의 콘서트를 연주한다…
+		CFLAG:9222 = 2
 	ENDIF
 ENDIF
 
@@ -3852,7 +3681,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_224
 ;開始時
-IF SELECTCOM == 224 && TEQUIP:40
+IF TEQUIP:40
 	;初めて
 	IF CFLAG:9224 == 0
 		;음란
@@ -3865,7 +3694,6 @@ IF SELECTCOM == 224 && TEQUIP:40
 			PRINTFORMW 아큐는 벌레를 씹은 것 같은 표정으로 한 숨을 내쉬었다…
 		ENDIF
 			CFLAG:9224 = 1
-			RETURN 0
 	;二回目以降
 	ELSE
 		;음란＋マゾっ気Lv5以上
@@ -3893,10 +3721,9 @@ IF SELECTCOM == 224 && TEQUIP:40
 			PRINTFORMW 「크윽……손목, 조여서 아파……」
 			CFLAG:9224 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
+ELSE
 	;음란
 	IF (TALENT:170 == 1 || TALENT:150 == 1) && (CFLAG:8872 < 2 || FLAG:11 == 2)
 		PRINTFORML 「우와아, 밧줄 자국이 남아버렸어요」
@@ -3907,7 +3734,6 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
 		PRINTFORMW 「하아……차암, 저릿저릿……」
 		CFLAG:8872 = 1
 	ENDIF
-		RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -3915,7 +3741,7 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_225
 ;開始時
-IF SELECTCOM == 225 && TEQUIP:41
+IF TEQUIP:41
 	;初めて
 	IF CFLAG:9225 == 0
 		;음란
@@ -3928,7 +3754,6 @@ IF SELECTCOM == 225 && TEQUIP:41
 			PRINTFORMW 아큐는 앞이 안보이는것에 강한 불안을 가지고 있다.
 		ENDIF
 			CFLAG:9225 = 1
-			RETURN 0
 	;二回目以降
 	ELSE
 		;음란＋マゾっ気Lv5以上
@@ -3961,10 +3786,9 @@ IF SELECTCOM == 225 && TEQUIP:41
 			PRINTFORMW 눈가리개를 한 상태라, 아큐는 사소한 소리에도 공포로 몸을 떤다.
 			CFLAG:9225 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
+ELSE
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:8871 < 2 || FLAG:11 == 2)
 		PRINTFORML 「아……벌써 마지막입니까……」
@@ -3975,78 +3799,73 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 		PRINTFORMW 안대를 벗기자,공포감이 깃듯 눈동자가 보인다.
 		CFLAG:8871 = 1
 	ENDIF
-		RETURN 0
 ENDIF
 
 ;-------------------------------------------------
 ;イラマチオ CFLAG:9230
 ;-------------------------------------------------
 @K48_MESSAGE_COM_230
-IF SELECTCOM == 230
-	;初めて
-	IF CFLAG:9230 == 0
-		;奉仕精神Lv3以上か음란か연모か屈伏３か服従
-		IF ABL:13 >= 3 || TALENT:170 == 1 || TALENT:150 == 1 || MARK:2 == 3 || TALENT:160
-			PRINTFORML 「우우읍, 크흡, 읍, 후믑, 츄르르르」
-			PRINTFORML 「응 풋, 응핫, 츕 츕, 스릅, 우, 콜록콜록……푸아, 좀 더 상냥하게 해주세요……」
-			PRINTFORMW 아큐는 입가에서 하얀 거품을 흘리면서, 눈물 맺힌 눈으로 호소하고 있다…
-		;그 외
-		ELSE
-			PRINTFORML 「으읍ー, 싫어, 시러어엇! 응, , 우부우우ーーー웁!!」
-			PRINTFORML 자그마한 입을 억지로 열어 페니스를 넣으면, 혓바닥이 미끈미끈하고 달라 붙어온다…
-			PRINTFORMW 「크읍, 후읍, 우브으, 우그으읍！! 히끅, 우엑……」
-		ENDIF
-			CFLAG:9230 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9230 == 0
+	;奉仕精神Lv3以上か음란か연모か屈伏３か服従
+	IF ABL:13 >= 3 || TALENT:170 == 1 || TALENT:150 == 1 || MARK:2 == 3 || TALENT:160
+		PRINTFORML 「우우읍, 크흡, 읍, 후믑, 츄르르르」
+		PRINTFORML 「응 풋, 응핫, 츕 츕, 스릅, 우, 콜록콜록……푸아, 좀 더 상냥하게 해주세요……」
+		PRINTFORMW 아큐는 입가에서 하얀 거품을 흘리면서, 눈물 맺힌 눈으로 호소하고 있다…
+	;그 외
 	ELSE
-		;음란＋奉仕精神Lv5
-		IF TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:9230 <= 3 || FLAG:11 == 2)
-			IF RAND:5 == 0
-				PRINTFORML 「응, 그, 우그으으읏！! 츄우, 츄르르, 콜록, 콜록콜록! 푸핫……우부웁!」
-				PRINTFORMW 「우긋, 스츄, 커흡, 우에에, 츕, 츕, 낼름낼름……」
-			ELSEIF RAND:4 == 0
-				PRINTFORML 눈물과 침 범벅이 된 얼굴에 대량의 정액을 뿌리는 광경을 상상하면서 입을 마구 찔렀다… 
-				PRINTFORMW 「읍, 츄르릅, 쿨럭, 우에에……읍! 츄, 스릅, 스르르릅, 츄르르릅!」
-			ELSEIF RAND:3 == 0
-				PRINTFORML 「우긋……츄르릅, 읍, 으읍！! 잠깐, 기다, 코, 막힐 것, 자, 지」
-				PRINTFORMW 「으읍!? 우그우우ーー웃！! 츄파, 츄르, 낼름, 츄파, 츄우우우……」
-			ELSEIF RAND:2 == 0
-				PRINTFORML 「네, 네에, 저느 %CALLNAME:PLAYER%의 노예니까요……마음대로 범해주세요……. 웃……」
-				PRINTFORMW 「우ーー읍, 우그으ーー읏! 츄르, 끈적, 구붓, 츄파츄파, 미끈……」
-			ELSE
-				PRINTFORML 육봉을 물고 있는 아큐의 머리를 허벅지로 단단히 고정해, 욕망이 이끄는 대로 허리를 움직였다…
-				PRINTFORMW 「믓!? 지, 질식할……쿠으, 믑, 우ー웁, 으으읍, 츄르, 커흑, 츄르, 쿳, 우우우ー웁」
-			ENDIF
-			CFLAG:9230 = 4
-		;奉仕精神Lv3以上か연모か屈伏３
-		ELSEIF (ABL:13 >= 3 || TALENT:150 == 1 || MARK:2 == 3) && (CFLAG:9230 <= 2 || FLAG:11 == 2)
-			IF RAND:4 == 0
-				PRINTFORML 아큐의 입 안에 단단해진 것을 넣자, 눈물이 고이면서도 열심히 봉사한다…
-				PRINTFORMW 「응……우긋, 츄, 우에……츄르, 츄르릅……츄르르릅……」
-			ELSEIF RAND:3 == 0
-				PRINTFORML 「아우우, 아직도 못 가신건가요……주힛, 츄르르, 스릅, 츄파……」
-				PRINTFORMW 「함, 우긋, 츄우웁, 츄릅, 쿨럭! 콜록콜록, 우브으……츄릅, 츄르, 푸핫……」
-			ELSEIF RAND:2 == 0
-				PRINTFORML 페니스를 넣은 상태로 아큐의 머리를 잡아, 난폭하게 전후 운동을 한다…
-				PRINTFORMW 「읍ー, 읍ー, 으븟！! 스릅, 스릅, 츄우우우웁！! 콜록, 히끅……」
-			ELSE
-				PRINTFORML 「목 안, 좁아효……우에에엑!」
-				PRINTFORMW 「미끈미끈, 츄르, 츄우우웁! 츄파, 츄파, 쿨럭!」
-			ENDIF
-			CFLAG:9230 = 3
-		;그 외
-		ELSEIF CFLAG:9230 <= 1 || FLAG:11 == 2
-			IF RAND:2 == 0
-			PRINTFORML 「캇……훕……！! 쿠엑, 쥬르르, 츄르르르르」
-			PRINTFORMW 「츄픕, 쿠핫, 츄르, 스르릅……재성해효, 이젠, 용허해, 주해요……으붑」
-			ELSE
-			PRINTFORML 「또 이거…? 싫어, 싫엇……스릅, 우므읍……!!」
-			PRINTFORMW 「스릅, 츄파, 츄르, 츄, 으구우……우, 아아아아…돌려 보내줘, 집으로 보내줘……」
-			ENDIF
-			CFLAG:9230 = 2
+		PRINTFORML 「으읍ー, 싫어, 시러어엇! 응, , 우부우우ーーー웁!!」
+		PRINTFORML 자그마한 입을 억지로 열어 페니스를 넣으면, 혓바닥이 미끈미끈하고 달라 붙어온다…
+		PRINTFORMW 「크읍, 후읍, 우브으, 우그으읍！! 히끅, 우엑……」
+	ENDIF
+		CFLAG:9230 = 1
+;二回目以降
+ELSE
+	;음란＋奉仕精神Lv5
+	IF TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:9230 <= 3 || FLAG:11 == 2)
+		IF RAND:5 == 0
+			PRINTFORML 「응, 그, 우그으으읏！! 츄우, 츄르르, 콜록, 콜록콜록! 푸핫……우부웁!」
+			PRINTFORMW 「우긋, 스츄, 커흡, 우에에, 츕, 츕, 낼름낼름……」
+		ELSEIF RAND:4 == 0
+			PRINTFORML 눈물과 침 범벅이 된 얼굴에 대량의 정액을 뿌리는 광경을 상상하면서 입을 마구 찔렀다… 
+			PRINTFORMW 「읍, 츄르릅, 쿨럭, 우에에……읍! 츄, 스릅, 스르르릅, 츄르르릅!」
+		ELSEIF RAND:3 == 0
+			PRINTFORML 「우긋……츄르릅, 읍, 으읍！! 잠깐, 기다, 코, 막힐 것, 자, 지」
+			PRINTFORMW 「으읍!? 우그우우ーー웃！! 츄파, 츄르, 낼름, 츄파, 츄우우우……」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「네, 네에, 저느 %CALLNAME:PLAYER%의 노예니까요……마음대로 범해주세요……. 웃……」
+			PRINTFORMW 「우ーー읍, 우그으ーー읏! 츄르, 끈적, 구붓, 츄파츄파, 미끈……」
+		ELSE
+			PRINTFORML 육봉을 물고 있는 아큐의 머리를 허벅지로 단단히 고정해, 욕망이 이끄는 대로 허리를 움직였다…
+			PRINTFORMW 「믓!? 지, 질식할……쿠으, 믑, 우ー웁, 으으읍, 츄르, 커흑, 츄르, 쿳, 우우우ー웁」
 		ENDIF
-			RETURN 0
+		CFLAG:9230 = 4
+	;奉仕精神Lv3以上か연모か屈伏３
+	ELSEIF (ABL:13 >= 3 || TALENT:150 == 1 || MARK:2 == 3) && (CFLAG:9230 <= 2 || FLAG:11 == 2)
+		IF RAND:4 == 0
+			PRINTFORML 아큐의 입 안에 단단해진 것을 넣자, 눈물이 고이면서도 열심히 봉사한다…
+			PRINTFORMW 「응……우긋, 츄, 우에……츄르, 츄르릅……츄르르릅……」
+		ELSEIF RAND:3 == 0
+			PRINTFORML 「아우우, 아직도 못 가신건가요……주힛, 츄르르, 스릅, 츄파……」
+			PRINTFORMW 「함, 우긋, 츄우웁, 츄릅, 쿨럭! 콜록콜록, 우브으……츄릅, 츄르, 푸핫……」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 페니스를 넣은 상태로 아큐의 머리를 잡아, 난폭하게 전후 운동을 한다…
+			PRINTFORMW 「읍ー, 읍ー, 으븟！! 스릅, 스릅, 츄우우우웁！! 콜록, 히끅……」
+		ELSE
+			PRINTFORML 「목 안, 좁아효……우에에엑!」
+			PRINTFORMW 「미끈미끈, 츄르, 츄우우웁! 츄파, 츄파, 쿨럭!」
+		ENDIF
+		CFLAG:9230 = 3
+	;그 외
+	ELSEIF CFLAG:9230 <= 1 || FLAG:11 == 2
+		IF RAND:2 == 0
+		PRINTFORML 「캇……훕……！! 쿠엑, 쥬르르, 츄르르르르」
+		PRINTFORMW 「츄픕, 쿠핫, 츄르, 스르릅……재성해효, 이젠, 용허해, 주해요……으붑」
+		ELSE
+		PRINTFORML 「또 이거…? 싫어, 싫엇……스릅, 우므읍……!!」
+		PRINTFORMW 「스릅, 츄파, 츄르, 츄, 으구우……우, 아아아아…돌려 보내줘, 집으로 보내줘……」
+		ENDIF
+		CFLAG:9230 = 2
 	ENDIF
 ENDIF
 
@@ -4054,9 +3873,9 @@ ENDIF
 ;お風呂場プレイ CFLAG:9350 解除 CFLAG:8824
 ;-------------------------------------------------
 @K48_MESSAGE_COM_350
-IF SELECTCOM == 350 && TEQUIP:53
+IF TEQUIP:53
 	;初めて
-	IF CFLAG:5365 == 0
+	IF CFLAG:9350 == 0
 		;음란
 		IF TALENT:170 == 1
 			PRINTFORML 「여긴……목욕탕? 헤에, 여기에도 있었군요……」
@@ -4066,29 +3885,29 @@ IF SELECTCOM == 350 && TEQUIP:53
 			PRINTFORML 「여긴……목욕탕? 헤에, 여기에도 있었군요……」
 			PRINTFORMW 「에…또……여기에 데려왔단건……여기서, 한단건가요?」
 		ENDIF
-			CFLAG:5365 = 1
-			RETURN 0
+			CFLAG:9350 = 1
 	;二回目以降
 	ELSE
 		;음란
-		IF TALENT:170 == 1 && (CFLAG:5365 <= 2 || FLAG:11 == 2)
+		IF TALENT:170 == 1 && (CFLAG:9350 <= 2 || FLAG:11 == 2)
 			PRINTFORML 「어서오세요, 주인님. 후훗…」
 			PRINTFORMW 아큐는 타올을 감은 모습으로 매트 옆에 정좌해, 공손히 %조사처리(CALLNAME:MASTER,"를")% 맞아들인다…
-			CFLAG:5365 = 3
+			CFLAG:9350 = 3
 		;그 외
-		ELSEIF CFLAG:5365 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9350 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「또, 입니까? 몸을 씻을 수 있는건 기쁘지만…」
-			CFLAG:5365 = 2
+			CFLAG:9350 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ENDIF
 
+;중복된 문장이므로 비활성화함.
+[SKIPSTART]
 ;-------------------------------------------------
 ;シャワー CFLAG:9351
 ;-------------------------------------------------
 @K48_MESSAGE_COM_351
-IF SELECTCOM == 351 && TEQUIP:54
+IF TEQUIP:54
 	;음란
 	IF TALENT:170 == 1 && (CFLAG:9351 <= 2 || FLAG:11 == 2)
 		PRINTFORML 「이런 걸으로 느끼면, 안 되는데……」
@@ -4100,55 +3919,51 @@ IF SELECTCOM == 351 && TEQUIP:54
 		PRINTFORMW 아큐는 어색한 지 임도 움직이고 있다.
 		CFLAG:9351 = 2
 	ENDIF
-	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;泡踊り CFLAG:9352
 ;-------------------------------------------------
 @K48_MESSAGE_COM_352
-IF SELECTCOM == 352
-	;初めて
-	IF CFLAG:9352 == 0
-		;奉仕精神Lv3以上
-		IF ABL:13 >= 3
-			PRINTFORML 「이, 이렇게, 인가요……? 읏, 미끈미끈……」
-			PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 허리 위에서 음란하게 춤춘다…
-		;그 외
-		ELSE
-			PRINTFORML 「어째서, 제가 그런 하녀같은 일을……」
-			PRINTFORML 아큐는 항의했지만, 재차 명령하자 어쩔 수 없이 봉사를 시작했다…
-			PRINTFORMW 「아우, 미끈미끈해서, 우우……이런게 좋은건가요……?」
-		ENDIF
-			CFLAG:9352 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9352 == 0
+	;奉仕精神Lv3以上
+	IF ABL:13 >= 3
+		PRINTFORML 「이, 이렇게, 인가요……? 읏, 미끈미끈……」
+		PRINTFORMW 아큐는 %CALLNAME:PLAYER%의 허리 위에서 음란하게 춤춘다…
+	;그 외
 	ELSE
-		;음란＋奉仕精神Lv5＋スク水
-		IF TEQUIP:59 == 2 && TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:9352 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「와……수영복의 감촉이 그렇게 좋은가요? 반응이 전혀 달라요……」
-			PRINTFORMW 젖어있는 나일론 천이 %CALLNAME:PLAYER%의 온몸을 문지르고 있다…
-			CFLAG:9352 = 5
-		;음란＋奉仕精神Lv5
-		ELSEIF TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:9352 <= 3 || FLAG:11 == 2)
-			IF RAND:2 == 0 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「킥……발기 자지, 미끈미끈해서 벌써 터질거 같아요……?」
-			PRINTFORMW 아큐는 니끼는 곳을 알고 있는 듯이 교묘하게 고간을 훝는다…
-			ELSE
-			PRINTFORML 아큐는 숨을 거칠게 쉬면서, 열심히 %조사처리(CALLNAME:PLAYER,"과")% 자신의 비소를 비비고 있다…
-			PRINTFORMW 「하아, 안 돼……미끈미끈, 기분 좋아요……」
-			ENDIF
-			CFLAG:9352 = 4
-		;奉仕精神Lv3以上
-		ELSEIF ABL:13 >= 3 && (CFLAG:9352 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「아……이거, 유두가 스쳐서……후우, 응……」
-			CFLAG:9352 = 3
-		;그 외
-		ELSEIF  CFLAG:9352 <= 1 || FLAG:11 == 2
-			PRINTFORMW 「정말로 기분 좋은가요……?」
-			CFLAG:9352 = 2
+		PRINTFORML 「어째서, 제가 그런 하녀같은 일을……」
+		PRINTFORML 아큐는 항의했지만, 재차 명령하자 어쩔 수 없이 봉사를 시작했다…
+		PRINTFORMW 「아우, 미끈미끈해서, 우우……이런게 좋은건가요……?」
+	ENDIF
+		CFLAG:9352 = 1
+;二回目以降
+ELSE
+	;음란＋奉仕精神Lv5＋スク水
+	IF TEQUIP:59 == 2 && TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:9352 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「와……수영복의 감촉이 그렇게 좋은가요? 반응이 전혀 달라요……」
+		PRINTFORMW 젖어있는 나일론 천이 %CALLNAME:PLAYER%의 온몸을 문지르고 있다…
+		CFLAG:9352 = 5
+	;음란＋奉仕精神Lv5
+	ELSEIF TALENT:170 == 1 && ABL:13 >= 5 && (CFLAG:9352 <= 3 || FLAG:11 == 2)
+		IF RAND:2 == 0 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「킥……발기 자지, 미끈미끈해서 벌써 터질거 같아요……?」
+		PRINTFORMW 아큐는 니끼는 곳을 알고 있는 듯이 교묘하게 고간을 훝는다…
+		ELSE
+		PRINTFORML 아큐는 숨을 거칠게 쉬면서, 열심히 %조사처리(CALLNAME:PLAYER,"과")% 자신의 비소를 비비고 있다…
+		PRINTFORMW 「하아, 안 돼……미끈미끈, 기분 좋아요……」
 		ENDIF
-			RETURN 0
+		CFLAG:9352 = 4
+	;奉仕精神Lv3以上
+	ELSEIF ABL:13 >= 3 && (CFLAG:9352 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「아……이거, 유두가 스쳐서……후우, 응……」
+		CFLAG:9352 = 3
+	;그 외
+	ELSEIF  CFLAG:9352 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「정말로 기분 좋은가요……?」
+		CFLAG:9352 = 2
 	ENDIF
 ENDIF
 
@@ -4156,91 +3971,89 @@ ENDIF
 ;シックスナイン CFLAG:9602
 ;-------------------------------------------------
 @K48_MESSAGE_COM_602
-	;初めて
-	IF CFLAG:5387 == 0
-		;음란
-		IF TALENT:170 == 1
-			PRINTFORML 「크아, 후웃……제, 제가 먼저 기분 좋게 해드릴꺼니까안」
-			PRINTFORMW 아큐는 열심히 %CALLNAME:PLAYER%의 성기를 핥고 있다…
-		;그 외
-		ELSE
-			PRINTFORML 「아, 으응……」
-			PRINTFORML %CALLNAME:PLAYER%의 혀가 아큐의 비소에 닿자, 가볍게 몸을 떨었다
-			PRINTFORMW 「응, 크으……하믓, 츄르, 푸하아……」
-		ENDIF
-			CFLAG:5387 = 1
-			RETURN 0
+;初めて
+IF CFLAG:9602 == 0
+	;음란
+	IF TALENT:170 == 1
+		PRINTFORML 「크아, 후웃……제, 제가 먼저 기분 좋게 해드릴꺼니까안」
+		PRINTFORMW 아큐는 열심히 %CALLNAME:PLAYER%의 성기를 핥고 있다…
+	;그 외
 	ELSE
-		;음란+奉仕精神Lv3以上+C感覚Lv3以上
-		IF TALENT:170 == 1 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:5387 <= 5 || FLAG:11 == 2)
-			A = RAND:10
-			IF A == 0 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「앙, 거긴, 반칙……응, 훗, 낼름낼름, 츄르……응, 더, 더어……」
-			PRINTFORML 아큐가 고양이 같은 목소리로 애무를 조를 때마다, 입 안에 있는 페니스에 단속적인 자극이 온다…
-			PRINTFORMW 「…후아? 왠지, 더 커진듯한……뭐 어해효, 으훙, 츄릅츄릅, 응, 츄파」
-			ELSEIF A == 1 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML %CALLNAME:PLAYER%의 페니스는 아큐의 입에 완전히 들어가지 않고, 볼을 옆으로 늘려 볼에 형태가 드러나고 있다…
-			PRINTFORML 「으붑……아음, 으긋, 응, 츄르, 츄파…」
-			PRINTFORMW 「츄릅, 츄우, 으후, 읍, 으부우우～……자지, 마싯어효……」	
-			ELSEIF A == 2 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「우후후, 커다란 붓……. 잔뜩 적혀두지 않으면 안되겠네요, 응후……」
-			PRINTFORML 「응후ー, 츄우, 츄르르, 츄파, 츄우, 츄츄르르……」
-			PRINTFORMW 「츄파……하ー, 이거 상당히 중노동이네효……하음, 읍, 츄우우, 츄르르르르…」	
-			ELSEIF A == 3 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「차암…잠깐 만진 것만으로 이렇게 커지다니, 절조 없는 자지네요. 조물조물, 후르르…」
-			PRINTFORML 「아, 아뇨, 제대로 봉사도 해드릴테니까 안심해주세요……. 하읍, 츕츕, 스릅스릅…」
-			PRINTFORMW 「말랑말랑, 꾹꾹, 부비부비, 츄르르……아핫, 벌써 싸는건가요? 좋아요, 아큐한테 잔뜩 뿌려주세요…♪」
-			ELSEIF A == 4 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「자아자아, 아직 수그러들긴 이르다고요? 덥썩……으훗……말랑말랑～……」
-			PRINTFORML 「으ー후, 으ー후, 으ー후, 응ー우? 제 입 안 상태는 어떤가요……? 응, 츄파, 츄퐁, 츄브브, 푸하아」
-			PRINTFORMW 「자아, 커졌다♪ 에헤헤……츄릅, 츄르, 스르릅……쪽 쪽, 츄우우ー웁」	
-			ELSEIF A == 5 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「이런 조그마한 여자애한테 자지를 물게 하고 발기하셨나요? 어쩔 수 없네요」
-			PRINTFORML 「그런 칠칠맞지 못한 페니스에는 벌을 줄거에요……으훗, 츄르, 낼르～～음……츄파 츄파, 아후……」
-			PRINTFORMW 「가끔 핥을 때 마다 움찔거려선, 한심하네요ー♪ 자아, 빨리 사정해주세요……츄르, 츄프, 으으읍ー♪」	
-			ELSEIF A == 6 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
-			PRINTFORML 「아아……이걸 보고 있으면 왠지 괴롭혀주고 싶달까……싫다아, 나 그런 버릇 없는데」
-			PRINTFORML 「……우물! 아, 죄, 죄송합니다, 무심코…. 네……핥아서 치료하겠습니다……」
-			PRINTFORMW 「……스릅……츕 츕……푸아, 으그, 츄파츄파, 츄르르～……쪽 쪽…츄르르…」
-			ELSEIF A == 7
-			PRINTFORML 「후후, 알고 계세요? 여기도 애무하면 기분 좋다고요? 자아……」
-			PRINTFORML 아큐가 %CALLNAME:PLAYER%의 허벅지 밑을 혀 끝으로 간질이자, 느낀 적 없는 관능이 %조사처리(CALLNAME:PLAYER,"를")% 덮쳤다
-			PRINTFORMW 「낼름, 쪽……그렇죠, 좋죠? 실은 저도, 거기 만져지는게 좋아요……앙」
-			ELSEIF A == 8
-			PRINTFORML 「%CALLNAME:PLAYER%의……반짝 반짝 빛나서, 음란해……응, 츄우우웁……」
-			PRINTFORML 아큐는 %CALLNAME:PLAYER%의 성기에 입을 맞추며, 힘껏 빨아들였다…
-			PRINTFORMW 「아하, 그래……이번엔, 저한테도 부탁 드릴께요……. 으앙, 훗, 후아아아앙」
-			ELSE
-			PRINTFORML 「응ー 후, 낼름, 으후……햣, 츄우 츄우, 안된다니한요……아훗, 응, 으풋」
-			PRINTFORML 아큐의 음부를 낼름하고 핥아내자 재밌다는 듯이 반응하곤, 봉사에 집중하고 있다…
-			PRINTFORMW 「응……훗, 츄파, 츄 츄, 으큿……후앗, 으믓, 츄릅」
-			ENDIF
-			CFLAG:5387 = 6
-		;음란
-		ELSEIF TALENT:170 == 1 && (CFLAG:5387 <= 4 || FLAG:11 == 2)
-			PRINTFORML 「흐믓……읏, 츄파, 끈적, 낼름낼름……」
-			PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 애무 스피드를 올리자 거기에 맞춰, 아큐의 입도 격렬해지고 있다…
-			CFLAG:5387 = 5
-		;굴복각인Lv3+奉仕精神Lv3以上+C感覚Lv3以上
-		ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:5387 <= 3 || FLAG:11 == 2)
-			PRINTFORML 「응, 츄르, 으ー읍, 츄파 츕, 낼름……응, 으훗」
-			PRINTFORMW 아큐도 봉사하면서 흥분하고 있는지, 평소보다 애액이 많이 나오고 있다…
-			CFLAG:5387 = 4
-		;굴복각인Lv3
-		ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:5387 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 「우우, 저기, 거기 너무 보지 말아주세요……」
-			CFLAG:5387 = 3
-		;그 외
-		ELSEIF CFLAG:5387 <= 1 || FLAG:11 == 2
-			IF RAND:2 == 0
-			PRINTFORMW 「아, 후, 으긋……저기, 핥으면, 흐트러져요……」
-			ELSE
-			PRINTFORMW 단단하게 솟아있는 돌기를 정성스럽게 핥자, 아큐의 봉사는 멈추어져 있다…
-			ENDIF
-			CFLAG:5387 = 2
-		ENDIF
-			RETURN 0
+		PRINTFORML 「아, 으응……」
+		PRINTFORML %CALLNAME:PLAYER%의 혀가 아큐의 비소에 닿자, 가볍게 몸을 떨었다
+		PRINTFORMW 「응, 크으……하믓, 츄르, 푸하아……」
 	ENDIF
+		CFLAG:9602 = 1
+ELSE
+	;음란+奉仕精神Lv3以上+C感覚Lv3以上
+	IF TALENT:170 == 1 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:9602 <= 5 || FLAG:11 == 2)
+		A = RAND:10
+		IF A == 0 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「앙, 거긴, 반칙……응, 훗, 낼름낼름, 츄르……응, 더, 더어……」
+		PRINTFORML 아큐가 고양이 같은 목소리로 애무를 조를 때마다, 입 안에 있는 페니스에 단속적인 자극이 온다…
+		PRINTFORMW 「…후아? 왠지, 더 커진듯한……뭐 어해효, 으훙, 츄릅츄릅, 응, 츄파」
+		ELSEIF A == 1 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML %CALLNAME:PLAYER%의 페니스는 아큐의 입에 완전히 들어가지 않고, 볼을 옆으로 늘려 볼에 형태가 드러나고 있다…
+		PRINTFORML 「으붑……아음, 으긋, 응, 츄르, 츄파…」
+		PRINTFORMW 「츄릅, 츄우, 으후, 읍, 으부우우～……자지, 마싯어효……」	
+		ELSEIF A == 2 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「우후후, 커다란 붓……. 잔뜩 적혀두지 않으면 안되겠네요, 응후……」
+		PRINTFORML 「응후ー, 츄우, 츄르르, 츄파, 츄우, 츄츄르르……」
+		PRINTFORMW 「츄파……하ー, 이거 상당히 중노동이네효……하음, 읍, 츄우우, 츄르르르르…」	
+		ELSEIF A == 3 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「차암…잠깐 만진 것만으로 이렇게 커지다니, 절조 없는 자지네요. 조물조물, 후르르…」
+		PRINTFORML 「아, 아뇨, 제대로 봉사도 해드릴테니까 안심해주세요……. 하읍, 츕츕, 스릅스릅…」
+		PRINTFORMW 「말랑말랑, 꾹꾹, 부비부비, 츄르르……아핫, 벌써 싸는건가요? 좋아요, 아큐한테 잔뜩 뿌려주세요…♪」
+		ELSEIF A == 4 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「자아자아, 아직 수그러들긴 이르다고요? 덥썩……으훗……말랑말랑～……」
+		PRINTFORML 「으ー후, 으ー후, 으ー후, 응ー우? 제 입 안 상태는 어떤가요……? 응, 츄파, 츄퐁, 츄브브, 푸하아」
+		PRINTFORMW 「자아, 커졌다♪ 에헤헤……츄릅, 츄르, 스르릅……쪽 쪽, 츄우우ー웁」	
+		ELSEIF A == 5 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「이런 조그마한 여자애한테 자지를 물게 하고 발기하셨나요? 어쩔 수 없네요」
+		PRINTFORML 「그런 칠칠맞지 못한 페니스에는 벌을 줄거에요……으훗, 츄르, 낼르～～음……츄파 츄파, 아후……」
+		PRINTFORMW 「가끔 핥을 때 마다 움찔거려선, 한심하네요ー♪ 자아, 빨리 사정해주세요……츄르, 츄프, 으으읍ー♪」	
+		ELSEIF A == 6 && (TALENT:PLAYER:121 == 1 || TALENT:PLAYER:121 == 1 || TALENT:PLAYER:120 == 1)
+		PRINTFORML 「아아……이걸 보고 있으면 왠지 괴롭혀주고 싶달까……싫다아, 나 그런 버릇 없는데」
+		PRINTFORML 「……우물! 아, 죄, 죄송합니다, 무심코…. 네……핥아서 치료하겠습니다……」
+		PRINTFORMW 「……스릅……츕 츕……푸아, 으그, 츄파츄파, 츄르르～……쪽 쪽…츄르르…」
+		ELSEIF A == 7
+		PRINTFORML 「후후, 알고 계세요? 여기도 애무하면 기분 좋다고요? 자아……」
+		PRINTFORML 아큐가 %CALLNAME:PLAYER%의 허벅지 밑을 혀 끝으로 간질이자, 느낀 적 없는 관능이 %조사처리(CALLNAME:PLAYER,"를")% 덮쳤다
+		PRINTFORMW 「낼름, 쪽……그렇죠, 좋죠? 실은 저도, 거기 만져지는게 좋아요……앙」
+		ELSEIF A == 8
+		PRINTFORML 「%CALLNAME:PLAYER%의……반짝 반짝 빛나서, 음란해……응, 츄우우웁……」
+		PRINTFORML 아큐는 %CALLNAME:PLAYER%의 성기에 입을 맞추며, 힘껏 빨아들였다…
+		PRINTFORMW 「아하, 그래……이번엔, 저한테도 부탁 드릴께요……. 으앙, 훗, 후아아아앙」
+		ELSE
+		PRINTFORML 「응ー 후, 낼름, 으후……햣, 츄우 츄우, 안된다니한요……아훗, 응, 으풋」
+		PRINTFORML 아큐의 음부를 낼름하고 핥아내자 재밌다는 듯이 반응하곤, 봉사에 집중하고 있다…
+		PRINTFORMW 「응……훗, 츄파, 츄 츄, 으큿……후앗, 으믓, 츄릅」
+		ENDIF
+		CFLAG:9602 = 6
+	;음란
+	ELSEIF TALENT:170 == 1 && (CFLAG:9602 <= 4 || FLAG:11 == 2)
+		PRINTFORML 「흐믓……읏, 츄파, 끈적, 낼름낼름……」
+		PRINTFORMW %조사처리(CALLNAME:PLAYER,"가")% 애무 스피드를 올리자 거기에 맞춰, 아큐의 입도 격렬해지고 있다…
+		CFLAG:9602 = 5
+	;굴복각인Lv3+奉仕精神Lv3以上+C感覚Lv3以上
+	ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:9602 <= 3 || FLAG:11 == 2)
+		PRINTFORML 「응, 츄르, 으ー읍, 츄파 츕, 낼름……응, 으훗」
+		PRINTFORMW 아큐도 봉사하면서 흥분하고 있는지, 평소보다 애액이 많이 나오고 있다…
+		CFLAG:9602 = 4
+	;굴복각인Lv3
+	ELSEIF (MARK:2 == 3 || TALENT:150 == 1) && (CFLAG:9602 <= 2 || FLAG:11 == 2)
+		PRINTFORMW 「우우, 저기, 거기 너무 보지 말아주세요……」
+		CFLAG:9602 = 3
+	;그 외
+	ELSEIF CFLAG:9602 <= 1 || FLAG:11 == 2
+		IF RAND:2 == 0
+		PRINTFORMW 「아, 후, 으긋……저기, 핥으면, 흐트러져요……」
+		ELSE
+		PRINTFORMW 단단하게 솟아있는 돌기를 정성스럽게 핥자, 아큐의 봉사는 멈추어져 있다…
+		ENDIF
+		CFLAG:9602 = 2
+	ENDIF
+ENDIF
 
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
@@ -4251,42 +4064,38 @@ ENDIF
 ;足扱き CFLAG9047
 ;-------------------------------------------------
 @K48_MESSAGE_COM_47
-IF SELECTCOM == 47
-	;初めて
-	IF CFLAG:9047 == 0
-		;음란有り
-		IF TALENT:170 == 1
-			PRINTFORMW 「발로 해주길 원하다니, 변태네요……♪」
-		;그 외
-		ELSE
-			PRINTFORMW 「아, 발로 비비길 원한다니……변태……」
-		ENDIF
-			CFLAG:9047 = 1
-			RETURN 0
-	;二回目以降
+;初めて
+IF CFLAG:9047 == 0
+	;음란有り
+	IF TALENT:170 == 1
+		PRINTFORMW 「발로 해주길 원하다니, 변태네요……♪」
+	;그 외
 	ELSE
-		;음란＋サドっ気1以上
-		IF TALENT:170 == 1 && ABL:20 >= 1 && (CFLAG:9047 <= 2 || FLAG:11 == 2)
-				IF RAND:2 == 0
-				PRINTFORML 「우와, 여자아이에게 밟히면서 움찔거리고 있어……. 헤에, 이런게 좋은거군요……」
-				PRINTFORMW 아큐는 평소의 보복으로 미소를 띄우면서 페니스를 괴롭힌다…
-				ELSEIF A == 1
-				PRINTFORML 「읏, 훗, 영차……어떤가요, 완전히 능숙해졌죠?」
-				PRINTFORMW 아큐는 재주있게 발가락을 사용해, 단단한 기둥을 잡아당긴다…
-				ENDIF
-			CFLAG:9047 = 3
-		;그 외
-		ELSEIF CFLAG:9047 <= 1 || FLAG:11 == 2
+		PRINTFORMW 「아, 발로 비비길 원한다니……변태……」
+	ENDIF
+		CFLAG:9047 = 1
+;二回目以降
+ELSE
+	;음란＋サドっ気1以上
+	IF TALENT:170 == 1 && ABL:20 >= 1 && (CFLAG:9047 <= 2 || FLAG:11 == 2)
 			IF RAND:2 == 0
-			PRINTFORML 「응, 읏, 잘 못하겠어요……」
-			PRINTFORMW 어색한 동작으로 아큐의 부드러운 발바닥에 닿을 때마다 쾌락이 전해진다…
-			ELSE
-			PRINTFORML 「이, 이런걸로 발기해 버린건가요?」
-			PRINTFORMW 아큐는 혐오감을 내비치면서도 발로 음경을 잡아당긴다…
+			PRINTFORML 「우와, 여자아이에게 밟히면서 움찔거리고 있어……. 헤에, 이런게 좋은거군요……」
+			PRINTFORMW 아큐는 평소의 보복으로 미소를 띄우면서 페니스를 괴롭힌다…
+			ELSEIF A == 1
+			PRINTFORML 「읏, 훗, 영차……어떤가요, 완전히 능숙해졌죠?」
+			PRINTFORMW 아큐는 재주있게 발가락을 사용해, 단단한 기둥을 잡아당긴다…
 			ENDIF
-			CFLAG:9047 = 2
+		CFLAG:9047 = 3
+	;그 외
+	ELSEIF CFLAG:9047 <= 1 || FLAG:11 == 2
+		IF RAND:2 == 0
+		PRINTFORML 「응, 읏, 잘 못하겠어요……」
+		PRINTFORMW 어색한 동작으로 아큐의 부드러운 발바닥에 닿을 때마다 쾌락이 전해진다…
+		ELSE
+		PRINTFORML 「이, 이런걸로 발기해 버린건가요?」
+		PRINTFORMW 아큐는 혐오감을 내비치면서도 발로 음경을 잡아당긴다…
 		ENDIF
-			RETURN 0
+		CFLAG:9047 = 2
 	ENDIF
 ENDIF
 
@@ -4295,69 +4104,69 @@ ENDIF
 ;ダブルフェラ CFLAG9303
 ;-------------------------------------------------
 @K48_MESSAGE_COM_303
-	;음란
-	IF TALENT:170 == 1 && (CFLAG:5454 <= 2 || FLAG:11 == 2)
-		A = RAND:5
-		IF A == 0
-		PRINTFORML 『츄, 츄르, 우그, 츄우웁…츄폿, 츄르……』
-		PRINTFORMW 「아, %CALLNAME:ASSI%씨만 치사해요. 자도……츕, 츄르, 쯉, 핥짝」
-		ELSEIF A == 1
-		PRINTFORML 「으응, 훗, 츄르, 푸츄, 쭈우웁……! 츄, 츄, 츄르르르」
-		PRINTFORMW 아큐가 귀두를 핥고 있는 한편에, %CALLNAME:ASSI%는 %CALLNAME:MASTER%의 기둥을 짜내듯이 빨아들이고 있다…
-		ELSEIF A == 2
-		PRINTFORML 아큐는 %조사처리(CALLNAME:ASSI,"가")% 헌신적으로 봉사하는 모습을 보며 넋을 잃고 있다…
-		PRINTFORMW 「아아, 주인님 것을 저렇게 맛있는 듯이 빨고 있어…. 나도 힘내야지, 하음……츄, 낼름낼름」
-		ELSEIF A == 3
-		PRINTFORM 『츄파, 츄파, 으긋, 후……츄르 츄르, 츄 츕, 츄우웁』
-		PRINTFORML 「으후, 츄파, 낼름……츕 츕, 츄루룹…」
-		PRINTFORMW %조사처리(CALLNAME:ASSI,"과")% 아큐는 동시에 기둥과 알을 괴롭히며, %CALLNAME:MASTER%의 얼굴을 올려다보며 기분 좋아졌는지 확인하고 있다…
-		ELSE
-		PRINTFORML 「으츕, 츄, 츄파, 츄르르」『츄파, 낼름, 으긋, 츄우 츄우, 츄츕』
-		PRINTFORMW %CALLNAME:MASTER%의 다리 사이에서, 두 소녀가 페니스를 핥으며 물소리의 이중주를 연주하고 있다…
-		ENDIF
-		CFLAG:5454 = 3
-	;奉仕精神Lv3以上
-	ELSEIF (ABL:13 >= 3 || TALENT:150 == 1) && (CFLAG:5454 <= 1 || FLAG:11 == 2)
-		PRINTFORM 『후믓, 으읏…! 츄르, 쪽, 낼름낼름, 으믓』
-		PRINTFORML 「이, 이렇게 느끼는게 좋은가요…. 낼름, 쪽 쪽, 스릅, 츄파, 낼름낼름」
-		PRINTFORMW 아큐는 %CALLNAME:ASSI%의 봉사를 따라하면서, 손과 입을 섞어가며 페니스를 애무하고 있다…
-		CFLAG:5454 = 2
-	;그 외
+;음란
+IF TALENT:170 == 1 && (CFLAG:9303 <= 2 || FLAG:11 == 2)
+	A = RAND:5
+	IF A == 0
+	PRINTFORML 『츄, 츄르, 우그, 츄우웁…츄폿, 츄르……』
+	PRINTFORMW 「아, %CALLNAME:ASSI%씨만 치사해요. 자도……츕, 츄르, 쯉, 핥짝」
+	ELSEIF A == 1
+	PRINTFORML 「으응, 훗, 츄르, 푸츄, 쭈우웁……! 츄, 츄, 츄르르르」
+	PRINTFORMW 아큐가 귀두를 핥고 있는 한편에, %CALLNAME:ASSI%는 %CALLNAME:MASTER%의 기둥을 짜내듯이 빨아들이고 있다…
+	ELSEIF A == 2
+	PRINTFORML 아큐는 %조사처리(CALLNAME:ASSI,"가")% 헌신적으로 봉사하는 모습을 보며 넋을 잃고 있다…
+	PRINTFORMW 「아아, 주인님 것을 저렇게 맛있는 듯이 빨고 있어…. 나도 힘내야지, 하음……츄, 낼름낼름」
+	ELSEIF A == 3
+	PRINTFORM 『츄파, 츄파, 으긋, 후……츄르 츄르, 츄 츕, 츄우웁』
+	PRINTFORML 「으후, 츄파, 낼름……츕 츕, 츄루룹…」
+	PRINTFORMW %조사처리(CALLNAME:ASSI,"과")% 아큐는 동시에 기둥과 알을 괴롭히며, %CALLNAME:MASTER%의 얼굴을 올려다보며 기분 좋아졌는지 확인하고 있다…
 	ELSE
-		PRINTFORML 『으후……츄르, 츕, 츄르르～읍』
-		PRINTFORMW 「어, 어째서 그렇게 기쁜듯이 자지를 핥고 있는건가요……?」
-		CFLAG:5454 = 1
+	PRINTFORML 「으츕, 츄, 츄파, 츄르르」『츄파, 낼름, 으긋, 츄우 츄우, 츄츕』
+	PRINTFORMW %CALLNAME:MASTER%의 다리 사이에서, 두 소녀가 페니스를 핥으며 물소리의 이중주를 연주하고 있다…
 	ENDIF
+	CFLAG:9303 = 3
+;奉仕精神Lv3以上
+ELSEIF (ABL:13 >= 3 || TALENT:150 == 1) && (CFLAG:9303 <= 1 || FLAG:11 == 2)
+	PRINTFORM 『후믓, 으읏…! 츄르, 쪽, 낼름낼름, 으믓』
+	PRINTFORML 「이, 이렇게 느끼는게 좋은가요…. 낼름, 쪽 쪽, 스릅, 츄파, 낼름낼름」
+	PRINTFORMW 아큐는 %CALLNAME:ASSI%의 봉사를 따라하면서, 손과 입을 섞어가며 페니스를 애무하고 있다…
+	CFLAG:9303 = 2
+;그 외
+ELSE
+	PRINTFORML 『으후……츄르, 츕, 츄르르～읍』
+	PRINTFORMW 「어, 어째서 그렇게 기쁜듯이 자지를 핥고 있는건가요……?」
+	CFLAG:9303 = 1
+ENDIF
 
 ;-------------------------------------------------
 ;Ｗフェラ CFLAG9304
 ;-------------------------------------------------
 @K48_MESSAGE_COM_304
-		;음란
-		IF TALENT:170 == 1 && (CFLAG:5453 <= 2 || FLAG:11 == 2)
-			IF RAND:3 == 0
-			PRINTFORML 「차암, 서두르지 말아주세요. 금방 기분 좋게 해드릴테니까……응……」
-			PRINTFORML 아큐는 자그마한 입을 크게 벌려, 두 개의 페니스를 동시에 핥기 시작했다…
-			PRINTFORMW 「응, 츄르……하읍, 으긋, 낼름낼름～……후후, 두 분 다 굉장히 건강하시네요……♪」
-			ELSEIF RAND:2 == 0
-			PRINTFORML 「으훗, 츄퐁, 츄릅, 습, 츄팟」
-			PRINTFORML 아큐는 양손으로 재주 있게 두 개의 페니스를 잡아당기면서, 교대로 혀로 핥고 있다…
-			PRINTFORMW 「응, 후웃, 츄웃, 츄츄, 츄르, 자아, 동시에 하얀 걸 사정해주세요옷……!」
-			ELSE
-			PRINTFORML 「으읍……츄르, 스릅……낼름, 쪽 쪽, 쭉, 쮸르르르릅……」
-			PRINTFORML 아큐는 손을 움직이면서 힘껏 페니스를 빨아낸다…
-			PRINTFORMW 「응, 푸하, 읏……스츄ーーー웁, 츄르르르……츄퐁♪」
-			ENDIF
-			CFLAG:5453 = 3
-		;奉仕精神Lv3以上
-		ELSEIF ABL:13 >= 3 && (CFLAG:5453 <= 1 || FLAG:11 == 2)
-			PRINTFORMW 「응……다른 분은 손으로 참아주세요……읏, 츕, 으훗」
-			CFLAG:5453 = 2
-		;그 외
-		ELSE
-			PRINTFORMW 「우ー…우에, 켈록……한꺼번에 하라니, 억지에요……츄파」
-			CFLAG:5453 = 1
-		ENDIF
+;음란
+IF TALENT:170 == 1 && (CFLAG:9304 <= 2 || FLAG:11 == 2)
+	IF RAND:3 == 0
+	PRINTFORML 「차암, 서두르지 말아주세요. 금방 기분 좋게 해드릴테니까……응……」
+	PRINTFORML 아큐는 자그마한 입을 크게 벌려, 두 개의 페니스를 동시에 핥기 시작했다…
+	PRINTFORMW 「응, 츄르……하읍, 으긋, 낼름낼름～……후후, 두 분 다 굉장히 건강하시네요……♪」
+	ELSEIF RAND:2 == 0
+	PRINTFORML 「으훗, 츄퐁, 츄릅, 습, 츄팟」
+	PRINTFORML 아큐는 양손으로 재주 있게 두 개의 페니스를 잡아당기면서, 교대로 혀로 핥고 있다…
+	PRINTFORMW 「응, 후웃, 츄웃, 츄츄, 츄르, 자아, 동시에 하얀 걸 사정해주세요옷……!」
+	ELSE
+	PRINTFORML 「으읍……츄르, 스릅……낼름, 쪽 쪽, 쭉, 쮸르르르릅……」
+	PRINTFORML 아큐는 손을 움직이면서 힘껏 페니스를 빨아낸다…
+	PRINTFORMW 「응, 푸하, 읏……스츄ーーー웁, 츄르르르……츄퐁♪」
+	ENDIF
+	CFLAG:9304 = 3
+;奉仕精神Lv3以上
+ELSEIF ABL:13 >= 3 && (CFLAG:9304 <= 1 || FLAG:11 == 2)
+	PRINTFORMW 「응……다른 분은 손으로 참아주세요……읏, 츕, 으훗」
+	CFLAG:9304 = 2
+;그 외
+ELSE
+	PRINTFORMW 「우ー…우에, 켈록……한꺼번에 하라니, 억지에요……츄파」
+	CFLAG:9304 = 1
+ENDIF
 
 
 ;-------------------------------------------------
@@ -4365,9 +4174,9 @@ ENDIF
 ;-------------------------------------------------
 @K48_MESSAGE_COM_91
 ;開始時
-IF SELECTCOM == 91 && TEQUIP:59 == 2
+IF TEQUIP:59 == 2
 	;初めて
-	IF CFLAG:5455 == 0
+	IF CFLAG:9091 == 0
 		;野外で昼
 		IF TEQUIP:52 && TIME == 0
 			PRINTFORML 「웃, 눈부셔……. 이 정도라면, 햇빛에 타버릴 것 같네요」
@@ -4384,38 +4193,36 @@ IF SELECTCOM == 91 && TEQUIP:59 == 2
 			PRINTFORML 아큐는 당황한 시선을 보내지만, 결국 수영복으로 갈아입었다
 			PRINTFORMW 「이거 왠지, 천이 피부에 달라붙어서 진정되지 않아요……」
 		ENDIF
-			CFLAG:5455 = 1
-			RETURN 0
+			CFLAG:9091 = 1
 	;二回目以降
 	ELSE
 		;음란
-		IF TALENT:170 == 1 && (CFLAG:5455 <= 2 || FLAG:11 == 2)
+		IF TALENT:170 == 1 && (CFLAG:9091 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「아, 눈빛이 야하다니깐요……참」
-			CFLAG:5455 = 3
+			CFLAG:9091 = 3
 		;그 외
-		ELSEIF CFLAG:5455 <= 1 || FLAG:11 == 2
+		ELSEIF CFLAG:9091 <= 1 || FLAG:11 == 2
 			PRINTFORMW 「또, 또 이걸 입는건가요…?」
-			CFLAG:5455 = 2
+			CFLAG:9091 = 2
 		ENDIF
-			RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 91 && TEQUIP:59 == 0
-		;日焼け
-		IF CFLAG:5458 == 1
-			PRINTFORML 「? 제 몸에 뭔가 붙어있나요?」
-			PRINTFORMW 아큐의 나체에는, 수영복 형태를 경계로 흰색과 갈색의 콘트라스트가 새겨져 있었다…
-		;음란
-		ELSEIF TALENT:170 == 1 && FLAG:11 == 2
-			PRINTFORML 「후우……」
-			PRINTFORMW 수영복을 벗자 드러난 나체는, 평소보다 야하게 비쳤다…
-;			CFLAG:5368 = 3
-		;그 외
-		ELSEIF FLAG:11 == 2
-			PRINTFORMW 「역시, 평소에 입는 옷이 최고네요」
-;			CFLAG:5368 = 2
-		ENDIF
-			RETURN 0
+ELSEIF TEQUIP:59 == 0
+	;日焼け
+	IF CFLAG:5458 == 1
+		PRINTFORML 「? 제 몸에 뭔가 붙어있나요?」
+		PRINTFORMW 아큐의 나체에는, 수영복 형태를 경계로 흰색과 갈색의 콘트라스트가 새겨져 있었다…
+	;음란
+	ELSEIF TALENT:170 == 1 && FLAG:11 == 2
+		PRINTFORML 「후우……」
+		PRINTFORMW 수영복을 벗자 드러난 나체는, 평소보다 야하게 비쳤다…
+;			CFLAG:8825 = 3
+	;그 외
+	ELSEIF FLAG:11 == 2
+		PRINTFORMW 「역시, 평소에 입는 옷이 최고네요」
+;			CFLAG:8825 = 2
+	ENDIF
+		RETURN 0
 ENDIF
 
 ;-------------------------------------------------
@@ -4438,7 +4245,7 @@ SIF TALENT:167
 	RETURN 0
 ;처음으로 PALAM가 LV2 넘었을 때의 말호출
 FOR LOCAL, 0, 35
-	SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
+	SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2
 		TRYCALLFORM K48_MESSAGE_OVERLV2_{LOCAL}
 NEXT
 ;절정시의 말호출
@@ -4930,7 +4737,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 140
 	;음란
-	IF TALENT:170 == 1 && (CFLAG:5263 < 3 || FLAG:11 == 2)
+	IF TALENT:170 == 1 && (CFLAG:8240 < 3 || FLAG:11 == 2)
 		A = RAND:6
 		IF A == 0
 		PRINTFORML 「으무으무……아, 조흔 아힘이헤효」
@@ -4951,9 +4758,9 @@ IF TFLAG:200 == 140
 		PRINTFORML 공기가 빨리는 소리에 눈을 뜨자, 아큐가 입을 내밀고 물건을 삼키고 있는 광경이 비췄다…
 		PRINTFORMW 「아……실례하겠습니다. 모처럼이니까, 시원해질 때까지 해버릴께요……아음, 츄르르, 쮸우웁」
 		ENDIF
-		CFLAG:5263 = 3
+		CFLAG:8240 = 3
 	;奉仕精神Lv5以上
-	ELSEIF ABL:13 >= 5 && (CFLAG:5263 < 2 || FLAG:11 == 2)
+	ELSEIF ABL:13 >= 5 && (CFLAG:8240 < 2 || FLAG:11 == 2)
 		IF RAND:2 == 0
 		PRINTFORML 「아……실례하겠습니다……. 쮸릅, 츄파, 츄릅 츄릅, 으긋」
 		PRINTFORMW 「응～, 낼름낼름, 쮸웁, 츄파, 츄우……」
@@ -4961,12 +4768,12 @@ IF TFLAG:200 == 140
 		PRINTFORML 「후하아, 아침부터, 커다래……하음, 응, 츄르……」
 		PRINTFORMW 「응, 응, 쯉, 츄르, 으붓」
 		ENDIF
-		CFLAG:5263 = 2
+		CFLAG:8240 = 2
 	;그 외
-	ELSEIF CFLAG:5263 < 1 || FLAG:11 == 2
+	ELSEIF CFLAG:8240 < 1 || FLAG:11 == 2
 		PRINTFORML 「응, 츄파, 으푸……아, 이건, 저기……」
 		PRINTFORMW 아큐는 어색한 듯이 귀밑머리를 손으로 쓸었다…
-		CFLAG:5263 = 1
+		CFLAG:8240 = 1
 	ENDIF
 ENDIF
 

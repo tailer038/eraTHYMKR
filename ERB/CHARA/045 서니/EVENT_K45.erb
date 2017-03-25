@@ -789,6 +789,7 @@ PRINTFORMW 「웃, 으윽」
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPSTART]
 ;岩清水
 IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	;연모+노출벽Lv3이상+C감각Lv3이상
@@ -814,6 +815,7 @@ IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG304
@@ -883,6 +885,7 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPSTART]
 ;シャワーオナニー
 ELSEIF SELECTCOM == 7 && TEQUIP:54
 	;처음
@@ -911,6 +914,7 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
@@ -989,6 +993,7 @@ ENDIF
 ;-------------------------------------------------
 ;키스 CFLAG309
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 6
 	;처음
 	IF CFLAG:5309 == 0
@@ -1019,10 +1024,12 @@ IF SELECTCOM == 6
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;何もしない CFLAG310
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 9
 	;처음
 	IF CFLAG:5310 == 0
@@ -1053,6 +1060,7 @@ IF SELECTCOM == 9
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;로터 CFLAG311
@@ -1096,6 +1104,7 @@ ENDIF
 ;-------------------------------------------------
 ;바이브 CFLAG312　CFLAG313
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 12 && TEQUIP:20 == 1
 	;처음
@@ -1151,10 +1160,12 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｅマッサージャ CFLAG314
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 11
 	;처음
 	IF CFLAG:5314 == 0
@@ -1185,6 +1196,7 @@ IF SELECTCOM == 11
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;애널바이브 CFLAG315　CFLAG316
@@ -1261,6 +1273,7 @@ ENDIF
 ;-------------------------------------------------
 ;클리캡 CFLAG317　CFLAG318
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 14 && TEQUIP:30 == 1
 	;처음
@@ -1300,10 +1313,12 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;유두캡 CFLAG319　CFLAG320
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 15 && TEQUIP:35 == 1
 	;처음
@@ -1343,10 +1358,12 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;搾乳機(母乳体質のみ) CFLAG321　CFLAG322
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 191 && TEQUIP:35 == 2
 	;처음
@@ -1386,10 +1403,12 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;オナホール(ふたなり/オトコのみ) CFLAG323　CFLAG324
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 16 && TEQUIP:30 == 2
 	;처음
@@ -1429,6 +1448,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;正常位 CFLAG325
@@ -2365,6 +2385,7 @@ ENDIF
 ;-------------------------------------------------
 ;縄 CFLAG339　CFLAG:5340
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 224 && TEQUIP:40
 	;처음
@@ -2416,10 +2437,12 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ボールギャグ CFLAG341　CFLAG:5342
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 226 && TEQUIP:42 == 1
 	;처음
@@ -2471,10 +2494,12 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;浣腸 CFLAG343
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 174 && TEQUIP:25 == 7
 	;처음
@@ -2510,10 +2535,12 @@ IF SELECTCOM == 174 && TEQUIP:25 == 7
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;排泄 CFLAG344
 ;-------------------------------------------------
+[SKIPSTART]
 IF TEQUIP:25 == 0 && SELECTCOM == 174
 	;처음
 	IF CFLAG:5344 == 0
@@ -2548,6 +2575,7 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ローション使用 CFLAG345
@@ -2817,6 +2845,7 @@ ENDIF
 ;-------------------------------------------------
 ;イラマチオ CFLAG351
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 230
 	;처음
 	IF CFLAG:5351 == 0
@@ -2847,10 +2876,12 @@ IF SELECTCOM == 230
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;フィスト系コマンド CFLAG352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 	;처음
 	IF CFLAG:5352 == 0
@@ -2889,10 +2920,12 @@ IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;触手召喚 CFLAG353　CFLAG:5354
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 500 && TEQUIP:90
 	;처음
@@ -2940,6 +2973,7 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・通常版 CFLAG355以降を使用
@@ -2949,6 +2983,7 @@ ENDIF
 ;指挿入れ CFLAG355
 ;Gスポット刺激 CFLAG356
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 4 || SELECTCOM == 600
 	;Gスポット刺激
 	IF SELECTCOM == 600 || (PREVCOM == 4 && ABL:PLAYER:12 >= 3 || PREVCOM == 600)
@@ -3015,6 +3050,7 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;シャワー CFLAG357
@@ -3120,6 +3156,7 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPSTART]
 ;乱れ牡丹
 IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 	;처음
@@ -3159,6 +3196,7 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;泡踊り CFLAG361
@@ -3214,6 +3252,7 @@ ENDIF
 ;-------------------------------------------------
 ;利尿剤 CFLAG362
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 62
 	;연모+오줌싸개
 	IF TALENT:150 && TALENT:45 && (CFLAG:5362 < 4 || FLAG:11 == 2)
@@ -3233,6 +3272,7 @@ IF SELECTCOM == 62
 		CFLAG:5362 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;羞恥プレイ CFLAG363 解除 CFLAG364
@@ -3309,6 +3349,7 @@ IF SELECTCOM == 103 && TEQUIP:56
 			RETURN 0
 	ENDIF
 ;종료시
+[SKIPSTART]
 ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 	;처음
 	IF CFLAG:5364 == 0
@@ -3334,6 +3375,7 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
@@ -3494,6 +3536,7 @@ ENDIF
 ;放尿 CFLAG369
 ;強制放尿 CFLAG370
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 111 || SELECTCOM == 620
 	;強制放尿
 	IF SELECTCOM == 620 || SELECTCOM == 111 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:11 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:12 == 0))
@@ -3543,6 +3586,7 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・アナル関連 CFLAG371以降を使用
@@ -3551,6 +3595,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナル舐め CFLAG371
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 180
 	;처음
 	IF CFLAG:5371 == 0
@@ -3581,10 +3626,12 @@ IF SELECTCOM == 180
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナルビーズ 開始時CFLAG372 終了時CFLAG373
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 172 && TEQUIP:25 == 5
 	;처음
@@ -3636,10 +3683,12 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;------------------------------------------------
 ;正常位アナル CFLAG374
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 30
 	;처음
 	IF CFLAG:5374 == 0
@@ -3675,10 +3724,12 @@ IF SELECTCOM == 30
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;後背位アナル CFLAG375
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 31
 	;처음
 	IF CFLAG:5375 == 0
@@ -3714,10 +3765,12 @@ IF SELECTCOM == 31
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;対面座位アナル CFLAG376
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;처음
 	IF CFLAG:5376 == 0
@@ -3753,10 +3806,12 @@ IF SELECTCOM == 32
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;背面座位アナル CFLAG377
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	;처음
 	IF CFLAG:5377 == 0
@@ -3792,10 +3847,12 @@ IF SELECTCOM == 33
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;騎乗位アナル CFLAG378
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	;처음
 	IF CFLAG:5378 == 0
@@ -3831,10 +3888,12 @@ IF SELECTCOM == 34
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;空気浣腸 開始時CFLAG379 終了時CFLAG380
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 175 && TEQUIP:25 == 8
 	;처음
@@ -3886,10 +3945,12 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;拡張バルーン 開始時CFLAG381 終了時CFLAG382
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 173 && TEQUIP:25 == 6
 	;처음
@@ -3941,10 +4002,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル電極 開始時CFLAG383 終了時CFLAG384
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 171 && TEQUIP:25 == 4
 	;처음
@@ -3996,10 +4059,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル奉仕強制 CFLAG385
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;처음
 	IF CFLAG:5385 == 0
@@ -4034,6 +4099,7 @@ IF SELECTCOM == 44
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;レズ調教コマンド（デフォ主人公でも可能なもの） CFLAG646以降を使用
@@ -4042,6 +4108,7 @@ ENDIF
 ;-------------------------------------------------
 ;３P CFLAG386
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;처음
 	IF CFLAG:5386 == 0
@@ -4076,10 +4143,12 @@ IF SELECTCOM == 610
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;식스나인 CFLAG387
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 602
 	;처음
 	IF CFLAG:5387 == 0
@@ -4117,6 +4186,7 @@ IF SELECTCOM == 602
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 
 ;-------------------------------------------------
@@ -4465,11 +4535,11 @@ IF TFLAG:30 > 0
 			PRINTFORMW 「마구마구 모인 서니의 특농 암컷 밀크가 나와아아아 나와요오오옷!!!」
 		;통상 모드
 		;연모
-		ELSEIF TALENT:150 == 1
-			PRINTFORMW 
+		;ELSEIF TALENT:150 == 1
+			;PRINTFORMW 
 		;그 이외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5233 = 1
 			RETURN 0
@@ -4486,12 +4556,12 @@ IF TFLAG:30 > 0
 			CFLAG:5233 = 2
 		;통상 모드
 		;연모
-		ELSEIF TALENT:150 == 1 && (CFLAG:5233 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
+		;ELSEIF TALENT:150 == 1 && (CFLAG:5233 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
 			CFLAG:5233 = 3
 		;그 이외
-		ELSEIF CFLAG:5233 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
+		;ELSEIF CFLAG:5233 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
 			CFLAG:5233 = 2
 		ENDIF
 			RETURN 0
@@ -4533,6 +4603,7 @@ ENDIF
 ;-------------------------------------------------
 ;C감각Lv5でＣ절정50以上 CFLAG235
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;처음
 	IF CFLAG:5235 == 0
@@ -4559,10 +4630,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;V감각Lv5でＶ절정50以上 CFLAG236
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;처음
 	IF CFLAG:5236 == 0
@@ -4589,10 +4662,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;A감각Lv5でＡ절정50以上 CFLAG237
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;처음
 	IF CFLAG:5237 == 0
@@ -4619,10 +4694,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;B감각Lv5でＢ절정50以上 CFLAG238
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;처음
 	IF CFLAG:5238 == 0
@@ -4649,6 +4726,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG関係（45をキャラ番号に置換）

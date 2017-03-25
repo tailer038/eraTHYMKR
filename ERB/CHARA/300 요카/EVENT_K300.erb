@@ -586,15 +586,15 @@ IF SELECTCOM == 501 && TEQUIP:20 == 0
 	IF CFLAG:5306 == 0
 		PRINTFORMW 「역시 이건 싫어요…」
 		RETURN 0
-	ELSE
-		IF TALENT:150 == 1 && ABL:35 >= 4 && (CFLAG:5306 >= 2 || FLAG:11 == 2)
-			PRINTFORMW
-			CFLAG:5306 = 3
-		ELSE
-			PRINTFORMW
-			CFLAG:5306 = 2
-		ENDIF
-		RETURN 0
+	;ELSE
+		;IF TALENT:150 == 1 && ABL:35 >= 4 && (CFLAG:5306 >= 2 || FLAG:11 == 2)
+			;PRINTFORMW
+			;CFLAG:5306 = 3
+		;ELSE
+			;PRINTFORMW
+			;CFLAG:5306 = 2
+		;ENDIF
+		;RETURN 0
 	ENDIF
 ENDIF
 ;촉수 애널삽입 CFLAG:5307
@@ -602,15 +602,15 @@ IF SELECTCOM == 502 && TEQUIP:25 == 1
 	IF CFLAG:5307 == 0
 		PRINTFORMW 「역시 이건 싫어요…」
 		RETURN 0
-	ELSE
-		IF TALENT:150 == 1 && ABL:35 >= 4 && (CFLAG:5307 >= 2 || FLAG:11 == 2)
-			PRINTFORMW
-			CFLAG:5307 = 3
-		ELSE
-			PRINTFORMW
-			CFLAG:5307 = 2
-		ENDIF
-		RETURN 0
+	;ELSE
+		;IF TALENT:150 == 1 && ABL:35 >= 4 && (CFLAG:5307 >= 2 || FLAG:11 == 2)
+			;PRINTFORMW
+			;CFLAG:5307 = 3
+		;ELSE
+			;PRINTFORMW
+			;CFLAG:5307 = 2
+		;ENDIF
+		;RETURN 0
 	ENDIF
 ENDIF
 ;촉수 애널삽입 해제 CFLAG:5308
@@ -618,15 +618,15 @@ IF SELECTCOM == 502 && TEQUIP:25 == 0
 	IF CFLAG:5308 == 0
 		PRINTFORMW 「역시 이건 싫어요…」
 		RETURN 0
-	ELSE
-		IF TALENT:150 == 1 && ABL:35 >= 4 && (CFLAG:5308 >= 2 || FLAG:11 == 2)
-			PRINTFORMW
-			CFLAG:5308 = 3
-		ELSE
-			PRINTFORMW
-			CFLAG:5308 = 2
-		ENDIF
-		RETURN 0
+	;ELSE
+		;IF TALENT:150 == 1 && ABL:35 >= 4 && (CFLAG:5308 >= 2 || FLAG:11 == 2)
+			;PRINTFORMW
+			;CFLAG:5308 = 3
+		;ELSE
+			;PRINTFORMW
+			;CFLAG:5308 = 2
+		;ENDIF
+		;RETURN 0
 	ENDIF
 ENDIF
 ;-------------------------------------------------
@@ -834,9 +834,9 @@ ENDIF
 ;-------------------------------------------------
 ;エンゲ?ジリング使用時
 ;-------------------------------------------------
-IF TFLAG:200 == 200
-	PRINTFORMW 
-ENDIF
+;IF TFLAG:200 == 200
+	;PRINTFORMW 
+;ENDIF
 	TFLAG:200 = 0
 	RETURN 0
 
@@ -850,4 +850,3 @@ PRINTFORMW ―――단독 엔딩 조건 달성―――
 		SETCOLOR 255,0,0
 PRINTFORMW <SYSTEM> 전자발찌를 획득하셨습니다. 착용시 귀속
 QUIT
-RETURN 0

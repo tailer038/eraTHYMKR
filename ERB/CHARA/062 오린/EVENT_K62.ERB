@@ -1708,6 +1708,7 @@ ELSEIF ASSINO() == 63
 				PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 당연히, 그 제안을 각하했다. 
 			ENDIF
 ;		ENDIF
+[SKIPSTART]
 	;후타나린린
 	ELSEIF CFLAG:5203 == 101
 		IF TALENT:121 == 0 && TALENT:ASSI:121 == 1
@@ -2029,6 +2030,7 @@ ELSEIF ASSINO() == 63
 		ELSE
 			PRINTFORMW 「(여긴 누가 지문을 채워주면 좋을 거야!)」
 		ENDIF
+[SKIPEND]
 	ENDIF
 ;코이시
 ELSEIF ASSINO() == 64
@@ -2917,6 +2919,7 @@ IF SELECTCOM == 1
 		RETURN 0
 	ENDIF
 ;岩清水
+[SKIPSTART]
 ELSEIF SELECTCOM == 1 && TEQUIP:56
 	;연모+노출증Lv3이상+C감각Lv3이상
 	IF TALENT:150 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:5303 <= 5 || FLAG:11 == 2)
@@ -3163,6 +3166,7 @@ IF SELECTCOM == 7
 		RETURN 0
 	ENDIF
 ;シャワ―オナニ―
+[SKIPSTART]
 ELSEIF SELECTCOM == 7 && TEQUIP:54
 	;처음
 	IF CFLAG:5306 == 0
@@ -3198,6 +3202,7 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
@@ -3512,7 +3517,7 @@ IF SELECTCOM == 4
 					PRINTFORMW 「아하하하…응앗……느, 능숙하네……햐앗」
 					CFLAG:5355 = 4
 				;굴복각인LV2이하で, 感じている時
-				ELSEIF PALAM:0 >= PALAMLV:3 && (CFLAG:5355 <= 2 || FLAG:11 == 2)
+				ELSEIF PALAM:1 >= PALAMLV:3 && (CFLAG:5355 <= 2 || FLAG:11 == 2)
 					PRINTFORMW 「응웃……휘, 휘젓지 마! 뭔가……냐웃, 후아」
 					CFLAG:5355 = 3
 				;굴복각인Lv2
@@ -4724,6 +4729,7 @@ IF SELECTCOM == 23
 		RETURN 0
 	ENDIF
 ;乱れ牡丹
+[SKIPSTART]
 ELSEIF SELECTCOM == 23 && TEQUIP:56
 	;처음
 	IF CFLAG:5360 == 0
@@ -4772,6 +4778,7 @@ ELSEIF SELECTCOM == 23 && TEQUIP:56
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPEND]
 ENDIF
 
 
@@ -6091,6 +6098,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 	IF CFLAG:5312 == 0
 		;처녀
 		IF TALENT:0 == 1
+[SKIPSTART]
 			;연모＋순종Lv5
 			IF TALENT:150 == 1 && ABL:10 >= 5
 				PRINTFORMW 
@@ -6101,6 +6109,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 			ELSE
 				PRINTFORMW 
 			ENDIF
+[SKIPEND]
 		;非처녀
 		ELSE
 			;연모
@@ -7880,11 +7889,11 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0 && (NOWEX:1 == 0|| NOWEX:3 == 0 || NO
 			PRINTFORMW 오린은 애널에의 어떤 자극도 강렬한 쾌감으로 느끼고 있는 듯하다. 
 			CFLAG:5237 = 1
 		;복종
-		ELSEIF TALENT:153 == 1
-			PRINTFORMW 
+		;ELSEIF TALENT:160 == 1
+			;PRINTFORMW 
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 ;			CFLAG:5237 = 1
 			RETURN 0
@@ -7894,14 +7903,15 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0 && (NOWEX:1 == 0|| NOWEX:3 == 0 || NO
 		IF TALENT:150 == 1 && (CFLAG:5237 <= 2 || FLAG:11 == 2)
 			PRINTFORML 「……싫읏! 그렇게 해버리면……엉덩잇 부서져어어!」
 			PRINTFORMW 「정말로……바보가 돼 버렷! 나……나앗! 냐앗!」
-		;복종
-		ELSEIF TALENT:153 == 1 && (CFLAG:5237 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
 			CFLAG:5237 = 3
+		;복종
+		;ELSEIF TALENT:160 == 1 && (CFLAG:5237 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5237 = 3
 		;그 외
-		ELSEIF CFLAG:5237 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5237 = 2
+		;ELSEIF CFLAG:5237 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5237 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -7943,15 +7953,16 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0 && NOWEX:2 == 0 && TFLAG:30 <= 0
 		IF TALENT:150 == 1 && (CFLAG:5236 <= 2 || FLAG:11 == 2) && SELECTCOM != 4 && SELECTCOM != 600
 			PRINTFORML 「제……제바알! ……가! 가앗! 내 속……전부 꽉 채워줘엇! !」
 			PRINTFORMW 오린은 울면서 머리칼을 마구 흐트러뜨리며, 쾌감에 온 몸을 떨었다. 
+			CFLAG:5236 = 3
 			RETURN 0
 		;복종
-		ELSEIF TALENT:153 == 1 && (CFLAG:5236 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5236 = 3
+		;ELSEIF TALENT:160 == 1 && (CFLAG:5236 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5236 = 3
 		;그 외
-		ELSEIF CFLAG:5236 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5236 = 2
+		;ELSEIF CFLAG:5236 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5236 = 2
 		ENDIF
 	ENDIF
 ENDIF
@@ -7982,8 +7993,8 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0 && NOWEX:1 == 0 && NOWEX:2 == 0 && TF
 			CFLAG:5235 = 1
 			RETURN 0
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 ;			CFLAG:5235 = 1　　(연모以外では2회째 이후へいかないように設定されています. A,V,Bも同様)
 	;2회째 이후
@@ -7993,15 +8004,16 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0 && NOWEX:1 == 0 && NOWEX:2 == 0 && TF
 			PRINTFORML 「더어! 더 해줘엇! 햐우읏! 냐앗……」
 			PRINTFORML 「안 대에, 아직 부족해엣! ……더, 더어!」
 			PRINTFORMW 껍질이 완전히 벗겨져 크게 팽창한 클리토리스에의 자극에, 오린의 의식은 새하얗게 물들었다. 
+			CFLAG:5235 = 3
 			RETURN 0
 		;복종
-		ELSEIF TALENT:153 == 1 && (CFLAG:5235 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5235 = 3
+		;ELSEIF TALENT:160 == 1 && (CFLAG:5235 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5235 = 3
 		;그 외
-		ELSEIF CFLAG:5235 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5235 = 2
+		;ELSEIF CFLAG:5235 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5235 = 2
 		ENDIF
 			
 	ENDIF
@@ -8063,11 +8075,11 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0 && NOWEX:1 == 0 && NOWEX:2 == 0 && NO
 			CFLAG:5238 = 1
 			RETURN 0
 		;복종
-		ELSEIF TALENT:153 == 1
-			PRINTFORMW 
+		;ELSEIF TALENT:160 == 1
+			;PRINTFORMW 
 		;그 외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 ;			CFLAG:5238 = 1
 	;2회째 이후
@@ -8080,9 +8092,10 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0 && NOWEX:1 == 0 && NOWEX:2 == 0 && NO
 				PRINT , 에이프런 위로도 알 수 있을 정도로 자기 존재를 주장하고
 			ENDIF
 			PRINTFORMW 있다. 
+			CFLAG:5238 = 3
 			RETURN 0
 		;복종
-		ELSEIF TALENT:153 == 1 && (CFLAG:5238 <= 2 || FLAG:11 == 2)
+		ELSEIF TALENT:160 == 1 && (CFLAG:5238 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 
 			CFLAG:5238 = 3
 		;그 외
@@ -8125,7 +8138,7 @@ SIF TFLAG:30 > 0
 ;-------------------------------------------------
 IF TFLAG:0 > 0 && CFLAG:5229 == 0
 	;연모かつ主人のセックスによる처녀喪失
-	IF TFLAG:2 && TALENT:150 == 1
+	IF TFLAG:2
 		PRINTFORMW 「아파앗……응읏……쿠으……」
 		;첫
 		IF CFLAG:5211 >= EXP:0

@@ -376,6 +376,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 2
 	;アナルバイブ抜き差し
+[SKIPSTART]
 	IF TEQUIP:25 == 1
 		;처음
 		IF CFLAG:8521 == 0
@@ -427,6 +428,7 @@ IF SELECTCOM == 2
 		ENDIF
 	;통상의 애널 애무
 	ELSE
+[SKIPEND]
 		;처음
 		IF CFLAG:8202 == 0
 			;연모
@@ -478,7 +480,7 @@ IF SELECTCOM == 2
 			ENDIF
 		ENDIF
 		RETURN 0
-	ENDIF
+	;ENDIF
 ENDIF
 ;-------------------------------------------------
 ;胸愛撫	CFLAG:8203
@@ -1341,6 +1343,7 @@ IF SELECTCOM == 30
 		CFLAG:8246= 1
 		RETURN 0
 	;2회째 이후
+[SKIPSTART]
 	ELSE
 		;연모
 		IF TALENT:150 == 1
@@ -1350,6 +1353,7 @@ IF SELECTCOM == 30
 			CFLAG:8246 = 2
 		ENDIF
 		RETURN 0
+[SKIPEND]
 	ENDIF
 ENDIF
 
@@ -2002,13 +2006,13 @@ ENDIF
 ;-------------------------------------------------
 ;赤い首輪使用	CFLAG:9199
 ;-------------------------------------------------
-IF TFLAG:200 == 201
-ENDIF
+;IF TFLAG:200 == 201
+;ENDIF
 ;-------------------------------------------------
 ;隷属の証使用	CFLAG:9200
 ;-------------------------------------------------
-IF TFLAG:200 == 202
-ENDIF
+;IF TFLAG:200 == 202
+;ENDIF
 
 ;-------------------------------------------------
 ;@KOJO_X_MESSAGE_IMPRESSION関係

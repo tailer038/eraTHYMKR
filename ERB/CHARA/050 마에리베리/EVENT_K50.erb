@@ -7036,20 +7036,20 @@ ELSEIF TFLAG:200 == 158
 ;매각
 ;이것을 쓰는 것은 저에는 무리입니다……
 ;-------------------------------------------------
-ELSEIF TFLAG:200 == 130
+;ELSEIF TFLAG:200 == 130
 	;연모+반발 각인 Lv3 미만
-	IF TALENT:150 && MARK:9 < 3
-		PRINTFORMW 
+	;IF TALENT:150 && MARK:9 < 3
+		;PRINTFORMW 
 	;반발 각인 Lv3
-	ELSEIF MARK:9 == 3
-		PRINTFORMW 
+	;ELSEIF MARK:9 == 3
+		;PRINTFORMW 
 	;음란
-	ELSEIF TALENT:170
-		PRINTFORMW 
+	;ELSEIF TALENT:170
+		;PRINTFORMW 
 	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+	;ELSE
+		;PRINTFORMW 
+	;ENDIF
 ENDIF
 	TFLAG:200 = 0
 	RETURN 0

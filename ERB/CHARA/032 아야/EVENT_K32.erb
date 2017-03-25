@@ -482,6 +482,7 @@ IF SELECTCOM == 1
 	ENDIF
 ENDIF
 ;岩清水
+[SKIPSTART]
 IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	;연모+노출벽Lv3이상+C감각Lv3이상
 	IF TALENT:150 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:5303 <= 5 || FLAG:11 == 2)
@@ -506,6 +507,7 @@ IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG304
@@ -2563,6 +2565,7 @@ ENDIF
 ;-------------------------------------------------
 ;ボ―ルギャグ CFLAG344　CFLAG:5345
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 226 && TEQUIP:42 == 1
 	;처음
@@ -2614,6 +2617,7 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;浣腸 CFLAG346
@@ -2913,6 +2917,7 @@ ENDIF
 ;-------------------------------------------------
 ;助手を犯す CFLAG353
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;처음
 	IF CFLAG:5353 == 0
@@ -2939,6 +2944,7 @@ IF SELECTCOM == 26
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;イラマチオ CFLAG354
@@ -3396,6 +3402,7 @@ IF SELECTCOM == 23
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPSTART]
 ;乱れ牡丹
 IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 	;처음
@@ -3435,6 +3442,7 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;泡踊り CFLAG364
@@ -3738,6 +3746,7 @@ ENDIF
 IF SELECTCOM == 111 || SELECTCOM == 620
 	;強制放尿
 	IF SELECTCOM == 620 || SELECTCOM == 111 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:11 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:12 == 0))
+[SKIPSTART]
 		;연모+오줌싸개+野外プレイ
 		IF TALENT:150 && TALENT:45 && TEQUIP:52 && (CFLAG:5373 < 5 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -3759,6 +3768,7 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 			PRINTFORMW 
 			CFLAG:5373 = 1
 		ENDIF
+[SKIPEND]
 	;放尿
 	ELSE
 		;처음
@@ -3936,7 +3946,7 @@ ENDIF
 ;------------------------------------------------
 ;正常位アナル CFLAG377
 ;-------------------------------------------------
-IF SELECTCOM == 30
+IF GROUPMATCH(SELECTCOM, 37, 38)
 	;처음
 	IF CFLAG:5377 == 0
 		;연모
@@ -4478,6 +4488,7 @@ ENDIF
 ;-------------------------------------------------
 ;３P CFLAG389
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;처음
 	IF CFLAG:5389 == 0
@@ -4512,6 +4523,7 @@ IF SELECTCOM == 610
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;シックスナイン CFLAG390
@@ -4569,6 +4581,7 @@ ENDIF
 ;-------------------------------------------------
 ;焦らしプレイ CFLAG391
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始
 IF SELECTCOM == 120 && TEQUIP:68 == 0
 	;처음
@@ -4622,11 +4635,13 @@ ELSEIF SELECTCOM == 120 && TEQUIP:68
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 
 ;-------------------------------------------------
 ;射精止め CFLAG392
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始
 IF SELECTCOM == 121 && TEQUIP:69 == 0
 	;처음
@@ -4688,6 +4703,7 @@ ELSEIF SELECTCOM == 121 && TEQUIP:69
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・촉수関連 CFLAG401～CFLAG449まで使用　勝手に追加しています
@@ -5530,6 +5546,7 @@ ENDIF
 ;-------------------------------------------------
 ;촉수発毛剤 CFLAG425
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 563
 	;처음
@@ -5566,10 +5583,12 @@ IF SELECTCOM == 563
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수脱毛剤 CFLAG426
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 564
 	;처음
@@ -5606,6 +5625,7 @@ IF SELECTCOM == 564
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수くすぐり CFLAG427
@@ -5997,6 +6017,7 @@ ENDIF
 ;-------------------------------------------------
 ;촉수口内洗浄 CFLAG438
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 540
 	;처음
@@ -6033,10 +6054,12 @@ IF SELECTCOM == 540
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수膣内洗浄 CFLAG439
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 541
 	;처음
@@ -6073,10 +6096,12 @@ IF SELECTCOM == 541
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수腸内洗浄 CFLAG440
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 542
 	;처음
@@ -6113,10 +6138,12 @@ IF SELECTCOM == 542
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수膀胱内洗浄 CFLAG441
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 543
 	;처음
@@ -6153,10 +6180,12 @@ IF SELECTCOM == 543
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수排卵誘発 CFLAG442
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 561 && TEQUIP:16
 	;처음
@@ -6193,10 +6222,12 @@ IF SELECTCOM == 561 && TEQUIP:16
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수避妊膜塗布 CFLAG:5443
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 562 && TEQUIP:17
 	;처음
@@ -6234,6 +6265,7 @@ IF SELECTCOM == 562 && TEQUIP:17
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수産卵 CFLAG:5444
@@ -6368,6 +6400,7 @@ ENDIF
 ;-------------------------------------------------
 ;촉수強制回復 CFLAG448　CFLAG:5449
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 560 && TEQUIP:91
 	;처음
@@ -6423,6 +6456,7 @@ ELSEIF SELECTCOM == 560 && TEQUIP:91 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・胸関連 CFLAG450以降を使用

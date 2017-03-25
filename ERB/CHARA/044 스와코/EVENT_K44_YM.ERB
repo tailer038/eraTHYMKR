@@ -432,6 +432,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 	ENDIF
 ENDIF
 ;岩清水
+[SKIPSTART]
 IF SELECTCOM == 611
 	;연모+露出癖Lv3以上+C感覚Lv3以上
 	IF TALENT:150 && ABL:14 >= 3 && ABL:0 >= 3
@@ -456,6 +457,7 @@ IF SELECTCOM == 611
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG:9002
@@ -579,6 +581,7 @@ IF SELECTCOM == 4
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPSTART]
 ;Gスポット刺激
 IF SELECTCOM == 600
 	;연모
@@ -596,6 +599,7 @@ IF SELECTCOM == 600
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;フェラする(ふたなり/オトコのみ) CFLAG:9005
@@ -1254,6 +1258,7 @@ IF SELECTCOM == 23
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPSTART]
 ;乱れ牡丹
 IF SELECTCOM == 612
 	;初めて
@@ -1293,6 +1298,7 @@ IF SELECTCOM == 612
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;騎乗位 CFLAG:9024
@@ -1379,6 +1385,7 @@ ENDIF
 ;-------------------------------------------------
 ;助手を犯す CFLAG:9026
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;初めて
 	IF CFLAG:9026 == 0
@@ -1405,6 +1412,7 @@ IF SELECTCOM == 26
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;------------------------------------------------
 ;正常位アナル CFLAG:9030
@@ -1738,6 +1746,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナル奉仕強制 CFLAG:9044
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;初めて
 	IF CFLAG:9044 == 0
@@ -1772,6 +1781,7 @@ IF SELECTCOM == 44
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ローション CFLAG:9060
@@ -1946,6 +1956,7 @@ ENDIF
 ;-------------------------------------------------
 ;羞恥プレイ CFLAG:9103 解除 CFLAG:8822
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 103 && TEQUIP:56
 	;初めて
 	IF CFLAG:9103 == 0
@@ -2009,6 +2020,7 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;野外プレイ CFLAG:9104　CFLAG:8821
@@ -2028,6 +2040,7 @@ IF SELECTCOM == 104 && TEQUIP:52
 		RETURN 0
 	;二回目以降
 	ELSE
+[SKIPSTART]
 		;연모＋露出癖Lv3以上
 		IF TALENT:150 && ABL:14 >= 3
 			PRINTFORMW 
@@ -2041,10 +2054,12 @@ IF SELECTCOM == 104 && TEQUIP:52
 			PRINTFORMW 
 			CFLAG:9104 = 2
 		ENDIF
+[SKIPEND]
 		RETURN 0
 	ENDIF
 ;終了時
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
+[SKIPSTART]
 	;연모
 	IF TALENT:150
 		PRINTFORMW 
@@ -2054,6 +2069,7 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 		PRINTFORMW 
 		CFLAG:8821 = 1
 	ENDIF
+[SKIPEND]
 	RETURN 0
 ENDIF
 
@@ -2115,6 +2131,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナル電極 開始時CFLAG:9171 終了時CFLAG:8851
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 171 && TEQUIP:25
 	;初めて
@@ -2166,10 +2183,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナルビーズ 開始時CFLAG:9172 終了時CFLAG:8852
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 172 && TEQUIP:25
 	;初めて
@@ -2221,10 +2240,12 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;拡張バルーン 開始時CFLAG:9173 終了時CFLAG:8853
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 173 && TEQUIP:25
 	;初めて
@@ -2276,10 +2297,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;浣腸 CFLAG:9174
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 174 && TEQUIP:25
 	;初めて
@@ -2315,10 +2338,12 @@ IF SELECTCOM == 174 && TEQUIP:25
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;排泄（浣腸プレイ） CFLAG:8851
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 174 && TEQUIP:25 == 0
 	;初めて
 	IF CFLAG:8854 == 0
@@ -2353,10 +2378,12 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;空気浣腸 開始時CFLAG:9175 終了時CFLAG:8855
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 175 && TEQUIP:25
 	;初めて
@@ -2408,6 +2435,7 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル舐め CFLAG:9180
@@ -2446,6 +2474,7 @@ ENDIF
 ;-------------------------------------------------
 ;　　(母乳体質のみ) CFLAG:9191　CFLAG:8861
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 191 && TEQUIP:35
 	;初めて
@@ -2485,6 +2514,7 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	ENDIF
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;スパンキング CFLAG:9220
@@ -2503,6 +2533,7 @@ IF SELECTCOM == 220
 		RETURN 0
 	;二回目以降
 	ELSE
+[SKIPSTART]
 		;연모＋マゾっ気Lv5以上
 		IF TALENT:150 && ABL:21 >= 5
 			PRINTFORMW 
@@ -2524,6 +2555,7 @@ IF SELECTCOM == 220
 			PRINTFORMW 
 			CFLAG:9220 = 2
 		ENDIF
+[SKIPEND]
 		RETURN 0
 	ENDIF
 ENDIF
@@ -2795,6 +2827,7 @@ IF SELECTCOM == 230
 		RETURN 0
 	;二回目以降
 	ELSE
+[SKIPSTART]
 		;연모＋奉仕精神Lv5
 		IF TALENT:150 && ABL:13 >= 5
 			PRINTFORMW 
@@ -2808,6 +2841,7 @@ IF SELECTCOM == 230
 			PRINTFORMW 
 			CFLAG:9230 = 2
 		ENDIF
+[SKIPEND]
 		RETURN 0
 	ENDIF
 ENDIF
@@ -2815,6 +2849,7 @@ ENDIF
 ;-------------------------------------------------
 ;フィストファック CFLAG:9231
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231
 	;初めて
 	IF CFLAG:9231 == 0
@@ -2853,10 +2888,12 @@ IF SELECTCOM == 231
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナルフィスト CFLAG:9232
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 232
 	;初めて
 	IF CFLAG:9232 == 0
@@ -2895,10 +2932,12 @@ IF SELECTCOM == 232
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;両穴フィスト CFLAG:9233
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 233
 	;初めて
 	IF CFLAG:9233 == 0
@@ -2937,6 +2976,7 @@ IF SELECTCOM == 233
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;お風呂場プレイ CFLAG:9350 解除 CFLAG:8824
@@ -3027,6 +3067,7 @@ ENDIF
 ;-------------------------------------------------
 ;泡踊り CFLAG:9352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 352
 	;初めて
 	IF CFLAG:9352 == 0
@@ -3057,6 +3098,7 @@ IF SELECTCOM == 352
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;触手召喚 CFLAG:9500　CFLAG:8901
@@ -3153,6 +3195,7 @@ ENDIF
 ;-------------------------------------------------
 ;３P CFLAG:9610
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;初めて
 	IF CFLAG:9610 == 0
@@ -3187,6 +3230,7 @@ IF SELECTCOM == 610
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 
 ;-------------------------------------------------
@@ -3578,6 +3622,7 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 		RETURN 0
 	;二回目以降
 	ELSE
+[SKIPSTART]
 		;연모
 		IF TALENT:150
 			PRINTFORMW 
@@ -3588,12 +3633,14 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			CFLAG:8017 = 2
 		ENDIF
 		RETURN 0
+[SKIPEND]
 	ENDIF
 ENDIF
 
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ絶頂50以上 CFLAG:8018
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;初めて
 	IF CFLAG:8018 == 0
@@ -3620,6 +3667,7 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 		RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ絶頂50以上 CFLAG:8019
@@ -3638,6 +3686,7 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 		RETURN 0
 	;二回目以降
 	ELSE
+[SKIPSTART]
 		;연모
 		IF TALENT:150
 			PRINTFORMW 
@@ -3648,6 +3697,7 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			CFLAG:8019 = 2
 		ENDIF
 		RETURN 0
+[SKIPEND]
 	ENDIF
 ENDIF
 
@@ -3668,6 +3718,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 		RETURN 0
 	;二回目以降
 	ELSE
+[SKIPSTART]
 		;연모
 		IF TALENT:150
 			PRINTFORMW 
@@ -3678,6 +3729,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			CFLAG:8020 = 2
 		ENDIF
 		RETURN 0
+[SKIPEND]
 	ENDIF
 ENDIF
 

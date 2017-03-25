@@ -6657,7 +6657,7 @@ IF SELECTCOM == 12 && TEQUIP:20
 	;初めて
 	IF CFLAG:TARGET:9012 == 0
 		;処女
-		IF TALENT:0 == 1 && EXP:0 == 1
+		IF TALENT:0 == 1
 			;恋慕
 			IF TALENT:150
 				PRINTFORMW 「それで私の初めてを奪うつもりなの？」
@@ -7396,6 +7396,7 @@ ENDIF
 ;-------------------------------------------------
 ;搾乳機(母乳体質のみ) CFLAG9191　CFLAG8861
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 191 && TEQUIP:35
 	;初めて
@@ -7435,10 +7436,12 @@ ELSEIF SELECTCOM == 16 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;オナホール(ふたなり/オトコのみ) CFLAG9016　CFLAG8815
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 16 && TEQUIP:30
 	;初めて
@@ -7478,6 +7481,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;正常位 CFLAG9020
@@ -9091,7 +9095,7 @@ IF SELECTCOM == 24
 	;初めて
 	IF CFLAG:TARGET:9024 == 0
 		;処女
-		IF TALENT:0 == 1 && EXP:0 == 1
+		IF TALENT:0 == 1
 			;媚薬二重状態
 			IF CFLAG:5101 & 16
 				PRINTFORMW %CALLNAME:MASTER%는 얼빠진 눈의 카구야를 허벅지 위에 올리고、막대기를 카구야의 음부에 삽입했다
@@ -9680,6 +9684,7 @@ ENDIF
 ;-------------------------------------------------
 ;縄 CFLAG9224　CFLAG:8872
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 224 && TEQUIP:40
 	;初めて
@@ -9731,10 +9736,12 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ボールギャグ CFLAG9226　CFLAG:8873
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 226 && TEQUIP:42
 	;初めて
@@ -9786,10 +9793,12 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;浣腸 CFLAG9174
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 174 && TEQUIP:25
 	;初めて
@@ -9825,10 +9834,12 @@ IF SELECTCOM == 174 && TEQUIP:25
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;排泄 CFLAG8851
 ;-------------------------------------------------
+[SKIPSTART]
 IF TEQUIP:25 == 0 && SELECTCOM == 174
 	;初めて
 	IF CFLAG:TARGET:8854 == 0
@@ -9863,6 +9874,7 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ローション使用 CFLAG9060
@@ -10543,6 +10555,7 @@ ENDIF
 ;-------------------------------------------------
 ;助手を犯す CFLAG9026
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;初めて
 	IF CFLAG:TARGET:9026 == 0
@@ -10569,10 +10582,12 @@ IF SELECTCOM == 26
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;イラマチオ CFLAG9260
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 230
 	;初めて
 	IF CFLAG:TARGET:9260 == 0
@@ -10603,6 +10618,7 @@ IF SELECTCOM == 230
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;フィストファック CFLAG9231
@@ -11644,7 +11660,7 @@ IF SELECTCOM == 501 && TEQUIP:20 == 1
 	;初めて
 	IF CFLAG:TARGET:9506 == 0
 		;処女
-		IF TALENT:0 == 1 && EXP:0 == 1
+		IF TALENT:0 == 1
 			;恋慕
 			IF TALENT:150
 				PRINTFORML 「우응……간지러워요……」
@@ -12528,7 +12544,7 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 		;初めて
 		IF CFLAG:9004 == 0
 			;処女（処女でないキャラの場合は無記入でよい）
-			IF TALENT:TARGET:0 == 1 && EXP:0 == 1
+			IF TALENT:TARGET:0 == 1
 				;恋慕
 				IF TALENT:150
 					PRINTFORMW 「んっ, んんっ, あふっ……」
@@ -12644,6 +12660,7 @@ ENDIF
 ;-------------------------------------------------
 ;シャワー CFLAG9351
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 351 && TEQUIP:54
 	;初めて
 	IF CFLAG:TARGET:9351 == 0
@@ -12670,6 +12687,7 @@ IF SELECTCOM == 351 && TEQUIP:54
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;対面座位 CFLAG9022
@@ -12867,6 +12885,7 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPSTART]
 ;乱れ牡丹
 IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 	;初めて
@@ -12906,6 +12925,7 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 
 ;-------------------------------------------------
@@ -13039,6 +13059,7 @@ ENDIF
 ;-------------------------------------------------
 ;泡踊り CFLAG9352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 352
 	;初めて
 	IF CFLAG:TARGET:9352 == 0
@@ -13069,6 +13090,7 @@ IF SELECTCOM == 352
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;利尿剤 CFLAG9062
@@ -13236,6 +13258,7 @@ ENDIF
 ;-------------------------------------------------
 ;お風呂場プレイ CFLAG9350 解除 CFLAG8824
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 350 && TEQUIP:53
 	;初めて
 	IF CFLAG:TARGET:9350 == 0
@@ -13262,7 +13285,7 @@ IF SELECTCOM == 350 && TEQUIP:53
 			RETURN 0
 	ENDIF
 ;終了時
-ELSEIF SELECTCOM == 58 && TEQUIP:53 == 0
+ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 	;初めて
 	IF CFLAG:TARGET:8824 == 0
 		;恋慕
@@ -13288,6 +13311,7 @@ ELSEIF SELECTCOM == 58 && TEQUIP:53 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;,裸エプロン(新妻プレイ) CFLAG9090 解除 CFLAG8823
@@ -13360,6 +13384,7 @@ ENDIF
 ;放尿 CFLAG9111
 ;強制放尿 CFLAG9620
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 111 || SELECTCOM == 620
 	;強制放尿
 	IF SELECTCOM == 86 || SELECTCOM == 85 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:31 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:22 == 0))
@@ -13409,6 +13434,7 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・アナル関連
@@ -13664,6 +13690,7 @@ ENDIF
 ;-------------------------------------------------
 ;対面座位アナル CFLAG9032
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;初めて
 	IF CFLAG:9032 == 0
@@ -13699,10 +13726,12 @@ IF SELECTCOM == 32
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;背面座位アナル CFLAG9033
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	;初めて
 	IF CFLAG:9033 == 0
@@ -13738,10 +13767,12 @@ IF SELECTCOM == 33
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;騎乗位アナル CFLAG9034
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	;初めて
 	IF CFLAG:9034 == 0
@@ -13777,10 +13808,12 @@ IF SELECTCOM == 34
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;空気浣腸 開始時CFLAG9175 終了時CFLAG8855
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 175 && TEQUIP:25
 	;初めて
@@ -13832,10 +13865,12 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;拡張バルーン 開始時CFLAG9173 終了時CFLAG8853
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 173 && TEQUIP:25
 	;初めて
@@ -13887,10 +13922,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル電極 開始時CFLAG9171 終了時CFLAG8851
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 171 && TEQUIP:25
 	;初めて
@@ -13942,10 +13979,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル奉仕強制 CFLAG9044
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;初めて
 	IF CFLAG:9044 == 0
@@ -13980,6 +14019,7 @@ IF SELECTCOM == 44
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・胸関連（Ｂ系拡張コマンド）
@@ -15130,6 +15170,7 @@ ENDIF
 ;-------------------------------------------------
 ;シックスナイン CFLAG9602
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 602
 	;初めて
 	IF CFLAG:TARGET:9602 == 0
@@ -15167,6 +15208,7 @@ IF SELECTCOM == 602
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 
 
@@ -15406,12 +15448,12 @@ IF P > PALAMLV:2 && CFLAG:TARGET:8001 == 0
 	;恋慕
 	IF TALENT:150
 		;ローションを使った場合
-		IF SELECTCOM == 60
-			PRINTFORMW 
+		;IF SELECTCOM == 60
+			;PRINTFORMW 
 		;それ以外
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		;ELSE
+			;PRINTFORMW 
+		;ENDIF
 	;それ以外
 	ELSE
 		;ローションを使った場合
@@ -15805,6 +15847,7 @@ ENDIF
 ;-------------------------------------------------
 ;手で射精させた CFLAG8012
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:12 > 0
 	PRINTFORML 
 	;奉仕精神Lv5
@@ -15821,6 +15864,7 @@ IF TFLAG:12 > 0
 		CFLAG:8012 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;口で射精させた CFLAG8013 CFLAG8014
@@ -17025,6 +17069,7 @@ ENDIF
 ;-------------------------------------------------
 ;Ｃ感覚Lv5でＣ絶頂50以上 CFLAG8017
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;初めて
 	IF CFLAG:8017 == 0
@@ -17051,10 +17096,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ絶頂50以上 CFLAG8018
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;初めて
 	IF CFLAG:8018 == 0
@@ -17081,10 +17128,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ絶頂50以上 CFLAG8019
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;初めて
 	IF CFLAG:8019 == 0
@@ -17111,10 +17160,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｂ感覚Lv5でＢ絶頂50以上 CFLAG8020
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;初めて
 	IF CFLAG:8020 == 0
@@ -17141,6 +17192,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;放尿 CFLAG8021
@@ -18452,6 +18504,7 @@ ENDIF
 ;-------------------------------------------------
 ;レズプレイ CFLAG8254
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 154
 	;恋慕
 	IF TALENT:TARGET:150 ==1 && (CFLAG:8254 < 4 || FLAG:11 == 2)
@@ -18471,6 +18524,7 @@ IF TFLAG:200 == 154
 		CFLAG:8254 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;朝フェラ CFLAG8240
@@ -19304,11 +19358,11 @@ IF TFLAG:200 == 401
 	;Fが90以上で堂々とやり, それ以下だとこっそりやります
 	ELSEIF GET_NIGHT_KOJO(0) == 4
 ;		消極的
-		IF 90 >= F
+		IF 90 >= GET_AGG(TARGET)
 			PRINTFORMW 「앗, 츠으, 으, 웃, 하앗……」
 			PRINTFORMW 「아, 읏, 간, 닷, 으읏……」
 ;		積極的
-		ELSEIF F > 90
+		ELSEIF GET_AGG(TARGET) > 90
 			PRINTFORMW 「앗, 히야, 아웅！　하아……하앗……」
 			PRINTFORMW 「아아, 하아, 아훗, 웃, 간닷, 간다아！　히야아아아앙……！」
 		ENDIF
@@ -19406,7 +19460,7 @@ IF TFLAG:200 == 406
 	;連れてきた相手も恋慕, 淫乱付いていた場合の純粋な３Ｐ。シチュは全て口上側に一任
 	IF GET_NIGHT_KOJO(0) == 1
 		;永琳
-		IF NO:M == 29
+		IF NO:GET_CHARA_M() == 29
 			PRINTFORMW 「앗, 후아우읏♪　에이, 린, 히, 아아아！　이 약 정말 효과가 좋앗！」
 			PRINTFORML 『그렇죠？　읏, 으우！　……내가 사용하지 못한다는 게 유감이네』
 			;主人がオトコかふたなりでで輝夜が処女じゃない
@@ -19421,7 +19475,7 @@ IF TFLAG:200 == 406
 			PRINTFORMW 에이린은 카구야의 가슴을 주무르고, 카구야에게 음부를 핥아지고 있다
 			PRINTFORMW 하아, 하아 뜨거운 숨을 흘리며 작은 신음 소리를 터뜨렸다
 		;妹紅
-		ELSEIF NO:M == 31
+		ELSEIF NO:GET_CHARA_M() == 31
 			PRINTFORML 「앗, 후앗♪　모코-, 당신도, 으우우, 같이이♪」
 			PRINTFORMW 카구야는 %CALLNAME:MASTER%에게 가슴을 애무 받으며 모코우의 몸을 애무했다
 			PRINTFORML 『우앗！　하아하아……아웃！　카구야앗……거기, 약하니까 그만둬……』
@@ -19433,7 +19487,7 @@ IF TFLAG:200 == 406
 				PRINTFORMW 거울에는 황홀한 얼굴을 하고 침을 흘리면서 교성을 지르는 2명과 %CALLNAME:MASTER%의 모습이 비치고 있다……
 			ENDIF
 		;鈴仙
-		ELSEIF NO:M == 28
+		ELSEIF NO:GET_CHARA_M() == 28
 			PRINTFORMW 「읏……츗……하앗……어때？　기분좋아？」
 			PRINTFORML 『공주님……여기 그렇게 핥아지면 전……더 이상……』
 			PRINTFORMW 레이센은 카구야에게 음부를 핥아지는 일에 의해 뺨을 붉히며 쾌락을 느끼고 있다
@@ -19443,7 +19497,7 @@ IF TFLAG:200 == 406
 			PRINTFORMW 3명이 쾌락에 지배당해 교성을 지르기 시작하는 데에 그리 많은 시간은 걸리지 않았다……
 		;てゐ
 		;口調分からねえ……
-		ELSEIF NO:M == 27
+		ELSEIF NO:GET_CHARA_M() == 27
 			PRINTFORMW 『어때？　나라도 공주님의 일 정 돈 알고 있으니까』
 			PRINTFORMW 「앗, 하, 아아！　그만, 아후우, 거기는 기분이 너무 좋다구우♪」
 			PRINTFORML 『오늘은 더 이상 아무것도 생각하지 못할 정도로 느끼게 해드리죠』
@@ -19454,28 +19508,28 @@ IF TFLAG:200 == 406
 		;それ以外
 		ELSE
 			PRINTFORMW 「히앗, 하아웅♪　하아……하아……」
-			PRINTFORML 「츗……%CALLNAME:MASTER%도 %CALLNAME:M%도……모두 좋아……」
-			PRINTFORMW %CALLNAME:MASTER%와 %CALLNAME:M%는 카구야를 각각 서로 껴안고 쾌락을 탐하고 있다
+			PRINTFORML 「츗……%CALLNAME:MASTER%도 %CALLNAME:GET_CHARA_M()%도……모두 좋아……」
+			PRINTFORMW %CALLNAME:MASTER%와 %CALLNAME:GET_CHARA_M()%는 카구야를 각각 서로 껴안고 쾌락을 탐하고 있다
 			PRINTFORMW 3명의 숨결은 뜨겁다, 이제 언제 끝날지도 모르겠어……
 		ENDIF
 	;連れてきた相手が恋慕, 淫乱がないと見せつける３Ｐとなります
 	ELSEIF GET_NIGHT_KOJO(0) == 2
 		;永琳
-		IF NO:M == 29
+		IF NO:GET_CHARA_M() == 29
 			PRINTFORMW 「앗, 아앗, 아아♪　읏, 흣, 매우 느껴버려어어！」
 			PRINTFORMW 『카구야……이녀석말이지, 이녀석이 당신을 미치게 한거네……』
 			;永琳の欲望がLv3以上
-			IF ABL:M:11 >= 3
+			IF ABL:GET_CHARA_M():11 >= 3
 				PRINTFORMW 『그래도……이제, 그만해……나까지 몸이 달아올라버리니까……』
 			;それ以外
 			ELSE
 				PRINTFORMW 『아니……얼굴 붉어지지 않았어……이런 것 처음인 것도 아니고……』
 			ENDIF
 		;妹紅
-		ELSEIF NO:M == 31
+		ELSEIF NO:GET_CHARA_M() == 31
 			PRINTFORMW 「앗, 히, 야아아앙♪　얏, 히아앗！　좀더, 좀더어！」
 			;妹紅の欲望がLv3以上
-			IF ABL:M:11 >= 3
+			IF ABL:GET_CHARA_M():11 >= 3
 				PRINTFORMW 『하아……나, 나도 해줘……아니, 아무것도 아니얏……』
 				PRINTFORMW 『아니……그래도……그래도……！』
 			;それ以外
@@ -19483,10 +19537,10 @@ IF TFLAG:200 == 406
 				PRINTFORMW 『어……어이 카구야……그만해, 이런 모습 보고싶지않아……읏！』
 			ENDIF
 		;鈴仙
-		ELSEIF NO:M == 28
+		ELSEIF NO:GET_CHARA_M() == 28
 			PRINTFORMW 「앗, 큿, 후앗♪　히아읏！」
 			;妹紅の欲望がLv3以上
-			IF ABL:M:11 >= 3
+			IF ABL:GET_CHARA_M():11 >= 3
 				PRINTFORMW 『공주님의 이런 있을 수 없는 모습을 봐 버리면, 매우 대단히 부끄럽습니다……』
 			;それ以外
 			ELSE
@@ -19495,10 +19549,10 @@ IF TFLAG:200 == 406
 			ENDIF
 		;てゐ
 		;口調分からねえ……
-		ELSEIF NO:M == 27
+		ELSEIF NO:GET_CHARA_M() == 27
 			PRINTFORMW 「훗, 으아, 아읏！　이봣, 후아우읏♪　이나바도 어울리지 않을래？」
 			;妹紅の欲望がLv3以上
-			IF ABL:M:11 >= 3
+			IF ABL:GET_CHARA_M():11 >= 3
 				PRINTFORMW 『에에, 그렇다면 어울릴까나。나도 마침 토지대를 청구하려고 하는 중이었고』
 			;それ以外
 			ELSE
@@ -19519,7 +19573,7 @@ ENDIF
 ;対象は{M}に格納されています。相方の判別条件文は上を見てください
 ;-------------------------------------------------
 IF TFLAG:200 == 407
-	IF ABL:M:22 >= 2
+	IF ABL:GET_CHARA_M():22 >= 2
 		PRINTFORMW 「읏……훗……정말, 몸이 달아오르는 것을 멋추지 못했어」
 		PRINTFORMW 「둘이서 함께 기분 좋게 됩시다♪」
 	ELSE
@@ -19974,9 +20028,9 @@ RETURN 0
 ;-------------------------------------------------
 ;エンゲージリング使用時
 ;-------------------------------------------------
-IF TFLAG:200 == 200
-	PRINTFORMW 
-ENDIF
+;IF TFLAG:200 == 200
+;	PRINTFORMW 
+;ENDIF
 	TFLAG:200 = 0
 
 ;-------------------------------------------------

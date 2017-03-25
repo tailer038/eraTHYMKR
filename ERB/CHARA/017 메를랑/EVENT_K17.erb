@@ -515,6 +515,7 @@ ENDIF
 ;-------------------------------------------------
 ;フェラされる(ふたなり/オトコのみ) CFLAG225
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 5
 	;처음
 	IF CFLAG:5225 == 0
@@ -545,6 +546,7 @@ IF SELECTCOM == 5
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;胸愛撫 CFLAG226
@@ -806,6 +808,7 @@ ENDIF
 ;-------------------------------------------------
 ;クリキャップ CFLAG233
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 14
 	;처음
 	IF CFLAG:5233 == 0
@@ -832,6 +835,7 @@ IF SELECTCOM == 14
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ニプルキャップ CFLAG234
@@ -915,6 +919,7 @@ ENDIF
 ;-------------------------------------------------
 ;オナホール(ふたなり/オトコのみ) CFLAG236
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 16
 	;처음
 	IF CFLAG:5236 == 0
@@ -941,6 +946,7 @@ IF SELECTCOM == 16
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;正常位 CFLAG237
@@ -1062,6 +1068,7 @@ ENDIF
 ;逆レイプ CFLAG240
 ;(主人が非オトコ, 奴隷がオトコ/ふたなりのみ)
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 25
 	;처음
 	IF CFLAG:5240 == 0
@@ -1088,6 +1095,7 @@ IF SELECTCOM == 25
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;手淫 CFLAG241
@@ -1393,6 +1401,7 @@ IF SELECTCOM == 225
 		RETURN 0
 	;2회째 이후
 	ELSE
+[SKIPSTART]
 		;연모＋마조끼Lv5
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5250 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -1414,6 +1423,7 @@ IF SELECTCOM == 225
 			CFLAG:5250 = 2
 			RETURN 0
 		ENDIF
+[SKIPEND]
 	ENDIF
 ENDIF
 
@@ -1457,11 +1467,12 @@ ENDIF
 IF SELECTCOM == 226
 	;처음
 	IF CFLAG:5252 == 0
-		PRINTFORMW 「무큐―. 후읍후―흐아, 와으아……」
+		PRINTFORMW 「무큐―. 해히하히, 앙하……」
 		CFLAG:5252 = 1
 		RETURN 0
 	;2회째 이후
 	ELSE
+[SKIPSTART]
 		;연모＋마조끼Lv5
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5252 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -1483,6 +1494,7 @@ IF SELECTCOM == 226
 			CFLAG:5252 = 2
 			RETURN 0
 		ENDIF
+[SKIPEND]
 	ENDIF
 ENDIF
 

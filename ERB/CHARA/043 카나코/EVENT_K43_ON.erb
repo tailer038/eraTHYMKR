@@ -779,6 +779,7 @@ ENDIF
 ;-------------------------------------------------
 ;클리캡 CFLAG317　CFLAG318
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 14 && TEQUIP:30 == 1
 	;처음
@@ -818,10 +819,12 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;유두캡 CFLAG319　CFLAG320
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 15 && TEQUIP:35 == 1
 	;처음
@@ -861,10 +864,12 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;착유기(모유 체질만) CFLAG321　CFLAG322
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 191 && TEQUIP:35 == 2
 	;처음
@@ -904,6 +909,7 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;오나홀(후타나리/남자만) CFLAG323　CFLAG324
@@ -1404,6 +1410,7 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5337 <= 5 || FLAG:11 == 2)
 			PRINTFORMW 「……비록 온바시라인 힘을 자유롭게 사용할 수 있어도, 나는……」
 			CFLAG:5337 = 6
+[SKIPSTART]
 		;연모＋마조끼 Lv3 이상
 		ELSEIF TALENT:150 == 1 && ABL:21 >= 3 && (CFLAG:5337 <= 4 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -1420,11 +1427,13 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
 		ELSEIF CFLAG:5337 <= 1 || FLAG:11 == 2
 			PRINTFORMW 
 			CFLAG:5337 = 2
+[SKIPEND]
 		ENDIF
 			RETURN 0
 	ENDIF
 ;종료시
 ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
+[SKIPSTART]
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:5338 < 2 || FLAG:11 == 2)
 		PRINTFORMW 
@@ -1434,6 +1443,7 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 		PRINTFORMW 
 		CFLAG:5338 = 1
 	ENDIF
+[SKIPEND]
 		RETURN 0
 ENDIF
 
@@ -1455,6 +1465,7 @@ IF SELECTCOM == 226 && TEQUIP:42 == 1
 			RETURN 0
 	;2회째 이후
 	ELSE
+[SKIPSTART]
 		;연모＋마조끼 Lv5 이상
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5341 <= 5 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -1476,6 +1487,7 @@ IF SELECTCOM == 226 && TEQUIP:42 == 1
 			PRINTFORMW 
 			CFLAG:5341 = 2
 		ENDIF
+[SKIPEND]
 			RETURN 0
 	ENDIF
 ;종료시
@@ -1487,9 +1499,9 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 		PRINTFORMW ……어쩐지 비상식적이다……
 		CFLAG:5342 = 2
 	;그 이외
-	ELSEIF CFLAG:5342 < 1 || FLAG:11 == 2
-		PRINTFORMW 
-		CFLAG:5342 = 1
+	;ELSEIF CFLAG:5342 < 1 || FLAG:11 == 2
+		;PRINTFORMW 
+		;CFLAG:5342 = 1
 	ENDIF
 		RETURN 0
 ENDIF
@@ -1508,8 +1520,8 @@ IF SELECTCOM == 171 && TEQUIP:25 == 4
 			PRINTFORMW 「자, 오세요!」
 			PRINTFORMW ……온바시라 온바시라.
 		;그 이외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5343 = 1
 			RETURN 0
@@ -1522,6 +1534,7 @@ IF SELECTCOM == 171 && TEQUIP:25 == 4
 			PRINTFORMW ……깊이?
 			CFLAG:5343 = 5
 		;연모
+[SKIPSTART]
 		ELSEIF TALENT:150 == 1 && (CFLAG:5343 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 
 			CFLAG:5343 = 4
@@ -1533,6 +1546,7 @@ IF SELECTCOM == 171 && TEQUIP:25 == 4
 		ELSEIF  CFLAG:5343 <= 1 || FLAG:11 == 2
 			PRINTFORMW 
 			CFLAG:5343 = 2
+[SKIPEND]
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1550,8 +1564,8 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 			PRINTFORMW 「……보고 싶은거야? 그것도, 온바시라인 것……」
 			PRINTFORMW 카나코는 뺨을 붉히면서, 배설을 개시했다……
 		;그 이외
-		ELSE
-			PRINTFORMW 
+		;ELSE
+			;PRINTFORMW 
 		ENDIF
 			CFLAG:5344 = 1
 			RETURN 0
@@ -1562,6 +1576,7 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 			PRINTFORMW 「응……뭐, 아직, 나의 인내는 온바시라야……!」
 			PRINTFORMW 「은, 지금 손대어지면(자) 온바시라!」
 			CFLAG:5344 = 5
+[SKIPSTART]
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5344 <= 3 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -1574,6 +1589,7 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 		ELSEIF  CFLAG:5344 <= 1 || FLAG:11 == 2
 			PRINTFORMW 
 			CFLAG:5344 = 2
+[SKIPEND]
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1674,6 +1690,7 @@ IF SELECTCOM == 104 && TEQUIP:52
 			RETURN 0
 	ENDIF
 ;종료시
+[SKIPSTART]
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:5349 < 2 || FLAG:11 == 2)
@@ -1685,6 +1702,7 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 		CFLAG:5349 = 1
 	ENDIF
 		RETURN 0
+[SKIPEND]
 ENDIF
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1923,6 +1941,7 @@ IF TFLAG:0 > 0 && CFLAG:5229 == 0
 			PRINTFORMW 「네 온바시라, 뜨겁고, 가득해요……」
 		ENDIF
 	;손가락 삽입로 처녀 상실(반감이 꽤 적다)
+[SKIPSTART]
 	ELSEIF SELECTCOM == 4
 		;연모＋순종 Lv5
 		IF TALENT:150 == 1 && ABL:10 >= 5
@@ -1940,6 +1959,7 @@ IF TFLAG:0 > 0 && CFLAG:5229 == 0
 		ELSE
 			PRINTFORMW 
 		ENDIF
+[SKIPEND]
 	ENDIF
 		CFLAG:5229 = 1
 ENDIF
@@ -1984,6 +2004,7 @@ ENDIF
 ;-------------------------------------------------
 ;손으로 사정시킨 CFLAG231
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:12 > 0
 	;봉사 정신 Lv5
 	IF ABL:13 >= 5 && (CFLAG:5231 <= 2 || FLAG:11 == 2)
@@ -1999,10 +2020,12 @@ IF TFLAG:12 > 0
 		CFLAG:5231 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;입으로 사정시킨 CFLAG232
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:11 > 0
 	;페라, 이라마치오의 경우
 	IF SELECTCOM == 41 || SELECTCOM == 230
@@ -2040,6 +2063,7 @@ IF TFLAG:11 > 0
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;사정한(후타나리/남자만) CFLAG233
@@ -2074,6 +2098,7 @@ ENDIF
 ;-------------------------------------------------
 ;분유 한(모유 체질만) CFLAG234
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:31 > 0
 	;처음
 	IF CFLAG:5234 == 0
@@ -2100,10 +2125,12 @@ IF TFLAG:31 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;C감각 Lv5로 C절정 50이상 CFLAG235
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;처음
 	IF CFLAG:5235 == 0
@@ -2130,10 +2157,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;V감각 Lv5로 V절정 50이상 CFLAG236
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;처음
 	IF CFLAG:5236 == 0
@@ -2160,10 +2189,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;A감각 Lv5로 A절정 50이상 CFLAG237
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;처음
 	IF CFLAG:5237 == 0
@@ -2190,10 +2221,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;B감각 Lv5로 B절정 50이상 CFLAG238
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;처음
 	IF CFLAG:5238 == 0
@@ -2220,6 +2253,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG 관계

@@ -2409,6 +2409,7 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 	ENDIF
 ENDIF
 ;乱れ牡丹
+[SKIPSTART]
 IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 	;初めて
 	IF CFLAG:5360 == 0
@@ -2447,6 +2448,7 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;泡踊り CFLAG361
@@ -3368,12 +3370,12 @@ IF P > PALAMLV:2 && CFLAG:5221 == 0
 	;恋慕
 	IF TALENT:150 == 1
 		;ローションを使った場合
-		IF SELECTCOM == 60
-			PRINTFORMW 
+		;IF SELECTCOM == 60
+			;PRINTFORMW 
 		;それ以外
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		;ELSE
+			;PRINTFORMW 
+		;NDIF
 	;それ以外
 	ELSE
 		;ローションを使った場合
@@ -3396,12 +3398,12 @@ IF P > PALAMLV:2 && CFLAG:5222 == 0
 	;恋慕
 	IF TALENT:150 == 1
 		;媚薬を使った場合
-		IF SELECTCOM == 61
-			PRINTFORMW 
+		;IF SELECTCOM == 61
+			;PRINTFORMW 
 		;それ以外
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		;ELSE
+			;PRINTFORMW 
+		;ENDIF
 	;それ以外
 	ELSE
 		;媚薬を使った場合
@@ -3504,7 +3506,7 @@ IF TFLAG:0 > 0 && CFLAG:5229 == 0
 	;恋慕かつ主人のセックスによる処女喪失
 	IF TFLAG:2
 		;恋慕かつ反発刻印未取得
-		IF TALENT:150 == 1 && (A < 500 || TFLAG:105 == 1)
+		IF A < 500 || TFLAG:105 == 1
 			PRINTFORMW 「으윽……아파………」
 			PRINTFORMW 「……그래……나에게 있어서는, 이게 처음이야……」
 			PRINTFORMW 「이제 와서 너에 이런 소리 할 수 없어서, 숨기고 있었는데……들켜버렸네……」
@@ -3724,6 +3726,7 @@ ENDIF
 ;-------------------------------------------------
 ;Ｃ感覚Lv5でＣ절정50以上 CFLAG237
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;初めて
 	IF CFLAG:5237 == 0
@@ -3750,10 +3753,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ절정50以上 CFLAG238
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;初めて
 	IF CFLAG:5238 == 0
@@ -3780,10 +3785,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ절정50以上 CFLAG239
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;初めて
 	IF CFLAG:5239 == 0
@@ -3810,10 +3817,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｂ感覚Lv5でＢ절정50以上 CFLAG240
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;初めて
 	IF CFLAG:5240 == 0
@@ -3840,6 +3849,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG関係（X1をキャラ番号に置換）

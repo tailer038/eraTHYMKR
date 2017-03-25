@@ -337,6 +337,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 	ENDIF
 ENDIF
 ;岩清水
+[SKIPSTART]
 IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	;恋慕+露出癖Lv3以上+C感覚Lv3以上
 	IF TALENT:150 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:5303 <= 5 || FLAG:11 == 2)
@@ -361,6 +362,7 @@ IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG304
@@ -428,6 +430,7 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
 			RETURN 0
 	ENDIF
 ;シャワーオナニー
+[SKIPSTART]
 ELSEIF SELECTCOM == 7 && TEQUIP:54
 	;初めて
 	IF CFLAG:5306 == 0
@@ -455,11 +458,13 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;フェラされる(ふたなり/オトコのみ) CFLAG307
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 5
 	;初めて
 	IF CFLAG:5307 == 0
@@ -490,6 +495,7 @@ IF SELECTCOM == 5
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;胸愛撫 CFLAG308
@@ -567,6 +573,7 @@ ENDIF
 ;-------------------------------------------------
 ;何もしない CFLAG310
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 9
 	;初めて
 	IF CFLAG:5310 == 0
@@ -597,6 +604,7 @@ IF SELECTCOM == 9
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ローター CFLAG311
@@ -678,6 +686,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 			RETURN 0
 	ENDIF
 ;脱着時
+[SKIPSTART]
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	;恋慕
 	IF TALENT:150 == 1 && (CFLAG:5313 < 2 || FLAG:11 == 2)
@@ -689,11 +698,13 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 		;CFLAG:5313 = 1
 	ENDIF
 		RETURN 0
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;Ｅマッサージャ CFLAG314
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 11
 	;初めて
 	IF CFLAG:5314 == 0
@@ -724,6 +735,7 @@ IF SELECTCOM == 11
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナルバイブ CFLAG315　CFLAG316
@@ -763,6 +775,7 @@ IF SELECTCOM == 13 && TEQUIP:25 == 1
 			RETURN 0
 	ENDIF
 ;脱着時
+[SKIPSTART]
 ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 	;恋慕
 	IF TALENT:150 == 1 && (CFLAG:5316 < 3 || FLAG:11 == 2)
@@ -778,11 +791,13 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 		;CFLAG:5316 = 1
 	ENDIF
 		RETURN 0
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;クリキャップ CFLAG317　CFLAG318
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 14 && TEQUIP:30 == 1
 	;初めて
@@ -822,10 +837,12 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ニプルキャップ CFLAG319　CFLAG320
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 15 && TEQUIP:35 == 1
 	;初めて
@@ -865,10 +882,12 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;搾乳機(母乳体質のみ) CFLAG321　CFLAG322
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 191 && TEQUIP:35 == 2
 	;初めて
@@ -908,10 +927,12 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;オナホール(ふたなり/オトコのみ) CFLAG323　CFLAG324
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 16 && TEQUIP:30 == 2
 	;初めて
@@ -951,6 +972,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;正常位 CFLAG325
@@ -1096,6 +1118,7 @@ ENDIF
 ;逆レイプ CFLAG328
 ;(主人が非オトコ, 奴隷がオトコ/ふたなりのみ)
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 25
 	;初めて
 	IF CFLAG:5328 == 0
@@ -1122,6 +1145,7 @@ IF SELECTCOM == 25
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;手淫 CFLAG329
@@ -1444,6 +1468,7 @@ ENDIF
 ;-------------------------------------------------
 ;アイマスク CFLAG337　CFLAG:5338
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 225 && TEQUIP:41 == 1
 	;初めて
@@ -1495,10 +1520,12 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;縄 CFLAG339　CFLAG:5340
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 224 && TEQUIP:40
 	;初めて
@@ -1550,10 +1577,12 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ボールギャグ CFLAG341　CFLAG:5342
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 226 && TEQUIP:42 == 1
 	;初めて
@@ -1605,10 +1634,12 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;浣腸 CFLAG343
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 174 && TEQUIP:25 == 7
 	;初めて
@@ -1644,10 +1675,12 @@ IF SELECTCOM == 174 && TEQUIP:25 == 7
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;排泄 CFLAG344
 ;-------------------------------------------------
+[SKIPSTART]
 IF TEQUIP:25 == 0 && SELECTCOM == 174
 	;初めて
 	IF CFLAG:5344 == 0
@@ -1682,6 +1715,7 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ローション使用 CFLAG345
@@ -1716,6 +1750,7 @@ ENDIF
 ;-------------------------------------------------
 ;媚薬使用 CFLAG346
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 61
 	;初めて
 	IF CFLAG:5346 == 0
@@ -1742,10 +1777,12 @@ IF SELECTCOM == 61
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ビデオカメラ使用 CFLAG347
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 100 && TEQUIP:50
 	;初めて
 	IF CFLAG:5347 == 0
@@ -1772,10 +1809,12 @@ IF SELECTCOM == 100 && TEQUIP:50
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;野外プレイ CFLAG348　CFLAG:5349
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 104 && TEQUIP:52
 	;初めて
@@ -1819,10 +1858,12 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;助手を犯す CFLAG350
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;初めて
 	IF CFLAG:5350 == 0
@@ -1849,6 +1890,7 @@ IF SELECTCOM == 26
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;イラマチオ CFLAG351
@@ -1888,6 +1930,7 @@ ENDIF
 ;-------------------------------------------------
 ;フィスト系コマンド CFLAG352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 	;初めて
 	IF CFLAG:5352 == 0
@@ -1926,10 +1969,12 @@ IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;触手召喚 CFLAG353　CFLAG:5354
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 500 && TEQUIP:90
 	;初めて
@@ -1977,6 +2022,7 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・通常版 CFLAG355以降を使用
@@ -1986,6 +2032,7 @@ ENDIF
 ;指挿入れ CFLAG355
 ;Gスポット刺激 CFLAG356
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 4 || SELECTCOM == 600
 	;Gスポット刺激
 	IF SELECTCOM == 600 || (PREVCOM == 4 && ABL:PLAYER:12 >= 3 || PREVCOM == 600)
@@ -2052,11 +2099,13 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;シャワー CFLAG357
 ;-------------------------------------------------
-IF SELECTCOM == 18 &&  TEQUIP:54
+[SKIPSTART]
+IF SELECTCOM == 351 &&  TEQUIP:54
 	;初めて
 	IF CFLAG:5357 == 0
 		;恋慕
@@ -2082,6 +2131,7 @@ IF SELECTCOM == 18 &&  TEQUIP:54
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;対面座位 CFLAG358
@@ -2126,6 +2176,7 @@ ENDIF
 ;背面座位 CFLAG359
 ;乱れ牡丹 CFLAG360
 ;-------------------------------------------------
+[SKIPSTART]
 ;背面座位
 IF SELECTCOM == 23 && TEQUIP:56 == 0
 	;初めて
@@ -2200,10 +2251,12 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;泡踊り CFLAG361
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 352
 	;初めて
 	IF CFLAG:5361 == 0
@@ -2234,10 +2287,12 @@ IF SELECTCOM == 352
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;利尿剤 CFLAG362
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 62
 	;恋慕+おもらし癖
 	IF TALENT:150 && TALENT:45 && (CFLAG:5362 < 4 || FLAG:11 == 2)
@@ -2257,10 +2312,12 @@ IF SELECTCOM == 62
 		;CFLAG:5362 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;羞恥プレイ CFLAG363 解除 CFLAG364
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 103 && TEQUIP:56
 	;初めて
 	IF CFLAG:5363 == 0
@@ -2324,10 +2381,12 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;お風呂場プレイ CFLAG365 解除 CFLAG366
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 350 && TEQUIP:53
 	;初めて
 	IF CFLAG:5365 == 0
@@ -2380,10 +2439,12 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;新妻プレイ CFLAG367 解除 CFLAG368
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 90 && TEQUIP:59
 	;初めて
@@ -2437,11 +2498,13 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;放尿 CFLAG369
 ;強制放尿 CFLAG370
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 111 || SELECTCOM == 620
 	;強制放尿
 	IF SELECTCOM == 620 || SELECTCOM == 111 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:11 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:12 == 0))
@@ -2491,6 +2554,7 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・アナル関連 CFLAG371以降を使用
@@ -2499,6 +2563,7 @@ ENDIF
 ;-------------------------------------------------
 ;アナル舐め CFLAG371
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 180
 	;初めて
 	IF CFLAG:5371 == 0
@@ -2529,10 +2594,12 @@ IF SELECTCOM == 180
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナルビーズ 開始時CFLAG372 終了時CFLAG373
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 172 && TEQUIP:25 == 5
 	;初めて
@@ -2584,10 +2651,12 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;------------------------------------------------
 ;正常位アナル CFLAG374
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 30
 	;初めて
 	IF CFLAG:5374 == 0
@@ -2623,10 +2692,12 @@ IF SELECTCOM == 30
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;後背位アナル CFLAG375
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 31
 	;初めて
 	IF CFLAG:5375 == 0
@@ -2662,10 +2733,12 @@ IF SELECTCOM == 31
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;対面座位アナル CFLAG376
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;初めて
 	IF CFLAG:5376 == 0
@@ -2701,10 +2774,12 @@ IF SELECTCOM == 32
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;背面座位アナル CFLAG377
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	;初めて
 	IF CFLAG:5377 == 0
@@ -2740,10 +2815,12 @@ IF SELECTCOM == 33
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;騎乗位アナル CFLAG378
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	;初めて
 	IF CFLAG:5378 == 0
@@ -2779,10 +2856,12 @@ IF SELECTCOM == 34
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;空気浣腸 開始時CFLAG379 終了時CFLAG380
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 175 && TEQUIP:25 == 8
 	;初めて
@@ -2834,10 +2913,12 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;拡張バルーン 開始時CFLAG381 終了時CFLAG382
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 173 && TEQUIP:25 == 6
 	;初めて
@@ -2889,10 +2970,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル電極 開始時CFLAG383 終了時CFLAG384
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 171 && TEQUIP:25 == 4
 	;初めて
@@ -2944,10 +3027,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル奉仕強制 CFLAG385
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;初めて
 	IF CFLAG:5385 == 0
@@ -2982,6 +3067,7 @@ IF SELECTCOM == 44
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;レズ調教コマンド（デフォ主人公でも可能なもの） CFLAG646以降を使用
@@ -2990,6 +3076,7 @@ ENDIF
 ;-------------------------------------------------
 ;３P CFLAG386
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;初めて
 	IF CFLAG:5386 == 0
@@ -3024,10 +3111,12 @@ IF SELECTCOM == 610
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;シックスナイン CFLAG387
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 602
 	;初めて
 	IF CFLAG:5387 == 0
@@ -3065,6 +3154,7 @@ IF SELECTCOM == 602
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;御所車 CFLAG388
@@ -3291,6 +3381,7 @@ ENDIF
 ;-------------------------------------------------
 ;処女喪失(処女のみ) CFLAG229
 ;-------------------------------------------------
+[SKIPSTART]
 A = UP:20 + UP:21
 IF TFLAG:0 > 0 && CFLAG:5229 == 0
 	;恋慕かつ主人のセックスによる処女喪失
@@ -3323,6 +3414,7 @@ IF TFLAG:0 > 0 && CFLAG:5229 == 0
 	ENDIF
 		;CFLAG:5229 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;セックスで射精させた CFLAG230 CFLAG290
@@ -3424,6 +3516,7 @@ ENDIF
 ;-------------------------------------------------
 ;射精した(ふたなり/オトコのみ) CFLAG233
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:30 > 0
 	;初めて
 	IF CFLAG:5235 == 0
@@ -3450,6 +3543,7 @@ IF TFLAG:30 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;噴乳した(母乳体質のみ) CFLAG234
@@ -3484,6 +3578,7 @@ ENDIF
 ;-------------------------------------------------
 ;Ｃ感覚Lv5でＣ절정50以上 CFLAG235
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;初めて
 	IF CFLAG:5237 == 0
@@ -3510,10 +3605,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ절정50以上 CFLAG236
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;初めて
 	IF CFLAG:5238 == 0
@@ -3540,10 +3637,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ절정50以上 CFLAG237
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;初めて
 	IF CFLAG:5239 == 0
@@ -3570,10 +3669,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;Ｂ感覚Lv5でＢ절정50以上 CFLAG238
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;初めて
 	IF CFLAG:5240 == 0
@@ -3600,6 +3701,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG関係（X1をキャラ番号に置換）
@@ -3706,6 +3808,7 @@ ENDIF
 ;-------------------------------------------------
 ;レズプレイ CFLAG262
 ;-------------------------------------------------
+[SKIPSTART]
 IF (TFLAG:200 == 154 || TFLAG:200 == 155)
 	;恋慕
 	IF TALENT:150 ==1 && (CFLAG:5262 < 4 || FLAG:11 == 2)
@@ -3725,6 +3828,7 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
 		;CFLAG:5262 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;朝フェラ CFLAG263

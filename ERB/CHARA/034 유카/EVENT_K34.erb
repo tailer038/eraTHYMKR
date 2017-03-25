@@ -961,9 +961,9 @@ SIF TEQUIP:42 == 1 && SELECTCOM != 226
 ;--------------------------------------------------
 ;複数の調教コマンドを変数に格納
 ;--------------------------------------------------
-X = SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28 || SELECTCOM == 614 || SELECTCOM == 615
-Y = SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-Z = SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
+;X = SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28 || SELECTCOM == 614 || SELECTCOM == 615
+;Y = SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
+;Z = SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 ;-------------------------------------------------
 ;커맨드 실행시의 지문 CFLAG 221～270를 사용
 ;-------------------------------------------------
@@ -2175,13 +2175,13 @@ IF SELECTCOM == 21
 			ENDIF
 		;임신
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5238 <= 4 || FLAG:11 == 2)
 			IF CFLAG:5201 <= 6
@@ -2722,13 +2722,13 @@ IF SELECTCOM == 24
 			ENDIF
 		;にんっしんっ
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;非処女
 		ELSE
 			;연모
@@ -2778,13 +2778,13 @@ IF SELECTCOM == 24
 			ENDIF
 		;にんっしんっ
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5245 <= 4 || FLAG:11 == 2)
 			IF CFLAG:5201 <= 6
@@ -3689,7 +3689,7 @@ ENDIF
 ;-------------------------------------------------
 ;シャワ― CFLAG314
 ;-------------------------------------------------
-;IF SELECTCOM == 18 &&  TEQUIP:54
+;IF SELECTCOM == 351 &&  TEQUIP:54
 	;처음
 ;	IF CFLAG:5314 == 0
 		;연모
@@ -3757,13 +3757,13 @@ IF SELECTCOM == 22
 			ENDIF
 		;にんっしんっ
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;그 외
 		ELSE
 			PRINTFORML 「…이대로 당신을 목졸라 죽일 수 없는게 아쉬울 지경이네」
@@ -3802,13 +3802,13 @@ IF SELECTCOM == 22
 			ENDIF
 		;にんっしんっ
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5315 <= 4 || FLAG:11 == 2)
 			IF CFLAG:5201 <= 6
@@ -3889,13 +3889,13 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 			ENDIF
 		;にんっしんっ
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;그 외
 		ELSE
 			PRINTFORMW 「이, 이런 모습…부, 부끄러워엇…」
@@ -3931,13 +3931,13 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
 			ENDIF
 		;にんっしんっ
 		ELSEIF TALENT:140 == 1
-			IF TALENT:150 == 1
-				PRINTFORMW 
-				PRINTFORMW 
-			ELSE
-				PRINTFORMW 
-				PRINTFORMW 
-			ENDIF
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ELSE
+				;PRINTFORMW 
+				;PRINTFORMW 
+			;ENDIF
 		;연모
 		ELSEIF TALENT:150 == 1 && (CFLAG:5316 <= 4 || FLAG:11 == 2)
 			IF CFLAG:5201 <= 6
@@ -5337,7 +5337,6 @@ IF SELECTCOM == 32
 		RETURN 0
 	;2회째 이후
 	ELSE
-		P = PALAM:10 + UP:10
 		;アナルおねだり
 		IF PREVCOM == 45
 			;연모
@@ -5360,7 +5359,7 @@ IF SELECTCOM == 32
 			PRINTFORMW 「하아아앗!? 아, 안 돼엣! 그 이상 엉덩이 속에서엇…커, 커지지 말아줘엇!」
 			CFLAG:5374 = 4
 		;A감각Lv3이상
-		ELSEIF P >= ABL:2 && (CFLAG:5374 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:2 > 2 && (CFLAG:5374 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「트, 틀렷……보, 보지맛!」
 			PRINTFORMW 「엉덩이를 뚫릴때의 얼굴…앗…보, 보지 말라니까아앗!」
 			CFLAG:5374 = 3
@@ -5416,7 +5415,6 @@ IF SELECTCOM == 31
 			RETURN 0
 	;2회째 이후
 	ELSE
-		P = PALAM:10 + UP:10
 		;アナルおねだり
 		IF PREVCOM == 45
 			;연모
@@ -5442,7 +5440,7 @@ IF SELECTCOM == 31
 			PRINTFORMW 「앗! 아앗! 아아아아아아아아아아앗!!」　
 			CFLAG:5375 = 4
 		;A감각Lv3이상
-		ELSEIF P >= ABL:2 && (CFLAG:5375 <= 2 || FLAG:11 == 2)
+		ELSEIF ABL:2 > 2 && (CFLAG:5375 <= 2 || FLAG:11 == 2)
 			PRINTFORMW 「흐앗, 앗, 아앗! 히야, 야아아앗…앗!」
 			PRINTFORMW 「그 이상…우, 움직이지 맛……히야앗!」
 			PRINTFORMW 「아, 안 돼는데엣……안 돼, 는데엣!」
@@ -5610,7 +5608,6 @@ IF SELECTCOM == 34
 			RETURN 0
 	;2회째 이후
 	ELSE
-		P = PALAM:10 + UP:10
 		;アナルおねだり
 		IF PREVCOM == 45
 			;연모
@@ -6798,6 +6795,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;コマンド実行拒否(実行値が足りなかった場合)CFLAG266
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 1
 	WAIT
 	;自慰
@@ -7036,7 +7034,7 @@ IF TFLAG:200 == 1
 		PRINTFORMW 
 	ENDIF
 ENDIF
-
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;アイテム使用 CFLAG267~268
@@ -7079,6 +7077,7 @@ IF TFLAG:200 == 100 || (TFLAG:200 >= 310 && TFLAG:200 <= 399)
 			ENDIF
 		ENDIF
 	;薬の材料(双)(ふたなり化)
+[SKIPSTART]
 	ELSEIF TFLAG:200 == 311 && TFLAG:99 == 2
 		;初回
 		IF (CFLAG:5267 & 2) == 0
@@ -7146,6 +7145,7 @@ IF TFLAG:200 == 100 || (TFLAG:200 >= 310 && TFLAG:200 <= 399)
 				PRINTFORMW 
 			ENDIF
 		ENDIF
+[SKIPEND]
 	;青いキャンディ(母乳体質化)
 	ELSEIF TFLAG:200 == 331 && TFLAG:99 == 0
 		;初回
@@ -7210,6 +7210,7 @@ IF TFLAG:200 == 100 || (TFLAG:200 >= 310 && TFLAG:200 <= 399)
 			ENDIF
 			CFLAG:5802 = 1
 		ENDIF
+[SKIPSTART]
 	;豊胸剤(バストサイズアップ)
 	ELSEIF TFLAG:200 == 320 && TFLAG:99 == 0
 		;初回
@@ -7404,11 +7405,13 @@ B = A
 				CFLAG:5268 = 1
 			ENDIF
 		ENDIF
+[SKIPEND]
 	ENDIF
 ENDIF
 ;----------------------------------------------------------------
 ;【出産】
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 171
 	DRAWLINE
 	IF CFLAG:5806 == 1 && TALENT:91 == 1
@@ -7421,6 +7424,7 @@ IF TFLAG:200 == 171
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;調教後自慰 CFLAG400
 ;-------------------------------------------------
@@ -7662,6 +7666,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;体力最大値が上がった
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 120
 	;연모
 	IF TALENT:150
@@ -7674,10 +7679,12 @@ IF TFLAG:200 == 120
 	ENDIF
 	PRINTL 
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;気力最大値が上がった
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 121
 	;연모
 	IF TALENT:150
@@ -7690,6 +7697,7 @@ IF TFLAG:200 == 121
 	ENDIF
 	PRINTL 
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;매각
@@ -7772,6 +7780,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;의존(好感度2000이상で, 연모または음란を所持. 身も心も依存して売却＆助手可・従順5になる)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 73
 	;연모 또는 양쪽
 	IF TALENT:150
@@ -7783,6 +7792,7 @@ IF TFLAG:200 == 73
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;素質変化系
@@ -7849,10 +7859,10 @@ ENDIF
 ;【親愛】취득(従順5이상, 好感度5000이상, 愛情経験100이상, 연모)
 ;(快感の否定, 一線越えないを所持している場合, それらを失います)
 ;----------------------------------------------------------------
-IF TFLAG:200 == 72
-	PRINTFORML 
-	PRINTFORMW 
-ENDIF
+;IF TFLAG:200 == 72
+	;PRINTFORML 
+	;PRINTFORMW 
+;ENDIF
 
 
 ;----------------------------------------------------------------
@@ -7864,6 +7874,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;【尻穴狂い】취득(Ａ감각4이상, Ａ経験150이상, Ａ快楽経験300이상, 今回調教中にＡ절정30回이상)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 83
 	;연모
 	IF TALENT:150
@@ -7875,6 +7886,7 @@ IF TFLAG:200 == 83
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;【淫乳】취득(Ｂ감각5이상, 今回の調教中にぱふぱふ, 胸枕, 縦パイズリ, ６９パイズリ, 
@@ -7896,6 +7908,7 @@ ENDIF
 ;【淫壷】취득(Ｖ감각4이상, Ｖ経験300이상, 主人によるＶ調教経験200이상, 
 ;主人がオトコかふたなり, 今回調教中にＶ절정30回이상)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 82
 	;연모
 	IF TALENT:150
@@ -7907,6 +7920,7 @@ IF TFLAG:200 == 82
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;【淫核】취득(Ｃ감각・自慰中毒4이상, 노출벽3이상, 主人によるＣ調教を200이상, 今回調教中にＣ절정30回이상)
@@ -7926,6 +7940,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;【マゾ】취득(マゾっ気・노출벽3이상, 苦痛刻印3, 緊縛経験・苦痛快楽経験150이상, 異常経験が10이상, 今回調教中にPALAM:苦痛が30000이상)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 88
 	;연모
 	IF TALENT:150
@@ -7937,6 +7952,7 @@ IF TFLAG:200 == 88
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;【キス魔】취득(従順が5이상, 노출벽が3이상, 愛情経験100以下, キス経験300이상, 奉仕快楽経験とフェラ経験がそれぞれ250이상, ＶＡ異常経験の変動なし, 媚薬を使うことなくその調教中に助手がいない状態で恭順と欲情が100000, 習得が30000を超える)
@@ -7956,6 +7972,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;【人気】취득(被写経験20이상. 既に人気を持っているキャラは除く)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 104
 	;연모
 	IF TALENT:150
@@ -7967,11 +7984,13 @@ IF TFLAG:200 == 104
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;【ふたなり】취득(不思議な根+Ｃ감각LV5, 정액중독LV3이상か精液経験300이상, 具現+レズ経験2500이상か欲望LV5か레즈끼LV4이상)
 ;(不思議な根か具現を持つキャラのみ)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 101
 	;연모
 	IF TALENT:150
@@ -7983,10 +8002,12 @@ IF TFLAG:200 == 101
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;【おもらし癖】취득(放尿経験30이상. おねしょイベント)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 102
 	;연모
 	IF TALENT:150
@@ -7998,27 +8019,14 @@ IF TFLAG:200 == 102
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;コレクション系(ビデオ・母乳の売却や展示室陳列アイテムの採取)
 ;----------------------------------------------------------------
 ;ビデオ売却
 ;----------------------------------------------------------------
-IF TFLAG:200 == 130
-	;연모
-	IF TALENT:150
-		PRINTFORML 
-		PRINTFORMW 
-	;그 외
-	ELSE
-		PRINTFORML 
-		PRINTFORMW 
-	ENDIF
-ENDIF
-
-;----------------------------------------------------------------
-;母乳売却
-;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 131
 	;연모
 	IF TALENT:150
@@ -8030,10 +8038,29 @@ IF TFLAG:200 == 131
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
+
+;----------------------------------------------------------------
+;母乳売却
+;----------------------------------------------------------------
+[SKIPSTART]
+IF TFLAG:200 == 133
+	;연모
+	IF TALENT:150
+		PRINTFORML 
+		PRINTFORMW 
+	;그 외
+	ELSE
+		PRINTFORML 
+		PRINTFORMW 
+	ENDIF
+ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;写真売却
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 132
 	;연모
 	IF TALENT:150
@@ -8045,6 +8072,7 @@ IF TFLAG:200 == 132
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;尻子玉入手
@@ -8079,6 +8107,7 @@ ENDIF
 ;----------------------------------------------------------------
 ;黄金水入手
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 211
 	WAIT
 	;初回
@@ -8105,10 +8134,12 @@ IF TFLAG:200 == 211
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;愛液入手
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 212
 	WAIT
 	;初回
@@ -8135,10 +8166,12 @@ IF TFLAG:200 == 212
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;母乳入手(搾乳コマンド)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 216
 	WAIT
 	;初回
@@ -8165,10 +8198,12 @@ IF TFLAG:200 == 216
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;母乳入手(調教後搾乳の後, 自分で器に入れて持ってくる)
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 217
 	WAIT
 	;量が多すぎて主人が飲んだ
@@ -8195,10 +8230,12 @@ IF TFLAG:200 == 217
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;パンティ―入手
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 215
 	WAIT
 	;初回
@@ -8225,10 +8262,12 @@ IF TFLAG:200 == 215
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;血液入手
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 214
 	WAIT
 	;연모
@@ -8241,10 +8280,12 @@ IF TFLAG:200 == 214
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;公開露出ライブ
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 4
 	;成功
 	IF S == 3
@@ -8281,10 +8322,12 @@ IF TFLAG:200 == 4
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;女体盛り酒恥肉倫
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 9
 	;里の人間達(A,B,C,V,口を責められる)
 	IF S == 1
@@ -8343,10 +8386,12 @@ IF TFLAG:200 == 9
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;----------------------------------------------------------------
 ;便所(公衆便所)プレイ
 ;----------------------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 5
 	;自分用便所
 	IF TEQUIP:52 == 0
@@ -8375,12 +8420,13 @@ IF TFLAG:200 == 5
 		PRINTFORMW 
 	ENDIF
 ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;エンゲ―ジリング使用時
 ;-------------------------------------------------
-IF TFLAG:200 == 200
-	PRINTFORMW 
-ENDIF
+;IF TFLAG:200 == 200
+;	PRINTFORMW 
+;ENDIF
 	TFLAG:200 = 0
 	RETURN 0
 
