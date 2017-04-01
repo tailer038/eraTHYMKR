@@ -378,7 +378,7 @@ ELSEIF NO:ASSI == 112
 				PRINTFORML 「(でもきっと私は楽しんじゃうんだろうな……)」
 				PRINTFORMW 「(はぁ……こんな自分が嫌になるよ……)」
 			;夢月が処女で恋慕なし(エクストラモード選択時に死亡フラグ)
-			ELSEIF !EXP:ASSI:0 == 0 && !TALENT:ASSI:150
+			ELSEIF !EXP:ASSI:0 && !TALENT:ASSI:150
 				IF TALENT:36
 					PRINTFORMW 「あれ? 夢月? ……そっか夢月もなんだ」
 					PRINTFORMW 『……久しぶりね姉さん』

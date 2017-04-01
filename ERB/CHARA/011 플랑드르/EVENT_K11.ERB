@@ -5602,7 +5602,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 26
 	IF ASSINO() == 10 && ASSI > 0
-		IF EXP:ASSI:0 == 1
+		IF !EXP:ASSI:0
 			PRINTFORMW 『엣, 그런…어째서 플랑의 앞에서……』
 			PRINTFORMW 멍청히 하고 있는 플랑을 힐끗힐끗 엿보며, 레밀리아는 초조한 모습으로 있다
 			PRINTFORMW 『알았어, 알았다구. ……저기…가능하면 상냥하게…』
@@ -7566,7 +7566,7 @@ ENDIF
 IF SELECTCOM == 25
 	IF ASSIPLAY && ASSI > 0
 		IF ASSINO() == 10 
-	IF EXP:ASSI:0 == 1 && TALENT:121 == 1
+	IF !EXP:ASSI:0 && TALENT:121 == 1
 			PRINTFORMW 『플랑에게 나를!? 어째서 그런!!』
 			PRINTFORMW 「왜 그러는 거야? 언니. 어쩐지 울 것 같은 얼굴하고 있어」
 			PRINTFORMW 『아, 에 그러니깐…………이제 괜찮아요…」
@@ -7623,7 +7623,7 @@ IF SELECTCOM == 307
 	IF ASSIPLAY && ASSI > 0
 		IF ASSINO() == 10 
 	;처음
-		IF EXP:ASSI:0 == 1 && TALENT:121 == 1
+		IF !EXP:ASSI:0 && TALENT:121 == 1
 			PRINTFORML 「언니이!♪」
 			PRINTFORMW 『뭐, 뭐얏, 왜 그러는 거얏!?』
 			PRINTFORMW 「%조사처리(K11CN(),"가")% 있지, 자지를 언니에게 넣어, 라고……」
@@ -7651,7 +7651,7 @@ IF SELECTCOM == 307
 			PRINTFORMW 『시러어!! 빼줘엇, 빨리 빼줘어어…플라앙…내가 말하는 걸――싫엇!』
 				CFLAG:5260 = 1
 				RETURN 0
-		ELSEIF EXP:ASSI:0 == 1
+		ELSEIF !EXP:ASSI:0
 			PRINTFORMW 「언니이, 자 이것 봐봐, 내 자지♪」
 			PRINTFORMW 『힉, 뭐야 그겟!』
 			PRINTFORMW 플랑의 고간에게 장착된 대 사이즈의 딜도를 보자, 레밀리아는 비명을 지른다
@@ -9924,7 +9924,7 @@ SIF C && V && A && B
 IF TFLAG:18 > 0
 	IF ASSIPLAY && ASSI > 0
 		IF ASSINO() == 10
-			IF EXP:ASSI:0 == 1
+			IF !EXP:ASSI:0
 			PRINTFORML 『아아아……플랑에게 처음을 깨지게 하고, 
 			PRINTFORMW   그런데 어째서 이렇게 나는 흥분해 버리는 거얏……』
 			PRINTFORMW 레밀리아는 딱딱하게 선 자신의 페니스를 원망스럽게 생각하면서 사정했다
@@ -9972,7 +9972,7 @@ ENDIF
 IF TFLAG:36 > 0 && SELECTCOM == 307
 		IF ASSIPLAY && ASSI > 0
 				IF ASSINO() == 10
-					IF EXP:ASSI:0 == 1
+					IF !EXP:ASSI:0
 						PRINTFORMW 「정마알, 언니도 참 여동생에게 처녀를 범해지고 있는데 이렇게 팽팽해 져서는♪」
 						PRINTFORMW 플랑은 레밀리아를 찔러 올리면서, 발기한 언니의 페니스를 손에 쥐고 능숙하게 수음을 시작한다
 						PRINTFORMW 『플랑 아파아!! 이제 그만둬어!!』
@@ -11015,7 +11015,7 @@ IF TFLAG:30 > 0
 	ELSEIF SELECTCOM == 25
 		IF ASSIPLAY && ASSI > 0
 			IF ASSINO() == 10
-				IF EXP:ASSI:0 == 1
+				IF !EXP:ASSI:0
 					PRINTFORMW 「후아……언니의 처녀 보지 기분 좋았다아…♪」
 					PRINTFORMW 『처음을 여동생에게 뺏겨서, 거기다가 이렇게 안에 싸져 버린다니……』
 					PRINTFORMW 레밀리아는 눈에 눈물을 머금으며 여동생에 의해 사라져 버린 자신의 순결를 바라보고 있다
@@ -11030,7 +11030,7 @@ IF TFLAG:30 > 0
 	ELSEIF SELECTCOM == 307
 		IF ASSIPLAY && ASSI > 0
 			IF ASSINO() == 10 
-				IF EXP:ASSI:0 == 1
+				IF !EXP:ASSI:0
 					PRINTFORMW 「후아……언니의 처녀 보지 기분 좋았다아…♪」
 					PRINTFORMW 『처음을 여동생에게 뺏겨서, 거기다가 이렇게 안에 싸져 버린다니……』
 					PRINTFORMW 레밀리아는 눈에 눈물을 머금으며 여동생에 의해 사라져 버린 자신의 순결를 바라보고 있다

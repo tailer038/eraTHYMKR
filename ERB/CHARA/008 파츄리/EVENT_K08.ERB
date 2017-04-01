@@ -14204,7 +14204,7 @@ IF SELECTCOM == 25 || SELECTCOM == 325
 	;첫 회에 관계없이 조교자가 처녀일 경우 
 	IF EXP:PLAYER:0 <= 1
 		;조수가 마리사고 조수 조교시 조수가 처녀
-		IF ASSIPLAY && NO:ASSI == 2 && EXP:ASSI:0 <= 1
+		IF ASSIPLAY && NO:ASSI == 2 && !EXP:ASSI:0
 			PRINTFORMW 『그러면…いくぜ……응…윽――! 윽――くうぅっ…!!』
 			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 파츄리의 페니스를 자기 자신의 비렬에 대고는 단번에 허리를 밑으로 내렸다.
 			PRINTFORMW 「―읏!! 우앗! ……좁…아……」
@@ -14224,7 +14224,7 @@ IF SELECTCOM == 25 || SELECTCOM == 325
 			PRINTFORMW 그렇게 말하며 %조사처리(CALLNAME:PLAYER,"는")% 천천히 허리를 움직이기 시작했다.
 			PRINTFORML 
 		;조수가 레밀리아고 조수 조교시 조수가 처녀
-		ELSEIF ASSIPLAY && NO:ASSI == 10 && EXP:ASSI:0 <= 1
+		ELSEIF ASSIPLAY && NO:ASSI == 10 && !EXP:ASSI:0
 			PRINTFORMW 『…그러면 파체…いくわよ……응…윽――!?윽――く아아앗!!』
 			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 파츄리의 페니스를 자기 자신의 비렬에 대고는 단번에 허리를 밑으로 내렸다.
 			PRINTFORMW 「っっ!! 우앗! ……좁…아……」
@@ -14249,7 +14249,7 @@ IF SELECTCOM == 25 || SELECTCOM == 325
 			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 파츄리의 말을 제지하고, 천천히 허리를 움직이기 시작했다.
 			PRINTFORML 
 		;조수가 메이링이나 소악마나 사쿠야고 조수 조교시 조수가 처녀
-		ELSEIF ASSIPLAY && (NO:ASSI == 6 || NO:ASSI == 7 || NO:ASSI == 9) && EXP:ASSI:0 <= 1
+		ELSEIF ASSIPLAY && (NO:ASSI == 6 || NO:ASSI == 7 || NO:ASSI == 9) && !EXP:ASSI:0
 			PRINTFORMW 『…それでは파츄리 님…いきますね……응…윽――!?윽――く아아앗!!』
 			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 파츄리의 페니스를 자기 자신의 비렬에 대고는 단번에 허리를 밑으로 내렸다.
 			PRINTFORMW 「っっ!! 우앗! ……좁…아……」
@@ -14280,7 +14280,7 @@ IF SELECTCOM == 25 || SELECTCOM == 325
 			PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 파츄리의 말을 제지하고, 천천히 허리를 움직이기 시작했다.
 			PRINTFORML 
 		;조수 조교시 조수가 처녀
-		ELSEIF ASSIPLAY && EXP:ASSI:0 <= 1
+		ELSEIF ASSIPLAY && !EXP:ASSI:0
 			PRINTFORMW 「으그읏…いきなりなんて………우앗! ……좁…아……」
 			;순정
 			IF CFLAG:5802 == 0
@@ -14757,7 +14757,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 307 || SELECTCOM == 323 || SELECTCOM == 324
 		;조수가 마리사고 조수 조교시 조수가 처녀
-		IF ASSIPLAY && NO:ASSI == 2 && EXP:ASSI:0 <= 1
+		IF ASSIPLAY && NO:ASSI == 2 && !EXP:ASSI:0
 			;욕정Lv3 이상이고 후타나리
 			IF PALAM:13 >= PALAMLV:3 && TALENT:121 == 1
 				PRINTFORMW 「하악…! 하악…! 미안해 마리사…. 더는 못 버티겠어…. 네 보지에 넣게 해줘엇!」
@@ -14801,7 +14801,7 @@ IF SELECTCOM == 307 || SELECTCOM == 323 || SELECTCOM == 324
 				PRINTFORMW 파츄리는 그 말만 남기고 천천히 허리를 움직이기 시작했다.
 			ENDIF
 		;조수가 레밀리아고 조수 조교시 조수가 처녀
-		ELSEIF ASSIPLAY && NO:ASSI == 10 && EXP:ASSI:0 <= 1
+		ELSEIF ASSIPLAY && NO:ASSI == 10 && !EXP:ASSI:0
 			;욕정Lv3 이상이고 후타나리
 			IF PALAM:13 >= PALAMLV:3 && TALENT:121 == 1
 				PRINTFORMW 「하악…! 하악…! 미안해 레미…. 더는 못 버티겠어…. 네 보지에 넣게 해줘엇!」
@@ -14844,7 +14844,7 @@ IF SELECTCOM == 307 || SELECTCOM == 323 || SELECTCOM == 324
 				PRINTFORMW 파츄리는 그 말만 남기고 천천히 허리를 움직이기 시작했다.
 			ENDIF
 		;조수가 메이링이나 소악마나 사쿠야고 조수 조교시 조수가 처녀
-		ELSEIF ASSIPLAY && (NO:ASSI == 6 || NO:ASSI == 7 || NO:ASSI == 9) && EXP:ASSI:0 <= 1
+		ELSEIF ASSIPLAY && (NO:ASSI == 6 || NO:ASSI == 7 || NO:ASSI == 9) && !EXP:ASSI:0
 			;욕정Lv3 이상이고 후타나리
 			IF PALAM:13 >= PALAMLV:3 && TALENT:121 == 1
 				PRINTFORMW 「하악…! 하악…! %CALLNAME:PLAYER%… 더는 참지 못하겠어…. 네 보지에 넣을 거얏!」
@@ -14887,7 +14887,7 @@ IF SELECTCOM == 307 || SELECTCOM == 323 || SELECTCOM == 324
 				PRINTFORMW 파츄리는 그 말만 남기고 천천히 허리를 움직이기 시작했다.
 			ENDIF
 		;조수 조교시 조수가 처녀
-		ELSEIF ASSIPLAY && EXP:ASSI:0 <= 1
+		ELSEIF ASSIPLAY && !EXP:ASSI:0
 			;욕정Lv3 이상이고 후타나리
 			IF PALAM:13 >= PALAMLV:3 && TALENT:121 == 1
 				PRINTFORMW 「하악…! 하앗…! %CALLNAME:PLAYER%…. 더는 못 버티겠어…. 네 보지에 넣게 해줘엇!」

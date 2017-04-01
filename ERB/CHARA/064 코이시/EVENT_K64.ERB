@@ -4398,7 +4398,7 @@ IF SELECTCOM == 25
 		;※추가 기능B2『조수 감상 기능』用に처녀喰い経験と면식変数を更新
 		A = ASSINO()+5800
 		;조수가 처녀
-		IF TALENT:ASSI:0 && EXP:ASSI:0 == 1
+		IF TALENT:ASSI:0 == 1
 			;연모
 			IF TALENT:150
 				PRINTFORMW 
@@ -6555,7 +6555,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 26
 	;조수가 처녀
-	IF TALENT:ASSI:0 && EXP:ASSI:0 == 1
+	IF TALENT:ASSI:0 == 1
 		;연모+조수가 연모
 		IF TALENT:150 && TALENT:ASSI:150
 			PRINTFORMW 「%K64_CALL_ASSI()%…. 좋겠다아……」
@@ -7071,7 +7071,7 @@ IF SELECTCOM == 307
 		;※추가 기능B2『조수 감상 기능』用に처녀喰い経験と면식変数を更新
 		A = ASSINO()+5800
 		;조수가 처녀
-		IF TALENT:ASSI:0 && EXP:ASSI:0 == 1
+		IF TALENT:ASSI:0 == 1
 			;연모
 			IF TALENT:150
 				PRINTFORMW 
@@ -7100,7 +7100,7 @@ IF SELECTCOM == 307
 		;※추가 기능B2『조수 감상 기능』用に처녀喰い経験と면식変数を更新
 		A = ASSINO()+5800
 		;조수가 처녀
-		IF TALENT:ASSI:0 && EXP:ASSI:0 == 1
+		IF TALENT:ASSI:0 == 1
 			;연모
 			IF TALENT:150
 				PRINTFORMW 
