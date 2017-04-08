@@ -3,17 +3,17 @@
 ;=============================================================================
 @ABLUP36
 SIF (FLAG:15 & 4) == 0
-	RETURN 0
+    RETURN 0
 DRAWLINE
 SIF ABL:36 >= 5
-	JUMP ABLUP_MAX
+    JUMP ABLUP_MAX
 
 ;ＬＶ２から３, ＬＶ３から４, ４から５に上げるときは異常経験必要(素質：[Ａ敏感][中毒しやすい][淫尻]なら無視できる)
 SIF COST36(6)
-	PRINTFORM %EXPNAME:50% {COST36(6)} 이상, 그리고 
+    PRINTFORM %EXPNAME:50% {COST36(6)} 이상, 그리고 
 ;Ａ経験及び調教自慰経験が必要(表示は排泄中毒が0の時のみ)
 SIF ABL:36 == 0
-	PRINTFORM %EXPNAME:1% 50 이상, %EXPNAME:11% 20 이상, 그리고 
+    PRINTFORM %EXPNAME:1% 50 이상, %EXPNAME:11% 20 이상, 그리고 
 ;露出癖が必要
 PRINTFORML %ABLNAME:14% {ABL:36 + 1}LV 이상, 그리고 
 
@@ -24,17 +24,17 @@ PRINTL [100] - 돌아간다
 $INPUT_LOOP
 INPUT
 IF RESULT == 100
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 0 && CAN36(0) != 0
-	PRINTL 조건을 만족하고 있지 않습니다.
-	RESTART
+    PRINTL 조건을 만족하고 있지 않습니다.
+    RESTART
 ELSEIF RESULT == 0
-	JUEL:2 -= COST36(0)
-	JUEL:13 -= COST36(1)
-	JUEL:14 -= COST36(2)
-	JUEL:15 -= COST36(3)
+    JUEL:2 -= COST36(0)
+    JUEL:13 -= COST36(1)
+    JUEL:14 -= COST36(2)
+    JUEL:15 -= COST36(3)
 ELSE
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 
 ABL:36 += 1
@@ -42,12 +42,12 @@ PRINTFORMW %ABLNAME:36%의 레벨이 %조사처리(TOSTR(ABL:36),"가")% 되었�
 
 @AUTO_ABLUP36
 IF CAN36(0) == 0
-	JUEL:2 -= COST36(0)
-	JUEL:13 -= COST36(1)
-	JUEL:14 -= COST36(2)
-	JUEL:15 -= COST36(3)
+    JUEL:2 -= COST36(0)
+    JUEL:13 -= COST36(1)
+    JUEL:14 -= COST36(2)
+    JUEL:15 -= COST36(3)
 ELSE
-	RETURN 0
+    RETURN 0
 ENDIF
 
 ABL:36 += 1
@@ -58,9 +58,9 @@ RETURN 1
 ;--------------------------------------------------
 @ISABLUP36
 SIF (FLAG:15 & 4) == 0
-	RETURN 0
+    RETURN 0
 SIF ABL:36 >= 5
-	RETURN 0
+    RETURN 0
 
 CALLF CALC_COST36, "CALC"
 
@@ -74,122 +74,122 @@ RETURNF CALC_COST36("GET", ARG)
 @CALC_COST36(ARGS, ARG)
 #FUNCTION
 SIF ARGS == "GET"
-	RETURNF LOCAL:ARG
+    RETURNF LOCAL:ARG
 ;必要な条件の算出
 VARSET LOCAL, 0
 
 IF ABL:36 == 0
-	LOCAL:0 = 6000
-	LOCAL:1 = 2500
-	LOCAL:2 = 1000
-	LOCAL:3 = 3000
-	LOCAL:4 = 2
-	LOCAL:5 = 10
+    LOCAL:0 = 6000
+    LOCAL:1 = 2500
+    LOCAL:2 = 1000
+    LOCAL:3 = 3000
+    LOCAL:4 = 2
+    LOCAL:5 = 10
 ELSEIF ABL:36 == 1
-	LOCAL:0 = 14000
-	LOCAL:1 = 5000
-	LOCAL:2 = 2500
-	LOCAL:3 = 7000
-	LOCAL:4 = 10
-	LOCAL:5 = 25
+    LOCAL:0 = 14000
+    LOCAL:1 = 5000
+    LOCAL:2 = 2500
+    LOCAL:3 = 7000
+    LOCAL:4 = 10
+    LOCAL:5 = 25
 ELSEIF ABL:36 == 2
-	LOCAL:0 = 27000
-	LOCAL:1 = 9000
-	LOCAL:2 = 4800
-	LOCAL:3 = 12000
-	LOCAL:4 = 30
-	LOCAL:5 = 80
+    LOCAL:0 = 27000
+    LOCAL:1 = 9000
+    LOCAL:2 = 4800
+    LOCAL:3 = 12000
+    LOCAL:4 = 30
+    LOCAL:5 = 80
 ELSEIF ABL:36 == 3
-	LOCAL:0 = 65000
-	LOCAL:1 = 17000
-	LOCAL:2 = 10000
-	LOCAL:3 = 20000
-	LOCAL:4 = 75
-	LOCAL:5 = 150
-	;一線越えない
-	IF TALENT:27
-		TIMES LOCAL:0 , 2.00
-		TIMES LOCAL:1 , 2.00
-		TIMES LOCAL:2 , 2.00
-		TIMES LOCAL:3 , 2.00
-		TIMES LOCAL:4 , 2.00
-		TIMES LOCAL:5 , 2.00
-	ENDIF
+    LOCAL:0 = 65000
+    LOCAL:1 = 17000
+    LOCAL:2 = 10000
+    LOCAL:3 = 20000
+    LOCAL:4 = 75
+    LOCAL:5 = 150
+    ;一線越えない
+    IF TALENT:27
+        TIMES LOCAL:0 , 2.00
+        TIMES LOCAL:1 , 2.00
+        TIMES LOCAL:2 , 2.00
+        TIMES LOCAL:3 , 2.00
+        TIMES LOCAL:4 , 2.00
+        TIMES LOCAL:5 , 2.00
+    ENDIF
 ELSEIF ABL:36 == 4
-	LOCAL:0 = 130000
-	LOCAL:1 = 30000
-	LOCAL:2 = 25000
-	LOCAL:3 = 50000
-	LOCAL:4 = 180
-	LOCAL:5 = 300
-	;一線越えない
-	IF TALENT:27
-		TIMES LOCAL:0 , 3.00
-		TIMES LOCAL:1 , 3.00
-		TIMES LOCAL:2 , 3.00
-		TIMES LOCAL:3 , 3.00
-		TIMES LOCAL:4 , 3.00
-		TIMES LOCAL:5 , 3.00
-	ENDIF
+    LOCAL:0 = 130000
+    LOCAL:1 = 30000
+    LOCAL:2 = 25000
+    LOCAL:3 = 50000
+    LOCAL:4 = 180
+    LOCAL:5 = 300
+    ;一線越えない
+    IF TALENT:27
+        TIMES LOCAL:0 , 3.00
+        TIMES LOCAL:1 , 3.00
+        TIMES LOCAL:2 , 3.00
+        TIMES LOCAL:3 , 3.00
+        TIMES LOCAL:4 , 3.00
+        TIMES LOCAL:5 , 3.00
+    ENDIF
 ENDIF
 
 ;倒錯的
 IF TALENT:80
-	TIMES LOCAL:0 , 0.75
-	TIMES LOCAL:1 , 0.75
-	TIMES LOCAL:2 , 0.75
-	TIMES LOCAL:3 , 0.75
-	TIMES LOCAL:4 , 0.75
-	TIMES LOCAL:5 , 0.75
+    TIMES LOCAL:0 , 0.75
+    TIMES LOCAL:1 , 0.75
+    TIMES LOCAL:2 , 0.75
+    TIMES LOCAL:3 , 0.75
+    TIMES LOCAL:4 , 0.75
+    TIMES LOCAL:5 , 0.75
 ENDIF
 ;中毒しやすい
 IF TALENT:84
-	TIMES LOCAL:0 , 0.50
-	TIMES LOCAL:1 , 0.50
-	TIMES LOCAL:2 , 0.50
-	TIMES LOCAL:3 , 0.50
-	TIMES LOCAL:4 , 0.50
-	TIMES LOCAL:5 , 0.50
+    TIMES LOCAL:0 , 0.50
+    TIMES LOCAL:1 , 0.50
+    TIMES LOCAL:2 , 0.50
+    TIMES LOCAL:3 , 0.50
+    TIMES LOCAL:4 , 0.50
+    TIMES LOCAL:5 , 0.50
 ;中毒しにくい
 ELSEIF TALENT:85
-	TIMES LOCAL:0 , 1.50
-	TIMES LOCAL:1 , 1.50
-	TIMES LOCAL:2 , 1.50
-	TIMES LOCAL:3 , 1.50
-	TIMES LOCAL:4 , 1.50
-	TIMES LOCAL:5 , 1.50
+    TIMES LOCAL:0 , 1.50
+    TIMES LOCAL:1 , 1.50
+    TIMES LOCAL:2 , 1.50
+    TIMES LOCAL:3 , 1.50
+    TIMES LOCAL:4 , 1.50
+    TIMES LOCAL:5 , 1.50
 ENDIF
 ;[中毒扇動]有効
 IF TFLAG:995 == 1
-	TIMES LOCAL:0 , 0.80
-	TIMES LOCAL:1 , 0.80
-	TIMES LOCAL:2 , 0.80
-	TIMES LOCAL:3 , 0.80
-	TIMES LOCAL:4 , 0.80
-	TIMES LOCAL:5 , 0.80
+    TIMES LOCAL:0 , 0.80
+    TIMES LOCAL:1 , 0.80
+    TIMES LOCAL:2 , 0.80
+    TIMES LOCAL:3 , 0.80
+    TIMES LOCAL:4 , 0.80
+    TIMES LOCAL:5 , 0.80
 ENDIF
 ;淫尻
 IF TALENT:173
-	TIMES LOCAL:0 , 0.50
-	TIMES LOCAL:1 , 0.50
-	TIMES LOCAL:2 , 0.50
-	TIMES LOCAL:3 , 0.50
-	TIMES LOCAL:4 , 0.50
-	TIMES LOCAL:5 , 0.50
+    TIMES LOCAL:0 , 0.50
+    TIMES LOCAL:1 , 0.50
+    TIMES LOCAL:2 , 0.50
+    TIMES LOCAL:3 , 0.50
+    TIMES LOCAL:4 , 0.50
+    TIMES LOCAL:5 , 0.50
 ENDIF
 ;Ａ敏感
 IF TALENT:104
-	TIMES LOCAL:0 , 0.80
-	TIMES LOCAL:5 , 0.80
+    TIMES LOCAL:0 , 0.80
+    TIMES LOCAL:5 , 0.80
 ;Ａ鈍感
 ELSEIF TALENT:105
-	TIMES LOCAL:0 , 1.20
-	TIMES LOCAL:5 , 1.20
+    TIMES LOCAL:0 , 1.20
+    TIMES LOCAL:5 , 1.20
 ENDIF
 
 ;ＬＶ２から３, ＬＶ３から４, ４から５に上げるときは異常経験必要(素質：[Ａ敏感][中毒しやすい][淫尻]なら無視できる)
 SIF ABL:36 >= 2 && TALENT:84 == 0 && TALENT:100 == 0 && TALENT:173 == 0
-	LOCAL:6 = ABL:36 * (ABL:36 - 1)
+    LOCAL:6 = ABL:36 * (ABL:36 - 1)
 
 RETURNF 0
 
@@ -200,43 +200,43 @@ RETURNF CAN_ABLUP36("GET", ARG)
 @CAN_ABLUP36(ARGS, ARG)
 #FUNCTION
 SIF ARGS == "GET"
-	RETURNF LOCAL:ARG
+    RETURNF LOCAL:ARG
 VARSET LOCAL, 0
 ;異常経験が必要な場合
 SIF EXP:50 < COST36(6)
-	LOCAL:0 |= 2
+    LOCAL:0 |= 2
 
 ;露出癖が必要
 SIF ABL:14 < ABL:36 + 1
-	LOCAL:0 |= 4
+    LOCAL:0 |= 4
 
 ;快Ａ의 구슬で上げる
 SIF JUEL:2 < COST36(0)
-	LOCAL:0 |= 1
+    LOCAL:0 |= 1
 ;欲情의 구슬で上げる
 SIF JUEL:13 < COST36(1)
-	LOCAL:0 |= 1
+    LOCAL:0 |= 1
 ;屈服의 구슬で上げる
 SIF JUEL:14 < COST36(2)
-	LOCAL:0 |= 1
+    LOCAL:0 |= 1
 ;恥情의 구슬で上げる
 SIF JUEL:15 < COST36(3)
-	LOCAL:0 |= 1
+    LOCAL:0 |= 1
 
 ;調教排泄経験が必要
 SIF EXP:7 < COST36(4)
-	LOCAL:0 |= 2
+    LOCAL:0 |= 2
 ;Ａ快楽経験が必要
 SIF EXP:43 < COST36(5)
-	LOCAL:0 |= 2
+    LOCAL:0 |= 2
 
 IF ABL:36 == 0
-	;Ａ経験が必要
-	SIF EXP:1 < 50
-		LOCAL:0 |= 2
-	;調教自慰経験が必要
-	SIF EXP:11 < 20
-		LOCAL:0 |= 2
+    ;Ａ経験が必要
+    SIF EXP:1 < 50
+        LOCAL:0 |= 2
+    ;調教自慰経験が必要
+    SIF EXP:11 < 20
+        LOCAL:0 |= 2
 ENDIF
 
 RETURNF (LOCAL:0 == 0)
