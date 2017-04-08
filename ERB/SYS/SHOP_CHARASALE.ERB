@@ -334,7 +334,7 @@ LOCAL = MAX(RESULT, 0)
 PRINTFORML %조사처리(CALLNAME:ARG,"는")% {LOCAL}원에 팔릴 것 같습니다.
 ;디버그 모드에서는 매각치의 기초값 · 배율 보정(카운터스톱 전의 몫만)을 표시
 SIF TALENT:MASTER:998
-	PRINTFORML ※{RESULT:1}원(노예의 매각치 기본) × {(RESULT:2)/100}.{(RESULT:2)%100}(기초 구입률 보정) × α(그밖의 보정)
+	PRINTFORML ※{RESULT:1}원(노예의 매각치 기본) × {(RESULT:2)/10000}.{(RESULT:2)%10000}(기초 구입률 보정) × α(그밖의 보정)
 
 SIF FLAG:570 & 2
 	PRINTL ※노예상인이 없기 때문에, 매각 후 시간이 경과합니다.
