@@ -41,6 +41,19 @@ PRINTFORMW %ABLNAME:11%의 레벨이 %조사처리(TOSTR(ABL:11),"가")% 되었�
 SIF ABL:11 >= 3 && (TALENT:32 || TALENT:34)
 	CALL YOKUBO_UP_CHECK
 
+@AUTO_ABLUP11
+IF CAN11(1) == 0
+	JUEL:13 -= COST11(1)
+	JUEL:32 -= COST11(1)
+ELSEIF CAN11(0) == 0
+	JUEL:13 -= COST11(0)
+ELSE
+	RETURN 0
+ENDIF
+
+ABL:11 += 1
+RETURN 1
+
 ;--------------------------------------------------
 ;レベルアップに必要な珠計算、レベルアップ予告処理
 ;--------------------------------------------------

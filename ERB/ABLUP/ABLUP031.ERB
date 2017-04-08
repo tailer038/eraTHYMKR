@@ -48,6 +48,24 @@ ENDIF
 ABL:31 += 1
 PRINTFORMW %ABLNAME:31%의 레벨이 %조사처리(TOSTR(ABL:31),"가")% 되었습니다.
 
+@AUTO_ABLUP31
+IF CAN31(2) == 0
+	JUEL:13 -= COST31(3)
+	JUEL:15 -= COST31(4)
+;0번이 1번보다 낮음
+ELSEIF CAN31(0) == 0
+	JUEL:13 -= COST31(0)
+	JUEL:15 -= COST31(1)
+ELSEIF CAN31(1) == 0
+	JUEL:13 -= COST31(0)
+	JUEL:15 -= COST31(1)
+ELSE
+	RETURN 0
+ENDIF
+
+ABL:31 += 1
+RETURN 1
+
 ;--------------------------------------------------
 ;レベルアップに必要な珠計算, レベルアップ予告処理
 ;--------------------------------------------------

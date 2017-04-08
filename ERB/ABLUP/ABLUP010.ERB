@@ -50,6 +50,22 @@ ENDIF
 ABL:10 += 1
 PRINTFORMW %ABLNAME:10%의 레벨이 %조사처리(TOSTR(ABL:10),"가")% 되었습니다.
 
+@AUTO_ABLUP10
+IF CAN10(3) == 0
+	JUEL:14 -= COST10(3)
+ELSEIF CAN10(2) == 0
+	JUEL:13 -= COST10(2)
+ELSEIF CAN10(1) == 0
+	JUEL:12 -= COST10(1)
+ELSEIF CAN10(0) == 0
+	JUEL:17 -= COST10(0)
+ELSE
+	RETURN 0
+ENDIF
+
+ABL:10 += 1
+RETURN 1
+
 ;--------------------------------------------------
 ;レベルアップに必要な珠計算、レベルアップ予告処理
 ;--------------------------------------------------

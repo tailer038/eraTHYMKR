@@ -37,6 +37,17 @@ CALL COMMON_MARK_UP, TARGET, 3, MARK:3+1, 0
 SIF MARK:3 == 3
 	CALL EXCHANGE_JUEL_ABLUP93
 
+@AUTO_ABLUP93
+IF CAN93(0) == 0
+	JUEL:13 -= COST93(0)
+	JUEL:30 -= COST93(1)
+ELSE
+	RETURN 0
+ENDIF
+
+ABL:93 += 1
+RETURN 1
+
 ;--------------------------------------------------
 ;レベルアップに必要な珠計算, レベルアップ予告処理
 ;--------------------------------------------------

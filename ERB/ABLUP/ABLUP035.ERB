@@ -42,6 +42,20 @@ ENDIF
 ABL:35 += 1
 PRINTFORMW %ABLNAME:35%의 레벨이 %조사처리(TOSTR(ABL:35),"가")% 되었습니다.
 
+@AUTO_ABLUP35
+IF CAN35(1) == 0
+	JUEL:31 -= COST35(0)
+	JUEL:13 -= COST35(3)
+ELSEIF CAN35(0) == 0
+	JUEL:31 -= COST35(0)
+	JUEL:17 -= COST35(1)
+ELSE
+	RETURN 0
+ENDIF
+
+ABL:35 += 1
+RETURN 1
+
 ;奴隷の触手中毒を上昇させると主人に一定量触手의 구슬が入る様になる
 IF ABL:35 == 1
 	LOCAL:0 = 100
