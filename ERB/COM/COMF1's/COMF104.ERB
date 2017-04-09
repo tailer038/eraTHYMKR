@@ -24,8 +24,8 @@ IF TIME == 0 && ITEM:48 == 0 && NOITEM == 0
 	SIF ASSI >= 0 && TALENT:ASSI:205
 		RETURN 0
 ENDIF
-;순종か마조끼が3이상 없으면 안 됨
-SIF ABL:10 < 3 && ABL:21 < 3
+;순종과 마조끼의 합이 4보다 작으면 안 됨
+SIF ABL:10 + ABL:21 < 4
 	RETURN 0
 ;수면 중에는 불가
 SIF EQUIP:14
