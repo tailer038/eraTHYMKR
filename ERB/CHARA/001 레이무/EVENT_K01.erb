@@ -19636,970 +19636,972 @@ ENDIF
 ;弁当作成 CFLAG:8400:初回FLAG , 8401:献立, 8402:主人と一緒に料理
 ;基本的にちょっとは霊夢は料理のできる子です.そのため黒こげにしたり「食べれなくなる」失敗はあまりしません.
 ;ただしお金がないあまり野草を食べようとしたり極端にお金のないものに低レベルのうちは走ります.
-;요리 이벤트의 경우 국내 통합판에서 동작 시 요리가 두 개가 나오는 상황이 발생해서 주석 처리했습니다. 만약 활성화하고 싶다면 19641줄부터 20602줄까지의 ;를 매크로 등을 활용하여 지우시기 바랍니다. (Converter)
+;요리 이벤트의 경우 국내 통합판에서 동작 시 요리가 두 개가 나오는 상황이 발생해서 주석 처리했습니다. 만약 활성화하고 싶다면 19641줄의 [SKIPSTART]와 20604줄의 [SKIPEND]를 지우시기 바랍니다. (Converter)
 ;-------------------------------------------------
-;IF TFLAG:200 == 111
-;;石のスープ未食
-;IF CFLAG:8400 == 0
-;	;Pixivで「石のスープ」を検索してみよう.おいィ?
-;	TSTR:5 = 돌 스프
-;	PRINTFORMW 「에… 요리?」
-;	PRINTFORMW 「할 수 없네, 그렇게 내가 만든 요리를 먹고 싶으면 만들어도 되겠지」
-;	PRINTFORMW 당신이 식탁에서 조용히 기다리고 있는 동안 뚜벅거리는 발걸음과 뭔가 익는 소리가 난다
-;	PRINTFORMW 기대해도 좋을까…
-;	PRINTW     「♪~」
-;	PRINTW    「♪♪~」
-;	PRINTW    「♪~♪~」
-;	PRINTW      !
-;	PRINTL 
-;	PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% \@(TALENT:152 || TALENT:153) ? 애정이 담긴 # \@「%TSTR:5%」 %조사만처리(TSTR:5,"를")% 만들었다.
-;	PRINTL      ・
-;	PRINTL      ・
-;	PRINTL      ・
-;RETURN 0
-;
-;;作成前に一言
-;;親愛または相愛である
-;ELSEIF TALENT:152 == 1 || TALENT:153 == 1
-;	;主人の料理技能が霊夢より上である
-;	IF ABL:MASTER:70 > ABL:70
-;		IF RAND:3 == 0
-;			PRINTFORMW 「음… %조사처리(CSTR:90,"가")% 요리 잘하지 않아?」
-;			PRINTFORMW 「될 수 있으면 가르쳐 줬으면 하는데…」
-;			PRINTFORMW 당신은 옆에서 보면서 보완해주기로 했다.
-;			PRINTFORMW 「고마워, 열심히 할게」
-;		ELSEIF RAND:2 == 0
-;			PRINTFORMW 「므ー …이런 말하기 조금, 아니 엄청 분한데…」
-;			PRINTFORMW 「…옆에서, 알려주지 않을래?」
-;			PRINTFORMW 확실히 분한 표정에 당신은 쓴웃음을 지으며, 허락해줬다.
-;			PRINTFORMW 「큿… 언젠가 찍 소리도 못하게 해줄 거니까, 각오해둬!」
-;			;リアルに「ぎゃふん」という人は多分少ない.
-;		ELSE
-;			PRINTFORMW 「요리라… %조사처리(CSTR:90,"가")% 잘하니까, %조사처리(CSTR:90,"가")% 만들면 되잖아…」
-;			PRINTFORMW 토라진 레이무에게, 당신은 레이무의 요리를 먹고 싶다고 말했다.
-;			PRINTFORMW 「참나, 정말 선수라니까… 그럼, 옆에서 %조사처리(CSTR:90,"가")% 가르쳐 줘. 안 그럼 안 만들 거야」
-;		ENDIF
-;		PRINTFORML 
-;		PRINTFORML 요리경험+5
-;		EXP:70 += 5
-;		CFLAG:8402 = 1
-;	;主人の料理技能が霊夢と同等,またはLv4以上である
-;	ELSEIF ABL:MASTER:70 == ABL:70 || ABL:MASTER:70 >= 4
-;		IF RAND:3 == 0
-;			PRINTFORMW 「후후, 뭘 같이 만들까?」
-;			PRINTFORMW 「좋잖아, 공동작업♪」
-;		ELSEIF RAND:2 == 0
-;			PRINTFORMW 「으흥, 좋ー앗♪ 그럼, 당신도 거들어줘」
-;			PRINTFORMW 당신은 말없이 앞치마를 입고 준비를 도왔다…
-;		ELSE
-;			PRINTFORMW 「좋아, 같이 해볼까! %CSTR:90%도 서포트 부탁해」
-;			PRINTFORMW 당신은 부엌에 식재료를 가져와서 레이무와 요리를 시작했다…
-;		ENDIF
-;		PRINTFORML 
-;		PRINTFORML 애정경험+2
-;		EXP:21 += 2
-;		CFLAG:8402 = 1
-;	;主人の料理技能が霊夢より下である
-;	ELSE
-;		;料理技能が3以上である
-;		IF ABL:70 >= 3
-;			IF RAND:3 == 0
-;				PRINTFORMW 「어머, 배 고파?」
-;				PRINTFORMW 「기다려 봐, 솜씨를 다해서 만들어 줄게!」
-;			ELSEIF RAND:2 == 0
-;				PRINTFORMW 「밥이라, 맡겨줘」
-;				PRINTFORMW 「그래도 많이 나아졌지?」
-;			ELSE
-;				PRINTFORMW 「응? 밥? 이제 거의 다 됐으니까 나중에 마무리만 하면 돼」
-;				PRINTFORMW 「괜찮아ー %조사처리(CSTR:90,"는")% 가만히 앉아 있어」
-;				PRINTFORMW (뭐지… 지금, 의외로 행복, 한 걸…%UNICODE(0x2665)%)
-;			ENDIF
-;			;料理技能が2以下である
-;		ELSEIF ABL:70 <= 2
-;			IF RAND:3 == 0
-;				PRINTFORMW 「응ー …나도 요리 실력은 없는데…」
-;				PRINTFORMW 「그래도 %조사처리(CSTR:90,"를")% 위해서 노력할게」
-;			ELSEIF RAND:2 == 0
-;				PRINTFORMW 「에, 요리? 그게 일단 나도 여자고, 자취도 하긴 했지만」
-;				PRINTFORMW 「…너무 기대하진 말아줘」
-;			ELSE
-;				PRINTFORMW 「뭔가 먹고 싶다, 라…」
-;				PRINTFORMW (이런 거, 신사에 있었을 때부터 연습했으면 좋을 걸)
-;			ENDIF
-;		ENDIF
-;		CFLAG:8402 = 0
-;	ENDIF
-;;恋慕である
-;;ツンデレ風味に味付け
-;ELSEIF TALENT:150 == 1
-;	;料理技能が3以上である
-;	IF ABL:70 >= 3
-;		IF RAND:3 == 0
-;			PRINTFORMW 「어머, 배 고파?」
-;			PRINTFORMW 「어쩔 수 없지. 기다려 봐, 뭐 좀 만들어 줄게」
-;		ELSEIF RAND:2 == 0
-;			PRINTFORMW 「밥? 에, 에에, 알았어」
-;			PRINTFORMW (좋아, 조금은 나아진 모습을 보여줄 거야!)
-;		ELSE
-;			PRINTFORMW 「응? 밥? 이제 거의 다 됐으니까 나중에 마무리만 하면 돼」
-;			PRINTFORMW 「괜찮아ー %조사처리(CSTR:90,"는")% 가만히 앉아서 기다려」
-;		ENDIF
-;	;料理技能が2以下である
-;	ELSEIF ABL:70 <= 2
-;		IF RAND:3 == 0
-;			PRINTFORMW 「%CSTR:90%도 유별나지…」
-;			PRINTFORMW 「그야 자취는 하고 있는데, 아직 누군가에게 선보일 정도로 좋지 않은걸?」
-;		ELSEIF RAND:2 == 0
-;			PRINTFORMW 「에, 요리? 그야… 괜찮지만」
-;			PRINTFORMW 「…너무 기대하진 말아줘」
-;		ELSE
-;			PRINTFORMW 「뭔가 먹고 싶다, 라…」
-;			PRINTFORMW (이런 거, 신사에 있었을 때부터 연습했으면 좋을 걸)
-;		ENDIF
-;	ENDIF
-;;淫乱である
-;ELSEIF TALENT:170 == 1
-;	IF RAND:3 == 0
-;		PRINTFORMW 「에헤헤, 알몸에 에이프런 차림으로 요리할까?」
-;	ELSEIF RAND:2 == 0
-;		PRINTFORMW 「요리는 따분해… 나라면 많이 먹어도 괜찮다고?」
-;	ELSE
-;		PRINTFORMW 「요리? 알았어… 그래도 밥 먹고, 나도 먹어줘%UNICODE(0x2665)%」
-;	ENDIF
-;;服従である
-;ELSEIF TALENT:160 == 1
-;	IF RAND:3 == 0
-;		PRINTFORMW 「아, 알겠어요…」
-;	ELSEIF RAND:2 == 0
-;		PRINTFORMW 「아, 알았어… 만들면 되지」
-;	ELSE
-;		PRINTFORMW 「요, 요리…? 괜찮지만, 잘 못해도 심한 일은 하지 마…」
-;	ENDIF
-;;それ以外
-;ELSE
-;	IF RAND:3 == 0
-;		PRINTFORMW 「하아? 밥을 만들라고?」
-;		PRINTFORMW 「흥, 식후에 목숨이 남아 있었으면 좋겠네」
-;	ELSEIF RAND:2 == 0
-;		PRINTFORMW 「헤에, 요리를 해라, 이거야?」
-;		PRINTFORMW 「감금돼서 능욕당하는 노예가 만든 음식을, 먹고 싶단 말이지?」
-;		PRINTFORMW 「너, 대단한 배짱이다. 에에, 괜찮아? 만들어 줄게」
-;	ELSE
-;		PRINTFORMW 「하아, 요리, 말입니까」
-;		PRINTFORMW 「별로 나쁘진 않은데ー 칼 다루다 "살짝" 손이 미끄러지는 것도, 있을지 모르겠네?」
-;	ENDIF
-;ENDIF
-;PRINTFORML
-;
-;;作る料理の判定
-;;料理技能のLvによりレパートリーが増大.
-;;ただし料理技能のLvが上がると一部低レベルのものは作らなくなります.
-;
-;;料理技能が5である
-;IF ABL:70 == 5 && RAND:65 == 0
-;	TSTR:5 = 송이버섯 볶음밥
-;	CFLAG:8401 = 65
-;ELSEIF ABL:70 == 5 && RAND:64 == 0
-;	TSTR:5 = 무태장어 숯불구이
-;	CFLAG:8401 = 64
-;ELSEIF ABL:70 == 5 && RAND:63 == 0
-;	TSTR:5 = 개똥지빠귀 조림
-;	CFLAG:8401 = 63
-;ELSEIF ABL:70 == 5 && RAND:62 == 0
-;	TSTR:5 = 산채 수타 소바
-;	CFLAG:8401 = 62
-;ELSEIF ABL:70 == 5 && RAND:61 == 0
-;	TSTR:5 = 가시고기 조림
-;	CFLAG:8401 = 61
-;ELSEIF ABL:70 == 5 && RAND:60 == 0
-;	TSTR:5 = 메추라기 버섯 구이
-;	CFLAG:8401 = 60 
-;ELSEIF ABL:70 == 5 && RAND:59 == 0
-;	TSTR:5 = 스키야키
-;	CFLAG:8401 = 59
-;ELSEIF ABL:70 == 5 && RAND:58 == 0
-;	TSTR:5 = 산짐승 초밥
-;	CFLAG:8401 = 58
-;ELSEIF ABL:70 == 5 && RAND:57 == 0
-;	TSTR:5 = 하쿠레이 청주
-;	CFLAG:8401 = 57
-;ELSEIF ABL:70 == 5 && RAND:56 == 0
-;	TSTR:5 = 말고기 육회
-;	CFLAG:8401 = 56
-;ELSEIF ABL:70 == 5 && RAND:55 == 0
-;	TSTR:5 = 말고기 전골
-;	CFLAG:8401 = 55
-;ELSEIF ABL:70 == 5 && RAND:54 == 0
-;	TSTR:5 = 멧돼지탕
-;	CFLAG:8401 = 54
-;ELSEIF ABL:70 == 5 && RAND:53 == 0
-;	TSTR:5 = 삶아 으깬 무
-;	CFLAG:8401 = 53
-;ELSEIF ABL:70 == 5 && RAND:52 == 0
-;	TSTR:5 = 데리야키 닭구이
-;	CFLAG:8401 = 52
-;ELSEIF ABL:70 == 5 && RAND:51 == 0
-;	TSTR:5 = 꿩 산초나무구이
-;	CFLAG:8401 = 51
-;ELSEIF ABL:70 == 5 && RAND:50 == 0
-;	TSTR:5 = 오리구이
-;	CFLAG:8401 = 50
-;;すみません,それ来月からなんですよ…
-;ELSEIF ABL:70 == 5 && RAND:49 == 0
-;	TSTR:5 = 잡탕죽
-;	CFLAG:8401 = 49
-;ELSEIF ABL:70 == 5 && RAND:48 == 0
-;	TSTR:5 = 훈제돼지 시금치 후추볶음
-;	CFLAG:8401 = 48
-;ELSEIF ABL:70 == 5 && RAND:47 == 0
-;	TSTR:5 = 가지 붕어구이
-;	CFLAG:8401 = 47
-;ELSEIF ABL:70 == 5 && RAND:46 == 0
-;	TSTR:5 = 시금치 가래나무 볶음
-;	CFLAG:8401 = 46
-;ELSEIF ABL:70 == 5 && RAND:45 == 0
-;	TSTR:5 = 두릅튀김
-;	CFLAG:8401 = 45
-;ELSEIF ABL:70 == 5 && RAND:44 == 0
-;	TSTR:5 = 참마 다시마 맥반
-;	CFLAG:8401 = 44
-;ELSEIF ABL:70 == 5 && RAND:43 == 0
-;	TSTR:5 = 닭 어묵 전골
-;	CFLAG:8401 = 43
-;ELSEIF ABL:70 == 5 && RAND:42 == 0
-;	TSTR:5 = 닭 고추냉이 볶음
-;	CFLAG:8401 = 42
-;
-;;料理技能4以上
-;ELSEIF ABL:70 >= 4 && RAND:41 == 0
-;	TSTR:5 = 축전자
-;	CFLAG:8401 = 41 
-;ELSEIF ABL:70 >= 4 && RAND:40 == 0
-;	TSTR:5 = 은어 소금구이
-;	CFLAG:8401 = 40
-;ELSEIF ABL:70 >= 4 && RAND:39 == 0
-;	TSTR:5 = 닭조림
-;	CFLAG:8401 = 39
-;ELSEIF ABL:70 >= 4 && RAND:38 == 0
-;	TSTR:5 = 송어 산초구이
-;	CFLAG:8401 = 38
-;ELSEIF ABL:70 >= 4 && RAND:37 == 0
-;	TSTR:5 = 내장 된장조림
-;	CFLAG:8401 = 37
-;ELSEIF ABL:70 >= 4 && RAND:36 == 0
-;	TSTR:5 = 검은콩조림
-;	CFLAG:8401 = 36
-;ELSEIF ABL:70 >= 4 && RAND:35 == 0
-;	TSTR:5 = 시금치참깨무침
-;	CFLAG:8401 = 35
-;ELSEIF ABL:70 >= 4 && RAND:34 == 0
-;	TSTR:5 = 참마 생선회
-;	CFLAG:8401 = 34
-;ELSEIF ABL:70 >= 4 && RAND:33 == 0
-;	TSTR:5 = 고기 감자조림
-;	CFLAG:8401 = 33
-;ELSEIF ABL:70 >= 4 && RAND:32 == 0
-;	TSTR:5 = 닭완두콩볶음
-;	CFLAG:8401 = 32
-;ELSEIF ABL:70 >= 4 && RAND:31 == 0
-;	TSTR:5 = 새우튀김
-;	CFLAG:8401 = 31
-;ELSEIF ABL:70 >= 4 && RAND:30 == 0
-;	TSTR:5 = 고사리흰참깨무침
-;	CFLAG:8401 = 30
-;
-;;料理技能3以上
-;ELSEIF ABL:70 >= 3 && RAND:29 == 0
-;	TSTR:5 = 토란조림
-;	CFLAG:8401 = 29
-;ELSEIF ABL:70 >= 3 && RAND:28 == 0
-;	TSTR:5 = 키리탄포
-;	CFLAG:8401 = 28
-;ELSEIF ABL:70 >= 3 && RAND:27 == 0
-;	TSTR:5 = 된장 곤약
-;	CFLAG:8401 = 27
-;ELSEIF ABL:70 >= 3 && RAND:26 == 0
-;	TSTR:5 = 닭튀김
-;	CFLAG:8401 = 26
-;ELSEIF ABL:70 >= 3 && RAND:25 == 0
-;	TSTR:5 = 가지볶음
-;	CFLAG:8401 = 25
-;ELSEIF ABL:70 >= 3 && RAND:24 == 0
-;	TSTR:5 = 두부튀김
-;	CFLAG:8401 = 24
-;ELSEIF ABL:70 >= 3 && RAND:23 == 0
-;	TSTR:5 = 콩나물고기된장볶음
-;	CFLAG:8401 = 23
-;ELSEIF ABL:70 >= 3 && RAND:22 == 0
-;	TSTR:5 = 해물튀김
-;	CFLAG:8401 = 22
-;ELSEIF ABL:70 >= 3 && RAND:21 == 0
-;	TSTR:5 = 삶은 무
-;	IF ABL:70 >= 4
-;		TSTR:5 = 林巻大風呂吹大根
-;	ENDIF
-;	CFLAG:8401 = 21
-;ELSEIF ABL:70 >= 3 && RAND:20 == 0
-;	TSTR:5 = 송어 소금구이
-;	CFLAG:8401 = 20
-;
-;;料理技能2以上
-;ELSEIF ABL:70 == 2 && RAND:19 == 0
-;	TSTR:5 = 채소절임
-;	CFLAG:8401 = 19
-;ELSEIF ABL:70 == 2 && RAND:18 == 0
-;	TSTR:5 = 양하 된장국
-;	CFLAG:8401 = 18
-;ELSEIF ABL:70 >= 2 && RAND:17 == 0
-;	TSTR:5 = 닭꼬치
-;	CFLAG:8401 = 17
-;ELSEIF ABL:70 == 2 && RAND:16 == 0
-;	TSTR:5 = 무 된장국
-;	CFLAG:8401 = 16
-;ELSEIF ABL:70 == 2 && RAND:15 == 0
-;	TSTR:5 = 오이절임
-;	CFLAG:8401 = 15
-;ELSEIF ABL:70 >= 2 && RAND:14 == 0
-;	TSTR:5 = 표고버섯 구이
-;	CFLAG:8401 = 14
-;ELSEIF ABL:70 >= 2 && RAND:13 == 0
-;	TSTR:5 = 수제비
-;	CFLAG:8401 = 13
-;ELSEIF ABL:70 >= 2 && RAND:12 == 0
-;	TSTR:5 = 고구마 튀김
-;	CFLAG:8401 = 12
-;ELSEIF ABL:70 >= 2 && RAND:11 == 0
-;	TSTR:5 = 계란 후라이
-;	CFLAG:8401 = 11
-;ELSEIF ABL:70 >= 2 && RAND:10 == 0
-;	TSTR:5 = 무채볶음
-;	CFLAG:8401 = 10
-;
-;;料理技能1以上
-;;野蒜とか知ってる人いるのかなぁ
-;ELSEIF ABL:70 >= 1 && RAND:9 == 0
-;	TSTR:5 = 달래 초된장무침
-;	CFLAG:8401 = 9
-;ELSEIF ABL:70 >= 1 && RAND:8 == 0
-;	TSTR:5 = 우렁이조림
-;	CFLAG:8401 = 8
-;ELSEIF ABL:70 == 1 && RAND:7 == 0
-;	TSTR:5 = 두부된장국
-;	CFLAG:8401 = 7
-;ELSEIF ABL:70 == 1 && RAND:6 == 0
-;	TSTR:5 = 물두부
-;	CFLAG:8401 = 6
-;ELSEIF ABL:70 == 1 && RAND:5 == 0
-;	TSTR:5 = 냉두부
-;	CFLAG:8401 = 5
-;
-;;料理技能0
-;;一般的に食されて無いだけともいう.
-;ELSEIF ABL:70 == 0 && RAND:4 == 0
-;	TSTR:5 = 민들레 나물
-;	CFLAG:8401 = 4
-;ELSEIF ABL:70 == 0 && RAND:3 == 0
-;	TSTR:5 = 광대버섯찜
-;	CFLAG:8401 = 3
-;ELSEIF ABL:70 == 0 && RAND:2 == 0
-;	TSTR:5 = 삶은 뱀밥
-;	CFLAG:8401 = 2
-;ELSEIF ABL:70 == 0
-;	TSTR:5 = 도토리경단
-;	CFLAG:8401 = 1
-;ENDIF
-;
-;;作る料理に対するコメント
-;;料理技能Lv0にはツッコミが入る
-;IF ABL:70 == 0
-;PRINTFORMW 레이무에겐 전과가 있다…
-;PRINTFORMW 당신은 재료를 보이도록 요구했다
-;ENDIF
-;
-;;霊夢が恋慕であり,主人の料理技能がLv4以上であればフォローできる
-;;ドングリの練り団子
-;IF CFLAG:8401 == 1
-;PRINTFORMW 레이무가 준비한 재료는 도토리였다
-;	;霊夢が恋慕であり,主人の料理技能がLv4以上
-;	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
-;		PRINTFORMW 또 귀찮은 걸…
-;		PRINTFORMW 먹을 수 있도록 하기까지 수고가 많이 드는 물건이다.
-;		PRINTFORMW 지금의 레이무가 요리할 수 있다고는 전혀 생각이 들지 않는다…
-;	ELSE
-;		PRINTFORMW 「알잖아? 도토리는 먹을 수 있는 거라고?」
-;		PRINTFORMW 말은 들었는데…
-;	ENDIF
-;;土筆を煮たもの
-;ELSEIF CFLAG:8401 == 2
-;PRINTFORMW 레이무가 준비한 재료는 뱀밥이었다
-;	;霊夢が恋慕であり,主人の料理技能がLv4以上
-;	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
-;		PRINTFORMW 또 근처에서 뜯어온 걸…
-;		PRINTFORMW 일단 먹을 수 있는 걸 만들 순 있겠지만
-;		PRINTFORMW 지금의 레이무가 요리할 수 있다고는 전혀 생각이 들지 않는다…
-;	ELSE
-;		;언어 유희로 보이는 부분이 있는데 그냥 새로 썼습니다. 원문은 아래와 같습니다.
-;		;PRINTFORMW …土の筆?
-;		;PRINTFORMW 「つくしよ,つ・く・し」
-;		;PRINTFORMW なるほど…,しかし食べられるのだろうか…
-;		PRINTFORMW 뱀밥? 뱀이 먹어야 하는 거 아냐?
-;		PRINTFORMW 「먹는 거 맞아. 토필이라고도 하지」
-;		PRINTFORMW 그런가… 근데 먹을 만한 게 나올까…
-;	ENDIF
-;;ベニテングタケの炙り
-;ELSEIF CFLAG:8401 == 3
-;PRINTFORMW 레이무가 준비한 재료는 광대 버섯이었다
-;	;霊夢が恋慕であり,主人の料理技能がLv4以上…でもフォロー不能
-;	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
-;		PRINTFORMW 동작 그만, 이건 유명한 독 버섯이잖아.
-;		PRINTFORMW 「뭘 모르네ー 이거 꽤 맛있거든?」
-;		PRINTFORMW 독 성분이 맛있다고는 들었지만…
-;	ELSE
-;		PRINTFORMW 「좀 어질어질해지긴 하지만 이 버섯 맛있어~♪」
-;		PRINTFORMW 당신은 레이무가 준비한 무시무시한 버섯을 전전긍긍하는 마음으로 바라볼 수밖에 없었다…
-;	ENDIF
-;;タンポポのおひたし
-;ELSEIF CFLAG:8401 == 4
-;PRINTFORMW 레이무가 준비한 재료는 민들레였다
-;	;霊夢が恋慕であり,主人の料理技能がLv4以上
-;	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
-;		PRINTFORMW 확실히 먹는 걸 만들 순 있겠지만
-;		PRINTFORMW 떫은 맛을 확실히 제거하지 않으면 참사가 벌어진다.
-;		PRINTFORMW 지금의 레이무가 요리할 수 있다고는 전혀 생각이 들지 않는다…
-;	ELSE
-;		PRINTFORMW 굳이 말하자면… 이거 채소가 아니라, 식물이다…
-;	ENDIF
-;;以下Lv2以降.主人が一緒に料理したとき,Lv3以上でフォローできる.
-;;冷奴または湯豆腐
-;ELSEIF CFLAG:8401 == 5 && CFLAG:8401 == 6
-;	PRINTFORMW 「…실패하는 것보단 낫지」
-;	;主人が一緒に料理したとき,Lv3以上
-;	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;		PRINTFORMW 당신은 레이무에게 양념도 곁들이도록 조언했다…
-;	ENDIF
-;;豆腐,茗荷,大根の味噌汁
-;ELSEIF CFLAG:8401 == 7 && CFLAG:8401 == 16 && CFLAG:8401 == 18
-;	PRINTFORMW 「된장국 정도야 나도…」
-;	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;		PRINTFORMW 당신은 레이무를 훈훈하게 바라보고 있다…
-;	ENDIF
-;;田螺の煮物
-;ELSEIF CFLAG:8401 == 8
-;	PRINTFORMW 「어라, 좋은 게 있네♪」
-;	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;		PRINTFORMW 당신은 확실히 양념으로 맛을 내도록 조언했다…
-;	ENDIF
-;;野蒜(のびる)の酢味噌和え
-;ELSEIF CFLAG:8401 == 9
-;	PRINTFORMW 「어라, 좋은 게 자라고 있네♪」
-;	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;		PRINTFORMW 당신은 레이무와 함께 달래를 캤다…
-;	ENDIF
-;;大根の菜炒め
-;ELSEIF CFLAG:8401 == 10
-;	PRINTFORMW 「오늘은 이걸로 할까」
-;;玉子焼き
-;ELSEIF CFLAG:8401 == 11
-;	;料理技能がLv3以上であれば余裕です
-;	IF ABL:70 >= 3
-;		PRINTFORMW 「영차, 영차♪」
-;	;ちょっと破れたり焦がしたりします.
-;	ELSE
-;		PRINTFORMW 「기본이라고는 하는데… 할 수 있을까」
-;		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;			PRINTFORMW 계란을 잘 풀기, 프라이팬을 잘 달구기, 큰 거품은 조리용 나무 젓가락으로 터뜨리기 등
-;			PRINTFORMW 세세하게 당신은 주의를 주며, 비명을 지르며 계란과 씨름하는 레이무를 지켜보고 있다…
-;		ENDIF
-;	ENDIF
-;;薩摩芋の天ぷら
-;ELSEIF CFLAG:8401 == 12
-;	;料理技能がLv3以上であれば成功です
-;	IF ABL:70 >= 3
-;		PRINTFORMW 「바삭바삭하고 맛있네」
-;	;天ぷらって慣れるまでは大変だぜ.温度管理が.
-;	ELSE
-;		PRINTFORMW 「앗 뜨거워!?」
-;		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;			PRINTFORMW 당신은 튀김옷을 만드는 법 등을 사려깊게 지도했다…
-;		ENDIF
-;	ENDIF
-;;水団
-;ELSEIF CFLAG:8401 == 13
-;	;料理技能がLv3以上であれば本来の水団です
-;	IF ABL:70 >= 3
-;		PRINTFORMW 「당근, 표고 버섯, 소나무 잎을 넣으면… 완성!」
-;	;霊夢…それは戦時中の代用食や…
-;	ELSE
-;		PRINTFORMW 「………밀가루를 반죽해서 삶으면 되지?」
-;		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;			PRINTFORMW 당신은 그건 다른 요리라면서 황급히 끊고
-;			PRINTFORMW 제대로 수제비 만드는 법을 처음부터 알려줬다…
-;		ENDIF
-;	ENDIF
-;;椎茸の網焼き
-;ELSEIF CFLAG:8401 == 14
-;	;料理技能がLv3以上であれば色々添えてくれます.
-;	IF ABL:70 >= 3
-;		PRINTFORMW 「생강을 넣으면 좋겠네…」
-;	;焼いただけ.美味いけどさ.
-;	ELSE
-;		PRINTFORMW 「굽기만 하면…」
-;		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;			PRINTFORMW 당신은 풍로의 불을 피우며 레이무의 요리를 기대했다…
-;		ENDIF
-;	ENDIF
-;;きゅうりの糠漬け
-;ELSEIF CFLAG:8401 == 15
-;	PRINTFORMW 「겨된장에 하루 정도 담가 두면 좋다고 하는데…」
-;	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;		PRINTFORMW 당신은 겨된장에 제대로 묵히는 걸 잊지 않도록 당부했다…
-;	ENDIF
-;;焼き鳥
-;ELSEIF CFLAG:8401 == 17
-;	;料理技能がLv4以上で一人前です
-;	IF ABL:70 >= 4
-;		PRINTFORMW 「후훗, 꼬챙이로 꿰는 게 닭꼬치 요리의 시작이지」
-;	;料理レベルがLv3だと普通の焼き鳥です.串に刺して焼いただけ.
-;	ELSEIF ABL:70 == 3
-;		PRINTFORMW 「응, 좋은 느낌?」
-;	ELSE
-;		PRINTFORMW 「굽기만 하면…」
-;		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;			PRINTFORMW 당신은 풍로의 불을 피우며 레이무의 요리를 기대했다…
-;		ENDIF
-;	ENDIF
-;;野沢菜漬け
-;ELSEIF CFLAG:8401 == 19
-;	PRINTFORMW 「됐겠지…?」
-;	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
-;		PRINTFORMW 레이무는 아사즈케를 만든 것 같다…
-;		PRINTFORMW 언젠가 제대로 절임을 가르쳐야 할 것이다
-;	ENDIF
-;	
-;;料理技能Lv3以上
-;
-;;山女の塩焼き
-;ELSEIF CFLAG:8401 == 20
-;	PRINTFORMW 넘치는 기름이 풍로의 불에 그슬려 지글지글 소리를 내고 있다…
-;	PRINTFORMW 「『물고기는 영주에게 굽게 하고 떡은 거지에게 굽게 하라』인가」
-;	PRINTFORMW 「좋아, 잘 됐어」
-;;風呂吹き大根
-;ELSEIF CFLAG:8401 == 21
-;	;料理技能がLv5の時,林巻大風呂吹大根にグレードアップ…させたいなぁ
-;	IF ABL:70 == 5
-;		PRINTFORMW 찜통의 뚜껑을 여는 순간 유자의 무의 좋은 향기가 주방을 채웠다.
-;		PRINTFORMW 「결과는 어떨까… 아핫, 나답게 최고네」
-;	ELSE
-;		PRINTFORMW 「이런 식일까」
-;		PRINTFORMW 레이무는 접시에 담으며 된장 양념을 많이 냈다…
-;	ENDIF
-;;天ぷらのかき揚げ
-;ELSEIF CFLAG:8401 == 22
-;	PRINTFORMW 「한번에 넣으면 기름 온도가 떨어지지…」
-;	PRINTFORMW 「좋앗, 됐어!」
-;;もやしの肉味噌炒め
-;ELSEIF CFLAG:8401 == 23
-;	PRINTFORMW 「이얏」
-;	PRINTFORMW 중화 냄비 위에서 고기와 콩나물이 흩날렸다
-;	PRINTFORMW 「콩나물에 불이 닿기 전에 접시에 담도록… 됐다!」
-;;揚げ出し豆腐
-;ELSEIF CFLAG:8401 == 24
-;	PRINTFORMW 「생강을 넣은 팥앙금을 듬뿍 넣어라…」
-;	PRINTFORMW 「응, 잘 되지 않았어?」
-;;焼き茄子
-;ELSEIF CFLAG:8401 == 25
-;	PRINTFORMW 「아차찻!」
-;	PRINTFORMW 「맛있었으면 좋겠네…」
-;;鶏のから揚げ
-;ELSEIF CFLAG:8401 == 26
-;	PRINTFORMW 「슬슬 밑간도 할까…?」
-;	PRINTFORMW 「튀김이라니 사치 부리네에」
-;	PRINTFORMW 「조교사는 이런 걸까」
-;;里芋の煮っ転がし
-;ELSEIF CFLAG:8401 == 27
-;	PRINTFORMW 「자, 마무리로 간장을 넣고 뚜껑을 닫자」
-;	PRINTFORMW 「나머지는 푹 졸이기만 하면 돼」
-;;きりたんぽ鍋
-;ELSEIF CFLAG:8401 == 28
-;	PRINTFORMW 「좋은 버섯이 들어갔네♪」
-;	PRINTFORMW 「그렇지, 국물도 듬뿍」
-;;味噌田楽
-;ELSEIF CFLAG:8401 == 29
-;	PRINTFORMW 「풍로는 참 편하네…」
-;	PRINTFORMW 「이러면 될까?」
-;
-;;料理技能Lv4以上
-;
-;
-;;筑前煮
-;ELSEIF CFLAG:8401 == 41
-;	PRINTFORMW 「응, 좋은 느낌」
-;	PRINTFORMW 「이제 뚜껑을 닫고…」
-;;鮎の塩焼き
-;ELSEIF CFLAG:8401 == 40
-;	PRINTFORMW 「아~ 좋은 향기」
-;	PRINTFORMW 「역시 은어답네」
-;;鶏の南蛮漬け
-;ELSEIF CFLAG:8401 == 39
-;	PRINTFORMW 「옷이 삭아버렸지만…」
-;	PRINTFORMW 「이건 이거대로 맛있어서 곤란하네」
-;;国鱒の山椒焼き
-;ELSEIF CFLAG:8401 == 38
-;	PRINTFORMW 「자, 이런 걸까?」
-;;味噌のモツ煮
-;ELSEIF CFLAG:8401 == 37
-;	PRINTFORMW 「근데 밖에서 들여온 문화는…」
-;	PRINTFORMW 「먹어 보면 생각보다 맛있네」
-;;黒豆の煮物
-;ELSEIF CFLAG:8401 == 36
-;	PRINTFORMW 「녹슨 못은 어디 있을까」
-;;ほうれん草の胡麻和え
-;ELSEIF CFLAG:8401 == 35
-;	PRINTFORMW 「참깨는 갈아놓은 게 좋을까」
-;;山芋の刺身
-;ELSEIF CFLAG:8401 == 34
-;	PRINTFORMW 「식칼은… 아, 있구나」
-;;肉じゃが
-;ELSEIF CFLAG:8401 == 33
-;	PRINTFORMW 「돼지고기도 이번에 만들어 볼까」
-;;鶏セセリと豌豆(えんどう)の炒め物
-;ELSEIF CFLAG:8401 == 32
-;	PRINTFORMW 「근데 이거 몇 명 분이야…」
-;	PRINTFORMW 「맛있지만 적어서 아쉬워」
-;;水エビの素揚げ
-;ELSEIF CFLAG:8401 == 31
-;	PRINTFORMW 「남은 소금은 제대로 회수해야지」
-;;蕨(わらび)の白和え
-;ELSEIF CFLAG:8401 == 30
-;	PRINTFORMW 「그나저나 두부 가게는 간수를 어디서 얻는 걸까…」
-;	PRINTFORMW 「뭐, 알게 뭐야」
-;
-;;料理技能が5である
-;
-;;松茸の炊き込みご飯
-;ELSEIF CFLAG:8401 == 65
-;	PRINTFORMW 「모처럼 노력했으니 %조사처리(CSTR:90,"가")% 기꺼이 받아줘야지」
-;	PRINTFORMW 「아~ 좋은 향기」
-;;大鰻の炭火焼
-;ELSEIF CFLAG:8401 == 64
-;	PRINTFORMW 탕!!
-;	PRINTFORMW 레이무는 도마에 『그것』을 묶고 말없이 처리하기 시작했다…
-;;鶫(つぐみ)の時雨煮
-;ELSEIF CFLAG:8401 == 63
-;	PRINTFORMW 「바깥에서는 수가 줄어서 먹지 못한다는데…」
-;	PRINTFORMW 「뭐, 덕분에 여기에는 널려 있네」
-;;山菜の手打ち蕎麦
-;ELSEIF CFLAG:8401 == 62
-;	PRINTFORMW 「질기게 하려면 2할 정도 넣으면 될까」
-;;イトウの煮付け
-;ELSEIF CFLAG:8401 == 61
-;	PRINTFORMW 「생강하고 파로 비린내를 없애고…」
-;;本シメジと鶉(うずら)の炒め物
-;ELSEIF CFLAG:8401 == 60
-;	PRINTFORMW 「버섯 향기가 좋구나」
-;;すき焼き
-;ELSEIF CFLAG:8401 == 59
-;	PRINTFORMW 「%조사처리(CSTR:90,"는")% 관서풍? 관동풍? 어느 쪽이야?」
-;;山の幸のちらし寿司
-;ELSEIF CFLAG:8401 == 58
-;	PRINTFORMW 「아ー 팔 아파ー」
-;	PRINTFORMW 「초밥 만들면 냄새가 지독해ー」
-;;博麗大吟醸
-;ELSEIF CFLAG:8401 == 57
-;	PRINTFORMW 「에헤헤… 비장의 물건을 보여줄 때가 왔네」
-;;馬刺し
-;ELSEIF CFLAG:8401 == 56
-;	PRINTFORMW 「마늘이랑 생강즙을 곁들었어」
-;;桜鍋
-;ELSEIF CFLAG:8401 == 55
-;	PRINTFORMW 「자, 모처럼의 냄비 요리를 화덕에 넣어볼까」
-;;牡丹鍋
-;ELSEIF CFLAG:8401 == 54
-;	PRINTFORMW 「흥, 멧돼지 따위가 하쿠레이 무녀에게 맞서다니 1000년도 이르지」
-;;蕪のそぼろ煮
-;ELSEIF CFLAG:8401 == 53
-;	PRINTFORMW 「국물은… 좋아, 잘 됐어」
-;;軍鶏の照り焼き
-;ELSEIF CFLAG:8401 == 52
-;	PRINTFORMW 「할짝… 흐음, 국물은 이렇고」
-;	PRINTFORMW 「자~ 그럼 불은 잘 나오고 있나?」
-;;雉の山椒煮
-;ELSEIF CFLAG:8401 == 51
-;	PRINTFORMW 「뭔가 자꾸 울어서, 쏴… 버렸네」
-;;鴨の炙り
-;ELSEIF CFLAG:8401 == 50
-;	PRINTFORMW 「이 눌어 붙은 자국, 말이 안 나오네」
-;;煮込み雑炊
-;ELSEIF CFLAG:8401 == 49
-;	PRINTFORMW 「뭐? 다음 달부터?」
-;	PRINTFORMW 「무슨 소리야, 지금 만들고 있잖아?」
-;;豚の燻製とほうれん草の胡椒炒め
-;ELSEIF CFLAG:8401 == 48
-;	PRINTFORMW 「후추는 쓸데없이 비싸…」
-;	PRINTFORMW 「뭐, 수요가 많으니까 어쩔 수 없나」
-;;茄子の煮浸し
-;ELSEIF CFLAG:8401 == 47
-;	PRINTFORMW 「끈적해서 견딜 수가 없어~」
-;;ほうれん草の鬼胡桃和え
-;ELSEIF CFLAG:8401 == 46
-;	PRINTFORMW 「끄읏… 으읏…」
-;	PRINTFORMW 「에잇, 가련한 소녀에게 중노동이라니 너무해!」
-;;タラの芽の天ぷら
-;ELSEIF CFLAG:8401 == 45
-;	PRINTFORMW 「뭐, 계절의 맛이지」
-;;自然薯のとろろと麦飯
-;ELSEIF CFLAG:8401 == 44
-;	PRINTFORMW 「역시 다시마를 먹는다면 보리밥이지」
-;	PRINTFORMW 「어머, 국물도 곁들이고」
-;;鶏つみれのちゃんこ
-;ELSEIF CFLAG:8401 == 43
-;	PRINTFORMW 「근데 산초나무를 나무 공이로 쓰는 걸 누가 생각했을까」
-;;鶏と山葵菜の炒め物
-;ELSEIF CFLAG:8401 == 42
-;	PRINTFORMW 「가끔은 얼큰한 것도 좋지」
-;ENDIF
-;
-;;あなたと一緒に料理
-;IF CFLAG:8402 == 1
-;	PRINTL 
-;	IF RAND:3 == 0
-;		PRINTFORMW 「도와줘서 고마줘」
-;		PRINTFORMW 레이무는 당신의 뺨에 키스를 하고 식탁에 요리를 늘어놓았다…
-;	ELSEIF RAND:2 == 0
-;		PRINTFORMW 「좋아, 담는 건 맡겨줘」
-;		PRINTFORMW 「빨리 해치우자」
-;	ELSE
-;		PRINTFORMW 「응, 이것도 옮기고」
-;		PRINTFORMW 「밥은 곧 갈 거야」
-;	ENDIF
-;;一人で料理
-;ELSE
-;	PRINTL 
-;	PRINTFORMW 「%CSTR:90%~! 다 됐어ー!」
-;	PRINTFORMW 레이무는 앞치마에 손을 닦으며 당신을 부르러 갔다…
-;ENDIF
-;
-;;料理技能がLv3以上のとき味噌汁と漬物はデフォでつきます.
-;;ただし,鍋物汁物の時は味噌汁はお休みです.
-;IF ABL:70 >= 3
-;	PRINTL 
-;	PRINTFORML %TSTR:5%
-;	;汁物
-;	IF GROUPMATCH(CFLAG:8401,13,28,43,49,54,55,59,62)
-;	ELSE
-;		IF RAND:14 == 0
-;			PRINTFORML 「파 된장국」
-;		ELSEIF RAND:13 == 0
-;			PRINTFORML 「순무 된장국」
-;		ELSEIF RAND:12 == 0
-;			PRINTFORML 「유부 된장국」
-;		ELSEIF RAND:11 == 0
-;			PRINTFORML 「무 된장국」
-;		ELSEIF RAND:10 == 0
-;			PRINTFORML 「두부 된장국」
-;		ELSEIF RAND:9 == 0
-;			PRINTFORML 「양파 된장국」
-;		ELSEIF RAND:8 == 0
-;			PRINTFORML 「양하 된장국」
-;		ELSEIF RAND:7 == 0
-;			PRINTFORML 「밀기울 된장국」
-;		ELSEIF RAND:6 == 0
-;			PRINTFORML 「나물 된장국」
-;		ELSEIF RAND:5 == 0
-;			PRINTFORML 「버들 된장국」
-;		ELSEIF RAND:4 == 0
-;			PRINTFORML 「두부튀김 된장국」
-;		ELSEIF RAND:3 == 0
-;			PRINTFORML 「버섯 된장국」
-;		ELSEIF RAND:2 == 0
-;			PRINTFORML 「가지 된장국」
-;		ELSE
-;			PRINTFORML 「감자 된장국」
-;		ENDIF
-;	ENDIF
-;	;漬物
-;	IF RAND:10 == 0
-;		PRINTFORML 「절인 락교」
-;	ELSEIF RAND:9 == 0
-;		PRINTFORML 「복신절임」
-;	ELSEIF RAND:8 == 0
-;		PRINTFORML 「절인 적무」
-;	ELSEIF RAND:7 == 0
-;		PRINTFORML 「담근 오이」
-;	ELSEIF RAND:6 == 0
-;		PRINTFORML 「절인 오이」
-;	ELSEIF RAND:5 == 0
-;		PRINTFORML 「절인 단무지」
-;	ELSEIF RAND:4 == 0
-;		PRINTFORML 「いぶり漬け」
-;	ELSEIF RAND:3 == 0
-;		PRINTFORML 「절인 채소」
-;	ELSEIF RAND:2 == 0
-;		PRINTFORML 「절인 배추」
-;	ELSE
-;		PRINTFORML 「절인 가지」
-;	ENDIF
-;	PRINTFORMW 이렇게 식탁에 놓였다
-;	PRINTL      ・
-;	PRINTL      ・
-;	PRINTL      ・
-;	PRINTL 
-;ELSE
-;	PRINTL
-;	PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% \@(TALENT:152 || TALENT:153) ? 애정이 담긴 # \@「%TSTR:5%」%조사만처리(TSTR:5,"를")% 만들었다.
-;	PRINTL      ・
-;	PRINTL      ・
-;	PRINTL      ・
-;ENDIF
-;ENDIF
-;;-------------------------------------------------
-;;弁当を主人に食べてもらった時
-;;TFLAG:99で料理の効果の基本値を取得可能
-;;-------------------------------------------------
-;IF TFLAG:200 == 600
-;;作ったものが石スープ
-;IF CFLAG:8401 == 0
-;	PRINTFORMW 
-;	PRINTFORML      에?
-;	PRINTFORML 
-;	PRINTFORMW                ?
-;	PRINTFORML 
-;	PRINTFORMW   ?
-;	PRINTFORML 
-;	PRINTFORML 
-;	PRINTFORML 
-;	PRINTFORMW ・・・
-;	PRINTFORMW ・・
-;	PRINTFORMW ・
-;	PRINTFORMW 당신은 정지된 사고를 겨우 가다듬었다.
-;	PRINTFORMW 접시 한가운데에는 틀림없이 "돌"이 자리 잡고 있다.
-;	PRINTFORMW 의미를 알 수 없어…
-;	PRINTFORML 
-;	PRINTFORMW 「의미를 모르겠다니 곤란하네」
-;	PRINTFORMW 「근처에서 돌멩이를 줍고? 흙을 씻고? 그 다음엔 삶고」
-;	PRINTFORMW 당신은 조심조심 스프를 입에 넣었다.
-;	PRINTFORMW 
-;	PRINTFORMW 아무 맛도 나지 않아…
-;	PRINTFORMW 
-;	PRINTFORMW 「무슨 소리야. 미네랄이 풍부하다고」
-;	PRINTFORMW 소금기마저 없다니 어떻게 해야 할까.
-;	PRINTFORMW 극빈 생활을 보낸 레이무에게는 처음부터 음식이라는 것에 대해 가르쳐야 할 듯하다…
-;	CFLAG:8400 = 1
-;ELSEIF ABL:70 >= 5 || TFLAG:99 == 1
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 멋진 퀄리티의 요리다.
-;	PRINTFORML 정신이 들었을 땐 이미 %CALLNAME:MASTER%의 접시가 텅 비어 있었다.
-;	PRINTFORMW %CALLNAME:MASTER%의 먹는 모습에 %조사처리(CALLNAME:TARGET,"는")% \@(MARK:9) ? 당연하다는 듯한 # 만족한 듯한\@ 눈초리로 이쪽을 바라보고 있다…….
-;ELSEIF ABL:70 >= 3
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 맛있다.
-;	PRINTFORMW 요리를 다 먹은 %조사처리(CALLNAME:MASTER,"는")% 만족스럽게 배를 쓰다듬었다.
-;ELSEIF ABL:70 >= 1
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 아예 맛없지도, 아주 맛있지도 않은 레벨이다.
-;	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:TARGET,"과")% \@(MARK:9) ? 어색한 침묵 속에서 # 담소하면서\@ 요리를 먹어치웠다.
-;ELSE
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTFORML 빈말로도 %CALLNAME:MASTER%의 입맛엔 맞지 않았던 것 같다.
-;	PRINTFORMW 그러나 이러니저러니 해도 %조사처리(CALLNAME:MASTER,"는")% 요리를 남김없이 먹을 수는 있었다.
-;ENDIF
-;PRINTW      ・
-;PRINTW      ・
-;PRINTW      ・
-;ENDIF
-;;-------------------------------------------------
-;;主人と一緒に弁当を食べた時
-;;TFLAG:99で料理の効果の基本値を取得可能
-;;-------------------------------------------------
-;IF TFLAG:200 == 601
-;IF CFLAG:8400 == 0
-;	PRINTFORMW 
-;	PRINTFORML      에?
-;	PRINTFORML 
-;	PRINTFORMW                ?
-;	PRINTFORML 
-;	PRINTFORMW   ?
-;	PRINTFORML 
-;	PRINTFORML 
-;	PRINTFORMW 당신은 정지된 사고를 겨우 가다듬었다.
-;	PRINTFORMW 접시 한가운데에는 틀림없이 "돌"이 자리 잡고 있다.
-;	PRINTFORMW 의미를 알 수 없어…
-;	PRINTFORML 
-;	PRINTFORMW 「의미를 모르겠다니 곤란하네」
-;	PRINTFORMW 「근처에서 돌멩이를 줍고? 흙을 씻고? 그 다음엔 삶고」
-;	PRINTFORMW 당신은 조심조심 스프를 입에 넣었다.
-;	PRINTFORMW 
-;	PRINTFORMW 아무 맛도 나지 않아…
-;	PRINTFORMW 
-;	PRINTFORMW 「무슨 소리야. 미네랄이 풍부하다고」
-;	PRINTFORMW 소금기마저 없다니 어떻게 해야 할까.
-;	PRINTFORMW 극빈 생활을 보낸 레이무에게는 처음부터 음식이라는 것에 대해 가르쳐야 할 듯하다…
-;	CFLAG:8400 = 1
-;ELSEIF (ABL:70 >= 5 || TFLAG:99 == 1) && TALENT:150
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 이 이상의 요리가 없을 만큼 걸작이다.
-;	PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 접시까지 먹을 기세로 내온 요리를 모조리 먹어치웠다.
-;	PRINTFORML 너무나도 게걸스럽게 먹는 모습에 %조사처리(CALLNAME:TARGET,"는")% 순간 깜짝 놀란 표정을 지었지만
-;	PRINTFORMW 자신의 요리가 마음에 들어서 그런다는 것을 알고는 만족한 듯한 미소를 띠며 한 그릇 더 먹을지를 물어왔다.
-;ELSEIF ABL:70 >= 5 || TFLAG:99 == 1
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 멋진 퀄리티의 요리다.
-;	PRINTFORML 정신이 들었을 땐 이미 %CALLNAME:MASTER%의 접시가 텅 비어 있었다.
-;	PRINTFORMW %CALLNAME:MASTER%의 먹는 모습에 %조사처리(CALLNAME:TARGET,"는")% \@(MARK:9) ? 당연하다는 듯한 # 만족한 듯한\@ 눈초리로 이쪽을 바라보고 있다…….
-;ELSEIF ABL:70 >= 3
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 맛있다.
-;	PRINTFORMW 요리를 다 먹은 %조사처리(CALLNAME:MASTER,"는")% 만족스럽게 배를 쓰다듬었다.
-;ELSEIF ABL:70 >= 1
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTL 아예 맛없지도, 아주 맛있지도 않은 레벨이다.
-;	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:TARGET,"과")% \@(MARK:9) ? 어색한 침묵 속에서 # 담소하면서\@ 요리를 먹어치웠다.
-;ELSE
-;	PRINTFORM %CALLNAME:TARGET%의 요리는
-;	PRINTFORML 빈말로도 %CALLNAME:MASTER%의 입맛엔 맞지 않았던 것 같다.
-;	PRINTFORMW 그러나 이러니저러니 해도 %조사처리(CALLNAME:MASTER,"는")% 요리를 남김없이 먹을 수는 있었다.
-;ENDIF
-;PRINTW      ・
-;PRINTW      ・
-;PRINTW      ・
-;ENDIF
-;;-------------------------------------------------
-;;弁当を売った時
-;;TFLAG:99で料理の値段を取得可能
-;;-------------------------------------------------
-;IF TFLAG:200 == 602
-;;初回の石スープをあろうことか売りに出したとき
-;IF CFLAG:8400 == 0
-;	PRINTFORMW 당신은 도시락… 을 팔기로 했다.
-;	PRINTFORMW 
-;	PRINTFORML      에?
-;	PRINTFORML 
-;	PRINTFORMW                ?
-;	PRINTFORML 
-;	PRINTFORMW   ?
-;	PRINTFORML 
-;	PRINTFORML 
-;	PRINTFORMW 당신은 정지된 사고를 겨우 가다듬었다.
-;	PRINTFORMW 접시 한가운데에는 틀림없이 "돌"이 자리 잡고 있었는데 이제 그 접시는 사라지고 없다.
-;	PRINTFORMW 그게 팔린 건가?
-;	PRINTFORMW 과연 누가 얼마를 내고 샀을까?
-;	PRINTFORMW 환상향은 알 수 없는 것들로 가득하다…
-;	;나라면… 레이무를 만나기 위해서라면, 돌 스프를 먹을 수 있다! 배 터지게!
-;	PRINTL
-;	CFLAG:8400 = 1
-;;あなたが一緒に作っておいて弁当を売りに出すと言い出したとき
-;ELSEIF CFLAG:8402 == 1
-;	PRINTFORMW 「도시락을 팔아?」
-;	PRINTFORMW 「모처럼 둘이서 만들었는데…」
-;;恋慕または親愛のとき
-;ELSEIF TALENT:150 == 1 || TALENT:151 == 1
-;	PRINTFORMW 「모처럼 %조사처리(CSTR:90,"를")% 위해 노력했는데」
-;	PRINTFORMW 「분명히 천벌 받을 거야」
-;;それ以外
-;ELSE
-;	PRINTFORMW 「맘대로 하든지?」
-;ENDIF
-;ENDIF
+[SKIPSTART]
+IF TFLAG:200 == 111
+;石のスープ未食
+IF CFLAG:8400 == 0
+	;Pixivで「石のスープ」を検索してみよう.おいィ?
+	TSTR:5 = 돌 스프
+	PRINTFORMW 「에… 요리?」
+	PRINTFORMW 「할 수 없네, 그렇게 내가 만든 요리를 먹고 싶으면 만들어도 되겠지」
+	PRINTFORMW 당신이 식탁에서 조용히 기다리고 있는 동안 뚜벅거리는 발걸음과 뭔가 익는 소리가 난다
+	PRINTFORMW 기대해도 좋을까…
+	PRINTW     「♪~」
+	PRINTW    「♪♪~」
+	PRINTW    「♪~♪~」
+	PRINTW      !
+	PRINTL 
+	PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% \@(TALENT:152 || TALENT:153) ? 애정이 담긴 # \@「%TSTR:5%」 %조사만처리(TSTR:5,"를")% 만들었다.
+	PRINTL      ・
+	PRINTL      ・
+	PRINTL      ・
+RETURN 0
+
+;作成前に一言
+;親愛または相愛である
+ELSEIF TALENT:152 == 1 || TALENT:153 == 1
+	;主人の料理技能が霊夢より上である
+	IF ABL:MASTER:70 > ABL:70
+		IF RAND:3 == 0
+			PRINTFORMW 「음… %조사처리(CSTR:90,"가")% 요리 잘하지 않아?」
+			PRINTFORMW 「될 수 있으면 가르쳐 줬으면 하는데…」
+			PRINTFORMW 당신은 옆에서 보면서 보완해주기로 했다.
+			PRINTFORMW 「고마워, 열심히 할게」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「므ー …이런 말하기 조금, 아니 엄청 분한데…」
+			PRINTFORMW 「…옆에서, 알려주지 않을래?」
+			PRINTFORMW 확실히 분한 표정에 당신은 쓴웃음을 지으며, 허락해줬다.
+			PRINTFORMW 「큿… 언젠가 찍 소리도 못하게 해줄 거니까, 각오해둬!」
+			;リアルに「ぎゃふん」という人は多分少ない.
+		ELSE
+			PRINTFORMW 「요리라… %조사처리(CSTR:90,"가")% 잘하니까, %조사처리(CSTR:90,"가")% 만들면 되잖아…」
+			PRINTFORMW 토라진 레이무에게, 당신은 레이무의 요리를 먹고 싶다고 말했다.
+			PRINTFORMW 「참나, 정말 선수라니까… 그럼, 옆에서 %조사처리(CSTR:90,"가")% 가르쳐 줘. 안 그럼 안 만들 거야」
+		ENDIF
+		PRINTFORML 
+		PRINTFORML 요리경험+5
+		EXP:70 += 5
+		CFLAG:8402 = 1
+	;主人の料理技能が霊夢と同等,またはLv4以上である
+	ELSEIF ABL:MASTER:70 == ABL:70 || ABL:MASTER:70 >= 4
+		IF RAND:3 == 0
+			PRINTFORMW 「후후, 뭘 같이 만들까?」
+			PRINTFORMW 「좋잖아, 공동작업♪」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「으흥, 좋ー앗♪ 그럼, 당신도 거들어줘」
+			PRINTFORMW 당신은 말없이 앞치마를 입고 준비를 도왔다…
+		ELSE
+			PRINTFORMW 「좋아, 같이 해볼까! %CSTR:90%도 서포트 부탁해」
+			PRINTFORMW 당신은 부엌에 식재료를 가져와서 레이무와 요리를 시작했다…
+		ENDIF
+		PRINTFORML 
+		PRINTFORML 애정경험+2
+		EXP:21 += 2
+		CFLAG:8402 = 1
+	;主人の料理技能が霊夢より下である
+	ELSE
+		;料理技能が3以上である
+		IF ABL:70 >= 3
+			IF RAND:3 == 0
+				PRINTFORMW 「어머, 배 고파?」
+				PRINTFORMW 「기다려 봐, 솜씨를 다해서 만들어 줄게!」
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「밥이라, 맡겨줘」
+				PRINTFORMW 「그래도 많이 나아졌지?」
+			ELSE
+				PRINTFORMW 「응? 밥? 이제 거의 다 됐으니까 나중에 마무리만 하면 돼」
+				PRINTFORMW 「괜찮아ー %조사처리(CSTR:90,"는")% 가만히 앉아 있어」
+				PRINTFORMW (뭐지… 지금, 의외로 행복, 한 걸…%UNICODE(0x2665)%)
+			ENDIF
+			;料理技能が2以下である
+		ELSEIF ABL:70 <= 2
+			IF RAND:3 == 0
+				PRINTFORMW 「응ー …나도 요리 실력은 없는데…」
+				PRINTFORMW 「그래도 %조사처리(CSTR:90,"를")% 위해서 노력할게」
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「에, 요리? 그게 일단 나도 여자고, 자취도 하긴 했지만」
+				PRINTFORMW 「…너무 기대하진 말아줘」
+			ELSE
+				PRINTFORMW 「뭔가 먹고 싶다, 라…」
+				PRINTFORMW (이런 거, 신사에 있었을 때부터 연습했으면 좋을 걸)
+			ENDIF
+		ENDIF
+		CFLAG:8402 = 0
+	ENDIF
+;恋慕である
+;ツンデレ風味に味付け
+ELSEIF TALENT:150 == 1
+	;料理技能が3以上である
+	IF ABL:70 >= 3
+		IF RAND:3 == 0
+			PRINTFORMW 「어머, 배 고파?」
+			PRINTFORMW 「어쩔 수 없지. 기다려 봐, 뭐 좀 만들어 줄게」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「밥? 에, 에에, 알았어」
+			PRINTFORMW (좋아, 조금은 나아진 모습을 보여줄 거야!)
+		ELSE
+			PRINTFORMW 「응? 밥? 이제 거의 다 됐으니까 나중에 마무리만 하면 돼」
+			PRINTFORMW 「괜찮아ー %조사처리(CSTR:90,"는")% 가만히 앉아서 기다려」
+		ENDIF
+	;料理技能が2以下である
+	ELSEIF ABL:70 <= 2
+		IF RAND:3 == 0
+			PRINTFORMW 「%CSTR:90%도 유별나지…」
+			PRINTFORMW 「그야 자취는 하고 있는데, 아직 누군가에게 선보일 정도로 좋지 않은걸?」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「에, 요리? 그야… 괜찮지만」
+			PRINTFORMW 「…너무 기대하진 말아줘」
+		ELSE
+			PRINTFORMW 「뭔가 먹고 싶다, 라…」
+			PRINTFORMW (이런 거, 신사에 있었을 때부터 연습했으면 좋을 걸)
+		ENDIF
+	ENDIF
+;淫乱である
+ELSEIF TALENT:170 == 1
+	IF RAND:3 == 0
+		PRINTFORMW 「에헤헤, 알몸에 에이프런 차림으로 요리할까?」
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「요리는 따분해… 나라면 많이 먹어도 괜찮다고?」
+	ELSE
+		PRINTFORMW 「요리? 알았어… 그래도 밥 먹고, 나도 먹어줘%UNICODE(0x2665)%」
+	ENDIF
+;服従である
+ELSEIF TALENT:160 == 1
+	IF RAND:3 == 0
+		PRINTFORMW 「아, 알겠어요…」
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「아, 알았어… 만들면 되지」
+	ELSE
+		PRINTFORMW 「요, 요리…? 괜찮지만, 잘 못해도 심한 일은 하지 마…」
+	ENDIF
+;それ以外
+ELSE
+	IF RAND:3 == 0
+		PRINTFORMW 「하아? 밥을 만들라고?」
+		PRINTFORMW 「흥, 식후에 목숨이 남아 있었으면 좋겠네」
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「헤에, 요리를 해라, 이거야?」
+		PRINTFORMW 「감금돼서 능욕당하는 노예가 만든 음식을, 먹고 싶단 말이지?」
+		PRINTFORMW 「너, 대단한 배짱이다. 에에, 괜찮아? 만들어 줄게」
+	ELSE
+		PRINTFORMW 「하아, 요리, 말입니까」
+		PRINTFORMW 「별로 나쁘진 않은데ー 칼 다루다 "살짝" 손이 미끄러지는 것도, 있을지 모르겠네?」
+	ENDIF
+ENDIF
+PRINTFORML
+
+;作る料理の判定
+;料理技能のLvによりレパートリーが増大.
+;ただし料理技能のLvが上がると一部低レベルのものは作らなくなります.
+
+;料理技能が5である
+IF ABL:70 == 5 && RAND:65 == 0
+	TSTR:5 = 송이버섯 볶음밥
+	CFLAG:8401 = 65
+ELSEIF ABL:70 == 5 && RAND:64 == 0
+	TSTR:5 = 무태장어 숯불구이
+	CFLAG:8401 = 64
+ELSEIF ABL:70 == 5 && RAND:63 == 0
+	TSTR:5 = 개똥지빠귀 조림
+	CFLAG:8401 = 63
+ELSEIF ABL:70 == 5 && RAND:62 == 0
+	TSTR:5 = 산채 수타 소바
+	CFLAG:8401 = 62
+ELSEIF ABL:70 == 5 && RAND:61 == 0
+	TSTR:5 = 가시고기 조림
+	CFLAG:8401 = 61
+ELSEIF ABL:70 == 5 && RAND:60 == 0
+	TSTR:5 = 메추라기 버섯 구이
+	CFLAG:8401 = 60 
+ELSEIF ABL:70 == 5 && RAND:59 == 0
+	TSTR:5 = 스키야키
+	CFLAG:8401 = 59
+ELSEIF ABL:70 == 5 && RAND:58 == 0
+	TSTR:5 = 산짐승 초밥
+	CFLAG:8401 = 58
+ELSEIF ABL:70 == 5 && RAND:57 == 0
+	TSTR:5 = 하쿠레이 청주
+	CFLAG:8401 = 57
+ELSEIF ABL:70 == 5 && RAND:56 == 0
+	TSTR:5 = 말고기 육회
+	CFLAG:8401 = 56
+ELSEIF ABL:70 == 5 && RAND:55 == 0
+	TSTR:5 = 말고기 전골
+	CFLAG:8401 = 55
+ELSEIF ABL:70 == 5 && RAND:54 == 0
+	TSTR:5 = 멧돼지탕
+	CFLAG:8401 = 54
+ELSEIF ABL:70 == 5 && RAND:53 == 0
+	TSTR:5 = 삶아 으깬 무
+	CFLAG:8401 = 53
+ELSEIF ABL:70 == 5 && RAND:52 == 0
+	TSTR:5 = 데리야키 닭구이
+	CFLAG:8401 = 52
+ELSEIF ABL:70 == 5 && RAND:51 == 0
+	TSTR:5 = 꿩 산초나무구이
+	CFLAG:8401 = 51
+ELSEIF ABL:70 == 5 && RAND:50 == 0
+	TSTR:5 = 오리구이
+	CFLAG:8401 = 50
+;すみません,それ来月からなんですよ…
+ELSEIF ABL:70 == 5 && RAND:49 == 0
+	TSTR:5 = 잡탕죽
+	CFLAG:8401 = 49
+ELSEIF ABL:70 == 5 && RAND:48 == 0
+	TSTR:5 = 훈제돼지 시금치 후추볶음
+	CFLAG:8401 = 48
+ELSEIF ABL:70 == 5 && RAND:47 == 0
+	TSTR:5 = 가지 붕어구이
+	CFLAG:8401 = 47
+ELSEIF ABL:70 == 5 && RAND:46 == 0
+	TSTR:5 = 시금치 가래나무 볶음
+	CFLAG:8401 = 46
+ELSEIF ABL:70 == 5 && RAND:45 == 0
+	TSTR:5 = 두릅튀김
+	CFLAG:8401 = 45
+ELSEIF ABL:70 == 5 && RAND:44 == 0
+	TSTR:5 = 참마 다시마 맥반
+	CFLAG:8401 = 44
+ELSEIF ABL:70 == 5 && RAND:43 == 0
+	TSTR:5 = 닭 어묵 전골
+	CFLAG:8401 = 43
+ELSEIF ABL:70 == 5 && RAND:42 == 0
+	TSTR:5 = 닭 고추냉이 볶음
+	CFLAG:8401 = 42
+
+;料理技能4以上
+ELSEIF ABL:70 >= 4 && RAND:41 == 0
+	TSTR:5 = 축전자
+	CFLAG:8401 = 41 
+ELSEIF ABL:70 >= 4 && RAND:40 == 0
+	TSTR:5 = 은어 소금구이
+	CFLAG:8401 = 40
+ELSEIF ABL:70 >= 4 && RAND:39 == 0
+	TSTR:5 = 닭조림
+	CFLAG:8401 = 39
+ELSEIF ABL:70 >= 4 && RAND:38 == 0
+	TSTR:5 = 송어 산초구이
+	CFLAG:8401 = 38
+ELSEIF ABL:70 >= 4 && RAND:37 == 0
+	TSTR:5 = 내장 된장조림
+	CFLAG:8401 = 37
+ELSEIF ABL:70 >= 4 && RAND:36 == 0
+	TSTR:5 = 검은콩조림
+	CFLAG:8401 = 36
+ELSEIF ABL:70 >= 4 && RAND:35 == 0
+	TSTR:5 = 시금치참깨무침
+	CFLAG:8401 = 35
+ELSEIF ABL:70 >= 4 && RAND:34 == 0
+	TSTR:5 = 참마 생선회
+	CFLAG:8401 = 34
+ELSEIF ABL:70 >= 4 && RAND:33 == 0
+	TSTR:5 = 고기 감자조림
+	CFLAG:8401 = 33
+ELSEIF ABL:70 >= 4 && RAND:32 == 0
+	TSTR:5 = 닭완두콩볶음
+	CFLAG:8401 = 32
+ELSEIF ABL:70 >= 4 && RAND:31 == 0
+	TSTR:5 = 새우튀김
+	CFLAG:8401 = 31
+ELSEIF ABL:70 >= 4 && RAND:30 == 0
+	TSTR:5 = 고사리흰참깨무침
+	CFLAG:8401 = 30
+
+;料理技能3以上
+ELSEIF ABL:70 >= 3 && RAND:29 == 0
+	TSTR:5 = 토란조림
+	CFLAG:8401 = 29
+ELSEIF ABL:70 >= 3 && RAND:28 == 0
+	TSTR:5 = 키리탄포
+	CFLAG:8401 = 28
+ELSEIF ABL:70 >= 3 && RAND:27 == 0
+	TSTR:5 = 된장 곤약
+	CFLAG:8401 = 27
+ELSEIF ABL:70 >= 3 && RAND:26 == 0
+	TSTR:5 = 닭튀김
+	CFLAG:8401 = 26
+ELSEIF ABL:70 >= 3 && RAND:25 == 0
+	TSTR:5 = 가지볶음
+	CFLAG:8401 = 25
+ELSEIF ABL:70 >= 3 && RAND:24 == 0
+	TSTR:5 = 두부튀김
+	CFLAG:8401 = 24
+ELSEIF ABL:70 >= 3 && RAND:23 == 0
+	TSTR:5 = 콩나물고기된장볶음
+	CFLAG:8401 = 23
+ELSEIF ABL:70 >= 3 && RAND:22 == 0
+	TSTR:5 = 해물튀김
+	CFLAG:8401 = 22
+ELSEIF ABL:70 >= 3 && RAND:21 == 0
+	TSTR:5 = 삶은 무
+	IF ABL:70 >= 4
+		TSTR:5 = 林巻大風呂吹大根
+	ENDIF
+	CFLAG:8401 = 21
+ELSEIF ABL:70 >= 3 && RAND:20 == 0
+	TSTR:5 = 송어 소금구이
+	CFLAG:8401 = 20
+
+;料理技能2以上
+ELSEIF ABL:70 == 2 && RAND:19 == 0
+	TSTR:5 = 채소절임
+	CFLAG:8401 = 19
+ELSEIF ABL:70 == 2 && RAND:18 == 0
+	TSTR:5 = 양하 된장국
+	CFLAG:8401 = 18
+ELSEIF ABL:70 >= 2 && RAND:17 == 0
+	TSTR:5 = 닭꼬치
+	CFLAG:8401 = 17
+ELSEIF ABL:70 == 2 && RAND:16 == 0
+	TSTR:5 = 무 된장국
+	CFLAG:8401 = 16
+ELSEIF ABL:70 == 2 && RAND:15 == 0
+	TSTR:5 = 오이절임
+	CFLAG:8401 = 15
+ELSEIF ABL:70 >= 2 && RAND:14 == 0
+	TSTR:5 = 표고버섯 구이
+	CFLAG:8401 = 14
+ELSEIF ABL:70 >= 2 && RAND:13 == 0
+	TSTR:5 = 수제비
+	CFLAG:8401 = 13
+ELSEIF ABL:70 >= 2 && RAND:12 == 0
+	TSTR:5 = 고구마 튀김
+	CFLAG:8401 = 12
+ELSEIF ABL:70 >= 2 && RAND:11 == 0
+	TSTR:5 = 계란 후라이
+	CFLAG:8401 = 11
+ELSEIF ABL:70 >= 2 && RAND:10 == 0
+	TSTR:5 = 무채볶음
+	CFLAG:8401 = 10
+
+;料理技能1以上
+;野蒜とか知ってる人いるのかなぁ
+ELSEIF ABL:70 >= 1 && RAND:9 == 0
+	TSTR:5 = 달래 초된장무침
+	CFLAG:8401 = 9
+ELSEIF ABL:70 >= 1 && RAND:8 == 0
+	TSTR:5 = 우렁이조림
+	CFLAG:8401 = 8
+ELSEIF ABL:70 == 1 && RAND:7 == 0
+	TSTR:5 = 두부된장국
+	CFLAG:8401 = 7
+ELSEIF ABL:70 == 1 && RAND:6 == 0
+	TSTR:5 = 물두부
+	CFLAG:8401 = 6
+ELSEIF ABL:70 == 1 && RAND:5 == 0
+	TSTR:5 = 냉두부
+	CFLAG:8401 = 5
+
+;料理技能0
+;一般的に食されて無いだけともいう.
+ELSEIF ABL:70 == 0 && RAND:4 == 0
+	TSTR:5 = 민들레 나물
+	CFLAG:8401 = 4
+ELSEIF ABL:70 == 0 && RAND:3 == 0
+	TSTR:5 = 광대버섯찜
+	CFLAG:8401 = 3
+ELSEIF ABL:70 == 0 && RAND:2 == 0
+	TSTR:5 = 삶은 뱀밥
+	CFLAG:8401 = 2
+ELSEIF ABL:70 == 0
+	TSTR:5 = 도토리경단
+	CFLAG:8401 = 1
+ENDIF
+
+;作る料理に対するコメント
+;料理技能Lv0にはツッコミが入る
+IF ABL:70 == 0
+PRINTFORMW 레이무에겐 전과가 있다…
+PRINTFORMW 당신은 재료를 보이도록 요구했다
+ENDIF
+
+;霊夢が恋慕であり,主人の料理技能がLv4以上であればフォローできる
+;ドングリの練り団子
+IF CFLAG:8401 == 1
+PRINTFORMW 레이무가 준비한 재료는 도토리였다
+	;霊夢が恋慕であり,主人の料理技能がLv4以上
+	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
+		PRINTFORMW 또 귀찮은 걸…
+		PRINTFORMW 먹을 수 있도록 하기까지 수고가 많이 드는 물건이다.
+		PRINTFORMW 지금의 레이무가 요리할 수 있다고는 전혀 생각이 들지 않는다…
+	ELSE
+		PRINTFORMW 「알잖아? 도토리는 먹을 수 있는 거라고?」
+		PRINTFORMW 말은 들었는데…
+	ENDIF
+;土筆を煮たもの
+ELSEIF CFLAG:8401 == 2
+PRINTFORMW 레이무가 준비한 재료는 뱀밥이었다
+	;霊夢が恋慕であり,主人の料理技能がLv4以上
+	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
+		PRINTFORMW 또 근처에서 뜯어온 걸…
+		PRINTFORMW 일단 먹을 수 있는 걸 만들 순 있겠지만
+		PRINTFORMW 지금의 레이무가 요리할 수 있다고는 전혀 생각이 들지 않는다…
+	ELSE
+		;언어 유희로 보이는 부분이 있는데 그냥 새로 썼습니다. 원문은 아래와 같습니다.
+		;PRINTFORMW …土の筆?
+		;PRINTFORMW 「つくしよ,つ・く・し」
+		;PRINTFORMW なるほど…,しかし食べられるのだろうか…
+		PRINTFORMW 뱀밥? 뱀이 먹어야 하는 거 아냐?
+		PRINTFORMW 「먹는 거 맞아. 토필이라고도 하지」
+		PRINTFORMW 그런가… 근데 먹을 만한 게 나올까…
+	ENDIF
+;ベニテングタケの炙り
+ELSEIF CFLAG:8401 == 3
+PRINTFORMW 레이무가 준비한 재료는 광대 버섯이었다
+	;霊夢が恋慕であり,主人の料理技能がLv4以上…でもフォロー不能
+	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
+		PRINTFORMW 동작 그만, 이건 유명한 독 버섯이잖아.
+		PRINTFORMW 「뭘 모르네ー 이거 꽤 맛있거든?」
+		PRINTFORMW 독 성분이 맛있다고는 들었지만…
+	ELSE
+		PRINTFORMW 「좀 어질어질해지긴 하지만 이 버섯 맛있어~♪」
+		PRINTFORMW 당신은 레이무가 준비한 무시무시한 버섯을 전전긍긍하는 마음으로 바라볼 수밖에 없었다…
+	ENDIF
+;タンポポのおひたし
+ELSEIF CFLAG:8401 == 4
+PRINTFORMW 레이무가 준비한 재료는 민들레였다
+	;霊夢が恋慕であり,主人の料理技能がLv4以上
+	IF ABL:MASTER:70 >= 4 && TALENT:150 == 1
+		PRINTFORMW 확실히 먹는 걸 만들 순 있겠지만
+		PRINTFORMW 떫은 맛을 확실히 제거하지 않으면 참사가 벌어진다.
+		PRINTFORMW 지금의 레이무가 요리할 수 있다고는 전혀 생각이 들지 않는다…
+	ELSE
+		PRINTFORMW 굳이 말하자면… 이거 채소가 아니라, 식물이다…
+	ENDIF
+;以下Lv2以降.主人が一緒に料理したとき,Lv3以上でフォローできる.
+;冷奴または湯豆腐
+ELSEIF CFLAG:8401 == 5 && CFLAG:8401 == 6
+	PRINTFORMW 「…실패하는 것보단 낫지」
+	;主人が一緒に料理したとき,Lv3以上
+	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+		PRINTFORMW 당신은 레이무에게 양념도 곁들이도록 조언했다…
+	ENDIF
+;豆腐,茗荷,大根の味噌汁
+ELSEIF CFLAG:8401 == 7 && CFLAG:8401 == 16 && CFLAG:8401 == 18
+	PRINTFORMW 「된장국 정도야 나도…」
+	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+		PRINTFORMW 당신은 레이무를 훈훈하게 바라보고 있다…
+	ENDIF
+;田螺の煮物
+ELSEIF CFLAG:8401 == 8
+	PRINTFORMW 「어라, 좋은 게 있네♪」
+	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+		PRINTFORMW 당신은 확실히 양념으로 맛을 내도록 조언했다…
+	ENDIF
+;野蒜(のびる)の酢味噌和え
+ELSEIF CFLAG:8401 == 9
+	PRINTFORMW 「어라, 좋은 게 자라고 있네♪」
+	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+		PRINTFORMW 당신은 레이무와 함께 달래를 캤다…
+	ENDIF
+;大根の菜炒め
+ELSEIF CFLAG:8401 == 10
+	PRINTFORMW 「오늘은 이걸로 할까」
+;玉子焼き
+ELSEIF CFLAG:8401 == 11
+	;料理技能がLv3以上であれば余裕です
+	IF ABL:70 >= 3
+		PRINTFORMW 「영차, 영차♪」
+	;ちょっと破れたり焦がしたりします.
+	ELSE
+		PRINTFORMW 「기본이라고는 하는데… 할 수 있을까」
+		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+			PRINTFORMW 계란을 잘 풀기, 프라이팬을 잘 달구기, 큰 거품은 조리용 나무 젓가락으로 터뜨리기 등
+			PRINTFORMW 세세하게 당신은 주의를 주며, 비명을 지르며 계란과 씨름하는 레이무를 지켜보고 있다…
+		ENDIF
+	ENDIF
+;薩摩芋の天ぷら
+ELSEIF CFLAG:8401 == 12
+	;料理技能がLv3以上であれば成功です
+	IF ABL:70 >= 3
+		PRINTFORMW 「바삭바삭하고 맛있네」
+	;天ぷらって慣れるまでは大変だぜ.温度管理が.
+	ELSE
+		PRINTFORMW 「앗 뜨거워!?」
+		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+			PRINTFORMW 당신은 튀김옷을 만드는 법 등을 사려깊게 지도했다…
+		ENDIF
+	ENDIF
+;水団
+ELSEIF CFLAG:8401 == 13
+	;料理技能がLv3以上であれば本来の水団です
+	IF ABL:70 >= 3
+		PRINTFORMW 「당근, 표고 버섯, 소나무 잎을 넣으면… 완성!」
+	;霊夢…それは戦時中の代用食や…
+	ELSE
+		PRINTFORMW 「………밀가루를 반죽해서 삶으면 되지?」
+		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+			PRINTFORMW 당신은 그건 다른 요리라면서 황급히 끊고
+			PRINTFORMW 제대로 수제비 만드는 법을 처음부터 알려줬다…
+		ENDIF
+	ENDIF
+;椎茸の網焼き
+ELSEIF CFLAG:8401 == 14
+	;料理技能がLv3以上であれば色々添えてくれます.
+	IF ABL:70 >= 3
+		PRINTFORMW 「생강을 넣으면 좋겠네…」
+	;焼いただけ.美味いけどさ.
+	ELSE
+		PRINTFORMW 「굽기만 하면…」
+		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+			PRINTFORMW 당신은 풍로의 불을 피우며 레이무의 요리를 기대했다…
+		ENDIF
+	ENDIF
+;きゅうりの糠漬け
+ELSEIF CFLAG:8401 == 15
+	PRINTFORMW 「겨된장에 하루 정도 담가 두면 좋다고 하는데…」
+	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+		PRINTFORMW 당신은 겨된장에 제대로 묵히는 걸 잊지 않도록 당부했다…
+	ENDIF
+;焼き鳥
+ELSEIF CFLAG:8401 == 17
+	;料理技能がLv4以上で一人前です
+	IF ABL:70 >= 4
+		PRINTFORMW 「후훗, 꼬챙이로 꿰는 게 닭꼬치 요리의 시작이지」
+	;料理レベルがLv3だと普通の焼き鳥です.串に刺して焼いただけ.
+	ELSEIF ABL:70 == 3
+		PRINTFORMW 「응, 좋은 느낌?」
+	ELSE
+		PRINTFORMW 「굽기만 하면…」
+		IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+			PRINTFORMW 당신은 풍로의 불을 피우며 레이무의 요리를 기대했다…
+		ENDIF
+	ENDIF
+;野沢菜漬け
+ELSEIF CFLAG:8401 == 19
+	PRINTFORMW 「됐겠지…?」
+	IF CFLAG:8402 == 1 && ABL:MASTER:70 >= 3
+		PRINTFORMW 레이무는 아사즈케를 만든 것 같다…
+		PRINTFORMW 언젠가 제대로 절임을 가르쳐야 할 것이다
+	ENDIF
+	
+;料理技能Lv3以上
+
+;山女の塩焼き
+ELSEIF CFLAG:8401 == 20
+	PRINTFORMW 넘치는 기름이 풍로의 불에 그슬려 지글지글 소리를 내고 있다…
+	PRINTFORMW 「『물고기는 영주에게 굽게 하고 떡은 거지에게 굽게 하라』인가」
+	PRINTFORMW 「좋아, 잘 됐어」
+;風呂吹き大根
+ELSEIF CFLAG:8401 == 21
+	;料理技能がLv5の時,林巻大風呂吹大根にグレードアップ…させたいなぁ
+	IF ABL:70 == 5
+		PRINTFORMW 찜통의 뚜껑을 여는 순간 유자의 무의 좋은 향기가 주방을 채웠다.
+		PRINTFORMW 「결과는 어떨까… 아핫, 나답게 최고네」
+	ELSE
+		PRINTFORMW 「이런 식일까」
+		PRINTFORMW 레이무는 접시에 담으며 된장 양념을 많이 냈다…
+	ENDIF
+;天ぷらのかき揚げ
+ELSEIF CFLAG:8401 == 22
+	PRINTFORMW 「한번에 넣으면 기름 온도가 떨어지지…」
+	PRINTFORMW 「좋앗, 됐어!」
+;もやしの肉味噌炒め
+ELSEIF CFLAG:8401 == 23
+	PRINTFORMW 「이얏」
+	PRINTFORMW 중화 냄비 위에서 고기와 콩나물이 흩날렸다
+	PRINTFORMW 「콩나물에 불이 닿기 전에 접시에 담도록… 됐다!」
+;揚げ出し豆腐
+ELSEIF CFLAG:8401 == 24
+	PRINTFORMW 「생강을 넣은 팥앙금을 듬뿍 넣어라…」
+	PRINTFORMW 「응, 잘 되지 않았어?」
+;焼き茄子
+ELSEIF CFLAG:8401 == 25
+	PRINTFORMW 「아차찻!」
+	PRINTFORMW 「맛있었으면 좋겠네…」
+;鶏のから揚げ
+ELSEIF CFLAG:8401 == 26
+	PRINTFORMW 「슬슬 밑간도 할까…?」
+	PRINTFORMW 「튀김이라니 사치 부리네에」
+	PRINTFORMW 「조교사는 이런 걸까」
+;里芋の煮っ転がし
+ELSEIF CFLAG:8401 == 27
+	PRINTFORMW 「자, 마무리로 간장을 넣고 뚜껑을 닫자」
+	PRINTFORMW 「나머지는 푹 졸이기만 하면 돼」
+;きりたんぽ鍋
+ELSEIF CFLAG:8401 == 28
+	PRINTFORMW 「좋은 버섯이 들어갔네♪」
+	PRINTFORMW 「그렇지, 국물도 듬뿍」
+;味噌田楽
+ELSEIF CFLAG:8401 == 29
+	PRINTFORMW 「풍로는 참 편하네…」
+	PRINTFORMW 「이러면 될까?」
+
+;料理技能Lv4以上
+
+
+;筑前煮
+ELSEIF CFLAG:8401 == 41
+	PRINTFORMW 「응, 좋은 느낌」
+	PRINTFORMW 「이제 뚜껑을 닫고…」
+;鮎の塩焼き
+ELSEIF CFLAG:8401 == 40
+	PRINTFORMW 「아~ 좋은 향기」
+	PRINTFORMW 「역시 은어답네」
+;鶏の南蛮漬け
+ELSEIF CFLAG:8401 == 39
+	PRINTFORMW 「옷이 삭아버렸지만…」
+	PRINTFORMW 「이건 이거대로 맛있어서 곤란하네」
+;国鱒の山椒焼き
+ELSEIF CFLAG:8401 == 38
+	PRINTFORMW 「자, 이런 걸까?」
+;味噌のモツ煮
+ELSEIF CFLAG:8401 == 37
+	PRINTFORMW 「근데 밖에서 들여온 문화는…」
+	PRINTFORMW 「먹어 보면 생각보다 맛있네」
+;黒豆の煮物
+ELSEIF CFLAG:8401 == 36
+	PRINTFORMW 「녹슨 못은 어디 있을까」
+;ほうれん草の胡麻和え
+ELSEIF CFLAG:8401 == 35
+	PRINTFORMW 「참깨는 갈아놓은 게 좋을까」
+;山芋の刺身
+ELSEIF CFLAG:8401 == 34
+	PRINTFORMW 「식칼은… 아, 있구나」
+;肉じゃが
+ELSEIF CFLAG:8401 == 33
+	PRINTFORMW 「돼지고기도 이번에 만들어 볼까」
+;鶏セセリと豌豆(えんどう)の炒め物
+ELSEIF CFLAG:8401 == 32
+	PRINTFORMW 「근데 이거 몇 명 분이야…」
+	PRINTFORMW 「맛있지만 적어서 아쉬워」
+;水エビの素揚げ
+ELSEIF CFLAG:8401 == 31
+	PRINTFORMW 「남은 소금은 제대로 회수해야지」
+;蕨(わらび)の白和え
+ELSEIF CFLAG:8401 == 30
+	PRINTFORMW 「그나저나 두부 가게는 간수를 어디서 얻는 걸까…」
+	PRINTFORMW 「뭐, 알게 뭐야」
+
+;料理技能が5である
+
+;松茸の炊き込みご飯
+ELSEIF CFLAG:8401 == 65
+	PRINTFORMW 「모처럼 노력했으니 %조사처리(CSTR:90,"가")% 기꺼이 받아줘야지」
+	PRINTFORMW 「아~ 좋은 향기」
+;大鰻の炭火焼
+ELSEIF CFLAG:8401 == 64
+	PRINTFORMW 탕!!
+	PRINTFORMW 레이무는 도마에 『그것』을 묶고 말없이 처리하기 시작했다…
+;鶫(つぐみ)の時雨煮
+ELSEIF CFLAG:8401 == 63
+	PRINTFORMW 「바깥에서는 수가 줄어서 먹지 못한다는데…」
+	PRINTFORMW 「뭐, 덕분에 여기에는 널려 있네」
+;山菜の手打ち蕎麦
+ELSEIF CFLAG:8401 == 62
+	PRINTFORMW 「질기게 하려면 2할 정도 넣으면 될까」
+;イトウの煮付け
+ELSEIF CFLAG:8401 == 61
+	PRINTFORMW 「생강하고 파로 비린내를 없애고…」
+;本シメジと鶉(うずら)の炒め物
+ELSEIF CFLAG:8401 == 60
+	PRINTFORMW 「버섯 향기가 좋구나」
+;すき焼き
+ELSEIF CFLAG:8401 == 59
+	PRINTFORMW 「%조사처리(CSTR:90,"는")% 관서풍? 관동풍? 어느 쪽이야?」
+;山の幸のちらし寿司
+ELSEIF CFLAG:8401 == 58
+	PRINTFORMW 「아ー 팔 아파ー」
+	PRINTFORMW 「초밥 만들면 냄새가 지독해ー」
+;博麗大吟醸
+ELSEIF CFLAG:8401 == 57
+	PRINTFORMW 「에헤헤… 비장의 물건을 보여줄 때가 왔네」
+;馬刺し
+ELSEIF CFLAG:8401 == 56
+	PRINTFORMW 「마늘이랑 생강즙을 곁들었어」
+;桜鍋
+ELSEIF CFLAG:8401 == 55
+	PRINTFORMW 「자, 모처럼의 냄비 요리를 화덕에 넣어볼까」
+;牡丹鍋
+ELSEIF CFLAG:8401 == 54
+	PRINTFORMW 「흥, 멧돼지 따위가 하쿠레이 무녀에게 맞서다니 1000년도 이르지」
+;蕪のそぼろ煮
+ELSEIF CFLAG:8401 == 53
+	PRINTFORMW 「국물은… 좋아, 잘 됐어」
+;軍鶏の照り焼き
+ELSEIF CFLAG:8401 == 52
+	PRINTFORMW 「할짝… 흐음, 국물은 이렇고」
+	PRINTFORMW 「자~ 그럼 불은 잘 나오고 있나?」
+;雉の山椒煮
+ELSEIF CFLAG:8401 == 51
+	PRINTFORMW 「뭔가 자꾸 울어서, 쏴… 버렸네」
+;鴨の炙り
+ELSEIF CFLAG:8401 == 50
+	PRINTFORMW 「이 눌어 붙은 자국, 말이 안 나오네」
+;煮込み雑炊
+ELSEIF CFLAG:8401 == 49
+	PRINTFORMW 「뭐? 다음 달부터?」
+	PRINTFORMW 「무슨 소리야, 지금 만들고 있잖아?」
+;豚の燻製とほうれん草の胡椒炒め
+ELSEIF CFLAG:8401 == 48
+	PRINTFORMW 「후추는 쓸데없이 비싸…」
+	PRINTFORMW 「뭐, 수요가 많으니까 어쩔 수 없나」
+;茄子の煮浸し
+ELSEIF CFLAG:8401 == 47
+	PRINTFORMW 「끈적해서 견딜 수가 없어~」
+;ほうれん草の鬼胡桃和え
+ELSEIF CFLAG:8401 == 46
+	PRINTFORMW 「끄읏… 으읏…」
+	PRINTFORMW 「에잇, 가련한 소녀에게 중노동이라니 너무해!」
+;タラの芽の天ぷら
+ELSEIF CFLAG:8401 == 45
+	PRINTFORMW 「뭐, 계절의 맛이지」
+;自然薯のとろろと麦飯
+ELSEIF CFLAG:8401 == 44
+	PRINTFORMW 「역시 다시마를 먹는다면 보리밥이지」
+	PRINTFORMW 「어머, 국물도 곁들이고」
+;鶏つみれのちゃんこ
+ELSEIF CFLAG:8401 == 43
+	PRINTFORMW 「근데 산초나무를 나무 공이로 쓰는 걸 누가 생각했을까」
+;鶏と山葵菜の炒め物
+ELSEIF CFLAG:8401 == 42
+	PRINTFORMW 「가끔은 얼큰한 것도 좋지」
+ENDIF
+
+;あなたと一緒に料理
+IF CFLAG:8402 == 1
+	PRINTL 
+	IF RAND:3 == 0
+		PRINTFORMW 「도와줘서 고마줘」
+		PRINTFORMW 레이무는 당신의 뺨에 키스를 하고 식탁에 요리를 늘어놓았다…
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「좋아, 담는 건 맡겨줘」
+		PRINTFORMW 「빨리 해치우자」
+	ELSE
+		PRINTFORMW 「응, 이것도 옮기고」
+		PRINTFORMW 「밥은 곧 갈 거야」
+	ENDIF
+;一人で料理
+ELSE
+	PRINTL 
+	PRINTFORMW 「%CSTR:90%~! 다 됐어ー!」
+	PRINTFORMW 레이무는 앞치마에 손을 닦으며 당신을 부르러 갔다…
+ENDIF
+
+;料理技能がLv3以上のとき味噌汁と漬物はデフォでつきます.
+;ただし,鍋物汁物の時は味噌汁はお休みです.
+IF ABL:70 >= 3
+	PRINTL 
+	PRINTFORML %TSTR:5%
+	;汁物
+	IF GROUPMATCH(CFLAG:8401,13,28,43,49,54,55,59,62)
+	ELSE
+		IF RAND:14 == 0
+			PRINTFORML 「파 된장국」
+		ELSEIF RAND:13 == 0
+			PRINTFORML 「순무 된장국」
+		ELSEIF RAND:12 == 0
+			PRINTFORML 「유부 된장국」
+		ELSEIF RAND:11 == 0
+			PRINTFORML 「무 된장국」
+		ELSEIF RAND:10 == 0
+			PRINTFORML 「두부 된장국」
+		ELSEIF RAND:9 == 0
+			PRINTFORML 「양파 된장국」
+		ELSEIF RAND:8 == 0
+			PRINTFORML 「양하 된장국」
+		ELSEIF RAND:7 == 0
+			PRINTFORML 「밀기울 된장국」
+		ELSEIF RAND:6 == 0
+			PRINTFORML 「나물 된장국」
+		ELSEIF RAND:5 == 0
+			PRINTFORML 「버들 된장국」
+		ELSEIF RAND:4 == 0
+			PRINTFORML 「두부튀김 된장국」
+		ELSEIF RAND:3 == 0
+			PRINTFORML 「버섯 된장국」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「가지 된장국」
+		ELSE
+			PRINTFORML 「감자 된장국」
+		ENDIF
+	ENDIF
+	;漬物
+	IF RAND:10 == 0
+		PRINTFORML 「절인 락교」
+	ELSEIF RAND:9 == 0
+		PRINTFORML 「복신절임」
+	ELSEIF RAND:8 == 0
+		PRINTFORML 「절인 적무」
+	ELSEIF RAND:7 == 0
+		PRINTFORML 「담근 오이」
+	ELSEIF RAND:6 == 0
+		PRINTFORML 「절인 오이」
+	ELSEIF RAND:5 == 0
+		PRINTFORML 「절인 단무지」
+	ELSEIF RAND:4 == 0
+		PRINTFORML 「いぶり漬け」
+	ELSEIF RAND:3 == 0
+		PRINTFORML 「절인 채소」
+	ELSEIF RAND:2 == 0
+		PRINTFORML 「절인 배추」
+	ELSE
+		PRINTFORML 「절인 가지」
+	ENDIF
+	PRINTFORMW 이렇게 식탁에 놓였다
+	PRINTL      ・
+	PRINTL      ・
+	PRINTL      ・
+	PRINTL 
+ELSE
+	PRINTL
+	PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% \@(TALENT:152 || TALENT:153) ? 애정이 담긴 # \@「%TSTR:5%」%조사만처리(TSTR:5,"를")% 만들었다.
+	PRINTL      ・
+	PRINTL      ・
+	PRINTL      ・
+ENDIF
+ENDIF
+;-------------------------------------------------
+;弁当を主人に食べてもらった時
+;TFLAG:99で料理の効果の基本値を取得可能
+;-------------------------------------------------
+IF TFLAG:200 == 600
+;作ったものが石スープ
+IF CFLAG:8401 == 0
+	PRINTFORMW 
+	PRINTFORML      에?
+	PRINTFORML 
+	PRINTFORMW                ?
+	PRINTFORML 
+	PRINTFORMW   ?
+	PRINTFORML 
+	PRINTFORML 
+	PRINTFORML 
+	PRINTFORMW ・・・
+	PRINTFORMW ・・
+	PRINTFORMW ・
+	PRINTFORMW 당신은 정지된 사고를 겨우 가다듬었다.
+	PRINTFORMW 접시 한가운데에는 틀림없이 "돌"이 자리 잡고 있다.
+	PRINTFORMW 의미를 알 수 없어…
+	PRINTFORML 
+	PRINTFORMW 「의미를 모르겠다니 곤란하네」
+	PRINTFORMW 「근처에서 돌멩이를 줍고? 흙을 씻고? 그 다음엔 삶고」
+	PRINTFORMW 당신은 조심조심 스프를 입에 넣었다.
+	PRINTFORMW 
+	PRINTFORMW 아무 맛도 나지 않아…
+	PRINTFORMW 
+	PRINTFORMW 「무슨 소리야. 미네랄이 풍부하다고」
+	PRINTFORMW 소금기마저 없다니 어떻게 해야 할까.
+	PRINTFORMW 극빈 생활을 보낸 레이무에게는 처음부터 음식이라는 것에 대해 가르쳐야 할 듯하다…
+	CFLAG:8400 = 1
+ELSEIF ABL:70 >= 5 || TFLAG:99 == 1
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 멋진 퀄리티의 요리다.
+	PRINTFORML 정신이 들었을 땐 이미 %CALLNAME:MASTER%의 접시가 텅 비어 있었다.
+	PRINTFORMW %CALLNAME:MASTER%의 먹는 모습에 %조사처리(CALLNAME:TARGET,"는")% \@(MARK:9) ? 당연하다는 듯한 # 만족한 듯한\@ 눈초리로 이쪽을 바라보고 있다…….
+ELSEIF ABL:70 >= 3
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 맛있다.
+	PRINTFORMW 요리를 다 먹은 %조사처리(CALLNAME:MASTER,"는")% 만족스럽게 배를 쓰다듬었다.
+ELSEIF ABL:70 >= 1
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 아예 맛없지도, 아주 맛있지도 않은 레벨이다.
+	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:TARGET,"과")% \@(MARK:9) ? 어색한 침묵 속에서 # 담소하면서\@ 요리를 먹어치웠다.
+ELSE
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTFORML 빈말로도 %CALLNAME:MASTER%의 입맛엔 맞지 않았던 것 같다.
+	PRINTFORMW 그러나 이러니저러니 해도 %조사처리(CALLNAME:MASTER,"는")% 요리를 남김없이 먹을 수는 있었다.
+ENDIF
+PRINTW      ・
+PRINTW      ・
+PRINTW      ・
+ENDIF
+;-------------------------------------------------
+;主人と一緒に弁当を食べた時
+;TFLAG:99で料理の効果の基本値を取得可能
+;-------------------------------------------------
+IF TFLAG:200 == 601
+IF CFLAG:8400 == 0
+	PRINTFORMW 
+	PRINTFORML      에?
+	PRINTFORML 
+	PRINTFORMW                ?
+	PRINTFORML 
+	PRINTFORMW   ?
+	PRINTFORML 
+	PRINTFORML 
+	PRINTFORMW 당신은 정지된 사고를 겨우 가다듬었다.
+	PRINTFORMW 접시 한가운데에는 틀림없이 "돌"이 자리 잡고 있다.
+	PRINTFORMW 의미를 알 수 없어…
+	PRINTFORML 
+	PRINTFORMW 「의미를 모르겠다니 곤란하네」
+	PRINTFORMW 「근처에서 돌멩이를 줍고? 흙을 씻고? 그 다음엔 삶고」
+	PRINTFORMW 당신은 조심조심 스프를 입에 넣었다.
+	PRINTFORMW 
+	PRINTFORMW 아무 맛도 나지 않아…
+	PRINTFORMW 
+	PRINTFORMW 「무슨 소리야. 미네랄이 풍부하다고」
+	PRINTFORMW 소금기마저 없다니 어떻게 해야 할까.
+	PRINTFORMW 극빈 생활을 보낸 레이무에게는 처음부터 음식이라는 것에 대해 가르쳐야 할 듯하다…
+	CFLAG:8400 = 1
+ELSEIF (ABL:70 >= 5 || TFLAG:99 == 1) && TALENT:150
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 이 이상의 요리가 없을 만큼 걸작이다.
+	PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 접시까지 먹을 기세로 내온 요리를 모조리 먹어치웠다.
+	PRINTFORML 너무나도 게걸스럽게 먹는 모습에 %조사처리(CALLNAME:TARGET,"는")% 순간 깜짝 놀란 표정을 지었지만
+	PRINTFORMW 자신의 요리가 마음에 들어서 그런다는 것을 알고는 만족한 듯한 미소를 띠며 한 그릇 더 먹을지를 물어왔다.
+ELSEIF ABL:70 >= 5 || TFLAG:99 == 1
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 멋진 퀄리티의 요리다.
+	PRINTFORML 정신이 들었을 땐 이미 %CALLNAME:MASTER%의 접시가 텅 비어 있었다.
+	PRINTFORMW %CALLNAME:MASTER%의 먹는 모습에 %조사처리(CALLNAME:TARGET,"는")% \@(MARK:9) ? 당연하다는 듯한 # 만족한 듯한\@ 눈초리로 이쪽을 바라보고 있다…….
+ELSEIF ABL:70 >= 3
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 맛있다.
+	PRINTFORMW 요리를 다 먹은 %조사처리(CALLNAME:MASTER,"는")% 만족스럽게 배를 쓰다듬었다.
+ELSEIF ABL:70 >= 1
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTL 아예 맛없지도, 아주 맛있지도 않은 레벨이다.
+	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:TARGET,"과")% \@(MARK:9) ? 어색한 침묵 속에서 # 담소하면서\@ 요리를 먹어치웠다.
+ELSE
+	PRINTFORM %CALLNAME:TARGET%의 요리는
+	PRINTFORML 빈말로도 %CALLNAME:MASTER%의 입맛엔 맞지 않았던 것 같다.
+	PRINTFORMW 그러나 이러니저러니 해도 %조사처리(CALLNAME:MASTER,"는")% 요리를 남김없이 먹을 수는 있었다.
+ENDIF
+PRINTW      ・
+PRINTW      ・
+PRINTW      ・
+ENDIF
+;-------------------------------------------------
+;弁当を売った時
+;TFLAG:99で料理の値段を取得可能
+;-------------------------------------------------
+IF TFLAG:200 == 602
+;初回の石スープをあろうことか売りに出したとき
+IF CFLAG:8400 == 0
+	PRINTFORMW 당신은 도시락… 을 팔기로 했다.
+	PRINTFORMW 
+	PRINTFORML      에?
+	PRINTFORML 
+	PRINTFORMW                ?
+	PRINTFORML 
+	PRINTFORMW   ?
+	PRINTFORML 
+	PRINTFORML 
+	PRINTFORMW 당신은 정지된 사고를 겨우 가다듬었다.
+	PRINTFORMW 접시 한가운데에는 틀림없이 "돌"이 자리 잡고 있었는데 이제 그 접시는 사라지고 없다.
+	PRINTFORMW 그게 팔린 건가?
+	PRINTFORMW 과연 누가 얼마를 내고 샀을까?
+	PRINTFORMW 환상향은 알 수 없는 것들로 가득하다…
+	;나라면… 레이무를 만나기 위해서라면, 돌 스프를 먹을 수 있다! 배 터지게!
+	PRINTL
+	CFLAG:8400 = 1
+;あなたが一緒に作っておいて弁当を売りに出すと言い出したとき
+ELSEIF CFLAG:8402 == 1
+	PRINTFORMW 「도시락을 팔아?」
+	PRINTFORMW 「모처럼 둘이서 만들었는데…」
+;恋慕または親愛のとき
+ELSEIF TALENT:150 == 1 || TALENT:151 == 1
+	PRINTFORMW 「모처럼 %조사처리(CSTR:90,"를")% 위해 노력했는데」
+	PRINTFORMW 「분명히 천벌 받을 거야」
+;それ以外
+ELSE
+	PRINTFORMW 「맘대로 하든지?」
+ENDIF
+ENDIF
+[SKIPEND]
 ;-------------------------------------------------
 ;素敵な食後の運動 CFLAG:8404
 ;TFLAG:99で分岐可能,詳しくはSHOP_LUNCH0.ERB参照

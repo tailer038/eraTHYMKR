@@ -2563,12 +2563,8 @@ IF TFLAG:9 > 0 || TFLAG:10 > 0
 			CFLAG:5280 = 3
 			;그 외(연모 없음)
 			ELSEIF CFLAG:5280 <= 1 || FLAG:11 == 2
-				IF CFLAG:5280 == 2
-					PRINTFORMW 「읏… 또 이렇게 싸버리고… 그렇게 기분 좋았었나 봐?」
-				ELSE
-					PRINTFORMW 「읏… 또 이렇게 싸버리고… 그렇게 기분 좋았었나 봐?」
-				ENDIF
-			CFLAG:5280 = 2
+				PRINTFORMW 「읏… 또 이렇게 싸버리고… 그렇게 기분 좋았었나 봐?」
+				CFLAG:5280 = 2
 			ENDIF
 		ENDIF
 	ENDIF
@@ -2888,8 +2884,8 @@ ENDIF
 ;-------------------------------------------------
 ;반발각인Lv3取得 CFLAG300
 ;-------------------------------------------------
-IF MARK:4 > 0
-	IF CFLAG:5300 < 2 && MARK:4 == 3
+IF MARK:9 > 0
+	IF CFLAG:5300 < 2 && MARK:9 == 3
 		PRINTFORMW 「……요정이라고 해서, 아무것도 할 수 없다고는 생각하지마」
 		CFLAG:5300 = 2
 	ELSEIF CFLAG:5300 == 0

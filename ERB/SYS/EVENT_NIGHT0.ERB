@@ -13,6 +13,7 @@
 ;6月下旬 処理の追加させていただきましたm(_ _)m　(やぁふぁ)
 
 ;2009/10/04 襲撃SMプレイ追加　By HEROHERO
+;2017/03/13 밤 이벤트에서 분신할 수 없는 캐릭터가 중복으로 들어가는 문제 수정. T
 ;-----------------------------------------------
 ;밤 이벤트 판정
 ;-----------------------------------------------
@@ -52,13 +53,10 @@ ELSE
 	SIF TARGET == -1
 		RETURN 0
 	CALL NIGHT_CHECK
-	LOCAL:20 = 0
-	IF RESULT > RAND:60
-		IF RESULT >= 18
-			LOCAL:20 = 1
-			TFLAG:400 = TARGET
-			LOCAL:21 = RAND:110
-		ENDIF
+	IF RESULT >= 18
+		LOCAL:20 = 1
+		TFLAG:400 = TARGET
+		LOCAL:21 = RAND:110
 	ENDIF
 ENDIF
 
@@ -75,8 +73,9 @@ LOCAL:1 = 0
 ;난교 확률용
 LOCAL:2 = 0
 
-;실행자가 2명 이상이라면, 그 중에서 4명 추출
-IF LOCAL:20 >= 2
+;실행자가 4명 이상이라면, 그 중에서 4명 추출 (원래 2명 이상이었던 것을 4명 이상으로 수정. T)
+IF LOCAL:20 >= 4
+	$REPEAT_LOOP
 	;제일 아래의 변수, 즉 GETCHARA_G(0)가 메인 타겟이 된다
 	REPEAT 4
 		TARGET = TFLAG:(RAND:(LOCAL:20)+400)
@@ -87,6 +86,9 @@ IF LOCAL:20 >= 2
 			LOCAL:1 += 1
 		;PRINTFORML %CALLNAME:TARGET%
 	REND
+	;선택된 캐릭터 중 중복된 캐릭터가 있고 그 캐릭터가 플랑이 아닌 경우 $REPEAT_LOOP로 돌아가 캐릭터 선별을 다시 하도록 함. 상당히 비효율적인 방식이지만 일단 이렇게 함. T
+	SIF ((NO:(LOCAL:10) != 11 && (NO:(LOCAL:10) == NO:(LOCAL:11) || NO:(LOCAL:10) == NO:(LOCAL:12) || NO:(LOCAL:10) == NO:(LOCAL:13))) || (NO:(LOCAL:11) != 11 && (NO:(LOCAL:11) == NO:(LOCAL:12) || NO:(LOCAL:11) == NO:(LOCAL:13))) || (NO:(LOCAL:12) != 11 && (NO:(LOCAL:12) == NO:(LOCAL:13))))
+		GOTO REPEAT_LOOP
 	SIF NO:(LOCAL:10) != 11
 		LOCAL:1 = 0
 	IF (TALENT:(LOCAL:10):120 || TALENT:(LOCAL:10):121) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0
@@ -148,7 +150,7 @@ IF LOCAL:20 >= 2
 			ENDIF
 		ENDIF
 	ENDIF
-ELSEIF LOCAL:20 == 1
+ELSE
 	TARGET = TFLAG:400
 	LOCAL:10 = TARGET
 	CALLF SET_CHARA_G(0, TARGET)

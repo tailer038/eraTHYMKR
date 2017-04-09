@@ -186,10 +186,10 @@ SIF GLOBAL:200 == 1048572 || GLOBAL:200 == 1048573
 	GLOBAL:200 |= 1p1
 
 ;실적 판정(2페이지째)
-SIF FLAG:2201 == 14
+SIF GLOBAL:201 == 65534
 	GLOBAL:201 |= 1p0
 
-SIF GLOBAL:200 == 1048574 && FLAG:2201 == 14 && GLOBAL:202 == 144115188075855871
+SIF GLOBAL:200 == 1048574 && GLOBAL:201 == 65535 && GLOBAL:202 == 144115188075855871
 	GLOBAL:200 |= 1p0
 
 VARSET T, 0
@@ -463,122 +463,112 @@ RESULTS:2 = 우후후 관련의 실적 모두 달성
 RESULTS:0 = 실버
 RESULTS:1 = 사중절정!
 RESULTS:2 = 사중절정을 달성하기
-FLAG:2201 += 1
-;달성 판정은 일괄
+;달성 판정
+SIF GETBIT(GLOBAL:201, 1)
+	RETURN 1
 
 @TROPHY_201_2
 RESULTS:0 = 골드
 RESULTS:1 = 최강 사중절정!
 RESULTS:2 = 최강 사중절정을 달성하기
-FLAG:2201 += 1
-;달성 판정은 일괄
+;달성 판정
+SIF GETBIT(GLOBAL:201, 2)
+	RETURN 1
 
 @TROPHY_201_3
 RESULTS:0 = 브론즈
 RESULTS:1 = 콩까지마
-RESULTS:2 = C절정 25회 이상 달성
+RESULTS:2 = 한 조교에서 C절정 25회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:0 >= 25
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_4
 RESULTS:0 = 실버
 RESULTS:1 = 클리토리스 매니아
-RESULTS:2 = C절정 50회 이상 달성
+RESULTS:2 = 한 조교에서 C절정 50회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:0 >= 50
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_5
 RESULTS:0 = 골드
 RESULTS:1 = 클리토리스 마스터
-RESULTS:2 = C절정 100회 이상 달성
+RESULTS:2 = 한 조교에서 C절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:0 >= 100
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_6
 RESULTS:0 = 브론즈
 RESULTS:1 = 고지보딩
-RESULTS:2 = V절정 50회 이상 달성
+RESULTS:2 = 한 조교에서 V절정 50회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:1 >= 50
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_7
 RESULTS:0 = 실버
 RESULTS:1 = 바기나 매니아
-RESULTS:2 = V절정 100회 이상 달성
+RESULTS:2 = 한 조교에서 V절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:1 >= 100
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_8
 RESULTS:0 = 골드
 RESULTS:1 = 바기나 마스터
-RESULTS:2 = V절정 200회 이상 달성
+RESULTS:2 = 한 조교에서 V절정 200회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:1 >= 200
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_9
 RESULTS:0 = 브론즈
 RESULTS:1 = 비누줍기
-RESULTS:2 = A절정 30회 이상 달성
+RESULTS:2 = 한 조교에서 A절정 30회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:2 >= 30
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_10
 RESULTS:0 = 실버
 RESULTS:1 = 애널 매니아
-RESULTS:2 = A절정 70회 이상 달성
+RESULTS:2 = 한 조교에서 A절정 70회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:2 >= 70
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_11
 RESULTS:0 = 골드
 RESULTS:1 = 애널 마스터
-RESULTS:2 = A절정 100회 이상 달성
+RESULTS:2 = 한 조교에서 A절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:2 >= 100
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_12
 RESULTS:0 = 브론즈
 RESULTS:1 = 가슴이 시킨다
-RESULTS:2 = B절정 25회 이상 달성
+RESULTS:2 = 한 조교에서 B절정 25회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:3 >= 25
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_13
 RESULTS:0 = 실버
 RESULTS:1 = 가슴 매니아
-RESULTS:2 = B절정 50회 이상 달성
+RESULTS:2 = 한 조교에서 B절정 50회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:3 >= 50
-FLAG:2201 += 1
 	RETURN 1
 
 @TROPHY_201_14
 RESULTS:0 = 골드
 RESULTS:1 = 가슴 마스터
-RESULTS:2 = B절정 100회 이상 달성
+RESULTS:2 = 한 조교에서 B절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:3 >= 100
-FLAG:2201 += 1
 	RETURN 1
 
 ;--------------------------------------------------

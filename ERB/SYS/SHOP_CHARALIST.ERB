@@ -117,10 +117,10 @@ IF FLAG:5000 & 8
 	;PRINTFORML {CHARANUM} = CHARANUM
 	TFLAG:207 = 1
 	;소질리스트 출력
-	CALL SETCOLOR_TORIKOMODE, "PINK", 1
+	;CALL SETCOLOR_TORIKOMODE, "PINK", 1
 	PRINTFORM 소질 정보 :
 	CALL SHOW_INFO_TALENT, LOCAL:1
-	RESETCOLOR
+	;RESETCOLOR
 	;궁합정보 출력한다.
 	CALL PRINT_RELATION, LOCAL:1
 	;캐릭터 삭제
@@ -1453,34 +1453,6 @@ ELSEIF TFLAG:201 == 247
 	PRINTL 봉래인이기에 호라이산 카구야와 비슷한 소질을 갖고 있다.
 
 ;여기부터 추가 캐릭터
-ELSEIF TFLAG:201 == 300
-	PRINTL 【요카】
-	PRINTL 유카를 판박이로 닮은 어린 소녀. 유카의 딸이라고도 할 수 있지만 진짜 딸은 아니다.
-  PRINTL 어려서 상식이 없으며, 어린아이다운 순수한 성격이지만 유카를 일부 닮은 면도 있다.
-	PRINTL 하지만 요괴의 힘은 유카에 비하면 미약한 수준이고 어째선지 언제라도 사라질 것만 같은 분위기를 풍긴다.
-	PRINTL 그래서인지 신체감각도 둔감한 듯하다.
-	PRINTL 출처는 佐藤横丁씨의 웹코믹 太陽について回る花.
-ELSEIF TFLAG:201 == 302
-	PRINTL 【미라덱】
-	PRINTL 천인으로 환생한 외계인
-ELSEIF TFLAG:201 == 303
-	PRINTL 【코도】
-	PRINTL 인간세계에 동화되었다가 환상들이한 구미호
-	PRINTL 코도비스트도 란도 아니다
-ELSEIF TFLAG:201 == 304
-	PRINTL 【카마텍】
-	PRINTL ai가 있는 기계.
-	PRINTL 장비를 정지합니다.
-ELSEIF TFLAG:201 == 305
-	PRINTL 【에시즈】
-	PRINTL 이 세계에서 온 요괴, 매일매일 살기위해 싸우며 성장한 소녀이다.
-	PRINTL 꽤나 강력한 힘을 가지고 있는지, 수 많은 존재로들부터 외면당해 온 걸로 추정.
-	PRINTL 그것을 계기로 외부와의 교섭을 끊고 은둔생활을 하였다.
-	PRINTL 여담이지만 사랑받고 싶어하는 요괴라고 불린다.
-ELSEIF TFLAG:201 == 310
-	PRINTL 【Picoutho】
-	PRINTL 각종 대사및 대사 파일 테스트용 캐릭터
-	PRINTL 이름,소질같은건 신경쓰지 말자
 ;ELSEIF TFLAG:201 == 3XX
 ;	PRINTL 【】
 ;	PRINTL 

@@ -716,6 +716,7 @@ ENDIF
 ;-------------------------------------------------
 ;페라되는(뚜껑이든지/남자만) CFLAG9005
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 5
 	;처음
 	IF CFLAG:9005 == 0
@@ -746,6 +747,7 @@ IF SELECTCOM == 5
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;가슴 애무 CFLAG9003
@@ -902,12 +904,12 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 		;처녀
 		IF TALENT:0 == 1
 			;연모
-			IF TALENT:150 == 1
-				PRINTFORMW 
+			;IF TALENT:150 == 1
+				;PRINTFORMW 
 			;그 이외
-			ELSE
-				PRINTFORMW 
-			ENDIF
+			;ELSE
+				;PRINTFORMW 
+			;ENDIF
 		;비처녀
 		ELSE
 			;연모
@@ -940,6 +942,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
 			RETURN 0
 	ENDIF
 ;탈착시
+[SKIPSTART]
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:8811 < 2 || FLAG:11 == 2)
@@ -951,6 +954,7 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
 		CFLAG:8811 = 1
 	ENDIF
 		RETURN 0
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
@@ -1034,6 +1038,7 @@ IF SELECTCOM == 13 && TEQUIP:25 == 1
 			RETURN 0
 	ENDIF
 ;탈착시
+[SKIPSTART]
 ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:8812 < 3 || FLAG:11 == 2)
@@ -1049,11 +1054,13 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
 		CFLAG:8812 = 1
 	ENDIF
 		RETURN 0
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;구리 캡 CFLAG9014　CFLAG8813
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 14 && TEQUIP:30 == 1
 	;처음
@@ -1093,10 +1100,12 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;니프르캐프 CFLAG9015　CFLAG8814
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 15 && TEQUIP:35 == 1
 	;처음
@@ -1136,6 +1145,7 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;착유기(모유 체질만) CFLAG9191　CFLAG8861
@@ -1170,6 +1180,7 @@ IF SELECTCOM == 191 && TEQUIP:35 == 2
 			RETURN 0
 	ENDIF
 ;탈착시
+[SKIPSTART]
 ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 	;연모
 	IF TALENT:150 == 1 && (CFLAG:8861 < 2 || FLAG:11 == 2)
@@ -1181,11 +1192,13 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
 		CFLAG:8861 = 1
 	ENDIF
 		RETURN 0
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;오나호르(뚜껑이든지/남자만) CFLAG9016　CFLAG8815
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 16 && TEQUIP:30 == 2
 	;처음
@@ -1225,6 +1238,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;정상정도 CFLAG9020
@@ -1348,6 +1362,7 @@ ENDIF
 ;역강간 CFLAG9025
 ;(주인이 비남자, 노예가 남자/뚜껑이든지 마셔)
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 25
 	;처음
 	IF CFLAG:9025 == 0
@@ -1374,6 +1389,7 @@ IF SELECTCOM == 25
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;자위 CFLAG9040
@@ -1961,6 +1977,7 @@ ENDIF
 ;-------------------------------------------------
 ;줄 CFLAG9224　CFLAG:8872
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 224 && TEQUIP:40
 	;처음
@@ -2012,10 +2029,12 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;볼 개그 CFLAG9226　CFLAG:8873
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 226 && TEQUIP:42 == 1
 	;처음
@@ -2067,10 +2086,12 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;관장 CFLAG9174
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 174 && TEQUIP:25 == 7
 	;처음
@@ -2106,10 +2127,12 @@ IF SELECTCOM == 174 && TEQUIP:25 == 7
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;배설 CFLAG8854
 ;-------------------------------------------------
+[SKIPSTART]
 IF TEQUIP:25 == 0 && SELECTCOM == 174
 	;처음
 	IF CFLAG:8854 == 0
@@ -2144,6 +2167,7 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;로션 사용 CFLAG9060
@@ -2250,6 +2274,7 @@ ENDIF
 ;-------------------------------------------------
 ;야외 플레이 CFLAG9104　CFLAG:8821
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 104 && TEQUIP:52
 	;처음
@@ -2293,10 +2318,12 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;조수를 범하는 CFLAG9026
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
 	;처음
 	IF CFLAG:9026 == 0
@@ -2323,6 +2350,7 @@ IF SELECTCOM == 26
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;이라마치오 CFLAG9260
@@ -2365,6 +2393,7 @@ ENDIF
 ;-------------------------------------------------
 ;피스트계 커멘드 CFLAG9231
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 	;처음
 	IF CFLAG:9231 == 0
@@ -2403,10 +2432,12 @@ IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;촉수 소환 CFLAG9500　CFLAG:8901
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 500 && TEQUIP:90
 	;처음
@@ -2454,6 +2485,7 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~
 ;추가 커멘드…통상판 CFLAG9004 이후를 사용
@@ -2463,6 +2495,7 @@ ENDIF
 ;손가락 삽입 CFLAG9004
 ;G스포트 자극 CFLAG9600
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 4 || SELECTCOM == 600
 	;G스포트 자극
 	IF SELECTCOM == 600 || (PREVCOM == 4 && ABL:PLAYER:12 >= 3 || PREVCOM == 600)
@@ -2529,10 +2562,12 @@ IF SELECTCOM == 4 || SELECTCOM == 600
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;샤워 CFLAG9351
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 351 &&  TEQUIP:54
 	;처음
 	IF CFLAG:9351 == 0
@@ -2559,10 +2594,12 @@ IF SELECTCOM == 351 &&  TEQUIP:54
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;대면자리정도 CFLAG9022
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 22
 	;처음
 	IF CFLAG:9022 == 0
@@ -2597,11 +2634,13 @@ IF SELECTCOM == 22
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;배면자리정도 CFLAG9023
 ;혼란 모란 CFLAG9612
 ;-------------------------------------------------
+[SKIPSTART]
 ;배면자리정도
 IF SELECTCOM == 23 && TEQUIP:56 == 0
 	;처음
@@ -2676,10 +2715,12 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;거품 춤 CFLAG9352
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 352
 	;처음
 	IF CFLAG:9352 == 0
@@ -2710,10 +2751,12 @@ IF SELECTCOM == 352
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;이뇨제 CFLAG9062
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 62
 	;연모+주되들 해 버릇
 	IF TALENT:150 && TALENT:45 && (CFLAG:9062 < 4 || FLAG:11 == 2)
@@ -2733,10 +2776,12 @@ IF SELECTCOM == 62
 		CFLAG:9062 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;수치 플레이 CFLAG9103 해제 CFLAG8822
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 103 && TEQUIP:56
 	;처음
 	IF CFLAG:9103 == 0
@@ -2800,10 +2845,12 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;목욕탕 플레이 CFLAG9350 해제 CFLAG8824
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 350 && TEQUIP:53
 	;처음
 	IF CFLAG:9350 == 0
@@ -2856,6 +2903,7 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;새댁 플레이 CFLAG9090 해제 CFLAG8823
@@ -2889,6 +2937,7 @@ IF SELECTCOM == 90 && TEQUIP:59
 			RETURN 0
 	ENDIF
 ;종료시
+[SKIPSTART]
 ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 	;처음
 	IF CFLAG:8823 == 0
@@ -2914,12 +2963,14 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
 		ENDIF
 			RETURN 0
 	ENDIF
+[SKIPEND]
 ENDIF
 
 ;-------------------------------------------------
 ;방뇨 CFLAG9111
 ;강제 방뇨 CFLAG9620
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 111 || SELECTCOM == 620
 	;강제 방뇨
 	IF SELECTCOM == 620 || SELECTCOM == 111 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:11 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:12 == 0))
@@ -2969,6 +3020,7 @@ IF SELECTCOM == 111 || SELECTCOM == 620
 		ENDIF
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~
 ;추가 커멘드…어널 관련 CFLAG9180 이후를 사용
@@ -2977,6 +3029,7 @@ ENDIF
 ;-------------------------------------------------
 ;어널 빨고 CFLAG9180
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 180
 	;처음
 	IF CFLAG:9180 == 0
@@ -3007,10 +3060,12 @@ IF SELECTCOM == 180
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;어널 비즈 개시시 CFLAG9172 종료시 CFLAG8852
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 172 && TEQUIP:25 == 5
 	;처음
@@ -3062,6 +3117,7 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;------------------------------------------------
 ;정상정도 어널 CFLAG9030
@@ -3118,6 +3174,7 @@ ENDIF
 ;-------------------------------------------------
 ;후배 정도 어널 CFLAG9031
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 31
 	;처음
 	IF CFLAG:9031 == 0
@@ -3153,10 +3210,12 @@ IF SELECTCOM == 31
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;대면자리정도 어널 CFLAG9032
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 32
 	;처음
 	IF CFLAG:9032 == 0
@@ -3192,10 +3251,12 @@ IF SELECTCOM == 32
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;배면자리정도 어널 CFLAG9033
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 33
 	;처음
 	IF CFLAG:9033 == 0
@@ -3231,10 +3292,12 @@ IF SELECTCOM == 33
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;승마정도 어널 CFLAG9034
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 34
 	;처음
 	IF CFLAG:9034 == 0
@@ -3270,10 +3333,12 @@ IF SELECTCOM == 34
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;공기 관장 개시시 CFLAG9175 종료시 CFLAG8855
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 175 && TEQUIP:25 == 8
 	;처음
@@ -3325,10 +3390,12 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;확장 벌룬 개시시 CFLAG9173 종료시 CFLAG8853
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 173 && TEQUIP:25 == 6
 	;처음
@@ -3380,10 +3447,12 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;어널 전극 개시시 CFLAG9171 종료시 CFLAG8851
 ;-------------------------------------------------
+[SKIPSTART]
 ;개시시
 IF SELECTCOM == 171 && TEQUIP:25 == 4
 	;처음
@@ -3435,10 +3504,12 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;어널 봉사 강제 CFLAG9044
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 44
 	;처음
 	IF CFLAG:9044 == 0
@@ -3473,6 +3544,7 @@ IF SELECTCOM == 44
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~
 ;레즈비언 조교 커멘드(데포 주인공이라도 가능한 것) CFLAG5646 이후를 사용
@@ -3481,6 +3553,7 @@ ENDIF
 ;-------------------------------------------------
 ;3P CFLAG9610
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 610
 	;처음
 	IF CFLAG:9610 == 0
@@ -3515,6 +3588,7 @@ IF SELECTCOM == 610
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;69 CFLAG9602
@@ -3757,12 +3831,12 @@ IF TFLAG:0 > 0 && CFLAG:8009 == 0
 	;손가락 삽입로 처녀 상실(반감이 꽤 적다)
 	ELSEIF SELECTCOM == 4
 		;연모
-		IF TALENT:150 == 1
-			PRINTFORMW 
+		;IF TALENT:150 == 1
+			;PRINTFORMW 
 		;그 이외
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		;ELSE
+			;PRINTFORMW 
+		;ENDIF
 	;그 이외때에 처녀 상실
 	ELSE
 		;연모
@@ -3890,6 +3964,7 @@ ENDIF
 ;-------------------------------------------------
 ;사정한(뚜껑이든지/남자만) CFLAG8015
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:30 > 0
 	;처음
 	IF CFLAG:8015 == 0
@@ -3916,6 +3991,7 @@ IF TFLAG:30 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;분유 한(모유 체질만) CFLAG8016
@@ -3951,6 +4027,7 @@ ENDIF
 ;-------------------------------------------------
 ;C감각 Lv5로 C절정 50이상 CFLAG8017
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 	;처음
 	IF CFLAG:8017 == 0
@@ -3977,10 +4054,12 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;V감각 Lv5로 V절정 50이상 CFLAG8018
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 	;처음
 	IF CFLAG:8018 == 0
@@ -4007,10 +4086,12 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;A감각 Lv5로 A절정 50이상 CFLAG8019
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 	;처음
 	IF CFLAG:8019 == 0
@@ -4037,10 +4118,12 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;B감각 Lv5로 B절정 50이상 CFLAG8020
 ;-------------------------------------------------
+[SKIPSTART]
 IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 	;처음
 	IF CFLAG:8020 == 0
@@ -4067,6 +4150,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
 			RETURN 0
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG 관계(65를 캐릭터 번호에 치환)
@@ -4181,6 +4265,7 @@ ENDIF
 ;-------------------------------------------------
 ;레즈비언 플레이 CFLAG8254
 ;-------------------------------------------------
+[SKIPSTART]
 IF (TFLAG:200 == 154 || TFLAG:200 == 155)
 	;연모
 	IF TALENT:150 ==1 && (CFLAG:8254 < 4 || FLAG:11 == 2)
@@ -4200,6 +4285,7 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
 		CFLAG:8254 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;아침 페라 CFLAG8240

@@ -178,6 +178,7 @@ ENDIF
 ;-------------------------------------------------
 ;クリキャップ CFLAG233　CFLAG303
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 14 && TEQUIP:30 == 1
 	PRINTFORMW 
@@ -187,6 +188,7 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
 	PRINTFORMW 
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;ニプルキャップ CFLAG234　CFLAG304
@@ -220,6 +222,7 @@ ENDIF
 ;-------------------------------------------------
 ;オナホール(ふたなり/オトコのみ) CFLAG236　CFLAG306
 ;-------------------------------------------------
+[SKIPSTART]
 ;開始時
 IF SELECTCOM == 16 && TEQUIP:30 == 2
 	PRINTFORMW 
@@ -229,6 +232,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 	PRINTFORMW 
 	RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;正常位 CFLAG237　　下のうちどちらか片方
@@ -1198,24 +1202,25 @@ ELSEIF C && V && A && B
 	PRINTFORML 「파파, 파파아! 레미 날아가버려어엇! 시러어어어어!!」
 	PRINTFORMW 푸샤아, 하고 어린 성기에서 애액을 내뿜으며 레미는 온몸으로 최고의 쾌락에 도달했다.
 ;ここで輪姦口上の절정口上を逃がします
-ELSEIF V && C && B && (SELECTCOM == 105 || SELECTCOM == 107)
-ELSEIF A && C && B && (SELECTCOM == 105 || SELECTCOM == 107)
-ELSEIF A && C && (SELECTCOM == 105 || SELECTCOM == 107)
-ELSEIF A && B && (SELECTCOM == 105 || SELECTCOM == 107)
-ELSEIF A && V && (SELECTCOM == 105 || SELECTCOM == 107)
-ELSEIF A && V && SELECTCOM == 106
+;ELSEIF V && C && B && (SELECTCOM == 105 || SELECTCOM == 107)
+;ELSEIF A && C && B && (SELECTCOM == 105 || SELECTCOM == 107)
+;ELSEIF A && C && (SELECTCOM == 105 || SELECTCOM == 107)
+;ELSEIF A && B && (SELECTCOM == 105 || SELECTCOM == 107)
+;ELSEIF A && V && (SELECTCOM == 105 || SELECTCOM == 107)
+;ELSEIF A && V && SELECTCOM == 106
 ;それ以外
-ELSEIF A && C && B
-ELSEIF V && C && B
-ELSEIF A && C
-ELSEIF A && B
-ELSEIF A && V
-ELSEIF B && C
+;ELSEIF A && C && B
+;ELSEIF V && C && B
+;ELSEIF A && C
+;ELSEIF A && B
+;ELSEIF A && V
+;ELSEIF B && C
 ENDIF
 
 ;-------------------------------------------------
 ;放尿절정　失禁 
 ;-------------------------------------------------
+[SKIPSTART]
 ;他の절정との合わせ
 IF (NOWEX:3 > 0 || NOWEX:0 > 0 || NOWEX:1 > 0 || NOWEX:2 > 0) && TFLAG:32 > 0 && (SELECTCOM != 111 && SELECTCOM != 620)
 		;アナルセックスか
@@ -1254,6 +1259,7 @@ IF (NOWEX:3 > 0 || NOWEX:0 > 0 || NOWEX:1 > 0 || NOWEX:2 > 0) && TFLAG:32 > 0 &&
 		ENDIF
 ENDIF
 RETURN 0
+[SKIPEND]
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_MARKCNG 관계
 ;각인 변동이 방아쇠인 대사

@@ -649,6 +649,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
 	ENDIF
 ENDIF
 ;岩清水
+[SKIPSTART]
 IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	;연모+노출벽Lv3이상+C감각Lv3이상
 	IF TALENT:150 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:5303 <= 5 || FLAG:11 == 2)
@@ -673,6 +674,7 @@ IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
 	ENDIF
 		RETURN 0
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG304
@@ -1271,9 +1273,9 @@ IF SELECTCOM == 30
 			PRINTFORMW 「기분 좋아앗…!」
 			CFLAG:8250 = 3
 		;그 외
-		ELSEIF CFLAG:8250 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:8250 = 2
+		;ELSEIF CFLAG:8250 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:8250 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1306,17 +1308,17 @@ IF SELECTCOM == 34
 			PRINTFORMW 치르노는 푹 빠져서 허리를 아래위로 놀리며 장내가 찔리는 감촉을 맛보고 있다.
 			CFLAG:8251 = 5
 		;연모+윤활Lv2 미만
-		ELSEIF TALENT:150 == 1 && P < PALAMLV:2 && (CFLAG:8251 <= 3 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:8251 = 4
+		;ELSEIF TALENT:150 == 1 && P < PALAMLV:2 && (CFLAG:8251 <= 3 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:8251 = 4
 		;윤활Lv2이상＋A감각Lv3이상
-		ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:8251 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:8251 = 3
+		;ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:8251 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:8251 = 3
 		;그 외
-		ELSEIF CFLAG:8251 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:8251 = 2
+		;ELSEIF CFLAG:8251 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:8251 = 2
 		ENDIF
 			RETURN 0
 	ENDIF
@@ -1537,6 +1539,7 @@ IF SELECTCOM == 222
 			RETURN 0
 	;2회째 이후
 	ELSE
+[SKIPSTART]
 		;연모＋마조끼Lv5이상
 		IF TALENT:150 == 1 && ABL:21 >= 5 && (CFLAG:5336 <= 5 || FLAG:11 == 2)
 			PRINTFORMW 
@@ -1559,6 +1562,7 @@ IF SELECTCOM == 222
 			CFLAG:5336 = 2
 		ENDIF
 			RETURN 0
+[SKIPEND]
 	ENDIF
 ENDIF
 
@@ -1581,15 +1585,15 @@ IF SELECTCOM == 61
 	;2회째 이후
 	ELSE
 		;연모
-		IF TALENT:150 == 1 && (CFLAG:5346 <= 2 || FLAG:11 == 2)
-			PRINTFORMW 
-			CFLAG:5346 = 3
+		;IF TALENT:150 == 1 && (CFLAG:5346 <= 2 || FLAG:11 == 2)
+			;PRINTFORMW 
+			;CFLAG:5346 = 3
 		;그 외
-		ELSEIF CFLAG:5346 <= 1 || FLAG:11 == 2
-			PRINTFORMW 
-			CFLAG:5346 = 2
-		ENDIF
-			RETURN 0
+		;ELSEIF CFLAG:5346 <= 1 || FLAG:11 == 2
+			;PRINTFORMW 
+			;CFLAG:5346 = 2
+		;ENDIF
+			;RETURN 0
 	ENDIF
 ENDIF
 
@@ -1822,12 +1826,12 @@ IF P > PALAMLV:2 && CFLAG:5221 == 0
 	;연모
 	IF TALENT:150 == 1
 		;ロ―ションを使った場合
-		IF SELECTCOM == 60
-			PRINTFORMW 
+		;IF SELECTCOM == 60
+			;PRINTFORMW 
 		;그 외
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		;ELSE
+			;PRINTFORMW 
+		;ENDIF
 	;그 외
 	ELSE
 		;ロ―ションを使った場合
@@ -1853,12 +1857,12 @@ IF P > PALAMLV:2 && CFLAG:5222 == 0
 	;연모
 	IF TALENT:150 == 1
 		;媚薬を使った場合
-		IF SELECTCOM == 61
-			PRINTFORMW 
+		;IF SELECTCOM == 61
+			;PRINTFORMW 
 		;그 외
-		ELSE
-			PRINTFORMW 
-		ENDIF
+		;ELSE
+			;PRINTFORMW 
+		;ENDIF
 	;그 외
 	ELSE
 		;媚薬を使った場合
@@ -1875,6 +1879,7 @@ ENDIF
 ;-------------------------------------------------
 ;처음으로 치정이 LV2 넘은 CFLAG223
 ;-------------------------------------------------
+[SKIPSTART]
 P = PALAM:15 + UP:15
 IF P > PALAMLV:2 && CFLAG:5223 == 0
 	;연모
@@ -1886,10 +1891,12 @@ IF P > PALAMLV:2 && CFLAG:5223 == 0
 	ENDIF
 		CFLAG:5223 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;처음으로 공포가 LV2 넘은 CFLAG224
 ;-------------------------------------------------
+[SKIPSTART]
 P = PALAM:17 + UP:17
 IF P > PALAMLV:2 && CFLAG:5224 == 0
 	;연모
@@ -1901,6 +1908,7 @@ IF P > PALAMLV:2 && CFLAG:5224 == 0
 	ENDIF
 		CFLAG:5224 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;처음C절정 CFLAG225
@@ -1914,6 +1922,7 @@ ENDIF
 ;-------------------------------------------------
 ;처음V절정 CFLAG226
 ;-------------------------------------------------
+[SKIPSTART]
 IF NOWEX:1 > 0 && CFLAG:5226 == 0
 	;연모
 	IF TALENT:150 == 1
@@ -1924,6 +1933,7 @@ IF NOWEX:1 > 0 && CFLAG:5226 == 0
 	ENDIF
 		CFLAG:5226 = 1
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;처음A절정 CFLAG227
@@ -1946,12 +1956,12 @@ ENDIF
 ;-------------------------------------------------
 ;처녀상실(처녀만) CFLAG229
 ;-------------------------------------------------
-A = UP:20 + UP:21
+A = 
 IF TFLAG:0 > 0 && CFLAG:5229 == 0
 	;연모かつ主人のセックスによる처녀喪失
 	IF TFLAG:2
 		;연모かつ반발각인未취득
-		IF TALENT:150 == 1 && (A < 500 || TFLAG:150 == 1)
+		IF UP:20 + UP:21 < 500 || TFLAG:150 == 1
 			PRINTFORMW 「주인님…. 기분 좋았어…?」
 			PRINTFORMW 「에헤헷…. 이몸… 주인님 것이 돼버렸네…」
 		;연모에다 반발각인취득
@@ -1988,6 +1998,7 @@ ENDIF
 ;-------------------------------------------------
 ;セックスで射精させた CFLAG230 CFLAG290
 ;-------------------------------------------------
+[SKIPSTART]
 ;アナルセックスか？
 IF TFLAG:9 > 0
 	;연모
@@ -2004,6 +2015,7 @@ IF TFLAG:9 > 0
 		CFLAG:5231 = 2
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;그 외
 IF TFLAG:10 > 0
@@ -2286,6 +2298,7 @@ ENDIF
 ;-------------------------------------------------
 ;調教後セックス CFLAG264
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 150
 	;V감각Lv4이상
 	IF ABL:1 >= 4 && (CFLAG:5264 < 2 || FLAG:11 == 2)
@@ -2297,6 +2310,7 @@ IF TFLAG:200 == 150
 		CFLAG:5264 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;조교 후 자위 CFLAG261
@@ -2322,6 +2336,7 @@ ENDIF
 ;-------------------------------------------------
 ;レズプレイ CFLAG262
 ;-------------------------------------------------
+[SKIPSTART]
 IF (TFLAG:200 == 154 || TFLAG:200 == 155)
 	;연모
 	IF TALENT:150 ==1 && (CFLAG:5262 < 4 || FLAG:11 == 2)
@@ -2341,10 +2356,12 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
 		CFLAG:5262 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;調教後夜這い　 CFLAG265
 ;-------------------------------------------------
+[SKIPSTART]
 IF TFLAG:200 == 158
 	;V감각Lv5이상
 	IF ABL:1 >= 5 && (CFLAG:5265 < 2 || FLAG:11 == 2)
@@ -2356,6 +2373,7 @@ IF TFLAG:200 == 158
 		CFLAG:5265 = 1
 	ENDIF
 ENDIF
+[SKIPEND]
 
 ;-------------------------------------------------
 ;약혼 반지 사용시
