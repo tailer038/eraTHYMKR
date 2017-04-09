@@ -33,8 +33,6 @@ PRINTFORMW %ABLNAME:0%의 레벨이 %조사처리(TOSTR(ABL:0),"가")% 되었습
 IF CAN0(0) == 0
     JUEL:0 -= COST0(0)
 ELSE
-    PRINT C upgrade fail COST0:
-    PRINTVL COST0(0)
     RETURN 0
 ENDIF
 
