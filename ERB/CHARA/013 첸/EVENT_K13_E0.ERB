@@ -36,10 +36,10 @@ PRINTFORMW 「그런 것, 절대로 하지 않아!」
 @K13_MESSAGE_EVENT_4
 ;성공
 IF TFLAG:99 == 3
-	;PRINTFORMW 「첸의 노래, (듣)묻고 있어 주었어?」
+    ;PRINTFORMW 「첸의 노래, (듣)묻고 있어 주었어?」
 ;난교
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「공개 노출 라이브로 난교했을 때의 말입니다」
+    ;PRINTFORMW 「공개 노출 라이브로 난교했을 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -90,16 +90,16 @@ ENDIF
 @K13_MESSAGE_EVENT_12
 ;연모
 IF TALENT:150 == 1
-	PRINTFORML 「어………첸, 기분 잃었어? ……이제(벌써), 별로 난폭하게 하지 않고」
+    PRINTFORML 「어………첸, 기분 잃었어? ……이제(벌써), 별로 난폭하게 하지 않고」
 ;복종
 ELSEIF TALENT:160 == 1
-	PRINTFORMW 「어………첸, 의식이 비응은 라고 했어? …미안해요」
-	PRINTFORMW 「이런 응은, 노예로서 안되네요……」
+    PRINTFORMW 「어………첸, 의식이 비응은 라고 했어? …미안해요」
+    PRINTFORMW 「이런 응은, 노예로서 안되네요……」
 ;그 이외
 ELSE
-	PRINTFORMW 「………첸…아…」
-	PRINTFORMW 등은 깨달으면(자)%조사처리(CALLNAME:MASTER,"를")% 노려보았다.
-	PRINTFORMW 「첸이, 실신하고 있는 동안 이상한 금년이라고 없지요!」
+    PRINTFORMW 「………첸…아…」
+    PRINTFORMW 등은 깨달으면(자)%조사처리(CALLNAME:MASTER,"를")% 노려보았다.
+    PRINTFORMW 「첸이, 실신하고 있는 동안 이상한 금년이라고 없지요!」
 ENDIF
 
 ;-------------------------------------------------
@@ -132,26 +132,26 @@ ENDIF
 @K13_MESSAGE_EVENT_17
 ;연모
 IF TALENT:150 == 1
-	PRINTFORML 「첸이군요%CALLNAME:MASTER%태우고-역 마시면(자) 대단한 기분 좋게 될 수 있다」
-	PRINTFORMW 「언제나 마시면서 하고 있으니…일까?」
+    PRINTFORML 「첸이군요%CALLNAME:MASTER%태우고-역 마시면(자) 대단한 기분 좋게 될 수 있다」
+    PRINTFORMW 「언제나 마시면서 하고 있으니…일까?」
 ;복종
 ELSEIF TALENT:160 == 1
-	PRINTFORMW 「첸은%CALLNAME:MASTER%태우고-역을 마실 때마다 이안 되는 노예입니다」
-	PRINTFORMW 「그러니까 좀 더…징계 해 주세요」
+    PRINTFORMW 「첸은%CALLNAME:MASTER%태우고-역을 마실 때마다 이안 되는 노예입니다」
+    PRINTFORMW 「그러니까 좀 더…징계 해 주세요」
 ELSE
-	PRINTFORMW (이니까…마신 것만으로 기분이 좋은 것……첸 이상해져 버렸어…? )
+    PRINTFORMW (이니까…마신 것만으로 기분이 좋은 것……첸 이상해져 버렸어…? )
 ENDIF
 ;-------------------------------------------------
 ;정음절정 취득으로 약점을 잡혔을 때
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_18
 IF TALENT:150 == 1
-	PRINTFORML (첸…%CALLNAME:MASTER%에는 하고 싶은 있고 딸(아가씨)라도 생각되었을 것이다…)
-	PRINTFORMW (…부끄러워)
+    PRINTFORML (첸…%CALLNAME:MASTER%에는 하고 싶은 있고 딸(아가씨)라도 생각되었을 것이다…)
+    PRINTFORMW (…부끄러워)
 ELSE
-	PRINTFORMW (! 탄로난…첸이 키-역 마시면(자) 과자구우우 일…)
-	PRINTFORMW (이런 일…만약, 쪽사들에게 알려지면(자)……)
-	PRINTFORMW 등은 눈물투성이가 되었다
+    PRINTFORMW (! 탄로난…첸이 키-역 마시면(자) 과자구우우 일…)
+    PRINTFORMW (이런 일…만약, 쪽사들에게 알려지면(자)……)
+    PRINTFORMW 등은 눈물투성이가 되었다
 ENDIF
 
 ;-------------------------------------------------
@@ -160,15 +160,15 @@ ENDIF
 ;-------------------------------------------------
 ;@K13_MESSAGE_EVENT_19
 ;SIF CFLAG:60 >= 1000 && TALENT:100 == 0
-	;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
+    ;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
 ;SIF CFLAG:61 >= 2000 && TALENT:102 == 0
-	;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
+    ;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
 ;SIF CFLAG:62 >= 2500 && TALENT:104 == 0
-	;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
+    ;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
 ;SIF CFLAG:63 >= 5000 && TALENT:106 == 0
-	;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
+    ;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
 ;IF CFLAG:64 >= 10000 && TALENT:66 == 0
-	;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
+    ;PRINTFORML 「개발도 관련을 보충하는 이벤트시의 말입니다」
 ;ENDIF
 
 ;-------------------------------------------------
@@ -189,65 +189,65 @@ PRINTFORML 「첸…젖가슴이 빵 빵인 것 ……하아 내고 싶어」
 @K13_MESSAGE_EVENT_22
 ;이뇨제 사용시(이 때는 양쪽 모두의 말이 나온다)
 IF TEQUIP:12 == 1
-	PRINTFORMW (어첸…오줌! 조금 전 해 두었을 것인데…어째서……)
-	PRINTFORMW (그 약 의 탓? )
+    PRINTFORMW (어첸…오줌! 조금 전 해 두었을 것인데…어째서……)
+    PRINTFORMW (그 약 의 탓? )
 ENDIF
 @K13_MESSAGE_EVENT_22
 ;연모
 IF TALENT:150 == 1
-	IF EXP:6 <= 50
-		IF RAND:2 == 0
-			PRINTFORML 「그…오줌……」
-			PRINTFORMW 등은 붉어지면서 그 만큼 말했다
-		ELSE
-			PRINTFORMW 「첸…화장실 갔다온다」
-			PRINTFORMW 당황해 일어서려고 하는 등을 눌러 그 자리에 남게 했다
-			PRINTFORMW 「……」
-		ENDIF
-	ELSEIF EXP:6 >= 51
-		IF RAND:3 == 0
-			PRINTFORMW 「첸, 해 와…그, 내게 하며……」
-			PRINTFORMW 등은 비소를%CALLNAME:MASTER%에 향했다
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「첸이군요…오줌 내자이니까…가득 나오도록(듯이) 마음껏 하며…」
-			PRINTFORMW 등은 정신나간 표정으로 안아 따라 왔다
-		ELSE
-			PRINTFORMW 「첸의 오줌……보고 있어…」
-			PRINTFORMW 등은 얼굴을 붉히면서도 확실히 말했다
-		ENDIF
-	ENDIF
+    IF EXP:6 <= 50
+        IF RAND:2 == 0
+            PRINTFORML 「그…오줌……」
+            PRINTFORMW 등은 붉어지면서 그 만큼 말했다
+        ELSE
+            PRINTFORMW 「첸…화장실 갔다온다」
+            PRINTFORMW 당황해 일어서려고 하는 등을 눌러 그 자리에 남게 했다
+            PRINTFORMW 「……」
+        ENDIF
+    ELSEIF EXP:6 >= 51
+        IF RAND:3 == 0
+            PRINTFORMW 「첸, 해 와…그, 내게 하며……」
+            PRINTFORMW 등은 비소를%CALLNAME:MASTER%에 향했다
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「첸이군요…오줌 내자이니까…가득 나오도록(듯이) 마음껏 하며…」
+            PRINTFORMW 등은 정신나간 표정으로 안아 따라 왔다
+        ELSE
+            PRINTFORMW 「첸의 오줌……보고 있어…」
+            PRINTFORMW 등은 얼굴을 붉히면서도 확실히 말했다
+        ENDIF
+    ENDIF
 ;복종
 ELSEIF TALENT:160 == 1
-	IF EXP:6 <= 50
-		IF RAND:2 == 0
-			PRINTFORML 「그…오줌……」
-			PRINTFORMW 등은 붉어지면서 그 만큼 말했다
-		ELSE
-			PRINTFORMW 「첸…화장실 갔다옵니다」
-			PRINTFORMW 당황해 일어서려고 하는 등을 눌러 그 자리에 남게 했다
-			PRINTFORMW 「……」
-		ENDIF
-	ELSEIF EXP:6 >= 51
-		IF RAND:3 == 0
-			PRINTFORMW 「첸해 와…그, 내게 해……주세요…」
-			PRINTFORMW 등은 비소를%CALLNAME:MASTER%에 향했다
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「첸은…오줌 내자이기 때문에…가득 나오도록(듯이) 마음껏 해 주세요…」
-			PRINTFORMW 등은 정신나간 표정으로 안아 따라 왔다
-		ELSE
-			PRINTFORMW 「첸의 오줌……보고 있어 주세요…」
-			PRINTFORMW 등은 얼굴을 붉히면서도 확실히 말했다
-		ENDIF
-	ENDIF
+    IF EXP:6 <= 50
+        IF RAND:2 == 0
+            PRINTFORML 「그…오줌……」
+            PRINTFORMW 등은 붉어지면서 그 만큼 말했다
+        ELSE
+            PRINTFORMW 「첸…화장실 갔다옵니다」
+            PRINTFORMW 당황해 일어서려고 하는 등을 눌러 그 자리에 남게 했다
+            PRINTFORMW 「……」
+        ENDIF
+    ELSEIF EXP:6 >= 51
+        IF RAND:3 == 0
+            PRINTFORMW 「첸해 와…그, 내게 해……주세요…」
+            PRINTFORMW 등은 비소를%CALLNAME:MASTER%에 향했다
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「첸은…오줌 내자이기 때문에…가득 나오도록(듯이) 마음껏 해 주세요…」
+            PRINTFORMW 등은 정신나간 표정으로 안아 따라 왔다
+        ELSE
+            PRINTFORMW 「첸의 오줌……보고 있어 주세요…」
+            PRINTFORMW 등은 얼굴을 붉히면서도 확실히 말했다
+        ENDIF
+    ENDIF
 ELSE
-	IF RAND:2 == 0
-		PRINTFORML 「그…오줌……」
-		PRINTFORMW 등은 붉어지면서 그 만큼 말했다
-	ELSE
-		PRINTFORMW (…오줌……)
-		PRINTFORMW 당황해 일어서려고 하는 등을 억눌러 그 자리에 남게 했다
-		PRINTFORMW 「그만두어! 이야기해!」
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORML 「그…오줌……」
+        PRINTFORMW 등은 붉어지면서 그 만큼 말했다
+    ELSE
+        PRINTFORMW (…오줌……)
+        PRINTFORMW 당황해 일어서려고 하는 등을 억눌러 그 자리에 남게 했다
+        PRINTFORMW 「그만두어! 이야기해!」
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;정조를 지킬 수 있다면 뒤를 공격받아도 괜찮다고 생각했다
@@ -409,7 +409,7 @@ PRINTFORMW (첸의 처음은, 이런 녀석에게는 절대 건네주지 않는�
 ;순수 취득 이벤트(순애 모드)
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_61
-	;PRINTFORMW 「순수 취득 이벤트때의 말입니다」
+    ;PRINTFORMW 「순수 취득 이벤트때의 말입니다」
 
 ;-------------------------------------------------
 ;질투 소멸 이벤트(순애 모드)
@@ -429,13 +429,13 @@ PRINTFORMW (첸의 처음은, 이런 녀석에게는 절대 건네주지 않는�
 @K13_MESSAGE_EVENT_69
 ;억압과 저항의 양쪽 모두가 소멸
 IF TALENT:32 && TALENT:34
-	;PRINTFORMW 「억압과 저항의 양쪽 모두가 소멸했을 때의 말입니다」
+    ;PRINTFORMW 「억압과 저항의 양쪽 모두가 소멸했을 때의 말입니다」
 ;저항만 소멸
 ELSEIF TALENT:34
-	;PRINTFORMW 「저항이 소멸했을 때의 말입니다」
+    ;PRINTFORMW 「저항이 소멸했을 때의 말입니다」
 ;억압만 소멸
 ELSEIF TALENT:32
-	;PRINTFORMW 「억압이 소멸했을 때의 말입니다」
+    ;PRINTFORMW 「억압이 소멸했을 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -486,10 +486,10 @@ ENDIF
 @K13_MESSAGE_EVENT_81
 ;페니스 있어
 IF TALENT:120 || TALENT:121
-	;PRINTFORMW 「음경취득 이벤트시의 말입니다」
+    ;PRINTFORMW 「음경취득 이벤트시의 말입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「음핵취득 이벤트시의 말입니다」
+    ;PRINTFORMW 「음핵취득 이벤트시의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -559,9 +559,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_99
 SIF TFLAG:224 == 555 || ASSIPLAY != 0
-	RETURN 0
+    RETURN 0
 IF RAND:20 < 0
-	;PRINTFORML 「조교 전조름 말입니다」
+    ;PRINTFORML 「조교 전조름 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -621,16 +621,16 @@ ENDIF
 @K13_MESSAGE_EVENT_110
 ;이번에[인기]취득
 IF TFLAG:99 == 2
-	IF TALENT:150 == 1
-		PRINTFORMW 「어첸, 그렇게 인기인이야?」
-		PRINTFORMW 「 그렇지만 첸은 많은 사람에게 사랑받는 것보다,%CALLNAME:MASTER%인 만큼 가득 사랑하기를 원해…」
-	ENDIF
+    IF TALENT:150 == 1
+        PRINTFORMW 「어첸, 그렇게 인기인이야?」
+        PRINTFORMW 「 그렇지만 첸은 많은 사람에게 사랑받는 것보다,%CALLNAME:MASTER%인 만큼 가득 사랑하기를 원해…」
+    ENDIF
 ;성공
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「야외 라이브가 성공했을 때의 말입니다」
+    ;PRINTFORMW 「야외 라이브가 성공했을 때의 말입니다」
 ;실패
 ELSE
-	;PRINTFORMW 「야외 라이브가 실패했을 때의 말입니다」
+    ;PRINTFORMW 「야외 라이브가 실패했을 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -639,9 +639,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_111
 IF TFLAG:99 == 0
-	;PRINTFORMW 「이익 요리 제작시의 말입니다」
+    ;PRINTFORMW 「이익 요리 제작시의 말입니다」
 ELSE
-	;PRINTFORMW 「도시락 제작시의 말입니다」
+    ;PRINTFORMW 「도시락 제작시의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -702,8 +702,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_120
 IF TALENT:150 == 1
-	PRINTFORMW 「첸이군요, 이번은…좀 더 가득, 좀 더 대단한 일, 할 수 있기 때문에」
-	PRINTFORMW 「그러니까, 가득, 해…」
+    PRINTFORMW 「첸이군요, 이번은…좀 더 가득, 좀 더 대단한 일, 할 수 있기 때문에」
+    PRINTFORMW 「그러니까, 가득, 해…」
 ENDIF
 ;-------------------------------------------------
 ;기력 최대치 업 이벤트
@@ -730,8 +730,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_124
 IF TALENT:150 == 1
-	PRINTFORMW 「 이제(벌써), 너무 기다려 …」
-	PRINTFORMW 「가득…귀여워해…」
+    PRINTFORMW 「 이제(벌써), 너무 기다려 …」
+    PRINTFORMW 「가득…귀여워해…」
 ENDIF
 
 ;-------------------------------------------------
@@ -751,8 +751,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_127
 IF TALENT:150 == 1
-	PRINTFORMW 「어…이제(벌써) 말해버린다의?」
-	PRINTFORMW 「 이제(벌써), 외로운 것 네나, 함께…있어」
+    PRINTFORMW 「어…이제(벌써) 말해버린다의?」
+    PRINTFORMW 「 이제(벌써), 외로운 것 네나, 함께…있어」
 ENDIF
 
 ;-------------------------------------------------
@@ -762,7 +762,7 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_128
 IF TALENT:150 == 1
-	PRINTFORMW 「…이제(벌써)……바보………」
+    PRINTFORMW 「…이제(벌써)……바보………」
 ENDIF
 
 ;-------------------------------------------------
@@ -778,8 +778,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_131
 IF TALENT:150 == 1
-	PRINTFORMW 「첸들이 음란한 일 할의…여러 사람으로 보여져버리는 다…」
-	PRINTFORMW 「첸은…%CALLNAME:MASTER%인 만큼 보기를 원하는데…모르는 사람에게무슨 볼 수 있고 싶지 않아…」
+    PRINTFORMW 「첸들이 음란한 일 할의…여러 사람으로 보여져버리는 다…」
+    PRINTFORMW 「첸은…%CALLNAME:MASTER%인 만큼 보기를 원하는데…모르는 사람에게무슨 볼 수 있고 싶지 않아…」
 ENDIF
 
 ;-------------------------------------------------
@@ -837,9 +837,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_140
 IF TALENT:150 == 1
-	PRINTFORMW 「에또…그, 아침 밀크 마시면(자) 국화 될 수 있다 라고, 책에 써 있었기 때문에」
-	PRINTFORMW 「그…이니까……계속해도…좋아?」
-	PRINTFORMW 「짜는……날름날름……응…」
+    PRINTFORMW 「에또…그, 아침 밀크 마시면(자) 국화 될 수 있다 라고, 책에 써 있었기 때문에」
+    PRINTFORMW 「그…이니까……계속해도…좋아?」
+    PRINTFORMW 「짜는……날름날름……응…」
 ENDIF
 
 ;-------------------------------------------------
@@ -848,8 +848,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_141
 IF TALENT:150 == 1
-	PRINTFORMW 「아…그…첸, 무네 작기 때문에…첸과 연습하지 않으면 기분 좋아져 주지 않을까는…」
-	PRINTFORMW 「이지만, 그 외에 연습의 방법 생각해내지 못했으니까…무심코」
+    PRINTFORMW 「아…그…첸, 무네 작기 때문에…첸과 연습하지 않으면 기분 좋아져 주지 않을까는…」
+    PRINTFORMW 「이지만, 그 외에 연습의 방법 생각해내지 못했으니까…무심코」
 ENDIF
 ;-------------------------------------------------
 ;아침 기승위
@@ -916,8 +916,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_151
 IF TALENT:150 == 1
-	PRINTFORMW 「외로워 …이런 응은 부족하다……」
-	PRINTFORMW 「 좀 더…가득 해 주었으면 했는데  …」
+    PRINTFORMW 「외로워 …이런 응은 부족하다……」
+    PRINTFORMW 「 좀 더…가득 해 주었으면 했는데  …」
 ENDIF
 ;-------------------------------------------------
 ;조교 후 아나운서 무릎 관절
@@ -999,10 +999,10 @@ ENDIF
 @K13_MESSAGE_EVENT_170
 ;주인에 의한다
 IF CFLAG:70 == 1
-	;PRINTFORMW 「주인에 의해 임신했을 때의 말입니다」
+    ;PRINTFORMW 「주인에 의해 임신했을 때의 말입니다」
 ;주인 이외
 ELSE
-	;PRINTFORMW 「주인 이외에 따라 임신했을 때의 말입니다」
+    ;PRINTFORMW 「주인 이외에 따라 임신했을 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1124,13 +1124,13 @@ PRINTFORMW 「능력만 돌아오면, 너 같은 것, 먹이에 지나지 않아
 @K13_MESSAGE_EVENT_195
 ;매각시
 IF TFLAG:99 == 130
-	;PRINTFORMW 「노예를 매각해, 소멸할 때의 말입니다」
+    ;PRINTFORMW 「노예를 매각해, 소멸할 때의 말입니다」
 ;광기 탈주한 매각시
 ELSEIF TFLAG:99 == 180
-	;PRINTFORMW 「광기 노예를 매각해, 소멸할 때의 말입니다」
+    ;PRINTFORMW 「광기 노예를 매각해, 소멸할 때의 말입니다」
 ;해방되어 떠났을 때
 ELSEIF TFLAG:99 == 196
-	;PRINTFORMW 「노예를 해방해, 소멸할 때의 말입니다」
+    ;PRINTFORMW 「노예를 해방해, 소멸할 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1424,9 +1424,9 @@ PRINTFORMW 첸은 울기 시작했다
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_280
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트전(좀비 페어리)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트전(좀비 페어리)의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(좀비 페어리)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(좀비 페어리)의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1435,9 +1435,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_281
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트전(흡혈귀)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트전(흡혈귀)의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(흡혈귀)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(흡혈귀)의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1446,9 +1446,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_282
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트전(기계)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트전(기계)의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(기계)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(기계)의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1457,9 +1457,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_283
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트전(유령)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트전(유령)의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(유령)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(유령)의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1468,9 +1468,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_284
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트전(인형)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트전(인형)의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(인형)의 말입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(인형)의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1496,9 +1496,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_309
 IF TFLAG:99 == 0
-	;PRINTFORMW 「진정차사용전의 말입니다」
+    ;PRINTFORMW 「진정차사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「진정차사용후의 말입니다」
+    ;PRINTFORMW 「진정차사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1506,9 +1506,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_310
 IF TFLAG:99 == 0
-	;PRINTFORMW 「영양제사용전의 말입니다」
+    ;PRINTFORMW 「영양제사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「영양제사용후의 말입니다」
+    ;PRINTFORMW 「영양제사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1516,13 +1516,13 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_311
 IF TFLAG:99 == 0
-	;PRINTFORMW 「뚜껑이든지 소거전의 말입니다」
+    ;PRINTFORMW 「뚜껑이든지 소거전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「뚜껑이든지 소거 후의 말입니다」
+    ;PRINTFORMW 「뚜껑이든지 소거 후의 말입니다」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「뚜껑이든지 부가전의 말입니다」
+    ;PRINTFORMW 「뚜껑이든지 부가전의 말입니다」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「뚜껑이든지 부가 후의 말입니다」
+    ;PRINTFORMW 「뚜껑이든지 부가 후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1530,13 +1530,13 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_312
 IF TFLAG:99 == 0
-	;PRINTFORMW 「접어지고 소거전의 말입니다」
+    ;PRINTFORMW 「접어지고 소거전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「접어지고 소거 후의 말입니다」
+    ;PRINTFORMW 「접어지고 소거 후의 말입니다」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「접어지고 부가전의 말입니다」
+    ;PRINTFORMW 「접어지고 부가전의 말입니다」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「접어지고 부가 후의 말입니다」
+    ;PRINTFORMW 「접어지고 부가 후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1562,9 +1562,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_320
 IF TFLAG:99 == 0
-	;PRINTFORMW 「풍부한 가슴제사용전의 말입니다」
+    ;PRINTFORMW 「풍부한 가슴제사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「풍부한 가슴제사용후의 말입니다」
+    ;PRINTFORMW 「풍부한 가슴제사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1572,9 +1572,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_321
 IF TFLAG:99 == 0
-	;PRINTFORMW 「축흉제사용전의 말입니다」
+    ;PRINTFORMW 「축흉제사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「축흉제사용후의 말입니다」
+    ;PRINTFORMW 「축흉제사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1582,9 +1582,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_322
 IF TFLAG:99 == 0
-	;PRINTFORMW 「지유제 사용전의 말입니다」
+    ;PRINTFORMW 「지유제 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「지유제 사용후의 말입니다」
+    ;PRINTFORMW 「지유제 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1592,9 +1592,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_323
 IF TFLAG:99 == 0
-	;PRINTFORMW 「뇨누락 개선약사용전의 말입니다」
+    ;PRINTFORMW 「뇨누락 개선약사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「뇨누락 개선약사용후의 말입니다」
+    ;PRINTFORMW 「뇨누락 개선약사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1602,23 +1602,23 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_324
 IF TALENT:150 == 1
-	PRINTFORMW 「아니잊고 싶지 않은…%CALLNAME:MASTER%절대, 약은은 잊지 않으니까…」
-	PRINTFORMW 「무엇이 있어도, 절대, 절대 잊지 않기 때문에」
-	PRINTFORMW (아…안 됨……로서……왔다…)
-	PRINTFORMW 　
-	PRINTFORMW 　
-	PRINTFORMW 　
-	PRINTFORMW 「웃…여기는……어디…당신은…누구……?」
-	PRINTFORMW (일까…무엇인가 중요한, 절대 잊으면 안 되는 것을 잊고 있는 생각이 든다…)
+    PRINTFORMW 「아니잊고 싶지 않은…%CALLNAME:MASTER%절대, 약은은 잊지 않으니까…」
+    PRINTFORMW 「무엇이 있어도, 절대, 절대 잊지 않기 때문에」
+    PRINTFORMW (아…안 됨……로서……왔다…)
+    PRINTFORMW 　
+    PRINTFORMW 　
+    PRINTFORMW 　
+    PRINTFORMW 「웃…여기는……어디…당신은…누구……?」
+    PRINTFORMW (일까…무엇인가 중요한, 절대 잊으면 안 되는 것을 잊고 있는 생각이 든다…)
 ENDIF
 ;-------------------------------------------------
 ;빨강의 사탕구슬 사용(TFLAG:99=0:사용전, 1:사용후)
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_330
 IF TFLAG:99 == 0
-	;PRINTFORMW 「빨강의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「빨강의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「빨강의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「빨강의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1626,9 +1626,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_331
 IF TFLAG:99 == 0
-	;PRINTFORMW 「파랑의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「파랑의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「파랑의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「파랑의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1648,9 +1648,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_334
 IF TFLAG:99 == 0
-	;PRINTFORMW 「흰색의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「흰색의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「흰색의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「흰색의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1658,9 +1658,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_335
 IF TFLAG:99 == 0
-	;PRINTFORMW 「흑의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「흑의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「흑의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「흑의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1668,9 +1668,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_336
 IF TFLAG:99 == 0
-	;PRINTFORMW 「재의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「재의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「재의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「재의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1696,9 +1696,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_340
 IF TFLAG:99 == 0
-	;PRINTFORMW 「취의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「취의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「취의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「취의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1706,9 +1706,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_341
 IF TFLAG:99 == 0
-	;PRINTFORMW 「감색의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「감색의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「감색의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「감색의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1716,9 +1716,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_342
 IF TFLAG:99 == 0
-	;PRINTFORMW 「복숭아의 사탕구슬 사용전의 말입니다」
+    ;PRINTFORMW 「복숭아의 사탕구슬 사용전의 말입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「복숭아의 사탕구슬 사용후의 말입니다」
+    ;PRINTFORMW 「복숭아의 사탕구슬 사용후의 말입니다」
 ENDIF
 
 ;-------------------------------------------------

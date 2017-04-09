@@ -50,10 +50,10 @@ PRINTLC [1000] 돌아가기
 $INPUT_LOOP
 INPUT
 SIF RESULT == 1000
-	RETURN 0
+    RETURN 0
 TRYCCALLFORM DICTIONARY_DRUG_{RESULT}
 CATCH
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDCATCH
 GOTO PRINT_LIST
 
@@ -390,10 +390,10 @@ PRINTLC [1000] 돌아가기
 $INPUT_LOOP
 INPUT
 SIF RESULT == 1000
-	RETURN 0
+    RETURN 0
 TRYCCALLFORM DICTIONARY_EXITEM_{RESULT}
 CATCH
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDCATCH
 GOTO PRINT_LIST
 
@@ -712,43 +712,43 @@ PRINTL ·아이템 「진화의 비법」을 구입한다
 PRINTL 의 양쪽 모두가 필수가 됩니다. 또, 필요 촉수 에너지와 자금에도 주의해 주세요.
 DRAWLINE
 IF LOCAL == 0
-	PRINTLC [ 0] 채찍 촉수
-	PRINTLC [ 1] 침상 촉수
-	PRINTLC [ 2] 방전 촉수
-	PRINTLC [ 3] 최면 촉수
-	PRINTLC [ 4] 극세 촉수
-	PRINTLC [ 5] 양분 주입 촉수
-	PRINTLC [ 6] 항균 촉수
-	PRINTLC [ 7] 고야형 촉수
-	PRINTLC [ 8] 말미잘형 촉수
-	PRINTLC [ 9] 촉수 원격 정밀 제어
-	PRINTLC [10] 특수 호르몬 분비
-	PRINTLC [11] 촉수 현자의 돌
-	PRINTLC [12] 노예 징벌용 촉수 방
-	PRINTLC [13] 체내 적응력 강화
-	PRINTLC [14] 정액 방출량 강화
-	PRINTLC [15] 정자와 촉수의 방
-	PRINTLC [16] 흡혈 촉수
-	PRINTLC [17] 보육 시설·분만대
+    PRINTLC [ 0] 채찍 촉수
+    PRINTLC [ 1] 침상 촉수
+    PRINTLC [ 2] 방전 촉수
+    PRINTLC [ 3] 최면 촉수
+    PRINTLC [ 4] 극세 촉수
+    PRINTLC [ 5] 양분 주입 촉수
+    PRINTLC [ 6] 항균 촉수
+    PRINTLC [ 7] 고야형 촉수
+    PRINTLC [ 8] 말미잘형 촉수
+    PRINTLC [ 9] 촉수 원격 정밀 제어
+    PRINTLC [10] 특수 호르몬 분비
+    PRINTLC [11] 촉수 현자의 돌
+    PRINTLC [12] 노예 징벌용 촉수 방
+    PRINTLC [13] 체내 적응력 강화
+    PRINTLC [14] 정액 방출량 강화
+    PRINTLC [15] 정자와 촉수의 방
+    PRINTLC [16] 흡혈 촉수
+    PRINTLC [17] 보육 시설·분만대
 ELSEIF LOCAL == 1
-	PRINTLC [50] SATORI 촉수
-	PRINTLC [51] NITORI 촉수
-	PRINTLC [52] YUYUKO 촉수
-	PRINTLC [53] SUIKA 촉수
-	PRINTLC [54] ALICE 촉수
-	PRINTLC [55] HINA 촉수
-	PRINTLC [56] AYA 촉수
-	PRINTLC [57] PARSEE 촉수
-	PRINTLC [58] MEDICINE 촉수
-	PRINTLC [59] PATCHOULI 촉수
-	PRINTLC [60] HIGH-FAIRY 촉수
-	PRINTLC [61] CIRNO 촉수
-	PRINTLC [62] NAZRIN 촉수
-	PRINTLC [63] EIKI 촉수
-	PRINTLC [64] SHIZUHA 촉수
-	PRINTLC [65] MINORIKO 촉수
-;	PRINTLC [66] SUWAKO 촉수
-	PRINTLC [99] 나타내 몸촉수
+    PRINTLC [50] SATORI 촉수
+    PRINTLC [51] NITORI 촉수
+    PRINTLC [52] YUYUKO 촉수
+    PRINTLC [53] SUIKA 촉수
+    PRINTLC [54] ALICE 촉수
+    PRINTLC [55] HINA 촉수
+    PRINTLC [56] AYA 촉수
+    PRINTLC [57] PARSEE 촉수
+    PRINTLC [58] MEDICINE 촉수
+    PRINTLC [59] PATCHOULI 촉수
+    PRINTLC [60] HIGH-FAIRY 촉수
+    PRINTLC [61] CIRNO 촉수
+    PRINTLC [62] NAZRIN 촉수
+    PRINTLC [63] EIKI 촉수
+    PRINTLC [64] SHIZUHA 촉수
+    PRINTLC [65] MINORIKO 촉수
+;    PRINTLC [66] SUWAKO 촉수
+    PRINTLC [99] 나타내 몸촉수
 ENDIF
 PRINTL 
 DRAWLINE
@@ -758,16 +758,16 @@ PRINTFORMLC \@(LOCAL >= LOCAL:1) ?  %" " * 18% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 1001 && LOCAL > 0
-	LOCAL -= 1
+    LOCAL -= 1
 ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-	LOCAL += 1
+    LOCAL += 1
 ELSE
-	TRYCCALLFORM DICTIONARY_TENTACLE_{RESULT}
-	CATCH
-		GOTO INPUT_LOOP
-	ENDCATCH
+    TRYCCALLFORM DICTIONARY_TENTACLE_{RESULT}
+    CATCH
+        GOTO INPUT_LOOP
+    ENDCATCH
 ENDIF
 GOTO PRINT_LIST
 
@@ -1040,7 +1040,7 @@ PRINTFORML 특수 목욕탕의 대략적인 설명이다.
 PRINTFORML 특수 목욕탕 컨피그를 켜야 된다.
 DRAWLINE
 FOR COUNT, 0, 16
-	PRINTFORMLC [{COUNT, 2}] %STR:(500+COUNT)%
+    PRINTFORMLC [{COUNT, 2}] %STR:(500+COUNT)%
 NEXT
 PRINTL 
 DRAWLINE
@@ -1048,9 +1048,9 @@ PRINTLC [1000] 돌아가기
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT < 0 || RESULT > 15
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 PRINTFORML 〔%STR:(500+RESULT)%〕(개장 비용：%SHOW_YEN(SPECIAL_BATH_PRICE(RESULT))%)
 TRYCALLFORM DICTIONARY_SPECIALBATH_{RESULT}
@@ -1174,19 +1174,19 @@ PRINTLC [ 6] XEXTRA 모드
 PRINTLC [ 7] YASAI 모드
 IF FLAG:999 == 0
 SIF TALENT:MASTER:998
-	PRINTLC [ 8] DEBUG 모드
-	ENDIF
+    PRINTLC [ 8] DEBUG 모드
+    ENDIF
 PRINTL 
 DRAWLINE
 PRINTLC [1000] 돌아가기
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 8 && FLAG:999 == 1
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ELSEIF RESULT < 0 || RESULT > 8 || (RESULT == 8 && TALENT:MASTER:998 == 0)
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 TRYCALLFORM DICTIONARY_GAMEMODE_{RESULT}
 GOTO PRINT_LIST
@@ -1291,90 +1291,90 @@ PRINTL eratohoYM에 준비된 CONFIG에 관한 대범한 설명입니다.
 PRINTFORML 내용을 알고 싶은 항목의 번호를 입력해 주세요.  ＜page. {LOCAL+1}/{LOCAL:1+1}＞
 DRAWLINE
 IF LOCAL == 0
-	;SHOP·이벤트 확장
-	PRINTL [ 1] 강하게 뉴 게임
-	PRINTL [ 2] 표시 형식 변경
-	PRINTL [ 3] 호감도의 표시
-	PRINTL [ 4] 도시락·라이브
-	PRINTL [ 5] 전시실
-	PRINTL [ 6] 순애 모드
-	PRINTL [ 7] 일상생활
-	PRINTL [ 8] 일상생활 강화
-	PRINTL [ 9] 밤이벤트 확장
-	PRINTL [10] 밤 상대 랜덤 검출
-	PRINTL [11] 반발 각인 소유는 밤에 겨 하지 않는다
-	PRINTL [12] 무명 캐릭터 성별 랜덤
-	PRINTL [13] 조교 후 행위를 억제한다
-	PRINTL [14] 식후의 멋진 운동을 억제한다
-	PRINTL [15] 매각시의 말을 표시하지 않는다
-	PRINTL [16] 아침의 이벤트를 억제한다
-	PRINTL [17] 기능 훈련사를 이용할 수 없게 한다
-	PRINTL [18] 시간 경과에 의한 호감도 변화를 억제한다
+    ;SHOP·이벤트 확장
+    PRINTL [ 1] 강하게 뉴 게임
+    PRINTL [ 2] 표시 형식 변경
+    PRINTL [ 3] 호감도의 표시
+    PRINTL [ 4] 도시락·라이브
+    PRINTL [ 5] 전시실
+    PRINTL [ 6] 순애 모드
+    PRINTL [ 7] 일상생활
+    PRINTL [ 8] 일상생활 강화
+    PRINTL [ 9] 밤이벤트 확장
+    PRINTL [10] 밤 상대 랜덤 검출
+    PRINTL [11] 반발 각인 소유는 밤에 겨 하지 않는다
+    PRINTL [12] 무명 캐릭터 성별 랜덤
+    PRINTL [13] 조교 후 행위를 억제한다
+    PRINTL [14] 식후의 멋진 운동을 억제한다
+    PRINTL [15] 매각시의 말을 표시하지 않는다
+    PRINTL [16] 아침의 이벤트를 억제한다
+    PRINTL [17] 기능 훈련사를 이용할 수 없게 한다
+    PRINTL [18] 시간 경과에 의한 호감도 변화를 억제한다
 ELSEIF LOCAL == 1
-	;아이템 확장
-	PRINTL [21] 특수한 약
-	PRINTL [22] 강력 아이템·커맨드
-	PRINTL [23] 일반적인 약품 아이템의 자동 보충
-	PRINTL [24] 특수한 약품 아이템의 자동 보충
-	PRINTL [25] 소모품 아이템의 자동 보충
-	PRINTL [26] 창관·커맨드의 해방
-	PRINTL [27] 진정차의 자동 사용
-	PRINTL [28] 영양제의 자동 사용
-	;조교 모드 확장
-	PRINTL [31] 조교 커맨드 필터
-	PRINTL [32] 기력 체력 상승
-	PRINTL [33] 얀데레 모드
-	PRINTL [34] 랜덤성 배제
-	PRINTL [35] 고양이 펠라 패치
-	PRINTL [36] 후타타마 패치
-	PRINTL [37] 조교 메뉴 등록
-	PRINTL [38] 사정 부위 선택 기능
-	PRINTL [39] 후타나리 이벤트 억제
+    ;아이템 확장
+    PRINTL [21] 특수한 약
+    PRINTL [22] 강력 아이템·커맨드
+    PRINTL [23] 일반적인 약품 아이템의 자동 보충
+    PRINTL [24] 특수한 약품 아이템의 자동 보충
+    PRINTL [25] 소모품 아이템의 자동 보충
+    PRINTL [26] 창관·커맨드의 해방
+    PRINTL [27] 진정차의 자동 사용
+    PRINTL [28] 영양제의 자동 사용
+    ;조교 모드 확장
+    PRINTL [31] 조교 커맨드 필터
+    PRINTL [32] 기력 체력 상승
+    PRINTL [33] 얀데레 모드
+    PRINTL [34] 랜덤성 배제
+    PRINTL [35] 고양이 펠라 패치
+    PRINTL [36] 후타타마 패치
+    PRINTL [37] 조교 메뉴 등록
+    PRINTL [38] 사정 부위 선택 기능
+    PRINTL [39] 후타나리 이벤트 억제
 ELSEIF LOCAL == 2
-	;커맨드 확장
-	PRINTL [41] C계 확장 커맨드
-	PRINTL [42] V계 확장 커맨드
-	PRINTL [43] A계 확장 커맨드
-	PRINTL [44] B계 확장 커맨드
-	PRINTL [45] 고문계, 정신조작계 커맨드
-	PRINTL [46] 약품계 확장 커맨드
-	PRINTL [47] 주사계 커맨드
-	PRINTL [48] 촬영 커맨드 확장
-	PRINTL [49] 야외 조교 커맨드 확장
-	PRINTL [50] 수치 플레이계 확장 커맨드
-	PRINTL [51] 특수 목욕탕계 커맨드
-	PRINTL [52] 조교자 봉사·우후후계 커맨드
-	PRINTL [53] 신사적인 촉수계 커맨드
-	PRINTL [54] 수간계 커맨드
-	PRINTL [55] 캐릭터 전용 커맨드
-	PRINTL [56] caved!!!!이벤트
-	PRINTL [57] 야마메의 스커트 속은∼
+    ;커맨드 확장
+    PRINTL [41] C계 확장 커맨드
+    PRINTL [42] V계 확장 커맨드
+    PRINTL [43] A계 확장 커맨드
+    PRINTL [44] B계 확장 커맨드
+    PRINTL [45] 고문계, 정신조작계 커맨드
+    PRINTL [46] 약품계 확장 커맨드
+    PRINTL [47] 주사계 커맨드
+    PRINTL [48] 촬영 커맨드 확장
+    PRINTL [49] 야외 조교 커맨드 확장
+    PRINTL [50] 수치 플레이계 확장 커맨드
+    PRINTL [51] 특수 목욕탕계 커맨드
+    PRINTL [52] 조교자 봉사·우후후계 커맨드
+    PRINTL [53] 신사적인 촉수계 커맨드
+    PRINTL [54] 수간계 커맨드
+    PRINTL [55] 캐릭터 전용 커맨드
+    PRINTL [56] caved!!!!이벤트
+    PRINTL [57] 야마메의 스커트 속은∼
 ELSEIF LOCAL == 3
-	;eratohoYM 확장 패치
-	PRINTL [61] 임신 출산 육아 기능
-	PRINTL [62] 알가정교육 패치
-	PRINTL [63] 육아실 확장 기능
-	PRINTL [64] 아이 조교 가능화 모드
-	PRINTL [65] 아들이나 조교한다
-	PRINTL [66] 아이 성장 패치
-	PRINTL [67] 기사 패치
-	PRINTL [68] 정액 도시락 패치
-	PRINTL [69] 정음절정 패치
-	PRINTL [70] 실신 패치
-	PRINTL [71] 변동 스테이터스 강조 패치
-	PRINTL [72] 신체 측정 패치
-	PRINTL [73] 범해짐 패치
-	PRINTL [74] 자위 은폐 발각 패치
-	PRINTL [75] 한마디 패치
+    ;eratohoYM 확장 패치
+    PRINTL [61] 임신 출산 육아 기능
+    PRINTL [62] 알가정교육 패치
+    PRINTL [63] 육아실 확장 기능
+    PRINTL [64] 아이 조교 가능화 모드
+    PRINTL [65] 아들이나 조교한다
+    PRINTL [66] 아이 성장 패치
+    PRINTL [67] 기사 패치
+    PRINTL [68] 정액 도시락 패치
+    PRINTL [69] 정음절정 패치
+    PRINTL [70] 실신 패치
+    PRINTL [71] 변동 스테이터스 강조 패치
+    PRINTL [72] 신체 측정 패치
+    PRINTL [73] 범해짐 패치
+    PRINTL [74] 자위 은폐 발각 패치
+    PRINTL [75] 한마디 패치
 ELSEIF LOCAL == 4
-	;커스텀 커맨드 필터
-	PRINTL [80] 커스텀 커맨드 필터
-	;텍스트 표시의 설정
-	PRINTL [90] 캐릭터 말의 표시 빈도
-	PRINTL [91] 텍스트 표시
-	PRINTL [92] 당신에게로의 범용 대사 적용
-	PRINTL [93] 소지 아이템 표시
-	PRINTL [94] 범용 대사의 미사용
+    ;커스텀 커맨드 필터
+    PRINTL [80] 커스텀 커맨드 필터
+    ;텍스트 표시의 설정
+    PRINTL [90] 캐릭터 말의 표시 빈도
+    PRINTL [91] 텍스트 표시
+    PRINTL [92] 당신에게로의 범용 대사 적용
+    PRINTL [93] 소지 아이템 표시
+    PRINTL [94] 범용 대사의 미사용
 ENDIF
 DRAWLINE
 PRINTFORMLC \@(LOCAL <= 0) ?  %" " * 18% # [1001] 앞페이지\@
@@ -1383,17 +1383,17 @@ PRINTFORMLC \@(LOCAL >= LOCAL:1) ?  %" " * 18% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 1001 && LOCAL > 0
-	LOCAL -= 1
-	GOTO PRINT_LIST
+    LOCAL -= 1
+    GOTO PRINT_LIST
 ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-	LOCAL += 1
-	GOTO PRINT_LIST
+    LOCAL += 1
+    GOTO PRINT_LIST
 ENDIF
 TRYCCALLFORM DICTIONARY_CONFIG_{RESULT}
 CATCH
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDCATCH
 GOTO PRINT_LIST
 
@@ -2058,8 +2058,8 @@ PRINTL 덧붙여, 복수의 엔딩 조건을 만족했을 경우에는 어느 �
 PRINTL 또, 무기한 모드인 경우, 이하의 엔딩은 발생하지 않습니다.
 DRAWLINE
 FOR COUNT , (50 * LOCAL) , (50 * (LOCAL+1)), 1
-	SIF STRLENS(STR:(COUNT + 1000)) > 0
-		PRINTFORMLC [{COUNT}] %STR:(1000+COUNT)%
+    SIF STRLENS(STR:(COUNT + 1000)) > 0
+        PRINTFORMLC [{COUNT}] %STR:(1000+COUNT)%
 NEXT
 PRINTL 
 DRAWLINE
@@ -2069,15 +2069,15 @@ PRINTFORMLC \@(LOCAL >= LOCAL:1) ?  %" " * 18% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 1001 && LOCAL > 0
-	LOCAL -= 1
+    LOCAL -= 1
 ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-	LOCAL += 1
+    LOCAL += 1
 ELSEIF RESULT < 1 || RESULT > 100 || STRLENS(STR:(RESULT + 1000)) == 0
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ELSE
-	TRYCALLFORM DICTIONARY_ENDING_{RESULT}
+    TRYCALLFORM DICTIONARY_ENDING_{RESULT}
 ENDIF
 GOTO PRINT_LIST
 

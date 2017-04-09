@@ -36,10 +36,10 @@
 @K28_MESSAGE_EVENT_4
 ;成功
 IF TFLAG:99 == 3
-	;PRINTFORMW 「公開露出ライブ成功時の口上です」
+    ;PRINTFORMW 「公開露出ライブ成功時の口上です」
 ;乱交
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「公開露出ライブで乱交した時の口上です」
+    ;PRINTFORMW 「公開露出ライブで乱交した時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -84,12 +84,12 @@ ENDIF
 @K28_MESSAGE_EVENT_10
 ;상대가 에링
 IF NO:TARGET == 29
-	PRINTFORMW 『믓…… 안 돼요, 나오면, 스승님, 받아주세요오!』
+    PRINTFORMW 『믓…… 안 돼요, 나오면, 스승님, 받아주세요오!』
 ;상대가 공주님
 ELSEIF NO:TARGET == 30
-	PRINTFORMW 『아아, 공주님, 공주님, 공주니임, 공주니이이이임!』
+    PRINTFORMW 『아아, 공주님, 공주님, 공주니임, 공주니이이이임!』
 ELSE
-	PRINTFORMW 『하앗, 아앗, 온다, 정액이 와서, 사정해요, 싸요오오오옷!』
+    PRINTFORMW 『하앗, 아앗, 온다, 정액이 와서, 사정해요, 싸요오오오옷!』
 ENDIF
 
 ;-------------------------------------------------
@@ -140,15 +140,15 @@ ENDIF
 ;-------------------------------------------------
 ;@K28_MESSAGE_EVENT_19
 ;SIF CFLAG:60 >= 1000 && TALENT:100 == 0
-	;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
+    ;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
 ;SIF CFLAG:61 >= 2000 && TALENT:102 == 0
-	;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
+    ;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
 ;SIF CFLAG:62 >= 2500 && TALENT:104 == 0
-	;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
+    ;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
 ;SIF CFLAG:63 >= 5000 && TALENT:106 == 0
-	;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
+    ;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
 ;IF CFLAG:64 >= 10000 && TALENT:66 == 0
-	;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
+    ;PRINTFORML 「開発度関連をフォローするイベント時の口上です」
 ;ENDIF
 
 ;-------------------------------------------------
@@ -156,9 +156,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_20
 IF ABL:31 >= 3 && RAND:3 == 0
-	PRINTFORMW 「빨리 싸주세요……! 자지에서 마음껏 사정해서, 절 더럽혀주세요!」
+    PRINTFORMW 「빨리 싸주세요……! 자지에서 마음껏 사정해서, 절 더럽혀주세요!」
 ELSEIF RAND:2 == 0
-	PRINTFORMW 「하아, 하아ー, 하앗, 싸고 싶으면, 하얗게 뿜어주세요, 빨리, 잇……!」
+    PRINTFORMW 「하아, 하아ー, 하앗, 싸고 싶으면, 하얗게 뿜어주세요, 빨리, 잇……!」
 ENDIF
 
 ;-------------------------------------------------
@@ -186,11 +186,11 @@ ENDIF
 @K28_MESSAGE_EVENT_31
 ;ガチヤンデレ
 IF TALENT:150
-	PRINTFORMW 「함께라니…… 미친 건가요……?」
+    PRINTFORMW 「함께라니…… 미친 건가요……?」
 ELSEIF MARK:2 == 3
-	PRINTFORMW 「우, 우우……」
+    PRINTFORMW 「우, 우우……」
 ELSE
-	PRINTFORMW 「이렇게, 가까우면……!」
+    PRINTFORMW 「이렇게, 가까우면……!」
 ENDIF
 
 ;-------------------------------------------------
@@ -339,7 +339,7 @@ ENDIF
 ;素直取得イベント(純愛モード)
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_61
-	;PRINTFORMW 「素直取得イベントの時の口上です」
+    ;PRINTFORMW 「素直取得イベントの時の口上です」
 
 ;-------------------------------------------------
 ;嫉妬消滅イベント(純愛モード)
@@ -359,13 +359,13 @@ ENDIF
 @K28_MESSAGE_EVENT_69
 ;抑圧と抵抗の両方が消滅
 IF TALENT:32 && TALENT:34
-	;PRINTFORMW 「抑圧と抵抗の両方が消滅した時の口上です」
+    ;PRINTFORMW 「抑圧と抵抗の両方が消滅した時の口上です」
 ;抵抗だけ消滅
 ELSEIF TALENT:34
-	;PRINTFORMW 「抵抗が消滅した時の口上です」
+    ;PRINTFORMW 「抵抗が消滅した時の口上です」
 ;抑圧だけ消滅
 ELSEIF TALENT:32
-	;PRINTFORMW 「抑圧が消滅した時の口上です」
+    ;PRINTFORMW 「抑圧が消滅した時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -416,10 +416,10 @@ ENDIF
 @K28_MESSAGE_EVENT_81
 ;ペニスあり
 IF TALENT:120 || TALENT:121
-	;PRINTFORMW 「淫茎取得イベント時の口上です」
+    ;PRINTFORMW 「淫茎取得イベント時の口上です」
 ;その他
 ELSE
-	;PRINTFORMW 「淫核取得イベント時の口上です」
+    ;PRINTFORMW 「淫核取得イベント時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -481,49 +481,49 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_98
 PRINTFORMW 「우, 앗……」
-	PRINTFORMW 갑자기, 부자연스럽게 레이센의 몸이 쓰러져갔다. 
-	PRINTFORML 아무래도 이건 위험하다고 생각한 %조사처리(CALLNAME:MASTER,"는")%  레이센의 몸을 추스려서 침대에 옮겼지만,
-	PRINTFORMW 응급처치를 한 보람도 없이, 레이센은 깨어나지 않았다. 
-	PRINTFORML 
-	PRINTFORMW 마지막으로, %CALLNAME:MASTER%의 그 눈동자를 바라보며. 
-	PRINTFORML 
-	PRINTFORMW …………
-	PRINTFORMW ………
-	PRINTFORMW ……
-	PRINTFORML 
-	IF TALENT:150
-		PRINTFORMW 며칠 후 아침. 침대에서 몸을 일으킨 %조사처리(CALLNAME:MASTER,"는")%, 무심코 돌아보았다. 
-		PRINTFORMW 또, 레이센이 나오는 환각이었다. 
-		PRINTFORMW 그녀가 죽고부터 계속, %조사처리(CALLNAME:MASTER,"는")%  레이센의 환각에 고민하고 있었다. 
-		SIF TALENT:153 == 0
-			PRINTFORMW 무서워하는 것보다도 먼저, 자신은 거기까지 노예에 집착하는 성격이었던가, 하고 고개를 세차게 저었다. 
-		PRINTFORMW 제령을 생각해보는 게 좋을까, 반은 진심으로 생각하며 일어섰다. 
-		PRINTFORMW 그리고, 또 시선을 느끼고 고개를 들었다. 
-		PRINTFORML 
-		PRINTFORMW 또다. 또 레이센은 %조사처리(CALLNAME:MASTER,"를")% 보고 있다. 
-		PRINTFORMW 그 때, 최후의 그 때처럼――――
-		PRINTFORML 
-		PRINTFORMW 무심코, %조사처리(CALLNAME:MASTER,"는")%  웃고 있었다. 며칠 전의, 레이센의 눈동자를 떠올렸기에. 
-		PRINTFORMW 힘이 빠져서, %조사처리(CALLNAME:MASTER,"는")% 벽에 등을 얹었다. 
-		PRINTFORMW 시선을 느끼는 것은 당연하다. 그녀는 그때부터 계속, %조사처리(CALLNAME:MASTER,"를")% 보고 있다. %CALLNAME:MASTER%의 안에서. 
-		PRINTFORMW 임종의 때에 그녀는 「레이센」이라는 파장을 보내, 주입시킨 걸까……
-	ELSE
-		PRINTFORMW 며칠 후 아침. 침대에서 몸을 일으킨 %조사처리(CALLNAME:MASTER,"는")%, 휘청이며 바닥에 손을 디뎠다. 
-		PRINTFORMW 한기가, 든다. 
-		PRINTFORMW 그 때부터 계속, %CALLNAME:MASTER%의 상태는 어딘가 이상해져 있었다. 
-		PRINTFORMW 시야가 어딘가 뒤틀려있었고, 귀에는 이명이 울리며, 몸에는 피가 제대로 돌지 않았다. 
-		PRINTFORMW 오감이 느끼는 풍경은 죄다 바뀌어버려서, 살아있다는 실감이 나지 않았다. 
-		PRINTFORML 
-		PRINTFORML 그런가. 
-		PRINTFORMW 마치, 죽음이 나를 바라보고 있는 것 같다……
-		PRINTFORML 
-		PRINTFORMW 무심코, %조사처리(CALLNAME:MASTER,"는")%  웃고 있었다. 며칠 전의, 레이센의 눈동자를 떠올리며. 
-		PRINTFORMW 죽음에 홀린다고 한다면, 그녀의 눈이야말로 적합하지 않은가. 		
-		PRINTFORMW 힘이 빠져서, %조사처리(CALLNAME:MASTER,"는")%  벽에 등을 얹었다. 
-		PRINTFORML 
-		PRINTFORMW 살아있다는 기분이 들지 않는 것도 당연하다. 
-		PRINTFORMW 레이센은 죽어가면서, 자신의 「죽음」이라는 파장을 %CALLNAME:MASTER%에게 보냈을 것이다…….
-	ENDIF
+    PRINTFORMW 갑자기, 부자연스럽게 레이센의 몸이 쓰러져갔다. 
+    PRINTFORML 아무래도 이건 위험하다고 생각한 %조사처리(CALLNAME:MASTER,"는")%  레이센의 몸을 추스려서 침대에 옮겼지만,
+    PRINTFORMW 응급처치를 한 보람도 없이, 레이센은 깨어나지 않았다. 
+    PRINTFORML 
+    PRINTFORMW 마지막으로, %CALLNAME:MASTER%의 그 눈동자를 바라보며. 
+    PRINTFORML 
+    PRINTFORMW …………
+    PRINTFORMW ………
+    PRINTFORMW ……
+    PRINTFORML 
+    IF TALENT:150
+        PRINTFORMW 며칠 후 아침. 침대에서 몸을 일으킨 %조사처리(CALLNAME:MASTER,"는")%, 무심코 돌아보았다. 
+        PRINTFORMW 또, 레이센이 나오는 환각이었다. 
+        PRINTFORMW 그녀가 죽고부터 계속, %조사처리(CALLNAME:MASTER,"는")%  레이센의 환각에 고민하고 있었다. 
+        SIF TALENT:153 == 0
+            PRINTFORMW 무서워하는 것보다도 먼저, 자신은 거기까지 노예에 집착하는 성격이었던가, 하고 고개를 세차게 저었다. 
+        PRINTFORMW 제령을 생각해보는 게 좋을까, 반은 진심으로 생각하며 일어섰다. 
+        PRINTFORMW 그리고, 또 시선을 느끼고 고개를 들었다. 
+        PRINTFORML 
+        PRINTFORMW 또다. 또 레이센은 %조사처리(CALLNAME:MASTER,"를")% 보고 있다. 
+        PRINTFORMW 그 때, 최후의 그 때처럼――――
+        PRINTFORML 
+        PRINTFORMW 무심코, %조사처리(CALLNAME:MASTER,"는")%  웃고 있었다. 며칠 전의, 레이센의 눈동자를 떠올렸기에. 
+        PRINTFORMW 힘이 빠져서, %조사처리(CALLNAME:MASTER,"는")% 벽에 등을 얹었다. 
+        PRINTFORMW 시선을 느끼는 것은 당연하다. 그녀는 그때부터 계속, %조사처리(CALLNAME:MASTER,"를")% 보고 있다. %CALLNAME:MASTER%의 안에서. 
+        PRINTFORMW 임종의 때에 그녀는 「레이센」이라는 파장을 보내, 주입시킨 걸까……
+    ELSE
+        PRINTFORMW 며칠 후 아침. 침대에서 몸을 일으킨 %조사처리(CALLNAME:MASTER,"는")%, 휘청이며 바닥에 손을 디뎠다. 
+        PRINTFORMW 한기가, 든다. 
+        PRINTFORMW 그 때부터 계속, %CALLNAME:MASTER%의 상태는 어딘가 이상해져 있었다. 
+        PRINTFORMW 시야가 어딘가 뒤틀려있었고, 귀에는 이명이 울리며, 몸에는 피가 제대로 돌지 않았다. 
+        PRINTFORMW 오감이 느끼는 풍경은 죄다 바뀌어버려서, 살아있다는 실감이 나지 않았다. 
+        PRINTFORML 
+        PRINTFORML 그런가. 
+        PRINTFORMW 마치, 죽음이 나를 바라보고 있는 것 같다……
+        PRINTFORML 
+        PRINTFORMW 무심코, %조사처리(CALLNAME:MASTER,"는")%  웃고 있었다. 며칠 전의, 레이센의 눈동자를 떠올리며. 
+        PRINTFORMW 죽음에 홀린다고 한다면, 그녀의 눈이야말로 적합하지 않은가.         
+        PRINTFORMW 힘이 빠져서, %조사처리(CALLNAME:MASTER,"는")%  벽에 등을 얹었다. 
+        PRINTFORML 
+        PRINTFORMW 살아있다는 기분이 들지 않는 것도 당연하다. 
+        PRINTFORMW 레이센은 죽어가면서, 자신의 「죽음」이라는 파장을 %CALLNAME:MASTER%에게 보냈을 것이다…….
+    ENDIF
 
 ;-------------------------------------------------
 ;調教前おねだり口上
@@ -532,9 +532,9 @@ PRINTFORMW 「우, 앗……」
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_99
 SIF TFLAG:224 == 555 || ASSIPLAY != 0
-	RETURN 0
+    RETURN 0
 IF RAND:20 < 0
-	;PRINTFORML 「調教前おねだり口上です」
+    ;PRINTFORML 「調教前おねだり口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -594,13 +594,13 @@ ENDIF
 @K28_MESSAGE_EVENT_110
 ;今回で[人気]取得
 IF TFLAG:99 == 2
-	;PRINTFORMW 「野外ライブで人気を取得した時の口上です」
+    ;PRINTFORMW 「野外ライブで人気を取得した時の口上です」
 ;成功
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「野外ライブが成功した時の口上です」
+    ;PRINTFORMW 「野外ライブが成功した時の口上です」
 ;失敗
 ELSE
-	;PRINTFORMW 「野外ライブが失敗した時の口上です」
+    ;PRINTFORMW 「野外ライブが失敗した時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -610,23 +610,23 @@ ENDIF
 @K28_MESSAGE_EVENT_111
 ;得意料理
 IF TFLAG:99 == 0
-	IF TALENT:150
-		PRINTFORMW 「솜씨를 십분 발휘해서, 만들었어요♪」
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 「주인님의 명령이라면, 진심으로 하지 않으면」
-	;あるのか？
-	ELSE
-		PRINTFORMW 「……그렇다면, 요리하면서 스트레스라도 발산할까요!」
-	ENDIF
+    IF TALENT:150
+        PRINTFORMW 「솜씨를 십분 발휘해서, 만들었어요♪」
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 「주인님의 명령이라면, 진심으로 하지 않으면」
+    ;あるのか？
+    ELSE
+        PRINTFORMW 「……그렇다면, 요리하면서 스트레스라도 발산할까요!」
+    ENDIF
 ;그 외
 ELSE
-	IF TALENT:150
-		PRINTFORMW 「주인님의 명령이라면, 노력하겠습니다……♪」
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 「요리의 준비를, 하라고요…… 알겠습니다, 주인님」
-	ELSE
-		PRINTFORMW 「……독이라도 넣을 틈은…… 주지 않겠지」
-	ENDIF
+    IF TALENT:150
+        PRINTFORMW 「주인님의 명령이라면, 노력하겠습니다……♪」
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 「요리의 준비를, 하라고요…… 알겠습니다, 주인님」
+    ELSE
+        PRINTFORMW 「……독이라도 넣을 틈은…… 주지 않겠지」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -662,16 +662,16 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;TFLAG:99で料理の種類の番号を取得可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_116
-	;表情が硬くならないパターン
-	IF TALENT:150 && (MARK:9 == 0 || ABL:MASTER:70 >= 5 || ABL:MASTER:70 == 2)
-		PRINTFORMW 「또, 부탁드립니다」
-	ELSEIF TALENT:150 || (MARK:2 == 3 && MARK:9 == 0)
-		PRINTFORMW 「알았어, 요……」
-	ELSEIF ABL:MASTER:70 < 1 && MARK:9 > 0
-		PRINTFORMW 「먹을 수…… 없잖아」
-	ELSE
-		PRINTFORMW (이물질은 들어가지 않은 모양이지만…… 내가 눈치채지 못한 것뿐일지도)
-	ENDIF
+    ;表情が硬くならないパターン
+    IF TALENT:150 && (MARK:9 == 0 || ABL:MASTER:70 >= 5 || ABL:MASTER:70 == 2)
+        PRINTFORMW 「또, 부탁드립니다」
+    ELSEIF TALENT:150 || (MARK:2 == 3 && MARK:9 == 0)
+        PRINTFORMW 「알았어, 요……」
+    ELSEIF ABL:MASTER:70 < 1 && MARK:9 > 0
+        PRINTFORMW 「먹을 수…… 없잖아」
+    ELSE
+        PRINTFORMW (이물질은 들어가지 않은 모양이지만…… 내가 눈치채지 못한 것뿐일지도)
+    ENDIF
 
 ;-------------------------------------------------
 ;貞操帯で食後の自慰失敗
@@ -756,35 +756,35 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;金額はTFLAG:99で参照可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_130
-	;연모+反発刻印Lv3未満
-	IF TALENT:150 && MARK:9 < 3
-		PRINTFORMW 「…………에」
-		PRINTFORMW 레이센은 느릿느릿하게 %CALLNAME:MASTER%의 얼굴을 보고, 이윽고 그 의미를 이해했는지, 멍한 표정으로 입을 열었다. 
-		PRINTFORMW 「……거짓말이라고 말해주세요」
-		PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%  조용히 고개를 흔들어 농담이 아니라는 걸 표현했다. 
-		PRINTFORMW 「거짓말이야…… 그럴 리가……」
-		PRINTFORMW 레이센은 나른하게 웃음 짓곤, 오른손으로 권총을 형상화했다. 
-		PRINTFORMW 그것을 그녀는 천천히 관자놀이에 대고,
-		PRINTFORMW 「……타―앙」
-		PRINTFORMW ……그 손 끝에서, 탄환은 나오지 않는다. 
-		PRINTFORMW 레이센은, 망령과도 같은 발걸음으로, 상인에게 끌려갔다……
-	;反発刻印Lv3
-	ELSEIF MARK:9 == 3
-		PRINTFORMW 「…………」
-		PRINTFORMW 상인에게 끌려가는 레이센을 창너머로 바라보자, 레이센도 이쪽을 바라보고 있었다. 
-		PRINTFORMW 하늘에서 떨어지는 듯한 기분이 든 %조사처리(CALLNAME:MASTER,"는")%, 그 시선에서 달아나기 위해 커튼을 내렸다. 
-	;淫乱
-	ELSEIF TALENT:170
-		PRINTFORMW 「……거기, 자지, 많이 있는 곳인가요오?」
-		PRINTFORMW 「그래요……보지도 엉덩이도, 벌렁벌렁거리네요……♪」
-		PRINTFORMW 레이센은 얼빠진 웃음을 흘리며, 상인에게 끌려갔다……
-	;그 외
-	ELSE
-		PRINTFORMW 「파……판다니요……」
-		PRINTFORMW 「그, 그 매각의 액수분만큼 여기서 일할테니까……자유롭게 해주시지 않겠습니까……?」
-		PRINTFORMW 「……아, 안 돼, 무서워요, 그만두세요, 적어도 여기가, 여기가 좋아요, 있게 해 주세요!!」
-		PRINTFORMW 「너, 너무 해, 무서워, 돌아가고 싶어, 스승님에게 돌아가고 싶어……엇!」
-	ENDIF
+    ;연모+反発刻印Lv3未満
+    IF TALENT:150 && MARK:9 < 3
+        PRINTFORMW 「…………에」
+        PRINTFORMW 레이센은 느릿느릿하게 %CALLNAME:MASTER%의 얼굴을 보고, 이윽고 그 의미를 이해했는지, 멍한 표정으로 입을 열었다. 
+        PRINTFORMW 「……거짓말이라고 말해주세요」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%  조용히 고개를 흔들어 농담이 아니라는 걸 표현했다. 
+        PRINTFORMW 「거짓말이야…… 그럴 리가……」
+        PRINTFORMW 레이센은 나른하게 웃음 짓곤, 오른손으로 권총을 형상화했다. 
+        PRINTFORMW 그것을 그녀는 천천히 관자놀이에 대고,
+        PRINTFORMW 「……타―앙」
+        PRINTFORMW ……그 손 끝에서, 탄환은 나오지 않는다. 
+        PRINTFORMW 레이센은, 망령과도 같은 발걸음으로, 상인에게 끌려갔다……
+    ;反発刻印Lv3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 「…………」
+        PRINTFORMW 상인에게 끌려가는 레이센을 창너머로 바라보자, 레이센도 이쪽을 바라보고 있었다. 
+        PRINTFORMW 하늘에서 떨어지는 듯한 기분이 든 %조사처리(CALLNAME:MASTER,"는")%, 그 시선에서 달아나기 위해 커튼을 내렸다. 
+    ;淫乱
+    ELSEIF TALENT:170
+        PRINTFORMW 「……거기, 자지, 많이 있는 곳인가요오?」
+        PRINTFORMW 「그래요……보지도 엉덩이도, 벌렁벌렁거리네요……♪」
+        PRINTFORMW 레이센은 얼빠진 웃음을 흘리며, 상인에게 끌려갔다……
+    ;그 외
+    ELSE
+        PRINTFORMW 「파……판다니요……」
+        PRINTFORMW 「그, 그 매각의 액수분만큼 여기서 일할테니까……자유롭게 해주시지 않겠습니까……?」
+        PRINTFORMW 「……아, 안 돼, 무서워요, 그만두세요, 적어도 여기가, 여기가 좋아요, 있게 해 주세요!!」
+        PRINTFORMW 「너, 너무 해, 무서워, 돌아가고 싶어, 스승님에게 돌아가고 싶어……엇!」
+    ENDIF
 
 ;-------------------------------------------------
 ;ビデオ売却
@@ -847,20 +847,20 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;TFLAG:99でフェラ経験増加量を取得可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_140
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORML 「츄웃, 츄웁……츄릅……츗……츄우웃…」
-		PRINTFORMW 「응하아…츄……아, 안녕하세요, 주인님……츄우…츄우우우……」
-		PRINTFORMW 「좀 더, 많이 싸주세요…… 주인님, 만족하실 때까지…… 응츄웃…」
-	;奉仕精神Lv5이상
-	ELSEIF ABL:13 >= 5
-		PRINTFORML 「이건…… 깨어나신, 건가요?」
-		PRINTFORMW 「으, 으음… 여기가 괴로워하는 것 같아서, 그만……」
-		PRINTFORMW 「하지만, 역효과였던 것 같네요…… 이것 봐요, 다시 커져선…… 응……츄우……」
-	;그 외
-	ELSE
-		PRINTFORMW 「이…… 이건…… 주제 넘은 짓이었나요……」
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORML 「츄웃, 츄웁……츄릅……츗……츄우웃…」
+        PRINTFORMW 「응하아…츄……아, 안녕하세요, 주인님……츄우…츄우우우……」
+        PRINTFORMW 「좀 더, 많이 싸주세요…… 주인님, 만족하실 때까지…… 응츄웃…」
+    ;奉仕精神Lv5이상
+    ELSEIF ABL:13 >= 5
+        PRINTFORML 「이건…… 깨어나신, 건가요?」
+        PRINTFORMW 「으, 으음… 여기가 괴로워하는 것 같아서, 그만……」
+        PRINTFORMW 「하지만, 역효과였던 것 같네요…… 이것 봐요, 다시 커져선…… 응……츄우……」
+    ;그 외
+    ELSE
+        PRINTFORMW 「이…… 이건…… 주제 넘은 짓이었나요……」
+    ENDIF
 
 ;-------------------------------------------------
 ;朝パイズリ
@@ -881,11 +881,11 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;TFLAG:99で増加する愛情経験の2倍の値を取得可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_143
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 「응, 츄웃…… 아, 안녕하세요, 주인님」
-		PRINTFORMW 「키스만으로는, 모자란건가요……?」
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「응, 츄웃…… 아, 안녕하세요, 주인님」
+        PRINTFORMW 「키스만으로는, 모자란건가요……?」
+    ENDIF
 
 ;-------------------------------------------------
 ;朝の搾乳
@@ -930,41 +930,41 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;TFLAG:99=4 主人棒なしＶあり＞相手棒なしＶあり
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_150
-	;연모＋V감각Lv5이상
-	IF TALENT:150 ==1 && ABL:1 >= 5 && TFLAG:99 == 1
-		PRINTFORML 「응, 크아아아아아앗!? 아, 아, 앗!? 주인, 니임!!」
-		PRINTFORMW 「크, 강……해앳!? 겨… 격렬해, 잠깐, 기다…… 후아아아앗!!」
-		PRINTFORMW 「좋아, 좋아요옷…… 엄청 좋아요오옷, 주인, 니이이임! 좀 더, 찔러, 주세욧!」
-	;연모
-	ELSEIF TALENT:150 ==1
-		PRINTFORML 「아, 주인님, 기다리고 있었습니다……」
-		PRINTFORMW 「저기, 전…… 아직 부족해요… 그러니… 그……」
-		PRINTFORMW 「……좀 더 많이, 해주세요……」
-	;그 외
-	ELSE
-		PRINTFORMW 「저기…… 저, 아직 부족하니까……」
-		PRINTFORMW 「그래서, 그…… 그러니까…… 좀 더…… 하고, 싶어요…」
-	ENDIF
+    ;연모＋V감각Lv5이상
+    IF TALENT:150 ==1 && ABL:1 >= 5 && TFLAG:99 == 1
+        PRINTFORML 「응, 크아아아아아앗!? 아, 아, 앗!? 주인, 니임!!」
+        PRINTFORMW 「크, 강……해앳!? 겨… 격렬해, 잠깐, 기다…… 후아아아앗!!」
+        PRINTFORMW 「좋아, 좋아요옷…… 엄청 좋아요오옷, 주인, 니이이임! 좀 더, 찔러, 주세욧!」
+    ;연모
+    ELSEIF TALENT:150 ==1
+        PRINTFORML 「아, 주인님, 기다리고 있었습니다……」
+        PRINTFORMW 「저기, 전…… 아직 부족해요… 그러니… 그……」
+        PRINTFORMW 「……좀 더 많이, 해주세요……」
+    ;그 외
+    ELSE
+        PRINTFORMW 「저기…… 저, 아직 부족하니까……」
+        PRINTFORMW 「그래서, 그…… 그러니까…… 좀 더…… 하고, 싶어요…」
+    ENDIF
 
 ;-------------------------------------------------
 ;調教後自慰
 ;TFLAG:99で自慰の回数を取得可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_151
-	;연모
-	IF TALENT:150 ==1
-		PRINTFORML 「아, 아, 아앗! 주인, 니……임!!」
-		PRINTFORMW 「좀 더, 더 저에게 잔뜩…… 아, 아아아앗!!」
-		PRINTFORMW 「아, 안 돼…… 좀 더, 주인님을… 원해애애앳!」
-	;自慰中毒Lv3이상
-	ELSEIF ABL:30 >= 3
-		PRINTFORMW 「응, 아, 읏… 이거, 손가락을 멈출…… 큿!」
-		PRINTFORMW 「이, 이럴 수가…… 응, 읏… 안 돼, 멈출…수가…앗!」
-	;그 외
-	ELSE
-		PRINTFORMW 「이건 생리적 현상, 이건 생리적 현상이야…… 읏, 크, 웃……후 앗…」
-		PRINTFORMW 레이센은 자기 암시를 하면서도, 부끄러워하면서 음부를 문지르고 있다
-	ENDIF
+    ;연모
+    IF TALENT:150 ==1
+        PRINTFORML 「아, 아, 아앗! 주인, 니……임!!」
+        PRINTFORMW 「좀 더, 더 저에게 잔뜩…… 아, 아아아앗!!」
+        PRINTFORMW 「아, 안 돼…… 좀 더, 주인님을… 원해애애앳!」
+    ;自慰中毒Lv3이상
+    ELSEIF ABL:30 >= 3
+        PRINTFORMW 「응, 아, 읏… 이거, 손가락을 멈출…… 큿!」
+        PRINTFORMW 「이, 이럴 수가…… 응, 읏… 안 돼, 멈출…수가…앗!」
+    ;그 외
+    ELSE
+        PRINTFORMW 「이건 생리적 현상, 이건 생리적 현상이야…… 읏, 크, 웃……후 앗…」
+        PRINTFORMW 레이센은 자기 암시를 하면서도, 부끄러워하면서 음부를 문지르고 있다
+    ENDIF
 
 ;-------------------------------------------------
 ;調教後アナニー
@@ -983,41 +983,41 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;調教後レズプレイ
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_154
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 「아, 앙, 응앗……좋아…주인, 니임……!」
-		PRINTFORMW 「이, 이런…… 그, 만지는 방법… 마치 주인, 님…… 같앗!」
-	;레즈중독Lv3이상
-	ELSEIF ABL:32 >= 3
-		PRINTFORMW 「응, 큿, 앗, 아앙!?」
-		PRINTFORMW 「조아아… 좋아아……요옷……! 여자, 끼리라니… 읏…으으읏…!」
-	;레즈끼Lv3이상
-	ELSEIF ABL:22 >= 3
-		PRINTFORMW 「아, 핫♪ 돼, 됐어… 그래, 거기…… 좋아앗!!」
-	;그 외
-	ELSE
-		PRINTFORMW 「으응… 아…큿…… 그 곳은…… 흘러나와서…… 응후……읏!」
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「아, 앙, 응앗……좋아…주인, 니임……!」
+        PRINTFORMW 「이, 이런…… 그, 만지는 방법… 마치 주인, 님…… 같앗!」
+    ;레즈중독Lv3이상
+    ELSEIF ABL:32 >= 3
+        PRINTFORMW 「응, 큿, 앗, 아앙!?」
+        PRINTFORMW 「조아아… 좋아아……요옷……! 여자, 끼리라니… 읏…으으읏…!」
+    ;레즈끼Lv3이상
+    ELSEIF ABL:22 >= 3
+        PRINTFORMW 「아, 핫♪ 돼, 됐어… 그래, 거기…… 좋아앗!!」
+    ;그 외
+    ELSE
+        PRINTFORMW 「으응… 아…큿…… 그 곳은…… 흘러나와서…… 응후……읏!」
+    ENDIF
 
 ;-------------------------------------------------
 ;調教後レズプレイ(69)
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_155
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 「아, 앙, 응앗…… 아앙…주인, 님……!」
-		PRINTFORMW 「그, 그런…… 그 만지는 방법, 마치… 주인, 님…… 같앗!」
-	;레즈중독Lv3이상
-	ELSEIF ABL:32 >= 3
-		PRINTFORMW 「응, 큿, 앗, 아앗!?」
-		PRINTFORMW 「조아아… 좋아아……요옷……! 여자, 끼리라니… 읏… 으으읏…!」
-	;레즈끼Lv3이상
-	ELSEIF ABL:22 >= 3
-		PRINTFORMW 「아, 핫♪ 돼, 됐어…그래, 거기…… 좋아앗!!」
-	;그 외
-	ELSE
-		PRINTFORMW 「으응… 아… 큿…… 그 곳은…… 흘러나와서…… 응후……읏!」
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「아, 앙, 응앗…… 아앙…주인, 님……!」
+        PRINTFORMW 「그, 그런…… 그 만지는 방법, 마치… 주인, 님…… 같앗!」
+    ;레즈중독Lv3이상
+    ELSEIF ABL:32 >= 3
+        PRINTFORMW 「응, 큿, 앗, 아앗!?」
+        PRINTFORMW 「조아아… 좋아아……요옷……! 여자, 끼리라니… 읏… 으으읏…!」
+    ;레즈끼Lv3이상
+    ELSEIF ABL:22 >= 3
+        PRINTFORMW 「아, 핫♪ 돼, 됐어…그래, 거기…… 좋아앗!!」
+    ;그 외
+    ELSE
+        PRINTFORMW 「으응… 아… 큿…… 그 곳은…… 흘러나와서…… 응후……읏!」
+    ENDIF
 
 ;-------------------------------------------------
 ;調教後ＢＬプレイ
@@ -1037,22 +1037,22 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 ;TFLAG:99=1:그 외
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_158
-	;연모＋V감각Lv5이상
-	IF TALENT:150 ==1 && ABL:1 >= 5 && TFLAG:99 == 1
-		PRINTFORMW 「응, 크, 아, 후앗! 조, 좀더, 깊게! 찔러주세요! 망가져버리게엣!」
-		PRINTFORMW 「싫엇! 나, 내 안, 내 안에엣! 가버렷! 가, 버려어어…… 아아아앗!」
-		PRINTFORMW 「……에…자, 잠까… 응앗! 가, 가버렸는데, 또, 하시며언! 으앗!」
-	;연모
-	ELSEIF TALENT:150 == 1
-		PRINTFORMW 「저, 저기……저, 더는 못 참겠어요……주인, 님……」
-		PRINTFORMW 레이센은 %CALLNAME:MASTER%의 침대에 들어오면서, 자신의 음부를 드러냈다.
-		PRINTFORMW 「주인님, 잔뜩 해달라고…… 여기가 말하고 있어요…… 그러니까… 네?」
-	;그 외
-	ELSE
-		PRINTFORMW 「저, 저기, 조, 조금 더 할 수 있을까요………… 에, 에 그러니까…… 여기」
-		PRINTFORMW 「저, 저의…… 역시 돌아가야――꺄악!」
-		PRINTFORMW 발길을 돌려 돌아가려고 했기에, 다소 억지로 레이센의 팔을 잡고, 침대로 이끌고 갔다.
-	ENDIF
+    ;연모＋V감각Lv5이상
+    IF TALENT:150 ==1 && ABL:1 >= 5 && TFLAG:99 == 1
+        PRINTFORMW 「응, 크, 아, 후앗! 조, 좀더, 깊게! 찔러주세요! 망가져버리게엣!」
+        PRINTFORMW 「싫엇! 나, 내 안, 내 안에엣! 가버렷! 가, 버려어어…… 아아아앗!」
+        PRINTFORMW 「……에…자, 잠까… 응앗! 가, 가버렸는데, 또, 하시며언! 으앗!」
+    ;연모
+    ELSEIF TALENT:150 == 1
+        PRINTFORMW 「저, 저기……저, 더는 못 참겠어요……주인, 님……」
+        PRINTFORMW 레이센은 %CALLNAME:MASTER%의 침대에 들어오면서, 자신의 음부를 드러냈다.
+        PRINTFORMW 「주인님, 잔뜩 해달라고…… 여기가 말하고 있어요…… 그러니까… 네?」
+    ;그 외
+    ELSE
+        PRINTFORMW 「저, 저기, 조, 조금 더 할 수 있을까요………… 에, 에 그러니까…… 여기」
+        PRINTFORMW 「저, 저의…… 역시 돌아가야――꺄악!」
+        PRINTFORMW 발길을 돌려 돌아가려고 했기에, 다소 억지로 레이센의 팔을 잡고, 침대로 이끌고 갔다.
+    ENDIF
 
 ;-------------------------------------------------
 ;自慰できないことによる悶絶
@@ -1089,16 +1089,16 @@ PRINTFORMW ? 레이센의 거동이 어딘가 수상하다……
 @K28_MESSAGE_EVENT_170
 ;주인이 임신시킴
 IF CFLAG:70 == 1
-	IF TALENT:150
-		PRINTFORMW 「그…… 그런가요. 주인님의, 아이가」
-		PRINTFORMW 「주인님은, 어떻게 생각하고 계시나요. 기쁘신가요…… 아니면, 방해라고……」
-	ELSE
-		PRINTFORMW 「아…… 아하, 아하하하하하하하하하하하하핫!」
-		PRINTFORMW 「나, 완전히 더럽혀져 버렸어…… 이젠, 돌아갈 수 없어……」
-	ENDIF
+    IF TALENT:150
+        PRINTFORMW 「그…… 그런가요. 주인님의, 아이가」
+        PRINTFORMW 「주인님은, 어떻게 생각하고 계시나요. 기쁘신가요…… 아니면, 방해라고……」
+    ELSE
+        PRINTFORMW 「아…… 아하, 아하하하하하하하하하하하하핫!」
+        PRINTFORMW 「나, 완전히 더럽혀져 버렸어…… 이젠, 돌아갈 수 없어……」
+    ENDIF
 ;주인 외
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1119,9 +1119,9 @@ ENDIF
 @K28_MESSAGE_EVENT_173
 ;연모 함락 이벤트 발생 완료로 주인의 아이를 임신했다
 IF TALENT:150 == 1 && TALENT:140 && CFLAG:78 == NO:MASTER && CFLAG:5001 >= 5
-	PRINTFORMW 「한가할 때, 만나러 와 주세요……」
-	PRINTFORMW 「저, 제대로 주인님의 아이를 낳을테니까……」
-	PRINTFORMW 「그러니, 그 아이도 저처럼, 마음껏 귀여워 해주세요……」
+    PRINTFORMW 「한가할 때, 만나러 와 주세요……」
+    PRINTFORMW 「저, 제대로 주인님의 아이를 낳을테니까……」
+    PRINTFORMW 「그러니, 그 아이도 저처럼, 마음껏 귀여워 해주세요……」
 ENDIF
 
 ;-------------------------------------------------
@@ -1167,24 +1167,24 @@ ENDIF
 ;TFLAG:99で弁当製作者の番号を取得可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_181
-	;에링이거나 테위
-	IF TFLAG:99 == 29 || TFLAG:99 == 27
-		PRINTFORM 「우우…… 
-		;에링
-		IF TFLAG:99 == 29
-			PRINTFORMW 스, 스승님, 또예요!?」
-		;테위
-		ELSEIF TFLAG:99 == 27
-			PRINTFORMW 테, 테위, 또 넣은거니!?」
-		ENDIF
-		PRINTFORMW …………또?
-	ELSE
-		IF TALENT:150 || MARK:2 == 3
-			PRINTFORMW 「우, 우웨엑…… 너무, 해요……」
-		ELSE
-			PRINTFORMW 「우, 우웨엑…… 잘, 도……」
-		ENDIF
-	ENDIF
+    ;에링이거나 테위
+    IF TFLAG:99 == 29 || TFLAG:99 == 27
+        PRINTFORM 「우우…… 
+        ;에링
+        IF TFLAG:99 == 29
+            PRINTFORMW 스, 스승님, 또예요!?」
+        ;테위
+        ELSEIF TFLAG:99 == 27
+            PRINTFORMW 테, 테위, 또 넣은거니!?」
+        ENDIF
+        PRINTFORMW …………또?
+    ELSE
+        IF TALENT:150 || MARK:2 == 3
+            PRINTFORMW 「우, 우웨엑…… 너무, 해요……」
+        ELSE
+            PRINTFORMW 「우, 우웨엑…… 잘, 도……」
+        ENDIF
+    ENDIF
 
 ;-------------------------------------------------
 ;主人を刺殺した奴隷(そしてバッドエンド直行)
@@ -1211,10 +1211,10 @@ ENDIF
 @K28_MESSAGE_EVENT_190
 ;카구야, 에링
 IF TFLAG:99 == 30 || TFLAG:99 == 29
-	PRINTFORMW 「너무 많이 힘들었지만, 주인님을 위해서라고 생각하니 어떻게든 되었네요!」
+    PRINTFORMW 「너무 많이 힘들었지만, 주인님을 위해서라고 생각하니 어떻게든 되었네요!」
 ;테위
 ELSEIF TFLAG:99 == 28
-	PRINTFORMW 「정면에서 완력으로 덮치면 간단하잖아. 후후…… 이런 수단으로 좋은걸까」
+    PRINTFORMW 「정면에서 완력으로 덮치면 간단하잖아. 후후…… 이런 수단으로 좋은걸까」
 ENDIF
 
 ;-------------------------------------------------
@@ -1248,13 +1248,13 @@ ENDIF
 @K28_MESSAGE_EVENT_195
 ;売却時
 IF TFLAG:99 == 130
-	;PRINTFORMW 「奴隷を売却し, 消滅する時の口上です」
+    ;PRINTFORMW 「奴隷を売却し, 消滅する時の口上です」
 ;狂気脱走した売却時
 ELSEIF TFLAG:99 == 180
-	;PRINTFORMW 「狂気奴隷を売却し, 消滅する時の口上です」
+    ;PRINTFORMW 「狂気奴隷を売却し, 消滅する時の口上です」
 ;解放されて去った時
 ELSEIF TFLAG:99 == 196
-	;PRINTFORMW 「奴隷を解放し, 消滅する時の口上です」
+    ;PRINTFORMW 「奴隷を解放し, 消滅する時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1283,20 +1283,20 @@ ENDIF
 @K28_MESSAGE_EVENT_199
 ;에링
 IF TFLAG:99 == 29
-	PRINTFORMW 『스, 스승님, 뭔가요 이건, 뭘……!?』
-	PRINTFORML 레이센은 눈이 가려진 뒤 묶이면서도 필사적으로 날뛰고 있었지만,
-	PRINTFORMW 짜증난다는 표정을 지은 에이린에게 주사를 맞자, 강제로 얌전해졌다. 
-	CFLAG:5002 = 1
+    PRINTFORMW 『스, 스승님, 뭔가요 이건, 뭘……!?』
+    PRINTFORML 레이센은 눈이 가려진 뒤 묶이면서도 필사적으로 날뛰고 있었지만,
+    PRINTFORMW 짜증난다는 표정을 지은 에이린에게 주사를 맞자, 강제로 얌전해졌다. 
+    CFLAG:5002 = 1
 ;카구야
 ELSEIF TFLAG:99 == 30
-	PRINTFORMW 『고, 공주님…… 이제, 내보내주세요……』
-	PRINTFORMW 「자루에서는 곧 내보내줄게. 자루에서는」
-	CFLAG:5003 = 1
+    PRINTFORMW 『고, 공주님…… 이제, 내보내주세요……』
+    PRINTFORMW 「자루에서는 곧 내보내줄게. 자루에서는」
+    CFLAG:5003 = 1
 ;테위
 ELSEIF TFLAG:99 == 28
-	PRINTFORMW 『또 속였구나 테위, 내보내줘, 정말 화 많이 났으니까, 내보내 줘!』
-	PRINTFORMW 「아, 신경 쓰지 않아도 돼. 항상 함정에 걸릴 때마다 이런 말을 하곤 하니까」
-	CFLAG:5004 = 1
+    PRINTFORMW 『또 속였구나 테위, 내보내줘, 정말 화 많이 났으니까, 내보내 줘!』
+    PRINTFORMW 「아, 신경 쓰지 않아도 돼. 항상 함정에 걸릴 때마다 이런 말을 하곤 하니까」
+    CFLAG:5004 = 1
 ENDIF
 
 ;-------------------------------------------------
@@ -1305,81 +1305,81 @@ ENDIF
 @K28_MESSAGE_EVENT_200
 ;이거 추가로 돈 더 내게 만들어야 하는 게 아닌가…?
 IF TFLAG:200 == 200 || TFLAG:200 == 205
-	PRINTFORMW 「……」
-	PRINTFORMW 과거에 신음하고 고통스러워하는 달토끼.
-	PRINTFORML 평소 손으로 조교할 때와는 다르게 조교 도구를 보고는 패닉 상태에 빠져서 마구 발버둥치던가,
-	PRINTFORMW 피를 보더니 경기를 일으키면서 나를 물어뜯던가―
-	PRINTFORMW 그런 이상 현상을 계속 경험하던 내가 언젠가 물어서 알게 된 사실이었다.
-	PRINTFORML
-	PRINTFORML 「…당신」
-	PRINTFORMW
-	PRINTFORMW 그런 그녀가 도망친 곳은 영원정이었으나 그 곳에서마저 계속 겉도는 삶을 살았다고 했다.
-	PRINTFORMW 자신을 싸늘하게보는 스승과, 경계하는 땅토끼와 무관심한 공주―
-	PRINTFORML 그런 곳에서 달과의 통신을 위한 수단외에는 아무런 관심을 보이지 않던 그들 속에서도
-	PRINTFORMW 자신을 지켜나간건 자신이 달의 주민이라는 껍데기같던 자부심뿐.
-	PRINTFORML
-	PRINTFORMW 『전쟁은 지옥이었다』고 그녀가 말했었다.
-	PRINTFORML 바로 어제까지 자신의 낡은 침낭을 보고 안쓰러워하며 바꿔준 상냥한 이가 눈 앞에서 골수를 쏟으며 죽는 곳이고
-	PRINTFORML 어제까지 실랑이를 벌이던 이가 지뢰를 밟고 터져 고깃조각이 되어 바로 얼굴 위로 쏟아내는 곳이며
-	PRINTFORMW 사랑하던 이도 무차별 폭격으로 죽었다는 소식이 들려오는 그런 곳이다.
-	PRINTFORML
-	PRINTFORMW 유난히 고문에 민감하던 그녀는 자신의 조교에 정신까지 붕괴되어 가면서 그런 이야기를 술술 털어놓았다.
-	PRINTFORMW 비어있는 동공에서 술술 풀어내는 이야기는, 자신이 살아온 인생보다 더 참혹하고 잔인한 이야기들 뿐이었다.
-	PRINTFORML 피부로 느껴지는 그 공포는 그녀의 몸에 새겨져 있었고, 그런 감정의 상흔을 건드릴 때마다
-	PRINTFORMW 그녀는 울부짖으면서 그만둬달라고 애원하고는 했었다.
-	PRINTFORML
-	PRINTFORMW 침을 질질 흘리면서 육욕 외에는 아무것도 남지않은 상품으로 만들었을 때쯤
-	PRINTFORMW 그런 그녀를 노예상에게 팔기로 작정하고 노예상에게 연락하고 난 뒤의 일이었다.
-	PRINTFORML 평소 같았으면 떠나가는 그녀를 뒤도 돌아보지 않고 문을 닫았을 것이나
-	PRINTFORMW 그녀가 노예상에게 떠나가는 모습을 오랫동안 지켜보았다.
-	PRINTFORMW 그녀가 걸어갈 때마다, 그녀의 잔인한 과거가 같이 옆을 걸어가고 있는듯한 착각이 들었다.
-	PRINTFORMW 발 한 걸음 한 걸음마다 얼마나 많은 피와 눈물을 본 것일까―
-	PRINTFORML 이제와서 그런 감상이 드는 것도 우스웠지만, 그녀의 연약해 보이기만한 그 뒷모습은
-	PRINTFORMW 그런 고통의 각인을 짊어지기에는 너무 무거워 보였다.
-	PRINTFORML
-	PRINTFORML 그녀가 떠나가고 난 뒤, 그녀와 함께있던 방 안에서 멍하니 앉아있던 그날밤
-	PRINTFORMW 알 수 없는 감정의 소용돌이 속에서 포류하던 나는 노예상에게 다시 연락했다.
-	PRINTFORMW 약속한 금액의 두 배를 더 얹어줄테니, 그 토끼를 다시 돌려보내라고 말이다.
-	PRINTFORMW 노예상은 처음에 내가 미쳤거니― 생각했지만, 돈을 더 얹어준다는 말에 말없이 돌려보내주었다.
-	PRINTFORML
-	PRINTFORML 그녀를 노예상으로부터 다시 데려오던 날, 집까지 같이 걸어 올 때 흘깃 본 그녀의 눈은,
-	PRINTFORMW 노예상에게서 몇 번의 괴롭힘을 당했는지 그녀의 동공은 여전히 비어있었다.
-	PRINTFORMW 같이 집에 도착한 자신은 말없이 그런 그녀의 옷을 벗기고 깨끗하게 씻겨주었다.
-	PRINTFORMW 그리고 깨끗한 옷으로 갈아입히고 따뜻한 커피를 끓여서 그녀에게 대접했다.
-	PRINTFORMW 「……」
-	PRINTFORMW ―당시 그녀의 표정은 아직도 마음에 남는다.
-	PRINTFORML 쓰라린 상흔만 남긴 과거의 빛이 채 지워지지도 않은,
-	PRINTFORML 모든 걸 잃은 그녀의 표정에서,
-	PRINTFORMW 눈동자 뒤에 어떤 생기가 도는 빛을 발견했을 때의 그 감정은―
-	PRINTFORMW 내가 여지껏 느껴보지 못한 감정이었다.
-	PRINTFORML
-	PRINTFORMW 무표정에 가까워진 그녀를 보살피면서 그럭저럭 1년이 지났을 무렵이었다.
-	PRINTFORML 조교 짓도 언제부터인가는 못 해먹게 되어서, 언제부터인가는 노가다를 전전하면서 아려오는 어깨를 풀면서 집으로
-	PRINTFORMW 올 때 쯤이었다.
-	PRINTFORML 언제부터인가 그녀가 집 밖에 마중나와서 나를 바라봐주는게 일상이 되어버려서,
-	PRINTFORMW 그런 그녀의 머리를 쓰다듬으며 집 안으로 들어갈 때―
-	PRINTFORMW ―갑자기 팔을 끌어당긴 그녀가 처음으로 직접 자신에게 입을 맞추어주었다.
-	PRINTFORML 이전 처럼의 죽은 눈이 아닌 그런- 정말이지 처음 보는 눈 빛으로 다가와준 그녀의 눈은
-	PRINTFORMW 이전의 과거의 상흔에서 신음하던 그런 눈빛이 아니었다.
-	PRINTFORML
-	PRINTFORMW 「…당신의 생각은 정말 알기가 힘들어…. 그런 짓 후에 그런 짓을 하고, 다시 이런 짓을 나에게 하는군…」
-	PRINTFORML 그녀는 자신의 손에 끼인 반지를 몇 번 들춰보더니 정말 주의깊게 바라보지 않으면 눈치채기 힘든 그런 종류의
-	PRINTFORMW 아주 희미한 미소를 지었다.
-	PRINTFORMW 「…당신을 만난 건 정말 태어나서 최대의 불행이면서 최대의 행운인지도 몰라…」
-	PRINTFORMW 「…그러나 당신 위험해. 이런 식으로까지 나한테서 가까워지는건 확실히―」
-	PRINTFORMW 그 뒤의 답을 듣고 싶지 않았다.
-	PRINTFORMW 그녀의 입을 내 입술로 막아서, 어떤 일말의 의문의 감정도 남기고 싶지 않았다.
-	PRINTFORMW 어떤 확신― 그런 종류의 형언할 수 없는 감정이 나를 그렇게 하도록 이끌었다.
-	PRINTFORMW 아무 말없이 내 키스를 받아들이는 그녀의 눈에서는 안도의 빛이 그녀의 녹아내린 감정만큼 흘러내렸다.
-	PRINTFORMW 그녀는 나로부터 자신이 괴롭힘 당하는 처지인 수준까지로도 충분히 만족했었다.
-	PRINTFORMW 그 이상의 관계는 나를 불행하게 만들지도 모른다고 생각했을지도 모른다.
-	PRINTFORML 그러나 그런 것과는 별개로, 그녀의 생기 넘치는 눈동자를 더 탐하고 싶은, 그런 추한 욕망이
-	PRINTFORMW 반지를 건네라고 속닥거린 것일 수도 있다.
-	PRINTFORMW ―그러나 그런 그녀의 답변보다, 내가 스스로 내는 답변보다, 그런 단순한 키스가 하고 싶었던 것인지도 모른다.
-	PRINTFORMW 좀 더 마음에 다가가가고 싶은 욕망
-	PRINTFORMW 과거를 지우지 못해서 고통스러워하던 그녀에게 좀 더 다가가서 보듬어 주고 싶다는 욕망
-	PRINTFORMW ―다가가는 것 외에는 다른 답이 존재하지 않았다.
-	PRINTFORMW 확실히 그러했다㎤라고 할 수 있었다.
+    PRINTFORMW 「……」
+    PRINTFORMW 과거에 신음하고 고통스러워하는 달토끼.
+    PRINTFORML 평소 손으로 조교할 때와는 다르게 조교 도구를 보고는 패닉 상태에 빠져서 마구 발버둥치던가,
+    PRINTFORMW 피를 보더니 경기를 일으키면서 나를 물어뜯던가―
+    PRINTFORMW 그런 이상 현상을 계속 경험하던 내가 언젠가 물어서 알게 된 사실이었다.
+    PRINTFORML
+    PRINTFORML 「…당신」
+    PRINTFORMW
+    PRINTFORMW 그런 그녀가 도망친 곳은 영원정이었으나 그 곳에서마저 계속 겉도는 삶을 살았다고 했다.
+    PRINTFORMW 자신을 싸늘하게보는 스승과, 경계하는 땅토끼와 무관심한 공주―
+    PRINTFORML 그런 곳에서 달과의 통신을 위한 수단외에는 아무런 관심을 보이지 않던 그들 속에서도
+    PRINTFORMW 자신을 지켜나간건 자신이 달의 주민이라는 껍데기같던 자부심뿐.
+    PRINTFORML
+    PRINTFORMW 『전쟁은 지옥이었다』고 그녀가 말했었다.
+    PRINTFORML 바로 어제까지 자신의 낡은 침낭을 보고 안쓰러워하며 바꿔준 상냥한 이가 눈 앞에서 골수를 쏟으며 죽는 곳이고
+    PRINTFORML 어제까지 실랑이를 벌이던 이가 지뢰를 밟고 터져 고깃조각이 되어 바로 얼굴 위로 쏟아내는 곳이며
+    PRINTFORMW 사랑하던 이도 무차별 폭격으로 죽었다는 소식이 들려오는 그런 곳이다.
+    PRINTFORML
+    PRINTFORMW 유난히 고문에 민감하던 그녀는 자신의 조교에 정신까지 붕괴되어 가면서 그런 이야기를 술술 털어놓았다.
+    PRINTFORMW 비어있는 동공에서 술술 풀어내는 이야기는, 자신이 살아온 인생보다 더 참혹하고 잔인한 이야기들 뿐이었다.
+    PRINTFORML 피부로 느껴지는 그 공포는 그녀의 몸에 새겨져 있었고, 그런 감정의 상흔을 건드릴 때마다
+    PRINTFORMW 그녀는 울부짖으면서 그만둬달라고 애원하고는 했었다.
+    PRINTFORML
+    PRINTFORMW 침을 질질 흘리면서 육욕 외에는 아무것도 남지않은 상품으로 만들었을 때쯤
+    PRINTFORMW 그런 그녀를 노예상에게 팔기로 작정하고 노예상에게 연락하고 난 뒤의 일이었다.
+    PRINTFORML 평소 같았으면 떠나가는 그녀를 뒤도 돌아보지 않고 문을 닫았을 것이나
+    PRINTFORMW 그녀가 노예상에게 떠나가는 모습을 오랫동안 지켜보았다.
+    PRINTFORMW 그녀가 걸어갈 때마다, 그녀의 잔인한 과거가 같이 옆을 걸어가고 있는듯한 착각이 들었다.
+    PRINTFORMW 발 한 걸음 한 걸음마다 얼마나 많은 피와 눈물을 본 것일까―
+    PRINTFORML 이제와서 그런 감상이 드는 것도 우스웠지만, 그녀의 연약해 보이기만한 그 뒷모습은
+    PRINTFORMW 그런 고통의 각인을 짊어지기에는 너무 무거워 보였다.
+    PRINTFORML
+    PRINTFORML 그녀가 떠나가고 난 뒤, 그녀와 함께있던 방 안에서 멍하니 앉아있던 그날밤
+    PRINTFORMW 알 수 없는 감정의 소용돌이 속에서 포류하던 나는 노예상에게 다시 연락했다.
+    PRINTFORMW 약속한 금액의 두 배를 더 얹어줄테니, 그 토끼를 다시 돌려보내라고 말이다.
+    PRINTFORMW 노예상은 처음에 내가 미쳤거니― 생각했지만, 돈을 더 얹어준다는 말에 말없이 돌려보내주었다.
+    PRINTFORML
+    PRINTFORML 그녀를 노예상으로부터 다시 데려오던 날, 집까지 같이 걸어 올 때 흘깃 본 그녀의 눈은,
+    PRINTFORMW 노예상에게서 몇 번의 괴롭힘을 당했는지 그녀의 동공은 여전히 비어있었다.
+    PRINTFORMW 같이 집에 도착한 자신은 말없이 그런 그녀의 옷을 벗기고 깨끗하게 씻겨주었다.
+    PRINTFORMW 그리고 깨끗한 옷으로 갈아입히고 따뜻한 커피를 끓여서 그녀에게 대접했다.
+    PRINTFORMW 「……」
+    PRINTFORMW ―당시 그녀의 표정은 아직도 마음에 남는다.
+    PRINTFORML 쓰라린 상흔만 남긴 과거의 빛이 채 지워지지도 않은,
+    PRINTFORML 모든 걸 잃은 그녀의 표정에서,
+    PRINTFORMW 눈동자 뒤에 어떤 생기가 도는 빛을 발견했을 때의 그 감정은―
+    PRINTFORMW 내가 여지껏 느껴보지 못한 감정이었다.
+    PRINTFORML
+    PRINTFORMW 무표정에 가까워진 그녀를 보살피면서 그럭저럭 1년이 지났을 무렵이었다.
+    PRINTFORML 조교 짓도 언제부터인가는 못 해먹게 되어서, 언제부터인가는 노가다를 전전하면서 아려오는 어깨를 풀면서 집으로
+    PRINTFORMW 올 때 쯤이었다.
+    PRINTFORML 언제부터인가 그녀가 집 밖에 마중나와서 나를 바라봐주는게 일상이 되어버려서,
+    PRINTFORMW 그런 그녀의 머리를 쓰다듬으며 집 안으로 들어갈 때―
+    PRINTFORMW ―갑자기 팔을 끌어당긴 그녀가 처음으로 직접 자신에게 입을 맞추어주었다.
+    PRINTFORML 이전 처럼의 죽은 눈이 아닌 그런- 정말이지 처음 보는 눈 빛으로 다가와준 그녀의 눈은
+    PRINTFORMW 이전의 과거의 상흔에서 신음하던 그런 눈빛이 아니었다.
+    PRINTFORML
+    PRINTFORMW 「…당신의 생각은 정말 알기가 힘들어…. 그런 짓 후에 그런 짓을 하고, 다시 이런 짓을 나에게 하는군…」
+    PRINTFORML 그녀는 자신의 손에 끼인 반지를 몇 번 들춰보더니 정말 주의깊게 바라보지 않으면 눈치채기 힘든 그런 종류의
+    PRINTFORMW 아주 희미한 미소를 지었다.
+    PRINTFORMW 「…당신을 만난 건 정말 태어나서 최대의 불행이면서 최대의 행운인지도 몰라…」
+    PRINTFORMW 「…그러나 당신 위험해. 이런 식으로까지 나한테서 가까워지는건 확실히―」
+    PRINTFORMW 그 뒤의 답을 듣고 싶지 않았다.
+    PRINTFORMW 그녀의 입을 내 입술로 막아서, 어떤 일말의 의문의 감정도 남기고 싶지 않았다.
+    PRINTFORMW 어떤 확신― 그런 종류의 형언할 수 없는 감정이 나를 그렇게 하도록 이끌었다.
+    PRINTFORMW 아무 말없이 내 키스를 받아들이는 그녀의 눈에서는 안도의 빛이 그녀의 녹아내린 감정만큼 흘러내렸다.
+    PRINTFORMW 그녀는 나로부터 자신이 괴롭힘 당하는 처지인 수준까지로도 충분히 만족했었다.
+    PRINTFORMW 그 이상의 관계는 나를 불행하게 만들지도 모른다고 생각했을지도 모른다.
+    PRINTFORML 그러나 그런 것과는 별개로, 그녀의 생기 넘치는 눈동자를 더 탐하고 싶은, 그런 추한 욕망이
+    PRINTFORMW 반지를 건네라고 속닥거린 것일 수도 있다.
+    PRINTFORMW ―그러나 그런 그녀의 답변보다, 내가 스스로 내는 답변보다, 그런 단순한 키스가 하고 싶었던 것인지도 모른다.
+    PRINTFORMW 좀 더 마음에 다가가가고 싶은 욕망
+    PRINTFORMW 과거를 지우지 못해서 고통스러워하던 그녀에게 좀 더 다가가서 보듬어 주고 싶다는 욕망
+    PRINTFORMW ―다가가는 것 외에는 다른 답이 존재하지 않았다.
+    PRINTFORMW 확실히 그러했다㎤라고 할 수 있었다.
 ENDIF
 
 ;-------------------------------------------------
@@ -1632,9 +1632,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_280
 IF TFLAG:99 == 0
-	;PRINTFORMW 「種族改造イベント前(ゾンビフェアリー)の口上です」
+    ;PRINTFORMW 「種族改造イベント前(ゾンビフェアリー)の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「種族改造イベント後(ゾンビフェアリー)の口上です」
+    ;PRINTFORMW 「種族改造イベント後(ゾンビフェアリー)の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1643,9 +1643,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_281
 IF TFLAG:99 == 0
-	;PRINTFORMW 「種族改造イベント前(吸血鬼)の口上です」
+    ;PRINTFORMW 「種族改造イベント前(吸血鬼)の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「種族改造イベント後(吸血鬼)の口上です」
+    ;PRINTFORMW 「種族改造イベント後(吸血鬼)の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1654,9 +1654,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_282
 IF TFLAG:99 == 0
-	;PRINTFORMW 「種族改造イベント前(機械)の口上です」
+    ;PRINTFORMW 「種族改造イベント前(機械)の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「種族改造イベント後(機械)の口上です」
+    ;PRINTFORMW 「種族改造イベント後(機械)の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1665,9 +1665,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_283
 IF TFLAG:99 == 0
-	;PRINTFORMW 「種族改造イベント前(幽霊)の口上です」
+    ;PRINTFORMW 「種族改造イベント前(幽霊)の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「種族改造イベント後(幽霊)の口上です」
+    ;PRINTFORMW 「種族改造イベント後(幽霊)の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1676,9 +1676,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_284
 IF TFLAG:99 == 0
-	;PRINTFORMW 「種族改造イベント前(人形)の口上です」
+    ;PRINTFORMW 「種族改造イベント前(人形)の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「種族改造イベント後(人形)の口上です」
+    ;PRINTFORMW 「種族改造イベント後(人形)の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1704,9 +1704,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_309
 IF TFLAG:99 == 0
-	;PRINTFORMW 「鎮静茶使用前の口上です」
+    ;PRINTFORMW 「鎮静茶使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「鎮静茶使用後の口上です」
+    ;PRINTFORMW 「鎮静茶使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1714,9 +1714,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_310
 IF TFLAG:99 == 0
-	;PRINTFORMW 「栄養剤使用前の口上です」
+    ;PRINTFORMW 「栄養剤使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「栄養剤使用後の口上です」
+    ;PRINTFORMW 「栄養剤使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1724,29 +1724,29 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_311
 IF TFLAG:99 == 0
-	;PRINTFORMW 「ふたなり消去前の口上です」
+    ;PRINTFORMW 「ふたなり消去前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「ふたなり消去後の口上です」
+    ;PRINTFORMW 「ふたなり消去後の口上です」
 ELSEIF TFLAG:99 == 2
-	IF EXP:3
-		IF ABL:31 >= 3
-			PRINTFORMW (이것으로…… 또, 사정할 수 있어……♪)
-		ELSEIF TALENT:150
-			PRINTFORMW 「주인님은…… 제게 그게 나있는 게, 좋으신가요?」
-		ELSE
-			PRINTFORMW 「뭐, 또, 이 약을……?」
-		ENDIF
-	;さすがに一回も射精させないで即座にふたなり消去させる人はレアでしょうたぶん
-	ELSE
-		;うどんげに射精経験がない이상eraYMの永遠亭にふたなり薬はないのだろうたぶん
-		IF TALENT:150
-			PRINTFORMW 「제, 제게 조용히 자라고 있네요…… 주인님은, 영원정에 없는 약도 알고 계시네요……」
-		ELSE
-			PRINTFORMW 「뭐, 뭐예요 이 약! 왜 자지가, 자라고……!?」
-		ENDIF
-	ENDIF
+    IF EXP:3
+        IF ABL:31 >= 3
+            PRINTFORMW (이것으로…… 또, 사정할 수 있어……♪)
+        ELSEIF TALENT:150
+            PRINTFORMW 「주인님은…… 제게 그게 나있는 게, 좋으신가요?」
+        ELSE
+            PRINTFORMW 「뭐, 또, 이 약을……?」
+        ENDIF
+    ;さすがに一回も射精させないで即座にふたなり消去させる人はレアでしょうたぶん
+    ELSE
+        ;うどんげに射精経験がない이상eraYMの永遠亭にふたなり薬はないのだろうたぶん
+        IF TALENT:150
+            PRINTFORMW 「제, 제게 조용히 자라고 있네요…… 주인님은, 영원정에 없는 약도 알고 계시네요……」
+        ELSE
+            PRINTFORMW 「뭐, 뭐예요 이 약! 왜 자지가, 자라고……!?」
+        ENDIF
+    ENDIF
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「ふたなり付加後の口上です」
+    ;PRINTFORMW 「ふたなり付加後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1754,13 +1754,13 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_312
 IF TFLAG:99 == 0
-	;PRINTFORMW 「ふたたま消去前の口上です」
+    ;PRINTFORMW 「ふたたま消去前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「ふたたま消去後の口上です」
+    ;PRINTFORMW 「ふたたま消去後の口上です」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「ふたたま付加前の口上です」
+    ;PRINTFORMW 「ふたたま付加前の口上です」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「ふたたま付加後の口上です」
+    ;PRINTFORMW 「ふたたま付加後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1786,9 +1786,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_320
 IF TFLAG:99 == 0
-	;PRINTFORMW 「豊胸剤使用前の口上です」
+    ;PRINTFORMW 「豊胸剤使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「豊胸剤使用後の口上です」
+    ;PRINTFORMW 「豊胸剤使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1796,9 +1796,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_321
 IF TFLAG:99 == 0
-	;PRINTFORMW 「縮胸剤使用前の口上です」
+    ;PRINTFORMW 「縮胸剤使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「縮胸剤使用後の口上です」
+    ;PRINTFORMW 「縮胸剤使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1806,9 +1806,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_322
 IF TFLAG:99 == 0
-	;PRINTFORMW 「止乳剤使用前の口上です」
+    ;PRINTFORMW 「止乳剤使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「止乳剤使用後の口上です」
+    ;PRINTFORMW 「止乳剤使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1816,9 +1816,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_323
 IF TFLAG:99 == 0
-	;PRINTFORMW 「尿漏れ改善薬使用前の口上です」
+    ;PRINTFORMW 「尿漏れ改善薬使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「尿漏れ改善薬使用後の口上です」
+    ;PRINTFORMW 「尿漏れ改善薬使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1832,9 +1832,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_330
 IF TFLAG:99 == 0
-	;PRINTFORMW 「赤の飴玉使用前の口上です」
+    ;PRINTFORMW 「赤の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「赤の飴玉使用後の口上です」
+    ;PRINTFORMW 「赤の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1842,9 +1842,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_331
 IF TFLAG:99 == 0
-	;PRINTFORMW 「青の飴玉使用前の口上です」
+    ;PRINTFORMW 「青の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「青の飴玉使用後の口上です」
+    ;PRINTFORMW 「青の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1864,9 +1864,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_334
 IF TFLAG:99 == 0
-	;PRINTFORMW 「白の飴玉使用前の口上です」
+    ;PRINTFORMW 「白の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「白の飴玉使用後の口上です」
+    ;PRINTFORMW 「白の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1874,9 +1874,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_335
 IF TFLAG:99 == 0
-	;PRINTFORMW 「黒の飴玉使用前の口上です」
+    ;PRINTFORMW 「黒の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「黒の飴玉使用後の口上です」
+    ;PRINTFORMW 「黒の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1884,9 +1884,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_336
 IF TFLAG:99 == 0
-	;PRINTFORMW 「灰の飴玉使用前の口上です」
+    ;PRINTFORMW 「灰の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「灰の飴玉使用後の口上です」
+    ;PRINTFORMW 「灰の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1912,9 +1912,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_340
 IF TFLAG:99 == 0
-	;PRINTFORMW 「翠の飴玉使用前の口上です」
+    ;PRINTFORMW 「翠の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「翠の飴玉使用後の口上です」
+    ;PRINTFORMW 「翠の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1922,9 +1922,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_341
 IF TFLAG:99 == 0
-	;PRINTFORMW 「紺の飴玉使用前の口上です」
+    ;PRINTFORMW 「紺の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「紺の飴玉使用後の口上です」
+    ;PRINTFORMW 「紺の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1932,9 +1932,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_342
 IF TFLAG:99 == 0
-	;PRINTFORMW 「桃の飴玉使用前の口上です」
+    ;PRINTFORMW 「桃の飴玉使用前の口上です」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「桃の飴玉使用後の口上です」
+    ;PRINTFORMW 「桃の飴玉使用後の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1950,59 +1950,59 @@ ENDIF
 ;助手時に雑事を手伝わせた
 ;-------------------------------------------------
 ;@KOJO_28_MESSAGE_SUB_EVENT_SCENE110
-;	IF RAND:4 == 0 && TALENT:150
-;		PRINTFORMW 「주인님, 맡겨주세요……」
-;	ELSEIF RAND:3 == 0
-;		PRINTFORMW 「알겠습니다……제 선에서 처리하겠습니다」
-;	ELSEIF RAND:2 == 0
-;		PRINTFORMW 「……뒷수습은, 해두겠습니다」
-;	ENDIF
+;    IF RAND:4 == 0 && TALENT:150
+;        PRINTFORMW 「주인님, 맡겨주세요……」
+;    ELSEIF RAND:3 == 0
+;        PRINTFORMW 「알겠습니다……제 선에서 처리하겠습니다」
+;    ELSEIF RAND:2 == 0
+;        PRINTFORMW 「……뒷수습은, 해두겠습니다」
+;    ENDIF
 
 ;-------------------------------------------------
 ;毒入り弁当を主人が食べた時
 ;-------------------------------------------------
 ;@KOJO_28_MESSAGE_SUB_EVENT_SCENE411
-	;主人が死ぬ可能性がある
-;	IF FLAG:3 != 1 && TALENT:MASTER:55 == 0 && TALENT:39 && MARK:8 && MARK:9
-;		PRINTFORMW (이걸로……!)
-;	ELSE
-;		PRINTFORMW (조, 좋아……!)
-;	ENDIF
+    ;主人が死ぬ可能性がある
+;    IF FLAG:3 != 1 && TALENT:MASTER:55 == 0 && TALENT:39 && MARK:8 && MARK:9
+;        PRINTFORMW (이걸로……!)
+;    ELSE
+;        PRINTFORMW (조, 좋아……!)
+;    ENDIF
 
 ;-------------------------------------------------
 ;毒入り弁当を食べたが不発した時
 ;TFLAG:99で弁当作成者を取得可能
 ;-------------------------------------------------
 ;@KOJO_28_MESSAGE_SUB_EVENT_SCENE413
-	;에링이거나 테위
-;	IF TFLAG:99 == 29 || TFLAG:99 == 27
-;		PRINTFORM 「우우…… 
-		;에링
-;		IF TFLAG:99 == 29
-;			PRINTFORMW 스, 스승님, 또예요!?」
-		;테위
-;		ELSEIF TFLAG:99 == 27
-;			PRINTFORMW 테, 테위, 또 넣은거니!?」
-;		ENDIF
-;		PRINTFORMW …………또?
-;	ELSE
-;		PRINTFORMW 「평소, 스승님에게 여러 가지로 당했으니 망정이지……!」
-;	ENDIF
+    ;에링이거나 테위
+;    IF TFLAG:99 == 29 || TFLAG:99 == 27
+;        PRINTFORM 「우우…… 
+        ;에링
+;        IF TFLAG:99 == 29
+;            PRINTFORMW 스, 스승님, 또예요!?」
+        ;테위
+;        ELSEIF TFLAG:99 == 27
+;            PRINTFORMW 테, 테위, 또 넣은거니!?」
+;        ENDIF
+;        PRINTFORMW …………또?
+;    ELSE
+;        PRINTFORMW 「평소, 스승님에게 여러 가지로 당했으니 망정이지……!」
+;    ENDIF
 
 ;-------------------------------------------------
 ;毒入り弁当を見破られた時
 ;-------------------------------------------------
 ;@KOJO_28_MESSAGE_SUB_EVENT_SCENE415
-;	PRINTFORMW 「그, 그럴 생각은 아니었어요……그런……」
+;    PRINTFORMW 「그, 그럴 생각은 아니었어요……그런……」
 
 ;-------------------------------------------------
 ;主人が弁当を作っている時
 ;-------------------------------------------------
 ;@KOJO_28_MESSAGE_SUB_EVENT_SCENE430
-;	IF TALENT:150
-;		PRINTFORMW 「우후후……즐겁네요♪」
-;	ELSEIF MARK:2 == 3
-;		PRINTFORMW 「뭐가 들어있더라도…… 먹지 않기란 무리라구요……」
-;	ELSE
-;		PRINTFORMW (이상한 약이 들어있을지도 모르니, 주의를 기울이지 않으면……)
-;	ENDIF
+;    IF TALENT:150
+;        PRINTFORMW 「우후후……즐겁네요♪」
+;    ELSEIF MARK:2 == 3
+;        PRINTFORMW 「뭐가 들어있더라도…… 먹지 않기란 무리라구요……」
+;    ELSE
+;        PRINTFORMW (이상한 약이 들어있을지도 모르니, 주의를 기울이지 않으면……)
+;    ENDIF

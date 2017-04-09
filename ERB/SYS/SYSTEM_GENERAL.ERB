@@ -15,7 +15,7 @@
 @COMMON_UP_JUEL, ARG, ARG:1, ARG:2, ARG:3, ARG:4
 ;빠꾸
 SIF ARG:2 <= 0
-	RETURN 0
+    RETURN 0
 
 ;단순하게 몽땅 떠넘기기
 CALL COMMON_MOVE_JUEL, ARG, ARG:1, ARG:2, ARG:3, ARG:4
@@ -28,7 +28,7 @@ RETURN RESULT
 @COMMON_DOWN_JUEL, ARG, ARG:1, ARG:2, ARG:3, ARG:4
 ;빠꾸
 SIF ARG:2 <= 0
-	RETURN 0
+    RETURN 0
 
 ;単純にARG:2の値を反転させて丸投げ
 CALL COMMON_MOVE_JUEL, ARG, ARG:1, -ARG:2, ARG:3, ARG:4
@@ -51,19 +51,19 @@ LOCALS = %PALAMNAME:(ARG:1)%의 구슬\@ ARG:4 - (ARG != TARGET) <= 0 ? (%CALLNA
 JUEL:ARG:(ARG:1) = LOCAL:1
 ;変動差分の絶対値が0でないなら表示
 IF ABS(LOCAL:2) > 0
-	SELECTCASE ARG:3
-		;WAITを掛けない
-		CASE 0
-			PRINTSL LOCALS
-			RETURN 1
-		;WAITを掛ける
-		CASE 1
-			PRINTSW LOCALS
-			RETURN 1
-		;표시하지 않음
-		CASEELSE
-			RETURN 0
-	ENDSELECT
+    SELECTCASE ARG:3
+        ;WAITを掛けない
+        CASE 0
+            PRINTSL LOCALS
+            RETURN 1
+        ;WAITを掛ける
+        CASE 1
+            PRINTSW LOCALS
+            RETURN 1
+        ;표시하지 않음
+        CASEELSE
+            RETURN 0
+    ENDSELECT
 ENDIF
 
 ;-------------------------------------------------
@@ -72,33 +72,33 @@ ENDIF
 @COMMON_UP_EXP, ARG, ARG:1, ARG:2, ARG:3, ARG:4
 ;値が上昇しないなら戻る
 SIF ARG:2 <= 0
-	RETURN 0
+    RETURN 0
 
 EXP:ARG:(ARG:1) += ARG:2
 IF ARG:4 == 1
-	LOCALS = %EXPNAME:(ARG:1)%\@(ARG != TARGET) ? (%CALLNAME:ARG%) # \@ ＋ {ARG:2}
+    LOCALS = %EXPNAME:(ARG:1)%\@(ARG != TARGET) ? (%CALLNAME:ARG%) # \@ ＋ {ARG:2}
 ELSEIF ARG:4 == 2
-	LOCALS = %EXPNAME:(ARG:1)% ＋ {ARG:2}
+    LOCALS = %EXPNAME:(ARG:1)% ＋ {ARG:2}
 ELSE
-	LOCALS = %EXPNAME:(ARG:1)%(%CALLNAME:ARG%) ＋ {ARG:2}
+    LOCALS = %EXPNAME:(ARG:1)%(%CALLNAME:ARG%) ＋ {ARG:2}
 ENDIF
 IF ARG:2 > 0 && ARG:3 == 0
-	PRINTFORML %LOCALS%
+    PRINTFORML %LOCALS%
 ELSEIF ARG:2 > 0 && ARG:3 == 1
-	PRINTFORMW %LOCALS%
+    PRINTFORMW %LOCALS%
 ENDIF
 ;Ｖ経験増加特別処理
 IF ARG:1 == 0 && (CFLAG:ARG:11 & 1) == 0
-	CFLAG:ARG:11 |= 1
+    CFLAG:ARG:11 |= 1
 ;Ａ経験増加特別処理
 ELSEIF ARG:1 == 1 && (CFLAG:ARG:11 & 2) == 0
-	CFLAG:ARG:11 |= 2
+    CFLAG:ARG:11 |= 2
 ;異常経験増加特別処理
 ELSEIF ARG:1 == 50 && (CFLAG:ARG:11 & 4) == 0
-	CFLAG:ARG:11 |= 4
+    CFLAG:ARG:11 |= 4
 ENDIF
 SIF ARG:3 != 2
-	RETURN 1
+    RETURN 1
 
 ;-------------------------------------------------
 ;소질 삭제 범용 처리
@@ -108,11 +108,11 @@ SIF ARG:3 != 2
 ;ARG:2……표시 처리용 플래그
 @LOST_TALENTS, ARG, ARG:1, ARG:2
 IF TALENT:ARG:(ARG:1)
-	SIF ARG:2 == 0
-		PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
-	PRINTFORM [%TALENTNAME:(ARG:1)%]
-	TALENT:ARG:(ARG:1) = 0
-	RETURN 1
+    SIF ARG:2 == 0
+        PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
+    PRINTFORM [%TALENTNAME:(ARG:1)%]
+    TALENT:ARG:(ARG:1) = 0
+    RETURN 1
 ENDIF
 RETURN ARG:2
 
@@ -124,11 +124,11 @@ RETURN ARG:2
 ;ARG:2……표시 처리용 플래그
 @GET_TALENTS, ARG, ARG:1, ARG:2
 IF TALENT:ARG:(ARG:1) == 0
-	SIF ARG:2 == 1
-		PRINT 을(를) 잃고, 
-	PRINTFORM [%TALENTNAME:(ARG:1)%]
-	TALENT:ARG:(ARG:1) = 1
-	RETURN 2
+    SIF ARG:2 == 1
+        PRINT 을(를) 잃고, 
+    PRINTFORM [%TALENTNAME:(ARG:1)%]
+    TALENT:ARG:(ARG:1) = 1
+    RETURN 2
 ENDIF
 RETURN ARG:2
 
@@ -141,11 +141,11 @@ RETURN ARG:2
 ;ARG:2=TALENT2
 @TALENT_RAND_CHANGE_2, ARG, ARG:1, ARG:2
 IF RAND:2 == 1
-	TALENT:ARG:(ARG:1) = 1
-	TALENT:ARG:(ARG:2) = 0
+    TALENT:ARG:(ARG:1) = 1
+    TALENT:ARG:(ARG:2) = 0
 ELSE
-	TALENT:ARG:(ARG:1) = 0
-	TALENT:ARG:(ARG:2) = 1
+    TALENT:ARG:(ARG:1) = 0
+    TALENT:ARG:(ARG:2) = 1
 ENDIF
 
 ;--------------------------------------------------
@@ -157,14 +157,14 @@ ENDIF
 ;ARG:2=TALENT2
 @TALENT_RAND_CHANGE_3, ARG, ARG:1, ARG:2
 IF RAND:3 == 0
-	TALENT:ARG:(ARG:1) = 1
-	TALENT:ARG:(ARG:2) = 0
+    TALENT:ARG:(ARG:1) = 1
+    TALENT:ARG:(ARG:2) = 0
 ELSEIF RAND:2 == 0
-	TALENT:ARG:(ARG:1) = 0
-	TALENT:ARG:(ARG:2) = 1
+    TALENT:ARG:(ARG:1) = 0
+    TALENT:ARG:(ARG:2) = 1
 ELSE
-	TALENT:ARG:(ARG:1) = 0
-	TALENT:ARG:(ARG:2) = 0
+    TALENT:ARG:(ARG:1) = 0
+    TALENT:ARG:(ARG:2) = 0
 ENDIF
 
 ;-------------------------------------------------
@@ -181,19 +181,19 @@ LOCALS = %CFLAGNAME:(ARG:1)%\@ ARG:4 - (ARG != TARGET) <= 0 ? (%CALLNAME:ARG%) #
 CFLAG:ARG:(ARG:1) += LOCAL
 ;変動差分が0でないなら表示
 IF LOCAL != 0
-	SELECTCASE ARG:3
-		;WAITを掛けない
-		CASE 0
-			PRINTSL LOCALS
-			RETURN 1
-		;WAITを掛ける
-		CASE 1
-			PRINTSW LOCALS
-			RETURN 1
-		;표시하지 않음
-		CASEELSE
-			RETURN 0
-	ENDSELECT
+    SELECTCASE ARG:3
+        ;WAITを掛けない
+        CASE 0
+            PRINTSL LOCALS
+            RETURN 1
+        ;WAITを掛ける
+        CASE 1
+            PRINTSW LOCALS
+            RETURN 1
+        ;표시하지 않음
+        CASEELSE
+            RETURN 0
+    ENDSELECT
 ENDIF
 
 ;-------------------------------------------------
@@ -212,44 +212,44 @@ BASE:ARG:(ARG:1) = LIMIT(BASE:ARG:(ARG:1)+ARG:2, 0, MAXBASE:ARG:(ARG:1))
 @COMMON_MARK_UP, ARG, ARG:1, ARG:2, ARG:3
 ;処理しないで戻す場合(存在しない刻印は上昇しない)
 SIF ARG:1 < 0 || ARG:1 > 10
-	RETURN 0
+    RETURN 0
 SIF STRLENS(MARKNAME:(ARG:1)) <= 0
-	RETURN 0
+    RETURN 0
 ;現在の刻印の数値が上昇後の値以上なら以降の処理をしない
 SIF MARK:ARG:(ARG:1) >= ARG:2
-	RETURN 0
+    RETURN 0
 ;刻印上昇処理
 MARK:ARG:(ARG:1) = ARG:2
 ;恐怖刻印および反発刻印上昇時は刻印履歴も更新する
 IF ARG:1 == 8
-	MARK:ARG:96 = MAX(MARK:ARG:8 , ARG:2)
+    MARK:ARG:96 = MAX(MARK:ARG:8 , ARG:2)
 ELSEIF ARG:1 == 9
-	MARK:ARG:97 = MAX(MARK:ARG:9 , ARG:2)
+    MARK:ARG:97 = MAX(MARK:ARG:9 , ARG:2)
 ENDIF
 SELECTCASE ARG:3
-	;WAITを掛けない
-	CASE 0
-		PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
-		FONTBOLD
-		CALL SETCOLOR_TORIKOMODE, "RED", 4
-		PRINTFORM %MARKNAME:(ARG:1)% LV%조사처리(TOSTR(MARK:ARG:(ARG:1)),"를")% 
-		FONTREGULAR
-		RESETCOLOR
-		PRINTL  취득했다.
-		RETURN 1
-	;WAITを掛ける
-	CASE 1
-		PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
-		FONTBOLD
-		CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-		PRINTFORM %MARKNAME:(ARG:1)% LV%조사처리(TOSTR(MARK:ARG:(ARG:1)),"를")% 
-		RESETCOLOR
-		FONTREGULAR
-		PRINTW  취득했다.
-		RETURN 1
-	;표시하지 않음
-	CASEELSE
-		RETURN 0
+    ;WAITを掛けない
+    CASE 0
+        PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
+        FONTBOLD
+        CALL SETCOLOR_TORIKOMODE, "RED", 4
+        PRINTFORM %MARKNAME:(ARG:1)% LV%조사처리(TOSTR(MARK:ARG:(ARG:1)),"를")% 
+        FONTREGULAR
+        RESETCOLOR
+        PRINTL  취득했다.
+        RETURN 1
+    ;WAITを掛ける
+    CASE 1
+        PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
+        FONTBOLD
+        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+        PRINTFORM %MARKNAME:(ARG:1)% LV%조사처리(TOSTR(MARK:ARG:(ARG:1)),"를")% 
+        RESETCOLOR
+        FONTREGULAR
+        PRINTW  취득했다.
+        RETURN 1
+    ;표시하지 않음
+    CASEELSE
+        RETURN 0
 ENDSELECT
 
 
@@ -267,12 +267,12 @@ ENDSELECT
 
 ;조교자側が[禁断の知識]を持たない場合、体格比較判定へ
 IF TALENT:ARG:56 == 0
-	;互いの体格による体格差を求める
-	LOCAL = COMMON_BODYSIZE_CHECK2(ARG:0, ARG:1)
+    ;互いの体格による体格差を求める
+    LOCAL = COMMON_BODYSIZE_CHECK2(ARG:0, ARG:1)
 
-	;조교자側と対象との体格差が二段階以上だとダメ
-	SIF ABS(LOCAL) > 1
-		RETURNF 0
+    ;조교자側と対象との体格差が二段階以上だとダメ
+    SIF ABS(LOCAL) > 1
+        RETURNF 0
 ENDIF
 RETURNF 1
 
@@ -288,29 +288,29 @@ RETURNF 1
 
 ;조교 대상 측의 [小人体型]
 IF TALENT:(ARG:1):127
-	LOCAL = -2
+    LOCAL = -2
 ;조교 대상 측의 [小柄体型]
 ELSEIF TALENT:(ARG:1):128
-	LOCAL = -1
+    LOCAL = -1
 ;조교 대상 측의 [巨躯]
 ELSEIF TALENT:(ARG:1):129
-	LOCAL = 1
+    LOCAL = 1
 ;조교 대상 측의 普通体型
 ELSE
-	LOCAL = 0
+    LOCAL = 0
 ENDIF
 ;조교자 측의 [小人体型]
 IF TALENT:ARG:127
-	LOCAL -= -2
+    LOCAL -= -2
 ;조교자 측의 [小柄体型]
 ELSEIF TALENT:ARG:128
-	LOCAL -= -1
+    LOCAL -= -1
 ;조교자 측의 [巨躯]
 ELSEIF TALENT:ARG:129
-	LOCAL -= 1
+    LOCAL -= 1
 ;조교자 측의 普通体型
 ELSE
-	LOCAL -= 0
+    LOCAL -= 0
 ENDIF
 RETURNF LOCAL
 
@@ -324,13 +324,13 @@ RETURNF LOCAL
 #FUNCTION
 LOCAL = -1
 FOR LOCAL:1, 0, CHARANUM
-	SIF ARG:1 == 1 && LOCAL:1 == MASTER
-		CONTINUE
+    SIF ARG:1 == 1 && LOCAL:1 == MASTER
+        CONTINUE
 
-	IF CFLAG:(LOCAL:1):3109 == ARG:0
-		LOCAL = LOCAL:1
-		BREAK
-	ENDIF
+    IF CFLAG:(LOCAL:1):3109 == ARG:0
+        LOCAL = LOCAL:1
+        BREAK
+    ENDIF
 NEXT
 RETURNF LOCAL
 
@@ -342,19 +342,19 @@ RETURNF LOCAL
 #FUNCTION
 LOCAL = 0
 FOR LOCAL:1, 0, CHARANUM
-	;その場にいないとだめ
-	SIF CFLAG:(LOCAL:1):4
-		CONTINUE
-	;主人か助手可能でないとだめ
-	SIF LOCAL:1 != MASTER && CFLAG:(LOCAL:1):1 < 2
-		CONTINUE
-	
-	;調合知識持ち
-	SIF TALENT:(LOCAL:1):55
-		LOCAL |= 1
-	;禁断の知識持ち
-	SIF TALENT:(LOCAL:1):56
-		LOCAL |= 2
+    ;その場にいないとだめ
+    SIF CFLAG:(LOCAL:1):4
+        CONTINUE
+    ;主人か助手可能でないとだめ
+    SIF LOCAL:1 != MASTER && CFLAG:(LOCAL:1):1 < 2
+        CONTINUE
+    
+    ;調合知識持ち
+    SIF TALENT:(LOCAL:1):55
+        LOCAL |= 1
+    ;禁断の知識持ち
+    SIF TALENT:(LOCAL:1):56
+        LOCAL |= 2
 NEXT
 RETURNF LOCAL
 
@@ -367,47 +367,47 @@ RETURNF LOCAL
 #FUNCTION
 ;親愛または妄信が必要
 SIF TALENT:ARG:151 == 0 && TALENT:ARG:152 == 0
-	RETURNF 0
+    RETURNF 0
 ;従順、欲望の合計が8以上
 SIF ABL:ARG:10 + ABL:ARG:11 < 8
-	RETURNF 0
+    RETURNF 0
 ;技巧、奉仕精神がそれぞれ4以上
 SIF ABL:ARG:12 < 4 || ABL:ARG:13 < 4
-	RETURNF 0
+    RETURNF 0
 ;マゾっ気、自慰中毒がそれぞれ2以上
 SIF ABL:ARG:21 < 2 || ABL:ARG:30 < 2
-	RETURNF 0
+    RETURNF 0
 ;料理技能が3以上または歌唱技能が3以上または精液中毒が4以上
 SIF ABL:ARG:70 < 3 && ABL:ARG:72 < 3 && ABL:ARG:31 < 4
-	RETURNF 0
+    RETURNF 0
 ;強制自慰経験が50以上かつ奉仕快楽経験が500以上
 SIF EXP:ARG:11 < 50 || EXP:ARG:20 < 500
-	RETURNF 0
+    RETURNF 0
 ;屈服刻印Lv3かつ反発刻印Lv0
 SIF MARK:ARG:2 < 3 || MARK:ARG:9
-	RETURNF 0
+    RETURNF 0
 ;好感度が500必要
 SIF CFLAG:ARG:2 < 500
-	RETURNF 0
+    RETURNF 0
 ;主人が[大甲斐性]を持っていないとき
 IF TALENT:MASTER:98 == 0
-	;男主人の場合
-	IF TALENT:MASTER:120
-		;相手が女ならレズ経験1500未満
-		SIF EXP:ARG:12 >= 1500 && TALENT:ARG:120 == 0
-			RETURNF 0
-		;相手が男ならＢＬ経験1500以上
-		SIF EXP:ARG:13 < 1500 && TALENT:ARG:120
-			RETURNF 0
-	;女主人の場合
-	ELSE
-		;相手が女ならレズ経験が1500以上
-		SIF EXP:ARG:12 < 1500 && TALENT:ARG:120 == 0
-			RETURNF 0
-		;相手が男ならＢＬ経験1500未満
-		SIF EXP:ARG:13 >= 1500 && TALENT:ARG:120
-			RETURNF 0
-	ENDIF
+    ;男主人の場合
+    IF TALENT:MASTER:120
+        ;相手が女ならレズ経験1500未満
+        SIF EXP:ARG:12 >= 1500 && TALENT:ARG:120 == 0
+            RETURNF 0
+        ;相手が男ならＢＬ経験1500以上
+        SIF EXP:ARG:13 < 1500 && TALENT:ARG:120
+            RETURNF 0
+    ;女主人の場合
+    ELSE
+        ;相手が女ならレズ経験が1500以上
+        SIF EXP:ARG:12 < 1500 && TALENT:ARG:120 == 0
+            RETURNF 0
+        ;相手が男ならＢＬ経験1500未満
+        SIF EXP:ARG:13 >= 1500 && TALENT:ARG:120
+            RETURNF 0
+    ENDIF
 ENDIF
 RETURNF 1
 
@@ -420,26 +420,26 @@ ADDCHARA ARG
 TARGET = CHARANUM-1
 ;범용 캐릭터의 경우에는 랜덤 소질 부가 처리로 놀아간다
 IF ARG >= 150 && ARG < 200
-	CALL CHARA_RANDOM_STATE
+    CALL CHARA_RANDOM_STATE
 ELSE
-	;무명 캐릭터 외에는 캐릭터 카드를 취득
-	ITEM:(ARG+100) += 1
+    ;무명 캐릭터 외에는 캐릭터 카드를 취득
+    ITEM:(ARG+100) += 1
 ENDIF
 ;캐릭터 ID 설정
 CFLAG:3109 = FLAG:998
 FLAG:998 += 1
 ;사정 게이지 설정
 SIF (TALENT:120 || TALENT:121) && MAXBASE:2 <= 0
-	MAXBASE:2 = CALC_GAUGE2_COMMON(TARGET)
+    MAXBASE:2 = CALC_GAUGE2_COMMON(TARGET)
 ;분유 게이지 설정
 SIF TALENT:134
-	CALL CALC_GAUGE3_SLAVE, TARGET, 1
+    CALL CALC_GAUGE3_SLAVE, TARGET, 1
 ;뇨의 게이지 설정
 SIF TALENT:45 || EXP:6
-	CALL CALC_GAUGE4_SLAVE, TARGET, 1
+    CALL CALC_GAUGE4_SLAVE, TARGET, 1
 ;촉수 게이지 설정
 SIF TALENT:146
-	CALL CALC_TENTACLE_GAUGE
+    CALL CALC_TENTACLE_GAUGE
 ;취기 게이지 설정
 CALL CALC_GAUGE8, TARGET, 0
 ;사용할 대사의 선택
@@ -458,13 +458,13 @@ CALL SET_DEAFAULT_STARVE_TORIKOMODE , TARGET
 #LOCALSIZE 1
 ;대사의 존재 판정
 TRYCCALLFORM TRY_{NO:ARG}
-	TRYCCALLFORM KOJO_{NO:ARG}_DISPLAY_SETTINGS
-		LOCAL = (RESULT >= 1 && RESULT <= 3) ? RESULT # 0
-	CATCH
-		LOCAL = 1
-	ENDCATCH
+    TRYCCALLFORM KOJO_{NO:ARG}_DISPLAY_SETTINGS
+        LOCAL = (RESULT >= 1 && RESULT <= 3) ? RESULT # 0
+    CATCH
+        LOCAL = 1
+    ENDCATCH
 CATCH
-	LOCAL = 0
+    LOCAL = 0
 ENDCATCH
 DRAWLINE
 PRINTFORML %CALLNAME:ARG%에게 사용할 대사를 선택해주세요(※나중에 변경할 수는 없습니다)
@@ -474,42 +474,42 @@ PRINTLC [1] 지문만
 PRINTLC [2] 범용 대사만
 PRINTLC [3] 범용 대사＋지문
 SIF LOCAL == 1 || LOCAL == 2
-	PRINTLC [4] 전용 대사만
+    PRINTLC [4] 전용 대사만
 SIF LOCAL == 1 || LOCAL == 3
-	PRINTLC [5] 전용 대사＋지문
+    PRINTLC [5] 전용 대사＋지문
 PRINTL 
 $INPUT_LOOP
 INPUT
 IF RESULT == 0
-	PRINTFORMW %CALLNAME:ARG%에게 대사 · 지문은 사용하지 않도록 설정했습니다.
-	;대사 표시의 개별 설정 플래그에 기억
-	CFLAG:ARG:9 = 1
+    PRINTFORMW %CALLNAME:ARG%에게 대사 · 지문은 사용하지 않도록 설정했습니다.
+    ;대사 표시의 개별 설정 플래그에 기억
+    CFLAG:ARG:9 = 1
 ELSEIF RESULT == 1
-	PRINTFORMW %CALLNAME:ARG%에게 지문을 사용하도록 설정했습니다
-	;대사 표시의 개별 설정 플래그에 기억
-	CFLAG:ARG:9 = 2
+    PRINTFORMW %CALLNAME:ARG%에게 지문을 사용하도록 설정했습니다
+    ;대사 표시의 개별 설정 플래그에 기억
+    CFLAG:ARG:9 = 2
 ELSEIF RESULT == 2
-	PRINTFORMW %CALLNAME:ARG%에게 범용 대사를 사용하도록 설정했습니다
-	;대사 표시의 개별 설정 플래그에 기억
-	CFLAG:ARG:9 = 4
-	;「인격 설정」
-	CALL DEFINE_JINKAKU_SELECT, ARG
+    PRINTFORMW %CALLNAME:ARG%에게 범용 대사를 사용하도록 설정했습니다
+    ;대사 표시의 개별 설정 플래그에 기억
+    CFLAG:ARG:9 = 4
+    ;「인격 설정」
+    CALL DEFINE_JINKAKU_SELECT, ARG
 ELSEIF RESULT == 3
-	PRINTFORMW %CALLNAME:ARG%에게 범용 대사와 지문을 사용하도록 설정했습니다
-	;대사 표시의 개별 설정 플래그에 기억
-	CFLAG:ARG:9 = 6
-	;「인격 설정」
-	CALL DEFINE_JINKAKU_SELECT, ARG
+    PRINTFORMW %CALLNAME:ARG%에게 범용 대사와 지문을 사용하도록 설정했습니다
+    ;대사 표시의 개별 설정 플래그에 기억
+    CFLAG:ARG:9 = 6
+    ;「인격 설정」
+    CALL DEFINE_JINKAKU_SELECT, ARG
 ELSEIF RESULT == 4 && (LOCAL == 1 || LOCAL == 2)
-	PRINTFORMW %CALLNAME:ARG%에게 전용 대사를 사용하도록 설정했습니다
-	;대사 표시의 개별 설정 플래그에 기억
-	CFLAG:ARG:9 = 8
+    PRINTFORMW %CALLNAME:ARG%에게 전용 대사를 사용하도록 설정했습니다
+    ;대사 표시의 개별 설정 플래그에 기억
+    CFLAG:ARG:9 = 8
 ELSEIF RESULT == 5 && (LOCAL == 1 || LOCAL == 3)
-	PRINTFORMW %CALLNAME:ARG%에게 전용 대사와 지문을 사용하도록 설정했습니다
-	;대사 표시의 개별 설정 플래그에 기억
-	CFLAG:ARG:9 = 10
+    PRINTFORMW %CALLNAME:ARG%에게 전용 대사와 지문을 사용하도록 설정했습니다
+    ;대사 표시의 개별 설정 플래그에 기억
+    CFLAG:ARG:9 = 10
 ELSE
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 
 ;=============================================================================
@@ -525,7 +525,7 @@ ENDIF
 #FUNCTION
 LOCAL = ARG
 SIF LOCAL > ARG:1
-	LOCAL = ARG:1 + (LOCAL - ARG:1) / ARG:2
+    LOCAL = ARG:1 + (LOCAL - ARG:1) / ARG:2
 
 RETURNF LOCAL
 
@@ -539,7 +539,7 @@ RETURNF LOCAL
 #FUNCTION
 LOCAL = ARG
 SIF LOCAL > ARG:1
-	LOCAL = ARG:1 + (LOCAL - ARG:1) * ARG:2 / 100
+    LOCAL = ARG:1 + (LOCAL - ARG:1) * ARG:2 / 100
 
 RETURNF LOCAL
 

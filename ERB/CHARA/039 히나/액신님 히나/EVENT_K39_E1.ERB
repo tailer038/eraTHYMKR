@@ -25,36 +25,36 @@
 @K39_MESSAGE_EVENT_401
 ;요바이 기승위(실패)
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「요바이 기승위(실패)시의 대사입니다」
+    ;PRINTFORMW 「요바이 기승위(실패)시의 대사입니다」
 ;요바이 기승위(성공)
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「요바이 기승위(성공)시의 대사입니다」
+    ;PRINTFORMW 「요바이 기승위(성공)시의 대사입니다」
 ;요바이 기승위(단념한다)
 ELSEIF GET_NIGHT_KOJO(0) == 3
-	;PRINTFORMW 「요바이로 펠라했을 시의 대사입니다」
+    ;PRINTFORMW 「요바이로 펠라했을 시의 대사입니다」
 ;요바이 기승위(자위)
 ELSEIF GET_NIGHT_KOJO(0) == 4
-	;PRINTFORMW 「요바이로 자위했을 시의 대사입니다」
+    ;PRINTFORMW 「요바이로 자위했을 시의 대사입니다」
 ;요바이 기승위(정조대 방어)
 ELSEIF GET_NIGHT_KOJO(0) == 5
-	;PRINTFORMW 「요바이 기승위(정조대 방어) 시의 대사입니다」
+    ;PRINTFORMW 「요바이 기승위(정조대 방어) 시의 대사입니다」
 ;요바이 기승위(주인이 범해지는 계열)
 ELSEIF GET_NIGHT_KOJO(0) == 6 
 ;주인이 처녀인 경우 스마타로 변경. 처녀 스마타는 낭만이라나 봐서.
-	IF TALENT:MASTER:0 >= 1
-		;주인이 후타나리라면 엉덩이에 박는다. 설령 경험이 없더라도.
-		IF TALENT:MASTER:121
-			;PRINTFORMW 「요바이로 엉덩이를 범해졌을 시의 대사입니다」
-		;처녀 스마타
-		ELSE
-			;PRINTFORMW 「요바이로 스마타되었을 시의 대사입니다」
-		ENDIF
-	ELSE
-		;PRINTFORMW 「요바이로 앞을 범해졌을 시의 대사입니다」
-	ENDIF
+    IF TALENT:MASTER:0 >= 1
+        ;주인이 후타나리라면 엉덩이에 박는다. 설령 경험이 없더라도.
+        IF TALENT:MASTER:121
+            ;PRINTFORMW 「요바이로 엉덩이를 범해졌을 시의 대사입니다」
+        ;처녀 스마타
+        ELSE
+            ;PRINTFORMW 「요바이로 스마타되었을 시의 대사입니다」
+        ENDIF
+    ELSE
+        ;PRINTFORMW 「요바이로 앞을 범해졌을 시의 대사입니다」
+    ENDIF
 ;요바이 기승위(보지 비비기)
 ELSEIF GET_NIGHT_KOJO(0) == 7
-	;PRINTFORMW 「요바이 기승위(보지 비비기)시의 대사입니다」
+    ;PRINTFORMW 「요바이 기승위(보지 비비기)시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -79,13 +79,13 @@ ENDIF
 @K39_MESSAGE_EVENT_404
 ;야식 초대를 받은 다음, 그대로 색시도 먹습니다
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「야식 초대를 받은 다음의 대사입니다」
+    ;PRINTFORMW 「야식 초대를 받은 다음의 대사입니다」
 ;평범한 색시와의 쎾쓰
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「노크 뒤에 자빠트려졌을 시의 대사입니다」
+    ;PRINTFORMW 「노크 뒤에 자빠트려졌을 시의 대사입니다」
 ;색시가 함께 있고 싶다며 찾아왔으므로
 ELSE
-	;PRINTFORMW 「색시가 함께 있고 싶다며 찾아왔을 시의 대사입니다」
+    ;PRINTFORMW 「색시가 함께 있고 싶다며 찾아왔을 시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -95,13 +95,13 @@ ENDIF
 @K39_MESSAGE_EVENT_405
 ;일반적인 요바이
 IF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「일반적인 요바이시의 대사입니다」
+    ;PRINTFORMW 「일반적인 요바이시의 대사입니다」
 ;쥐어짜낼 생각이 만만하게 적극적으로 하는 요바이
 ELSEIF GET_NIGHT_KOJO(0) == 3
-	;PRINTFORMW 「적극적 요바이시의 대사입니다」
+    ;PRINTFORMW 「적극적 요바이시의 대사입니다」
 ;처녀를 바치는 요바이
 ELSEIF GET_NIGHT_KOJO(0) == 4
-	;PRINTFORMW 「처녀 요바이시의 대사입니다」
+    ;PRINTFORMW 「처녀 요바이시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -112,10 +112,10 @@ ENDIF
 @K39_MESSAGE_EVENT_406
 ;세 명이서 격렬하게 뒤엉킨다(TARGET이 말한다, GET_CHARA_M(0)가 동반)
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「밤 이벤트 시의 ３Ｐ 대사입니다」
+    ;PRINTFORMW 「밤 이벤트 시의 ３Ｐ 대사입니다」
 ;둘이서 격렬하게 뒤엉킨다, 동반자 GET_CHARA_M(0)는 보고만 있을 뿐
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「밤 이벤트 시의 ３Ｐ대사 ２입니다」
+    ;PRINTFORMW 「밤 이벤트 시의 ３Ｐ대사 ２입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -137,10 +137,10 @@ ENDIF
 @K39_MESSAGE_EVENT_408
 ;분신 난교, 혼자서 1회만 발언, 실질 플랑뿐
 IF TFLAG:99 == 2
-	;PRINTFORMW 「혼자서 다인원 PT 난교의 대사입니다」
+    ;PRINTFORMW 「혼자서 다인원 PT 난교의 대사입니다」
 ;일반적인 난교
 ELSE
-	;PRINTFORMW 「다인원 PT 난교의 대사입니다」
+    ;PRINTFORMW 「다인원 PT 난교의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -151,10 +151,10 @@ ENDIF
 @K39_MESSAGE_EVENT_409
 ;정조대가 있으므로 자위 못 함
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「엿보기 자위에서 정조대가 있을 경우의 대사입니다」
+    ;PRINTFORMW 「엿보기 자위에서 정조대가 있을 경우의 대사입니다」
 ;그 자리에서 자위를 시작한다
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「엿보기 자위 시의 대사입니다」
+    ;PRINTFORMW 「엿보기 자위 시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -175,10 +175,10 @@ ENDIF
 @K39_MESSAGE_EVENT_411
 ;채찍질
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「마조 노예의 요바이에서 채찍질할 때의 대사입니다」
+    ;PRINTFORMW 「마조 노예의 요바이에서 채찍질할 때의 대사입니다」
 ;스팽킹
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「마조 노예의 요바이에서 스팽킹할 때의 대사입니다」
+    ;PRINTFORMW 「마조 노예의 요바이에서 스팽킹할 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -223,9 +223,9 @@ ENDIF
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_417
 IF TFLAG:99 == 0
-	;PRINTFORMW 「촉수가 폭주 중인 촉수간의 대사입니다」
+    ;PRINTFORMW 「촉수가 폭주 중인 촉수간의 대사입니다」
 ELSE
-	;PRINTFORMW 「노예가 선의로 해주는 촉수간의 대사입니다」
+    ;PRINTFORMW 「노예가 선의로 해주는 촉수간의 대사입니다」
 ENDIF
 ;-------------------------------------------------
 ;습격 이성간 플레이(습격 측)
@@ -408,16 +408,16 @@ ENDIF
 @K39_MESSAGE_EVENT_465
 ;여성으로 한다
 IF TFLAG:99 == 1
-	;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
+    ;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
 ;남성으로 한다
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
+    ;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
 ;복수 인원으로 한다
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
+    ;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
 ;벤치의 멋진 남자로 한다
 ELSEIF TFLAG:99 == 9
-	;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
+    ;PRINTFORMW 「조수와 마을에서 제3자를 끼워서 우후후할 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -442,39 +442,39 @@ ENDIF
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_480
 SELECTCASE GET_NIGHT_KOJO(0)
-	;스마타 강제
-	CASE 0
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;섹스
-	CASE 1
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;애널 섹스
-	CASE 2
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;젖 퍽
-	CASE 3
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;아라마치오
-	CASE 4
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;자위
-	CASE 19
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;역강간
-	CASE 100
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;역 애널 강간
-	CASE 200
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;강제 스마타(주인이 여성)
-	CASE 300
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;강제 보지 비비기
-	CASE 301
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
-	;커닐링구스 강제＆자위
-	CASE 302
-		;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;스마타 강제
+    CASE 0
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;섹스
+    CASE 1
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;애널 섹스
+    CASE 2
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;젖 퍽
+    CASE 3
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;아라마치오
+    CASE 4
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;자위
+    CASE 19
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;역강간
+    CASE 100
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;역 애널 강간
+    CASE 200
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;강제 스마타(주인이 여성)
+    CASE 300
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;강제 보지 비비기
+    CASE 301
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
+    ;커닐링구스 강제＆자위
+    CASE 302
+        ;PRINTFORMW 「노예 주체의 요바이 대사입니다」
 ENDSELECT
 
 ;-------------------------------------------------
@@ -483,54 +483,54 @@ ENDSELECT
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_481
 SELECTCASE GET_NIGHT_KOJO(0)
-	;스마타해준다
-	CASE 10
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;섹스시켜준다
-	CASE 11
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;애널 섹스시켜준다
-	CASE 12
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;파이즈리해준다
-	CASE 13
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;펠라치오해준다
-	CASE 14
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;수음해준다
-	CASE 15
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;자위 강제(좆대 있음)
-	CASE 19
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;섹스한다
-	CASE 110
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;손가락 넣다 뺐다
-	CASE 115
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;자위 강제(좆대 없음)
-	CASE 119
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;애널 섹스한다
-	CASE 210
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;애널 애무해준다
-	CASE 215
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;애널 자위 강제
-	CASE 219
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;상호 애무
-	CASE 310
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;애무해준다
-	CASE 311
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
-	;가슴 자위 강제
-	CASE 319
-		;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;스마타해준다
+    CASE 10
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;섹스시켜준다
+    CASE 11
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;애널 섹스시켜준다
+    CASE 12
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;파이즈리해준다
+    CASE 13
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;펠라치오해준다
+    CASE 14
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;수음해준다
+    CASE 15
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;자위 강제(좆대 있음)
+    CASE 19
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;섹스한다
+    CASE 110
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;손가락 넣다 뺐다
+    CASE 115
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;자위 강제(좆대 없음)
+    CASE 119
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;애널 섹스한다
+    CASE 210
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;애널 애무해준다
+    CASE 215
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;애널 자위 강제
+    CASE 219
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;상호 애무
+    CASE 310
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;애무해준다
+    CASE 311
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
+    ;가슴 자위 강제
+    CASE 319
+        ;PRINTFORMW 「주인 주체의 요바이 대사입니다」
 ENDSELECT
 
 ;-------------------------------------------------
@@ -688,13 +688,13 @@ ENDSELECT
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_801
 IF TFLAG:99 <= 7
-	;PRINTFORMW 「보지 고문 이벤트시의 대사１입니다」
+    ;PRINTFORMW 「보지 고문 이벤트시의 대사１입니다」
 ELSEIF TFLAG:99 <= 14
-	;PRINTFORMW 「보지 고문 이벤트시의 대사２입니다」
+    ;PRINTFORMW 「보지 고문 이벤트시의 대사２입니다」
 ELSEIF TFLAG:99 <= 22
-	;PRINTFORMW 「보지 고문 이벤트시의 대사３입니다」
+    ;PRINTFORMW 「보지 고문 이벤트시의 대사３입니다」
 ELSE
-	;PRINTFORMW 「보지 고문 이벤트시의 대사４입니다」
+    ;PRINTFORMW 「보지 고문 이벤트시의 대사４입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -704,13 +704,13 @@ ENDIF
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_802
 IF TFLAG:99 <= 9
-	;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사１입니다」
+    ;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사１입니다」
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사２입니다」
+    ;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사２입니다」
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사３입니다」
+    ;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사３입니다」
 ELSE
-	;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사４입니다」
+    ;PRINTFORMW 「바이브를 넣고 거리를 걷는 이벤트시의 대사４입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -720,13 +720,13 @@ ENDIF
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_803
 IF TFLAG:99 <= 9
-	;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사１입니다」
+    ;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사１입니다」
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사２입니다」
+    ;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사２입니다」
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사３입니다」
+    ;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사３입니다」
 ELSE
-	;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사４입니다」
+    ;PRINTFORMW 「Ａ바이브를 넣고 거리를 걷는 이벤트시의 대사４입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -736,9 +736,9 @@ ENDIF
 ;-------------------------------------------------
 @K39_MESSAGE_EVENT_804
 IF TFLAG:99 <= 25
-	;PRINTFORMW 「가두 자위 강제 이벤트시의 대사１입니다」
+    ;PRINTFORMW 「가두 자위 강제 이벤트시의 대사１입니다」
 ELSEIF TFLAG:99 <= 29
-	;PRINTFORMW 「가두 자위 강제 이벤트시의 대사２입니다」
+    ;PRINTFORMW 「가두 자위 강제 이벤트시의 대사２입니다」
 ELSE
-	;PRINTFORMW 「가두 자위 강제 이벤트시의 대사３입니다」
+    ;PRINTFORMW 「가두 자위 강제 이벤트시의 대사３입니다」
 ENDIF

@@ -27,40 +27,40 @@ PRINTL Ｓ=실버　　　다소 어렵다. 꾸준히 노력하고 달성해 나
 PRINTL Ｇ=골드　　　상당한 난이도. 근성과 실력을 겸비해야 할 것이다.
 PRINTL Ｐ=플래티넘　달성자가 있는지조차 의심스럽다.
 SIF (LOCAL:2) == 200
-	PRINTFORML ■ 일반 실적
+    PRINTFORML ■ 일반 실적
 SIF (LOCAL:2) == 201
-	PRINTFORML ■ 조교 관계
+    PRINTFORML ■ 조교 관계
 SIF (LOCAL:2) == 202
-	PRINTFORML ■ 조교 대상 관계
+    PRINTFORML ■ 조교 대상 관계
 DRAWLINE
 FOR LOCAL, 0, (LOCAL:3)
-	TRYCALLFORM TROPHY_{LOCAL:2}_{LOCAL}
-	SIF RESULTS:0 == ""
-		CONTINUE
-	GETBIT GLOBAL:(LOCAL:2), LOCAL
-	IF RESULTS:0 == "브론즈"
-		SETCOLOR 151, 107, 47
-		PRINT [B] 
-	ELSEIF RESULTS:0 == "실버"
-		SETCOLOR 158, 158, 158
-		PRINT [S] 
-	ELSEIF RESULTS:0 == "골드"
-		SETCOLOR 180, 158, 83
-		PRINT [G] 
-	ELSEIF RESULTS:0 == "플래티넘"
-		SETCOLOR 217, 217, 140 
-		PRINT [P] 
-	ENDIF
-	RESETCOLOR
-	SIF RESULT == 0
-		SETCOLOR 105, 105, 105
-	SIF RESULT == 0 && (RESULTS:0 == "실버" || RESULTS:0 == "골드" || RESULTS:0 == "플래티넘")
-		RESULTS:1 = ？？？
-	SIF RESULT == 0 && (RESULTS:0 == "골드" || RESULTS:0 == "플래티넘")
-		RESULTS:2 = ？？？
-	PRINTFORML %RESULTS:1,20,LEFT% %RESULTS:2%
-	VARSET RESULTS, ""
-	RESETCOLOR
+    TRYCALLFORM TROPHY_{LOCAL:2}_{LOCAL}
+    SIF RESULTS:0 == ""
+        CONTINUE
+    GETBIT GLOBAL:(LOCAL:2), LOCAL
+    IF RESULTS:0 == "브론즈"
+        SETCOLOR 151, 107, 47
+        PRINT [B] 
+    ELSEIF RESULTS:0 == "실버"
+        SETCOLOR 158, 158, 158
+        PRINT [S] 
+    ELSEIF RESULTS:0 == "골드"
+        SETCOLOR 180, 158, 83
+        PRINT [G] 
+    ELSEIF RESULTS:0 == "플래티넘"
+        SETCOLOR 217, 217, 140 
+        PRINT [P] 
+    ENDIF
+    RESETCOLOR
+    SIF RESULT == 0
+        SETCOLOR 105, 105, 105
+    SIF RESULT == 0 && (RESULTS:0 == "실버" || RESULTS:0 == "골드" || RESULTS:0 == "플래티넘")
+        RESULTS:1 = ？？？
+    SIF RESULT == 0 && (RESULTS:0 == "골드" || RESULTS:0 == "플래티넘")
+        RESULTS:2 = ？？？
+    PRINTFORML %RESULTS:1,20,LEFT% %RESULTS:2%
+    VARSET RESULTS, ""
+    RESETCOLOR
 NEXT
 
 DRAWLINE
@@ -71,9 +71,9 @@ LOCAL:1 = B:1 + S:1 + G:1 + P:1
 PRINTFORM 달성률 {(LOCAL:1)*100/(LOCAL:0)}％　
 CALL PRINT_BAR, LOCAL:1, LOCAL:0, 32, UNICODE(0x2585), UNICODE(0x2585), 0x0082FF, 0x002050
 IF LOCAL:0 == LOCAL:1
-	SETCOLOR 217, 217, 140 
-	PRINT [P]
-	RESETCOLOR
+    SETCOLOR 217, 217, 140 
+    PRINT [P]
+    RESETCOLOR
 ENDIF
 PRINTL 
 PRINTFORML 실적수 {LOCAL:1}/{LOCAL:0}
@@ -104,19 +104,19 @@ PRINTFORML [100] 돌아간다
 $INPUT_LOOP
 INPUT
 IF RESULT == 100
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 1 || RESULT == 2 || RESULT == 3
-	LOCAL:2 = 199 + RESULT
-	SIF RESULT == 1
-		LOCAL:3 = 20
-	SIF RESULT == 2
-		LOCAL:3 = 15
-	SIF RESULT == 3
-		LOCAL:3 = 58
-	GOTO PRINT_LIST
+    LOCAL:2 = 199 + RESULT
+    SIF RESULT == 1
+        LOCAL:3 = 20
+    SIF RESULT == 2
+        LOCAL:3 = 15
+    SIF RESULT == 3
+        LOCAL:3 = 58
+    GOTO PRINT_LIST
 ELSE
-	PRINTFORML 올바른 값을 입력해 주세요.
-	GOTO INPUT_LOOP
+    PRINTFORML 올바른 값을 입력해 주세요.
+    GOTO INPUT_LOOP
 ENDIF
 
 ;-------------------------------------------------------------------------------
@@ -125,11 +125,11 @@ ENDIF
 ;-------------------------------------------------------------------------------
 @PRINT_BAR(ARG, ARG:1, ARG:2, ARGS, ARGS:1, ARG:3, ARG:4)
 ;IF FLAG:23 & 256
-;	PRINT  
-;	CALL PRINT_COLORBAR, ARG, ARG:1, ARG:2, ARGS, ARGS:1, ARG:3, ARG:4
-;	PRINT  
+;    PRINT  
+;    CALL PRINT_COLORBAR, ARG, ARG:1, ARG:2, ARGS, ARGS:1, ARG:3, ARG:4
+;    PRINT  
 ;ELSE
-	BAR ARG, ARG:1, ARG:2
+    BAR ARG, ARG:1, ARG:2
 ;ENDIF
 
 ;--------------------------------------------------
@@ -145,26 +145,26 @@ VARSET P, 0
 VARSET LOCAL, 0
 
 FOR LOCAL:1, 200, 203
-	FOR LOCAL, 0, 50
-		TRYCALLFORM TROPHY_{LOCAL:1}_{LOCAL}
-		SIF RESULTS:0 == ""
-			CONTINUE
-		GETBIT GLOBAL:(LOCAL:1), LOCAL
-		IF RESULTS:0 == "브론즈"
-			B:0 += 1
-			B:1 += RESULT
-		ELSEIF RESULTS:0 == "실버"
-			S:0 += 1
-			S:1 += RESULT
-		ELSEIF RESULTS:0 == "골드"
-			G:0 += 1
-			G:1 += RESULT
-		ELSEIF RESULTS:0 == "플래티넘"
-			P:0 += 1
-			P:1 += RESULT
-		ENDIF
-		VARSET RESULTS, ""
-	NEXT
+    FOR LOCAL, 0, 50
+        TRYCALLFORM TROPHY_{LOCAL:1}_{LOCAL}
+        SIF RESULTS:0 == ""
+            CONTINUE
+        GETBIT GLOBAL:(LOCAL:1), LOCAL
+        IF RESULTS:0 == "브론즈"
+            B:0 += 1
+            B:1 += RESULT
+        ELSEIF RESULTS:0 == "실버"
+            S:0 += 1
+            S:1 += RESULT
+        ELSEIF RESULTS:0 == "골드"
+            G:0 += 1
+            G:1 += RESULT
+        ELSEIF RESULTS:0 == "플래티넘"
+            P:0 += 1
+            P:1 += RESULT
+        ENDIF
+        VARSET RESULTS, ""
+    NEXT
 NEXT
 
 ;--------------------------------------------------
@@ -179,34 +179,34 @@ CALL TROPHY_COUNT
 LOCAL:0 = B:0 + S:0 + G:0
 LOCAL:1 = B:1 + S:1 + G:1
 SIF LOCAL:0 == LOCAL:1
-	GLOBAL:200 |= 1p0
+    GLOBAL:200 |= 1p0
 
 ;실적 판정(1페이지째)
 SIF GLOBAL:200 == 1048572 || GLOBAL:200 == 1048573
-	GLOBAL:200 |= 1p1
+    GLOBAL:200 |= 1p1
 
 ;실적 판정(2페이지째)
 SIF GLOBAL:201 == 65534
-	GLOBAL:201 |= 1p0
+    GLOBAL:201 |= 1p0
 
 SIF GLOBAL:200 == 1048574 && GLOBAL:201 == 65535 && GLOBAL:202 == 144115188075855871
-	GLOBAL:200 |= 1p0
+    GLOBAL:200 |= 1p0
 
 VARSET T, 0
 VARSET LOCAL, 0
 ;경험～～이상 등의 실적은 여기서 일괄적으로 판정
 FOR LOCAL, 1, CHARANUM
-	;호감도
-	SIF CFLAG:LOCAL:2 >= 1000
-		GLOBAL:200 |= 1p8
-	SIF CFLAG:LOCAL:2 >= 10000
-		GLOBAL:200 |= 1p9
-	SIF CFLAG:LOCAL:2 >= 50000
-		GLOBAL:200 |= 1p10
-	SIF CFLAG:LOCAL:2 >= 100000
-		GLOBAL:200 |= 1p11
-	SIF CFLAG:LOCAL:2 >= 999999
-		GLOBAL:200 |= 1p12
+    ;호감도
+    SIF CFLAG:LOCAL:2 >= 1000
+        GLOBAL:200 |= 1p8
+    SIF CFLAG:LOCAL:2 >= 10000
+        GLOBAL:200 |= 1p9
+    SIF CFLAG:LOCAL:2 >= 50000
+        GLOBAL:200 |= 1p10
+    SIF CFLAG:LOCAL:2 >= 100000
+        GLOBAL:200 |= 1p11
+    SIF CFLAG:LOCAL:2 >= 999999
+        GLOBAL:200 |= 1p12
 NEXT
 
 ;キャラをGETCHARAで検索し、いるなら実績取得判定をする
@@ -219,18 +219,18 @@ CALL GETCHARA_NUMVER
 
 VARSET LOCAL, 0
 FOR LOCAL, 0, 20
-	;조건을 클리어했는가
-	TRYCALLFORM TROPHY_200_{LOCAL}
-	SIF RESULT == 1
-		SETBIT GLOBAL:200, LOCAL
+    ;조건을 클리어했는가
+    TRYCALLFORM TROPHY_200_{LOCAL}
+    SIF RESULT == 1
+        SETBIT GLOBAL:200, LOCAL
 NEXT
 
 VARSET LOCAL, 0
 FOR LOCAL, 0, 57
-	;조건을 클리어했는가
-	TRYCALLFORM TROPHY_202_{LOCAL}
-	SIF RESULT == 1
-		SETBIT GLOBAL:202, LOCAL
+    ;조건을 클리어했는가
+    TRYCALLFORM TROPHY_202_{LOCAL}
+    SIF RESULT == 1
+        SETBIT GLOBAL:202, LOCAL
 NEXT
 
 ;아래 문장은 기존 GLOBAL 데이터의 오류를 복구하기 위해 추가한 문장입니다.
@@ -238,24 +238,24 @@ NEXT
 ;실제로는 존재하지 않는 실적에 대한 값을 삭제하여 올바른 값을 갖도록 합니다. T
 
 IF (GLOBAL:200 & 1p20)
-	VARSET LOCAL, 0
-	FOR LOCAL, 20, 25
-		CLEARBIT GLOBAL:200, LOCAL
-	NEXT
+    VARSET LOCAL, 0
+    FOR LOCAL, 20, 25
+        CLEARBIT GLOBAL:200, LOCAL
+    NEXT
 ENDIF
 
 IF (GLOBAL:201 & 1p15)
-	VARSET LOCAL, 0
-	FOR LOCAL, 15, 20
-		CLEARBIT GLOBAL:201, LOCAL
-	NEXT
+    VARSET LOCAL, 0
+    FOR LOCAL, 15, 20
+        CLEARBIT GLOBAL:201, LOCAL
+    NEXT
 ENDIF
 
 IF (GLOBAL:202 & 1p57)
-	VARSET LOCAL, 0
-	FOR LOCAL, 57, 63
-		CLEARBIT GLOBAL:202, LOCAL
-	NEXT
+    VARSET LOCAL, 0
+    FOR LOCAL, 57, 63
+        CLEARBIT GLOBAL:202, LOCAL
+    NEXT
 ENDIF
 
 SAVEGLOBAL
@@ -270,7 +270,7 @@ SAVEGLOBAL
 ;RESULTS:2 = 설명문
 ;;달성 판정(조건을 달성했으면 RETURN 1)
 ;SIF 1
-;	RETURN 1
+;    RETURN 1
 
 @TROPHY_200_0
 RESULTS:0 = 플래티넘
@@ -297,7 +297,7 @@ RESULTS:1 = 저금이 좋아
 RESULTS:2 = 소지금 $100000 이상 달성
 ;달성 판정
 SIF MONEY >= 100000
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_4
 RESULTS:0 = 브론즈
@@ -305,7 +305,7 @@ RESULTS:1 = 밀리언 달러!
 RESULTS:2 = 소지금 $1000000 이상 달성
 ;달성 판정
 SIF MONEY >= 1000000
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_5
 RESULTS:0 = 실버
@@ -313,7 +313,7 @@ RESULTS:1 = 이 세상의 돈
 RESULTS:2 = 소지금 $10000000 이상 달성
 ;달성 판정
 SIF MONEY >= 10000000
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_6
 RESULTS:0 = 골드
@@ -321,7 +321,7 @@ RESULTS:1 = 억만장자!
 RESULTS:2 = 소지금 $100000000 이상 달성
 ;달성 판정
 SIF MONEY >= 100000000
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_7
 RESULTS:0 = 골드
@@ -329,7 +329,7 @@ RESULTS:1 = GOLD RUSH!!
 RESULTS:2 = 소지금 $999999999999999999(최대값) 달성
 ;달성 판정
 SIF MONEY >= 999999999999999999
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_8
 RESULTS:0 = 브론즈
@@ -367,7 +367,7 @@ RESULTS:1 = 수련자
 RESULTS:2 = 난이도 EASY를 클리어(주회 플레이 금지)
 ;달성 판정
 SIF FLAG:3 == 1 && (FLAG:5 & 2) && FLAG:6 == 1
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_14
 RESULTS:0 = 브론즈
@@ -375,7 +375,7 @@ RESULTS:1 = 도전자
 RESULTS:2 = 난이도 NORMAL을 클리어(주회 플레이 금지)
 ;달성 판정
 SIF FLAG:3 == 2 && (FLAG:5 & 2) && FLAG:6 == 1
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_15
 RESULTS:0 = 실버
@@ -383,7 +383,7 @@ RESULTS:1 = 실력자
 RESULTS:2 = 난이도 HARD를 클리어(주회 플레이 금지)
 ;달성 판정
 SIF FLAG:3 == 3 && (FLAG:5 & 2) && FLAG:6 == 1
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_16
 RESULTS:0 = 골드
@@ -391,7 +391,7 @@ RESULTS:1 = 달성자
 RESULTS:2 = 난이도 LUNATIC을 클리어(주회 플레이 금지)
 ;달성 판정
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:6 == 1
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_17
 RESULTS:0 = 실버
@@ -399,7 +399,7 @@ RESULTS:1 = 전광석화!
 RESULTS:2 = 10일 이내에 클리어
 ;달성 판정
 SIF (FLAG:5 & 2) && DAY <= 9
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_18
 RESULTS:0 = 골드
@@ -407,7 +407,7 @@ RESULTS:1 = 질풍신뢰!!
 RESULTS:2 = 5일 이내에 클리어
 ;달성 판정
 SIF (FLAG:5 & 2) && DAY <= 4
-	RETURN 1
+    RETURN 1
 
 @TROPHY_200_19
 RESULTS:0 = 골드
@@ -415,7 +415,7 @@ RESULTS:1 = 신풍!
 RESULTS:2 = 2일 이내에 클리어
 ;달성 판정
 SIF (FLAG:5 & 2) && DAY <= 1
-	RETURN 1
+    RETURN 1
 
 ;--------------------------------------------------
 ;판정(GLOBAL:201)
@@ -426,16 +426,16 @@ LOADGLOBAL
 ;ARG　4：사중절정, 5：오중절정
 ;ARG:1　4：최강사중절정, 5：최강오중절정
 SIF ARG == 4
-	GLOBAL:201 |= 1p1
+    GLOBAL:201 |= 1p1
 SIF ARG:1 == 4
-	GLOBAL:201 |= 1p2
+    GLOBAL:201 |= 1p2
 
 VARSET LOCAL, 0
 FOR LOCAL, 0, 15
-	;조건을 클리어했는가
-	TRYCALLFORM TROPHY_201_{LOCAL}
-	SIF RESULT == 1
-		SETBIT GLOBAL:201, LOCAL
+    ;조건을 클리어했는가
+    TRYCALLFORM TROPHY_201_{LOCAL}
+    SIF RESULT == 1
+        SETBIT GLOBAL:201, LOCAL
 NEXT
 
 SAVEGLOBAL
@@ -451,7 +451,7 @@ SAVEGLOBAL
 ;RESULTS:2 = 설명문
 ;;달성 판정(조건을 달성했으면 RETURN 1)
 ;SIF 1
-;	RETURN 1
+;    RETURN 1
 
 @TROPHY_201_0
 RESULTS:0 = 플래티넘
@@ -465,7 +465,7 @@ RESULTS:1 = 사중절정!
 RESULTS:2 = 사중절정을 달성하기
 ;달성 판정
 SIF GETBIT(GLOBAL:201, 1)
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_2
 RESULTS:0 = 골드
@@ -473,7 +473,7 @@ RESULTS:1 = 최강 사중절정!
 RESULTS:2 = 최강 사중절정을 달성하기
 ;달성 판정
 SIF GETBIT(GLOBAL:201, 2)
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_3
 RESULTS:0 = 브론즈
@@ -481,7 +481,7 @@ RESULTS:1 = 콩까지마
 RESULTS:2 = 한 조교에서 C절정 25회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:0 >= 25
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_4
 RESULTS:0 = 실버
@@ -489,7 +489,7 @@ RESULTS:1 = 클리토리스 매니아
 RESULTS:2 = 한 조교에서 C절정 50회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:0 >= 50
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_5
 RESULTS:0 = 골드
@@ -497,7 +497,7 @@ RESULTS:1 = 클리토리스 마스터
 RESULTS:2 = 한 조교에서 C절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:0 >= 100
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_6
 RESULTS:0 = 브론즈
@@ -505,7 +505,7 @@ RESULTS:1 = 고지보딩
 RESULTS:2 = 한 조교에서 V절정 50회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:1 >= 50
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_7
 RESULTS:0 = 실버
@@ -513,7 +513,7 @@ RESULTS:1 = 바기나 매니아
 RESULTS:2 = 한 조교에서 V절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:1 >= 100
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_8
 RESULTS:0 = 골드
@@ -521,7 +521,7 @@ RESULTS:1 = 바기나 마스터
 RESULTS:2 = 한 조교에서 V절정 200회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:1 >= 200
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_9
 RESULTS:0 = 브론즈
@@ -529,7 +529,7 @@ RESULTS:1 = 비누줍기
 RESULTS:2 = 한 조교에서 A절정 30회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:2 >= 30
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_10
 RESULTS:0 = 실버
@@ -537,7 +537,7 @@ RESULTS:1 = 애널 매니아
 RESULTS:2 = 한 조교에서 A절정 70회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:2 >= 70
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_11
 RESULTS:0 = 골드
@@ -545,7 +545,7 @@ RESULTS:1 = 애널 마스터
 RESULTS:2 = 한 조교에서 A절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:2 >= 100
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_12
 RESULTS:0 = 브론즈
@@ -553,7 +553,7 @@ RESULTS:1 = 가슴이 시킨다
 RESULTS:2 = 한 조교에서 B절정 25회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:3 >= 25
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_13
 RESULTS:0 = 실버
@@ -561,7 +561,7 @@ RESULTS:1 = 가슴 매니아
 RESULTS:2 = 한 조교에서 B절정 50회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:3 >= 50
-	RETURN 1
+    RETURN 1
 
 @TROPHY_201_14
 RESULTS:0 = 골드
@@ -569,7 +569,7 @@ RESULTS:1 = 가슴 마스터
 RESULTS:2 = 한 조교에서 B절정 100회 이상 달성
 ;달성 판정
 SIF TARGET > 0 && EX:3 >= 100
-	RETURN 1
+    RETURN 1
 
 ;--------------------------------------------------
 ;동료의 실적 판정
@@ -579,194 +579,194 @@ SIF TARGET > 0 && EX:3 >= 100
 ;GETCHARA X
 ;エラー回避(これがないとキャラがいない時-1でエラーが出る)
 ;SIF RESULT < 0
-;	RESULT = 0
+;    RESULT = 0
 ;最初に選んだのかとクリアしているかの判定
 ;SIF (FLAG:5 & 2) > 0 && FLAG:6500 == X
-;	GLOBAL:202 |= 1pXX
+;    GLOBAL:202 |= 1pXX
 ;最初に選んだのかとLUNATICでクリアしているかの判定
 ;SIF FLAG:5 == 3 && (FLAG:5 & 2) > 0 && FLAG:6500 == X
-;	GLOBAL:202 |= 1pXX
+;    GLOBAL:202 |= 1pXX
 ;GETCHARAに取得した番号で親愛・相愛を取得しているかの判定
 ;SIF TALENT:(RESULT):88 == 1 && TALENT:(RESULT):89 == 1
-;	GLOBAL:202 |= 1pXX
+;    GLOBAL:202 |= 1pXX
 ;GETCHARAに取得した番号で淫乱・親愛を取得しているかの判定
 ;SIF TALENT:(RESULT):76 == 1 && TALENT:(RESULT):88 == 1
-;	GLOBAL:202 |= 1pXX
+;    GLOBAL:202 |= 1pXX
 ;1pXXは被らないようにお願いします
 ;後は下のほうで1pXX番の実績を追加するだけです
 
 @GETCHARA_NUMVER
 GETCHARA 4
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 4
-	GLOBAL:202 |= 1p1
+    GLOBAL:202 |= 1p1
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 4
-	GLOBAL:202 |= 1p2
+    GLOBAL:202 |= 1p2
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p3
+    GLOBAL:202 |= 1p3
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p4
+    GLOBAL:202 |= 1p4
 
 GETCHARA 10
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 10
-	GLOBAL:202 |= 1p5
+    GLOBAL:202 |= 1p5
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 10
-	GLOBAL:202 |= 1p6
+    GLOBAL:202 |= 1p6
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p7
+    GLOBAL:202 |= 1p7
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p8
+    GLOBAL:202 |= 1p8
 
 GETCHARA 13
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 13
-	GLOBAL:202 |= 1p9
+    GLOBAL:202 |= 1p9
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 13
-	GLOBAL:202 |= 1p10
+    GLOBAL:202 |= 1p10
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p11
+    GLOBAL:202 |= 1p11
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p12
+    GLOBAL:202 |= 1p12
 
 GETCHARA 22
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 22
-	GLOBAL:202 |= 1p13
+    GLOBAL:202 |= 1p13
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 22
-	GLOBAL:202 |= 1p14
+    GLOBAL:202 |= 1p14
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p15
+    GLOBAL:202 |= 1p15
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p16
+    GLOBAL:202 |= 1p16
 
 GETCHARA 30
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 30
-	GLOBAL:202 |= 1p17
+    GLOBAL:202 |= 1p17
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 30
-	GLOBAL:202 |= 1p18
+    GLOBAL:202 |= 1p18
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p19
+    GLOBAL:202 |= 1p19
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p20
+    GLOBAL:202 |= 1p20
 
 GETCHARA 36
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 36
-	GLOBAL:202 |= 1p21
+    GLOBAL:202 |= 1p21
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 36
-	GLOBAL:202 |= 1p22
+    GLOBAL:202 |= 1p22
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p23
+    GLOBAL:202 |= 1p23
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p24
+    GLOBAL:202 |= 1p24
 
 GETCHARA 40
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 40
-	GLOBAL:202 |= 1p25
+    GLOBAL:202 |= 1p25
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 40
-	GLOBAL:202 |= 1p26
+    GLOBAL:202 |= 1p26
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p27
+    GLOBAL:202 |= 1p27
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p28
+    GLOBAL:202 |= 1p28
 
 GETCHARA 43
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 43
-	GLOBAL:202 |= 1p29
+    GLOBAL:202 |= 1p29
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 43
-	GLOBAL:202 |= 1p30
+    GLOBAL:202 |= 1p30
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p31
+    GLOBAL:202 |= 1p31
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p32
+    GLOBAL:202 |= 1p32
 
 GETCHARA 52
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 52
-	GLOBAL:202 |= 1p33
+    GLOBAL:202 |= 1p33
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 52
-	GLOBAL:202 |= 1p34
+    GLOBAL:202 |= 1p34
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p35
+    GLOBAL:202 |= 1p35
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p36
+    GLOBAL:202 |= 1p36
 
 GETCHARA 53
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 53
-	GLOBAL:202 |= 1p37
+    GLOBAL:202 |= 1p37
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 53
-	GLOBAL:202 |= 1p38
+    GLOBAL:202 |= 1p38
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p39
+    GLOBAL:202 |= 1p39
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p40
+    GLOBAL:202 |= 1p40
 
 GETCHARA 54
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 54
-	GLOBAL:202 |= 1p41
+    GLOBAL:202 |= 1p41
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 54
-	GLOBAL:202 |= 1p42
+    GLOBAL:202 |= 1p42
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p43
+    GLOBAL:202 |= 1p43
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p44
+    GLOBAL:202 |= 1p44
 
 GETCHARA 63
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 63
-	GLOBAL:202 |= 1p45
+    GLOBAL:202 |= 1p45
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 63
-	GLOBAL:202 |= 1p46
+    GLOBAL:202 |= 1p46
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p47
+    GLOBAL:202 |= 1p47
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p48
+    GLOBAL:202 |= 1p48
 
 GETCHARA 77
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 77
-	GLOBAL:202 |= 1p49
+    GLOBAL:202 |= 1p49
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 77
-	GLOBAL:202 |= 1p50
+    GLOBAL:202 |= 1p50
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p51
+    GLOBAL:202 |= 1p51
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p52
+    GLOBAL:202 |= 1p52
 
 GETCHARA 101
 SIF RESULT < 0
-	RESULT = 0
+    RESULT = 0
 SIF (FLAG:5 & 2) > 0 && FLAG:250 == 101
-	GLOBAL:202 |= 1p53
+    GLOBAL:202 |= 1p53
 SIF FLAG:3 == 4 && (FLAG:5 & 2) && FLAG:250 == 101
-	GLOBAL:202 |= 1p54
+    GLOBAL:202 |= 1p54
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:153 == 1
-	GLOBAL:202 |= 1p55
+    GLOBAL:202 |= 1p55
 SIF TALENT:RESULT:152 == 1 && TALENT:RESULT:170 == 1
-	GLOBAL:202 |= 1p56
+    GLOBAL:202 |= 1p56
 
 ;최후의 실적 판정
 SIF GLOBAL:202 == 144115188075855870
-	GLOBAL:202 |= 1p0
+    GLOBAL:202 |= 1p0
 
 RETURN 1
 
@@ -1163,17 +1163,17 @@ LOCALS:15 = 공작명인
 LOCALS:16 = 초상계산
 
 FOR LOCAL, 0, 17
-	TRYCALLFORM TROPHY_FEAT_GET_%LOCALS:LOCAL%
-	IF RESULT
-		SIF TALENT:MASTER:(LOCALS:LOCAL)
-			SETCOLOR 0xFFFFF
-		LOCALS:99 = 【%LOCALS:LOCAL%】
-	ELSE
-		SETCOLOR 105, 105, 105
-		LOCALS:99 = 【？？？】
-	ENDIF
-	PRINTFORML [{LOCAL,3}] %LOCALS:99,21,LEFT%%RESULTS:2%
-	RESETCOLOR
+    TRYCALLFORM TROPHY_FEAT_GET_%LOCALS:LOCAL%
+    IF RESULT
+        SIF TALENT:MASTER:(LOCALS:LOCAL)
+            SETCOLOR 0xFFFFF
+        LOCALS:99 = 【%LOCALS:LOCAL%】
+    ELSE
+        SETCOLOR 105, 105, 105
+        LOCALS:99 = 【？？？】
+    ENDIF
+    PRINTFORML [{LOCAL,3}] %LOCALS:99,21,LEFT%%RESULTS:2%
+    RESETCOLOR
 NEXT
 PRINTL 
 DRAWLINE
@@ -1182,19 +1182,19 @@ PRINTL [100] 돌아간다
 $INPUT_LOOP
 INPUT
 IF RESULT == 100
-	RETURN 0
+    RETURN 0
 ;새 게임을 시작할 때마다 특수 능력을 활성화하는 게 귀찮아서 한번에 모든 능력을 활성화하는 걸 만들었습니다. T
 ELSEIF RESULT == 99
-	FOR LOCAL, 0, 17
-		TRYCALLFORM TROPHY_FEAT_GET_%LOCALS:LOCAL%
-		SIF RESULT
-			TALENT:MASTER:(LOCALS:LOCAL) = 1
-	NEXT
-	PRINTW 취득할 수 있는 모든 특수 능력을 습득했습니다
-	RETURN 0
+    FOR LOCAL, 0, 17
+        TRYCALLFORM TROPHY_FEAT_GET_%LOCALS:LOCAL%
+        SIF RESULT
+            TALENT:MASTER:(LOCALS:LOCAL) = 1
+    NEXT
+    PRINTW 취득할 수 있는 모든 특수 능력을 습득했습니다
+    RETURN 0
 ELSEIF RESULT >= 100 || LOCALS:RESULT == ""
-	PRINTFORML 올바른 값을 입력해 주세요.
-	GOTO INPUT_LOOP
+    PRINTFORML 올바른 값을 입력해 주세요.
+    GOTO INPUT_LOOP
 ENDIF
 
 LOCAL = RESULT
@@ -1202,45 +1202,45 @@ RESULT = 0
 TRYCALLFORM TROPHY_FEAT_GET_%LOCALS:LOCAL%
 
 IF RESULT && TALENT:MASTER:(LOCALS:LOCAL)
-	PRINTFORML 이미 취득했습니다.
-	PRINTFORML 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 봉인하겠습니까?
-	PRINTFORML [0] 예
-	PRINTFORML [1] 아니오
-	$INPUT_LOOP1
-	INPUT
-	IF RESULT == 0
-		PRINTFORMW 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 봉인했습니다.
-		TALENT:MASTER:(LOCALS:LOCAL) = 0
-		RESTART
-	ELSEIF RESULT == 1
-		RESTART
-	ELSE
-		PRINTFORML 올바른 값을 입력해 주세요.
-		GOTO INPUT_LOOP1
-	ENDIF
-	RESTART
+    PRINTFORML 이미 취득했습니다.
+    PRINTFORML 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 봉인하겠습니까?
+    PRINTFORML [0] 예
+    PRINTFORML [1] 아니오
+    $INPUT_LOOP1
+    INPUT
+    IF RESULT == 0
+        PRINTFORMW 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 봉인했습니다.
+        TALENT:MASTER:(LOCALS:LOCAL) = 0
+        RESTART
+    ELSEIF RESULT == 1
+        RESTART
+    ELSE
+        PRINTFORML 올바른 값을 입력해 주세요.
+        GOTO INPUT_LOOP1
+    ENDIF
+    RESTART
 ELSEIF RESULT
-	;효과 설명
-	PRINTFORML %RESULTS:3%
-	PRINTFORML 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 취득하겠습니까?
-	PRINTL [0] 예
-	PRINTL [1] 아니오
-	$INPUT_LOOP2
-	INPUT
-	IF RESULT == 0
-		PRINTFORMW 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 취득했습니다.
-		TALENT:MASTER:(LOCALS:LOCAL) = 1
-		RESTART
-	ELSEIF RESULT == 1
-		RESTART
-	ELSE
-		PRINTFORML 올바른 값을 입력해 주세요.
-		GOTO INPUT_LOOP2
-	ENDIF
-	RESTART
+    ;효과 설명
+    PRINTFORML %RESULTS:3%
+    PRINTFORML 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 취득하겠습니까?
+    PRINTL [0] 예
+    PRINTL [1] 아니오
+    $INPUT_LOOP2
+    INPUT
+    IF RESULT == 0
+        PRINTFORMW 【%LOCALS:LOCAL%】%조사만처리(LOCALS:LOCAL,"를")% 취득했습니다.
+        TALENT:MASTER:(LOCALS:LOCAL) = 1
+        RESTART
+    ELSEIF RESULT == 1
+        RESTART
+    ELSE
+        PRINTFORML 올바른 값을 입력해 주세요.
+        GOTO INPUT_LOOP2
+    ENDIF
+    RESTART
 ELSE
-	PRINTFORMW 취득 조건이 충족되지 않았습니다.
-	RESTART
+    PRINTFORMW 취득 조건이 충족되지 않았습니다.
+    RESTART
 ENDIF
 
 @TROPHY_FEAT_GET_지옥의훈장
@@ -1248,84 +1248,84 @@ ENDIF
 CALL TROPHY_200_0
 RESULTS:3 = 지옥을 헤쳐나온 증거입니다. 특수 캐릭터의 구입이 가능해집니다.
 SIF GLOBAL:200 & 1p0
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_봉래인
 ;카구야에게 상애 · 친애를 붙인다
 CALL TROPHY_202_19
 RESULTS:3 = 사망시 소생하고 체력 회복량이 많아집니다.
 SIF GLOBAL:202 & 1p19
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_혀놀림
 ;C絶頂100回以上を達成する
 CALL TROPHY_201_5
 RESULTS:3 = 펠라 계열 조교의 효과가 높아집니다.
 SIF GLOBAL:201 & 1p5
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_바느질
 ;難易度hardをクリア(周回プレイ禁止)
 CALL TROPHY_200_15
 RESULTS:3 = 커맨드 「바늘」의 효과가 높아집니다.
 SIF GLOBAL:200 & 1p15
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_조합지식
 ;最初に四季様を選んでLUNATICをクリア
 CALL TROPHY_202_22
 RESULTS:3 = 특수 아이템을 구입할 수 있고 커맨드 「미약」의 체력과 기력 소비가 줄어듭니다.
 SIF GLOBAL:202 & 1p22
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_요정지식
 ;10일 이내에 클리어
 CALL TROPHY_200_17
 RESULTS:3 = 조교자일 때 상대가 [요정]일 경우 효과적으로 조교할 수 있습니다.
 SIF GLOBAL:200 & 1p17
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_음구지식
 ;四重絶頂を達成する
 CALL TROPHY_201_1
 RESULTS:3 = 도구를 사용한 커맨드의 효과가 상승합니다.
 SIF GLOBAL:201 & 1p1
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_치료
 ;難易度LUNATICをクリア(周回プレイ禁止)
 CALL TROPHY_200_16
 RESULTS:3 = 주인 또는 조수일 때 체력 회복량이 상승합니다.
 SIF GLOBAL:200 & 1p16
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_매혹
 ;最強四重絶頂を達成する
 CALL TROPHY_201_2
 RESULTS:3 = 커맨드를 실행하기 쉬워지고 파라미터가 전체적으로 상승하기 쉬워집니다.
 SIF GLOBAL:201 & 1p2
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_소악마
 ;호감도 50000 이상
 CALL TROPHY_200_10
 RESULTS:3 = 조교사일 때 커맨드를 실행하기 쉬워집니다.
 SIF GLOBAL:200 & 1p10
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_대유도
 ;히지리에게 상애 · 친애를 붙인다
 CALL TROPHY_202_51
 RESULTS:3 = 조교 대상이 거유·폭유일 때 조교의 효과가 높아집니다. 대신 빈유·절벽일 때 약간 내려갑니다.
 SIF GLOBAL:202 & 1p51
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_절벽가슴격추왕
 ;大妖精에게 상애 · 친애를 붙인다
 CALL TROPHY_202_3
 RESULTS:3 = 조교 대상이 빈유·절벽일 때 조교의 효과가 높아집니다. 대신 거유·폭유일 때 약간 내려갑니다.
 SIF GLOBAL:202 & 1p3
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_일광욕
 ;ゴールドトロフィー取得
@@ -1333,40 +1333,40 @@ CALL TROPHY_COUNT
 RESULTS:2 = 골드 트로피를 획득 
 RESULTS:3 = 낮의 휴식 시에 체력과 기력의 회복량이 상승합니다.
 SIF G:1
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_월광욕
 ;最初にレミリアを選んでクリア
 CALL TROPHY_202_5
 RESULTS:3 = 밤의 휴식 시에 체력과 기력의 회복량이 상승합니다.
 SIF GLOBAL:202 & 1p5
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_회복빠름
 ;5일 이내에 클리어
 CALL TROPHY_200_18
 RESULTS:3 = 체력 회복량이 증가합니다.
 SIF GLOBAL:200 & 1p18
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_가전제품지식
 ;리카에게 상애 · 친애를 붙인다
 CALL TROPHY_202_55
 RESULTS:3 = 조금 복잡한 전기 제품도 사용 방법이라면 이해할 수 있습니다.
 SIF GLOBAL:202 & 1p55
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_공작명인
 ;니토리에게 상애 · 친애를 붙인다；
 CALL TROPHY_202_27
 RESULTS:3 = 공방 작업을 할 수 있습니다.
 SIF GLOBAL:202 & 1p27
-	RETURN 1
+    RETURN 1
 
 @TROPHY_FEAT_GET_초상계산
 ;所持金$999999999999999999(最大値)達成
 CALL TROPHY_200_7
 RESULTS:3 = 보통 사람은 측정하지 못하는 수치를 볼 수 있습니다.
 SIF GLOBAL:200 & 1p7
-	RETURN 1
+    RETURN 1
 

@@ -31,100 +31,100 @@ RETURN 1
 @SET_CHARA_KOJO_EXTRA_K13
 ;テスト用（正式使用時にはコメント扱いにする）
 ;IF CFLAG:7006 == 0
-;	PRINTFORML テスト？
-;	PRINTFORML [0]うん
-;	PRINTFORML [1]いや
-;	$INPUT_LOOP
-;	INPUT
-;	IF RESULT == 0
-;		PRINTFORML テストVER
-;		TALENT:150 = 1
-;		TALENT:45 = 1
-;		CFLAG:7006 = 10
-;	ELSEIF RESULT == 1
-;		PRINTFORMW ―通常モードで調教を開始します―
-		CFLAG:7006 = 10
-;	ELSE
-;		GOTO INPUT_LOOP
-;	ENDIF
+;    PRINTFORML テスト？
+;    PRINTFORML [0]うん
+;    PRINTFORML [1]いや
+;    $INPUT_LOOP
+;    INPUT
+;    IF RESULT == 0
+;        PRINTFORML テストVER
+;        TALENT:150 = 1
+;        TALENT:45 = 1
+;        CFLAG:7006 = 10
+;    ELSEIF RESULT == 1
+;        PRINTFORMW ―通常モードで調教を開始します―
+        CFLAG:7006 = 10
+;    ELSE
+;        GOTO INPUT_LOOP
+;    ENDIF
 ;ENDIF
 
 IF CFLAG:7899 == 0
-	PRINTL 첸의 대사 타입을 선택해주세요.
-	PRINTL [0] RR판!
-	PRINTL [1] YM판!
-	$INPUT_LOOP_TYPE
-	INPUT
-	IF RESULT == 0
-		PRINTFORMW ―RR 타입 대사로 개시합니다―
-	ELSEIF RESULT == 1
-		PRINTFORMW ―YM 타입 대사로 개시합니다―
-		CFLAG:7900 = 1
-	ELSE
-		GOTO INPUT_LOOP_TYPE
-	ENDIF
-	CFLAG:7899 = 1
+    PRINTL 첸의 대사 타입을 선택해주세요.
+    PRINTL [0] RR판!
+    PRINTL [1] YM판!
+    $INPUT_LOOP_TYPE
+    INPUT
+    IF RESULT == 0
+        PRINTFORMW ―RR 타입 대사로 개시합니다―
+    ELSEIF RESULT == 1
+        PRINTFORMW ―YM 타입 대사로 개시합니다―
+        CFLAG:7900 = 1
+    ELSE
+        GOTO INPUT_LOOP_TYPE
+    ENDIF
+    CFLAG:7899 = 1
 ENDIF
 
 ;これひでぇ(エクストラモードで主人が藍様の時のみ選択可能）
 
 IF CFLAG:7006 == 10 && NO:MASTER == 21 && CFLAG:7900 == 1
-	PRINTL 橙は普段から、藍様にイロイロされていた。（ゲーム性を思いっきり損ないます。調教一回すれば、助手に出来るし、100万くらいで売れるほど）
-	PRINTL [0] 有り得るね（非推奨）
-	PRINTL [1] 藍様も橙も、そんなことするわけが無い
-	$INPUT_LOOP_2
-	INPUT
-	IF RESULT == 0
-		PRINTFORMW ―橙、藍しゃまとラブラブモードに移行します。―
-		PRINTFORMW 【処女】【恥じ薄い】【習得遅い】失いました
-		PRINTFORMW 【濡れやすい】【習得早い】【おもらし癖】【自慰しやすい】【快楽に素直】【中毒しやすい】【男嫌い】【謎の魅力】【A,B,C,V敏感】【回復早い】【禁断の知識】を得ました
-		PRINTFORMW 能力、経験が変更されました。
-		TALENT:0 = 0
-		TALENT:36 = 0
-		TALENT:51 = 0
-		TALENT:42 = 1
-		TALENT:50 = 1
-		TALENT:45 = 1
-		TALENT:60 = 1
-		TALENT:70 = 1
-		TALENT:84 = 1
-		TALENT:37 = 1
-		TALENT:92 = 1
-		TALENT:100 = 1
-		TALENT:102 = 1
-		TALENT:104 = 1
-		TALENT:106 = 1
-		TALENT:137 = 1
-		TALENT:56 = 1
-		ABL:11 = 4
-		ABL:12 = 4
-		ABL:0 = 4
-		ABL:1 = 4
-		ABL:2 = 4
-		ABL:13 = 5
-		ABL:14 = 3
-		ABL:21 = 2
-		ABL:22 = 5
-		ABL:30 = 3
-		ABL:32 = 5
-		ABL:3 = 4
-		EXP:0 = 50
-		EXP:1 = 40
-		EXP:2 = 100
-		EXP:10 = 80
-		EXP:11 = 0
-		EXP:20 = 50
-		EXP:21 = 1000
-		EXP:6 =100
-		EXP:43 = 40
-		EXP:12 = 1000
-		
-	ELSEIF RESULT == 1
-		PRINTFORMW ―通常モードで調教を開始します―
-	ELSE
-		GOTO INPUT_LOOP_2
-		 
-	ENDIF
+    PRINTL 橙は普段から、藍様にイロイロされていた。（ゲーム性を思いっきり損ないます。調教一回すれば、助手に出来るし、100万くらいで売れるほど）
+    PRINTL [0] 有り得るね（非推奨）
+    PRINTL [1] 藍様も橙も、そんなことするわけが無い
+    $INPUT_LOOP_2
+    INPUT
+    IF RESULT == 0
+        PRINTFORMW ―橙、藍しゃまとラブラブモードに移行します。―
+        PRINTFORMW 【処女】【恥じ薄い】【習得遅い】失いました
+        PRINTFORMW 【濡れやすい】【習得早い】【おもらし癖】【自慰しやすい】【快楽に素直】【中毒しやすい】【男嫌い】【謎の魅力】【A,B,C,V敏感】【回復早い】【禁断の知識】を得ました
+        PRINTFORMW 能力、経験が変更されました。
+        TALENT:0 = 0
+        TALENT:36 = 0
+        TALENT:51 = 0
+        TALENT:42 = 1
+        TALENT:50 = 1
+        TALENT:45 = 1
+        TALENT:60 = 1
+        TALENT:70 = 1
+        TALENT:84 = 1
+        TALENT:37 = 1
+        TALENT:92 = 1
+        TALENT:100 = 1
+        TALENT:102 = 1
+        TALENT:104 = 1
+        TALENT:106 = 1
+        TALENT:137 = 1
+        TALENT:56 = 1
+        ABL:11 = 4
+        ABL:12 = 4
+        ABL:0 = 4
+        ABL:1 = 4
+        ABL:2 = 4
+        ABL:13 = 5
+        ABL:14 = 3
+        ABL:21 = 2
+        ABL:22 = 5
+        ABL:30 = 3
+        ABL:32 = 5
+        ABL:3 = 4
+        EXP:0 = 50
+        EXP:1 = 40
+        EXP:2 = 100
+        EXP:10 = 80
+        EXP:11 = 0
+        EXP:20 = 50
+        EXP:21 = 1000
+        EXP:6 =100
+        EXP:43 = 40
+        EXP:12 = 1000
+        
+    ELSEIF RESULT == 1
+        PRINTFORMW ―通常モードで調教を開始します―
+    ELSE
+        GOTO INPUT_LOOP_2
+         
+    ENDIF
 ENDIF
 CFLAG:7006 = 1
 
@@ -133,57 +133,57 @@ CFLAG:7006 = 1
 ;========================================================
 @EVENTTRAIN
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 13
-	RETURN 0
+    RETURN 0
 SIF CFLAG:7900 == 0
-	RETURN 0
+    RETURN 0
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;口枷がある場合も戻る
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;気絶中も戻る
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 
 DRAWLINE
 
 ;調教開始口上分岐
 IF CFLAG:5201 == 0
-	TRYCALL K13_MESSAGE_START_1
+    TRYCALL K13_MESSAGE_START_1
 ELSE
-	TRYCALL K13_MESSAGE_START_2
+    TRYCALL K13_MESSAGE_START_2
 ENDIF
 
 ;-------------------------------------------------
 ;初調教時
 ;-------------------------------------------------
 @K13_MESSAGE_START_1
-	DRAWLINE
-	PRINTFORMW 「여기는… 어디?」
-	PRINTFORMW 첸은 혼란스러웠다. 당연하다.
-	PRINTFORMW 마요이가를 산책하고 있었는데
-	PRINTFORMW 순간에 졸려왔고
-	PRINTFORMW 정신을 차리고 보니 낯선 방에 있었으니 말이다.
-	PRINTFORMW 철컥...그 방에 유일하게 있는 문이 열리자 %CALLNAME:MASTER%가 나타났다.
-	PRINTFORMW 「누구야?」
-	PRINTFORMW 첸은 순간적으로 올려보았지만, %CALLNAME:MASTER%는 그 모습을 그저 현저하게 쳐다보고 있다.
-	PRINTFORMW 바로 첸은 스펠카드를 사용하려고 하지만
-	PRINTFORMW 주머니에 항상 넣고 다녔을 카드가 어느새 없어진 것을 깨닫는다.
-	PRINTFORMW ( 그렇다면..어라?)
-	PRINTFORMW 첸은 탄막을 만들어려 하지만, 탄막은 커녕 기포 하나 만들지 못한다
-	PRINTFORMW 첸이 당황하고 있는 동안 %CALLNAME:MASTER%는 첸에게 말 없이 다가간다.
-	PRINTFORMW 「대체 뭐야?」
-	PRINTFORMW 첸은 아까보다 팽팽한 목소리로 말했지만 %CALLNAME:MASTER%는 움직이지 않는다.
-	PRINTFORMW %CALLNAME:MASTER%에는 그것이 허세임이 뻔하기 때문이다.
-	PRINTFORMW 그리고%CALLNAME:MASTER%가 말하는 것은 지금부터다.
-	PRINTFORMW 즉, 첸이 앞으로 어떻게 당할 것인가
-	PRINTFORMW
-	PRINTFORMW 하지만 그쪽 방면의 지식이 부족하다, 첸은 결국 뜻을 모르는 것 같다.
-	PRINTFORMW %CALLNAME:MASTER% 또한 말로 이해하지 않아도 몸으로 이해할 수 있다고 생각하고, 곧바로 행위로 옮기는 것이었다.
-	CFLAG:5201 = 1
+    DRAWLINE
+    PRINTFORMW 「여기는… 어디?」
+    PRINTFORMW 첸은 혼란스러웠다. 당연하다.
+    PRINTFORMW 마요이가를 산책하고 있었는데
+    PRINTFORMW 순간에 졸려왔고
+    PRINTFORMW 정신을 차리고 보니 낯선 방에 있었으니 말이다.
+    PRINTFORMW 철컥...그 방에 유일하게 있는 문이 열리자 %CALLNAME:MASTER%가 나타났다.
+    PRINTFORMW 「누구야?」
+    PRINTFORMW 첸은 순간적으로 올려보았지만, %CALLNAME:MASTER%는 그 모습을 그저 현저하게 쳐다보고 있다.
+    PRINTFORMW 바로 첸은 스펠카드를 사용하려고 하지만
+    PRINTFORMW 주머니에 항상 넣고 다녔을 카드가 어느새 없어진 것을 깨닫는다.
+    PRINTFORMW ( 그렇다면..어라?)
+    PRINTFORMW 첸은 탄막을 만들어려 하지만, 탄막은 커녕 기포 하나 만들지 못한다
+    PRINTFORMW 첸이 당황하고 있는 동안 %CALLNAME:MASTER%는 첸에게 말 없이 다가간다.
+    PRINTFORMW 「대체 뭐야?」
+    PRINTFORMW 첸은 아까보다 팽팽한 목소리로 말했지만 %CALLNAME:MASTER%는 움직이지 않는다.
+    PRINTFORMW %CALLNAME:MASTER%에는 그것이 허세임이 뻔하기 때문이다.
+    PRINTFORMW 그리고%CALLNAME:MASTER%가 말하는 것은 지금부터다.
+    PRINTFORMW 즉, 첸이 앞으로 어떻게 당할 것인가
+    PRINTFORMW
+    PRINTFORMW 하지만 그쪽 방면의 지식이 부족하다, 첸은 결국 뜻을 모르는 것 같다.
+    PRINTFORMW %CALLNAME:MASTER% 또한 말로 이해하지 않아도 몸으로 이해할 수 있다고 생각하고, 곧바로 행위로 옮기는 것이었다.
+    CFLAG:5201 = 1
 
 ;-------------------------------------------------
 ;調教開始時 1回のみ  CFLAG 7000～7003
@@ -191,63 +191,63 @@ ENDIF
 @K13_MESSAGE_START_2
 ;助手の口上を正しくするための処理
 IF ASSI == 1
-	CALL RANSAMATOISSYO
+    CALL RANSAMATOISSYO
 ELSEIF CFLAG:7010 == 1
-	IF CHARANUM == 2
-		PRINTFORMW 「約束どうり…他の娘と別れてくれたんだね！」
-		PRINTFORMW 「ありがとう!これからはチェンとずっと一緒だね！！」
-		PRINTFORMW 「チェン…%CALLNAME:MASTER%のこと好きになって良かった」
-		TALENT:152 = 1
-		TALENT:153 = 1
-		CFLAG:7010 = 3
-	ELSEIF CHARANUM >= 3
-		PRINTFORMW 「………まだ、他の娘と別れてくれてないの？」
-		PRINTFORMW 「早く…別れてよ」
-		PRINTFORMW 「それまでチェンは…相手しないからっ！」
-		PRINTFORMW 無理に調教しようとすると橙は舌をかみ切ろうとした
-		PRINTFORMW 橙の体力が1になりました
-		BASE:0 = 1
-	ENDIF
+    IF CHARANUM == 2
+        PRINTFORMW 「約束どうり…他の娘と別れてくれたんだね！」
+        PRINTFORMW 「ありがとう!これからはチェンとずっと一緒だね！！」
+        PRINTFORMW 「チェン…%CALLNAME:MASTER%のこと好きになって良かった」
+        TALENT:152 = 1
+        TALENT:153 = 1
+        CFLAG:7010 = 3
+    ELSEIF CHARANUM >= 3
+        PRINTFORMW 「………まだ、他の娘と別れてくれてないの？」
+        PRINTFORMW 「早く…別れてよ」
+        PRINTFORMW 「それまでチェンは…相手しないからっ！」
+        PRINTFORMW 無理に調教しようとすると橙は舌をかみ切ろうとした
+        PRINTFORMW 橙の体力が1になりました
+        BASE:0 = 1
+    ENDIF
 ELSEIF CFLAG:7010 == 3 && CHARANUM >= 3
-	PRINTFORMW 「…だれ………その娘…」
-	PRINTFORMW 「まぁ誰でもいいけど…%CALLNAME:MASTER%から離れてよ！！」
-	PRINTFORMW 「%CALLNAME:MASTER%も…早くその娘から離れてよ…」
-	PRINTFORMW 「それまでチェンは…%CALLNAME:MASTER%のこと無視するから…」
-	PRINTFORMW 無理に調教しようとすると橙は舌をかみ切ろうとした
-	PRINTFORMW 橙の体力が1になりました
-	BASE:0 = 1
+    PRINTFORMW 「…だれ………その娘…」
+    PRINTFORMW 「まぁ誰でもいいけど…%CALLNAME:MASTER%から離れてよ！！」
+    PRINTFORMW 「%CALLNAME:MASTER%も…早くその娘から離れてよ…」
+    PRINTFORMW 「それまでチェンは…%CALLNAME:MASTER%のこと無視するから…」
+    PRINTFORMW 無理に調教しようとすると橙は舌をかみ切ろうとした
+    PRINTFORMW 橙の体力が1になりました
+    BASE:0 = 1
 ;屈服刻印Lv1
 ELSEIF CFLAG:7000 == 0 && MARK:2 == 1
-	DRAWLINE
-	PRINTFORMW 「ウ"　また来たの！？　またチェン…ひどい事されるの…？」
-	PRINTW 橙は怯えているようだ。
-	PRINTW （怖いよ…助けて、藍しゃま…紫しゃまぁ…)
-	CFLAG:7000 = 1
+    DRAWLINE
+    PRINTFORMW 「ウ"　また来たの！？　またチェン…ひどい事されるの…？」
+    PRINTW 橙は怯えているようだ。
+    PRINTW （怖いよ…助けて、藍しゃま…紫しゃまぁ…)
+    CFLAG:7000 = 1
 
 ;屈服刻印Lv2
 ELSEIF CFLAG:7001 == 0 && MARK:2 == 2
-	DRAWLINE
-	PRINTFORMW 「また…来たんだ…」
-	PRINTFORMW 橙からは抵抗する気力さえ感じられない
-	CFLAG:7001 = 1
+    DRAWLINE
+    PRINTFORMW 「また…来たんだ…」
+    PRINTFORMW 橙からは抵抗する気力さえ感じられない
+    CFLAG:7001 = 1
 
 ;屈服刻印Lv3
 ELSEIF CFLAG:7002 == 0 && MARK:2 == 3 && TALENT:150 == 0
-	DRAWLINE
-	PRINTFORMW 「また来たね、今日も色々されるんでしょ」
-	PRINTFORMW 橙は四肢をぐったりさせ、すべてをあきらめたかのように%CALLNAME:MASTER%を受け入れた。
-	CFLAG:7002 = 1
-	
+    DRAWLINE
+    PRINTFORMW 「また来たね、今日も色々されるんでしょ」
+    PRINTFORMW 橙は四肢をぐったりさせ、すべてをあきらめたかのように%CALLNAME:MASTER%を受け入れた。
+    CFLAG:7002 = 1
+    
 ;恋慕
 ELSEIF CFLAG:7003 == 0 && TALENT:150 == 1
-	DRAWLINE
-	PRINTFORMW 「やっほ！今日はどんなことをするの？」
-	PRINTFORMW 橙は笑顔で%CALLNAME:MASTER%を迎え入れる。
-	PRINTFORMW その笑顔に陰りは無く、部屋に入る%CALLNAME:MASTER%を欲するかのようだ。
-	PRINTFORM %CALLNAME:MASTER%が部屋に入ると、橙は抱きつき、上目遣いをする。
-	PRINTFORMW 「一緒に、気持ちよくなろ！」
-	PRINTFORMW その様子は、行為そのものよりも、%CALLNAME:MASTER%とする事を望むかのようだ
-	CFLAG:7003 = 1
+    DRAWLINE
+    PRINTFORMW 「やっほ！今日はどんなことをするの？」
+    PRINTFORMW 橙は笑顔で%CALLNAME:MASTER%を迎え入れる。
+    PRINTFORMW その笑顔に陰りは無く、部屋に入る%CALLNAME:MASTER%を欲するかのようだ。
+    PRINTFORM %CALLNAME:MASTER%が部屋に入ると、橙は抱きつき、上目遣いをする。
+    PRINTFORMW 「一緒に、気持ちよくなろ！」
+    PRINTFORMW その様子は、行為そのものよりも、%CALLNAME:MASTER%とする事を望むかのようだ
+    CFLAG:7003 = 1
 
 ;-------------------------------------------------
 ;調教開始時（2回目以降、13をキャラ番号に変更する） CFLAGなし 
@@ -256,113 +256,113 @@ ELSEIF CFLAG:7003 == 0 && TALENT:150 == 1
 
 ;反発刻印Lv3
 ELSEIF MARK:9 == 3
-	DRAWLINE
-		PRINTFORMW 「来るなぁぁぁ！！！」
-		PRINTFORM 「フゥゥゥゥゥゥー」
-		PRINTFORMW それでも近づく%CALLNAME:MASTER%を橙は引掻こうとするが、
-		PRINTFORMW その手をつかまれ、押さえ込まれてしまう。
+    DRAWLINE
+        PRINTFORMW 「来るなぁぁぁ！！！」
+        PRINTFORM 「フゥゥゥゥゥゥー」
+        PRINTFORMW それでも近づく%CALLNAME:MASTER%を橙は引掻こうとするが、
+        PRINTFORMW その手をつかまれ、押さえ込まれてしまう。
 
 ;屈服刻印Lv0
 ELSEIF MARK:2 == 0
-	DRAWLINE
-	PRINTFORM 橙はまだ、ここでの立場も状況もわかっていない様だ。
-	PRINTFORMW 橙はただ、本能的な恐怖のみを感じている。
+    DRAWLINE
+    PRINTFORM 橙はまだ、ここでの立場も状況もわかっていない様だ。
+    PRINTFORMW 橙はただ、本能的な恐怖のみを感じている。
 
 ;屈服刻印Lv1
 ELSEIF MARK:2 == 1
-	DRAWLINE
-	PRINTFORMW 「もう、やめてぇ！」
-	PRINTFORMW 橙は手足をばたつかせて抵抗しているが、爪や牙は使わない
+    DRAWLINE
+    PRINTFORMW 「もう、やめてぇ！」
+    PRINTFORMW 橙は手足をばたつかせて抵抗しているが、爪や牙は使わない
 
 ;屈服刻印Lv2
 ELSEIF MARK:2 == 2
-	DRAWLINE
-	PRINTFORMW 「来たんだ…」
-	PRINTFORMW 橙からは、抵抗する気配が感じられない。
-	PRINTFORMW そして、橙は%CALLNAME:MASTER%のなすがままとなっていく。
+    DRAWLINE
+    PRINTFORMW 「来たんだ…」
+    PRINTFORMW 橙からは、抵抗する気配が感じられない。
+    PRINTFORMW そして、橙は%CALLNAME:MASTER%のなすがままとなっていく。
 
 ;屈服刻印Lv3のみ
 ELSEIF MARK:2 == 3 && TALENT:150 == 0 && TALENT:160 == 0
-	DRAWLINE
-	PRINTFORMW 「また来たね。今日は何をするの？」
-	PRINTFORMW 橙は、自ら服を脱いでいき%CALLNAME:MASTER%を受け入れる。
+    DRAWLINE
+    PRINTFORMW 「また来たね。今日は何をするの？」
+    PRINTFORMW 橙は、自ら服を脱いでいき%CALLNAME:MASTER%を受け入れる。
 
 ;処女+恋慕
 ELSEIF TALENT:0 == 1 && TALENT:150 == 1
-	DRAWLINE
-	;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
-	IF RAND:4 == 0
-		PRINTFORMW 「やっ！来てくれたね。いっぱいＨなことして！」
-		PRINTFORMW 橙は抱きつき目を輝かせる。
-	ELSEIF RAND:3 == 0
-		PRINTFORMW 「大好き！」
-		PRINTFORMW そういいながら橙は飛びついてきた。
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「あの…そのぉ……」
-		PRINTFORMW 橙はもじもじとしている。
-		PRINTFORMW そして、一呼吸置くと、意を決したように、%CALLNAME:MASTER%をまっすぐ見つめる。
-		PRINTFORMW 「%CALLNAME:MASTER%に…チェンのはじめて……もらってほしいの…」
-		PRINTFORMW それだけ言うと、橙は顔を真っ赤に染めて、向こうを向いてしまった。
-	ELSE
-		PRINTFORMW 「チェンね、%CALLNAME:MASTER%と一緒になれて本当にうれしいの！」
-		PRINTFORMW 橙は、ゆっくりと抱きついてくる。
-		PRINTFORMW その顔は、うれしさと恥ずかしさが入り混じっていた。
-	ENDIF
+    DRAWLINE
+    ;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
+    IF RAND:4 == 0
+        PRINTFORMW 「やっ！来てくれたね。いっぱいＨなことして！」
+        PRINTFORMW 橙は抱きつき目を輝かせる。
+    ELSEIF RAND:3 == 0
+        PRINTFORMW 「大好き！」
+        PRINTFORMW そういいながら橙は飛びついてきた。
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「あの…そのぉ……」
+        PRINTFORMW 橙はもじもじとしている。
+        PRINTFORMW そして、一呼吸置くと、意を決したように、%CALLNAME:MASTER%をまっすぐ見つめる。
+        PRINTFORMW 「%CALLNAME:MASTER%に…チェンのはじめて……もらってほしいの…」
+        PRINTFORMW それだけ言うと、橙は顔を真っ赤に染めて、向こうを向いてしまった。
+    ELSE
+        PRINTFORMW 「チェンね、%CALLNAME:MASTER%と一緒になれて本当にうれしいの！」
+        PRINTFORMW 橙は、ゆっくりと抱きついてくる。
+        PRINTFORMW その顔は、うれしさと恥ずかしさが入り混じっていた。
+    ENDIF
 ;恋慕
 ELSEIF TALENT:150 == 1
-	DRAWLINE
-	;ランダムで口上が変化する（使わない場合はすべて同じにすればよい
-	
-	
-	IF RAND:3 == 0
-		PRINTFORMW 「やっ！来てくれたね。いっぱいＨなことして！」
-		PRINTFORMW 橙は抱きつき目を輝かせる。
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「大好き！」
-		PRINTFORMW そういいながら橙は飛びついてきた。
-	ELSE
-		PRINTFORMW 「チェンね、%CALLNAME:MASTER%と一緒になれて本当にうれしいの！」
-		PRINTFORMW 橙は、ゆっくりと抱きついてくる。
-		PRINTFORMW その顔は、うれしさと恥ずかしさが入り混じっていた。
-	ENDIF
+    DRAWLINE
+    ;ランダムで口上が変化する（使わない場合はすべて同じにすればよい
+    
+    
+    IF RAND:3 == 0
+        PRINTFORMW 「やっ！来てくれたね。いっぱいＨなことして！」
+        PRINTFORMW 橙は抱きつき目を輝かせる。
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「大好き！」
+        PRINTFORMW そういいながら橙は飛びついてきた。
+    ELSE
+        PRINTFORMW 「チェンね、%CALLNAME:MASTER%と一緒になれて本当にうれしいの！」
+        PRINTFORMW 橙は、ゆっくりと抱きついてくる。
+        PRINTFORMW その顔は、うれしさと恥ずかしさが入り混じっていた。
+    ENDIF
 ;屈服刻印Lv3+服従
 ELSEIF MARK:2 == 3 && TALENT:160 == 1
-	DRAWLINE
-	;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
-	IF RAND:3 == 0
-		PRINTFORMW 「こんにちは。%CALLNAME:MASTER%。今日もチェンをちょーきょーしてください！」
-		PRINTFORMW 橙は服を脱ぐと、体を寄せてきた。
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「チェン、%CALLNAME:MASTER%の理想どうりの奴隷になれるように、がんばりますっ」
-		PRINTFORMW 橙は服を脱ぐと、抱きついてきた。
-	ELSE
-		PRINTFORMW 部屋に入ると、橙は裸で待っていた。
-		PRINTFORMW 「%CALLNAME:MASTER%、チェンのこと暖めて下さい」
-	ENDIF
+    DRAWLINE
+    ;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
+    IF RAND:3 == 0
+        PRINTFORMW 「こんにちは。%CALLNAME:MASTER%。今日もチェンをちょーきょーしてください！」
+        PRINTFORMW 橙は服を脱ぐと、体を寄せてきた。
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「チェン、%CALLNAME:MASTER%の理想どうりの奴隷になれるように、がんばりますっ」
+        PRINTFORMW 橙は服を脱ぐと、抱きついてきた。
+    ELSE
+        PRINTFORMW 部屋に入ると、橙は裸で待っていた。
+        PRINTFORMW 「%CALLNAME:MASTER%、チェンのこと暖めて下さい」
+    ENDIF
 ENDIF
 
 @RANSAMATOISSYO
 IF NO:ASSI == 21 && TALENT:170 && CFLAG:7002 == 1 && TALENT:ASSI:150 != 1 && TALENT:ASSI:160 != 1 && TALENT:ASSI:170 != 1
-	PRINTFORMW 『チェン…こんな主ですまない…でも、もうこの方には逆らえないんだ』
-	PRINTFORMW 「何言ってるんですか、藍しゃま？」
-	PRINTFORMW 「チェンも藍しゃまとおんなじですよ…一緒に気持ち良くなりましょう」
-	PRINTFORMW 『あっ…あぁそうだな…』
-	PRINTFORMW 《どうせ助からないのなら、いっそ順応してしまった方が楽なのかもしれないな…》
-	CFLAG:7002 = 2
+    PRINTFORMW 『チェン…こんな主ですまない…でも、もうこの方には逆らえないんだ』
+    PRINTFORMW 「何言ってるんですか、藍しゃま？」
+    PRINTFORMW 「チェンも藍しゃまとおんなじですよ…一緒に気持ち良くなりましょう」
+    PRINTFORMW 『あっ…あぁそうだな…』
+    PRINTFORMW 《どうせ助からないのなら、いっそ順応してしまった方が楽なのかもしれないな…》
+    CFLAG:7002 = 2
 ELSEIF NO:ASSI == 21 && TALENT:150 == 1 && TALENT:ASSI:150 == 1
-	PRINTFORMW 「藍しゃまっ！一緒に気持ち良くなりましょう！」
-	PRINTFORMW 『あぁ。だけどこの方の心を射止めるのは私だ。いくら橙でもこれだけは譲れないぞ』
-	PRINTFORMW 「それは私もですよ藍しゃま！チェンだって、絶対負けません！！」
+    PRINTFORMW 「藍しゃまっ！一緒に気持ち良くなりましょう！」
+    PRINTFORMW 『あぁ。だけどこの方の心を射止めるのは私だ。いくら橙でもこれだけは譲れないぞ』
+    PRINTFORMW 「それは私もですよ藍しゃま！チェンだって、絶対負けません！！」
 ELSEIF NO:ASSI == 21 && MARK:2 <= 2 && TALENT:167 == 0
-	PRINTFORMW 「やめて！お前なんか藍しゃまがやっつけちゃうんだからぁ」
-	PRINTFORMW 「…えっうそ………」
-	PRINTFORMW 『ごめんな…橙…私はもうこの方には逆らえないんだ』
-	PRINTFORMW 『せめて…痛みを感じないようにやさしくしてやるからな…』
-	PRINTFORMW 「うそ…う、そ……こんな、の………う…そ……」
-	PRINTFORMW 完全に屈服した藍を目の前にして橙は壊れたかのように『うそ』という単語を繰り返すだけになった
-	PRINTFORMW 橙の精神は崩壊したようだ
-	TALENT:167 = 1
-	CFLAG:7013 = 1
+    PRINTFORMW 「やめて！お前なんか藍しゃまがやっつけちゃうんだからぁ」
+    PRINTFORMW 「…えっうそ………」
+    PRINTFORMW 『ごめんな…橙…私はもうこの方には逆らえないんだ』
+    PRINTFORMW 『せめて…痛みを感じないようにやさしくしてやるからな…』
+    PRINTFORMW 「うそ…う、そ……こんな、の………う…そ……」
+    PRINTFORMW 完全に屈服した藍を目の前にして橙は壊れたかのように『うそ』という単語を繰り返すだけになった
+    PRINTFORMW 橙の精神は崩壊したようだ
+    TALENT:167 = 1
+    CFLAG:7013 = 1
 ENDIF
 RETURN 1
 ;========================================================
@@ -370,23 +370,23 @@ RETURN 1
 ;========================================================
 @EVENTEND
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 13
-	RETURN 0
+    RETURN 0
 SIF CFLAG:7900 == 0
-	RETURN 0
+    RETURN 0
 CFLAG:7007 = 0
 CFLAG:7008 = 0
 CFLAG:7009 = 0
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;口枷がある場合も戻る
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;気絶中も戻る
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 DRAWLINE
 TRYCALL K13_MESSAGE_END
 
@@ -395,156 +395,156 @@ TRYCALL K13_MESSAGE_END
 ;--------------------------------------------------
 @K13_MESSAGE_END
 IF CFLAG:7013 == 1
-	PRINTFORMW 「………うっ」
-	PRINTFORMW 「藍しゃまが……あんな………」
-	PRINTFORMW 「ううん…そんなはず……ない…」
-	PRINTFORMW 「あれは…きっと……夢…」
-	PRINTFORMW 「そう……全部…夢…夢……ゆめ………ゆ、め…」
-	PRINTFORMW 橙は今までの屈服した藍は、自分が見た夢だと思い込むことで、精神を保たせたようだ
-	TALENT:167 = 0
-	CFLAG:7013 = 0
+    PRINTFORMW 「………うっ」
+    PRINTFORMW 「藍しゃまが……あんな………」
+    PRINTFORMW 「ううん…そんなはず……ない…」
+    PRINTFORMW 「あれは…きっと……夢…」
+    PRINTFORMW 「そう……全部…夢…夢……ゆめ………ゆ、め…」
+    PRINTFORMW 橙は今までの屈服した藍は、自分が見た夢だと思い込むことで、精神を保たせたようだ
+    TALENT:167 = 0
+    CFLAG:7013 = 0
 ;反発刻印Lv3 一回のみ
 ELSEIF MARK:9 == 3 && CFLAG:7004 == 0
-	DRAWLINE
-	PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのき、%CALLNAME:MASTER%を威嚇している。
-	PRINTFORMW %CALLNAME:MASTER%が部屋から、出て行くと、橙は、緊張の糸が切れ、震えながら泣き始めた。
-	PRINTFORMW 橙は【回復早い】を失った。
-	PRINTFORMW 橙は【抵抗】【回復遅い】を得た。
-	TALENT:137 =0
-	TALENT:34 = 1
-	TALENT:138 = 1
-	CFLAG:7004 = 1
+    DRAWLINE
+    PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのき、%CALLNAME:MASTER%を威嚇している。
+    PRINTFORMW %CALLNAME:MASTER%が部屋から、出て行くと、橙は、緊張の糸が切れ、震えながら泣き始めた。
+    PRINTFORMW 橙は【回復早い】を失った。
+    PRINTFORMW 橙は【抵抗】【回復遅い】を得た。
+    TALENT:137 =0
+    TALENT:34 = 1
+    TALENT:138 = 1
+    CFLAG:7004 = 1
 
 ;反発刻印Lv0 一回のみ(反発刻印LV3になった後のみ発生）
 ELSEIF MARK:9 == 0 && CFLAG:7004 == 1
-	DRAWLINE
-	PRINTFORMW 「少し前まで、すごく怖くてイヤだったけど…」
-	PRINTFORMW 「でも、最近はそうでもないかな……」
-	IF MARK:2 != 3
-		PRINTFORMW 「あっもちろん、されたいとか、何しても平気ってわけじゃないよっ」
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 「だから、その…チェンは%CALLNAME:MASTER%のものだから、何されても……いいよ」
-	ENDIF
-	PRINTFORMW 橙は【抵抗】【回復遅い】を失った。
-	PRINTFORMW 橙は【回復早い】を得た。
-	TALENT:34 = 0
-	TALENT:138 = 0
-	TALENT:137 = 1
-	CFLAG:7004 = 2
-	
-;快楽刻印LV3、屈服刻印LV3、反発刻印LV0、従順LV5、欲望LV5、技巧LV5、奉仕精神LV5、精液経験10以上、奉仕快楽経験500以上	
+    DRAWLINE
+    PRINTFORMW 「少し前まで、すごく怖くてイヤだったけど…」
+    PRINTFORMW 「でも、最近はそうでもないかな……」
+    IF MARK:2 != 3
+        PRINTFORMW 「あっもちろん、されたいとか、何しても平気ってわけじゃないよっ」
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 「だから、その…チェンは%CALLNAME:MASTER%のものだから、何されても……いいよ」
+    ENDIF
+    PRINTFORMW 橙は【抵抗】【回復遅い】を失った。
+    PRINTFORMW 橙は【回復早い】を得た。
+    TALENT:34 = 0
+    TALENT:138 = 0
+    TALENT:137 = 1
+    CFLAG:7004 = 2
+    
+;快楽刻印LV3、屈服刻印LV3、反発刻印LV0、従順LV5、欲望LV5、技巧LV5、奉仕精神LV5、精液経験10以上、奉仕快楽経験500以上    
 ;[0]なら【習得遅い】【猫舌】を失い技巧LV4になり、この選択肢が出なくなる。(技術がLV4に落ちるのは、わざと。慣れない舌技をやるからヘタクソということで。）
 ;[1]なら【習得遅い】が無くなり、この選択肢が永遠に出続ける（その後の選択しだいで、出なくなる。セリフは変わる）2回目以降[2]を選択可。[2]にすると、【習得遅い】が復活しこの選択肢が出なくなる。
 ELSEIF CFLAG:7005 <= 1 && MARK:1 ==3 && MARK:2 ==3 && MARK:9 == 0 && ABL:10 == 5 && ABL:11 == 5 && ABL:12 ==5 && EXP:4 >= 10 && EXP:20 >= 500
-	DRAWLINE
-	IF CFLAG:7005 == 0
-		PRINTFORMW 「チェンね、%CALLNAME:MASTER%に気持ちよくなってもらいたいから、お口でするの、いっぱい、いっぱい練習したんだよ…」
-		PRINTFORMW 「痛くないようにできると思うんだけど、その…お口でしてもいい？」
-		PRINTFORMW 「まだヘタクソで、あんまり気持ち良くは…無いかもしれないけど」
-	ELSEIF CFLAG:7005 == 1
-		PRINTW 「チェンね、%CALLNAME:MASTER%に気持ちよくなってもらいたいから、お口でするの、いっぱい、いっぱい練習したんだよ…」
-		PRINTW 「ねぇ、おねがい！痛くしないようにするから、チェンにお口でさせて！」
-		PRINTW 「%CALLNAME:MASTER%の精液、直接味わいたいのっ！」
-	ENDIF
-		PRINTFORML [0]じゃあ頼む
-		PRINTFORML [1]いや、結構
-			IF CFLAG:7005 == 1
-			PRINTFORML [2]二度と聞くな
-			ENDIF
-		$INPUT_LOOP
-		INPUT 
-			IF RESULT != 0 && RESULT != 1 && RESULT != 2
-				GOTO INPUT_LOOP
-			ELSEIF RESULT == 0 
-				PRINTFORMW 「うん！チェンがいっぱいがんばって、いっぱい気持ちよくしてあげる！」
-					IF CFLAG:7005 == 0
-						PRINTFORMW 橙は【猫舌】【習得遅い】を失った。
-						TALENT:51 = 0
-						TALENT:54 = 0
-					ELSEIF CFLAG:7005 == 1
-						PRINTFORMW 橙は【猫舌】を失った。
-						TALENT:54 = 0
-						CFLAG:7005 = 1
-					ENDIF
-				PRINTFORMW 橙の技巧がLv4に下がった。
-				ABL:12 =4
-				CFLAG:7005 = 2
-			ELSEIF RESULT == 1 
-				PRINTFORMW 「うぅ…そんなぁ……」
-				PRINTFORMW （でも、もっと練習したら、お口でさせてくれるかもしれない……）
-					IF CFLAG:7005 == 0
-						PRINTFORMW 橙は【習得遅い】を努力で克服した
-						CFLAG:7005 = 1
-						TALENT:51 = 0
-					ENDIF
-			ELSEIF RESULT == 2 
-				IF CFLAG:7005 == 0
-					GOTO INPUT_LOOP
-				ELSEIF CFLAG:7005 == 1
-					PRINTFORMW 「練習…がんばったのにぃ…」
-					PRINTFORMW 「ごめん、なさい…もう…きかない……ｸﾞｽ」
-					PRINTFORMW （チェンの努力って…意味……ないのかなぁ…？）
-					PRINTFORMW 橙は泣き出した。
-					PRINTFORMW 橙の【習得遅い】が復活した。
-					TALENT:51 = 1
-					CFLAG:7005 = 2
-				ENDIF
-			ENDIF
+    DRAWLINE
+    IF CFLAG:7005 == 0
+        PRINTFORMW 「チェンね、%CALLNAME:MASTER%に気持ちよくなってもらいたいから、お口でするの、いっぱい、いっぱい練習したんだよ…」
+        PRINTFORMW 「痛くないようにできると思うんだけど、その…お口でしてもいい？」
+        PRINTFORMW 「まだヘタクソで、あんまり気持ち良くは…無いかもしれないけど」
+    ELSEIF CFLAG:7005 == 1
+        PRINTW 「チェンね、%CALLNAME:MASTER%に気持ちよくなってもらいたいから、お口でするの、いっぱい、いっぱい練習したんだよ…」
+        PRINTW 「ねぇ、おねがい！痛くしないようにするから、チェンにお口でさせて！」
+        PRINTW 「%CALLNAME:MASTER%の精液、直接味わいたいのっ！」
+    ENDIF
+        PRINTFORML [0]じゃあ頼む
+        PRINTFORML [1]いや、結構
+            IF CFLAG:7005 == 1
+            PRINTFORML [2]二度と聞くな
+            ENDIF
+        $INPUT_LOOP
+        INPUT 
+            IF RESULT != 0 && RESULT != 1 && RESULT != 2
+                GOTO INPUT_LOOP
+            ELSEIF RESULT == 0 
+                PRINTFORMW 「うん！チェンがいっぱいがんばって、いっぱい気持ちよくしてあげる！」
+                    IF CFLAG:7005 == 0
+                        PRINTFORMW 橙は【猫舌】【習得遅い】を失った。
+                        TALENT:51 = 0
+                        TALENT:54 = 0
+                    ELSEIF CFLAG:7005 == 1
+                        PRINTFORMW 橙は【猫舌】を失った。
+                        TALENT:54 = 0
+                        CFLAG:7005 = 1
+                    ENDIF
+                PRINTFORMW 橙の技巧がLv4に下がった。
+                ABL:12 =4
+                CFLAG:7005 = 2
+            ELSEIF RESULT == 1 
+                PRINTFORMW 「うぅ…そんなぁ……」
+                PRINTFORMW （でも、もっと練習したら、お口でさせてくれるかもしれない……）
+                    IF CFLAG:7005 == 0
+                        PRINTFORMW 橙は【習得遅い】を努力で克服した
+                        CFLAG:7005 = 1
+                        TALENT:51 = 0
+                    ENDIF
+            ELSEIF RESULT == 2 
+                IF CFLAG:7005 == 0
+                    GOTO INPUT_LOOP
+                ELSEIF CFLAG:7005 == 1
+                    PRINTFORMW 「練習…がんばったのにぃ…」
+                    PRINTFORMW 「ごめん、なさい…もう…きかない……ｸﾞｽ」
+                    PRINTFORMW （チェンの努力って…意味……ないのかなぁ…？）
+                    PRINTFORMW 橙は泣き出した。
+                    PRINTFORMW 橙の【習得遅い】が復活した。
+                    TALENT:51 = 1
+                    CFLAG:7005 = 2
+                ENDIF
+            ENDIF
 
 ;反発刻印Lv3
 ELSEIF MARK:9 == 3
-	DRAWLINE
-	PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのき、%CALLNAME:MASTER%を威嚇している。
-	PRINTFORMW %CALLNAME:MASTER%が部屋から、出て行くと、橙は、震えながら泣き始めた。
+    DRAWLINE
+    PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのき、%CALLNAME:MASTER%を威嚇している。
+    PRINTFORMW %CALLNAME:MASTER%が部屋から、出て行くと、橙は、震えながら泣き始めた。
 
 ;屈服刻印Lv1以下
 ELSEIF MARK:2 <= 1
-	DRAWLINE
-	PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのいた。
+    DRAWLINE
+    PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのいた。
 
 ;屈服刻印Lv2
 ELSEIF MARK:2 == 2
-	DRAWLINE
-	PRINTFORMW 「はぁ………」
-	PRINTFORMW （やっと終わった……）
+    DRAWLINE
+    PRINTFORMW 「はぁ………」
+    PRINTFORMW （やっと終わった……）
 
 ;屈服刻印Lv3
 ELSEIF MARK:2 == 3 && TALENT:150 == 0
-	DRAWLINE
-	PRINTFORMW 「終わり…ですか？」
-	PRINTFORMW 橙は%CALLNAME:MASTER%が調教終了を告げると、そっと離れた。
+    DRAWLINE
+    PRINTFORMW 「終わり…ですか？」
+    PRINTFORMW 橙は%CALLNAME:MASTER%が調教終了を告げると、そっと離れた。
 
 ;屈服刻印Lv3＋恋慕＋体力500未満
 ;ELSEIF MARK:2 == 3 && TALENT:150 == 1 && BASE:0 < 500
-	DRAWLINE
-	PRINTFORMW 「はぁ…はぁ…気持ちよかったよ」
-	PRINTFORMW 「でも…動けないよ…」
+    DRAWLINE
+    PRINTFORMW 「はぁ…はぁ…気持ちよかったよ」
+    PRINTFORMW 「でも…動けないよ…」
 
 ;恋慕＋処女
 ELSEIF TALENT:150 == 1 && TALENT:0 == 1
-	DRAWLINE
-	PRINTFORMW 「今日も、本番してくれなかった…」
-	PRINTFORMW 橙は、恨めしそうに%CALLNAME:MASTER%を見つめている。
-	PRINTFORMW 「でも、来てくれるだけでも、うれしいよ！」
-	PRINTFORMW 「また来てね！約束だよ！」
+    DRAWLINE
+    PRINTFORMW 「今日も、本番してくれなかった…」
+    PRINTFORMW 橙は、恨めしそうに%CALLNAME:MASTER%を見つめている。
+    PRINTFORMW 「でも、来てくれるだけでも、うれしいよ！」
+    PRINTFORMW 「また来てね！約束だよ！」
 
 ;屈服刻印Lv3＋服従＋体力500未満
 ELSEIF MARK:2 == 3 && TALENT:160 == 1 && BASE:0 < 500
-	DRAWLINE
-	PRINTFORMW 「ごめんなさい…%CALLNAME:MASTER%。チェンはもう、動けません………」
-	PRINTFORMW 「次はちゃんと、耐えられるようにがんばります…」
+    DRAWLINE
+    PRINTFORMW 「ごめんなさい…%CALLNAME:MASTER%。チェンはもう、動けません………」
+    PRINTFORMW 「次はちゃんと、耐えられるようにがんばります…」
 
 ;屈服刻印Lv3＋恋慕
 ELSEIF MARK:2 == 3 && TALENT:150 == 1
-	DRAWLINE
-	PRINTFORMW 「もう終わりぃ、もっとしよ！」
-	PRINTFORMW 「また来てね！約束だよ！」
+    DRAWLINE
+    PRINTFORMW 「もう終わりぃ、もっとしよ！」
+    PRINTFORMW 「また来てね！約束だよ！」
 
 ;屈服刻印Lv3＋服従
 ELSEIF MARK:2 == 3 && TALENT:160 == 1
-	DRAWLINE
-	PRINTFORMW 「今日もチェンをちょーきょーしていただきありがとうございます」
-	PRINTFORMW 「また来てくださいね！チェンはいつでも準備オッケーですからっ」
+    DRAWLINE
+    PRINTFORMW 「今日もチェンをちょーきょーしていただきありがとうございます」
+    PRINTFORMW 「また来てくださいね！チェンはいつでも準備オッケーですからっ」
 ENDIF
 
 ;========================================================
@@ -554,36 +554,36 @@ ENDIF
 ;========================================================
 @KOJO_MESSAGE_PALAMCNG_13
 IF CFLAG:7900 == 0
-	CALL KOJO_MESSAGE_PALAMCNG_13_RR
-	RETURN 0
+    CALL KOJO_MESSAGE_PALAMCNG_13_RR
+    RETURN 0
 ENDIF
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;口枷がある場合も戻る
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;気絶中も戻る
 SIF TFLAG:899 >= 1 || TFLAG:898 == 1
-	RETURN 0
+    RETURN 0
 
 ;処女喪失時のメッセージ呼び出し
 SIF TALENT:0 && TFLAG:1
-	TRYCALL K13_MESSAGE_LOST_VIRGIN
+    TRYCALL K13_MESSAGE_LOST_VIRGIN
 ;初めてPALAMがLV2超えた時の口上呼び出し
 FOR LOCAL, 0, 35
-	SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
-		TRYCALLFORM K13_MESSAGE_OVERLV2_{LOCAL}
+    SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
+        TRYCALLFORM K13_MESSAGE_OVERLV2_{LOCAL}
 NEXT
 ;絶頂時の口上呼び出し
 FOR LOCAL, 0, 50
-	SIF NOWEX:LOCAL
-		TRYCALLFORM K13_MESSAGE_ORGASM_{LOCAL}
+    SIF NOWEX:LOCAL
+        TRYCALLFORM K13_MESSAGE_ORGASM_{LOCAL}
 NEXT
 ;射精させた
 FOR LOCAL, 11, 29
-	SIF TFLAG:LOCAL
-		TRYCALLFORM K13_MESSAGE_EJAC_PLAYER_{LOCAL}
+    SIF TFLAG:LOCAL
+        TRYCALLFORM K13_MESSAGE_EJAC_PLAYER_{LOCAL}
 NEXT
 
 ;-------------------------------------------------
@@ -592,42 +592,42 @@ NEXT
 @K13_MESSAGE_LOST_VIRGIN
 ;主人のペニス
 IF TFLAG:2
-	;恋慕＋従順Lv5
-	IF TALENT:150 == 1 && ABL:10 >= 5
-		PRINTFORMW 「チェンの初めて…もらって……」
-		PRINTFORMW 「痛っ…ぅぅぅ」
-		PRINTFORMW 「ｸﾞｽ…痛いよぅ……痛いけど、うれしい…%CALLNAME:MASTER%が、初めてでチェンは、幸せ…♪」
-	;服従＋従順Lv5
-	ELSEIF TALENT:160 == 1 && ABL:10 >= 5
-		PRINTFORMW 「チェンのはじめてを…ささげます」
-		PRINTFORMW 「痛っ…ぅぅぅ」
-		PRINTFORMW 「これでチェンは、もう%CALLNAME:MASTER%だけのものですよ…」
-	ELSE
-		PRINTFORMW 「痛っ…ぅぅぅ」
-		PRINTFORMW 滴り落ちる処女の証を見て、チェンの顔が青ざめた。
-		PRINTFORMW （チェン…はじめてを、こんなやつに奪われちゃった……）
-		PRINTFORMW （初めては好きな人にって、藍しゃまに言われて…今までずっと守ってきたのに…）
-	ENDIF
+    ;恋慕＋従順Lv5
+    IF TALENT:150 == 1 && ABL:10 >= 5
+        PRINTFORMW 「チェンの初めて…もらって……」
+        PRINTFORMW 「痛っ…ぅぅぅ」
+        PRINTFORMW 「ｸﾞｽ…痛いよぅ……痛いけど、うれしい…%CALLNAME:MASTER%が、初めてでチェンは、幸せ…♪」
+    ;服従＋従順Lv5
+    ELSEIF TALENT:160 == 1 && ABL:10 >= 5
+        PRINTFORMW 「チェンのはじめてを…ささげます」
+        PRINTFORMW 「痛っ…ぅぅぅ」
+        PRINTFORMW 「これでチェンは、もう%CALLNAME:MASTER%だけのものですよ…」
+    ELSE
+        PRINTFORMW 「痛っ…ぅぅぅ」
+        PRINTFORMW 滴り落ちる処女の証を見て、チェンの顔が青ざめた。
+        PRINTFORMW （チェン…はじめてを、こんなやつに奪われちゃった……）
+        PRINTFORMW （初めては好きな人にって、藍しゃまに言われて…今までずっと守ってきたのに…）
+    ENDIF
 ;それ以外
 ELSE
-	;恋慕＋従順Lv5
-	IF TALENT:150 == 1 && ABL:10 >= 5
-		PRINTFORMW 「チェンの初めて…もらって……」
-		PRINTFORMW 「痛っ…ぅぅぅ」
-		PRINTFORMW 「%CALLNAME:MASTER%に貰ってもらえたのはうれしいけど…でも、初めてのときはやっぱりちゃんとしてほしかったなぁ…」
-	;服従＋従順Lv5
-	ELSEIF TALENT:160 == 1 && ABL:10 >= 5
-		PRINTFORMW 「チェンのはじめてを…ささげます」
-		PRINTFORMW 「痛っ…ぅぅぅ」
-		PRINTFORMW 「これでチェンは、もう完全に%CALLNAME:MASTER%だけのものですよ…」
-		PRINTFORMW 「でも、できれば、ちゃんとして欲しかったですけど…」
-	;それ以外
-	ELSE
-		PRINTFORMW 「痛っ…ぅぅぅ」
-		PRINTFORMW 滴り落ちる処女の証を見て、チェンの顔が青ざめた。
-		PRINTFORMW （チェン…はじめてを、こんなやつに奪われちゃった……）
-		PRINTFORMW （初めては好きな人にって、藍しゃまに言われて…今までずっと守ってきたのに…）
-	ENDIF	
+    ;恋慕＋従順Lv5
+    IF TALENT:150 == 1 && ABL:10 >= 5
+        PRINTFORMW 「チェンの初めて…もらって……」
+        PRINTFORMW 「痛っ…ぅぅぅ」
+        PRINTFORMW 「%CALLNAME:MASTER%に貰ってもらえたのはうれしいけど…でも、初めてのときはやっぱりちゃんとしてほしかったなぁ…」
+    ;服従＋従順Lv5
+    ELSEIF TALENT:160 == 1 && ABL:10 >= 5
+        PRINTFORMW 「チェンのはじめてを…ささげます」
+        PRINTFORMW 「痛っ…ぅぅぅ」
+        PRINTFORMW 「これでチェンは、もう完全に%CALLNAME:MASTER%だけのものですよ…」
+        PRINTFORMW 「でも、できれば、ちゃんとして欲しかったですけど…」
+    ;それ以外
+    ELSE
+        PRINTFORMW 「痛っ…ぅぅぅ」
+        PRINTFORMW 滴り落ちる処女の証を見て、チェンの顔が青ざめた。
+        PRINTFORMW （チェン…はじめてを、こんなやつに奪われちゃった……）
+        PRINTFORMW （初めては好きな人にって、藍しゃまに言われて…今までずっと守ってきたのに…）
+    ENDIF    
 ENDIF
 
 ;----------------------------------------------------------
@@ -640,23 +640,23 @@ ENDIF
 @K13_MESSAGE_OVERLV2_10
 ;恋慕
 IF TALENT:150 == 1
-	;ローションを使った場合
-	IF SELECTCOM == 60
-		PRINTFORMW 「これ…変な感じぃ…」
-	;それ以外
-	ELSE
-		PRINTFORMW 「えっ濡れてる…チェンおもらししちゃった…ごめんなさい、ごめんなさい、ごめんなさい」
-		PRINTFORMW 「気持ちよくなってる証拠？うん、チェン…気持ちいいよ」
-	ENDIF
+    ;ローションを使った場合
+    IF SELECTCOM == 60
+        PRINTFORMW 「これ…変な感じぃ…」
+    ;それ以外
+    ELSE
+        PRINTFORMW 「えっ濡れてる…チェンおもらししちゃった…ごめんなさい、ごめんなさい、ごめんなさい」
+        PRINTFORMW 「気持ちよくなってる証拠？うん、チェン…気持ちいいよ」
+    ENDIF
 ;それ以外
 ELSE
-	;ローションを使った場合
-	IF SELECTCOM == 60
-		PRINTFORMW 「これ変！気持ち悪いの！やめてぇ！」
-	;それ以外
-	ELSE
-		PRINTFORMW 「えっチェンおもらし？うそ…そんなことチェン…おもらしなんて……」
-	ENDIF
+    ;ローションを使った場合
+    IF SELECTCOM == 60
+        PRINTFORMW 「これ変！気持ち悪いの！やめてぇ！」
+    ;それ以外
+    ELSE
+        PRINTFORMW 「えっチェンおもらし？うそ…そんなことチェン…おもらしなんて……」
+    ENDIF
 ENDIF
 CFLAG:5330 = 1
 
@@ -666,11 +666,11 @@ CFLAG:5330 = 1
 @K13_MESSAGE_OVERLV2_13
 ;媚薬を使った場合
 IF SELECTCOM == 61
-	PRINTFORMW 「やぁぁ…体が熱いよぉ……」
-	PRINTFORMW （あの薬…なんだったの？）
+    PRINTFORMW 「やぁぁ…体が熱いよぉ……」
+    PRINTFORMW （あの薬…なんだったの？）
 ;それ以外
 ELSE
-	PRINTFORMW （あれ？　体の奥が熱い…）
+    PRINTFORMW （あれ？　体の奥が熱い…）
 ENDIF
 CFLAG:5333 = 1
 
@@ -700,32 +700,32 @@ CFLAG:5337 = 1
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0
-	PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-	PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
-	PALAM:17 = PALAM:17 + 30
-	CFLAG:5300 = 1
+    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
+    PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
+    PALAM:17 = PALAM:17 + 30
+    CFLAG:5300 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5300 == 0 && ( CFLAG:5301 == 1 || CFLAG:5302 == 1 || CFLAG:5303 == 1)
-	PRINTFORMW 「何？なにぃ？…チ、チェンの…お豆…おかしっ、んあぁぁぁ」
-	PRINTFORMW 橙はクリトリスで絶頂したことに驚いている。
-	CFLAG:5300 = 1
+    PRINTFORMW 「何？なにぃ？…チ、チェンの…お豆…おかしっ、んあぁぁぁ」
+    PRINTFORMW 橙はクリトリスで絶頂したことに驚いている。
+    CFLAG:5300 = 1
 ;２回目以降
 ELSE
-	;四重絶頂
-	IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
-		PRINTFORMW 「あぁぁぁぁ全部っゼンブイッちゃうぅ…」
-		PRINTFORMW 「ふああああぁぁぁぁぁぁぁぁぁぁ」
-		PRINTFORMW 「…っは……はぁ……はぁ…」
-	;絶頂50以上
-	ELSEIF EXP:2 >= 50
-		PRINTFORMW 「あっ、イ、イっっちゃう…ふあぁぁぁぁぁぁぁぁぁ」
-		PRINTFORMW 「はぁ…はぁ……気持ち…いい……」
-	ELSE
-		PRINTFORMW 「あっ、ダメッダメッダメェッ…チェン、飛んじゃっ、あぁぁぁぁぁ」
-		PRINTFORMW 「…はっ…ぁ…あっ………」
-		PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
-		BASE:0 = BASE:0 - 20
-	ENDIF
+    ;四重絶頂
+    IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
+        PRINTFORMW 「あぁぁぁぁ全部っゼンブイッちゃうぅ…」
+        PRINTFORMW 「ふああああぁぁぁぁぁぁぁぁぁぁ」
+        PRINTFORMW 「…っは……はぁ……はぁ…」
+    ;絶頂50以上
+    ELSEIF EXP:2 >= 50
+        PRINTFORMW 「あっ、イ、イっっちゃう…ふあぁぁぁぁぁぁぁぁぁ」
+        PRINTFORMW 「はぁ…はぁ……気持ち…いい……」
+    ELSE
+        PRINTFORMW 「あっ、ダメッダメッダメェッ…チェン、飛んじゃっ、あぁぁぁぁぁ」
+        PRINTFORMW 「…はっ…ぁ…あっ………」
+        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        BASE:0 = BASE:0 - 20
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -736,38 +736,38 @@ CFLAG:7015 = TIME
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0
-	PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-	PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
-	PALAM:17 = PALAM:17 + 30
-	CFLAG:5301 = 1
+    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
+    PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
+    PALAM:17 = PALAM:17 + 30
+    CFLAG:5301 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5301 == 0 && ( CFLAG:5300 == 1 || CFLAG:5302 == 1 || CFLAG:5303 == 1)
-	PRINTFORMW 「チェン、おかしくなっちゃう……ダメッダメェ…アァァァァァァァァァ」
-	PRINTFORMW 橙はヴァギナで絶頂したことに驚いている。
-	CFLAG:5301 = 1
+    PRINTFORMW 「チェン、おかしくなっちゃう……ダメッダメェ…アァァァァァァァァァ」
+    PRINTFORMW 橙はヴァギナで絶頂したことに驚いている。
+    CFLAG:5301 = 1
 ;２回目以降
 ELSE
-	;前回も絶頂で抜かず
-		;四重絶頂
-	IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
-	ELSEIF CFLAG:7015 == TIME - 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28) && (PREVCOM == 20 || PREVCOM == 21 || PREVCOM == 22 || PREVCOM == 23 || PREVCOM == 24 || PREVCOM == 27 || PREVCOM == 28)
-		PRINTFORMW 「ダメェェ　イッてるイッてるのに…またイッちゃうぅぅ」
-		PRINTFORMW 「ダメッダメェェ…にゃぁぁぁぁぁぁぁぁぁぁぁぁ」
-		PRINTFORMW 橙は連続絶頂のあまり、猫そのものの叫び声をあげて果てた。
-	ELSEIF EXP:2 <= 49
-		PRINTFORMW 「あっ、ダメッダメッダメェッ…チェン、飛んじゃっ、あぁぁぁぁぁ」
-		PRINTFORMW 「…はっ…ぁ…あっ………」
-		PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
-		BASE:0 = BASE:0 - 20
-	ELSEIF TALENT:150 == 1
-		IF SELECTCOM == 24
-			PRINTFORMW 「あっ…だめっイっちゃう…チェンが気持ちよくしてあげたいのにぃ…」
-			PRINTFORMW 「ダメっ…もうダメっ…イっちゃっ…ふあぁぁぁぁぁぁぁぁぁ」
-		ENDIF
-	;絶頂50以上
-	ELSEIF EXP:2 >= 50
-		PRINTFORMW 「あっいくっいくよ…いくよぉ……ふあぁぁぁぁぁぁぁぁぁぁ」
-	ENDIF
+    ;前回も絶頂で抜かず
+        ;四重絶頂
+    IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
+    ELSEIF CFLAG:7015 == TIME - 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28) && (PREVCOM == 20 || PREVCOM == 21 || PREVCOM == 22 || PREVCOM == 23 || PREVCOM == 24 || PREVCOM == 27 || PREVCOM == 28)
+        PRINTFORMW 「ダメェェ　イッてるイッてるのに…またイッちゃうぅぅ」
+        PRINTFORMW 「ダメッダメェェ…にゃぁぁぁぁぁぁぁぁぁぁぁぁ」
+        PRINTFORMW 橙は連続絶頂のあまり、猫そのものの叫び声をあげて果てた。
+    ELSEIF EXP:2 <= 49
+        PRINTFORMW 「あっ、ダメッダメッダメェッ…チェン、飛んじゃっ、あぁぁぁぁぁ」
+        PRINTFORMW 「…はっ…ぁ…あっ………」
+        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        BASE:0 = BASE:0 - 20
+    ELSEIF TALENT:150 == 1
+        IF SELECTCOM == 24
+            PRINTFORMW 「あっ…だめっイっちゃう…チェンが気持ちよくしてあげたいのにぃ…」
+            PRINTFORMW 「ダメっ…もうダメっ…イっちゃっ…ふあぁぁぁぁぁぁぁぁぁ」
+        ENDIF
+    ;絶頂50以上
+    ELSEIF EXP:2 >= 50
+        PRINTFORMW 「あっいくっいくよ…いくよぉ……ふあぁぁぁぁぁぁぁぁぁぁ」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -777,28 +777,28 @@ ENDIF
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0
-	PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-	PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
-	PALAM:17 = PALAM:17 + 30
-	CFLAG:5302 = 1
+    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
+    PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
+    PALAM:17 = PALAM:17 + 30
+    CFLAG:5302 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5302 == 0 && ( CFLAG:5300 == 1 || CFLAG:5301 == 1 || CFLAG:5303 == 1)
-	PRINTFORMW 「えっうそ…チェン、お尻の穴で…気持ちよくなっちゃう…飛んじゃうぅぅぅ」
-	PRINTFORMW 橙はアナルで絶頂したことに驚いている。
-	CFLAG:5302 = 1
+    PRINTFORMW 「えっうそ…チェン、お尻の穴で…気持ちよくなっちゃう…飛んじゃうぅぅぅ」
+    PRINTFORMW 橙はアナルで絶頂したことに驚いている。
+    CFLAG:5302 = 1
 ;２回目以降
 ELSE
-	;四重絶頂
-	IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
-	;絶頂50以上
-	ELSEIF EXP:2 >= 50
-		PRINTFORMW 「いいっお尻気持ちいいのぉ……チェン、いっちゃぁぁぁぁぁぁ」
-	ELSE
-		PRINTFORMW 「ダメッお尻でなんて変なのにぃぃ…んあぁぁぁぁぁぁ」
-		PRINTFORMW 「…はっ…ぁ…あっ………」
-		PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
-		BASE:0 = BASE:0 - 20
-	ENDIF
+    ;四重絶頂
+    IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
+    ;絶頂50以上
+    ELSEIF EXP:2 >= 50
+        PRINTFORMW 「いいっお尻気持ちいいのぉ……チェン、いっちゃぁぁぁぁぁぁ」
+    ELSE
+        PRINTFORMW 「ダメッお尻でなんて変なのにぃぃ…んあぁぁぁぁぁぁ」
+        PRINTFORMW 「…はっ…ぁ…あっ………」
+        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        BASE:0 = BASE:0 - 20
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -807,29 +807,29 @@ ENDIF
 @K13_MESSAGE_ORGASM_3
 ;初めて
 ;絶頂したことが無い
-IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0	
-	PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-	PRINTFORMW 橙は初めての絶頂に、戸惑っている。
-	PALAM:17 = PALAM:17 + 30
-	CFLAG:5303 = 1
+IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0    
+    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
+    PRINTFORMW 橙は初めての絶頂に、戸惑っている。
+    PALAM:17 = PALAM:17 + 30
+    CFLAG:5303 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5303 == 0 && ( CFLAG:5300 == 1 || CFLAG:5301 == 1 || CFLAG:5302 == 1)
-	PRINTFORMW 「いやぁ…チェンのおっぱい、おかしくなるぅぅぅぅ」
-	PRINTFORMW 橙は胸で絶頂したことに驚いている。
-	CFLAG:5303 = 1
+    PRINTFORMW 「いやぁ…チェンのおっぱい、おかしくなるぅぅぅぅ」
+    PRINTFORMW 橙は胸で絶頂したことに驚いている。
+    CFLAG:5303 = 1
 ;２回目以降
 ELSE
-	;四重絶頂
-	IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
-	;絶頂50以上
-	ELSEIF EXP:2 >= 50
-		PRINTFORMW 「いいのぉ…おっぱい気持ちいい…ダメぇ…あぁぁぁぁぁぁぁぁ」
-	ELSE
-		PRINTFORMW 「おかしいのぉ…チェン、おっぱいが変なのぉ…あぁぁぁぁぁぁぁ」
-		PRINTFORMW 「…はっ…ぁ…あっ………」
-		PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
-		BASE:0 = BASE:0 - 20
-	ENDIF
+    ;四重絶頂
+    IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
+    ;絶頂50以上
+    ELSEIF EXP:2 >= 50
+        PRINTFORMW 「いいのぉ…おっぱい気持ちいい…ダメぇ…あぁぁぁぁぁぁぁぁ」
+    ELSE
+        PRINTFORMW 「おかしいのぉ…チェン、おっぱいが変なのぉ…あぁぁぁぁぁぁぁ」
+        PRINTFORMW 「…はっ…ぁ…あっ………」
+        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        BASE:0 = BASE:0 - 20
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -838,17 +838,17 @@ ENDIF
 @K13_MESSAGE_ORGASM_10
 ;初めて
 IF CFLAG:5304 == 0
-	PRINTFORMW 「あっ…チェン…なんで、おっぱい出てるのぉ」
-	CFLAG:5304 = 1
+    PRINTFORMW 「あっ…チェン…なんで、おっぱい出てるのぉ」
+    CFLAG:5304 = 1
 ;２回目以降
 ELSE
-	IF TALENT:150 == 1 || TALENT:160 == 1 || TALENT:170 == 1
-		PRINTFORMW 「やっおっぱい出ちゃう…」
-	ELSEIF MARK:9 == 3
-		PRINTFORMW 「チェンの体…元に戻せっ！」
-	ELSE
-		PRINTFORMW 「なにこれぇ…」
-	ENDIF
+    IF TALENT:150 == 1 || TALENT:160 == 1 || TALENT:170 == 1
+        PRINTFORMW 「やっおっぱい出ちゃう…」
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 「チェンの体…元に戻せっ！」
+    ELSE
+        PRINTFORMW 「なにこれぇ…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -859,11 +859,11 @@ ENDIF
 @K13_MESSAGE_ORGASM_11
 ;初めて
 IF CFLAG:5305 == 0
-	;PRINTFORMW 
-	;CFLAG:5305 = 1
+    ;PRINTFORMW 
+    ;CFLAG:5305 = 1
 ;２回目以降
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -872,141 +872,141 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_ORGASM_12
 SIF SELECTCOM == 111 || SELECTCOM == 620
-	RETURN 0
+    RETURN 0
 ;初回のみ
 IF CFLAG:5306 == 0
-	PRINTFORMW 「おねがい…おトイレ、行かせて…」
-	PRINTFORMW 「あっダメッ…チェン、もう我慢できなっあぁぁぁぁぁぁぁ」
-	PRINTFORML 　
-	PRINTFORMW 「ｸﾞｽ…チェン…おもらし……しちゃった……」
-	PRINTFORMW 橙は泣き出した。
-	CFLAG:5306 = 1
+    PRINTFORMW 「おねがい…おトイレ、行かせて…」
+    PRINTFORMW 「あっダメッ…チェン、もう我慢できなっあぁぁぁぁぁぁぁ」
+    PRINTFORML 　
+    PRINTFORMW 「ｸﾞｽ…チェン…おもらし……しちゃった……」
+    PRINTFORMW 橙は泣き出した。
+    CFLAG:5306 = 1
 ;２回目以降
 ELSE
-	;恋慕+おもらし癖+ベビープレイ
-	IF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:58
-		PRINTFORMW 「あっでる…！おしっこ出る…あぁぁぁぁぁぁ」
-		PRINTFORMW 「チェン…おむつのまんま、好きな人の目の前で……あかちゃんみたいに、おしっこしてるのぉぉ」
-		PRINTFORMW 「チェンのおしっこ……おむつから…あふれちゃったのに……それなのに…とまんないよぉ……」
-		PRINTFORML 　
-		PRINTFORMW 「…はぁ…はぁ…おしっこ、おわったよ……その…チェンね…気持ちよかったよ……」
-		PRINTFORMW 「チェンのおしっこで……おむつ、ぐしょぐしょにしちゃった……」
-		PRINTFORMW 「その…おまんこ……拭いてくれる？」
-			PRINTFORML [0]いいよ
-			PRINTFORML [1]なめてやるよ
-			PRINTFORML [2]自分でしろ
-			PRINTFORML [3]そのままにしておけ
-			$INPUT_LOOP
-			INPUT 
+    ;恋慕+おもらし癖+ベビープレイ
+    IF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:58
+        PRINTFORMW 「あっでる…！おしっこ出る…あぁぁぁぁぁぁ」
+        PRINTFORMW 「チェン…おむつのまんま、好きな人の目の前で……あかちゃんみたいに、おしっこしてるのぉぉ」
+        PRINTFORMW 「チェンのおしっこ……おむつから…あふれちゃったのに……それなのに…とまんないよぉ……」
+        PRINTFORML 　
+        PRINTFORMW 「…はぁ…はぁ…おしっこ、おわったよ……その…チェンね…気持ちよかったよ……」
+        PRINTFORMW 「チェンのおしっこで……おむつ、ぐしょぐしょにしちゃった……」
+        PRINTFORMW 「その…おまんこ……拭いてくれる？」
+            PRINTFORML [0]いいよ
+            PRINTFORML [1]なめてやるよ
+            PRINTFORML [2]自分でしろ
+            PRINTFORML [3]そのままにしておけ
+            $INPUT_LOOP
+            INPUT 
 
-			IF RESULT != 0 && RESULT != 1 && RESULT != 2 && RESULT != 3
-			GOTO INPUT_LOOP
-			ELSEIF RESULT == 0
-				PRINTFORMW 「あっ……や…ん……」
-				PRINTFORMW （拭いてもらってるだけなのに……触れられると…気持ちいいよぉ…）
-				PALAM:0 = PALAM:0 + 500
-			ELSEIF RESULT == 1
-				PRINTFORMW 「えっ？そんなの…汚いよ…？」
-				PRINTFORMW 「チェンのなら汚くない…？……その、そんな…恥ずかしいけど…うれしい」
-				PRINTFORMW 好感度+5
-				CFLAG:2 = CFLAG:2 + 5
-			ELSEIF RESULT == 2
-				PRINTFORMW 「……わかった」
-			ELSEIF RESULT == 3
-				PRINTFORMW 「うぅ…気持ち悪いよぉ……」
-				SOURCE:12 += 50
-				SOURCE:19 += 200
-				SOURCE:22 += 250
-			ENDIF
-	;恋慕＋おもらし癖＋シャワー
-	ELSEIF TALENT:150 == 1 &&TALENT:45 == 1 && TEQUIP:54
-		IF RAND:2 == 0
-			PRINTFORMW 「やぁぁ…おしっこ……出ちゃっ…」
-			PRINTFORMW 橙のおしっことシャワーの水が混ざり合って排水溝に流れて行った
-		ELSE
-			PRINTFORMW 「やっ…おしっこ……出ちゃっ…やぁぁ」
-			PRINTFORMW 放尿する橙の尿道にシャワーをあてると橙は体を震わせながら尿の勢いを増した
-			PRINTFORMW 「うぅ……いじわる…」
-		ENDIF
-	;恋慕＋おもらし癖＋コスプレ（エプロン・スク水を除く）
-	ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:59 >= 3
-		PRINTFORMW 「あっ…でるよ…チェン、おしっこ出しちゃうよっ…あぁぁぁぁぁぁぁ」
-		PRINTFORMW 　
-		PRINTFORMW 「お洋服…汚しちゃった…ごめんなさい……」
-		PRINTFORMW 「でも、気持ち…よくって…つい…」
-	;恋慕＋おもらし癖＋お風呂場プレイ
-	ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:53
-		PRINTFORMW 「やぁ………んっ……」
-		PRINTFORMW 橙の体が小さく震えたかと思うとお湯が黄色く染まっていった
-		PRINTFORMW 橙は水中であることを利用しおもらしを隠そうと考えたようだ。
-		PRINTFORMW 「うぅ……だって%CALLNAME:MASTER%に知られたら…恥ずかしかったんだもん……」
-		PRINTFORMW 隠そうとしたことを叱ると橙は小さくうなだれた
-	;恋慕+おもらし癖+野外プレイ
-	ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:52
-		PRINTFORMW 「あっでる…！おしっこ出る…あぁぁぁぁぁぁ」
-		PRINTFORMW 「チェン…お外で、好きな人の目の前で……どーぶつみたいに、おしっこしてるのぉぉ」
-		PRINTFORML 　
-		PRINTFORMW 「…はぁ…はぁ…おしっこ、おわったよ……その…チェンね…気持ちよかったよ……」
-	;恋慕+おもらし癖＋騎乗位又は対面座位又は対面立位(ヴァギナ、アナル問わず)
-	ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && (SELECTCOM == 22 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 32 || SELECTCOM == 34 || SELECTCOM == 37)
-		PRINTFORMW 「あっでる…！おしっこ出る…」
-		PRINTFORMW 「だめっ%CALLNAME:MASTER%にかかっちゃうよぉ」
-		PRINTFORMW 「だめっ早くどいてっもう出ちゃっ…あぁぁぁぁぁ」
-		PRINTFORMW 「出ちゃってるのぉ…チェン、%CALLNAME:MASTER%をおしっこまみれにしちゃってるのぉ」
-		PRINTFORMW 「…………ごめん」
-		PRINTFORMW 「怒って…る……よね…ホントに…ごめん」
-		PRINTFORMW 橙は耳と尻尾をうなだれさせて、涙目で怯えながら謝っている
-	;恋慕+おもらし癖
-	ELSEIF TALENT:150 == 1 && TALENT:45 == 1
-		PRINTFORMW 「あっ…でるよ…チェン、おしっこ出しちゃうよっ…あぁぁぁぁぁぁぁ」
-		PRINTFORML 　
-		PRINTFORMW 「チェンね…その…%CALLNAME:MASTER%に、見られながら、おしっこするのね……その…癖になっちゃいそう……」
-	;服従+おもらし癖+野外プレイ
-	ELSEIF TALENT:160 == 1 && TALENT:45 == 1 && TEQUIP:52
-		PRINTFORMW 「あっでます…！おしっこ出します…あぁぁぁぁぁぁ」
-		PRINTFORMW 「チ、チェンは…お外で…%CALLNAME:MASTER%の前で……どーぶつみたいに、おしこしてるんですぅぅ」
-		PRINTFORML 　
-		PRINTFORMW 「…はぁ…はぁ…おしっこ、全部出しちゃいました…チェン……これ、気持ちよくって…うれしいです…」
-	;服従+おもらし癖
-	ELSEIF TALENT:160 == 1 && TALENT:45 == 1
-		PRINTFORMW 「あっ…でます…おしっこ……出ちゃいますぅ…あぁぁぁぁぁぁぁぁぁ」
-		PRINTFORMW 「チェン…%CALLNAME:MASTER%の前で……おもらししちゃってるんですぅぅぅぅ」
-		PRINTFORML 　
-		PRINTFORMW 「チェンの……おもらし……見てもらえましたか……？」
-	;露出癖Lv5
-	ELSEIF ABL:14 >= 5
-		PRINTFORMW 「あっ…おもらし…しちゃう……チェン…今から……おしっこ出すから…見ててぇ…あっあぁぁぁぁぁぁぁ」
-		PRINTFORMW 「あはぁ…チェン、おもらし…見られてる…見られながら…おしっこ……気持ちいいよぉ……」
-		PRINTFORML 　
-		PRINTFORMW 「あっ…終わっちゃった……チェン…見られながら……おしっこ…すきぃ」
-	;恋慕
-	ELSEIF TALENT:150 == 1
-		PRINTFORMW 「そっその…やっぱ何でもない…」
-		PRINTFORMW （おトイレなんて恥ずかしくて言えないよぉ…）
-	;野外プレイ
-	ELSEIF TEQUIP:52
-		PRINTFORMW 「えっやっ…ダメ…こんな、お外でなんて……誰か…いるかも…知れないのに……」
-		PRINTFORMW 「うぅ…もうダメ、我慢できない…あっダメ、ダメ、ダメェェェェェェ」
-		PRINTFORMW 「こんなの…こんな…お外で……おもらしなんて…お願い…早く止まってぇぇ…」
-		PRINTFORML 　
-		PRINTFORMW 「こんなの…ひどっ……お…外で……おし…っこ………なんて…だれ…みてるかも…しれなぃの……」
-		PRINTFORMW 橙は大泣きした。これより後は、言葉が聞き取れなかった。
-	;それ以外
-	ELSE
-		PRINTFORMW 「えっ…いやっ…おしっこ、ダメェ…お願い……出ないで…おもらし……ダメなのぉ…」
-		PRINTFORMW 「あっもうダメ、我慢できない…あっダメ、ダメ、ダメェェェェェェ」
-		PRINTFORML 　
-		PRINTFORMW 「チェン…また……おもらし…しちゃった……我慢……しないと…だめなのにぃ…」
-		PRINTFORMW 橙は泣き出した。
-	ENDIF
+            IF RESULT != 0 && RESULT != 1 && RESULT != 2 && RESULT != 3
+            GOTO INPUT_LOOP
+            ELSEIF RESULT == 0
+                PRINTFORMW 「あっ……や…ん……」
+                PRINTFORMW （拭いてもらってるだけなのに……触れられると…気持ちいいよぉ…）
+                PALAM:0 = PALAM:0 + 500
+            ELSEIF RESULT == 1
+                PRINTFORMW 「えっ？そんなの…汚いよ…？」
+                PRINTFORMW 「チェンのなら汚くない…？……その、そんな…恥ずかしいけど…うれしい」
+                PRINTFORMW 好感度+5
+                CFLAG:2 = CFLAG:2 + 5
+            ELSEIF RESULT == 2
+                PRINTFORMW 「……わかった」
+            ELSEIF RESULT == 3
+                PRINTFORMW 「うぅ…気持ち悪いよぉ……」
+                SOURCE:12 += 50
+                SOURCE:19 += 200
+                SOURCE:22 += 250
+            ENDIF
+    ;恋慕＋おもらし癖＋シャワー
+    ELSEIF TALENT:150 == 1 &&TALENT:45 == 1 && TEQUIP:54
+        IF RAND:2 == 0
+            PRINTFORMW 「やぁぁ…おしっこ……出ちゃっ…」
+            PRINTFORMW 橙のおしっことシャワーの水が混ざり合って排水溝に流れて行った
+        ELSE
+            PRINTFORMW 「やっ…おしっこ……出ちゃっ…やぁぁ」
+            PRINTFORMW 放尿する橙の尿道にシャワーをあてると橙は体を震わせながら尿の勢いを増した
+            PRINTFORMW 「うぅ……いじわる…」
+        ENDIF
+    ;恋慕＋おもらし癖＋コスプレ（エプロン・スク水を除く）
+    ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:59 >= 3
+        PRINTFORMW 「あっ…でるよ…チェン、おしっこ出しちゃうよっ…あぁぁぁぁぁぁぁ」
+        PRINTFORMW 　
+        PRINTFORMW 「お洋服…汚しちゃった…ごめんなさい……」
+        PRINTFORMW 「でも、気持ち…よくって…つい…」
+    ;恋慕＋おもらし癖＋お風呂場プレイ
+    ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:53
+        PRINTFORMW 「やぁ………んっ……」
+        PRINTFORMW 橙の体が小さく震えたかと思うとお湯が黄色く染まっていった
+        PRINTFORMW 橙は水中であることを利用しおもらしを隠そうと考えたようだ。
+        PRINTFORMW 「うぅ……だって%CALLNAME:MASTER%に知られたら…恥ずかしかったんだもん……」
+        PRINTFORMW 隠そうとしたことを叱ると橙は小さくうなだれた
+    ;恋慕+おもらし癖+野外プレイ
+    ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:52
+        PRINTFORMW 「あっでる…！おしっこ出る…あぁぁぁぁぁぁ」
+        PRINTFORMW 「チェン…お外で、好きな人の目の前で……どーぶつみたいに、おしっこしてるのぉぉ」
+        PRINTFORML 　
+        PRINTFORMW 「…はぁ…はぁ…おしっこ、おわったよ……その…チェンね…気持ちよかったよ……」
+    ;恋慕+おもらし癖＋騎乗位又は対面座位又は対面立位(ヴァギナ、アナル問わず)
+    ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && (SELECTCOM == 22 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 32 || SELECTCOM == 34 || SELECTCOM == 37)
+        PRINTFORMW 「あっでる…！おしっこ出る…」
+        PRINTFORMW 「だめっ%CALLNAME:MASTER%にかかっちゃうよぉ」
+        PRINTFORMW 「だめっ早くどいてっもう出ちゃっ…あぁぁぁぁぁ」
+        PRINTFORMW 「出ちゃってるのぉ…チェン、%CALLNAME:MASTER%をおしっこまみれにしちゃってるのぉ」
+        PRINTFORMW 「…………ごめん」
+        PRINTFORMW 「怒って…る……よね…ホントに…ごめん」
+        PRINTFORMW 橙は耳と尻尾をうなだれさせて、涙目で怯えながら謝っている
+    ;恋慕+おもらし癖
+    ELSEIF TALENT:150 == 1 && TALENT:45 == 1
+        PRINTFORMW 「あっ…でるよ…チェン、おしっこ出しちゃうよっ…あぁぁぁぁぁぁぁ」
+        PRINTFORML 　
+        PRINTFORMW 「チェンね…その…%CALLNAME:MASTER%に、見られながら、おしっこするのね……その…癖になっちゃいそう……」
+    ;服従+おもらし癖+野外プレイ
+    ELSEIF TALENT:160 == 1 && TALENT:45 == 1 && TEQUIP:52
+        PRINTFORMW 「あっでます…！おしっこ出します…あぁぁぁぁぁぁ」
+        PRINTFORMW 「チ、チェンは…お外で…%CALLNAME:MASTER%の前で……どーぶつみたいに、おしこしてるんですぅぅ」
+        PRINTFORML 　
+        PRINTFORMW 「…はぁ…はぁ…おしっこ、全部出しちゃいました…チェン……これ、気持ちよくって…うれしいです…」
+    ;服従+おもらし癖
+    ELSEIF TALENT:160 == 1 && TALENT:45 == 1
+        PRINTFORMW 「あっ…でます…おしっこ……出ちゃいますぅ…あぁぁぁぁぁぁぁぁぁ」
+        PRINTFORMW 「チェン…%CALLNAME:MASTER%の前で……おもらししちゃってるんですぅぅぅぅ」
+        PRINTFORML 　
+        PRINTFORMW 「チェンの……おもらし……見てもらえましたか……？」
+    ;露出癖Lv5
+    ELSEIF ABL:14 >= 5
+        PRINTFORMW 「あっ…おもらし…しちゃう……チェン…今から……おしっこ出すから…見ててぇ…あっあぁぁぁぁぁぁぁ」
+        PRINTFORMW 「あはぁ…チェン、おもらし…見られてる…見られながら…おしっこ……気持ちいいよぉ……」
+        PRINTFORML 　
+        PRINTFORMW 「あっ…終わっちゃった……チェン…見られながら……おしっこ…すきぃ」
+    ;恋慕
+    ELSEIF TALENT:150 == 1
+        PRINTFORMW 「そっその…やっぱ何でもない…」
+        PRINTFORMW （おトイレなんて恥ずかしくて言えないよぉ…）
+    ;野外プレイ
+    ELSEIF TEQUIP:52
+        PRINTFORMW 「えっやっ…ダメ…こんな、お外でなんて……誰か…いるかも…知れないのに……」
+        PRINTFORMW 「うぅ…もうダメ、我慢できない…あっダメ、ダメ、ダメェェェェェェ」
+        PRINTFORMW 「こんなの…こんな…お外で……おもらしなんて…お願い…早く止まってぇぇ…」
+        PRINTFORML 　
+        PRINTFORMW 「こんなの…ひどっ……お…外で……おし…っこ………なんて…だれ…みてるかも…しれなぃの……」
+        PRINTFORMW 橙は大泣きした。これより後は、言葉が聞き取れなかった。
+    ;それ以外
+    ELSE
+        PRINTFORMW 「えっ…いやっ…おしっこ、ダメェ…お願い……出ないで…おもらし……ダメなのぉ…」
+        PRINTFORMW 「あっもうダメ、我慢できない…あっダメ、ダメ、ダメェェェェェェ」
+        PRINTFORML 　
+        PRINTFORMW 「チェン…また……おもらし…しちゃった……我慢……しないと…だめなのにぃ…」
+        PRINTFORMW 橙は泣き出した。
+    ENDIF
 ENDIF
 
 IF ASSI >= 0
-	IF NO:ASSI == 21
-		PRINTFORMW 「うぅ…藍しゃまごめんなさい……」
-		PRINTFORMW 放尿を藍に見られたのがショックなようだ
-		SOURCE:28 = SOURCE:28 + 300
-	ENDIF
+    IF NO:ASSI == 21
+        PRINTFORMW 「うぅ…藍しゃまごめんなさい……」
+        PRINTFORMW 放尿を藍に見られたのがショックなようだ
+        SOURCE:28 = SOURCE:28 + 300
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1014,11 +1014,11 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_8
 IF TALENT:152 == 1 && TALENT:153 == 1 && RAND:3 == 0
-	PRINTFORMW 「うぅ…中に欲しかったのにぃ…チェン…%CALLNAME:MASTER%との子供が欲しいの……」
+    PRINTFORMW 「うぅ…中に欲しかったのにぃ…チェン…%CALLNAME:MASTER%との子供が欲しいの……」
 ELSEIF TALENT:150 == 1
-	PRINTFORMW 「うぅ…中に欲しかったのにぃ……」
+    PRINTFORMW 「うぅ…中に欲しかったのにぃ……」
 ELSE
-	PRINTFORMW （あっ…良かった中に出されてない……）
+    PRINTFORMW （あっ…良かった中に出されてない……）
 ENDIF
 
 ;-------------------------------------------------
@@ -1027,12 +1027,12 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_9
 ;主人のペニス
 IF TFLAG:35
-	IF TALENT:150 == 1
-		PRINTFORMW 「あっ…おしりの中……あったかい…」
-	ENDIF
+    IF TALENT:150 == 1
+        PRINTFORMW 「あっ…おしりの中……あったかい…」
+    ENDIF
 ;それ以外
 ELSE
-	;PRINTFORMW 「主人以外がアナルセックスで射精した時の口上です」
+    ;PRINTFORMW 「主人以外がアナルセックスで射精した時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -1041,10 +1041,10 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_10
 ;主人のペニス
 IF TFLAG:35
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;それ以外
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1052,61 +1052,61 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_11
 IF TALENT:150 == 1
-	;イラマチオ
-	IF SELECTCOM == 230
-		PRINTFORMW 「うぅ………」
-		PRINTFORMW 直接食道に射精すると橙は苦しそうにうめき声をあげた
-		PRINTFORMW 「ゲホゲホッ…ひどいよ…もう…」
-		PRINTFORMW 橙は涙目で睨んでいる
-		PRINTFORMW 「反省してるなら、チェンのこと…その……気持ち良くして…」
-	ELSEIF TFLAG:35 == 2
-		IF RAND:3 == 0
-			PRINTFORMW 「ゴクゴク…うっ…」
-			PRINTFORMW 「……ぁ………ぅ…」
-			PRINTFORMW 橙は精液を飲み切れずのどに詰まらせたようだ
-			PRINTFORMW 橙の背中をたたいて精液を吐き出させた
-			PRINTFORMW 「ゲホッゲホッ……うぅ…飲み切れなくて…ゴメン」
-			PRINTFORMW 「せっかく%CALLNAME:MASTER%が…チェンのために出してくれたのに…」
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「ごほ、ゲホゲホ…」
-			PRINTFORMW 「こんな量…飲みきれないよぉ……」
-			PRINTFORMW 橙は口からあふれた精液を手ですくい必死に飲み干そうとしている
-		ELSE
-			PRINTFORMW 「うっ…ゴクゴク…ゴグ…」
-			PRINTFORMW 「…ぷはぁ……全部飲めたよ…」
-			PRINTFORMW 「すごい量だったけど…でも、あなたのだから……」
-			PRINTFORMW ほめてやると橙はうれしそうにはにかんだ
-		ENDIF
-	ELSE
-		PRINTFORMW 「ゴグゴク……」
-		PRINTFORMW 橙は喉を鳴らして精液を飲み干した
-		PRINTFORMW 「えへへ…おいしい」
-	ENDIF
+    ;イラマチオ
+    IF SELECTCOM == 230
+        PRINTFORMW 「うぅ………」
+        PRINTFORMW 直接食道に射精すると橙は苦しそうにうめき声をあげた
+        PRINTFORMW 「ゲホゲホッ…ひどいよ…もう…」
+        PRINTFORMW 橙は涙目で睨んでいる
+        PRINTFORMW 「反省してるなら、チェンのこと…その……気持ち良くして…」
+    ELSEIF TFLAG:35 == 2
+        IF RAND:3 == 0
+            PRINTFORMW 「ゴクゴク…うっ…」
+            PRINTFORMW 「……ぁ………ぅ…」
+            PRINTFORMW 橙は精液を飲み切れずのどに詰まらせたようだ
+            PRINTFORMW 橙の背中をたたいて精液を吐き出させた
+            PRINTFORMW 「ゲホッゲホッ……うぅ…飲み切れなくて…ゴメン」
+            PRINTFORMW 「せっかく%CALLNAME:MASTER%が…チェンのために出してくれたのに…」
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「ごほ、ゲホゲホ…」
+            PRINTFORMW 「こんな量…飲みきれないよぉ……」
+            PRINTFORMW 橙は口からあふれた精液を手ですくい必死に飲み干そうとしている
+        ELSE
+            PRINTFORMW 「うっ…ゴクゴク…ゴグ…」
+            PRINTFORMW 「…ぷはぁ……全部飲めたよ…」
+            PRINTFORMW 「すごい量だったけど…でも、あなたのだから……」
+            PRINTFORMW ほめてやると橙はうれしそうにはにかんだ
+        ENDIF
+    ELSE
+        PRINTFORMW 「ゴグゴク……」
+        PRINTFORMW 橙は喉を鳴らして精液を飲み干した
+        PRINTFORMW 「えへへ…おいしい」
+    ENDIF
 ELSE
-	IF RAND:2 == 0
-		PRINTFORMW 「うえ……」
-		PRINTFORMW 橙は口の中にある精液を必死に吐き出した
-	ELSE
-		PRINTFORMW 「うえ……っ！」
-		PRINTFORMW 橙が口の中の精液を吐き出そうとしたので%CALLNAME:MASTER%は橙の口を押さえ無理やり飲み込ませた
-		PRINTFORMW 「うぅ…気持ち悪い……」
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORMW 「うえ……」
+        PRINTFORMW 橙は口の中にある精液を必死に吐き出した
+    ELSE
+        PRINTFORMW 「うえ……っ！」
+        PRINTFORMW 橙が口の中の精液を吐き出そうとしたので%CALLNAME:MASTER%は橙の口を押さえ無理やり飲み込ませた
+        PRINTFORMW 「うぅ…気持ち悪い……」
+    ENDIF
 ENDIF
 
 ;フェラで射精後、汚れを舐め取る時
 IF TFLAG:10 > 0
-	IF TALENT:150 == 1
-		IF RAND:2 == 0
-			PRINTFORMW 「んっ…ペロペロペロ……」
-			PRINTFORMW 「%CALLNAME:MASTER%の精液…おいしい」
-			PRINTFORMW 橙は一物をきれいにすると、尿道内に残った精液を吸いだそうと、しゃぶりついてきた
-		ELSE
-			PRINTFORMW 「んっ…ペロペロペロ……」
-			PRINTFORMW 「はいっきれいになったよっ！」
-			PRINTFORMW 「あっ…せっかくきれいにしたのに、また出てきた…もう、しょうがないなぁ」
-			PRINTFORMW 橙は呆れたように奉仕を再開してきたが、笑顔を全く隠せていない
-		ENDIF
-	ENDIF
+    IF TALENT:150 == 1
+        IF RAND:2 == 0
+            PRINTFORMW 「んっ…ペロペロペロ……」
+            PRINTFORMW 「%CALLNAME:MASTER%の精液…おいしい」
+            PRINTFORMW 橙は一物をきれいにすると、尿道内に残った精液を吸いだそうと、しゃぶりついてきた
+        ELSE
+            PRINTFORMW 「んっ…ペロペロペロ……」
+            PRINTFORMW 「はいっきれいになったよっ！」
+            PRINTFORMW 「あっ…せっかくきれいにしたのに、また出てきた…もう、しょうがないなぁ」
+            PRINTFORMW 橙は呆れたように奉仕を再開してきたが、笑顔を全く隠せていない
+        ENDIF
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1115,19 +1115,19 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_12
 ;奉仕精神Lv5＋恋慕
 IF ABL:13 >= 5 && TALENT:150 == 1
-	PRINTFORMW 「せーえき、いっぱい。おいしい…」
-	PRINTFORMW 橙の表情は緩み、体についた精液をなめている。
-	PRINTFORMW 「でも、美味しいのは、これが、%CALLNAME:MASTER%のせーえきだからだよ…」
+    PRINTFORMW 「せーえき、いっぱい。おいしい…」
+    PRINTFORMW 橙の表情は緩み、体についた精液をなめている。
+    PRINTFORMW 「でも、美味しいのは、これが、%CALLNAME:MASTER%のせーえきだからだよ…」
 ;奉仕精神Lv5
 ELSEIF ABL:13 >= 5
-	PRINTFORMW 「いっぱいでたね。チェンもっともっと、がんばるよ」
-	PRINTFORMW 橙は張り切っている。
+    PRINTFORMW 「いっぱいでたね。チェンもっともっと、がんばるよ」
+    PRINTFORMW 橙は張り切っている。
 ;奉仕精神Lv3
 ELSEIF ABL:13 >= 3
-	PRINTFORMW 「うわぁ…せーえきいっぱい…満足してくれた？」
+    PRINTFORMW 「うわぁ…せーえきいっぱい…満足してくれた？」
 ;それ以外
 ELSE
-	PRINTFORMW 「うっ…変なにおい…べたべたねばねばで気持ち悪い…」
+    PRINTFORMW 「うっ…変なにおい…べたべたねばねばで気持ち悪い…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1135,16 +1135,16 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_14
 IF TALENT:150 == 1
-	IF RAND:3 == 0
-		PRINTFORMW 「キスで感じてくれたの？チェンとおんなじだね」
-		PRINTFORMW 橙は%CALLNAME:MASTER%の手を秘所へと導いた。
-		PRINTFORMW 橙のそこは洪水を起こしたかのように濡れていた。
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「キスだけで出しちゃったの？…エッチ」
-	ELSE
-		PRINTFORMW 「もう出しちゃったの？中に欲しかったのにぃ」
-		PRINTFORMW 橙は頬を膨らませて不満を表している
-	ENDIF
+    IF RAND:3 == 0
+        PRINTFORMW 「キスで感じてくれたの？チェンとおんなじだね」
+        PRINTFORMW 橙は%CALLNAME:MASTER%の手を秘所へと導いた。
+        PRINTFORMW 橙のそこは洪水を起こしたかのように濡れていた。
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「キスだけで出しちゃったの？…エッチ」
+    ELSE
+        PRINTFORMW 「もう出しちゃったの？中に欲しかったのにぃ」
+        PRINTFORMW 橙は頬を膨らませて不満を表している
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1152,15 +1152,15 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_15
 IF TALENT:150 == 1
-	IF RAND:2 == 0
-		PRINTFORMW 「むぅ…中に欲しかったのにぃ」
-		PRINTFORMW 「チェンも、もう我慢できないから…今度はちゃんと…ね」
-		PRINTFORMW 橙は自らの秘所を指で開き、誘っている
-	ELSE
-		PRINTFORMW 「先に出しちゃうなんてずるいよぉ…」
-		PRINTFORMW 「チェンももっと気持ちよくなりたいのにぃ」
-		PRINTFORMW そういうと橙は、今まで以上の力で、一物に秘所を押し付け腰を動かし始めた
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORMW 「むぅ…中に欲しかったのにぃ」
+        PRINTFORMW 「チェンも、もう我慢できないから…今度はちゃんと…ね」
+        PRINTFORMW 橙は自らの秘所を指で開き、誘っている
+    ELSE
+        PRINTFORMW 「先に出しちゃうなんてずるいよぉ…」
+        PRINTFORMW 「チェンももっと気持ちよくなりたいのにぃ」
+        PRINTFORMW そういうと橙は、今まで以上の力で、一物に秘所を押し付け腰を動かし始めた
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1168,8 +1168,8 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_16
 IF TALENT:150 == 1
-	PRINTFORMW 「もぅ…これ後で落とすの大変なんだよっ！」
-	PRINTFORMW 橙は頬を膨らませて怒っている
+    PRINTFORMW 「もぅ…これ後で落とすの大変なんだよっ！」
+    PRINTFORMW 橙は頬を膨らませて怒っている
 ENDIF
 
 ;-------------------------------------------------
@@ -1177,11 +1177,11 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_17
 IF TALENT:150 == 1
-	PRINTFORMW 「あ～%CALLNAME:ASSI%ずるいっ！チェンの中に出してもうはずだったのにぃ！」
+    PRINTFORMW 「あ～%CALLNAME:ASSI%ずるいっ！チェンの中に出してもうはずだったのにぃ！」
 ELSE
-	PRINTFORMW 「………」
-	PRINTFORMW （もし今やられてるのがチェンだったら…中に出されてたんだ……）
-	PRINTFORMW 橙の表情が青ざめた
+    PRINTFORMW 「………」
+    PRINTFORMW （もし今やられてるのがチェンだったら…中に出されてたんだ……）
+    PRINTFORMW 橙の表情が青ざめた
 ENDIF
 
 ;YM口上まとめ作者註
@@ -1192,9 +1192,9 @@ ENDIF
 ;-------------------------------------------------
 ;@K13_MESSAGE_EJAC_PLAYER_18
 ;IF TALENT:170 == 1
-;	PRINTFORMW 「あはぁ…中で出されるの気持ちいいょぉ」
-;	PRINTFORMW 「もっと！もっとちょうだい！！」
-;	PRINTFORMW 橙はさらに激しく腰を振り始めた
+;    PRINTFORMW 「あはぁ…中で出されるの気持ちいいょぉ」
+;    PRINTFORMW 「もっと！もっとちょうだい！！」
+;    PRINTFORMW 橙はさらに激しく腰を振り始めた
 ;ENDIF
 
 ;-------------------------------------------------
@@ -1220,9 +1220,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_29
 IF TALENT:150 == 1
-	PRINTFORMW 「チェンのおっぱいで気持ち良くなってくれたんだ…えへへ、なんかうれしいな…」
+    PRINTFORMW 「チェンのおっぱいで気持ち良くなってくれたんだ…えへへ、なんかうれしいな…」
 ELSE
-	PRINTFORMW 「うっ…変なにおい…べたべたねばねばで気持ち悪い…」
+    PRINTFORMW 「うっ…変なにおい…べたべたねばねばで気持ち悪い…」
 ENDIF
 
 ;========================================================
@@ -1232,24 +1232,24 @@ ENDIF
 ;========================================================
 @KOJO_MESSAGE_MARKCNG_13
 IF CFLAG:7900 == 0
-	CALL KOJO_MESSAGE_MARKCNG_13_RR
-	RETURN 0
+    CALL KOJO_MESSAGE_MARKCNG_13_RR
+    RETURN 0
 ENDIF
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;口枷がある場合も戻る
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;気絶中も戻る
 SIF TFLAG:899 >= 1 || TFLAG:898 == 1
-	RETURN 0
+    RETURN 0
 ;刻印取得口上呼び出し
 FOR LOCAL, 0, 7
-	FOR LOCAL:1, 1, 4
-		SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
-			TRYCALLFORM K13_MESSAGE_MARK{LOCAL}_{LOCAL:1}
-	NEXT
+    FOR LOCAL:1, 1, 4
+        SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
+            TRYCALLFORM K13_MESSAGE_MARK{LOCAL}_{LOCAL:1}
+    NEXT
 NEXT
 
 ;----------------------------------------------------------
@@ -1269,9 +1269,9 @@ CFLAG:5310 = 2
 
 @K13_MESSAGE_MARK0_3
 IF TALENT:150 == 1
-	PRINTFORMW 「痛いけど…でも、うれしいのっ」
+    PRINTFORMW 「痛いけど…でも、うれしいのっ」
 ELSE
-	PRINTFORMW 「痛い…痛いよ……やめてぇ」
+    PRINTFORMW 「痛い…痛いよ……やめてぇ」
 ENDIF
 CFLAG:5310 = 3
 
@@ -1288,9 +1288,9 @@ CFLAG:5311 = 2
 
 @K13_MESSAGE_MARK1_3
 IF TALENT:150 == 1
-	PRINTFORMW 「気持ちいいの、好きぃ…%CALLNAME:MASTER%にしてもらうの…すごく気持ちいい」
+    PRINTFORMW 「気持ちいいの、好きぃ…%CALLNAME:MASTER%にしてもらうの…すごく気持ちいい」
 ELSE
-	PRINTFORMW 「気持ちいいの、好きぃ…」
+    PRINTFORMW 「気持ちいいの、好きぃ…」
 ENDIF
 CFLAG:5311 = 3
 
@@ -1307,10 +1307,10 @@ CFLAG:5312 = 2
 
 @K13_MESSAGE_MARK2_3
 IF TALENT:150 == 1
-	PRINTFORMW 「チェンは…%CALLNAME:MASTER%の物になれて……幸せ……です」
+    PRINTFORMW 「チェンは…%CALLNAME:MASTER%の物になれて……幸せ……です」
 ELSE
-	PRINTFORMW 「はい……チェンは…%CALLNAME:MASTER%の、物です」
-	PRINTFORMW （ごめんなさい…藍しゃま、チェンはもう…この人には逆らえません…）
+    PRINTFORMW 「はい……チェンは…%CALLNAME:MASTER%の、物です」
+    PRINTFORMW （ごめんなさい…藍しゃま、チェンはもう…この人には逆らえません…）
 ENDIF
 CFLAG:5312 = 3
 
@@ -1343,10 +1343,10 @@ CFLAG:5314 = 2
 
 @K13_MESSAGE_MARK4_3
 IF TALENT:150 == 1
-	PRINTFORMW 「%CALLNAME:MASTER%が、好きなのか、嫌いなのか…チェン、わかんなくなっちゃたよぅ」
+    PRINTFORMW 「%CALLNAME:MASTER%が、好きなのか、嫌いなのか…チェン、わかんなくなっちゃたよぅ」
 ELSE
-	PRINTFORMW 橙は%CALLNAME:MASTER%を睨んでいる。
-	PRINTFORMW （いつか、絶対に仕返ししてやる…）
+    PRINTFORMW 橙は%CALLNAME:MASTER%を睨んでいる。
+    PRINTFORMW （いつか、絶対に仕返ししてやる…）
 ENDIF
 CFLAG:5314 = 3
 
@@ -1372,27 +1372,27 @@ CFLAG:5314 = 3
 ;==================================================
 @KOJO_MESSAGE_COM_13
 IF CFLAG:7900 == 0
-	CALL KOJO_MESSAGE_COM_13_RR
-	RETURN 0
+    CALL KOJO_MESSAGE_COM_13_RR
+    RETURN 0
 ENDIF
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;口枷があり, 口枷をつけるコマンドでない場合も戻る
 SIF (TEQUIP:42 && (SELECTCOM != 226 && SELECTCOM != 229 && SELECTCOM != 506 && SELECTCOM != 509 && SELECTCOM != 583))
-	RETURN 0
+    RETURN 0
 ;気絶中も戻る
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 
 ;コマンド初回判定を更新
 CALL COM_FLAG
 ;PANCTION内の装備品口上補完関数を使用する
 SIF FLAG:10 == 1
-	TRYCALL EQUIPTEXT
+    TRYCALL EQUIPTEXT
 ;処女喪失時のメッセージ呼び出し
 SIF TALENT:0 && TFLAG:1
-	TRYCALL K13_MESSAGE_LOST_VIRGIN
+    TRYCALL K13_MESSAGE_LOST_VIRGIN
 ;コマンド口上呼び出し
 TRYCALLFORM K13_MESSAGE_COM_{SELECTCOM}
 
@@ -1403,18 +1403,18 @@ TRYCALLFORM K13_MESSAGE_COM_{SELECTCOM}
 ;==================================================
 @SELF_KOJO_K13
 IF CFLAG:7900 == 0
-	CALL SELF_KOJO_K13_RR
-	RETURN 0
+    CALL SELF_KOJO_K13_RR
+    RETURN 0
 ENDIF
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;調教中かつ口枷つきも戻る
 SIF TFLAG:999 && TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;調教中かつ気絶中も戻る
 SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-	RETURN 0
+    RETURN 0
 
 ;イベント口上呼び出し
 TRYCALLFORM K13_MESSAGE_EVENT_{(TFLAG:200)}
@@ -1426,13 +1426,13 @@ TRYCALLFORM K13_MESSAGE_EVENT_{(TFLAG:200)}
 ;========================================================
 @LOOK_VIDEO_KOJO_K13
 SIF CFLAG:7900 == 0
-	RETURN 0
+    RETURN 0
 IF TALENT:150 == 1
-	PRINTFORMW 「………」
-	PRINTFORMW 橙は顔を赤らめ、照れている
+    PRINTFORMW 「………」
+    PRINTFORMW 橙は顔を赤らめ、照れている
 ELSE
-	PRINTFORMW 「………」
-	PRINTFORMW 橙は目をそらしている
+    PRINTFORMW 「………」
+    PRINTFORMW 橙は目をそらしている
 ENDIF
 
 
@@ -1443,27 +1443,27 @@ ENDIF
 ;========================================================
 @IMPRESSION_K13
 SIF CFLAG:7900 == 0
-	RETURN 0
+    RETURN 0
 IF TALENT:150 == 1
-	IF RAND:6 == 0
-		PRINTFORML 「%CALLNAME:MASTER%ともっと一緒にいれたらなぁ…」
-	ELSEIF RAND:5 == 0
-		PRINTFORML 「早くチェンのところに来てくれないかな…」
-	ELSEIF RAND:4 == 0
-		PRINTFORML 「%CALLNAME:MASTER%…次はいつ来てくれるんだろ…」
-	ELSEIF RAND:3 == 0
-		PRINTFORML 「次にエッチする時はどんなことしようかなぁ…」
-	ELSEIF RAND:2 == 0
-		PRINTFORML 「はぁ……なんか…もやもやするなぁ…」
-	ELSE
-		PRINTFORML 「次のために練習しておかなきゃ！」
-	ENDIF
+    IF RAND:6 == 0
+        PRINTFORML 「%CALLNAME:MASTER%ともっと一緒にいれたらなぁ…」
+    ELSEIF RAND:5 == 0
+        PRINTFORML 「早くチェンのところに来てくれないかな…」
+    ELSEIF RAND:4 == 0
+        PRINTFORML 「%CALLNAME:MASTER%…次はいつ来てくれるんだろ…」
+    ELSEIF RAND:3 == 0
+        PRINTFORML 「次にエッチする時はどんなことしようかなぁ…」
+    ELSEIF RAND:2 == 0
+        PRINTFORML 「はぁ……なんか…もやもやするなぁ…」
+    ELSE
+        PRINTFORML 「次のために練習しておかなきゃ！」
+    ENDIF
 ELSE
-	IF RAND:2 == 0
-		PRINTFORML 「うぅ…早く帰りたいよぉ……」
-	ELSE
-		PRINTFORML 「藍しゃま…助けてぇ……」
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORML 「うぅ…早く帰りたいよぉ……」
+    ELSE
+        PRINTFORML 「藍しゃま…助けてぇ……」
+    ENDIF
 ENDIF
 
 ;=============================================================================
@@ -1475,8 +1475,8 @@ ENDIF
 ;-------------------------------------------------
 @SINGLE_ENDING_K13
 IF CFLAG:7900 == 0
-	CALL SINGLE_ENDING_K13_RR
-	RETURN 0
+    CALL SINGLE_ENDING_K13_RR
+    RETURN 0
 ENDIF
 DRAWLINE
 PRINTFORMW 「きれい…これ、チェンに?」
@@ -1514,7 +1514,7 @@ RETURN 0
 ;-------------------------------------------------
 @SINGLE_ENDING_AFTER_K13
 SIF CFLAG:7900 == 0
-	RETURN 0
+    RETURN 0
 PRINTFORMW あれから、数年がたち、橙も少しずつ成長してきた。
 PRINTFORMW しかし、それにも問題はあった。
 PRINTFORMW 橙は化け猫なので、そこそこまで年を重ねると、本能が刺激され、子孫繁栄を促すらしい。
@@ -1532,8 +1532,8 @@ RETURN 0
 ;-------------------------------------------------
 @SLAVE_ENDING_K13
 IF CFLAG:7900 == 0
-;	CALL SLAVE_ENDING_K13_RR
-	RETURN 0
+;    CALL SLAVE_ENDING_K13_RR
+    RETURN 0
 ENDIF
 DRAWLINE
 PRINTFORMW ―――奴隷エンド条件達成―――
@@ -1550,7 +1550,7 @@ RETURN 0
 ;-------------------------------------------------
 @SLAVE_ENDING_AFTER_K13
 SIF CFLAG:7900 == 0
-	RETURN 0
+    RETURN 0
 ;PRINTFORMW 
 RETURN 0
 
@@ -1568,10 +1568,10 @@ RETURN 0
 
 ;淫乱
 ;IF TALENT:淫乱
-;	LOCAL:1 = 1
+;    LOCAL:1 = 1
 ;エピソードなし
 ;ELSE
-;	LOCAL:1 = 0
+;    LOCAL:1 = 0
 ;ENDIF
 
 ;退避した対象を元に戻す
@@ -1586,7 +1586,7 @@ RETURN 0
 ;PRINTFORMW 　%CSVCALLNAME(13,0)%のその後
 ;DRAWLINE
 ;IF ARG == 1
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ENDIF
 ;DRAWLINE
 ;RETURN 0

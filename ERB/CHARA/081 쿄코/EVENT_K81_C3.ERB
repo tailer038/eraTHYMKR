@@ -37,60 +37,60 @@
 ;-------------------------------------------------
 @KOJO_81_TRAIN_MESSAGE_S_COM_303
 IF NO:ASSI == 25
-	IF CFLAG:5202 == 1
-		;2人に연모
-		IF TALENT:연모 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 『んちゅ…れろっ…くちゅっ…せーし…もっと…』
-				PRINTFORMW 「ふみゅっ…ぺろっ…いっぱい…だして…」
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ん…れろ…ほら、響子も玉舐めて！』
-				PRINTFORMW 「くちゅっ…はむっ…」
-				PRINTFORMW （みすちーみたくうまくできないよ…）
-			ELSE
-				PRINTFORMW 「ん…ん…んあっ…じゅぷっ…」
-				PRINTFORMW 『はふっ…むっ…れら…』
-				PRINTFORMW 二人は竿と玉を交互に一生懸命舐めている
-			ENDIF
-		;響子のみ연모
-		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
-			IF RAND:3 == 0
-				PRINTFORMW 「ふみゅっ…くちゅ…なにやってるのみすちー？もっと舌使わないと！」
-				PRINTFORMW 『ん…響子に言われなくても…ぺろっ…』
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「ぺろっ…はむっ…ん…ん…」
-				PRINTFORMW 『んあ…れろ…』
-				PRINTFORMW 『こんなの…何がいいのよ…』
-			ELSE
-				PRINTFORMW 『あがぁ！？んほぉ…げほっ、ごほっ…！』
-				PRINTFORMW 「もーそんなにがっついたらダメだって…はむっ…」
-				PRINTFORMW 『違っ…突っ込まれて…ぇ…』
-			ENDIF
-		;ミスティアのみ연모
-		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 「くちゅ…こんなの…気持ち悪い…」
-				PRINTFORMW 『慣れればおいしいわよ？精子にも味があって…れろ…』
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ん…くちゅ…せーし溜まってるの…いっぱい出して…』
-				PRINTFORMW 「…んちゅ…れろ…」
-				PRINTFORMW （そんなに美味しいかな…？精子って…）
-			ELSE
-				PRINTFORMW 『れろ…れら…じゅぷっ…じゅぽっ…早くだして…』
-				PRINTFORMW 「はむっ…げほっ…げほっ…なんでこんな…」
-			ENDIF
-		;その他
-		ELSE
-			IF RAND:2 == 0
-				PRINTFORMW 「こんなの…れろっ…したくないのに…くちゅ…」
-				PRINTFORMW 『はむっ…玉…固くなってる…』
-			ELSE
-				PRINTFORMW 『んちゅっ…れろ…大きくて…硬いの…』
-				PRINTFORMW 「…こんな臭いのに…擦り付けないでください…ぺろっ…」
-			ENDIF
-		ENDIF
-		RETURN 1
-	ENDIF
+    IF CFLAG:5202 == 1
+        ;2人に연모
+        IF TALENT:연모 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 『んちゅ…れろっ…くちゅっ…せーし…もっと…』
+                PRINTFORMW 「ふみゅっ…ぺろっ…いっぱい…だして…」
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『ん…れろ…ほら、響子も玉舐めて！』
+                PRINTFORMW 「くちゅっ…はむっ…」
+                PRINTFORMW （みすちーみたくうまくできないよ…）
+            ELSE
+                PRINTFORMW 「ん…ん…んあっ…じゅぷっ…」
+                PRINTFORMW 『はふっ…むっ…れら…』
+                PRINTFORMW 二人は竿と玉を交互に一生懸命舐めている
+            ENDIF
+        ;響子のみ연모
+        ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
+            IF RAND:3 == 0
+                PRINTFORMW 「ふみゅっ…くちゅ…なにやってるのみすちー？もっと舌使わないと！」
+                PRINTFORMW 『ん…響子に言われなくても…ぺろっ…』
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「ぺろっ…はむっ…ん…ん…」
+                PRINTFORMW 『んあ…れろ…』
+                PRINTFORMW 『こんなの…何がいいのよ…』
+            ELSE
+                PRINTFORMW 『あがぁ！？んほぉ…げほっ、ごほっ…！』
+                PRINTFORMW 「もーそんなにがっついたらダメだって…はむっ…」
+                PRINTFORMW 『違っ…突っ込まれて…ぇ…』
+            ENDIF
+        ;ミスティアのみ연모
+        ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 「くちゅ…こんなの…気持ち悪い…」
+                PRINTFORMW 『慣れればおいしいわよ？精子にも味があって…れろ…』
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『ん…くちゅ…せーし溜まってるの…いっぱい出して…』
+                PRINTFORMW 「…んちゅ…れろ…」
+                PRINTFORMW （そんなに美味しいかな…？精子って…）
+            ELSE
+                PRINTFORMW 『れろ…れら…じゅぷっ…じゅぽっ…早くだして…』
+                PRINTFORMW 「はむっ…げほっ…げほっ…なんでこんな…」
+            ENDIF
+        ;その他
+        ELSE
+            IF RAND:2 == 0
+                PRINTFORMW 「こんなの…れろっ…したくないのに…くちゅ…」
+                PRINTFORMW 『はむっ…玉…固くなってる…』
+            ELSE
+                PRINTFORMW 『んちゅっ…れろ…大きくて…硬いの…』
+                PRINTFORMW 「…こんな臭いのに…擦り付けないでください…ぺろっ…」
+            ENDIF
+        ENDIF
+        RETURN 1
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;二本フェラチオ
@@ -104,33 +104,33 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_81_TRAIN_MESSAGE_S_COM_305
 IF NO:ASSI == 25
-	IF CFLAG:5202 == 1
-		;ミスティアと響子の2人に연모
-		IF TALENT:연모 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 『ん…おっぱいで…うまく擦れる…かな…』
-				PRINTFORMW 「…みすちーの方がおっぱい大きいけど…私だって…」
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ほら！もっと乳首とかで擦る！』
-				PRINTFORMW 「そんなこと言われても…ん…」
-				PRINTFORMW （もっとおっぱい大きかったらなぁ…）
-			ELSE
-				PRINTFORMW 「ん…ん…」
-				PRINTFORMW 『もっと激しく、動かして…』
-				PRINTFORMW 二人は胸を使って竿を挟み込んで一生懸命擦り上げている
-			ENDIF
-		;その他
-		ELSE
-			IF RAND:2 == 0
-				PRINTFORMW 「こんなのうまく出来るかわかんないけど…」
-				PRINTFORMW 『ん…おっぱいで挟んで…』
-			ELSE
-				PRINTFORMW 『相変わらず大きい…これを響子と二人で…』
-				PRINTFORMW 「ん…おっぱいで…うまく…」
-			ENDIF
-		ENDIF
-		RETURN 1
-	ENDIF
+    IF CFLAG:5202 == 1
+        ;ミスティアと響子の2人に연모
+        IF TALENT:연모 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 『ん…おっぱいで…うまく擦れる…かな…』
+                PRINTFORMW 「…みすちーの方がおっぱい大きいけど…私だって…」
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『ほら！もっと乳首とかで擦る！』
+                PRINTFORMW 「そんなこと言われても…ん…」
+                PRINTFORMW （もっとおっぱい大きかったらなぁ…）
+            ELSE
+                PRINTFORMW 「ん…ん…」
+                PRINTFORMW 『もっと激しく、動かして…』
+                PRINTFORMW 二人は胸を使って竿を挟み込んで一生懸命擦り上げている
+            ENDIF
+        ;その他
+        ELSE
+            IF RAND:2 == 0
+                PRINTFORMW 「こんなのうまく出来るかわかんないけど…」
+                PRINTFORMW 『ん…おっぱいで挟んで…』
+            ELSE
+                PRINTFORMW 『相変わらず大きい…これを響子と二人で…』
+                PRINTFORMW 「ん…おっぱいで…うまく…」
+            ENDIF
+        ENDIF
+        RETURN 1
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;二人で素股
@@ -353,22 +353,22 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_348
 ;カルーア
 IF TFLAG:149 == 600
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ビール
 ELSEIF TFLAG:149 == 601
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ワイン
 ELSEIF TFLAG:149 == 602
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;大吟醸酒
 ELSEIF TFLAG:149 == 603
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;スピリタス
 ELSEIF TFLAG:149 == 604
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;《神便鬼毒酒》
 ELSEIF TFLAG:149 == 605
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -384,10 +384,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_350
 ;解除時
 IF TEQUIP:53 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -397,10 +397,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_351
 ;解除時
 IF TEQUIP:54 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -428,10 +428,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_360
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -441,10 +441,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_361
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -454,10 +454,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_362
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -467,10 +467,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_363
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -480,10 +480,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_364
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -493,10 +493,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_365
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -506,10 +506,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_366
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -519,10 +519,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_367
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -532,10 +532,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_368
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -545,10 +545,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_369
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -558,10 +558,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_370
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -571,10 +571,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_371
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -584,10 +584,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_372
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -597,10 +597,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_373
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -610,10 +610,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_374
 ;解除時
 IF TEQUIP:55 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------

@@ -100,221 +100,221 @@
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE111
 ;初めて
 IF CFLAG:7101 == 0
-	;助手が天子
-	IF ASSI >= 0 && NO:ASSI == 52
-		;연모
-		IF TALENT:연모
-			PRINTFORMW 『え、衣玖ってご主人様にご飯作ってあげた事無いわけ？』
-			PRINTFORMW 「うっ…お恥ずかしながら、その通りです…」
-			PRINTFORML 衣玖に初めて食事を作ってもらおうと厨房に呼び出したのはいいが、
-			PRINTFORMW 突然現れた天子が会話に割って入り込み、様子がおかしくなってきている…
-			PRINTFORML 
-			PRINTFORMW 『何してんのよもう…ご主人様のことが好きなら、そのくらいやってあげればいいじゃない』
-			PRINTFORMW 『どうせ面倒だからってサボってたんでしょう？それで食事はそっちのけでいやらしい事ばかりに夢中になってたと…』
-			PRINTFORMW 『全く、本当に衣玖ってスケベだったのね。まさかここまでとは思わなかったわ』
-			PRINTFORMW 「そ、そんな言い方はやめてください…！ううっ」
-			PRINTFORML 
-			PRINTFORMW …調子に乗りまくっている天子を後でお仕置きすることを心の中で誓いつつ、
-			PRINTFORMW あなたはすっかり小さくなっている衣玖を励まし、なんとか食事を作って貰う事が出来たのだった…
-			PRINTFORML
-		;その他の場合
-		ELSE
-			PRINTFORMW 『ねえ衣玖ー、お腹が空いたわ。何か作ってよ』
-			PRINTFORMW 衣玖の部屋で何となく暇を潰している天子が何となく我儘を言う。
-			PRINTFORMW 天界で度々衣玖を悩ませたのと同じような光景が地上でも再現されている…
-			PRINTFORMW 「…私は天子の保護者ではないのですが」
-			PRINTFORMW 『ああそうだ。面倒くさがりの衣玖さんは料理が苦手でしたっけ？ふふん』
-			PRINTFORMW 「…別に天子も似たようなものでしょう」
-			;助手の料理技能Lv2以上
-			IF ABL:ASSI:70 >= 2
-				PRINTFORML 
-				PRINTFORMW ニヤリと天子が笑う。
-				PRINTFORMW …どうやら自慢話好きな天子のスイッチが入ってしまったらしい…！
-				PRINTFORMW 『そう思うでしょう？それが違うのよねー』
-				PRINTFORMW 『ご主人様のために私は結構本気で料理の勉強をしてるの。信じられないでしょう？衣玖』
-				PRINTFORMW 『それは最初は酷い物だったけど、ご主人様って優しいから何のかんので全部食べてくれるのよ』
-				PRINTFORMW 『失敗しても何度もチャレンジさせてくれるし、それに料理を作るのって気分転換にもいいし』
-				PRINTFORMW 『…あと毒とか入れても見分けちゃうのよね。さすがだわ、うん』
-				PRINTFORMW 「…えっ？」
-				PRINTFORML 『というわけで、天人である私のたゆまぬ努力と、確かな目を持ったご主人様のおかげで、』
-				PRINTFORMW 『私の料理はどんどん上達してるわけ。分かった？衣玖』
-				PRINTFORMW 「………そうでしたか」
-				PRINTFORMW 心底どうでもいい、という表情の衣玖。それでも話に反応してあげるのは
-				PRINTFORMW 空気が読めてしまう故の優しさなのか…。
-				PRINTFORMW もはやあれこれ考えるのも面倒になった衣玖は仕方無く料理を作り始めるのだった…
-				PRINTFORML
-			;その他の場合
-			ELSE
-				PRINTFORML 
-				PRINTFORMW 『うるさいわね。…仕方ないのよ』
-				PRINTFORMW 衣玖に言い返され天子はむっとするが、すぐに立ち直って言葉を続ける。
-				PRINTFORMW 『まあでも、料理の腕は磨いておいて損は無いんじゃない？』
-				PRINTFORMW 『料理の上手な女を蔑ろに扱う男はいないはずよ。…多分』
-				PRINTFORML 
-				PRINTFORMW あなたに気に入られるために料理を勉強するというのはいかにも癪だが、
-				PRINTFORMW 天子の強い要望もあり、結局衣玖は食事を作ることにしたのだった…
-				PRINTFORML
-			ENDIF
-		ENDIF
-	;その他
-	ELSE
-		;연모
-		IF TALENT:연모
-			PRINTFORMW 「！」
-			PRINTFORMW 「それは…ご飯を作って欲しい、という事ですね…？」
-			PRINTFORMW 「…準備します。時間を下さい…」
-			PRINTFORMW 衣玖に食事を作って欲しいと頼んだ途端、空気に緊張が生まれる…
-			PRINTFORML 
-			PRINTFORML 今まで食事は何となく各自で済ませていた事もあり、あなたは衣玖の作った料理自体、
-			PRINTFORMW 全くと言っていいほど見た事が無かったのだった。互いに想いを寄せている事が分かった今こそ、
-			PRINTFORMW 衣玖の手料理を食べるチャンスとあなたは意気込んだのだったが…
-			PRINTFORML 
-			PRINTFORMW 「私…正直なところ、料理は得意ではないんですよ…」
-			PRINTFORMW 「何せ面倒くさ…いえ、私はあまり食事を必要としないですし、」
-			PRINTFORMW 「最近になるまで、他人と関わる事も少なかったですから…ちゃんとした料理もよく知らないのです」
-			PRINTFORMW 「ああ、こんなことならもっと練習しておけばよかった…！」
-			PRINTFORML 
-			PRINTFORMW 本気で衣玖は悔しそうにしている…だが、物覚えも良く、真面目な彼女の事だ。
-			PRINTFORMW 真剣に取り組めばきっとすぐに上達する事だろうと、あなたは楽観していた。
-			PRINTFORMW とりあえず今は、慎重に調理を続ける衣玖の姿をゆっくり見守る事にしよう…
-			PRINTFORML
-		;屈服刻印Lv3
-		ELSEIF MARK:굴복각인 == 3
-			PRINTFORMW 「…料理の経験は、あまり無いのですが」
-			PRINTFORMW 「簡単なもので良ければ、なんとか作ってみますけど…期待はしないで下さい」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「言われた通り、食事を用意しました」
-			PRINTFORMW 「…一体何を企んでいるのです？閉じ込めた相手にこんな事をさせて…」
-		ENDIF
-	ENDIF
-	CFLAG:7101= 1
+    ;助手が天子
+    IF ASSI >= 0 && NO:ASSI == 52
+        ;연모
+        IF TALENT:연모
+            PRINTFORMW 『え、衣玖ってご主人様にご飯作ってあげた事無いわけ？』
+            PRINTFORMW 「うっ…お恥ずかしながら、その通りです…」
+            PRINTFORML 衣玖に初めて食事を作ってもらおうと厨房に呼び出したのはいいが、
+            PRINTFORMW 突然現れた天子が会話に割って入り込み、様子がおかしくなってきている…
+            PRINTFORML 
+            PRINTFORMW 『何してんのよもう…ご主人様のことが好きなら、そのくらいやってあげればいいじゃない』
+            PRINTFORMW 『どうせ面倒だからってサボってたんでしょう？それで食事はそっちのけでいやらしい事ばかりに夢中になってたと…』
+            PRINTFORMW 『全く、本当に衣玖ってスケベだったのね。まさかここまでとは思わなかったわ』
+            PRINTFORMW 「そ、そんな言い方はやめてください…！ううっ」
+            PRINTFORML 
+            PRINTFORMW …調子に乗りまくっている天子を後でお仕置きすることを心の中で誓いつつ、
+            PRINTFORMW あなたはすっかり小さくなっている衣玖を励まし、なんとか食事を作って貰う事が出来たのだった…
+            PRINTFORML
+        ;その他の場合
+        ELSE
+            PRINTFORMW 『ねえ衣玖ー、お腹が空いたわ。何か作ってよ』
+            PRINTFORMW 衣玖の部屋で何となく暇を潰している天子が何となく我儘を言う。
+            PRINTFORMW 天界で度々衣玖を悩ませたのと同じような光景が地上でも再現されている…
+            PRINTFORMW 「…私は天子の保護者ではないのですが」
+            PRINTFORMW 『ああそうだ。面倒くさがりの衣玖さんは料理が苦手でしたっけ？ふふん』
+            PRINTFORMW 「…別に天子も似たようなものでしょう」
+            ;助手の料理技能Lv2以上
+            IF ABL:ASSI:70 >= 2
+                PRINTFORML 
+                PRINTFORMW ニヤリと天子が笑う。
+                PRINTFORMW …どうやら自慢話好きな天子のスイッチが入ってしまったらしい…！
+                PRINTFORMW 『そう思うでしょう？それが違うのよねー』
+                PRINTFORMW 『ご主人様のために私は結構本気で料理の勉強をしてるの。信じられないでしょう？衣玖』
+                PRINTFORMW 『それは最初は酷い物だったけど、ご主人様って優しいから何のかんので全部食べてくれるのよ』
+                PRINTFORMW 『失敗しても何度もチャレンジさせてくれるし、それに料理を作るのって気分転換にもいいし』
+                PRINTFORMW 『…あと毒とか入れても見分けちゃうのよね。さすがだわ、うん』
+                PRINTFORMW 「…えっ？」
+                PRINTFORML 『というわけで、天人である私のたゆまぬ努力と、確かな目を持ったご主人様のおかげで、』
+                PRINTFORMW 『私の料理はどんどん上達してるわけ。分かった？衣玖』
+                PRINTFORMW 「………そうでしたか」
+                PRINTFORMW 心底どうでもいい、という表情の衣玖。それでも話に反応してあげるのは
+                PRINTFORMW 空気が読めてしまう故の優しさなのか…。
+                PRINTFORMW もはやあれこれ考えるのも面倒になった衣玖は仕方無く料理を作り始めるのだった…
+                PRINTFORML
+            ;その他の場合
+            ELSE
+                PRINTFORML 
+                PRINTFORMW 『うるさいわね。…仕方ないのよ』
+                PRINTFORMW 衣玖に言い返され天子はむっとするが、すぐに立ち直って言葉を続ける。
+                PRINTFORMW 『まあでも、料理の腕は磨いておいて損は無いんじゃない？』
+                PRINTFORMW 『料理の上手な女を蔑ろに扱う男はいないはずよ。…多分』
+                PRINTFORML 
+                PRINTFORMW あなたに気に入られるために料理を勉強するというのはいかにも癪だが、
+                PRINTFORMW 天子の強い要望もあり、結局衣玖は食事を作ることにしたのだった…
+                PRINTFORML
+            ENDIF
+        ENDIF
+    ;その他
+    ELSE
+        ;연모
+        IF TALENT:연모
+            PRINTFORMW 「！」
+            PRINTFORMW 「それは…ご飯を作って欲しい、という事ですね…？」
+            PRINTFORMW 「…準備します。時間を下さい…」
+            PRINTFORMW 衣玖に食事を作って欲しいと頼んだ途端、空気に緊張が生まれる…
+            PRINTFORML 
+            PRINTFORML 今まで食事は何となく各自で済ませていた事もあり、あなたは衣玖の作った料理自体、
+            PRINTFORMW 全くと言っていいほど見た事が無かったのだった。互いに想いを寄せている事が分かった今こそ、
+            PRINTFORMW 衣玖の手料理を食べるチャンスとあなたは意気込んだのだったが…
+            PRINTFORML 
+            PRINTFORMW 「私…正直なところ、料理は得意ではないんですよ…」
+            PRINTFORMW 「何せ面倒くさ…いえ、私はあまり食事を必要としないですし、」
+            PRINTFORMW 「最近になるまで、他人と関わる事も少なかったですから…ちゃんとした料理もよく知らないのです」
+            PRINTFORMW 「ああ、こんなことならもっと練習しておけばよかった…！」
+            PRINTFORML 
+            PRINTFORMW 本気で衣玖は悔しそうにしている…だが、物覚えも良く、真面目な彼女の事だ。
+            PRINTFORMW 真剣に取り組めばきっとすぐに上達する事だろうと、あなたは楽観していた。
+            PRINTFORMW とりあえず今は、慎重に調理を続ける衣玖の姿をゆっくり見守る事にしよう…
+            PRINTFORML
+        ;屈服刻印Lv3
+        ELSEIF MARK:굴복각인 == 3
+            PRINTFORMW 「…料理の経験は、あまり無いのですが」
+            PRINTFORMW 「簡単なもので良ければ、なんとか作ってみますけど…期待はしないで下さい」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「言われた通り、食事を用意しました」
+            PRINTFORMW 「…一体何を企んでいるのです？閉じ込めた相手にこんな事をさせて…」
+        ENDIF
+    ENDIF
+    CFLAG:7101= 1
 ;得意料理
 ELSEIF TFLAG:99 == 0
-	PRINTFORMW 「今日は特別です。驚くと思いますよ？ふふっ」
+    PRINTFORMW 「今日は特別です。驚くと思いますよ？ふふっ」
 ;２回目以降
 ELSE
-	;助手が天子
-	IF ASSI >= 0 && NO:ASSI == 52
-		;연모
-		IF TALENT:연모
-			;料理技能Lv3以上
-			IF ABL:요리기능 >= 3
-				;乱数分岐:4
-				IF RAND:4 == 0
-					PRINTFORMW 「今度は天子の料理も食べさせて下さいね？」
-					PRINTFORMW 『うっ、私が作るのはご主人様にだけ…とはいかないわね。負けないわよ？』
-				;乱数分岐:3
-				ELSEIF RAND:3 == 0
-					PRINTFORMW 『すっかり衣玖も料理上手になっちゃって…私が嫁に貰っとけばよかったわ、もう』
-					PRINTFORMW 「ふふっ、だそうですよ？%CALLNAME:MASTER%…気をつけて下さいね」
-				;乱数分岐:2
-				ELSEIF RAND:2 == 0
-					PRINTFORMW 「お待たせしました、%CALLNAME:MASTER%…♪あと一応天子も」
-					PRINTFORMW 『露骨に私を邪魔者扱いするのはやめて、本当に』
-				;その他の場合
-				ELSE
-					PRINTFORMW 『何よこれ！すっごく美味しそうじゃない…私の分もあるのよね？』
-					PRINTFORMW 「えっ」
-					PRINTFORMW 『えっ』
-				ENDIF
-			;料理技能Lv2以上
-			ELSEIF ABL:요리기능 >= 2
-				;乱数分岐:2
-				IF RAND:2 == 0
-					PRINTFORMW 『つまみ食いし過ぎたかも。私はちょっと後で食べるから残しておいてね』
-					PRINTFORMW 「…美味しく作ることが出来たと解釈してあげます」
-				;その他の場合
-				ELSE
-					PRINTFORMW 「天子にも手伝って貰えましたし、きっと上手く出来てると思います」
-					PRINTFORMW 『まあ、これなら人前に出しても恥ずかしくないでしょ』
-				ENDIF
-			;その他の場合
-			ELSE
-				;乱数分岐:2
-				IF RAND:2 == 0
-					PRINTFORMW 『これ大丈夫なの？なんかその…ううん』
-					PRINTFORMW 「…聞かないで下さい」
-				;その他の場合
-				ELSE
-					PRINTFORMW 『ふふん、なかなか苦労してたわね。まあ初めは皆そんなものよ』
-					PRINTFORMW 「そんな、励ましてもらわなくても…ふふっ、次は頑張りますね？」
-				ENDIF
-			ENDIF
-		;その他の場合
-		ELSE
-			;乱数分岐:3
-			IF RAND:3 == 0
-				PRINTFORMW 「…では私はこれで」
-				PRINTFORMW 『なに遠慮してるのよ…いいから一緒に食べましょう？』
-			;乱数分岐:2
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『遅いわよもう。待ちくたびれちゃったじゃない』
-				PRINTFORMW 「どうして当たり前のように天子がいるんですか…」
-			;その他の場合
-			ELSE
-				PRINTFORMW 『…何か変なもの入ってないでしょうね』
-				PRINTFORMW 「さあ、確かめてみたらどうですか？」
-			ENDIF
-		ENDIF
-	;その他
-	ELSE
-		;연모
-		IF TALENT:연모
-			;料理技能Lv3以上
-			IF ABL:요리기능 >= 3
-				;乱数分岐:4
-				IF RAND:4 == 0
-					PRINTFORMW 「少し工夫して作ってみたんです。上手くいってるといいんですけど…」
-				;乱数分岐:3
-				ELSEIF RAND:3 == 0
-					PRINTFORMW 「%CALLNAME:MASTER%にも手伝って頂きましたし…ふふっ、嬉しかったです」
-				;乱数分岐:2
-				ELSEIF RAND:2 == 0
-					PRINTFORMW 「…ちょっと多かったでしょうか。残してもいいですからね？」
-				;その他の場合
-				ELSE
-					PRINTFORMW 「ふふっ、今日はなかなか良く出来たと思いますよ？」
-				ENDIF
-			;料理技能Lv2以上
-			ELSEIF ABL:요리기능 >= 2
-				;乱数分岐:2
-				IF RAND:2 == 0
-					PRINTFORMW 「ちょっと時間はかかりましたけど、何とか出来ましたよ」
-				;その他の場合
-				ELSE
-					PRINTFORMW 「ちゃんと本に載ってる通りには作りましたので、大丈夫です、きっと…！」
-				ENDIF
-			;その他の場合
-			ELSE
-				;乱数分岐:2
-				IF RAND:2 == 0
-					PRINTFORMW 「これが今の私の精一杯です…」
-				;その他の場合
-				ELSE
-					PRINTFORMW 「…見た目の割にはおいしいと思います」
-				ENDIF
-			ENDIF
-		;その他の場合
-		ELSE
-			;乱数分岐:5
-			IF RAND:5 && MARK:반발각인 == 3
-				PRINTFORMW 「…全部黒焦げにしてやりたい気分です。雷の一発でも落とせたら」
-			;乱数分岐:4
-			ELSEIF RAND:4 == 0
-				PRINTFORMW 「下界の食材はとても様々で…魅力的ですね」
-			;乱数分岐:3
-			ELSEIF RAND:3 == 0
-				PRINTFORMW 「面倒です…手を抜いても…というわけにもいかないですよね、はあ」
-			;乱数分岐:2
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「どうして真面目に料理なんかしてるんでしょう…」
-			;その他の場合
-			ELSE
-				PRINTFORMW 「…こんなもので十分でしょうか？」
-			ENDIF
-		ENDIF
-	ENDIF
+    ;助手が天子
+    IF ASSI >= 0 && NO:ASSI == 52
+        ;연모
+        IF TALENT:연모
+            ;料理技能Lv3以上
+            IF ABL:요리기능 >= 3
+                ;乱数分岐:4
+                IF RAND:4 == 0
+                    PRINTFORMW 「今度は天子の料理も食べさせて下さいね？」
+                    PRINTFORMW 『うっ、私が作るのはご主人様にだけ…とはいかないわね。負けないわよ？』
+                ;乱数分岐:3
+                ELSEIF RAND:3 == 0
+                    PRINTFORMW 『すっかり衣玖も料理上手になっちゃって…私が嫁に貰っとけばよかったわ、もう』
+                    PRINTFORMW 「ふふっ、だそうですよ？%CALLNAME:MASTER%…気をつけて下さいね」
+                ;乱数分岐:2
+                ELSEIF RAND:2 == 0
+                    PRINTFORMW 「お待たせしました、%CALLNAME:MASTER%…♪あと一応天子も」
+                    PRINTFORMW 『露骨に私を邪魔者扱いするのはやめて、本当に』
+                ;その他の場合
+                ELSE
+                    PRINTFORMW 『何よこれ！すっごく美味しそうじゃない…私の分もあるのよね？』
+                    PRINTFORMW 「えっ」
+                    PRINTFORMW 『えっ』
+                ENDIF
+            ;料理技能Lv2以上
+            ELSEIF ABL:요리기능 >= 2
+                ;乱数分岐:2
+                IF RAND:2 == 0
+                    PRINTFORMW 『つまみ食いし過ぎたかも。私はちょっと後で食べるから残しておいてね』
+                    PRINTFORMW 「…美味しく作ることが出来たと解釈してあげます」
+                ;その他の場合
+                ELSE
+                    PRINTFORMW 「天子にも手伝って貰えましたし、きっと上手く出来てると思います」
+                    PRINTFORMW 『まあ、これなら人前に出しても恥ずかしくないでしょ』
+                ENDIF
+            ;その他の場合
+            ELSE
+                ;乱数分岐:2
+                IF RAND:2 == 0
+                    PRINTFORMW 『これ大丈夫なの？なんかその…ううん』
+                    PRINTFORMW 「…聞かないで下さい」
+                ;その他の場合
+                ELSE
+                    PRINTFORMW 『ふふん、なかなか苦労してたわね。まあ初めは皆そんなものよ』
+                    PRINTFORMW 「そんな、励ましてもらわなくても…ふふっ、次は頑張りますね？」
+                ENDIF
+            ENDIF
+        ;その他の場合
+        ELSE
+            ;乱数分岐:3
+            IF RAND:3 == 0
+                PRINTFORMW 「…では私はこれで」
+                PRINTFORMW 『なに遠慮してるのよ…いいから一緒に食べましょう？』
+            ;乱数分岐:2
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『遅いわよもう。待ちくたびれちゃったじゃない』
+                PRINTFORMW 「どうして当たり前のように天子がいるんですか…」
+            ;その他の場合
+            ELSE
+                PRINTFORMW 『…何か変なもの入ってないでしょうね』
+                PRINTFORMW 「さあ、確かめてみたらどうですか？」
+            ENDIF
+        ENDIF
+    ;その他
+    ELSE
+        ;연모
+        IF TALENT:연모
+            ;料理技能Lv3以上
+            IF ABL:요리기능 >= 3
+                ;乱数分岐:4
+                IF RAND:4 == 0
+                    PRINTFORMW 「少し工夫して作ってみたんです。上手くいってるといいんですけど…」
+                ;乱数分岐:3
+                ELSEIF RAND:3 == 0
+                    PRINTFORMW 「%CALLNAME:MASTER%にも手伝って頂きましたし…ふふっ、嬉しかったです」
+                ;乱数分岐:2
+                ELSEIF RAND:2 == 0
+                    PRINTFORMW 「…ちょっと多かったでしょうか。残してもいいですからね？」
+                ;その他の場合
+                ELSE
+                    PRINTFORMW 「ふふっ、今日はなかなか良く出来たと思いますよ？」
+                ENDIF
+            ;料理技能Lv2以上
+            ELSEIF ABL:요리기능 >= 2
+                ;乱数分岐:2
+                IF RAND:2 == 0
+                    PRINTFORMW 「ちょっと時間はかかりましたけど、何とか出来ましたよ」
+                ;その他の場合
+                ELSE
+                    PRINTFORMW 「ちゃんと本に載ってる通りには作りましたので、大丈夫です、きっと…！」
+                ENDIF
+            ;その他の場合
+            ELSE
+                ;乱数分岐:2
+                IF RAND:2 == 0
+                    PRINTFORMW 「これが今の私の精一杯です…」
+                ;その他の場合
+                ELSE
+                    PRINTFORMW 「…見た目の割にはおいしいと思います」
+                ENDIF
+            ENDIF
+        ;その他の場合
+        ELSE
+            ;乱数分岐:5
+            IF RAND:5 && MARK:반발각인 == 3
+                PRINTFORMW 「…全部黒焦げにしてやりたい気分です。雷の一発でも落とせたら」
+            ;乱数分岐:4
+            ELSEIF RAND:4 == 0
+                PRINTFORMW 「下界の食材はとても様々で…魅力的ですね」
+            ;乱数分岐:3
+            ELSEIF RAND:3 == 0
+                PRINTFORMW 「面倒です…手を抜いても…というわけにもいかないですよね、はあ」
+            ;乱数分岐:2
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「どうして真面目に料理なんかしてるんでしょう…」
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「…こんなもので十分でしょうか？」
+            ENDIF
+        ENDIF
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -574,13 +574,13 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE601
 IF TFLAG:99 <= 7
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 14
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 22
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -590,13 +590,13 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE602
 IF TFLAG:99 <= 9
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -606,13 +606,13 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE603
 IF TFLAG:99 <= 9
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -622,11 +622,11 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE604
 IF TFLAG:99 <= 25
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 29
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;========================================================
