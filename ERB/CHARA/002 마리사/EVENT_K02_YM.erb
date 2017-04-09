@@ -429,9 +429,8 @@ RETURN 0
 ;조교 종료시의 대사
 ;--------------------------------------------------
 @K2_END_YM
-;CFLAG:8000 == 1은 해당 조교에서 촉수에게 처녀를 잃었음을 의미. 이는 촉수 삽입 해제 시의 대사에만 사용하므로 해당 조교에서 해제하지 않고 조교를 끝냈다면 여기서 CFLAG:8000를 무의미한 값으로 변경. T
-SIF CFLAG:8000 == 1
-	CFLAG:8000++
+SIF marisaVirginDestroyedByTentacle == 1
+	marisaVirginDestroyedByTentacle--
 ;반발 각인 Lv3
 IF MARK:9 == 3
 	DRAWLINE
@@ -6731,11 +6730,11 @@ IF SELECTCOM == 501
 			;연모
 			IF TALENT:150 == 1
 				;処女
-				IF CFLAG:8000 == 1
+				IF marisaVirginDestroyedByTentacle == 1
 					PRINTFORMW 「하――――아. 하아……하아……」
 					PRINTFORMW 촉수에서 끊임없이 분비되는 점액에는, 마리사의 순결의 증거가 섞여 엷은 홍색을 띠고 있었다
 					PRINTFORMW 「네가 아니라, 이게 내 첫 상대인가……뭐, 마법사다운 첫 상대……이려나」
-					CFLAG:8000++
+					marisaVirginDestroyedByTentacle--
 				;그 외의 경우
 				ELSE
 					PRINTFORMW 「끝인가? 다음엔 너의 자지를 넣는 거지?」
@@ -6743,12 +6742,12 @@ IF SELECTCOM == 501
 			;그 외의 경우
 			ELSE
 				;処女
-				;死に分岐だと思うのだがどうだろうか？ (CFLAG:8000을 새로 사용하여 문제점을 해결함. T)
-				IF CFLAG:8000 == 1
+				;死に分岐だと思うのだがどうだろうか？ (marisaVirginDestroyedByTentacle을 새로 사용하여 문제점을 해결함. T)
+				IF marisaVirginDestroyedByTentacle == 1
 					PRINTFORMW 「――으극, 훌쩍, 히끅……우……아아아아아아……」
 					PRINTFORMW 마리사의 질 내에서 촉수가 빠져나왔다. 자신을 범한 촉수가 체내에서 떠난 뒤, 마리사는 처녀 상실의 충격과 통증으로 계속해서 울어댔다
 					PRINTFORMW 촉수에서 끊임없이 분비되는 점액에는, 마리사의 순결의 증거가 섞여 엷은 홍색을 띠고 있었다
-					CFLAG:8000++
+					marisaVirginDestroyedByTentacle--
 				;그 외의 경우
 				ELSE
 					PRINTFORMW 「끝난……건가?」
@@ -6790,7 +6789,7 @@ IF SELECTCOM == 501
 	ELSE
 		;처음
 		IF CFLAG:9501 == 0
-			CFLAG:8000 = TALENT:0
+			marisaVirginDestroyedByTentacle = (TALENT:0 == 1)
 			;연모
 			IF TALENT:150 == 1
 				;처녀
@@ -7518,7 +7517,7 @@ ENDIF
 IF SELECTCOM == 509
 	;처음
 	IF CFLAG:9509 == 0
-		CFLAG:8000 = TALENT:0
+		marisaVirginDestroyedByTentacle = (TALENT:0 == 1)
 		;연모
 		IF TALENT:150 == 1
 			PRINTFORMW 「잠깐 기다려, 아무리 그래도 한번에 이만큼은 너무 많아……므그으으으으읏!?」
