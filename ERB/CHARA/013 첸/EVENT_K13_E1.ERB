@@ -27,36 +27,36 @@ PRINTFORMW 「이불…들어가는군」
 @K13_MESSAGE_EVENT_401
 ;밤잠입 기승위(실패)
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「밤잠입 기승위(실패) 시의 말입니다」
+    ;PRINTFORMW 「밤잠입 기승위(실패) 시의 말입니다」
 ;밤잠입 기승위(성공)
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「밤잠입 기승위(성공) 시의 말입니다」
+    ;PRINTFORMW 「밤잠입 기승위(성공) 시의 말입니다」
 ;밤잠입 기승위(단념한다)
 ELSEIF GET_NIGHT_KOJO(0) == 3
-	;PRINTFORMW 「밤잠입으로 페라했을 때의 말입니다」
+    ;PRINTFORMW 「밤잠입으로 페라했을 때의 말입니다」
 ;밤잠입 기승위(자위)
 ELSEIF GET_NIGHT_KOJO(0) == 4
-	;PRINTFORMW 「밤잠입으로 자위했을 때의 말입니다」
+    ;PRINTFORMW 「밤잠입으로 자위했을 때의 말입니다」
 ;밤잠입 기승위(정조대 방어)
 ELSEIF GET_NIGHT_KOJO(0) == 5
-	;PRINTFORMW 「밤잠입 기승위(정조대 방어)때의 말입니다」
+    ;PRINTFORMW 「밤잠입 기승위(정조대 방어)때의 말입니다」
 ;밤잠입 기승위(주인이 범해지는 계)
 ELSEIF GET_NIGHT_KOJO(0) == 6 
 ;주인이 처녀의 경우 가랑이로 변경. 처녀 가랑이는 낭만인것 같기 때문에.
-	IF TALENT:MASTER:0 >= 1
-		;주인 캔버스 선반 리나등 엉덩이에 돌진한다. 예를들어 경험이 없어도.
-		IF TALENT:MASTER:121
-			;PRINTFORMW 「밤잠입으로 엉덩이를 범해질 때의 말입니다」
-		;처녀 가랑이
-		ELSE
-			;PRINTFORMW 「밤잠입으로 가랑이 당할 때의 말입니다」
-		ENDIF
-	ELSE
-		;PRINTFORMW 「밤잠입으로 전을 범해질 때의 말입니다」
-	ENDIF
+    IF TALENT:MASTER:0 >= 1
+        ;주인 캔버스 선반 리나등 엉덩이에 돌진한다. 예를들어 경험이 없어도.
+        IF TALENT:MASTER:121
+            ;PRINTFORMW 「밤잠입으로 엉덩이를 범해질 때의 말입니다」
+        ;처녀 가랑이
+        ELSE
+            ;PRINTFORMW 「밤잠입으로 가랑이 당할 때의 말입니다」
+        ENDIF
+    ELSE
+        ;PRINTFORMW 「밤잠입으로 전을 범해질 때의 말입니다」
+    ENDIF
 ;밤잠입 기승위(조개 우려라)
 ELSEIF GET_NIGHT_KOJO(0) == 7
-	;PRINTFORMW 「밤잠입 기승위(조개 대면시키고) 시의 말입니다」
+    ;PRINTFORMW 「밤잠입 기승위(조개 대면시키고) 시의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -81,13 +81,13 @@ ENDIF
 @K13_MESSAGE_EVENT_404
 ;야식의 초대된 후, 그대로신부도 먹습니다
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「야식의 초대된 후의 말입니다」
+    ;PRINTFORMW 「야식의 초대된 후의 말입니다」
 ;보통 신부와의 섹스입니다
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「노크의 뒤, 밀어 넘어뜨려졌을 때의 말입니다」
+    ;PRINTFORMW 「노크의 뒤, 밀어 넘어뜨려졌을 때의 말입니다」
 ;신부가 함께 아프면 왔으므로
 ELSE
-	;PRINTFORMW 「신부가 함께 아프면 왔을 때의 말입니다」
+    ;PRINTFORMW 「신부가 함께 아프면 왔을 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -97,13 +97,13 @@ ENDIF
 @K13_MESSAGE_EVENT_405
 ;보통 밤잠입
 IF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「보통 밤잠입시의 말입니다」
+    ;PRINTFORMW 「보통 밤잠입시의 말입니다」
 ;짜 취할 생각 만만의 적극적 하는 밤잠입
 ELSEIF GET_NIGHT_KOJO(0) == 3
-	;PRINTFORMW 「적극적 밤잠입시의 말입니다」
+    ;PRINTFORMW 「적극적 밤잠입시의 말입니다」
 ;처녀를 바치는 밤잠입
 ELSEIF GET_NIGHT_KOJO(0) == 4
-	PRINTFORMW (오늘이야말로%CALLNAME:MASTER%에…첸의 처음을 주자)
+    PRINTFORMW (오늘이야말로%CALLNAME:MASTER%에…첸의 처음을 주자)
 
 ENDIF
 
@@ -115,10 +115,10 @@ ENDIF
 @K13_MESSAGE_EVENT_406
 ;3명이 서로 격렬하게 섞이는(TARGET가 말하는, GET_CHARA_M(0)가 동반)
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「밤이벤트시의 3 P말입니다」
+    ;PRINTFORMW 「밤이벤트시의 3 P말입니다」
 ;2명이 서로 격렬하게 섞이는 , 동반자 GET_CHARA_M(0)는 보고 있을 뿐
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「밤이벤트시의 3 P말 2입니다」
+    ;PRINTFORMW 「밤이벤트시의 3 P말 2입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -140,10 +140,10 @@ ENDIF
 @K13_MESSAGE_EVENT_408
 ;분신 난교, 혼자서 1회만 발언, 실질 프랑만
 IF TFLAG:99 == 2
-	;PRINTFORMW 「혼자서 많은 사람 PT난교의 말입니다」
+    ;PRINTFORMW 「혼자서 많은 사람 PT난교의 말입니다」
 ;통상의 난교
 ELSE
-	PRINTFORMW 등 「첸…가득, 가득한가 내가(test)는」
+    PRINTFORMW 등 「첸…가득, 가득한가 내가(test)는」
 ENDIF
 
 ;-------------------------------------------------
@@ -154,11 +154,11 @@ ENDIF
 @K13_MESSAGE_EVENT_409
 ;정조대가 있으므로 자위할 수 없다
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「들여다 보고 자위로 정조대가 있는 경우시의 말입니다」
+    ;PRINTFORMW 「들여다 보고 자위로 정조대가 있는 경우시의 말입니다」
 ;그 자리에서 자위를 시작한다
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	PRINTFORMW 「…이니까, 첸에는…해 주지 않는거야…」
-	PRINTFORMW 「아…기분 생포하고……부족해 …」
+    PRINTFORMW 「…이니까, 첸에는…해 주지 않는거야…」
+    PRINTFORMW 「아…기분 생포하고……부족해 …」
 ENDIF
 
 ;-------------------------------------------------
@@ -179,11 +179,11 @@ ENDIF
 @K13_MESSAGE_EVENT_411
 ;채찍 치는 것
 IF GET_NIGHT_KOJO(0) == 1
-	PRINTFORMW 「첸…이것으로 얻어맞는 것 주제에 되어 버렸어 …」
-	PRINTFORMW 「첸가득…괴롭히며」
+    PRINTFORMW 「첸…이것으로 얻어맞는 것 주제에 되어 버렸어 …」
+    PRINTFORMW 「첸가득…괴롭히며」
 ;스팬 킹
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	PRINTFORMW 「첸 아픈 것…너무 좋아인 것……가득, 괴롭혀…」
+    PRINTFORMW 「첸 아픈 것…너무 좋아인 것……가득, 괴롭혀…」
 ENDIF
 
 ;-------------------------------------------------
@@ -228,9 +228,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_417
 IF TFLAG:99 == 0
-	;PRINTFORMW 「촉수가 폭주하고 있는 촉수간의 말입니다」
+    ;PRINTFORMW 「촉수가 폭주하고 있는 촉수간의 말입니다」
 ELSE
-	;PRINTFORMW 「노예에 의한 선의의 촉수간의 말입니다」
+    ;PRINTFORMW 「노예에 의한 선의의 촉수간의 말입니다」
 ENDIF
 ;-------------------------------------------------
 ;습격 이성 사이 플레이(습격측)
@@ -357,9 +357,9 @@ PRINTFORMW 「……아자 버린다」
 @K13_MESSAGE_EVENT_450
 ;연모
 IF TALENT:150 == 1
-	PRINTFORMW (등) 「이런 것도 즐겁지만……오늘 밤은 단 둘로…」
+    PRINTFORMW (등) 「이런 것도 즐겁지만……오늘 밤은 단 둘로…」
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
 ;3명이 술잔치
@@ -375,10 +375,10 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_452
 IF RAND:2 == 0
-	PRINTFORMW 「두 명과 대단한 기분이야 유혹하는…첸도 그런 식으로 해 주었으면 하는데…」
-	PRINTFORMW 「%CALLNAME:GET_CHARA_G(0)%같이 할 수 있으면(자) 해 줄지도…방으로 돌아가면(자) 이것으로 연습하자…」
+    PRINTFORMW 「두 명과 대단한 기분이야 유혹하는…첸도 그런 식으로 해 주었으면 하는데…」
+    PRINTFORMW 「%CALLNAME:GET_CHARA_G(0)%같이 할 수 있으면(자) 해 줄지도…방으로 돌아가면(자) 이것으로 연습하자…」
 ELSE
-	PRINTFORMW 「이것…첸이 한 사람입니다 때에 보면(자)…%CALLNAME:MASTER%로 해 주고 있는 것 같게 생각될까…」
+    PRINTFORMW 「이것…첸이 한 사람입니다 때에 보면(자)…%CALLNAME:MASTER%로 해 주고 있는 것 같게 생각될까…」
 ENDIF
 ;=================================================
 ;TFLAG:200 = 460~469:밤이베에 있어서의 주인이 조수와 보낼 때의 회화
@@ -390,11 +390,11 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_460
 IF TALENT:150 == 1
-	PRINTFORMW (%CALLNAME:MASTER%…오늘은 첸에 무엇인가…해 주는지)
+    PRINTFORMW (%CALLNAME:MASTER%…오늘은 첸에 무엇인가…해 주는지)
 ELSEIF TALENT:160 == 1
-	PRINTFORMW (%CALLNAME:MASTER%…오늘은 첸에 무엇인가…해 주는 것일까요…)
+    PRINTFORMW (%CALLNAME:MASTER%…오늘은 첸에 무엇인가…해 주는 것일까요…)
 ELSE
-	PRINTFORMW (%CALLNAME:MASTER%…오늘은 첸에 무엇인가…하는지)
+    PRINTFORMW (%CALLNAME:MASTER%…오늘은 첸에 무엇인가…하는지)
 ENDIF
 ;-------------------------------------------------
 ;조수와 섹스
@@ -427,16 +427,16 @@ ENDIF
 @K13_MESSAGE_EVENT_465
 ;여성으로 한다
 IF TFLAG:99 == 1
-	;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
+    ;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
 ;남성으로 한다
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
+    ;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
 ;복수인으로 한다
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
+    ;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
 ;벤치가 좋은 남자로 한다
 ELSEIF TFLAG:99 == 9
-	;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
+    ;PRINTFORMW 「조수와 마을로 제삼자를 섞어 우후후 할 때의 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -461,39 +461,39 @@ PRINTFORMW (등) 「이제 참을 수 없는…%CALLNAME:MASTER%도%CALLNAME:ASS
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_480
 SELECTCASE GET_NIGHT_KOJO(0)
-	;가랑이 강제
-	CASE 0
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;섹스
-	CASE 1
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;어널 섹스
-	CASE 2
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;젖퍽
-	CASE 3
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;이마라치오
-	CASE 4
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;자위
-	CASE 19
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;역레이프
-	CASE 100
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;역어널 레이프
-	CASE 200
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;강제 가랑이(주인이 여성)
-	CASE 300
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;강제조개 우려라
-	CASE 301
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
-	;쿠니 강제＆자위
-	CASE 302
-		;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;가랑이 강제
+    CASE 0
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;섹스
+    CASE 1
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;어널 섹스
+    CASE 2
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;젖퍽
+    CASE 3
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;이마라치오
+    CASE 4
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;자위
+    CASE 19
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;역레이프
+    CASE 100
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;역어널 레이프
+    CASE 200
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;강제 가랑이(주인이 여성)
+    CASE 300
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;강제조개 우려라
+    CASE 301
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
+    ;쿠니 강제＆자위
+    CASE 302
+        ;PRINTFORMW 「노예 주체의 밤잠입의 말입니다」
 ENDSELECT
 
 ;-------------------------------------------------
@@ -502,54 +502,54 @@ ENDSELECT
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_481
 SELECTCASE GET_NIGHT_KOJO(0)
-	;가랑이 해 준다
-	CASE 10
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;섹스 시켜 준다
-	CASE 11
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;어널 섹스 시켜 준다
-	CASE 12
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;파이즈리 해 준다
-	CASE 13
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;펠라치오 해 준다
-	CASE 14
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;자위 해 준다
-	CASE 15
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;자위 강제(장대 있어)
-	CASE 19
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;섹스 한다
-	CASE 110
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;가리켜 넣고
-	CASE 115
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;자위 강제(장대 없음)
-	CASE 119
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;어널 섹스 한다
-	CASE 210
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;어널 애무해 준다
-	CASE 215
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;아나운서 무릎 관절 강제
-	CASE 219
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;상호 애무
-	CASE 310
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;애무해 준다
-	CASE 311
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
-	;가슴 자위 강제
-	CASE 319
-		;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;가랑이 해 준다
+    CASE 10
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;섹스 시켜 준다
+    CASE 11
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;어널 섹스 시켜 준다
+    CASE 12
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;파이즈리 해 준다
+    CASE 13
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;펠라치오 해 준다
+    CASE 14
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;자위 해 준다
+    CASE 15
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;자위 강제(장대 있어)
+    CASE 19
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;섹스 한다
+    CASE 110
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;가리켜 넣고
+    CASE 115
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;자위 강제(장대 없음)
+    CASE 119
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;어널 섹스 한다
+    CASE 210
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;어널 애무해 준다
+    CASE 215
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;아나운서 무릎 관절 강제
+    CASE 219
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;상호 애무
+    CASE 310
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;애무해 준다
+    CASE 311
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
+    ;가슴 자위 강제
+    CASE 319
+        ;PRINTFORMW 「주인 주체의 밤잠입의 말입니다」
 ENDSELECT
 
 ;-------------------------------------------------
@@ -558,9 +558,9 @@ ENDSELECT
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_485
 IF RAND:2 == 0
-	PRINTFORMW 「첸…이런 건 보고 있으면(자) 참을 수 없어…TFLAGNAME:99…첸으로 해」
+    PRINTFORMW 「첸…이런 건 보고 있으면(자) 참을 수 없어…TFLAGNAME:99…첸으로 해」
 ELSE
-	PRINTFORMW 「TFLAGNAME:99…하고 싶은거야? 좋아…첸이 상대가 되어 준다……」
+    PRINTFORMW 「TFLAGNAME:99…하고 싶은거야? 좋아…첸이 상대가 되어 준다……」
 ENDIF
 ;-------------------------------------------------
 ;TFLAG:200 = 501~513:집단 목욕탕 이벤트로 사용
@@ -585,14 +585,14 @@ PRINTFORMW 「첸 욕실은 별로 좋아하지 않지만…모두 들어가는 
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_601
 IF ABL <=2
-	PRINTFORMW 「그…맛있어?」
-	PRINTFORMW 「별로 능숙하지 않으면 생각하지만…」
+    PRINTFORMW 「그…맛있어?」
+    PRINTFORMW 「별로 능숙하지 않으면 생각하지만…」
 ELSEIF ABL == 3
-	PRINTFORMW 「에헤헤…첸의 요리 조금은 맛있어졌다고 생각해」
-	PRINTFORMW 「어때? 맛있어?」
+    PRINTFORMW 「에헤헤…첸의 요리 조금은 맛있어졌다고 생각해」
+    PRINTFORMW 「어때? 맛있어?」
 ELSE
-	PRINTFORMW 「첸 자랑의 요리야 가득 먹어!」
-	PRINTFORMW 「또 먹고 싶어지면(자) 언제라도 만든다!」
+    PRINTFORMW 「첸 자랑의 요리야 가득 먹어!」
+    PRINTFORMW 「또 먹고 싶어지면(자) 언제라도 만든다!」
 ENDIF
 
 ;-------------------------------------------------
@@ -635,13 +635,13 @@ PRINTFORMW 「…%CALLNAME:MASTER%에 먹어 주었으면 했는데 ……」
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_801
 IF TFLAG:99 <= 7
-	;PRINTFORMW 「균열 고문 이벤트시의 말 1입니다」
+    ;PRINTFORMW 「균열 고문 이벤트시의 말 1입니다」
 ELSEIF TFLAG:99 <= 14
-	;PRINTFORMW 「균열 고문 이벤트시의 말 2입니다」
+    ;PRINTFORMW 「균열 고문 이벤트시의 말 2입니다」
 ELSEIF TFLAG:99 <= 22
-	;PRINTFORMW 「균열 고문 이벤트시의 말 3입니다」
+    ;PRINTFORMW 「균열 고문 이벤트시의 말 3입니다」
 ELSE
-	;PRINTFORMW 「균열 고문 이벤트시의 말 4입니다」
+    ;PRINTFORMW 「균열 고문 이벤트시의 말 4입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -651,13 +651,13 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_802
 IF TFLAG:99 <= 9
-	;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 1입니다」
+    ;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 1입니다」
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 2입니다」
+    ;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 2입니다」
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 3입니다」
+    ;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 3입니다」
 ELSE
-	;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 4입니다」
+    ;PRINTFORMW 「바이브래이터를 넣어 대로를 걷는 이벤트시의 말 4입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -667,13 +667,13 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_803
 IF TFLAG:99 <= 9
-	;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 1입니다」
+    ;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 1입니다」
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 2입니다」
+    ;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 2입니다」
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 3입니다」
+    ;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 3입니다」
 ELSE
-	;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 4입니다」
+    ;PRINTFORMW 「A바이브래이터를 넣어 대로를 걷는 이벤트시의 말 4입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -683,9 +683,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EVENT_804
 IF TFLAG:99 <= 25
-	;PRINTFORMW 「가두 자위 강제 이벤트시의 말 1입니다」
+    ;PRINTFORMW 「가두 자위 강제 이벤트시의 말 1입니다」
 ELSEIF TFLAG:99 <= 29
-	;PRINTFORMW 「가두 자위 강제 이벤트시의 말 2입니다」
+    ;PRINTFORMW 「가두 자위 강제 이벤트시의 말 2입니다」
 ELSE
-	;PRINTFORMW 「가두 자위 강제 이벤트시의 말 3입니다」
+    ;PRINTFORMW 「가두 자위 강제 이벤트시의 말 3입니다」
 ENDIF

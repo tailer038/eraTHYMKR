@@ -19,10 +19,10 @@
 @K28_MESSAGE_COM_400
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用吸血口上です」
+    ;PRINTFORMW 「初回用吸血口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「吸血口上です」
+    ;PRINTFORMW 「吸血口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -34,27 +34,27 @@ ENDIF
 @K28_MESSAGE_COM_401
 ;終了
 IF TEQUIP:70 == 0
-	;PRINTFORMW 「暗闇解除口上です」
+    ;PRINTFORMW 「暗闇解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「아…… 주인님, 보기 어렵지 않으신가요……?」
-	;それ以外
-	ELSE
-		PRINTFORMW (이 정도로 어둡다면…… 보기 힘들지만, 아직 눈은 쓸 수 있어)
-	ENDIF
+    ;恋慕
+    IF TALENT:150 == 1
+        PRINTFORMW 「아…… 주인님, 보기 어렵지 않으신가요……?」
+    ;それ以外
+    ELSE
+        PRINTFORMW (이 정도로 어둡다면…… 보기 힘들지만, 아직 눈은 쓸 수 있어)
+    ENDIF
 ELSE
-	;恋慕
-	IF TALENT:150 == 1
-		PRINTFORMW 「주인님, 발밑을 조심해주세요……」
-	;屈服刻印３
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 「아직…… 보이, 지만」
-	;それ以外
-	ELSE
-		PRINTFORMW (어떻게든 허를 찌를 수 없을까……)
-	ENDIF
+    ;恋慕
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인님, 발밑을 조심해주세요……」
+    ;屈服刻印３
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 「아직…… 보이, 지만」
+    ;それ以外
+    ELSE
+        PRINTFORMW (어떻게든 허를 찌를 수 없을까……)
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -64,10 +64,10 @@ ENDIF
 @K28_MESSAGE_COM_402
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用尻子玉抜き口上です」
+    ;PRINTFORMW 「初回用尻子玉抜き口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「尻子玉抜き口上です」
+    ;PRINTFORMW 「尻子玉抜き口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -77,13 +77,13 @@ ENDIF
 @K28_MESSAGE_COM_403
 ;終了
 IF TEQUIP:20 == 0
-	;PRINTFORMW 「焼芋責め解除口上です」
+    ;PRINTFORMW 「焼芋責め解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用焼芋責め口上です」
+    ;PRINTFORMW 「初回用焼芋責め口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「焼芋責め口上です」
+    ;PRINTFORMW 「焼芋責め口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -93,13 +93,13 @@ ENDIF
 @K28_MESSAGE_COM_404
 ;終了
 IF TEQUIP:25 == 0
-	;PRINTFORMW 「巨峰責め解除口上です」
+    ;PRINTFORMW 「巨峰責め解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用巨峰責め口上です」
+    ;PRINTFORMW 「初回用巨峰責め口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「巨峰責め口上です」
+    ;PRINTFORMW 「巨峰責め口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -109,13 +109,13 @@ ENDIF
 @K28_MESSAGE_COM_405
 ;終了
 IF TEQUIP:32 == 0
-	;PRINTFORMW 「石勺柏責め解除口上です」
+    ;PRINTFORMW 「石勺柏責め解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用石勺柏責め口上です」
+    ;PRINTFORMW 「初回用石勺柏責め口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「石勺柏責め口上です」
+    ;PRINTFORMW 「石勺柏責め口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -125,13 +125,13 @@ ENDIF
 @K28_MESSAGE_COM_406
 ;終了
 IF TEQUIP:40 == 0
-	;PRINTFORMW 「荊で緊縛解除口上です」
+    ;PRINTFORMW 「荊で緊縛解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用荊で緊縛口上です」
+    ;PRINTFORMW 「初回用荊で緊縛口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「荊で緊縛口上です」
+    ;PRINTFORMW 「荊で緊縛口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -141,10 +141,10 @@ ENDIF
 @K28_MESSAGE_COM_407
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用荊の鞭口上です」
+    ;PRINTFORMW 「初回用荊の鞭口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「荊の鞭口上です」
+    ;PRINTFORMW 「荊の鞭口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -154,10 +154,10 @@ ENDIF
 @K28_MESSAGE_COM_408
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用蜘蛛の糸口上です」
+    ;PRINTFORMW 「初回用蜘蛛の糸口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「蜘蛛の糸口上です」
+    ;PRINTFORMW 「蜘蛛の糸口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -167,10 +167,10 @@ ENDIF
 @K28_MESSAGE_COM_409
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用独楽回し口上です」
+    ;PRINTFORMW 「初回用独楽回し口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「独楽回し口上です」
+    ;PRINTFORMW 「独楽回し口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -180,10 +180,10 @@ ENDIF
 @K28_MESSAGE_COM_410
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用蜘蛛脚愛撫口上です」
+    ;PRINTFORMW 「初回用蜘蛛脚愛撫口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「蜘蛛脚愛撫口上です」
+    ;PRINTFORMW 「蜘蛛脚愛撫口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -193,10 +193,10 @@ ENDIF
 @K28_MESSAGE_COM_411
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用人形愛撫口上です」
+    ;PRINTFORMW 「初回用人形愛撫口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「人形愛撫口上です」
+    ;PRINTFORMW 「人形愛撫口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -206,13 +206,13 @@ ENDIF
 @K28_MESSAGE_COM_412
 ;終了
 IF TEQUIP:77 == 0
-	;PRINTFORMW 「操りの糸解除口上です」
+    ;PRINTFORMW 「操りの糸解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用操りの糸口上です」
+    ;PRINTFORMW 「初回用操りの糸口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「操りの糸口上です」
+    ;PRINTFORMW 「操りの糸口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -222,10 +222,10 @@ ENDIF
 @K28_MESSAGE_COM_413
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用豆炙り口上です」
+    ;PRINTFORMW 「初回用豆炙り口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「豆炙り口上です」
+    ;PRINTFORMW 「豆炙り口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -235,10 +235,10 @@ ENDIF
 @K28_MESSAGE_COM_414
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用乳豆炙り口上です」
+    ;PRINTFORMW 「初回用乳豆炙り口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「乳豆炙り口上です」
+    ;PRINTFORMW 「乳豆炙り口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -249,13 +249,13 @@ ENDIF
 @K28_MESSAGE_COM_415
 ;終了
 IF TEQUIP:74 == 0
-	;PRINTFORMW 「読心解除口上です」
+    ;PRINTFORMW 「読心解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用読心口上です」
+    ;PRINTFORMW 「初回用読心口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「読心口上です」
+    ;PRINTFORMW 「読心口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -266,10 +266,10 @@ ENDIF
 @K28_MESSAGE_COM_416
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用思姦口上です」
+    ;PRINTFORMW 「初回用思姦口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「思姦口上です」
+    ;PRINTFORMW 「思姦口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -279,10 +279,10 @@ ENDIF
 @K28_MESSAGE_COM_417
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用筆責め口上です」
+    ;PRINTFORMW 「初回用筆責め口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「筆責め口上です」
+    ;PRINTFORMW 「筆責め口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -293,9 +293,9 @@ ENDIF
 @K28_MESSAGE_COM_418
 ;終了
 IF TEQUIP:71 == 0
-	PRINTFORMW 　――되…… 읏!?」
+    PRINTFORMW 　――되…… 읏!?」
 ELSE
-	PRINTFORMW 「? 공간이 왜곡――
+    PRINTFORMW 「? 공간이 왜곡――
 ENDIF
 
 ;-------------------------------------------------
@@ -306,13 +306,13 @@ ENDIF
 @K28_MESSAGE_COM_419
 ;終了
 IF TEQUIP:73 == 0
-	;PRINTFORMW 「狂気の目解除口上です」
+    ;PRINTFORMW 「狂気の目解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用狂気の目口上です」
+    ;PRINTFORMW 「初回用狂気の目口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「狂気の目口上です」
+    ;PRINTFORMW 「狂気の目口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -322,10 +322,10 @@ ENDIF
 @K28_MESSAGE_COM_420
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用鈴蘭の毒口上です」
+    ;PRINTFORMW 「初回用鈴蘭の毒口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「鈴蘭の毒口上です」
+    ;PRINTFORMW 「鈴蘭の毒口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -335,10 +335,10 @@ ENDIF
 @K28_MESSAGE_COM_421
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用昆虫採集セットの薬口上です」
+    ;PRINTFORMW 「初回用昆虫採集セットの薬口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「昆虫採集セットの薬口上です」
+    ;PRINTFORMW 「昆虫採集セットの薬口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -348,10 +348,10 @@ ENDIF
 @K28_MESSAGE_COM_422
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用媚薬漬け口上です」
+    ;PRINTFORMW 「初回用媚薬漬け口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「媚薬漬け口上です」
+    ;PRINTFORMW 「媚薬漬け口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -361,10 +361,10 @@ ENDIF
 @K28_MESSAGE_COM_423
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用酒漬け口上です」
+    ;PRINTFORMW 「初回用酒漬け口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「酒漬け口上です」
+    ;PRINTFORMW 「酒漬け口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -374,10 +374,10 @@ ENDIF
 @K28_MESSAGE_COM_424
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用わかめ酒口上です」
+    ;PRINTFORMW 「初回用わかめ酒口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「わかめ酒口上です」
+    ;PRINTFORMW 「わかめ酒口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -387,10 +387,10 @@ ENDIF
 @K28_MESSAGE_COM_425
 ;初回ではない
 IF RESULT:1 == 0
-	;PRINTFORMW 「下段ガード口上です」
+    ;PRINTFORMW 「下段ガード口上です」
 ;その他
 ELSE
-	;PRINTFORMW 「初回用下段ガード口上です」
+    ;PRINTFORMW 「初回用下段ガード口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -400,10 +400,10 @@ ENDIF
 @K28_MESSAGE_COM_427
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用陰毛炙り口上です」
+    ;PRINTFORMW 「初回用陰毛炙り口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「陰毛炙り口上です」
+    ;PRINTFORMW 「陰毛炙り口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -413,10 +413,10 @@ ENDIF
 @K28_MESSAGE_COM_430
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用御所車口上です」
+    ;PRINTFORMW 「初回用御所車口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「御所車口上です」
+    ;PRINTFORMW 「御所車口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -426,10 +426,10 @@ ENDIF
 @K28_MESSAGE_COM_431
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用四身の拳口上です」
+    ;PRINTFORMW 「初回用四身の拳口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「フォーオブアカインド口上です」
+    ;PRINTFORMW 「フォーオブアカインド口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -439,13 +439,13 @@ ENDIF
 @K28_MESSAGE_COM_432
 ;終了
 IF TEQUIP:26 == 0
-	;PRINTFORMW 「氷柱責め解除口上です」
+    ;PRINTFORMW 「氷柱責め解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用氷柱責め口上です」
+    ;PRINTFORMW 「初回用氷柱責め口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「氷柱責め口上です」
+    ;PRINTFORMW 「氷柱責め口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -455,10 +455,10 @@ ENDIF
 @K28_MESSAGE_COM_433
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用アナル卒塔婆口上です」
+    ;PRINTFORMW 「初回用アナル卒塔婆口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「アナル卒塔婆口上です」
+    ;PRINTFORMW 「アナル卒塔婆口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -468,10 +468,10 @@ ENDIF
 @K28_MESSAGE_COM_434
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用角愛撫口上です」
+    ;PRINTFORMW 「初回用角愛撫口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「角愛撫口上です」
+    ;PRINTFORMW 「角愛撫口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -481,10 +481,10 @@ ENDIF
 @K28_MESSAGE_COM_435
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用角挿入口上です」
+    ;PRINTFORMW 「初回用角挿入口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「角挿入口上です」
+    ;PRINTFORMW 「角挿入口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -494,10 +494,10 @@ ENDIF
 @K28_MESSAGE_COM_436
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用角アナル挿入口上です」
+    ;PRINTFORMW 「初回用角アナル挿入口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「角アナル挿入口上です」
+    ;PRINTFORMW 「角アナル挿入口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -507,13 +507,13 @@ ENDIF
 @K28_MESSAGE_COM_437
 ;抜いたら地震発生！
 IF TEQUIP:20 == 0
-	;PRINTFORMW 「ヴァギナ要石解除口上です」
+    ;PRINTFORMW 「ヴァギナ要石解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用ヴァギナ要石口上です」
+    ;PRINTFORMW 「初回用ヴァギナ要石口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「ヴァギナ要石口上です」
+    ;PRINTFORMW 「ヴァギナ要石口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -523,13 +523,13 @@ ENDIF
 @K28_MESSAGE_COM_438
 ;抜いたら地震発生！
 IF TEQUIP:25 == 0
-	;PRINTFORMW 「アナル要石解除口上です」
+    ;PRINTFORMW 「アナル要石解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用アナル要石口上です」
+    ;PRINTFORMW 「初回用アナル要石口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「アナル要石口上です」
+    ;PRINTFORMW 「アナル要石口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -539,13 +539,13 @@ ENDIF
 @K28_MESSAGE_COM_439
 ;抜いたら地震発生！
 IF TEQUIP:20 == 0 && TEQUIP:25 == 0
-	;PRINTFORMW 「両穴要石解除口上です」
+    ;PRINTFORMW 「両穴要石解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用両穴要石口上です」
+    ;PRINTFORMW 「初回用両穴要石口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「両穴要石口上です」
+    ;PRINTFORMW 「両穴要石口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -556,10 +556,10 @@ ENDIF
 @K28_MESSAGE_COM_440
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用半霊を犯す口上です」
+    ;PRINTFORMW 「初回用半霊を犯す口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「半霊を犯す口上です」
+    ;PRINTFORMW 「半霊を犯す口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -570,10 +570,10 @@ ENDIF
 @K28_MESSAGE_COM_441
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用半霊を挿入(前)口上です」
+    ;PRINTFORMW 「初回用半霊を挿入(前)口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「半霊を挿入(前)口上です」
+    ;PRINTFORMW 「半霊を挿入(前)口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -584,10 +584,10 @@ ENDIF
 @K28_MESSAGE_COM_442
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用半霊を挿入(後)口上です」
+    ;PRINTFORMW 「初回用半霊を挿入(後)口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「半霊を挿入(後)口上です」
+    ;PRINTFORMW 「半霊を挿入(後)口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -598,13 +598,13 @@ ENDIF
 @K28_MESSAGE_COM_443
 ;終了
 IF TEQUIP:72 == 0
-	;PRINTFORMW 「幽明の苦輪解除口上です」
+    ;PRINTFORMW 「幽明の苦輪解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用幽明の苦輪口上です」
+    ;PRINTFORMW 「初回用幽明の苦輪口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「幽明の苦輪口上です」
+    ;PRINTFORMW 「幽明の苦輪口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -615,10 +615,10 @@ ENDIF
 @K28_MESSAGE_COM_444
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用半霊再構成口上です」
+    ;PRINTFORMW 「初回用半霊再構成口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「半霊再構成口上です」
+    ;PRINTFORMW 「半霊再構成口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -628,10 +628,10 @@ ENDIF
 @K28_MESSAGE_COM_445
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用薀蓄語り口上です」
+    ;PRINTFORMW 「初回用薀蓄語り口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「薀蓄語り口上です」
+    ;PRINTFORMW 「薀蓄語り口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -641,9 +641,9 @@ ENDIF
 @K28_MESSAGE_COM_446
 ;연모
 IF TALENT:150
-	PRINTFORMW 「옛날의 일이나, 이 이후의 일은 아무래도 좋습니다……지금은, 주인님만 있다면……♪」
+    PRINTFORMW 「옛날의 일이나, 이 이후의 일은 아무래도 좋습니다……지금은, 주인님만 있다면……♪」
 ELSE
-	PRINTFORMW 「이, 이제 그만, 그 이야기는……!」
+    PRINTFORMW 「이, 이제 그만, 그 이야기는……!」
 ENDIF
 
 ;-------------------------------------------------
@@ -653,10 +653,10 @@ ENDIF
 @K28_MESSAGE_COM_447
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用傘を愛撫する口上です」
+    ;PRINTFORMW 「初回用傘を愛撫する口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「傘を愛撫する口上です」
+    ;PRINTFORMW 「傘を愛撫する口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -666,13 +666,13 @@ ENDIF
 @K28_MESSAGE_COM_448
 ;終了
 IF TEQUIP:79 == 0
-	;PRINTFORMW 「房中術解除口上です」
+    ;PRINTFORMW 「房中術解除口上です」
 ;初回のみ
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「初回用房中術口上です」
+    ;PRINTFORMW 「初回用房中術口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「房中術口上です」
+    ;PRINTFORMW 「房中術口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -682,10 +682,10 @@ ENDIF
 @K28_MESSAGE_COM_449
 ;初回ではない
 IF RESULT:1 == 0
-	;PRINTFORMW 「フィーバー！口上です」
+    ;PRINTFORMW 「フィーバー！口上です」
 ;その他
 ELSE
-	;PRINTFORMW 「初回用フィーバー！口上です」
+    ;PRINTFORMW 「初回用フィーバー！口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -695,10 +695,10 @@ ENDIF
 @K28_MESSAGE_COM_450
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用ピッチャー二つ口上です」
+    ;PRINTFORMW 「初回用ピッチャー二つ口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「ピッチャー二つ口上です」
+    ;PRINTFORMW 「ピッチャー二つ口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -708,10 +708,10 @@ ENDIF
 @K28_MESSAGE_COM_451
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用酔生夢死口上です」
+    ;PRINTFORMW 「初回用酔生夢死口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「酔生夢死口上です」
+    ;PRINTFORMW 「酔生夢死口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -721,9 +721,9 @@ ENDIF
 @K28_MESSAGE_COM_452
 ;終了
 IF TEQUIP:80 == 0
-	;PRINTFORMW 「超凝視解除口上です」
+    ;PRINTFORMW 「超凝視解除口上です」
 ELSE
-	PRINTFORMW 「이 눈……어두, 워……!」
+    PRINTFORMW 「이 눈……어두, 워……!」
 ENDIF
 
 ;-------------------------------------------------
@@ -733,8 +733,8 @@ ENDIF
 @K28_MESSAGE_COM_453
 ;初回のみ
 IF RESULT:1 == 1
-	;PRINTFORMW 「初回用傘に舐めさせる口上です」
+    ;PRINTFORMW 「初回用傘に舐めさせる口上です」
 ;２回目以降
 ELSE
-	;PRINTFORMW 「傘に舐めさせる口上です」
+    ;PRINTFORMW 「傘に舐めさせる口上です」
 ENDIF

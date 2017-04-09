@@ -30,22 +30,22 @@ RETURN 1
 ;========================================================
 @SET_CHARA_KOJO_EXTRA_K81
 IF  CFLAG:7002 == 0
-		PRINTL ミスティアとの間柄は……
-		PRINTL [0] ちんちんかもかも関係（よろしくしてるよ派）
-		PRINTL [1] 普通のバンド仲間（至って健全だよ派）
-	$INPUT_LOOP_1
-	INPUT
-	IF RESULT == 0
-		PRINTFORMW みすちーとの相性を上げます
-		RELATION:25 = 150
-			SIF ABL:22 == 1
-				ABL:22 += 1
-	ELSEIF RESULT == 1
-		PRINTFORMW みすちーとの相性を上げません
-	ELSE
-		GOTO INPUT_LOOP_1
-	ENDIF
-	CFLAG:7002 = 1
+        PRINTL ミスティアとの間柄は……
+        PRINTL [0] ちんちんかもかも関係（よろしくしてるよ派）
+        PRINTL [1] 普通のバンド仲間（至って健全だよ派）
+    $INPUT_LOOP_1
+    INPUT
+    IF RESULT == 0
+        PRINTFORMW みすちーとの相性を上げます
+        RELATION:25 = 150
+            SIF ABL:22 == 1
+                ABL:22 += 1
+    ELSEIF RESULT == 1
+        PRINTFORMW みすちーとの相性を上げません
+    ELSE
+        GOTO INPUT_LOOP_1
+    ENDIF
+    CFLAG:7002 = 1
 ENDIF
 
 ;========================================================
@@ -54,25 +54,25 @@ ENDIF
 @EVENTTRAIN
 ;대사 표시를 OFF했을 경우에는 돌아온다
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 81
-	RETURN 0
+    RETURN 0
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 DRAWLINE
 
 ;調教開始口上分岐
 IF CFLAG:5201 == 0
-	TRYCALL K81_MESSAGE_START_1
+    TRYCALL K81_MESSAGE_START_1
 ELSE
-	TRYCALL K81_MESSAGE_START_2
+    TRYCALL K81_MESSAGE_START_2
 ENDIF
 
 ;-------------------------------------------------
@@ -80,16 +80,16 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_START_1
 IF CFLAG:5201 == 0
-	PRINTFORMW 「ん…ここは…？」
-	PRINTFORMW 「あなたは…？ちょう…きょう…？」
-	PRINTFORMW 「！！！」
-	PRINTFORMW 「止めて下さい！明日はミスティアとライブを…」
-	PRINTFORMW 「…」
-	PRINTFORMW 「絶対にあなたの言いなりにはなりません！」
-	PRINTFORMW 「これでも命連寺で修練を重ねていたのです！」
-	PRINTFORMW 「絶対に…欲に溺れたりしません！」
-	CFLAG:5201 = 1
-	RETURN 1
+    PRINTFORMW 「ん…ここは…？」
+    PRINTFORMW 「あなたは…？ちょう…きょう…？」
+    PRINTFORMW 「！！！」
+    PRINTFORMW 「止めて下さい！明日はミスティアとライブを…」
+    PRINTFORMW 「…」
+    PRINTFORMW 「絶対にあなたの言いなりにはなりません！」
+    PRINTFORMW 「これでも命連寺で修練を重ねていたのです！」
+    PRINTFORMW 「絶対に…欲に溺れたりしません！」
+    CFLAG:5201 = 1
+    RETURN 1
 ENDIF
 
 ;-------------------------------------------------
@@ -98,44 +98,44 @@ ENDIF
 @K81_MESSAGE_START_2
 ;상애
 IF CFLAG:5201 < 4 && TALENT:상애
-	PRINTFORMW 「おはようございます！」
-	PRINTFORMW 「今日も一日…って今日からは奥さんなんですよね、私」
-	PRINTFORMW 「色々あって%CALLNAME:MASTER%さんを好きになって…」
-	PRINTFORMW 「出来ることならもう少しロマンチックな出会い方をしたかったなーって思いますけど」
-	PRINTFORMW 「それでも%CALLNAME:MASTER%さんに出会えたってこと自体が幸せです！」
-	PRINTFORMW 「今日もいっぱい愛してください！あなたにいつまでもどこまでも」
-	PRINTFORMW 「付いていきますから！」
-	CFLAG:5201 = 4
-	RETURN 1
+    PRINTFORMW 「おはようございます！」
+    PRINTFORMW 「今日も一日…って今日からは奥さんなんですよね、私」
+    PRINTFORMW 「色々あって%CALLNAME:MASTER%さんを好きになって…」
+    PRINTFORMW 「出来ることならもう少しロマンチックな出会い方をしたかったなーって思いますけど」
+    PRINTFORMW 「それでも%CALLNAME:MASTER%さんに出会えたってこと自体が幸せです！」
+    PRINTFORMW 「今日もいっぱい愛してください！あなたにいつまでもどこまでも」
+    PRINTFORMW 「付いていきますから！」
+    CFLAG:5201 = 4
+    RETURN 1
 ;연모
 ELSEIF CFLAG:5201 < 3 && TALENT:연모
-	PRINTFORMW 「あの…あの！」
-	PRINTFORMW 「その…ですね！」
-	PRINTFORML 響子にしては珍しく語尾が上がったり下がったりしている
-	PRINTFORMW 「さ、最近%CALLNAME:MASTER%さんのことを考えていると…」
-	PRINTFORMW 「む、胸がどきどきしたりですね！その…」
-	PRINTFORMW そこまで言って響子は俯きそれから息を大きく吸った
-	PRINTFORMW 
-	PRINTFORMW 「好きです！」
-	PRINTFORMW 「…」
-	PRINTFORMW 「%CALLNAME:MASTER%さんに出会って色々ありましたけど…」
-	PRINTFORMW 「最近は%CALLNAME:MASTER%さんに調教されるのが楽しくなってきて…」
-	PRINTFORMW 「好きになっちゃったんです！」
-	PRINTFORMW 「ですので！どうかこれからも私と…」
-	PRINTFORMW 「一緒になってください！出来る限りのことをします！」
-	CFLAG:5201 = 3
-	RETURN 1
+    PRINTFORMW 「あの…あの！」
+    PRINTFORMW 「その…ですね！」
+    PRINTFORML 響子にしては珍しく語尾が上がったり下がったりしている
+    PRINTFORMW 「さ、最近%CALLNAME:MASTER%さんのことを考えていると…」
+    PRINTFORMW 「む、胸がどきどきしたりですね！その…」
+    PRINTFORMW そこまで言って響子は俯きそれから息を大きく吸った
+    PRINTFORMW 
+    PRINTFORMW 「好きです！」
+    PRINTFORMW 「…」
+    PRINTFORMW 「%CALLNAME:MASTER%さんに出会って色々ありましたけど…」
+    PRINTFORMW 「最近は%CALLNAME:MASTER%さんに調教されるのが楽しくなってきて…」
+    PRINTFORMW 「好きになっちゃったんです！」
+    PRINTFORMW 「ですので！どうかこれからも私と…」
+    PRINTFORMW 「一緒になってください！出来る限りのことをします！」
+    CFLAG:5201 = 3
+    RETURN 1
 ;굴복각인Lv3
 ELSEIF CFLAG:5201 < 2 && MARK:굴복각인 == 3
-	PRINTFORMW 「ん…あ…」
-	PRINTFORMW 「もう…悪いことはしません…だからどうか…」
-	PRINTFORMW 「私を…愛してください…」
-	CFLAG:5201 = 2
-	RETURN 1
+    PRINTFORMW 「ん…あ…」
+    PRINTFORMW 「もう…悪いことはしません…だからどうか…」
+    PRINTFORMW 「私を…愛してください…」
+    CFLAG:5201 = 2
+    RETURN 1
 
 ;助手の有無をチェック（いない場合は二回目以降へ飛ぶ）
 ELSEIF ASSI < 0 
-	CALL K81_MESSAGE_START_3
+    CALL K81_MESSAGE_START_3
 
 ;-------------------------------------------------
 ;助手との掛け合い
@@ -143,103 +143,103 @@ ELSEIF ASSI < 0
 ;-------------------------------------------------
 ;助手がミスティア
 ELSEIF NO:ASSI == 25
-	;初めて
-	IF CFLAG:5202 == 0
-		;2人に연모
-		IF TALENT:연모 && TALENT:ASSI:연모
-			PRINTFORMW 『な、何で響子がここに！？』
-			PRINTFORMW 「みすちーだってなんでここに…」
-			PRINTFORMW 『そりゃあここでご主人様といっぱいシてるからよ！』
-			PRINTFORMW 『それはもうしっぽりとずっぽりと熱い夜を毎晩毎晩…』
-			PRINTFORMW 「な…な…」
-			PRINTFORMW 「そんなことないもん！私のほうがすっとずうぅぅぅっとご主人様のことを愛してるもん！」
-			PRINTFORMW 『ふふん！なら今日は先にご主人様をイかせた方が勝ちってのはどう？』
-			PRINTFORMW 「わ、分かったわ…いつまでも昔のままの私だと思わないことね！」
-		;響子のみ연모
-		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
-			PRINTFORMW 「あれ？みすちーどうしてここに？」
-			PRINTFORMW 『どうもこうもないわよ！いきなり奴隷にされたとかで連れて来られて！』
-			PRINTFORMW 『こんな…変態の言いなりになって…』
-			PRINTFORMW 『それより響子、あなたも捕まって変な事されてない？早くここから一緒に…』
-			PRINTFORMW 「なに言ってるのみすちー？」
-			PRINTFORMW 「私はこの人と一緒にいたい」
-			PRINTFORMW 「この人に尽くしたいと思ったからここにいるの」
-			PRINTFORMW 『何…言ってるの…？』
-			PRINTFORMW 「みすちーも一緒に気持ちよくなろ？」
-		;ミスティアのみ연모
-		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
-			PRINTFORMW 『あっれー響子なにやってんの？』
-			PRINTFORMW 「…この卑怯者！みすちーを盾に…」
-			PRINTFORMW 『何言ってるの？』
-			PRINTFORMW 『私は自分の意思でご主人様に従っているの！』
-			PRINTFORMW 『いいじゃないの…一緒に楽しんだほうがさ』
-			PRINTFORMW 『響子も抵抗しなくなれば…楽しくなるよ？あはっ！！』
-			PRINTFORMW 響子は苦虫を噛み潰した顔でこちらを睨んでいる
-		;その他
-		ELSE
-			PRINTFORMW 「今日は何を…」
-			PRINTFORML 
-			PRINTFORMW 「なんで…みすちーがここにいるの…？」
-			PRINTFORMW 『あ…あ…響子…違うの…』
-			PRINTFORMW 『これはね…ひぐっ…違うの…』
-			PRINTFORMW 「…」
-		ENDIF
-		CFLAG:5202 = 1
-		RETURN 1
-	;2回目以降
-	ELSEIF CFLAG:5202 == 1
-		;2人に연모
-		IF TALENT:연모 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 『今日も三人で…するの？』
-				PRINTFORMW 「セッションしましょう！ご主人様！」
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「んー今日もみすちーと一緒ー？」
-				PRINTFORMW 『何よ！文句あるの！？なら二人とも私のテクでイかせてあげるんだから！』
-			ELSE
-				PRINTFORMW 「ねえみすちーご主人様のせーしどっちがいっぱい出せるか勝負しない？」
-				PRINTFORMW 『いいわよ、ただし負けた方が勝った方の言うことを何でも聞くって条件でね！』
-			ENDIF
-		;響子のみ연모
-		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
-			IF RAND:3 == 0
-				PRINTFORMW 「みすちーもさ、楽しまないと損だと思うよ？」
-				PRINTFORMW 『何言ってるの…響子…そんなに溜まってたの…？』
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「ん…みすちー…一緒にご主人様のせーし貰いましょ？」
-				PRINTFORMW 『止めてよ！なんでこんなことに…』
-			ELSE
-				PRINTFORMW 『いつまで…いつまで続くのこの悪夢は…』
-				PRINTFORMW 「悪夢でも淫夢でも楽しめればいいんじゃないのかなぁ」
-			ENDIF
-		;ミスティアのみ연모
-		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 「なんで…みすちー…」
-				PRINTFORMW 『気持ちいいことをするのがそんなに悪いことかなぁ？』
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ご主人様に愛してもらえるってだけで十分なのに響子は欲張りだなぁ』
-				PRINTFORMW 「何言ってるの！？元に戻ってよ…みすちー…」
-			ELSE
-				PRINTFORMW 『あんなにぐちょぐちょにされてまだ抵抗するの？もったいないなぁ』
-				PRINTFORMW 「もうやだぁ…誰か…助けて…」
-			ENDIF
-		;その他
-		ELSE
-			IF RAND:2 == 0
-				PRINTFORMW 「何で…？何でよ！みすちー…」
-				PRINTFORMW 『ごめんなさいごめんなさいごめんなさいごめんなさい…』
-			ELSE
-				PRINTFORMW 『違うの…こんな…』
-				PRINTFORMW 「…」
-			ENDIF
-		ENDIF
-		RETURN 1
-	ENDIF
+    ;初めて
+    IF CFLAG:5202 == 0
+        ;2人に연모
+        IF TALENT:연모 && TALENT:ASSI:연모
+            PRINTFORMW 『な、何で響子がここに！？』
+            PRINTFORMW 「みすちーだってなんでここに…」
+            PRINTFORMW 『そりゃあここでご主人様といっぱいシてるからよ！』
+            PRINTFORMW 『それはもうしっぽりとずっぽりと熱い夜を毎晩毎晩…』
+            PRINTFORMW 「な…な…」
+            PRINTFORMW 「そんなことないもん！私のほうがすっとずうぅぅぅっとご主人様のことを愛してるもん！」
+            PRINTFORMW 『ふふん！なら今日は先にご主人様をイかせた方が勝ちってのはどう？』
+            PRINTFORMW 「わ、分かったわ…いつまでも昔のままの私だと思わないことね！」
+        ;響子のみ연모
+        ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
+            PRINTFORMW 「あれ？みすちーどうしてここに？」
+            PRINTFORMW 『どうもこうもないわよ！いきなり奴隷にされたとかで連れて来られて！』
+            PRINTFORMW 『こんな…変態の言いなりになって…』
+            PRINTFORMW 『それより響子、あなたも捕まって変な事されてない？早くここから一緒に…』
+            PRINTFORMW 「なに言ってるのみすちー？」
+            PRINTFORMW 「私はこの人と一緒にいたい」
+            PRINTFORMW 「この人に尽くしたいと思ったからここにいるの」
+            PRINTFORMW 『何…言ってるの…？』
+            PRINTFORMW 「みすちーも一緒に気持ちよくなろ？」
+        ;ミスティアのみ연모
+        ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
+            PRINTFORMW 『あっれー響子なにやってんの？』
+            PRINTFORMW 「…この卑怯者！みすちーを盾に…」
+            PRINTFORMW 『何言ってるの？』
+            PRINTFORMW 『私は自分の意思でご主人様に従っているの！』
+            PRINTFORMW 『いいじゃないの…一緒に楽しんだほうがさ』
+            PRINTFORMW 『響子も抵抗しなくなれば…楽しくなるよ？あはっ！！』
+            PRINTFORMW 響子は苦虫を噛み潰した顔でこちらを睨んでいる
+        ;その他
+        ELSE
+            PRINTFORMW 「今日は何を…」
+            PRINTFORML 
+            PRINTFORMW 「なんで…みすちーがここにいるの…？」
+            PRINTFORMW 『あ…あ…響子…違うの…』
+            PRINTFORMW 『これはね…ひぐっ…違うの…』
+            PRINTFORMW 「…」
+        ENDIF
+        CFLAG:5202 = 1
+        RETURN 1
+    ;2回目以降
+    ELSEIF CFLAG:5202 == 1
+        ;2人に연모
+        IF TALENT:연모 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 『今日も三人で…するの？』
+                PRINTFORMW 「セッションしましょう！ご主人様！」
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「んー今日もみすちーと一緒ー？」
+                PRINTFORMW 『何よ！文句あるの！？なら二人とも私のテクでイかせてあげるんだから！』
+            ELSE
+                PRINTFORMW 「ねえみすちーご主人様のせーしどっちがいっぱい出せるか勝負しない？」
+                PRINTFORMW 『いいわよ、ただし負けた方が勝った方の言うことを何でも聞くって条件でね！』
+            ENDIF
+        ;響子のみ연모
+        ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
+            IF RAND:3 == 0
+                PRINTFORMW 「みすちーもさ、楽しまないと損だと思うよ？」
+                PRINTFORMW 『何言ってるの…響子…そんなに溜まってたの…？』
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「ん…みすちー…一緒にご主人様のせーし貰いましょ？」
+                PRINTFORMW 『止めてよ！なんでこんなことに…』
+            ELSE
+                PRINTFORMW 『いつまで…いつまで続くのこの悪夢は…』
+                PRINTFORMW 「悪夢でも淫夢でも楽しめればいいんじゃないのかなぁ」
+            ENDIF
+        ;ミスティアのみ연모
+        ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 「なんで…みすちー…」
+                PRINTFORMW 『気持ちいいことをするのがそんなに悪いことかなぁ？』
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『ご主人様に愛してもらえるってだけで十分なのに響子は欲張りだなぁ』
+                PRINTFORMW 「何言ってるの！？元に戻ってよ…みすちー…」
+            ELSE
+                PRINTFORMW 『あんなにぐちょぐちょにされてまだ抵抗するの？もったいないなぁ』
+                PRINTFORMW 「もうやだぁ…誰か…助けて…」
+            ENDIF
+        ;その他
+        ELSE
+            IF RAND:2 == 0
+                PRINTFORMW 「何で…？何でよ！みすちー…」
+                PRINTFORMW 『ごめんなさいごめんなさいごめんなさいごめんなさい…』
+            ELSE
+                PRINTFORMW 『違うの…こんな…』
+                PRINTFORMW 「…」
+            ENDIF
+        ENDIF
+        RETURN 1
+    ENDIF
 
 ;口上のある助手が居ない場合は、通常の二回目以降の口上へ飛ぶ
 ELSE
-	CALL K81_MESSAGE_START_3
+    CALL K81_MESSAGE_START_3
 ENDIF
 
 ;-------------------------------------------------
@@ -248,114 +248,114 @@ ENDIF
 @K81_MESSAGE_START_3
 ;상애
 IF TALENT:상애
-	IF RAND:4 == 0
-		PRINTFORMW 「はい！今日もいっぱい愛し合いましょう！」
-		PRINTFORMW 「できれば…いつもより激しくです！！」
-		PRINTFORMW 「…もう！今更恥ずかしがらないでください！」
-	ELSEIF RAND:3 == 0
-		PRINTFORMW 「さあさあ！今日も頑張りましょう！」
-		PRINTFORMW 「あ…できればですね、今日は優しく…」
-		PRINTFORMW 「ん…せっかく夫婦なんですしたまには優しく愛し合うのもどうかなーって思いまして」
-		PRINTFORMW 「ダメ…かな…？」
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「今日のお勤めは終了です！終了！」
-		PRINTFORMW 「一緒に子作りしましょう！」
-	ELSE
-		PRINTFORMW 「旦那様！お帰りなさい！」
-		PRINTFORMW 「ご飯ですか！？お風呂ですか！？それとも…」
-		PRINTFORMW 「やっぱり私ですね！いっぱい愛をください！！」
-	ENDIF
-	RETURN 1
+    IF RAND:4 == 0
+        PRINTFORMW 「はい！今日もいっぱい愛し合いましょう！」
+        PRINTFORMW 「できれば…いつもより激しくです！！」
+        PRINTFORMW 「…もう！今更恥ずかしがらないでください！」
+    ELSEIF RAND:3 == 0
+        PRINTFORMW 「さあさあ！今日も頑張りましょう！」
+        PRINTFORMW 「あ…できればですね、今日は優しく…」
+        PRINTFORMW 「ん…せっかく夫婦なんですしたまには優しく愛し合うのもどうかなーって思いまして」
+        PRINTFORMW 「ダメ…かな…？」
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「今日のお勤めは終了です！終了！」
+        PRINTFORMW 「一緒に子作りしましょう！」
+    ELSE
+        PRINTFORMW 「旦那様！お帰りなさい！」
+        PRINTFORMW 「ご飯ですか！？お風呂ですか！？それとも…」
+        PRINTFORMW 「やっぱり私ですね！いっぱい愛をください！！」
+    ENDIF
+    RETURN 1
 ;연모2回目以降
 ELSEIF TALENT:연모
-	IF RAND:5 == 0
-		PRINTFORMW 「%CALLNAME:MASTER%さん！おはようございます！」
-		PRINTFORMW 「はい！響子は今日も元気いっぱいです！」
-	ELSEIF RAND:4 == 0
-		PRINTFORMW 「ぎゃ～て～ぎゃ～て～…あ、おはようございます！」
-		PRINTFORMW 「今日も元気に頑張りましょう！」
-		PRINTFORMW 「え？何を頑張るかって？」
-		PRINTFORMW 「ふふふ、もう！意地悪言わないでください」
-		PRINTFORMW 「今から二人の愛を確かめるのです！」
-	ELSEIF RAND:3 == 0
-		PRINTFORMW 「ぜ～む～と～ど～しゅ～…うーん…？」
-		PRINTFORMW 「ご主人様！いっぱい溜め込んでるみたいですね～」
-		PRINTFORMW 「なんで分かるかって？ふっふっふ～ん」
-		PRINTFORMW 「これでも%CALLNAME:MASTER%さんのことならなんでも分かりますからね！」
-		PRINTFORMW 「ではでは響子を存分にお使いください！」
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「ご主人様！」
-		PRINTFORMW 「一人で色々やっていましたが飽きました！」
-		PRINTFORMW 「なので！ご主人様をいっぱ～いください！！！」
-	ELSE
-		PRINTFORMW 「？修練やライブはいいのか…ですか？」
-		PRINTFORMW 「そうですね…どっちも大切ですけど…今は…」
-		PRINTFORMW 「今はあなたと一緒にいられることが一番です！」
-	ENDIF
-	RETURN 1
+    IF RAND:5 == 0
+        PRINTFORMW 「%CALLNAME:MASTER%さん！おはようございます！」
+        PRINTFORMW 「はい！響子は今日も元気いっぱいです！」
+    ELSEIF RAND:4 == 0
+        PRINTFORMW 「ぎゃ～て～ぎゃ～て～…あ、おはようございます！」
+        PRINTFORMW 「今日も元気に頑張りましょう！」
+        PRINTFORMW 「え？何を頑張るかって？」
+        PRINTFORMW 「ふふふ、もう！意地悪言わないでください」
+        PRINTFORMW 「今から二人の愛を確かめるのです！」
+    ELSEIF RAND:3 == 0
+        PRINTFORMW 「ぜ～む～と～ど～しゅ～…うーん…？」
+        PRINTFORMW 「ご主人様！いっぱい溜め込んでるみたいですね～」
+        PRINTFORMW 「なんで分かるかって？ふっふっふ～ん」
+        PRINTFORMW 「これでも%CALLNAME:MASTER%さんのことならなんでも分かりますからね！」
+        PRINTFORMW 「ではでは響子を存分にお使いください！」
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「ご主人様！」
+        PRINTFORMW 「一人で色々やっていましたが飽きました！」
+        PRINTFORMW 「なので！ご主人様をいっぱ～いください！！！」
+    ELSE
+        PRINTFORMW 「？修練やライブはいいのか…ですか？」
+        PRINTFORMW 「そうですね…どっちも大切ですけど…今は…」
+        PRINTFORMW 「今はあなたと一緒にいられることが一番です！」
+    ENDIF
+    RETURN 1
 ;반발각인Lv3
 ELSEIF MARK:반발각인 == 3
-	IF RAND:3 == 0
-		PRINTFORMW 「なんで…こんな酷いことを…」
-		PRINTFORMW 「絶対に…絶対に許しません」
-		PRINTFORMW 「絶対…」
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「私は山彦です…人の声に答え、それを増幅させて返す」
-		PRINTFORMW 「あなたの心の声が分かります…」
-		PRINTFORMW 「酷い人です！鬼です！悪魔です！」
-		PRINTFORMW 「そんなに非力な私ををいじめるのが好きですか！？」
-	ELSE
-		PRINTFORMW 「来ないで！」
-		PRINTFORMW 山彦は必死に叫び、その身を守ろうとしている
-		PRINTFORMW しかし抵抗むなしくあえなく押さえつけられその素肌を露にされた
-	ENDIF
-	RETURN 1
+    IF RAND:3 == 0
+        PRINTFORMW 「なんで…こんな酷いことを…」
+        PRINTFORMW 「絶対に…絶対に許しません」
+        PRINTFORMW 「絶対…」
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「私は山彦です…人の声に答え、それを増幅させて返す」
+        PRINTFORMW 「あなたの心の声が分かります…」
+        PRINTFORMW 「酷い人です！鬼です！悪魔です！」
+        PRINTFORMW 「そんなに非力な私ををいじめるのが好きですか！？」
+    ELSE
+        PRINTFORMW 「来ないで！」
+        PRINTFORMW 山彦は必死に叫び、その身を守ろうとしている
+        PRINTFORMW しかし抵抗むなしくあえなく押さえつけられその素肌を露にされた
+    ENDIF
+    RETURN 1
 ;굴복각인Lv1
 ELSEIF MARK:굴복각인 == 1
-	IF RAND:2 == 0
-		PRINTFORMW 「その…あなたの力は分かりましたから…」
-		PRINTFORMW 「少しでも…ほんの少しでいいから優しくしてくれませんか…？」
-		PRINTFORMW 「その…この前は少しだけ…ほんの少しだけ気持ちよかったから…」
-	ELSE
-		PRINTFORMW 「私にもライブや修練の予定があってですね…」
-		PRINTFORMW 「こんなことしている場合じゃないんです！」
-		PRINTFORMW 「私をどれだけ酷く扱っても構いません！でも、せめて歌だけでも…」
-	ENDIF
-	RETURN 1
+    IF RAND:2 == 0
+        PRINTFORMW 「その…あなたの力は分かりましたから…」
+        PRINTFORMW 「少しでも…ほんの少しでいいから優しくしてくれませんか…？」
+        PRINTFORMW 「その…この前は少しだけ…ほんの少しだけ気持ちよかったから…」
+    ELSE
+        PRINTFORMW 「私にもライブや修練の予定があってですね…」
+        PRINTFORMW 「こんなことしている場合じゃないんです！」
+        PRINTFORMW 「私をどれだけ酷く扱っても構いません！でも、せめて歌だけでも…」
+    ENDIF
+    RETURN 1
 ;굴복각인Lv2
 ELSEIF MARK:굴복각인 == 2
-	IF RAND:2 == 0
-		PRINTFORMW 「私も色々考えたんです…」
-		PRINTFORMW 「実際問題このままでもいいんじゃないかって」
-		PRINTFORMW 「でもあなたもいつまでもこんなお仕事を続けるわけにもいきませんよね？」
-		PRINTFORMW 「天職って…女の子を奴隷にすることがですか…」
-	ELSE
-		PRINTFORMW （この人に会うと体のいろいろな部分がむずむずする…
-		PRINTFORMW ダメなことなのに…誰か…助けて…！！）
-	ENDIF
-	RETURN 1
+    IF RAND:2 == 0
+        PRINTFORMW 「私も色々考えたんです…」
+        PRINTFORMW 「実際問題このままでもいいんじゃないかって」
+        PRINTFORMW 「でもあなたもいつまでもこんなお仕事を続けるわけにもいきませんよね？」
+        PRINTFORMW 「天職って…女の子を奴隷にすることがですか…」
+    ELSE
+        PRINTFORMW （この人に会うと体のいろいろな部分がむずむずする…
+        PRINTFORMW ダメなことなのに…誰か…助けて…！！）
+    ENDIF
+    RETURN 1
 ;굴복각인Lv3
 ELSEIF MARK:굴복각인 == 3
-	IF RAND:2 == 0
-		PRINTFORMW 「あ、おはようございます」
-		PRINTFORMW （最近%CALLNAME:MASTER%さんと一緒にいるのを楽しく感じてる…）
-		PRINTFORMW 「な、なんでもないです！さぁ今日は何をするんですか！」
-	ELSE
-		PRINTFORMW 「おはよーございまーす！」
-		PRINTFORMW 「さぁさぁ今日も張り切っていきましょー！」
-		PRINTFORMW 「？」
-		PRINTFORMW 「ああ、最近はもう楽しめたらいいかなーって」
-		PRINTFORMW 「私の体で楽しんでくださいね！」
-	ENDIF
-	RETURN 1
+    IF RAND:2 == 0
+        PRINTFORMW 「あ、おはようございます」
+        PRINTFORMW （最近%CALLNAME:MASTER%さんと一緒にいるのを楽しく感じてる…）
+        PRINTFORMW 「な、なんでもないです！さぁ今日は何をするんですか！」
+    ELSE
+        PRINTFORMW 「おはよーございまーす！」
+        PRINTFORMW 「さぁさぁ今日も張り切っていきましょー！」
+        PRINTFORMW 「？」
+        PRINTFORMW 「ああ、最近はもう楽しめたらいいかなーって」
+        PRINTFORMW 「私の体で楽しんでくださいね！」
+    ENDIF
+    RETURN 1
 ;その他
 ELSE
-	IF RAND:2 == 0
-		PRINTFORMW 「酷いです…何も出来ないからってこんな…」
-		PRINTFORMW 「もうやめて…せ、せめて優しく…」
-	ELSE
-		PRINTFORMW 「な…なんですか…？何をするんですか！？」
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORMW 「酷いです…何も出来ないからってこんな…」
+        PRINTFORMW 「もうやめて…せ、せめて優しく…」
+    ELSE
+        PRINTFORMW 「な…なんですか…？何をするんですか！？」
+    ENDIF
 ENDIF
 
 ;========================================================
@@ -364,18 +364,18 @@ ENDIF
 @EVENTEND
 ;대사 표시를 OFF했을 경우에는 돌아온다
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 81
-	RETURN 0
+    RETURN 0
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 DRAWLINE
 TRYCALL K81_MESSAGE_END
 
@@ -385,114 +385,114 @@ TRYCALL K81_MESSAGE_END
 @K81_MESSAGE_END
 ;PRINTFORMW 
 
-	;調教をすぐやめたとき
-	IF PREVCOM == -1
-		;연모
-		IF TALENT:연모
-			PRINTFORMW 「えっと…何か悪いことをしましたか…？」
-		;その他
-		ELSE
-			PRINTFORMW 「？」
-			PRINTFORMW 「何もしないんですか？」
-		ENDIF
-	;상애
-	ELSEIF TALENT:상애
-		;体力500未満
-		IF BASE:0 < 500
-			IF RAND:2 == 0
-				PRINTFORMW 「ん…もう少しだけ…このまま…%CALLNAME:MASTER%さんと…」
-			ELSE
-				PRINTFORMW 「あっ…ん、もっと…して欲しいです…」
-				PRINTFORMW 「はしたないかもしれないですけど…もっと%CALLNAME:MASTER%さんを感じたいんです！」
-			ENDIF
-		;体力500以上
-		ELSE
-			IF RAND:3 == 0
-				PRINTFORMW 「もう…おわりですか…？」
-				PRINTFORMW 「まだまだ響子は元気なので続きをしたくなったら言ってください！」
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「今日はここまでですか？」
-				PRINTFORMW 「いえ、%CALLNAME:MASTER%さんのお勤めが忙しいのはわかっていますし…」
-				PRINTFORMW 「私も頑張ってお掃除とかします！なので…」
-				PRINTFORMW 「後で…いっぱいしてください！」
-			ELSE
-				PRINTFORMW 「うん、ここまでですね」
-				PRINTFORMW 「私ももっと妻らしく出来るように頑張ります！」
-			ENDIF
-		ENDIF
-	;연모
-	ELSEIF TALENT:연모 == 1
-		;体力500未満
-		IF BASE:0 < 500
-			PRINTFORMW 「あっ…終わりですか？」
-			PRINTFORMW 「あまり体力がなくて…御免なさい…」
-			PRINTFORMW 「その代わり…」
-			PRINTFORMW 「一緒に寝てくれないでしょうか…？」
-		;その他
-		ELSE
-			IF RAND:3 == 0
-				PRINTFORMW 「終わりですか？」
-				PRINTFORMW 「ん～まだまだいけると思ったのですが…」
-				PRINTFORMW 「そうだ！今日は私も%CALLNAME:MASTER%さんのお手伝いをします！」
-				PRINTFORMW （もっと側に…）
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「あ…」
-				PRINTFORMW 「他の人の所に行ってしまうのですか？」
-				PRINTFORMW 「その…私も一応女ですから…帰ってきてくださいね…」
-			ELSE
-				PRINTFORMW 「今日はこれでおわりですか？」
-				PRINTFORMW 「その…もっとしたかったな…なんて思いまして…」
-			ENDIF
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		;体力500未満
-		IF BASE:0 < 500
-			PRINTFORMW 「もうだめ…」
-			PRINTFORMW 「さ、流石に続きは今度にして…」
-		;体力500以上
-		ELSE
-			IF RAND:2 == 0
-				PRINTFORMW 「みすちー元気かな…」
-				PRINTFORMW 「帰りたい…けど…もう…」
-			ELSE
-				PRINTFORMW 「気持ちいいことなら大歓迎ですけど」
-				PRINTFORMW 「やっぱりもう少しだけでも優しく…」
-				PRINTFORMW 「はしてくれないんでしょうね…」
-			ENDIF
-		ENDIF
-	;굴복각인Lv2
-	ELSEIF MARK:굴복각인 == 2
-		IF RAND:2 == 0
-			PRINTFORMW 「どうして…あなたはこんなことを…」
-			PRINTFORMW 「やめてって言っても続けるんでしょう？」
-		ELSE
-			PRINTFORMW （もういっそ…いなくなってしまいたい…）
-		ENDIF
-	;굴복각인Lv1
-	ELSEIF MARK:굴복각인 == 1
-		IF RAND:2 == 0
-			PRINTFORMW 「…なんですか？」
-			PRINTFORMW 「女の子をこんな…こんな風に扱って…」
-			PRINTFORMW 響子は言葉に詰まると俯いて泣いている
-		ELSE
-			PRINTFORMW 「…」
-			PRINTFORMW （いつになったらこの夢が覚めるんだろう…）
-		ENDIF
-	;반발각인Lv3
-	ELSEIF MARK:반발각인 == 3
-		PRINTFORMW 「いつか…この仕打ちをあなたにお返ししますよ」
-		PRINTFORMW 「その時まで私をいたぶっていればいいでしょう」
-	;その他
-	ELSE
-		IF RAND:2 == 0
-			PRINTFORMW 「うぅ…なんでこんなことに…」
-			PRINTFORMW 「帰りたい…」
-		ELSE
-			PRINTFORMW 「…」
-			PRINTFORMW 響子は何も言わずこちらを睨み付けている…
-		ENDIF
-	ENDIF
+    ;調教をすぐやめたとき
+    IF PREVCOM == -1
+        ;연모
+        IF TALENT:연모
+            PRINTFORMW 「えっと…何か悪いことをしましたか…？」
+        ;その他
+        ELSE
+            PRINTFORMW 「？」
+            PRINTFORMW 「何もしないんですか？」
+        ENDIF
+    ;상애
+    ELSEIF TALENT:상애
+        ;体力500未満
+        IF BASE:0 < 500
+            IF RAND:2 == 0
+                PRINTFORMW 「ん…もう少しだけ…このまま…%CALLNAME:MASTER%さんと…」
+            ELSE
+                PRINTFORMW 「あっ…ん、もっと…して欲しいです…」
+                PRINTFORMW 「はしたないかもしれないですけど…もっと%CALLNAME:MASTER%さんを感じたいんです！」
+            ENDIF
+        ;体力500以上
+        ELSE
+            IF RAND:3 == 0
+                PRINTFORMW 「もう…おわりですか…？」
+                PRINTFORMW 「まだまだ響子は元気なので続きをしたくなったら言ってください！」
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「今日はここまでですか？」
+                PRINTFORMW 「いえ、%CALLNAME:MASTER%さんのお勤めが忙しいのはわかっていますし…」
+                PRINTFORMW 「私も頑張ってお掃除とかします！なので…」
+                PRINTFORMW 「後で…いっぱいしてください！」
+            ELSE
+                PRINTFORMW 「うん、ここまでですね」
+                PRINTFORMW 「私ももっと妻らしく出来るように頑張ります！」
+            ENDIF
+        ENDIF
+    ;연모
+    ELSEIF TALENT:연모 == 1
+        ;体力500未満
+        IF BASE:0 < 500
+            PRINTFORMW 「あっ…終わりですか？」
+            PRINTFORMW 「あまり体力がなくて…御免なさい…」
+            PRINTFORMW 「その代わり…」
+            PRINTFORMW 「一緒に寝てくれないでしょうか…？」
+        ;その他
+        ELSE
+            IF RAND:3 == 0
+                PRINTFORMW 「終わりですか？」
+                PRINTFORMW 「ん～まだまだいけると思ったのですが…」
+                PRINTFORMW 「そうだ！今日は私も%CALLNAME:MASTER%さんのお手伝いをします！」
+                PRINTFORMW （もっと側に…）
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「あ…」
+                PRINTFORMW 「他の人の所に行ってしまうのですか？」
+                PRINTFORMW 「その…私も一応女ですから…帰ってきてくださいね…」
+            ELSE
+                PRINTFORMW 「今日はこれでおわりですか？」
+                PRINTFORMW 「その…もっとしたかったな…なんて思いまして…」
+            ENDIF
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        ;体力500未満
+        IF BASE:0 < 500
+            PRINTFORMW 「もうだめ…」
+            PRINTFORMW 「さ、流石に続きは今度にして…」
+        ;体力500以上
+        ELSE
+            IF RAND:2 == 0
+                PRINTFORMW 「みすちー元気かな…」
+                PRINTFORMW 「帰りたい…けど…もう…」
+            ELSE
+                PRINTFORMW 「気持ちいいことなら大歓迎ですけど」
+                PRINTFORMW 「やっぱりもう少しだけでも優しく…」
+                PRINTFORMW 「はしてくれないんでしょうね…」
+            ENDIF
+        ENDIF
+    ;굴복각인Lv2
+    ELSEIF MARK:굴복각인 == 2
+        IF RAND:2 == 0
+            PRINTFORMW 「どうして…あなたはこんなことを…」
+            PRINTFORMW 「やめてって言っても続けるんでしょう？」
+        ELSE
+            PRINTFORMW （もういっそ…いなくなってしまいたい…）
+        ENDIF
+    ;굴복각인Lv1
+    ELSEIF MARK:굴복각인 == 1
+        IF RAND:2 == 0
+            PRINTFORMW 「…なんですか？」
+            PRINTFORMW 「女の子をこんな…こんな風に扱って…」
+            PRINTFORMW 響子は言葉に詰まると俯いて泣いている
+        ELSE
+            PRINTFORMW 「…」
+            PRINTFORMW （いつになったらこの夢が覚めるんだろう…）
+        ENDIF
+    ;반발각인Lv3
+    ELSEIF MARK:반발각인 == 3
+        PRINTFORMW 「いつか…この仕打ちをあなたにお返ししますよ」
+        PRINTFORMW 「その時まで私をいたぶっていればいいでしょう」
+    ;その他
+    ELSE
+        IF RAND:2 == 0
+            PRINTFORMW 「うぅ…なんでこんなことに…」
+            PRINTFORMW 「帰りたい…」
+        ELSE
+            PRINTFORMW 「…」
+            PRINTFORMW 響子は何も言わずこちらを睨み付けている…
+        ENDIF
+    ENDIF
 ;========================================================
 ;@KOJO_X_MESSAGE_PALAMCNG
 ;パラメータ変動をトリガーにした口上
@@ -501,102 +501,102 @@ TRYCALL K81_MESSAGE_END
 @KOJO_MESSAGE_PALAMCNG_81
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1 || TFLAG:898 >= 1
-	RETURN 0
+    RETURN 0
 ;정신붕괴の場合は戻る
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 
 ;처녀喪失時のメッセージ呼び出し
 SIF TFLAG:0
-	TRYCALL K81_MESSAGE_LOST_VIRGIN
+    TRYCALL K81_MESSAGE_LOST_VIRGIN
 ;初めてPALAMがLV2超えた時の口上呼び出し
 FOR LOCAL, 0, 35
-	SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
-		TRYCALLFORM K81_MESSAGE_OVERLV2_{LOCAL}
+    SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
+        TRYCALLFORM K81_MESSAGE_OVERLV2_{LOCAL}
 NEXT
 ;絶頂時の口上呼び出し
 FOR LOCAL, 0, 50
-	SIF NOWEX:LOCAL
-		TRYCALLFORM K81_MESSAGE_ORGASM_{LOCAL}
+    SIF NOWEX:LOCAL
+        TRYCALLFORM K81_MESSAGE_ORGASM_{LOCAL}
 NEXT
 ;射精させた
 FOR LOCAL, 11, 29
-	SIF TFLAG:LOCAL
-		TRYCALLFORM K81_MESSAGE_EJAC_PLAYER_{LOCAL}
+    SIF TFLAG:LOCAL
+        TRYCALLFORM K81_MESSAGE_EJAC_PLAYER_{LOCAL}
 NEXT
 
 ;-------------------------------------------------
 ;처녀喪失
 ;-------------------------------------------------
 IF TFLAG:0 > 0 && CFLAG:9009 == 0
-	;연모+반발각인Lv3
-	IF TALENT:연모 == 1 && MARK:반발각인 == 3 && CFLAG:9009 < 5
-		;主人による調教
-		IF ASSIPLAY == 0
-			;前コマンドが挿入系列
-			IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
-				PRINTFORMW 「もう…許しませんよ…？」
-				PRINTFORMW 「これから…たっぷりお返ししてあげますからね…」
-			;その他の場合
-			ELSE
-				PRINTFORMW 「これからも…」
-				PRINTFORMW 「いっぱい愛し合いましょう…ずっとずっと…」
-			ENDIF
-			CFLAG:9009 = 5
-		;その他の場合
-		ELSE
-		ENDIF
-	;연모
-	ELSEIF TALENT:연모 == 1 && CFLAG:9009 < 4
-		;主人による調教
-		IF ASSIPLAY == 0
-			;コマンド騎乗位
-			IF SELECTCOM == 24
-				PRINTFORMW 「あ、あの…その…」
-				PRINTFORMW 「こ、これからも…」
-				PRINTFORMW 「%CALLNAME:MASTER%さん…よろしくお願いします！」
-			;コマンドが挿入系列
-			ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
-				PRINTFORMW 「痛い…ですけど…」
-				PRINTFORMW 「これで…貴方に…」
-			;その他の場合
-			ELSE
-			ENDIF
-		;その他の場合
-		ELSE
-		ENDIF
-		CFLAG:9009 = 4
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3 && CFLAG:9009 < 3
-		;コマンド騎乗位
-		IF SELECTCOM == 24
-			PRINTFORMW 「ああああああ！！」
-			PRINTFORMW 「痛い…よぅ…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「好きな人とするんだって…」
-			PRINTFORMW 「うううう…」
-		ENDIF
-		CFLAG:9009 = 3
-	;その他の場合
-	ELSE
-		;前コマンドが挿入系列
-		IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
-			PRINTFORMW 「嫌っ！こんなの…」
-			PRINTFORMW 「…お願いだから…」
-			PRINTFORMW 「…あああ…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「…なんでこんな…」
-		ENDIF
-		CFLAG:9009 = 2
-	ENDIF
+    ;연모+반발각인Lv3
+    IF TALENT:연모 == 1 && MARK:반발각인 == 3 && CFLAG:9009 < 5
+        ;主人による調教
+        IF ASSIPLAY == 0
+            ;前コマンドが挿入系列
+            IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
+                PRINTFORMW 「もう…許しませんよ…？」
+                PRINTFORMW 「これから…たっぷりお返ししてあげますからね…」
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「これからも…」
+                PRINTFORMW 「いっぱい愛し合いましょう…ずっとずっと…」
+            ENDIF
+            CFLAG:9009 = 5
+        ;その他の場合
+        ELSE
+        ENDIF
+    ;연모
+    ELSEIF TALENT:연모 == 1 && CFLAG:9009 < 4
+        ;主人による調教
+        IF ASSIPLAY == 0
+            ;コマンド騎乗位
+            IF SELECTCOM == 24
+                PRINTFORMW 「あ、あの…その…」
+                PRINTFORMW 「こ、これからも…」
+                PRINTFORMW 「%CALLNAME:MASTER%さん…よろしくお願いします！」
+            ;コマンドが挿入系列
+            ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
+                PRINTFORMW 「痛い…ですけど…」
+                PRINTFORMW 「これで…貴方に…」
+            ;その他の場合
+            ELSE
+            ENDIF
+        ;その他の場合
+        ELSE
+        ENDIF
+        CFLAG:9009 = 4
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3 && CFLAG:9009 < 3
+        ;コマンド騎乗位
+        IF SELECTCOM == 24
+            PRINTFORMW 「ああああああ！！」
+            PRINTFORMW 「痛い…よぅ…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「好きな人とするんだって…」
+            PRINTFORMW 「うううう…」
+        ENDIF
+        CFLAG:9009 = 3
+    ;その他の場合
+    ELSE
+        ;前コマンドが挿入系列
+        IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
+            PRINTFORMW 「嫌っ！こんなの…」
+            PRINTFORMW 「…お願いだから…」
+            PRINTFORMW 「…あああ…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「…なんでこんな…」
+        ENDIF
+        CFLAG:9009 = 2
+    ENDIF
 ENDIF
 ;----------------------------------------------------------
 ;初めてPALAMがLV2超えた時の口上 CFLAG 5320～5355を使用
@@ -607,18 +607,18 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_OVERLV2_10
 IF (PALAM:10 + UP:10) > PALAMLV:2 && CFLAG:5330 == 0
-	;연모
-	IF TALENT:연모 == 1
-		RETURN 0
-	;前コマンドローション
-	ELSEIF SELECTCOM == 60
-		PRINTFORMW 「ぬるぬるする…」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「やだっ…」
-		PRINTFORMW （この人見てると体が勝手に…）
-	ENDIF
-	CFLAG:5330 = 1
+    ;연모
+    IF TALENT:연모 == 1
+        RETURN 0
+    ;前コマンドローション
+    ELSEIF SELECTCOM == 60
+        PRINTFORMW 「ぬるぬるする…」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「やだっ…」
+        PRINTFORMW （この人見てると体が勝手に…）
+    ENDIF
+    CFLAG:5330 = 1
 ENDIF
 
 ;-------------------------------------------------
@@ -626,19 +626,19 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_OVERLV2_13
 IF (PALAM:13 + UP:13) > PALAMLV:2 && CFLAG:5333 == 0
-	;연모
-	IF TALENT:연모 == 1
-		RETURN 0
-	;前コマンド媚薬
-	ELSEIF SELECTCOM == 61
-		PRINTFORMW 「な…なんですか急に…ふむっ！？」
-		PRINTFORMW （何だか…きゅんきゅんしてきた…？）
-	;その他の場合
-	ELSE
-		PRINTFORMW 「ふぁぁぁ…ぁ？」
-		PRINTFORMW （もっともっと…）
-	ENDIF
-	CFLAG:5333 = 1
+    ;연모
+    IF TALENT:연모 == 1
+        RETURN 0
+    ;前コマンド媚薬
+    ELSEIF SELECTCOM == 61
+        PRINTFORMW 「な…なんですか急に…ふむっ！？」
+        PRINTFORMW （何だか…きゅんきゅんしてきた…？）
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「ふぁぁぁ…ぁ？」
+        PRINTFORMW （もっともっと…）
+    ENDIF
+    CFLAG:5333 = 1
 ENDIF
 
 ;-------------------------------------------------
@@ -646,8 +646,8 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_OVERLV2_15
 IF (PALAM:15 + UP:15) > PALAMLV:2 && CFLAG:5335 == 0
-	PRINTFORMW 「みないで！お願いだから…こんな私…」
-	CFLAG:5335 = 1
+    PRINTFORMW 「みないで！お願いだから…こんな私…」
+    CFLAG:5335 = 1
 ENDIF
 
 ;-------------------------------------------------
@@ -655,18 +655,18 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_OVERLV2_17
 IF (PALAM:17 + UP:17) > PALAMLV:2 && CFLAG:5337 == 0
-	;絶頂した時
-	IF NOWEX:0 + NOWEX:1 + NOWEX:2 + NOWEX:3 > 0
-		RETURN 0
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		PRINTFORMW 「や…やだ…こないで…！」
-		PRINTFORMW 「い、言われたことはやりますから怖いことしないで！！」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「ひぃっ！？や…止めて…お願いだから…」
-	ENDIF
-	CFLAG:5337 = 1
+    ;絶頂した時
+    IF NOWEX:0 + NOWEX:1 + NOWEX:2 + NOWEX:3 > 0
+        RETURN 0
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        PRINTFORMW 「や…やだ…こないで…！」
+        PRINTFORMW 「い、言われたことはやりますから怖いことしないで！！」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「ひぃっ！？や…止めて…お願いだから…」
+    ENDIF
+    CFLAG:5337 = 1
 ENDIF
 
 ;----------------------------------------------------------
@@ -679,23 +679,23 @@ ENDIF
 @K81_MESSAGE_ORGASM_0
 ;初めて
 IF CFLAG:5300 == 0
-	;굴복각인Lv3
-	IF MARK:굴복각인 == 3
-		PRINTFORMW 「そこっ！だめ…！やだよぅ…」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「ひぐぅ！」
-		PRINTFORMW 「イっちゃう！…やぁぁぁぁ！！！」
-	ENDIF
-	CFLAG:5300 = 1
+    ;굴복각인Lv3
+    IF MARK:굴복각인 == 3
+        PRINTFORMW 「そこっ！だめ…！やだよぅ…」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「ひぐぅ！」
+        PRINTFORMW 「イっちゃう！…やぁぁぁぁ！！！」
+    ENDIF
+    CFLAG:5300 = 1
 ;２回目以降
 ELSE
-	;今回の調教でのＣ絶頂が50以上
-	IF EX:0 >= 50
-		;PRINTFORMW 「あああああっ！？気持ち…いい…」
-	ELSE
-		;PRINTFORMW 「変なの…もっと…来る…！！」
-	ENDIF
+    ;今回の調教でのＣ絶頂が50以上
+    IF EX:0 >= 50
+        ;PRINTFORMW 「あああああっ！？気持ち…いい…」
+    ELSE
+        ;PRINTFORMW 「変なの…もっと…来る…！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -704,61 +704,61 @@ ENDIF
 @K81_MESSAGE_ORGASM_1
 ;初めて
 IF CFLAG:5301 == 0
-	;연모
-	IF TALENT:연모 == 1
-		;中出し
-		IF TFLAG:11 > 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28)
-			;Ｖ경험 1以上
-			IF EXP:Ｖ경험 >= 1
-				PRINTFORMW 「何これ…！？ふみゅぁあああぁっ！？」
-				PRINTFORMW （今のが…イクってコトなのかな…？）
-			;その他の場合
-			ELSE
-				PRINTFORMW 「ひぁっ！！…んっふぅ…」
-			ENDIF
-		;コマンドが挿入系列
-		ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
-			;Ｖ경험 1以上
-			IF EXP:Ｖ경험 >= 1
-				PRINTFORMW 「何これっ！？知らないっ！こんなおちんちんが気持ちいいなんて知らない！！」
-			;その他の場合
-			ELSE
-				PRINTFORMW 「いっちゃう…いっちゃうようぁぁ…」
-			ENDIF
-		;その他の場合
-		ELSE
-			PRINTFORMW 「やらぁ…頭真っ白になって…おまんことけちゃうよぅ…」
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		;コマンドが挿入系列
-		IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
-			PRINTFORMW 「やだっこんなので…こんなので気持ちよくなって…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「ふぁぁぁぁ…やだやだやだ…」
-			PRINTFORMW 響子はそう言いながら快楽を味わうように腰を振り続けている
-		ENDIF
-	;その他の場合
-	ELSE
-		;前コマンドが挿入系列
-		IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
-			PRINTFORMW 「抜いて…抜いてくださぁひぅっ！？」
-			PRINTFORMW 「い、今…私…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「はうぅぅぅ…ふにゃぁ…」
-		ENDIF
-	ENDIF
-	CFLAG:5301 = 1
+    ;연모
+    IF TALENT:연모 == 1
+        ;中出し
+        IF TFLAG:11 > 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28)
+            ;Ｖ경험 1以上
+            IF EXP:Ｖ경험 >= 1
+                PRINTFORMW 「何これ…！？ふみゅぁあああぁっ！？」
+                PRINTFORMW （今のが…イクってコトなのかな…？）
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「ひぁっ！！…んっふぅ…」
+            ENDIF
+        ;コマンドが挿入系列
+        ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
+            ;Ｖ경험 1以上
+            IF EXP:Ｖ경험 >= 1
+                PRINTFORMW 「何これっ！？知らないっ！こんなおちんちんが気持ちいいなんて知らない！！」
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「いっちゃう…いっちゃうようぁぁ…」
+            ENDIF
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「やらぁ…頭真っ白になって…おまんことけちゃうよぅ…」
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        ;コマンドが挿入系列
+        IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
+            PRINTFORMW 「やだっこんなので…こんなので気持ちよくなって…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「ふぁぁぁぁ…やだやだやだ…」
+            PRINTFORMW 響子はそう言いながら快楽を味わうように腰を振り続けている
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;前コマンドが挿入系列
+        IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
+            PRINTFORMW 「抜いて…抜いてくださぁひぅっ！？」
+            PRINTFORMW 「い、今…私…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「はうぅぅぅ…ふにゃぁ…」
+        ENDIF
+    ENDIF
+    CFLAG:5301 = 1
 ;２回目以降
 ELSE
-	;今回の調教でのＶ絶頂が50以上
-	IF EX:1 >= 50
-		;PRINTFORMW 「気持ち…ひぃい！？らめっ…！これ以上は…！！」
-	ELSE
-		;PRINTFORMW 「やぁぁ…もっともっと気持ちよく…！！」
-	ENDIF
+    ;今回の調教でのＶ絶頂が50以上
+    IF EX:1 >= 50
+        ;PRINTFORMW 「気持ち…ひぃい！？らめっ…！これ以上は…！！」
+    ELSE
+        ;PRINTFORMW 「やぁぁ…もっともっと気持ちよく…！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -767,43 +767,43 @@ ENDIF
 @K81_MESSAGE_ORGASM_2
 ;初めて
 IF CFLAG:5302 == 0
-	;연모
-	IF TALENT:연모 == 1
-		;アナル中出し
-		IF TFLAG:12 > 0 && (SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38)
-			PRINTFORMW 「お尻…%CALLNAME:MASTER%さんにきもちよくされちゃううううぅぅぅ！！！」
-			PRINTFORMW 「もっと…もっと…んああぁぁぁぁ！！！」
-		;アナル挿入系列
-		ELSEIF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-			PRINTFORMW 「あ、ああああ！！」
-			PRINTFORMW 「お尻に入れられて…イッちゃううううう！！！」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「お尻に入れられて…ダメ…響子は悪い子です…！！！」
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		;アナル挿入
-		IF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-			PRINTFORMW 「こんな…こんなお尻で…響子は…ふえっ！？」
-			PRINTFORMW 「ひゃぁああああ！？らめぇえぇえ！！！」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「ひゅえっ！？…お…お尻が…おしりぃぃぃぃイッちゃううううう！！」
-		ENDIF
-	;その他の場合
-	ELSE
-		PRINTFORMW 「やだ…！今…お尻で…！？」
-	ENDIF
-	CFLAG:5302 = 1
+    ;연모
+    IF TALENT:연모 == 1
+        ;アナル中出し
+        IF TFLAG:12 > 0 && (SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38)
+            PRINTFORMW 「お尻…%CALLNAME:MASTER%さんにきもちよくされちゃううううぅぅぅ！！！」
+            PRINTFORMW 「もっと…もっと…んああぁぁぁぁ！！！」
+        ;アナル挿入系列
+        ELSEIF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
+            PRINTFORMW 「あ、ああああ！！」
+            PRINTFORMW 「お尻に入れられて…イッちゃううううう！！！」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「お尻に入れられて…ダメ…響子は悪い子です…！！！」
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        ;アナル挿入
+        IF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
+            PRINTFORMW 「こんな…こんなお尻で…響子は…ふえっ！？」
+            PRINTFORMW 「ひゃぁああああ！？らめぇえぇえ！！！」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「ひゅえっ！？…お…お尻が…おしりぃぃぃぃイッちゃううううう！！」
+        ENDIF
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「やだ…！今…お尻で…！？」
+    ENDIF
+    CFLAG:5302 = 1
 ;２回目以降
 ELSE
-	;今回の調教でのＡ絶頂が50以上
-	IF EX:2 >= 50
-		;PRINTFORMW 「お尻で…いくぅぅぅぅ！！」
-	ELSE
-		;PRINTFORMW 「お尻でイッちゃう…！わるいことなのに…わるいことなのに…きもちいいのぉぉぉ！！」
-	ENDIF
+    ;今回の調教でのＡ絶頂が50以上
+    IF EX:2 >= 50
+        ;PRINTFORMW 「お尻で…いくぅぅぅぅ！！」
+    ELSE
+        ;PRINTFORMW 「お尻でイッちゃう…！わるいことなのに…わるいことなのに…きもちいいのぉぉぉ！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -812,22 +812,22 @@ ENDIF
 @K81_MESSAGE_ORGASM_3
 ;初めて
 IF CFLAG:5303 == 0
-	;굴복각인Lv3
-	IF MARK:굴복각인 == 3
-		PRINTFORMW 「やらぁ…おっぱいが変なかんひになっらうのぉぉ…」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「んっ…おっぱい…おかしくなっちゃうっ！？」
-	ENDIF
-	CFLAG:5303 = 1
+    ;굴복각인Lv3
+    IF MARK:굴복각인 == 3
+        PRINTFORMW 「やらぁ…おっぱいが変なかんひになっらうのぉぉ…」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「んっ…おっぱい…おかしくなっちゃうっ！？」
+    ENDIF
+    CFLAG:5303 = 1
 ;２回目以降
 ELSE
-	;今回の調教でのＢ絶頂が50以上
-	IF EX:3 >= 50
-		;PRINTFORMW 「ひぁっ…おっぱい変なの…」
-	ELSE
-		;PRINTFORMW 「響子の…おっぱい…イッちゃうううぅぅ！！！」
-	ENDIF
+    ;今回の調教でのＢ絶頂が50以上
+    IF EX:3 >= 50
+        ;PRINTFORMW 「ひぁっ…おっぱい変なの…」
+    ELSE
+        ;PRINTFORMW 「響子の…おっぱい…イッちゃうううぅぅ！！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -836,39 +836,39 @@ ENDIF
 @K81_MESSAGE_ORGASM_10
 ;初めて
 IF CFLAG:5304 == 0
-	;연모
-	IF TALENT:연모 == 1
-		PRINTFORMW 「お、おっぱいでちゃった…」
-		PRINTFORMW 「ってことは出来ちゃった！？お赤飯作らないと！？」
-	;それ以外
-	ELSE
-		PRINTFORMW 「…もうやだ…」
-		PRINTFORMW 「おっぱいでちゃったよう…」
-	ENDIF
-		CFLAG:5304 = 1
+    ;연모
+    IF TALENT:연모 == 1
+        PRINTFORMW 「お、おっぱいでちゃった…」
+        PRINTFORMW 「ってことは出来ちゃった！？お赤飯作らないと！？」
+    ;それ以外
+    ELSE
+        PRINTFORMW 「…もうやだ…」
+        PRINTFORMW 「おっぱいでちゃったよう…」
+    ENDIF
+        CFLAG:5304 = 1
 ;２回目以降
 ELSE
-	;연모
-	IF TALENT:연모 == 1
-		IF RAND:2 == 0
-			PRINTFORMW 「ん…ふぅ…」
-		ELSE
-			PRINTFORMW 「えへへへへ…なんだかお母さんになった気分です！」
-		ENDIF
-		CFLAG:5304 = 4
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		IF RAND:2 == 0
-			PRINTFORMW 「なんでこんなに…？」
-		ELSE
-			PRINTFORMW 「でてきちゃうの…やだぁ…」
-		ENDIF
-		CFLAG:5304 = 3
-	;それ以外
-	ELSE
-		PRINTFORMW 「なんで…おっぱいでちゃう…」
-		CFLAG:5304 = 2
-	ENDIF
+    ;연모
+    IF TALENT:연모 == 1
+        IF RAND:2 == 0
+            PRINTFORMW 「ん…ふぅ…」
+        ELSE
+            PRINTFORMW 「えへへへへ…なんだかお母さんになった気分です！」
+        ENDIF
+        CFLAG:5304 = 4
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        IF RAND:2 == 0
+            PRINTFORMW 「なんでこんなに…？」
+        ELSE
+            PRINTFORMW 「でてきちゃうの…やだぁ…」
+        ENDIF
+        CFLAG:5304 = 3
+    ;それ以外
+    ELSE
+        PRINTFORMW 「なんで…おっぱいでちゃう…」
+        CFLAG:5304 = 2
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -877,14 +877,14 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_ORGASM_12
 SIF SELECTCOM == 111 || SELECTCOM == 620
-	RETURN 0
+    RETURN 0
 ;初めて
 IF CFLAG:5306 == 0
-	;PRINTFORMW 「やだ！？み、見ないでください…！」
-	;CFLAG:5306 = 1
+    ;PRINTFORMW 「やだ！？み、見ないでください…！」
+    ;CFLAG:5306 = 1
 ;２回目以降
 ELSE
-	;PRINTFORMW 「ああああ！？おしっこ出ちゃうぅぅぅ！！」
+    ;PRINTFORMW 「ああああ！？おしっこ出ちゃうぅぅぅ！！」
 ENDIF
 
 ;-------------------------------------------------
@@ -893,33 +893,33 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_10
 ;主人のペニス
 IF TFLAG:35
-	;연모
-	IF TALENT:연모
-		IF RAND:3 == 0
-			PRINTFORMW 「もっともっと…膣内で出してください…！！」
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「あっあっ…中でいっぱいせーし出て…る…」
-		ELSE
-			PRINTFORMW 「いっぱい…ご主人様ので満たされてる…」
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		IF RAND:2 == 0
-			PRINTFORMW 「やだ…赤ちゃんできちゃうよう…」
-		ELSE
-			PRINTFORMW 「こんなに出されたら…やだぁ…」
-		ENDIF
-	;その他
-	ELSE
-		IF RAND:2 == 0
-			PRINTFORMW 「やだ！お願い！膣内出しは止めて！」
-		ELSE
-			PRINTFORMW （いっぱい出されちゃった…）
-		ENDIF
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        IF RAND:3 == 0
+            PRINTFORMW 「もっともっと…膣内で出してください…！！」
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「あっあっ…中でいっぱいせーし出て…る…」
+        ELSE
+            PRINTFORMW 「いっぱい…ご主人様ので満たされてる…」
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        IF RAND:2 == 0
+            PRINTFORMW 「やだ…赤ちゃんできちゃうよう…」
+        ELSE
+            PRINTFORMW 「こんなに出されたら…やだぁ…」
+        ENDIF
+    ;その他
+    ELSE
+        IF RAND:2 == 0
+            PRINTFORMW 「やだ！お願い！膣内出しは止めて！」
+        ELSE
+            PRINTFORMW （いっぱい出されちゃった…）
+        ENDIF
+    ENDIF
 ;それ以外
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -928,29 +928,29 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_9
 ;主人のペニス
 IF TFLAG:35
-	;연모
-	IF TALENT:연모
-		IF RAND:3 == 0
-			PRINTFORMW 「お、お尻に出すんですか！？…膣内に出してくれてもいいのに…」
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「あっ…お尻も妊娠するんですかね？」
-		ELSE
-			PRINTFORMW 「んあっ…お腹にいっぱいご主人様のが出てる…」
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		IF RAND:2 == 0
-			PRINTFORMW 「こんな…お腹にいっぱい出して…」
-		ELSE
-			PRINTFORMW 「…お尻でこんなに…出して…なんなんですか…」
-		ENDIF
-	;その他
-	ELSE
-		PRINTFORMW 「…変態！！…お尻で出すなんて…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        IF RAND:3 == 0
+            PRINTFORMW 「お、お尻に出すんですか！？…膣内に出してくれてもいいのに…」
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「あっ…お尻も妊娠するんですかね？」
+        ELSE
+            PRINTFORMW 「んあっ…お腹にいっぱいご主人様のが出てる…」
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        IF RAND:2 == 0
+            PRINTFORMW 「こんな…お腹にいっぱい出して…」
+        ELSE
+            PRINTFORMW 「…お尻でこんなに…出して…なんなんですか…」
+        ENDIF
+    ;その他
+    ELSE
+        PRINTFORMW 「…変態！！…お尻で出すなんて…」
+    ENDIF
 ;それ以外
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -959,11 +959,11 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_16
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「か、絡まったりしてないですか…？気持ちよかった？」
-	PRINTFORMW 「ならいいですけど…こんなに出すなんて…」
+    PRINTFORMW 「か、絡まったりしてないですか…？気持ちよかった？」
+    PRINTFORMW 「ならいいですけど…こんなに出すなんて…」
 ;その他
 ELSE
-	PRINTFORMW 「髪の毛で興奮するなんて…変態ですね！！」
+    PRINTFORMW 「髪の毛で興奮するなんて…変態ですね！！」
 ENDIF
 
 ;-------------------------------------------------
@@ -973,10 +973,10 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_14
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「ん…いっぱい出しすぎです！」
+    PRINTFORMW 「ん…いっぱい出しすぎです！」
 ;その他
 ELSE
-	PRINTFORMW 「こんなの…臭い付いちゃう…」
+    PRINTFORMW 「こんなの…臭い付いちゃう…」
 ENDIF
 [SKIPEND]
 
@@ -985,28 +985,28 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EJAC_PLAYER_11
 IF GROUPMATCH (SELECTCOM, 41, 54, 230, 303, 304, 601, 602, 604, 610)
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「んふっ！」
-		PRINTFORMW 「だ、出しすぎです…こんなに一気に出すなんて…」
-		PRINTFORMW （次は…膣内で出してくれたらいいな…）
-	;その他
-	ELSE
-		PRINTFORMW 「んくっ…ぷはぁっ！！口の中気持ち悪い…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「んふっ！」
+        PRINTFORMW 「だ、出しすぎです…こんなに一気に出すなんて…」
+        PRINTFORMW （次は…膣内で出してくれたらいいな…）
+    ;その他
+    ELSE
+        PRINTFORMW 「んくっ…ぷはぁっ！！口の中気持ち悪い…」
+    ENDIF
 ;-------------------------------------------------
 ;胸に射精
 ;-------------------------------------------------
 ;@K81_MESSAGE_EJAC_PLAYER_16
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「わ、私のおっぱいなんかで…」
-		PRINTFORMW 「気持ちよかった…ですか？」
-	;その他
-	ELSE
-		PRINTFORMW 「ん…すごくべたべたする…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「わ、私のおっぱいなんかで…」
+        PRINTFORMW 「気持ちよかった…ですか？」
+    ;その他
+    ELSE
+        PRINTFORMW 「ん…すごくべたべたする…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1029,11 +1029,11 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_12
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「こ、こんなに…」
-	PRINTFORMW （もっとうまくできたら…もっと気持ちよくしてあげられるのかな…？）
+    PRINTFORMW 「こ、こんなに…」
+    PRINTFORMW （もっとうまくできたら…もっと気持ちよくしてあげられるのかな…？）
 ;その他
 ELSE
-	PRINTFORMW 「ぬちゃぬちゃして気持ち悪い…」
+    PRINTFORMW 「ぬちゃぬちゃして気持ち悪い…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1042,14 +1042,14 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_15
 ;연모
 IF TALENT:연모
-	IF RAND:2 == 0
-		PRINTFORMW 「こんな感じでいいんですか？」
-	ELSE
-		PRINTFORMW 「…次は中で出してもらえませんか？せっかくなので…」
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORMW 「こんな感じでいいんですか？」
+    ELSE
+        PRINTFORMW 「…次は中で出してもらえませんか？せっかくなので…」
+    ENDIF
 ;その他
 ELSE
-	PRINTFORMW （こ、これって妊娠しないよね…）
+    PRINTFORMW （こ、これって妊娠しないよね…）
 ENDIF
 
 ;-------------------------------------------------
@@ -1064,10 +1064,10 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_8
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「お尻で出すなんて…中で出してもいいんですよ？」
+    PRINTFORMW 「お尻で出すなんて…中で出してもいいんですよ？」
 ;その他
 ELSE
-	PRINTFORMW 「お尻がべとべとになって…気持ち悪い…」
+    PRINTFORMW 「お尻がべとべとになって…気持ち悪い…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1084,10 +1084,10 @@ ENDIF
 @K81_MESSAGE_EJAC_PLAYER_19
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「う、うまくできましたか…？」
+    PRINTFORMW 「う、うまくできましたか…？」
 ;その他
 ELSE
-	PRINTFORMW 「足でなんて…気持ち悪い…」
+    PRINTFORMW 「足でなんて…気持ち悪い…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1095,9 +1095,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EJAC_PLAYER_14
 IF RAND:2 == 0
-	PRINTFORMW 「そ、そんなに気持ちよかったんですか？」
+    PRINTFORMW 「そ、そんなに気持ちよかったんですか？」
 ELSE
-	PRINTFORMW （キスってそんなにいい物なのかな…？）
+    PRINTFORMW （キスってそんなにいい物なのかな…？）
 ENDIF
 
 ;-------------------------------------------------
@@ -1122,22 +1122,22 @@ ENDIF
 @KOJO_MESSAGE_MARKCNG_81
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1 || TFLAG:898 >= 1
-	RETURN 0
+    RETURN 0
 ;정신붕괴の場合は戻る
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 ;刻印取得口上呼び出し
 FOR LOCAL, 0, 7
-	FOR LOCAL:1, 1, 4
-		SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
-			TRYCALLFORM K81_MESSAGE_MARK{LOCAL}_{LOCAL:1}
-	NEXT
+    FOR LOCAL:1, 1, 4
+        SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
+            TRYCALLFORM K81_MESSAGE_MARK{LOCAL}_{LOCAL:1}
+    NEXT
 NEXT
 
 ;----------------------------------------------------------
@@ -1250,19 +1250,19 @@ CFLAG:5316 = 3
 @KOJO_MESSAGE_COM_81
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있고, 재갈을 채우는 커맨드가 아닐 경우에도 돌아온다
 SIF (TEQUIP:42 && (SELECTCOM != 226 && SELECTCOM != 229 && SELECTCOM != 506 && SELECTCOM != 509 && SELECTCOM != 583))
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 
 ;커맨드 첫회 판정을 갱신
 CALL COM_FLAG
 ;PANCTION 내의 장비품 대사 보완 함수를 사용한다
 SIF FLAG:10 == 1
-	TRYCALL EQUIPTEXT
+    TRYCALL EQUIPTEXT
 ;커맨드 대사 호출
 TRYCALLFORM KOJO_81_TRAIN_MESSAGE_S_COM_{SELECTCOM}
 
@@ -1274,13 +1274,13 @@ TRYCALLFORM KOJO_81_TRAIN_MESSAGE_S_COM_{SELECTCOM}
 @SELF_KOJO_81
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;조교 중에다 재갈을 물렸을 때에도 돌아온다
 SIF TFLAG:999 && TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;조교 중에다 기절 중일 때에도 돌아온다
 SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-	RETURN 0
+    RETURN 0
 
 ;이벤트 대사 호출
 TRYCALLFORM K81_MESSAGE_EVENT_{(TFLAG:200)}
@@ -1379,10 +1379,10 @@ RETURN 0
 
 ;음란
 ;IF TALENT:음란
-;	LOCAL:1 = 1
+;    LOCAL:1 = 1
 ;エピソードなし
 ;ELSE
-;	LOCAL:1 = 0
+;    LOCAL:1 = 0
 ;ENDIF
 
 ;退避した対象を元に戻す
@@ -1397,7 +1397,7 @@ RETURN 0
 ;PRINTFORMW 　%CSVCALLNAME(81,0)%のその後
 ;DRAWLINE
 ;IF ARG == 1
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ENDIF
 ;DRAWLINE
 ;RETURN 0

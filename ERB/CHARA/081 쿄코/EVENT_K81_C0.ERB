@@ -15,16 +15,16 @@
 @KOJO_81_TRAIN_MESSAGE_S_BEFORE
 ;眠ってる場合は戻る
 ;SIF EQUIP:14
-;	RETURN 1
+;    RETURN 1
 ;口枷がある場合は戻る
 ;SIF TEQUIP:42
-;	RETURN 1
+;    RETURN 1
 ;失神回復時は戻る
 ;SIF TFLAG:898 == 1
-;	RETURN 1
+;    RETURN 1
 ;精神崩壊の場合は戻る
 ;SIF TALENT:167
-;	RETURN 1
+;    RETURN 1
 
 ;========================================================
 ;コマンド口上
@@ -38,25 +38,25 @@
 @KOJO_81_TRAIN_MESSAGE_S_COM_0
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「あ、ん…」
-		PRINTFORMW 「も…もっといっぱい…触れて…」
-	;その他
-	ELSE
-		PRINTFORMW 「なぁ！？へ、変態…！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「あ、ん…」
+        PRINTFORMW 「も…もっといっぱい…触れて…」
+    ;その他
+    ELSE
+        PRINTFORMW 「なぁ！？へ、変態…！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「あっ、あっ、ふみゅ！？」
-		PRINTFORMW 「…こうして体中弄られて…気持ちよくなって…」
-	;その他
-	ELSE
-		PRINTFORMW 「いやぁ！触らないで！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「あっ、あっ、ふみゅ！？」
+        PRINTFORMW 「…こうして体中弄られて…気持ちよくなって…」
+    ;その他
+    ELSE
+        PRINTFORMW 「いやぁ！触らないで！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -65,25 +65,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_1
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「んん！？」
-		PRINTFORMW 「そ、そんなところ舐めて…気持ちいいですけど…汚くなかったですか？」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やめて…んぁっ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「んん！？」
+        PRINTFORMW 「そ、そんなところ舐めて…気持ちいいですけど…汚くなかったですか？」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やめて…んぁっ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「あっ、あっ、ふみゅ！？」
-		PRINTFORMW 「…こうして体中弄られて…気持ちよくなって…」
-	;その他
-	ELSE
-		PRINTFORMW 「変態！変態！変態！…ああっ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「あっ、あっ、ふみゅ！？」
+        PRINTFORMW 「…こうして体中弄られて…気持ちよくなって…」
+    ;その他
+    ELSE
+        PRINTFORMW 「変態！変態！変態！…ああっ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -92,25 +92,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_2
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「そ、そんなところ…」
-		PRINTFORMW 「汚く…ないですか？」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ！？変なとこ触らないで！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「そ、そんなところ…」
+        PRINTFORMW 「汚く…ないですか？」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ！？変なとこ触らないで！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「あ…ふああ！？」
-		PRINTFORMW 「お尻…気持ちいい…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ…変な感じ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「あ…ふああ！？」
+        PRINTFORMW 「お尻…気持ちいい…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ…変な感じ…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -119,25 +119,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_3
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「あ…ん…」
-		PRINTFORMW 「おっぱい…気持ちいい…」
-	;その他
-	ELSE
-		PRINTFORMW 「胸触って楽しいですか？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「あ…ん…」
+        PRINTFORMW 「おっぱい…気持ちいい…」
+    ;その他
+    ELSE
+        PRINTFORMW 「胸触って楽しいですか？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「へぁっ！？んみゅ！？」
-		PRINTFORMW 「む、胸触られてると…気持ちよくなってしまいます…」
-	;その他
-	ELSE
-		PRINTFORMW 「や、ふみゅぁあ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「へぁっ！？んみゅ！？」
+        PRINTFORMW 「む、胸触られてると…気持ちよくなってしまいます…」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、ふみゅぁあ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -146,25 +146,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_4
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ひぁ！？」
-		PRINTFORMW 「ご、ご主人様の指が挿入ってくる！？」
-	;その他
-	ELSE
-		PRINTFORMW 「な、何するんですか！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ひぁ！？」
+        PRINTFORMW 「ご、ご主人様の指が挿入ってくる！？」
+    ;その他
+    ELSE
+        PRINTFORMW 「な、何するんですか！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ひゅん！？」
-		PRINTFORMW 「き、きちゃう…気持ちいいの…」
-	;その他
-	ELSE
-		PRINTFORMW 「い、挿入れるなんて…ふむぅ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ひゅん！？」
+        PRINTFORMW 「き、きちゃう…気持ちいいの…」
+    ;その他
+    ELSE
+        PRINTFORMW 「い、挿入れるなんて…ふむぅ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -179,25 +179,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_6
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「んくっ」
-		PRINTFORMW 「えへへへへ、キス、しちゃいました！」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…あなたとなんて…ふむぅ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「んくっ」
+        PRINTFORMW 「えへへへへ、キス、しちゃいました！」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…あなたとなんて…ふむぅ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…ちゅっ…」
-		PRINTFORMW 「キスって…楽しいですね！」
-	;その他
-	ELSE
-		PRINTFORMW 「す、好きでもない人とキスだなんて…ひにゃっ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…ちゅっ…」
+        PRINTFORMW 「キスって…楽しいですね！」
+    ;その他
+    ELSE
+        PRINTFORMW 「す、好きでもない人とキスだなんて…ひにゃっ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -206,26 +206,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_7
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「分かりました」
-		PRINTFORMW 「響子のオナニー見てください！！」
-	;その他
-	ELSE
-		PRINTFORMW 「お、オナニーしろって…」
-		PRINTFORMW 「す、すればいいんでしょう！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「分かりました」
+        PRINTFORMW 「響子のオナニー見てください！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「お、オナニーしろって…」
+        PRINTFORMW 「す、すればいいんでしょう！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ふぁっ…ん…ひぁ…」
-		PRINTFORMW 「オナニー…気持ちいいの…」
-	;その他
-	ELSE
-		PRINTFORMW 「んぁ…くっ…ひっ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ふぁっ…ん…ひぁ…」
+        PRINTFORMW 「オナニー…気持ちいいの…」
+    ;その他
+    ELSE
+        PRINTFORMW 「んぁ…くっ…ひっ…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -240,25 +240,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_10
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「こ、これ…気持ちよくて…」
-	;その他
-	ELSE
-		PRINTFORMW 「なんですかこれ！？」
-		PRINTFORMW 「こんなおもちゃなんかに…ふにゃぁあ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「こ、これ…気持ちよくて…」
+    ;その他
+    ELSE
+        PRINTFORMW 「なんですかこれ！？」
+        PRINTFORMW 「こんなおもちゃなんかに…ふにゃぁあ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「やぁああ…」
-		PRINTFORMW 「ぶるぶるって…なっちゃう…」
-	;その他
-	ELSE
-		PRINTFORMW 「ひっ…やぁぁぁああぁぁ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「やぁああ…」
+        PRINTFORMW 「ぶるぶるって…なっちゃう…」
+    ;その他
+    ELSE
+        PRINTFORMW 「ひっ…やぁぁぁああぁぁ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -267,26 +267,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_11
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「こ、これ、」
-		PRINTFORMW 「強いの、来ちゃうううぅぅ！！」
-	;その他
-	ELSE
-		PRINTFORMW 「何！？何を…ひぁぁぁ！？」
-		PRINTFORMW 「これ！強くて…んぁ！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「こ、これ、」
+        PRINTFORMW 「強いの、来ちゃうううぅぅ！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「何！？何を…ひぁぁぁ！？」
+        PRINTFORMW 「これ！強くて…んぁ！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…もっと…もっと強く…！」
-		PRINTFORMW 「ああああああ！！！」
-	;その他
-	ELSE
-		PRINTFORMW 「やだぁ…もうやめて…ひぎぃ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…もっと…もっと強く…！」
+        PRINTFORMW 「ああああああ！！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだぁ…もうやめて…ひぎぃ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -296,10 +296,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_12
 ;解除時
 IF TEQUIP:20 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -309,10 +309,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_13
 ;解除時
 IF TEQUIP:25 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -322,10 +322,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_14
 ;解除時
 IF TEQUIP:30 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -335,10 +335,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_15
 ;解除時
 IF TEQUIP:35 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -348,10 +348,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_16
 ;解除時
 IF TEQUIP:30 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -361,10 +361,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_17
 ;解除時
 IF TEQUIP:30 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -373,26 +373,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_20
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「は、初めてなのでうまく出来るかわかりませんが…」
-		PRINTFORMW 「やさしくしてくださいね…？」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…止め…」
-		PRINTFORMW 「ひがああああぁぁぁぁ！！！？？！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「は、初めてなのでうまく出来るかわかりませんが…」
+        PRINTFORMW 「やさしくしてくださいね…？」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…止め…」
+        PRINTFORMW 「ひがああああぁぁぁぁ！！！？？！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「んあっ…くぁっ…！」
-		PRINTFORMW 「もっと…おちんちんください…！！」
-	;その他
-	ELSE
-		PRINTFORMW 「こ、こっち見ないでください！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「んあっ…くぁっ…！」
+        PRINTFORMW 「もっと…おちんちんください…！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「こ、こっち見ないでください！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -401,26 +401,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_21
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「わ、分かりました」
-		PRINTFORMW 「思う存分響子を後ろから襲ってください！」
-	;その他
-	ELSE
-		PRINTFORMW 「よ、四つん這いになれって何を…」
-		PRINTFORMW 「！？やだ！ぎあああああああ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「わ、分かりました」
+        PRINTFORMW 「思う存分響子を後ろから襲ってください！」
+    ;その他
+    ELSE
+        PRINTFORMW 「よ、四つん這いになれって何を…」
+        PRINTFORMW 「！？やだ！ぎあああああああ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「わん！わん！わん！」
-		PRINTFORMW 「響子を後ろから…犯してください！！」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ！こんな…私は犬じゃない！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「わん！わん！わん！」
+        PRINTFORMW 「響子を後ろから…犯してください！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ！こんな…私は犬じゃない！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -429,24 +429,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_22
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
-	;その他
-	ELSE
-		PRINTFORMW 「こ、こんな形で初めてを…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「こ、こんな形で初めてを…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ、やだ…あああああ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ、やだ…あああああ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -455,25 +455,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_23
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「う、後ろからよろしくお願いします…」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…」
-		PRINTFORMW 「後ろから…うぁぁぁぁ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「う、後ろからよろしくお願いします…」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…」
+        PRINTFORMW 「後ろから…うぁぁぁぁ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「後ろからされるって…興奮しますね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やあぁぁ…私…犯されてる…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「後ろからされるって…興奮しますね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やあぁぁ…私…犯されてる…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -482,26 +482,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_24
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ご主人様に…御奉仕出来て…」
-		PRINTFORMW 「この体勢、ん…気持ちいいです…」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…自分から入れろだなんて…」
-		PRINTFORMW 「いやあああああああああああああああ！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ご主人様に…御奉仕出来て…」
+        PRINTFORMW 「この体勢、ん…気持ちいいです…」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…自分から入れろだなんて…」
+        PRINTFORMW 「いやあああああああああああああああ！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「これ！ご主人様を！気持ちよくしてるって感じで！」
-		PRINTFORMW 「とても楽しいです！！！」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ！こんな体勢で！ああああああああああああ！！！？！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「これ！ご主人様を！気持ちよくしてるって感じで！」
+        PRINTFORMW 「とても楽しいです！！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ！こんな体勢で！ああああああああああああ！！！？！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -515,55 +515,55 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_81_TRAIN_MESSAGE_S_COM_26
 IF NO:ASSI == 25
-	IF CFLAG:5202 == 1
-		;2人に연모
-		IF TALENT:연모 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 『ああっ…うん…』
-				PRINTFORMW 「いいなぁ…みすちーご主人様にしてもらえて…」
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「なんでみすちーばっかり…」
-				PRINTFORMW 『ん…ご主人様のおちんぽ…深いとこ…来てる…！！』
-			ELSE
-				PRINTFORMW 「ぶー…」
-				PRINTFORMW 『あ、あ、おちんぽ気持ちいい！もっと…』
-			ENDIF
-		;響子のみ연모
-		ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
-			IF RAND:3 == 0
-				PRINTFORMW 「いいなぁ…ご主人様に犯してもらえて…」
-				PRINTFORMW 『や、やめ…あああああああ！！？』
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「あ！みすちーいっぱい中で出されてる！」
-				PRINTFORMW 『響子に見られながら…こんな…』
-			ELSE
-				PRINTFORMW 『あがぁ！？は、入ってる！？』
-				PRINTFORMW 「もー下手に暴れると痛いよー？」
-			ENDIF
-		;ミスティアのみ연모
-		ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 「見ないで！見ないでみすちー！」
-				PRINTFORMW 『慣れないときついよーそんなに濡らしてるのにさー』
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『ご主人様に愛してもらえるってだけで十分なのに響子は欲張りだなぁ』
-				PRINTFORMW 「何言ってるの！？元に戻ってよ…みすちー…」
-			ELSE
-				PRINTFORMW 『響子の喘ぎ声って素敵ね…』
-				PRINTFORMW 「聞かないでよぉ…こんなの…ああああ！！！」
-			ENDIF
-		;その他
-		ELSE
-			IF RAND:2 == 0
-				PRINTFORMW 「まって！わ、私が代わりに…」
-				PRINTFORMW 『やだぁ！！やめて！お願い！響子の前でこんな…ああああああ！！？！！？』
-			ELSE
-				PRINTFORMW 『私が…うまくできたら…響子は…』
-				PRINTFORMW 「…そんなこと…」
-			ENDIF
-		ENDIF
-		RETURN 1
-	ENDIF
+    IF CFLAG:5202 == 1
+        ;2人に연모
+        IF TALENT:연모 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 『ああっ…うん…』
+                PRINTFORMW 「いいなぁ…みすちーご主人様にしてもらえて…」
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「なんでみすちーばっかり…」
+                PRINTFORMW 『ん…ご主人様のおちんぽ…深いとこ…来てる…！！』
+            ELSE
+                PRINTFORMW 「ぶー…」
+                PRINTFORMW 『あ、あ、おちんぽ気持ちいい！もっと…』
+            ENDIF
+        ;響子のみ연모
+        ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
+            IF RAND:3 == 0
+                PRINTFORMW 「いいなぁ…ご主人様に犯してもらえて…」
+                PRINTFORMW 『や、やめ…あああああああ！！？』
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「あ！みすちーいっぱい中で出されてる！」
+                PRINTFORMW 『響子に見られながら…こんな…』
+            ELSE
+                PRINTFORMW 『あがぁ！？は、入ってる！？』
+                PRINTFORMW 「もー下手に暴れると痛いよー？」
+            ENDIF
+        ;ミスティアのみ연모
+        ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 「見ないで！見ないでみすちー！」
+                PRINTFORMW 『慣れないときついよーそんなに濡らしてるのにさー』
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『ご主人様に愛してもらえるってだけで十分なのに響子は欲張りだなぁ』
+                PRINTFORMW 「何言ってるの！？元に戻ってよ…みすちー…」
+            ELSE
+                PRINTFORMW 『響子の喘ぎ声って素敵ね…』
+                PRINTFORMW 「聞かないでよぉ…こんなの…ああああ！！！」
+            ENDIF
+        ;その他
+        ELSE
+            IF RAND:2 == 0
+                PRINTFORMW 「まって！わ、私が代わりに…」
+                PRINTFORMW 『やだぁ！！やめて！お願い！響子の前でこんな…ああああああ！！？！！？』
+            ELSE
+                PRINTFORMW 『私が…うまくできたら…響子は…』
+                PRINTFORMW 「…そんなこと…」
+            ENDIF
+        ENDIF
+        RETURN 1
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;対面立位
@@ -571,26 +571,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_27
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「た、立ったまま入れるんですか？」
-		PRINTFORMW 「私背が低いですから…や、やさしくしてくださいね？」
-	;その他
-	ELSE
-		PRINTFORMW 「な、い、いきなり持ち上げてなんですか…！？」
-		PRINTFORMW 「ぎゃぁ！？い、いきなりこんな…やだ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「た、立ったまま入れるんですか？」
+        PRINTFORMW 「私背が低いですから…や、やさしくしてくださいね？」
+    ;その他
+    ELSE
+        PRINTFORMW 「な、い、いきなり持ち上げてなんですか…！？」
+        PRINTFORMW 「ぎゃぁ！？い、いきなりこんな…やだ…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「あ…ん…こうやってもたれかかっても」
-		PRINTFORMW 「体は動かして…気持ちよくなって…」
-	;その他
-	ELSE
-		PRINTFORMW 「こんな…見ないでください！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「あ…ん…こうやってもたれかかっても」
+        PRINTFORMW 「体は動かして…気持ちよくなって…」
+    ;その他
+    ELSE
+        PRINTFORMW 「こんな…見ないでください！！」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -599,24 +599,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_28
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「立って後ろから…」
-	;その他
-	ELSE
-		PRINTFORMW 「後ろから…おっぱい揉んで…」
-		PRINTFORMW 「楽しいですか…？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「立って後ろから…」
+    ;その他
+    ELSE
+        PRINTFORMW 「後ろから…おっぱい揉んで…」
+        PRINTFORMW 「楽しいですか…？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「おっぱい触られながら入れられるての…いい…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ…胸触られながら…入ってる…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「おっぱい触られながら入れられるての…いい…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ…胸触られながら…入ってる…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -625,24 +625,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_30
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
-	;その他
-	ELSE
-		PRINTFORMW 「あああああ！？お尻が！！熱い！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「あああああ！？お尻が！！熱い！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ、やだ…あああああ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ、やだ…あああああ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -651,25 +651,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_31
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「四つん這いになって…」
-		PRINTFORMW 「ひぎぃ！？…お知りに入れるなら入れると…」
-	;その他
-	ELSE
-		PRINTFORMW 「？四つん這いですか？」
-		PRINTFORMW 「…ちょ、ちょっとま…お尻なんて無理ぃぃぃぃぃぃ！！？！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「四つん這いになって…」
+        PRINTFORMW 「ひぎぃ！？…お知りに入れるなら入れると…」
+    ;その他
+    ELSE
+        PRINTFORMW 「？四つん這いですか？」
+        PRINTFORMW 「…ちょ、ちょっとま…お尻なんて無理ぃぃぃぃぃぃ！！？！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…犯されて…獣みたいに…」
-	;その他
-	ELSE
-		PRINTFORMW 「犬みたいな格好で…犯されて…！があああああああああ！！！？！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…犯されて…獣みたいに…」
+    ;その他
+    ELSE
+        PRINTFORMW 「犬みたいな格好で…犯されて…！があああああああああ！！！？！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -678,24 +678,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_32
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
-	;その他
-	ELSE
-		PRINTFORMW 「こ、こんな形で初めてを…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「こ、こんな形で初めてを…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ、やだ…あああああ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ、やだ…あああああ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -704,25 +704,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_33
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「う、後ろからよろしくお願いします…」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…」
-		PRINTFORMW 「後ろから…うぁぁぁぁ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「う、後ろからよろしくお願いします…」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…」
+        PRINTFORMW 「後ろから…うぁぁぁぁ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「後ろからされるって…興奮しますね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やあぁぁ…私…犯されてる…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「後ろからされるって…興奮しますね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やあぁぁ…私…犯されてる…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -731,26 +731,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_34
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ご主人様に…御奉仕出来て…」
-		PRINTFORMW 「この体勢、ん…気持ちいいです…」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…自分から入れろだなんて…」
-		PRINTFORMW 「いやあああああああああああああああ！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ご主人様に…御奉仕出来て…」
+        PRINTFORMW 「この体勢、ん…気持ちいいです…」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…自分から入れろだなんて…」
+        PRINTFORMW 「いやあああああああああああああああ！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「これ！ご主人様を！気持ちよくしてるって感じで！」
-		PRINTFORMW 「とても楽しいです！！！」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ！こんな体勢で！ああああああああああああ！！！？！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「これ！ご主人様を！気持ちよくしてるって感じで！」
+        PRINTFORMW 「とても楽しいです！！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ！こんな体勢で！ああああああああああああ！！！？！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -771,24 +771,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_37
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
-	;その他
-	ELSE
-		PRINTFORMW 「こ、こんな形で初めてを…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+    ;その他
+    ELSE
+        PRINTFORMW 「こ、こんな形で初めてを…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ、やだ…あああああ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ、やだ…あああああ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -797,25 +797,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_38
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「う、後ろからよろしくお願いします…」
-	;その他
-	ELSE
-		PRINTFORMW 「や、やだ…」
-		PRINTFORMW 「後ろから…うぁぁぁぁ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「う、後ろからよろしくお願いします…」
+    ;その他
+    ELSE
+        PRINTFORMW 「や、やだ…」
+        PRINTFORMW 「後ろから…うぁぁぁぁ！？」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…あっ…」
-		PRINTFORMW 「後ろからされるって…興奮しますね…」
-	;その他
-	ELSE
-		PRINTFORMW 「やあぁぁ…私…犯されてる…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…あっ…」
+        PRINTFORMW 「後ろからされるって…興奮しますね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やあぁぁ…私…犯されてる…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -824,25 +824,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_40
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…しこしこすればいいんですか？」
-		PRINTFORMW 「うまくできるかなぁ？」
-	;その他
-	ELSE
-		PRINTFORMW 「手、手でしろって…」
-		PRINTFORMW 「…にちゃにちゃして気持ち悪い…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…しこしこすればいいんですか？」
+        PRINTFORMW 「うまくできるかなぁ？」
+    ;その他
+    ELSE
+        PRINTFORMW 「手、手でしろって…」
+        PRINTFORMW 「…にちゃにちゃして気持ち悪い…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ほんとにおっきいですねこれ…」
-	;その他
-	ELSE
-		PRINTFORMW 「こんな…ぬちゃぬちゃしてて…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ほんとにおっきいですねこれ…」
+    ;その他
+    ELSE
+        PRINTFORMW 「こんな…ぬちゃぬちゃしてて…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -851,26 +851,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_41
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…くちゅる…じゅる…」
-		PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
-	;その他
-	ELSE
-		PRINTFORMW 「こ、こんな…気持ち悪いもの…口に入れろなんてはぐっ…！？」
-		PRINTFORMW 「はふっ…ぐちゅ…れろっ…はむっ…ん…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…くちゅる…じゅる…」
+        PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
+    ;その他
+    ELSE
+        PRINTFORMW 「こ、こんな…気持ち悪いもの…口に入れろなんてはぐっ…！？」
+        PRINTFORMW 「はふっ…ぐちゅ…れろっ…はむっ…ん…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「先っぽと玉も一緒に舐められるといいんですけど…」
-		PRINTFORMW 「ん…じゅるっ…れろっ…くちゅ…はむっ…」
-	;その他
-	ELSE
-		PRINTFORMW 「ぐむっ！？ぷはっ…げほっげほっ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「先っぽと玉も一緒に舐められるといいんですけど…」
+        PRINTFORMW 「ん…じゅるっ…れろっ…くちゅ…はむっ…」
+    ;その他
+    ELSE
+        PRINTFORMW 「ぐむっ！？ぷはっ…げほっげほっ…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -879,24 +879,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_42
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「こ、この胸でうまく出来るかわかりませんけど…」
-	;その他
-	ELSE
-		PRINTFORMW 「胸でどうしろっていうのですか…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「こ、この胸でうまく出来るかわかりませんけど…」
+    ;その他
+    ELSE
+        PRINTFORMW 「胸でどうしろっていうのですか…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…ん…」
-		PRINTFORMW 「こんな感じですか？」
-	;その他
-	ELSE
-		PRINTFORMW 「こんなの擦り付けられても…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…ん…」
+        PRINTFORMW 「こんな感じですか？」
+    ;その他
+    ELSE
+        PRINTFORMW 「こんなの擦り付けられても…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -905,24 +905,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_43
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「お股でするのがいいんですか…」
-		PRINTFORMW 「これで…どうですか？」
-	;その他
-	ELSE
-		PRINTFORMW 「中に入れられないだけましですかね…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「お股でするのがいいんですか…」
+        PRINTFORMW 「これで…どうですか？」
+    ;その他
+    ELSE
+        PRINTFORMW 「中に入れられないだけましですかね…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「…中で出してくれてもいいんですよ？」
-	;その他
-	ELSE
-		PRINTFORMW 「こんなのがいいんですか？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「…中で出してくれてもいいんですよ？」
+    ;その他
+    ELSE
+        PRINTFORMW 「こんなのがいいんですか？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -931,24 +931,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_44
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「はい、ご主人様のお尻をきれいにします！」
-	;その他
-	ELSE
-		PRINTFORMW 「そ、そんなところ舐めろなだんて…」
-		PRINTFORMW 「…臭い…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「はい、ご主人様のお尻をきれいにします！」
+    ;その他
+    ELSE
+        PRINTFORMW 「そ、そんなところ舐めろなだんて…」
+        PRINTFORMW 「…臭い…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「んちゅ…ぺろ…れろっ…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだ…舐めたくなんてふぐっ！？」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「んちゅ…ぺろ…れろっ…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだ…舐めたくなんてふぐっ！？」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -957,23 +957,23 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_45
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「響子の…お尻の穴使ってください！」
-	;その他
-	ELSE
-		PRINTFORMW 「きょ、響子の…お、お尻の穴…やだ…言えません…！！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「響子の…お尻の穴使ってください！」
+    ;その他
+    ELSE
+        PRINTFORMW 「きょ、響子の…お、お尻の穴…やだ…言えません…！！」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「響子のお尻の穴を使っていっぱい気持ちよくなって下さい！」
-	;その他
-	ELSE
-		PRINTFORMW 「響子の…お尻に…おちんちんください…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「響子のお尻の穴を使っていっぱい気持ちよくなって下さい！」
+    ;その他
+    ELSE
+        PRINTFORMW 「響子の…お尻に…おちんちんください…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -988,24 +988,24 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_47
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
-		PRINTFORMW 「むず、かしいですね…」
-	;その他
-	ELSE
-		PRINTFORMW 「これ…私のほうがご主人様みたいですね」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
+        PRINTFORMW 「むず、かしいですね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「これ…私のほうがご主人様みたいですね」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ふふふ…気持ちいいですかー？」
-	;その他
-	ELSE
-		PRINTFORMW 「踏まれて気持ちいいんですか？きもいですよ」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ふふふ…気持ちいいですかー？」
+    ;その他
+    ELSE
+        PRINTFORMW 「踏まれて気持ちいいんですか？きもいですよ」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1032,25 +1032,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_51
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「お尻…大きくないですけど…」
-		PRINTFORMW 「気持ちよくなって下さいね！」
-	;その他
-	ELSE
-		PRINTFORMW 「お、お尻になにを…！？」
-		PRINTFORMW 「…そんなもの擦り付けないでください…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「お尻…大きくないですけど…」
+        PRINTFORMW 「気持ちよくなって下さいね！」
+    ;その他
+    ELSE
+        PRINTFORMW 「お、お尻になにを…！？」
+        PRINTFORMW 「…そんなもの擦り付けないでください…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「お尻で」
-	;その他
-	ELSE
-		PRINTFORMW 「んぁ…くっ…ひっ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「お尻で」
+    ;その他
+    ELSE
+        PRINTFORMW 「んぁ…くっ…ひっ…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1071,25 +1071,25 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_54
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「ん…じゅる…」
-		PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
-	;その他
-	ELSE
-		PRINTFORMW 「な、舐めろって…」
-		PRINTFORMW 「ぐちゅ…れろっ…はむっ…ん…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「ん…じゅる…」
+        PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
+    ;その他
+    ELSE
+        PRINTFORMW 「な、舐めろって…」
+        PRINTFORMW 「ぐちゅ…れろっ…はむっ…ん…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「せーしタンク…きれいにしてあげますね」
-	;その他
-	ELSE
-		PRINTFORMW 「くちゅ…気持ち悪い…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「せーしタンク…きれいにしてあげますね」
+    ;その他
+    ELSE
+        PRINTFORMW 「くちゅ…気持ち悪い…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1110,23 +1110,23 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_60
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「いっぱい濡らして下さいね…」
-	;その他
-	ELSE
-		PRINTFORMW 「ひゃっ！？なにこれ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「いっぱい濡らして下さいね…」
+    ;その他
+    ELSE
+        PRINTFORMW 「ひゃっ！？なにこれ…」
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「こんなもの使わなくても…ご主人様となら…」
-	;その他
-	ELSE
-		PRINTFORMW 「これ…慣れません…ぬるぬるして…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「こんなもの使わなくても…ご主人様となら…」
+    ;その他
+    ELSE
+        PRINTFORMW 「これ…慣れません…ぬるぬるして…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1135,26 +1135,26 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_61
 ;初回実行時
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「薬なんか使わなくたって…」
-		PRINTFORMW 「ん…でも気持ちよくなってきました…」
-	;その他
-	ELSE
-		PRINTFORMW 「な、なんですかこれ…！？」
-		PRINTFORMW （やだ…体中が…むずむずする…）
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「薬なんか使わなくたって…」
+        PRINTFORMW 「ん…でも気持ちよくなってきました…」
+    ;その他
+    ELSE
+        PRINTFORMW 「な、なんですかこれ…！？」
+        PRINTFORMW （やだ…体中が…むずむずする…）
+    ENDIF
 
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「もう…こんなの…」
-		PRINTFORMW 「ん…体が疼いて来る…」
-	;その他
-	ELSE
-		PRINTFORMW 「やだぁ…変になっちゃうよぉ…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「もう…こんなの…」
+        PRINTFORMW 「ん…体が疼いて来る…」
+    ;その他
+    ELSE
+        PRINTFORMW 「やだぁ…変になっちゃうよぉ…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1229,22 +1229,22 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_79
 ;シダーウッド
 IF TFLAG:99 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ペパーミント
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ジャスミン
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ラヴェンダー
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ムスク
 ELSEIF TFLAG:99 == 4
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;フランキンセンス
 ELSEIF TFLAG:99 == 5
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1302,10 +1302,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_90
 ;解除時
 IF TEQUIP:59 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1315,10 +1315,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_91
 ;解除時
 IF TEQUIP:59 == 0
-	PRINTFORMW 「終わりですか？…結構気に入ってたんですけど」
+    PRINTFORMW 「終わりですか？…結構気に入ってたんですけど」
 ;装着時
 ELSE
-	PRINTFORMW 「外の世界の水着ですか？…サイズぴったりしてて動きやすいですね」
+    PRINTFORMW 「外の世界の水着ですか？…サイズぴったりしてて動きやすいですね」
 ENDIF
 ;-------------------------------------------------
 ;お医者プレイ
@@ -1327,10 +1327,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_92
 ;解除時
 IF TEQUIP:57 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1340,10 +1340,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_93
 ;解除時
 IF TEQUIP:59 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1353,8 +1353,8 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_94
 ;解除時
 IF TEQUIP:ASSI:59 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF

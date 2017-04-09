@@ -11,8 +11,8 @@
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTW  
@@ -33,8 +33,8 @@ CALL BADGAME_CONTINUE
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -45,9 +45,9 @@ PRINTW ……
 PRINTFORMW 정신이 들고 보니 %조사처리(CALLNAME:MASTER,"는")% 자신의 방에 있었다.
 PRINTW 몇 개월 전, 그 신비한 세계로 가기 전에 살고 있던 ｢자신의 방｣이다.
 SIF ASSI >= 0
-	PRINTFORMW %조사처리(CALLNAME:ASSI,"를")% 불러봐도 대답은 없다.
+    PRINTFORMW %조사처리(CALLNAME:ASSI,"를")% 불러봐도 대답은 없다.
 SIF TARGET >= 0
-	PRINTFORMW %조사처리(CALLNAME:TARGET,"를")% 찾아봐도 모습은 보이지 않는다.
+    PRINTFORMW %조사처리(CALLNAME:TARGET,"를")% 찾아봐도 모습은 보이지 않는다.
 PRINTW 마치 모든 것이 환상이었던 것처럼, 방은 이전과 변함없는 모습을 보존하고 있었다…….
 PRINTW  
 PRINTFORMW 그리하여 %조사처리(CALLNAME:MASTER,"는")% 평소의 일상으로 돌아왔다.
@@ -66,8 +66,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTW ―――돈이 똑 떨어졌습니다―――
@@ -93,8 +93,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTW ………………
@@ -113,8 +113,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTW ―――조교사로서의 긍지를 상실했습니다―――
@@ -141,8 +141,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -174,8 +174,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -187,11 +187,11 @@ PRINTFORMW 독 때문에 체력을 소모하고 만 %조사처리(CALLNAME:MASTE
 PRINTFORMW 콰당 소리를 내며 바닥에 고꾸라져 버렸다.
 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 
 IF FLAG:5 == 0
-	PRINTFORMW 이 이상한 세계로 오고 나서 대체 얼마나 시간이 지난 것인지 
-	PRINTFORMW 어째서 이같은 일이 일어나 버린 건지 
+    PRINTFORMW 이 이상한 세계로 오고 나서 대체 얼마나 시간이 지난 것인지 
+    PRINTFORMW 어째서 이같은 일이 일어나 버린 건지 
 ELSE
-	PRINTFORMW 어째서 이따위 짓을 하자는 생각이 든 건지 
-	PRINTFORMW 왜 내가 %조사처리(CALLNAME:TARGET,"를")% 조교하고 싶다는 생각 따위를 한 건지 
+    PRINTFORMW 어째서 이따위 짓을 하자는 생각이 든 건지 
+    PRINTFORMW 왜 내가 %조사처리(CALLNAME:TARGET,"를")% 조교하고 싶다는 생각 따위를 한 건지 
 ENDIF
 PRINTFORMW ……등의 의문을 머릿속에 두서 없이 반복했지만 
 PRINTFORMW 어느 것 하나 해결을 보지 못했고, 
@@ -222,8 +222,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -239,16 +239,16 @@ PRINTFORMW %CALLNAME:MASTER%의 의식은 점점 더 끊어질 듯 희미해져�
 PRINTW  
 PRINTW ………
 PRINTW ……
-	PRINTFORMW ――정신이 들고 보니 %조사처리(CALLNAME:MASTER,"는")% 뒤로 손이 묶인 채 의자 위에 앉아 있었다.
-	PRINTFORML 주변을 둘러보니 거기엔 붉은 촛불을 손에 든 %조사처리(CALLNAME:TARGET,"가")% 
-	PRINTFORMW 망가진 듯한 미소를 띄우며, %조사처리(CALLNAME:MASTER,"를")% 내려다보고 있었다.
-	PRINTFORML 앞으로 시작될 공포에 %CALLNAME:MASTER%의 얼굴이 일그러지는 모습을 보고는, 
-	PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 황홀한 듯한 눈으로 %조사처리(CALLNAME:MASTER,"가")% 입고 있던 옷에 손을 뻗어――
-	PRINTW …………
-	PRINTW ………
-	PRINTW ……
-	PRINTFORMW ★★★%조사처리(CALLNAME:MASTER,"는")% 철저하게 조교당했습니다★★★
-	PRINTW  
+    PRINTFORMW ――정신이 들고 보니 %조사처리(CALLNAME:MASTER,"는")% 뒤로 손이 묶인 채 의자 위에 앉아 있었다.
+    PRINTFORML 주변을 둘러보니 거기엔 붉은 촛불을 손에 든 %조사처리(CALLNAME:TARGET,"가")% 
+    PRINTFORMW 망가진 듯한 미소를 띄우며, %조사처리(CALLNAME:MASTER,"를")% 내려다보고 있었다.
+    PRINTFORML 앞으로 시작될 공포에 %CALLNAME:MASTER%의 얼굴이 일그러지는 모습을 보고는, 
+    PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 황홀한 듯한 눈으로 %조사처리(CALLNAME:MASTER,"가")% 입고 있던 옷에 손을 뻗어――
+    PRINTW …………
+    PRINTW ………
+    PRINTW ……
+    PRINTFORMW ★★★%조사처리(CALLNAME:MASTER,"는")% 철저하게 조교당했습니다★★★
+    PRINTW  
 PRINTW  
 PRINTW 　　　　　　　　―― Ending No.-07 (역조교 엔딩)
 CALL BADEND_COMMON
@@ -261,8 +261,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTL 
@@ -286,8 +286,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTL 
@@ -313,8 +313,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTL 
@@ -340,8 +340,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 PRINTL 
@@ -370,8 +370,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 TARGET = TFLAG:900
@@ -400,8 +400,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -430,8 +430,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -463,12 +463,12 @@ PRINTL
 $INPUT_LOOP
 INPUT
 IF RESULT == 0
-	PRINTW 수고하셨습니다. 게임을 종료합니다.
+    PRINTW 수고하셨습니다. 게임을 종료합니다.
 ELSEIF RESULT == 1
-	call LOADGAME_EX
-	PRINTW 데이터를 로드하지 않았으므로 종료합니다.
+    call LOADGAME_EX
+    PRINTW 데이터를 로드하지 않았으므로 종료합니다.
 ELSE
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 QUIT
 
@@ -482,16 +482,16 @@ QUIT
 @JUDGE_WRONGEND_1
 LOCAL:1 = 0
 FOR LOCAL, 0, CHARANUM
-	;실종 캐릭터는 제외
-	SIF CFLAG:LOCAL:4 == 1
-		CONTINUE
-	;상호 조교 엔딩용 조수가능 반발 3인원수 카운트
-	SIF CFLAG:LOCAL:1 == 2 && MARK:LOCAL:9 == 3
-		LOCAL:1 += 1
+    ;실종 캐릭터는 제외
+    SIF CFLAG:LOCAL:4 == 1
+        CONTINUE
+    ;상호 조교 엔딩용 조수가능 반발 3인원수 카운트
+    SIF CFLAG:LOCAL:1 == 2 && MARK:LOCAL:9 == 3
+        LOCAL:1 += 1
 NEXT
 ;상호 조교 엔딩
 SIF LOCAL:1 >= 10
-	JUMP WRONGEND_1
+    JUMP WRONGEND_1
 ;배드 엔딩
 CALL BADEND_1
 
@@ -503,8 +503,8 @@ CALL BADEND_1
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 LOCAL = MAX(CHARANUM - 1, 1)
@@ -531,42 +531,42 @@ PRINTW 교대로 대량의 미약을 잇달아서 마우스 투 마우스로 먹
 EXP:MASTER:40 += LOCAL*2
 ;성별 체크. 후타나리는 무시
 IF TALENT:MASTER:120
-	PRINTW 음경이 훑어져 사정했음에도 불구하고 계속 자극이 주어졌다.
-	EXP:MASTER:2 += LOCAL
-	EXP:MASTER:3 += LOCAL
-	IF EXP:MASTER:53
-		PRINTW 별안간, 구속이 느슨해진다.
-		PRINTW 허나 다음 순간 어디서 왔는지도 모르게 나타난 이형의 촉수에게 온몸이 농락당한다.
-		PRINTW 촉수가 온몸을 졸라대며 구멍이란 구멍을 범하고 음경을 한없이 훑는다.
-		EXP:MASTER:1 += LOCAL*2
-		CFLAG:MASTER:11 |= 2
-		EXP:MASTER:2 += LOCAL
-		EXP:MASTER:3 += LOCAL
-	ELSE
-		PRINTW 그것들이 영원이라 여겨질 정도로 이어지다가 
-	ENDIF
+    PRINTW 음경이 훑어져 사정했음에도 불구하고 계속 자극이 주어졌다.
+    EXP:MASTER:2 += LOCAL
+    EXP:MASTER:3 += LOCAL
+    IF EXP:MASTER:53
+        PRINTW 별안간, 구속이 느슨해진다.
+        PRINTW 허나 다음 순간 어디서 왔는지도 모르게 나타난 이형의 촉수에게 온몸이 농락당한다.
+        PRINTW 촉수가 온몸을 졸라대며 구멍이란 구멍을 범하고 음경을 한없이 훑는다.
+        EXP:MASTER:1 += LOCAL*2
+        CFLAG:MASTER:11 |= 2
+        EXP:MASTER:2 += LOCAL
+        EXP:MASTER:3 += LOCAL
+    ELSE
+        PRINTW 그것들이 영원이라 여겨질 정도로 이어지다가 
+    ENDIF
 ELSE
-	PRINTW 바이브, 주먹, 술병 등 온갖 물건이 삽입되었다.
-	EXP:MASTER:0 += LOCAL*2
-	TALENT:MASTER:0 = 1
-	CFLAG:MASTER:11 |= 1
-	EXP:MASTER:1 += LOCAL*2
-	CFLAG:MASTER:11 |= 2
-	EXP:MASTER:32 += LOCAL
-	EXP:MASTER:33 += LOCAL
-	IF EXP:MASTER:53
-		PRINTW 별안간, 구속이 느슨해진다.
-		PRINTW 허나 다음 순간 어디서 왔는지도 모르게 나타난 이형의 촉수에게 온몸이 농락당한다.
-		PRINTW 촉수가 온몸을 졸라대며 구멍이란 구멍을 범하고 음경을 한없이 훑는다.
-		EXP:MASTER:0 += LOCAL*2
-		EXP:MASTER:1 += LOCAL*2
-		IF TALENT:MASTER:121
-			EXP:MASTER:2 += LOCAL
-			EXP:MASTER:3 += LOCAL
-		ENDIF
-	ELSE
-		PRINTW 그것들이 영원이라 여겨질 정도로 이어지다가 
-	ENDIF
+    PRINTW 바이브, 주먹, 술병 등 온갖 물건이 삽입되었다.
+    EXP:MASTER:0 += LOCAL*2
+    TALENT:MASTER:0 = 1
+    CFLAG:MASTER:11 |= 1
+    EXP:MASTER:1 += LOCAL*2
+    CFLAG:MASTER:11 |= 2
+    EXP:MASTER:32 += LOCAL
+    EXP:MASTER:33 += LOCAL
+    IF EXP:MASTER:53
+        PRINTW 별안간, 구속이 느슨해진다.
+        PRINTW 허나 다음 순간 어디서 왔는지도 모르게 나타난 이형의 촉수에게 온몸이 농락당한다.
+        PRINTW 촉수가 온몸을 졸라대며 구멍이란 구멍을 범하고 음경을 한없이 훑는다.
+        EXP:MASTER:0 += LOCAL*2
+        EXP:MASTER:1 += LOCAL*2
+        IF TALENT:MASTER:121
+            EXP:MASTER:2 += LOCAL
+            EXP:MASTER:3 += LOCAL
+        ENDIF
+    ELSE
+        PRINTW 그것들이 영원이라 여겨질 정도로 이어지다가 
+    ENDIF
 ENDIF
 PRINTFORMW 한층 더 큰 절정 뒤에 %CALLNAME:MASTER%의 의식은 멀어져갔다…….
 PRINTW  
@@ -592,14 +592,14 @@ PRINTL
 $INPUT_LOOP
 INPUT
 IF RESULT == 0
-	PRINTW 수고하셨습니다. 게임을 종료합니다.
-	QUIT
+    PRINTW 수고하셨습니다. 게임을 종료합니다.
+    QUIT
 ELSEIF RESULT == 1
-	FLAG:5 |= 1
-	FLAG:5 |= 2
-	FLAG:5 |= 4
+    FLAG:5 |= 1
+    FLAG:5 |= 2
+    FLAG:5 |= 4
 ELSE
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 
 ;=============================================================================
@@ -609,27 +609,27 @@ ENDIF
 @ENDING_TENTACLE
 ;촉수 사역 Lv3 미만이라고 받아들여지고 엔딩
 IF ABL:MASTER:98 < 3
-	CALL ENDING_TENTACLE_1
+    CALL ENDING_TENTACLE_1
 ELSE
-	;주인의 촉수 사역이 Lv4 이상([남자]의 경우는 Lv3 이상)으로 캐릭터 촉수를 생성하고 있으면(자) 촉수공주 하렘의 판정에
-	SIF ABL:MASTER:98 >= (4 - TALENT:MASTER:120) && FLAG:97 > 0 && FLAG:98 > 0
-		CALL ENDING_COUNT_CHARATENTACLE
-	;캐릭터 촉수를 10명 이상 개발하고 있으면(자) 촉수공주 엔딩에
-	IF TFLAG:0 >= 10
-		CALL ENDING_4
-	ELSE
-		TFLAG:0 = 0
-		;주인의 촉수 사역이 Lv4 이상([남자]의 경우는 Lv3 이상)으로, 이 주회로 30명 이상 바치고 있으면(자) 촉수 개발 판정에
-		SIF ABL:MASTER:98 >= (4 - TALENT:MASTER:120) && FLAG:33 >= 30
-			CALL ENDING_COUNT_SPECIALTENTACLE
-		;캐릭터 촉수 이외의 촉수를 15종 개발하고 있으면(자) 촉수 사용 엔딩에
-		IF TFLAG:0 >= 15
-			CALL ENDING_3
-		;어느 조건을 채우지 않았다고 긴박 되어 방치 엔딩
-		ELSE
-			CALL ENDING_TENTACLE_2
-		ENDIF
-	ENDIF
+    ;주인의 촉수 사역이 Lv4 이상([남자]의 경우는 Lv3 이상)으로 캐릭터 촉수를 생성하고 있으면(자) 촉수공주 하렘의 판정에
+    SIF ABL:MASTER:98 >= (4 - TALENT:MASTER:120) && FLAG:97 > 0 && FLAG:98 > 0
+        CALL ENDING_COUNT_CHARATENTACLE
+    ;캐릭터 촉수를 10명 이상 개발하고 있으면(자) 촉수공주 엔딩에
+    IF TFLAG:0 >= 10
+        CALL ENDING_4
+    ELSE
+        TFLAG:0 = 0
+        ;주인의 촉수 사역이 Lv4 이상([남자]의 경우는 Lv3 이상)으로, 이 주회로 30명 이상 바치고 있으면(자) 촉수 개발 판정에
+        SIF ABL:MASTER:98 >= (4 - TALENT:MASTER:120) && FLAG:33 >= 30
+            CALL ENDING_COUNT_SPECIALTENTACLE
+        ;캐릭터 촉수 이외의 촉수를 15종 개발하고 있으면(자) 촉수 사용 엔딩에
+        IF TFLAG:0 >= 15
+            CALL ENDING_3
+        ;어느 조건을 채우지 않았다고 긴박 되어 방치 엔딩
+        ELSE
+            CALL ENDING_TENTACLE_2
+        ENDIF
+    ENDIF
 ENDIF
 
 ;--------------------------------------------------
@@ -639,11 +639,11 @@ ENDIF
 TFLAG:0 = CHARATENTACLE_CHECK()
 ;캐릭터 촉수가 10명(종? ) 없을 때는 촉수 하렘이 되지 않고, 배드 엔딩행
 SIF TFLAG:0 < 10
-	RETURN 0
+    RETURN 0
 
 ;노멀·하렘 엔딩 합계 도달 회수 카운트
 SIF FLAG:4004 == 0
-	FLAG:4000 += 1
+    FLAG:4000 += 1
 PRINTW ―――촉수 하렘 조건 달성―――
 PRINTW ………………
 PRINTW …………
@@ -656,11 +656,11 @@ PRINTW ……
 TFLAG:0 = SPECIALTENTACLE_CHECK()
 ;개발한 촉수가 10종을 못 미칠 때는 촉수 사용 엔딩가 되지 않고, 배드 엔딩행
 SIF TFLAG:0 < 10
-	RETURN 0
+    RETURN 0
 
 ;노멀·하렘 엔딩 합계 도달 회수 카운트
 SIF FLAG:4004 == 0
-	FLAG:4000 += 1
+    FLAG:4000 += 1
 PRINTW ―――특수 촉수 엔딩 조건 달성―――
 PRINTW ………………
 PRINTW …………
@@ -674,7 +674,7 @@ PRINTW ……
 #FUNCTION
 LOCAL:1 = 0
 FOR LOCAL, 0, 20
-	LOCAL:1 += GETBIT(FLAG:98, LOCAL)
+    LOCAL:1 += GETBIT(FLAG:98, LOCAL)
 NEXT
 RETURNF LOCAL:1
 
@@ -686,10 +686,10 @@ RETURNF LOCAL:1
 #FUNCTION
 LOCAL:1 = 0
 FOR LOCAL, 0, 20
-	LOCAL:1 += GETBIT(FLAG:75, LOCAL)
+    LOCAL:1 += GETBIT(FLAG:75, LOCAL)
 NEXT
 SIF DITEMTYPE:59:999
-	LOCAL:1 += 1
+    LOCAL:1 += 1
 RETURNF LOCAL:1
 
 ;--------------------------------------------------
@@ -700,8 +700,8 @@ RETURNF LOCAL:1
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -718,9 +718,9 @@ PRINTFORMW 의식을 되찾은 %조사처리(CALLNAME:MASTER,"는")% 자신이 �
 PRINTW 촉수의 벽에 둘러싸인 가운데, 두 팔은 높이 들어올려지고 두 다리는 크게 벌려진 상태로 고정되어 있었다.
 PRINTFORM 어느 촉수는 %CALLNAME:MASTER%의 
 IF TALENT:MASTER:120 || TALENT:MASTER:121
-	PRINTW 페니스에 매달려 정액을 빨아내는 동작을 되풀이하고 있다.
+    PRINTW 페니스에 매달려 정액을 빨아내는 동작을 되풀이하고 있다.
 ELSE
-	PRINTW 바기나 속 깊이 파고들어 하복부에 형용하기 어려운 쾌감을 계속 주고 있다.
+    PRINTW 바기나 속 깊이 파고들어 하복부에 형용하기 어려운 쾌감을 계속 주고 있다.
 ENDIF
 PRINTFORMW 다른 촉수는 %CALLNAME:MASTER%의 아누스에 파고들어가 뒷구멍 조교와 배설물 처리를 동시에 해치우고 있었다.
 PRINTFORMW 촉수는 때때로 %CALLNAME:MASTER%의 입을 우격다짐으로 열고는 영양분이 담긴 체액을 흘려넣고,
@@ -744,8 +744,8 @@ CALL BADEND_COMMON
 CALL DECODE_SAVEINFO_TORIKOMODE
 ;노모어글레이즈 사용중이라면
 IF RESULT:0 ==1
-	FLAG:5002 += 1000
-	CALL SAVEGAME_AUTO_TORIKOMODE
+    FLAG:5002 += 1000
+    CALL SAVEGAME_AUTO_TORIKOMODE
 ENDIF
 
 DRAWLINE
@@ -762,7 +762,7 @@ PRINTFORMW 정신을 차리니 %CALLNAME:MASTER%의 주위는 촉수로 가득 �
 PRINTFORMW 폭주한 촉수는 눈 깜빡할 새에 %CALLNAME:MASTER%의 저택을 주민까지 한꺼번에 집어삼키고,
 PRINTW 사냥감에 쾌락을 주어 에너지를 착취하는 행동을 반복하고 있는 것 같다.
 SIF TARGET >= 0
-	PRINTFORMW 때때로 고기벽 너머에서 들려오는 교성은 촉수에 붙잡힌 %CALLNAME:TARGET%의 것이리라….
+    PRINTFORMW 때때로 고기벽 너머에서 들려오는 교성은 촉수에 붙잡힌 %CALLNAME:TARGET%의 것이리라….
 PRINTFORMW 다행인지 불행인지, 촉수는 예전의 주인이었던 %조사처리(CALLNAME:MASTER,"를")% 덮칠 기색을 전혀 보이지 않는다.
 PRINTW  
 PRINTW 몸이 포박되어 마음 가는 대로 움직이지도 못한 채로 대체 시간이 얼마나 지났을까.
@@ -783,8 +783,8 @@ CALL BADEND_COMMON
 VARSET LOCALS, ""
 SPLIT "사토리 ,니토리 ,유유코 ,스이카 ,앨리스 ,히나 ,아야 ,파르시 ,메디슨 ,파츄리 ,대요정 ,치르노 ,나즈린 ,에이키 ,시즈하 ,미노리코 ,스와코 ",",", LOCALS
 FOR LOCAL, 0,17
-	SIF GETBIT(FLAG:97, LOCAL) && GETBIT(FLAG:98, LOCAL)
-		PRINTFORM %LOCALS:LOCAL%
+    SIF GETBIT(FLAG:97, LOCAL) && GETBIT(FLAG:98, LOCAL)
+        PRINTFORM %LOCALS:LOCAL%
 NEXT
 PRINTW ……
 PRINTW 한때 환상향 내에서도 이름이 알려진 소녀들이었던 그것들은
@@ -794,14 +794,14 @@ PRINTFORMW 지금으로선 %조사처리(CALLNAME:MASTER,"를")% 즐겁게 하�
 PRINTW  
 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 지시하지 않아도, 그녀들은 %CALLNAME:MASTER%에게 봉사하기를 게을리 하지 않는다.
 IF TALENT:MASTER:120 || TALENT:MASTER:121
-	PRINTFORMW 그녀들은 자신의 손과 가슴, 입을 이용해 %CALLNAME:MASTER%의 육봉에 쾌락을 주고,
-	PRINTFORMW 혹은 질내나 애널로 %CALLNAME:MASTER%의 정액을 짜낸다.
-	PRINTW  
-	PRINTFORMW 때로는 누워있는 %CALLNAME:MASTER%에게 올라타 육봉을 꿀단지로 삼키며,
+    PRINTFORMW 그녀들은 자신의 손과 가슴, 입을 이용해 %CALLNAME:MASTER%의 육봉에 쾌락을 주고,
+    PRINTFORMW 혹은 질내나 애널로 %CALLNAME:MASTER%의 정액을 짜낸다.
+    PRINTW  
+    PRINTFORMW 때로는 누워있는 %CALLNAME:MASTER%에게 올라타 육봉을 꿀단지로 삼키며,
 ELSE
-	PRINTFORMW 촉수와 반쯤 동화한 소녀들은 무릎을 꿇고 %CALLNAME:MASTER%의 요염한 음핵을 그 혀로 닦아내고,
-	PRINTFORMW 혹은 주인의 \@(TALENT:MASTER:110) ? 유두를 손가락 아랫쪽으로 눌러뭉개거나, 손끝으로 가볍게 잡아당겨 희롱할 대로 희롱하고 # 유방을 병적이라고도 할 수 있을 만큼 하얗고 섬세한 손으로 맘대로 주무르고\@ 있다.
-	PRINTFORMW 때로는 누워있는 %CALLNAME:MASTER%의 얼굴에 올라타 꿀단지에서 넘치는 음액을 바치며,
+    PRINTFORMW 촉수와 반쯤 동화한 소녀들은 무릎을 꿇고 %CALLNAME:MASTER%의 요염한 음핵을 그 혀로 닦아내고,
+    PRINTFORMW 혹은 주인의 \@(TALENT:MASTER:110) ? 유두를 손가락 아랫쪽으로 눌러뭉개거나, 손끝으로 가볍게 잡아당겨 희롱할 대로 희롱하고 # 유방을 병적이라고도 할 수 있을 만큼 하얗고 섬세한 손으로 맘대로 주무르고\@ 있다.
+    PRINTFORMW 때로는 누워있는 %CALLNAME:MASTER%의 얼굴에 올라타 꿀단지에서 넘치는 음액을 바치며,
 ENDIF
 PRINTW 때로는 입술을 포개어 주인과 혀를 얽으며 타액을 교환한다.
 PRINTFORMW 흠뻑 가랑이 사이를 적셔서는 %조사처리(CALLNAME:MASTER,"를")% 원하며,

@@ -3,30 +3,30 @@
 ;エンゲージリング使用時
 ;-------------------------------------------------
 IF TFLAG:200 == 200
-	PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 외출을 마치고 돌아와 방에 들어서면 샹하이는 이쪽을 알아채고 기쁜 듯 날아든다. 
-	PRINTFORMW  침대에 앉은 %CALLNAME:MASTER%의 무릎 위에 앉아 얼굴을 올려다보며 행복한 웃음을 짓는 샹하이 인형･･･
-	PRINTFORMW  일찍이 그녀를 단순한 「상품」으로 사들여 조교를 시작했을 무렵의 %CALLNAME:MASTER%에게는 없던 감정이 지금의 %CALLNAME:MASTER%에게는 있었다
-	PRINTFORMW  그의 의지는 이미 굳었지만, 그것은 좀 복잡한 생각이기도 했다. 
-	PRINTFORMW  
-	PRINTFORMW 「주인님―　왜 그래?」
-	PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 무언가 골똘하게 생각하는 것이 신경이 쓰인 듯, 
-	PRINTFORMW  눈높이까지 떠오른 샹하이가 의아해하며 그렇게 물어왔다. 
-	PRINTFORMW  그런 샹하이의 머리를 쓰다듬고 %조사처리(CALLNAME:MASTER,"는")% 결심을 굳히고 샹하이에게 작은 상자를 주었다. 
-	PRINTFORMW 「이거 뭐야?　･･･샹하이에게 주는 것?」
-	PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 긍정하자 샹하이는 기뻐하며 상자를 열었고･･･동시에 놀란 표정이 되어 중얼거렸다. 
-	PRINTFORMW 「굉장해･･･예쁜 반지･･･」
-	PRINTFORMW  상자 안에는 금강석-다이아몬드- 장식이 여기저기 박힌 순은 반지가 곱게 놓여있었다. 
-	PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 샹하이의 손가락에 반지를 끼워주니 샹하이는 왼손을 들고 반지를 계속 바라보았다. 
-	PRINTFORMW  그리고 %CALLNAME:MASTER%에게 시선을 돌리고 눈물을 맺힌 웃는 얼굴로 이렇게 말했다. 
-	PRINTFORMW  
-	PRINTFORMW 「상하이, 주인님의 신부가 돼버렸다」
-	PRINTFORMW 「너무 기뻐　주인님 너무 좋아･･･」
-	PRINTFORMW  
-	PRINTFORMW  그대로 샹하이와 %조사처리(CALLNAME:MASTER,"는")% 입맞춤을 하고 일생을 부부로 함께하는 것을 맹세했다･･････
-	PRINTFORMW  
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 외출을 마치고 돌아와 방에 들어서면 샹하이는 이쪽을 알아채고 기쁜 듯 날아든다. 
+    PRINTFORMW  침대에 앉은 %CALLNAME:MASTER%의 무릎 위에 앉아 얼굴을 올려다보며 행복한 웃음을 짓는 샹하이 인형･･･
+    PRINTFORMW  일찍이 그녀를 단순한 「상품」으로 사들여 조교를 시작했을 무렵의 %CALLNAME:MASTER%에게는 없던 감정이 지금의 %CALLNAME:MASTER%에게는 있었다
+    PRINTFORMW  그의 의지는 이미 굳었지만, 그것은 좀 복잡한 생각이기도 했다. 
+    PRINTFORMW  
+    PRINTFORMW 「주인님―　왜 그래?」
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 무언가 골똘하게 생각하는 것이 신경이 쓰인 듯, 
+    PRINTFORMW  눈높이까지 떠오른 샹하이가 의아해하며 그렇게 물어왔다. 
+    PRINTFORMW  그런 샹하이의 머리를 쓰다듬고 %조사처리(CALLNAME:MASTER,"는")% 결심을 굳히고 샹하이에게 작은 상자를 주었다. 
+    PRINTFORMW 「이거 뭐야?　･･･샹하이에게 주는 것?」
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 긍정하자 샹하이는 기뻐하며 상자를 열었고･･･동시에 놀란 표정이 되어 중얼거렸다. 
+    PRINTFORMW 「굉장해･･･예쁜 반지･･･」
+    PRINTFORMW  상자 안에는 금강석-다이아몬드- 장식이 여기저기 박힌 순은 반지가 곱게 놓여있었다. 
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"가")% 샹하이의 손가락에 반지를 끼워주니 샹하이는 왼손을 들고 반지를 계속 바라보았다. 
+    PRINTFORMW  그리고 %CALLNAME:MASTER%에게 시선을 돌리고 눈물을 맺힌 웃는 얼굴로 이렇게 말했다. 
+    PRINTFORMW  
+    PRINTFORMW 「상하이, 주인님의 신부가 돼버렸다」
+    PRINTFORMW 「너무 기뻐　주인님 너무 좋아･･･」
+    PRINTFORMW  
+    PRINTFORMW  그대로 샹하이와 %조사처리(CALLNAME:MASTER,"는")% 입맞춤을 하고 일생을 부부로 함께하는 것을 맹세했다･･････
+    PRINTFORMW  
 ENDIF
-	TFLAG:200 = 0
-	RETURN 0
+    TFLAG:200 = 0
+    RETURN 0
 
 ;-------------------------------------------------
 ;@단독 엔딩 관계

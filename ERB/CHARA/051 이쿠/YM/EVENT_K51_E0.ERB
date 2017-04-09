@@ -16,16 +16,16 @@
 @KOJO_51_MESSAGE_SUB_EVENT_BEFORE
 ;眠ってる場合は戻る
 SIF EQUIP:14
-	RETURN 1
+    RETURN 1
 ;調教中かつ口枷がある場合は戻る
 SIF TFLAG:999 && TEQUIP:42
-	RETURN 1
+    RETURN 1
 ;調教中かつ失神中・失神回復時は戻る
 SIF TFLAG:999 && (TFLAG:899 >= 1 || TFLAG:898 == 1)
-	RETURN 1
+    RETURN 1
 ;精神崩壊の場合は戻る
 SIF TALENT:167
-	RETURN 1
+    RETURN 1
 
 ;========================================================
 ;イベント口上
@@ -149,12 +149,12 @@ SIF TALENT:167
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE17
 IF TALENT:연모
-	PRINTFORMW （喉の奥まで飲み込んだおちんちんがどくどくって…私の中で震えて、精液が口内に溢れるあの瞬間…）
-	PRINTFORMW （いっぱい射精されて、喉も鼻もぜんぶ精液の味と匂いで満たされる、あの感じ…あぁ…想像しただけで…！）
-	PRINTFORMW （もっと精液私の口に、飲ませて欲しい…）
+    PRINTFORMW （喉の奥まで飲み込んだおちんちんがどくどくって…私の中で震えて、精液が口内に溢れるあの瞬間…）
+    PRINTFORMW （いっぱい射精されて、喉も鼻もぜんぶ精液の味と匂いで満たされる、あの感じ…あぁ…想像しただけで…！）
+    PRINTFORMW （もっと精液私の口に、飲ませて欲しい…）
 ELSE
-	PRINTFORMW （あんなもの…あんなの飲まされて気持ち良くなるだなんてっ）
-	PRINTFORMW （どうなってしまったんですか…私の、お口…はっ、だめっ…喉が、精液欲しくて乾いてる…）
+    PRINTFORMW （あんなもの…あんなの飲まされて気持ち良くなるだなんてっ）
+    PRINTFORMW （どうなってしまったんですか…私の、お口…はっ、だめっ…喉が、精液欲しくて乾いてる…）
 ENDIF
 ;-------------------------------------------------
 ;精飲絶頂取得で弱みを握られた時
@@ -169,15 +169,15 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE19
 ;SIF CFLAG:60 >= 1000 && TALENT:100 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;SIF CFLAG:61 >= 2000 && TALENT:102 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;SIF CFLAG:62 >= 2500 && TALENT:104 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;SIF CFLAG:63 >= 5000 && TALENT:106 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;IF CFLAG:64 >= 10000 && TALENT:66 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;ENDIF
 
 ;-------------------------------------------------
@@ -224,8 +224,8 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE34
 ;助手が天子
 IF ASSI > 0 && NO:ASSI == 52
-	PRINTFORML 
-	PRINTFORMW 『……馬鹿じゃないの？』
+    PRINTFORML 
+    PRINTFORMW 『……馬鹿じゃないの？』
 ;その他
 ELSE
 ENDIF
@@ -334,11 +334,11 @@ PRINTFORMW 「初めてここに連れて来られた時はどんな酷いこと
 PRINTFORMW 「一応、大事に扱われているのはなんとなく…わかるような気がします」
 PRINTFORMW 「不思議な方なのですね、%CALLNAME:MASTER%は…」
 IF ASSI > 0 && NO:ASSI == 52
-	PRINTFORML 
-	PRINTFORMW 『ふふん、衣玖もようーやくご主人様の優しさに気付いてきたのかしら？』
-	PRINTFORMW 『私もいるんだから大丈夫！もっと身も心も私達に委ねちゃいなさい』
-	PRINTFORMW 「そ、そういうわけではないのですが…助かります、天子…」
-	ENDIF
+    PRINTFORML 
+    PRINTFORMW 『ふふん、衣玖もようーやくご主人様の優しさに気付いてきたのかしら？』
+    PRINTFORMW 『私もいるんだから大丈夫！もっと身も心も私達に委ねちゃいなさい』
+    PRINTFORMW 「そ、そういうわけではないのですが…助かります、天子…」
+    ENDIF
 PRINTFORMW 大事に大事に接してきた結果か、衣玖が徐々にこちらに関心を向けてきたような気がする…
 
 ;-------------------------------------------------
@@ -407,13 +407,13 @@ PRINTFORMW 「もっと刺激的なこと…私の体に教えて下さいませ
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE69
 ;抑圧と抵抗の両方が消滅
 IF TALENT:32 && TALENT:34
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;抵抗だけ消滅
 ELSEIF TALENT:34
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;抑圧だけ消滅
 ELSEIF TALENT:32
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 [SKIPEND]
 
@@ -455,20 +455,20 @@ PRINTFORMW 衣玖はあなたに身を委ね、安らかな笑顔でこちらを
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE75
 IF TALENT:연모
-	IF TALENT:처녀
-		PRINTFORMW 「もうとっくに…%CALLNAME:MASTER%に純潔を捧げる覚悟はできているんです…なのに、なのに…！」
-		PRINTFORMW 「%CALLNAME:MASTER%ったらここにだけは手を付けずに、私の体を弄ぶから…はっ、はぁ…」
-		PRINTFORMW 衣玖はもじもじと腿を擦り合わせ、顔を赤くして呼吸を乱している…
-		PRINTFORMW 「あぁ、あっ、んあぁ…！」
-		PRINTFORMW 「私の、大事な所の疼きを…忘れられるくらい…めちゃめちゃに気持ち良く、してください…どうか、お願いですからぁ…」
-	ELSE
-		PRINTFORMW 「もう、だめなんです…%CALLNAME:MASTER%に抱かれていないと、落ち着かなくて…」
-		PRINTFORMW 「四六時中、%CALLNAME:MASTER%に抱かれて…気持ち良くしてもらうことばかり、考えてしまってるんです…」
-		PRINTFORMW 「私の体…好きにして下さい。私ももっと…%CALLNAME:MASTER%に良くなってもらえるように、頑張りますから…！」
-		PRINTFORMW 「だから…だからどうか、私の…このいやらしい天女の体を、%CALLNAME:MASTER%の手でもっと乱れさせて、ください…♪」		
-	ENDIF
+    IF TALENT:처녀
+        PRINTFORMW 「もうとっくに…%CALLNAME:MASTER%に純潔を捧げる覚悟はできているんです…なのに、なのに…！」
+        PRINTFORMW 「%CALLNAME:MASTER%ったらここにだけは手を付けずに、私の体を弄ぶから…はっ、はぁ…」
+        PRINTFORMW 衣玖はもじもじと腿を擦り合わせ、顔を赤くして呼吸を乱している…
+        PRINTFORMW 「あぁ、あっ、んあぁ…！」
+        PRINTFORMW 「私の、大事な所の疼きを…忘れられるくらい…めちゃめちゃに気持ち良く、してください…どうか、お願いですからぁ…」
+    ELSE
+        PRINTFORMW 「もう、だめなんです…%CALLNAME:MASTER%に抱かれていないと、落ち着かなくて…」
+        PRINTFORMW 「四六時中、%CALLNAME:MASTER%に抱かれて…気持ち良くしてもらうことばかり、考えてしまってるんです…」
+        PRINTFORMW 「私の体…好きにして下さい。私ももっと…%CALLNAME:MASTER%に良くなってもらえるように、頑張りますから…！」
+        PRINTFORMW 「だから…だからどうか、私の…このいやらしい天女の体を、%CALLNAME:MASTER%の手でもっと乱れさせて、ください…♪」        
+    ENDIF
 ELSE
-	PRINTFORMW 
+    PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
 ;淫乱系全素質取得イベント
@@ -483,10 +483,10 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE81
 ;ペニスあり
 IF TALENT:남자 || TALENT:후타나리
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;その他
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -562,9 +562,9 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE99
 SIF TFLAG:224 == 555 || ASSIPLAY != 0
-	RETURN 0
+    RETURN 0
 IF RAND:20 < 0
-	;PRINTFORML 
+    ;PRINTFORML 
 ENDIF
 
 ;-------------------------------------------------
@@ -592,25 +592,25 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE104
 ;연모
 IF TALENT:연모
-	;露出癖Lv3以上
-	IF ABL:14 >= 3
-		PRINTFORML 天女の痴態を撮影した映像の評判が上々であることを本人に伝えたが、
-		PRINTFORMW 衣玖は何とも嬉しそうな様子であなたの話を聞いている…
-		PRINTFORMW 「そうですか…ほんとに沢山の人に私達のセックス、見られちゃったんですね…♪」
-		PRINTFORMW 「見られることがこんなに楽しいだなんて…%CALLNAME:MASTER%に教えて頂いたおかげです」
-		PRINTFORMW 「どうか余す事無く私の体…撮り尽くして下さいませ、ふふっ」
-	;露出癖Lv1以上
-	ELSEIF ABL:14 >= 1
-		PRINTFORMW 「ふふ、頑張った甲斐がありましたね？%CALLNAME:MASTER%」
-		PRINTFORMW 「で、でも…これからははもっと…過激なものにしないといけないのでしょうか…？」
-		PRINTFORMW 不安げながらも衣玖はどことなく期待しているように見える…
-	;その他
-	ELSE
-		PRINTFORMW 「に、人気だなんて…！そんなに多く出回っていたのですか！？」
-		PRINTFORMW 「もっとその…一部の方にだけ、手に入るような形だと思っていたのですが…」
-		PRINTFORMW 数多くの撮影を重ねてきたにも関わらず、衣玖は変わらず撮影の際には初々しい反応を見せている…
-		PRINTFORMW 幻想郷で受けるのはこういった路線なのだろうか…？
-	ENDIF
+    ;露出癖Lv3以上
+    IF ABL:14 >= 3
+        PRINTFORML 天女の痴態を撮影した映像の評判が上々であることを本人に伝えたが、
+        PRINTFORMW 衣玖は何とも嬉しそうな様子であなたの話を聞いている…
+        PRINTFORMW 「そうですか…ほんとに沢山の人に私達のセックス、見られちゃったんですね…♪」
+        PRINTFORMW 「見られることがこんなに楽しいだなんて…%CALLNAME:MASTER%に教えて頂いたおかげです」
+        PRINTFORMW 「どうか余す事無く私の体…撮り尽くして下さいませ、ふふっ」
+    ;露出癖Lv1以上
+    ELSEIF ABL:14 >= 1
+        PRINTFORMW 「ふふ、頑張った甲斐がありましたね？%CALLNAME:MASTER%」
+        PRINTFORMW 「で、でも…これからははもっと…過激なものにしないといけないのでしょうか…？」
+        PRINTFORMW 不安げながらも衣玖はどことなく期待しているように見える…
+    ;その他
+    ELSE
+        PRINTFORMW 「に、人気だなんて…！そんなに多く出回っていたのですか！？」
+        PRINTFORMW 「もっとその…一部の方にだけ、手に入るような形だと思っていたのですが…」
+        PRINTFORMW 数多くの撮影を重ねてきたにも関わらず、衣玖は変わらず撮影の際には初々しい反応を見せている…
+        PRINTFORMW 幻想郷で受けるのはこういった路線なのだろうか…？
+    ENDIF
 ;その他
 ELSE
 ENDIF
@@ -711,40 +711,40 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE128
 ;次の調教対象が天子
 IF NO:(TFLAG:99) == 52
-	;연모
-	IF TALENT:연모
-		;未対面
-		IF CFLAG:5202 == 0 
-			;PRINTFORMW 
-		;対面済み
-		ELSE
-			;助手可能
-			IF CFLAG:1 == 2
-				;レズッ気Lv3以上
-				IF ABL:22 >= 3
-					PRINTFORML 「天子は%CALLNAME:MASTER%だけのものではありませんよ？ふふっ」
-					PRINTFORMW 「%CALLNAME:MASTER%の事は心からお慕いしておりますが…私だって…天子を抱きたくて仕方ないんです」
-				ELSE
-					PRINTFORML 「天子とお楽しみですか…？それなら私もお手伝いしないと」
-					PRINTFORMW 「このワガママなお嬢様に躾をされるのであれば、役立つと思いますよ？」
-				ENDIF
-			;その他
-			ELSE
-				PRINTFORML 「天子のこともちゃんと可愛がってあげてくださいね？」
-				PRINTFORMW 「わ、私も…ご一緒出来ればいいんですけど、少しまだ、心の準備が…」
-			ENDIF
-		ENDIF
-	;その他
-	ELSE
-		;未対面
-		IF CFLAG:5202 == 0 
-			;PRINTFORMW 
-		;対面済み
-		ELSE
-			PRINTFORML 「天子がどんな風に抱かれているか知りたいか、だなんて…！」
-			PRINTFORMW 「やめて下さい！そんなの知りたくも……あり、ません…」
-		ENDIF
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        ;未対面
+        IF CFLAG:5202 == 0 
+            ;PRINTFORMW 
+        ;対面済み
+        ELSE
+            ;助手可能
+            IF CFLAG:1 == 2
+                ;レズッ気Lv3以上
+                IF ABL:22 >= 3
+                    PRINTFORML 「天子は%CALLNAME:MASTER%だけのものではありませんよ？ふふっ」
+                    PRINTFORMW 「%CALLNAME:MASTER%の事は心からお慕いしておりますが…私だって…天子を抱きたくて仕方ないんです」
+                ELSE
+                    PRINTFORML 「天子とお楽しみですか…？それなら私もお手伝いしないと」
+                    PRINTFORMW 「このワガママなお嬢様に躾をされるのであれば、役立つと思いますよ？」
+                ENDIF
+            ;その他
+            ELSE
+                PRINTFORML 「天子のこともちゃんと可愛がってあげてくださいね？」
+                PRINTFORMW 「わ、私も…ご一緒出来ればいいんですけど、少しまだ、心の準備が…」
+            ENDIF
+        ENDIF
+    ;その他
+    ELSE
+        ;未対面
+        IF CFLAG:5202 == 0 
+            ;PRINTFORMW 
+        ;対面済み
+        ELSE
+            PRINTFORML 「天子がどんな風に抱かれているか知りたいか、だなんて…！」
+            PRINTFORMW 「やめて下さい！そんなの知りたくも……あり、ません…」
+        ENDIF
+    ENDIF
 ;その他
 ELSE
 ENDIF
@@ -756,29 +756,29 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE130
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「どうして…どうしてっ！私の事を…愛していたんじゃ…！」
-	PRINTFORMW 「私は%CALLNAME:MASTER%の事を愛していますっ！なのにっ…やめて下さい、こんな、嘘と言ってえ…！」
-	PRINTFORMW 衣玖の悲痛な叫び声も今のあなたに届くことは無い。あなたは調教師としての仕事を全うし、
-	PRINTFORMW 十分な報酬も得た。魅惑的な肢体を弄ぶ時間は非常に有意義なものだった。
-	PRINTFORMW 今考えるのは次の奴隷をいかにして陥落させるか、それだけである。
-	PRINTFORMW 「待って下さい…！%CALLNAME:MASTER%っ、%CALLNAME:MASTER%ああっ！！」
-	PRINTFORMW 衣玖の絶叫があなたの背中に突き刺さる。
-	PRINTFORMW …その叫びを最後に声は止んだ。業者の連中がどうにかしたのだろう…
-	PRINTFORMW 
-	PRINTFORMW 何故か、衣玖を初めて見かけた時の記憶が蘇る。空を泳ぐ優雅さに心奪われた時、静かな笑みに魅了された時、羽衣の下の肢体に思いを馳せた時…
-	PRINTFORMW ついに憧れたものを得たと思ったら、いつの間にかそれは２度と手に入らぬものとなった。
-	PRINTFORMW …一体自分は何をやっているのだろうか…？
-	PRINTFORMW 緋色の空をぼんやりと見上げながら、あなたはもう戻らぬ衣玖の肌の感触を思い浮かべていた…
+    PRINTFORMW 「どうして…どうしてっ！私の事を…愛していたんじゃ…！」
+    PRINTFORMW 「私は%CALLNAME:MASTER%の事を愛していますっ！なのにっ…やめて下さい、こんな、嘘と言ってえ…！」
+    PRINTFORMW 衣玖の悲痛な叫び声も今のあなたに届くことは無い。あなたは調教師としての仕事を全うし、
+    PRINTFORMW 十分な報酬も得た。魅惑的な肢体を弄ぶ時間は非常に有意義なものだった。
+    PRINTFORMW 今考えるのは次の奴隷をいかにして陥落させるか、それだけである。
+    PRINTFORMW 「待って下さい…！%CALLNAME:MASTER%っ、%CALLNAME:MASTER%ああっ！！」
+    PRINTFORMW 衣玖の絶叫があなたの背中に突き刺さる。
+    PRINTFORMW …その叫びを最後に声は止んだ。業者の連中がどうにかしたのだろう…
+    PRINTFORMW 
+    PRINTFORMW 何故か、衣玖を初めて見かけた時の記憶が蘇る。空を泳ぐ優雅さに心奪われた時、静かな笑みに魅了された時、羽衣の下の肢体に思いを馳せた時…
+    PRINTFORMW ついに憧れたものを得たと思ったら、いつの間にかそれは２度と手に入らぬものとなった。
+    PRINTFORMW …一体自分は何をやっているのだろうか…？
+    PRINTFORMW 緋色の空をぼんやりと見上げながら、あなたはもう戻らぬ衣玖の肌の感触を思い浮かべていた…
 ;음란
 ELSEIF TALENT:음란
-	PRINTFORMW 「散々体を弄り回して…あんなにも淫らな目に合わせて、さらには売り払うと…」
-	PRINTFORMW 「見下げ果てた性根です、はあ…罵る言葉も見つかりません」
-	PRINTFORMW 「恨みますよ…私を引き取る方が、もし%CALLNAME:MASTER%よりもその、上手でない方でしたら…」
+    PRINTFORMW 「散々体を弄り回して…あんなにも淫らな目に合わせて、さらには売り払うと…」
+    PRINTFORMW 「見下げ果てた性根です、はあ…罵る言葉も見つかりません」
+    PRINTFORMW 「恨みますよ…私を引き取る方が、もし%CALLNAME:MASTER%よりもその、上手でない方でしたら…」
 ;その他の場合
 ELSE
-	PRINTFORMW 「…幻想郷に生きている以上、あなたは竜神様に見られています…」
-	PRINTFORMW 「あなたはいずれ罰を受け、自らの行いを悔いて悔いて悔いぬきながら、死ぬんです」
-	PRINTFORMW 「こうして忠告してあげたのは私の最後の良心とでも思って下さい…それでは失礼します」
+    PRINTFORMW 「…幻想郷に生きている以上、あなたは竜神様に見られています…」
+    PRINTFORMW 「あなたはいずれ罰を受け、自らの行いを悔いて悔いて悔いぬきながら、死ぬんです」
+    PRINTFORMW 「こうして忠告してあげたのは私の最後の良心とでも思って下さい…それでは失礼します」
 ENDIF
 
 ;-------------------------------------------------
@@ -846,71 +846,71 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE140
 ;연모
 IF TALENT:연모
-	;助手が天子
-	IF ASSI > 0 && NO:ASSI == 52 && RAND:2 == 0
-		IF RAND:2 == 0
-			PRINTFORML 
-			PRINTFORMW 『衣玖…ねえちょっと、衣玖』
-			PRINTFORMW 「は、はい…！？なんでしょう…」
-			PRINTFORMW 朝の廊下、通りすがりの天子に呼び止められた衣玖がビクリとし、恐る恐る振り返る…
-			PRINTFORMW 『…わかってるだろうけど…息、精液臭い』
-			PRINTFORMW 「ご、ごめんなさい…！すぐに…」
-			PRINTFORMW 衣玖は逃げるように手洗いへと去って行った…
-		ELSE
-			PRINTFORMW （すご、朝からあんなに勃たせて…）
-			PRINTFORMW （ていうか、あんなに音たててしゃぶってたら、ご主人さまも普通起きるでしょうが…！）
-			PRINTFORMW （あーまた飲んでるぅ…衣玖ったら幸せそうな顔して…うぅ…羨ましい…）
-		ENDIF
-	;淫乱である
-	ELSEIF TALENT:음란
-		;乱数分岐:5
-		IF RAND:5 == 0
-			PRINTFORMW 「あっ、おはようございます…もうすぐ出そうですから、我慢してくださいね…？」
-			PRINTFORMW 衣玖はそれまでしゃぶっていた口を離し、今度は手で激しく扱きあげた…
-			PRINTFORMW 「いやらしい音…♪あっ、出てきましたっ、やっ、顔まで…どくどくって…すごい…」
-			PRINTFORMW 「見て下さい、顔も手もこんなに…ふふっ」
-		;乱数分岐:4
-		ELSEIF RAND:4 == 0
-			PRINTFORMW 目が覚めると同時に、精液が勢いよくペニスから放たれた…
-			PRINTFORMW 精液は口の中だけでは収まらず、衣玖の顔も汚していく…
-			PRINTFORMW 「あふあ…とっても、濃厚です…朝一番のは、格別ですね…♪」
-			PRINTFORMW 顔についた精液を拭い、舐め取る姿に興奮は収まらなかった…
-		;乱数分岐:3
-		ELSEIF RAND:3 == 0
-			PRINTFORMW 衣玖の顔は既に、何度精液を浴びたか分からない程になっていた…
-			PRINTFORMW 「ぷはあっ…おはようございます、%CALLNAME:MASTER%…お目覚めはいかがですか？」
-			PRINTFORMW 「ふふっ、眠っているのにこんなに出しちゃうなんて…♪」
-			PRINTFORMW 精液まみれの衣玖に興奮して、あなたのペニスはさらに固さを増していった…
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「じゅるっ、んむっ、じゅちゅっ、ずちゅっ…」
-			PRINTFORMW 眼を覚ますと、衣玖があなたのペニスを激しくしゃぶっていた…
-			PRINTFORMW 強烈な快感に、あなたは程無くして射精した…
-			PRINTFORMW 「あむっ…すいません、膨らんで辛そうだったので、つい…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「あら、お目覚めですね？おはようございます、%CALLNAME:MASTER%」
-			PRINTFORMW 衣玖が口の周りの精液を拭いながら、朝の挨拶をしてきた。
-			PRINTFORMW 射精したばかりなのか、ペニスには強烈な快感が残ったままだ…
-			PRINTFORMW 「とっても濃厚な精液、ご馳走様でした…♪それじゃあ、綺麗にしますから、じっとしてて下さいね…」
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 「お、おはようございます…その、大きくしてたので、つい…」
-			PRINTFORMW 「%CALLNAME:MASTER%が気持ち良さそうでしたので…もっと、しましょうか？」
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「んっ…んっ…んちゅっ…んぐっ！あっ、ぷあっ…出てる…」
-			PRINTFORMW 衣玖の巧みなフェラチオに、あなたは目覚めてすぐに射精へと導かれた…
-			PRINTFORMW 「わあっ…ビクビクして…すごいですね…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「はむっ…あむっ、あむうっ…あっ、その…おはよう、ございます…」
-			PRINTFORMW 「こういうのは…お嫌いでしょうか…？」
-		ENDIF
-	ENDIF
+    ;助手が天子
+    IF ASSI > 0 && NO:ASSI == 52 && RAND:2 == 0
+        IF RAND:2 == 0
+            PRINTFORML 
+            PRINTFORMW 『衣玖…ねえちょっと、衣玖』
+            PRINTFORMW 「は、はい…！？なんでしょう…」
+            PRINTFORMW 朝の廊下、通りすがりの天子に呼び止められた衣玖がビクリとし、恐る恐る振り返る…
+            PRINTFORMW 『…わかってるだろうけど…息、精液臭い』
+            PRINTFORMW 「ご、ごめんなさい…！すぐに…」
+            PRINTFORMW 衣玖は逃げるように手洗いへと去って行った…
+        ELSE
+            PRINTFORMW （すご、朝からあんなに勃たせて…）
+            PRINTFORMW （ていうか、あんなに音たててしゃぶってたら、ご主人さまも普通起きるでしょうが…！）
+            PRINTFORMW （あーまた飲んでるぅ…衣玖ったら幸せそうな顔して…うぅ…羨ましい…）
+        ENDIF
+    ;淫乱である
+    ELSEIF TALENT:음란
+        ;乱数分岐:5
+        IF RAND:5 == 0
+            PRINTFORMW 「あっ、おはようございます…もうすぐ出そうですから、我慢してくださいね…？」
+            PRINTFORMW 衣玖はそれまでしゃぶっていた口を離し、今度は手で激しく扱きあげた…
+            PRINTFORMW 「いやらしい音…♪あっ、出てきましたっ、やっ、顔まで…どくどくって…すごい…」
+            PRINTFORMW 「見て下さい、顔も手もこんなに…ふふっ」
+        ;乱数分岐:4
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 目が覚めると同時に、精液が勢いよくペニスから放たれた…
+            PRINTFORMW 精液は口の中だけでは収まらず、衣玖の顔も汚していく…
+            PRINTFORMW 「あふあ…とっても、濃厚です…朝一番のは、格別ですね…♪」
+            PRINTFORMW 顔についた精液を拭い、舐め取る姿に興奮は収まらなかった…
+        ;乱数分岐:3
+        ELSEIF RAND:3 == 0
+            PRINTFORMW 衣玖の顔は既に、何度精液を浴びたか分からない程になっていた…
+            PRINTFORMW 「ぷはあっ…おはようございます、%CALLNAME:MASTER%…お目覚めはいかがですか？」
+            PRINTFORMW 「ふふっ、眠っているのにこんなに出しちゃうなんて…♪」
+            PRINTFORMW 精液まみれの衣玖に興奮して、あなたのペニスはさらに固さを増していった…
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「じゅるっ、んむっ、じゅちゅっ、ずちゅっ…」
+            PRINTFORMW 眼を覚ますと、衣玖があなたのペニスを激しくしゃぶっていた…
+            PRINTFORMW 強烈な快感に、あなたは程無くして射精した…
+            PRINTFORMW 「あむっ…すいません、膨らんで辛そうだったので、つい…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「あら、お目覚めですね？おはようございます、%CALLNAME:MASTER%」
+            PRINTFORMW 衣玖が口の周りの精液を拭いながら、朝の挨拶をしてきた。
+            PRINTFORMW 射精したばかりなのか、ペニスには強烈な快感が残ったままだ…
+            PRINTFORMW 「とっても濃厚な精液、ご馳走様でした…♪それじゃあ、綺麗にしますから、じっとしてて下さいね…」
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 「お、おはようございます…その、大きくしてたので、つい…」
+            PRINTFORMW 「%CALLNAME:MASTER%が気持ち良さそうでしたので…もっと、しましょうか？」
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「んっ…んっ…んちゅっ…んぐっ！あっ、ぷあっ…出てる…」
+            PRINTFORMW 衣玖の巧みなフェラチオに、あなたは目覚めてすぐに射精へと導かれた…
+            PRINTFORMW 「わあっ…ビクビクして…すごいですね…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「はむっ…あむっ、あむうっ…あっ、その…おはよう、ございます…」
+            PRINTFORMW 「こういうのは…お嫌いでしょうか…？」
+        ENDIF
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -922,19 +922,19 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE141
 ;연모
 IF TALENT:연모
-	;乱数分岐:3
-	IF RAND:3 == 0
-		PRINTFORMW 「朝勃ち…ですか？すごい大きさです、挟みきれないくらい…」
-		PRINTFORMW 「ちゅうっ、んっ、それならこうして先っぽ、吸ってあげますからね…」
-	;乱数分岐:2
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「わっ、あっ…いっぱい、出ましたね…」
-		PRINTFORMW 「ふふっ、朝からおっぱいで元気になれましたか？」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「おはようございます、%CALLNAME:MASTER%…」
-		PRINTFORMW 「ふふっ、そのまま、気持ち良くなって下さいね…？」
-	ENDIF
+    ;乱数分岐:3
+    IF RAND:3 == 0
+        PRINTFORMW 「朝勃ち…ですか？すごい大きさです、挟みきれないくらい…」
+        PRINTFORMW 「ちゅうっ、んっ、それならこうして先っぽ、吸ってあげますからね…」
+    ;乱数分岐:2
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「わっ、あっ…いっぱい、出ましたね…」
+        PRINTFORMW 「ふふっ、朝からおっぱいで元気になれましたか？」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「おはようございます、%CALLNAME:MASTER%…」
+        PRINTFORMW 「ふふっ、そのまま、気持ち良くなって下さいね…？」
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -946,47 +946,47 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE142
 ;연모
 IF TALENT:연모
-	;助手が天子
-	IF ASSI > 0 && NO:ASSI == 52 && RAND:3 == 0
-		PRINTFORML 『朝からギシギシうっさいわね、あいつら…』
-		PRINTFORMW 『ん、音が止んだ……？』
-		PRINTFORMW 『ああまた始まった…もう…』
-	;淫乱である
-	ELSEIF TALENT:음란
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 「あっ…お目覚めですね、%CALLNAME:MASTER%♪…すいません、勝手に…ひゃっ！？」
-			PRINTFORMW あなたは衣玖の尻をがっちりと掴み、寝起きとは思えない力強さでペニスを突き上げた…
-			PRINTFORMW 「やっ、激しっ！ひああっ！すいませんっ！勝手にこんなっ、ああっ！ごめんなさいっ！」
-			PRINTFORMW あなたはそのまま、衣玖の腰が立たなくなるまで膣内を激しく犯し続けた…
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「この…目覚めの一回目が、大好きなんです…あっ、あっ！」
-			PRINTFORMW 衣玖が艶めかしく腰を動かし、膣内を締め付けると、思わずあなたは膣内に射精してしまった…
-			PRINTFORMW 「っくああっ…濃いのが、どぷどぷ、出てますよっ…」
-			PRINTFORMW 「っはああ…おはようございます…今日最初の精液、こんなに出ましたぁ…」
-			PRINTFORMW ペニスが抜けると同時に、膣内からゼリー状の精液がどろりどろりと零れ落ちた…
-		;その他の場合
-		ELSE
-			PRINTFORMW 「んっ、んっ、んんっ…ふあっ！あっ！出てるうっ…！」
-			PRINTFORMW 頭上から聞こえてくる嬌声に反応して目覚めると、まさに精液を膣内に放った瞬間だった…
-			PRINTFORMW 「ああっ…とっても、気持ちいいですよ、%CALLNAME:MASTER%…♪」
-			PRINTFORMW 衣玖はこちらが目覚めているのに気付かないまま、膣内射精の快感に浸っている…
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「はっ…はっ…おっきい…んんっ、んっ…」
-			PRINTFORMW 衣玖は必死に声を我慢してあなたを起こさないようにしている…
-			PRINTFORMW あなたは気を遣って、寝たふりをしたまま衣玖の喘ぎ声と膣内の感触を楽しむことにした…
-		;その他の場合
-		ELSE
-			PRINTFORMW 「ああっ！奥まで、入ったあ…」
-			PRINTFORMW 「えっ、%CALLNAME:MASTER%！？あっ、やっぱり…起きちゃいますよね…」
-			PRINTFORMW 自ら寝起きを襲ってしまったことに、衣玖は今さらながら恥じらっている…
-		ENDIF
-	ENDIF
+    ;助手が天子
+    IF ASSI > 0 && NO:ASSI == 52 && RAND:3 == 0
+        PRINTFORML 『朝からギシギシうっさいわね、あいつら…』
+        PRINTFORMW 『ん、音が止んだ……？』
+        PRINTFORMW 『ああまた始まった…もう…』
+    ;淫乱である
+    ELSEIF TALENT:음란
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 「あっ…お目覚めですね、%CALLNAME:MASTER%♪…すいません、勝手に…ひゃっ！？」
+            PRINTFORMW あなたは衣玖の尻をがっちりと掴み、寝起きとは思えない力強さでペニスを突き上げた…
+            PRINTFORMW 「やっ、激しっ！ひああっ！すいませんっ！勝手にこんなっ、ああっ！ごめんなさいっ！」
+            PRINTFORMW あなたはそのまま、衣玖の腰が立たなくなるまで膣内を激しく犯し続けた…
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「この…目覚めの一回目が、大好きなんです…あっ、あっ！」
+            PRINTFORMW 衣玖が艶めかしく腰を動かし、膣内を締め付けると、思わずあなたは膣内に射精してしまった…
+            PRINTFORMW 「っくああっ…濃いのが、どぷどぷ、出てますよっ…」
+            PRINTFORMW 「っはああ…おはようございます…今日最初の精液、こんなに出ましたぁ…」
+            PRINTFORMW ペニスが抜けると同時に、膣内からゼリー状の精液がどろりどろりと零れ落ちた…
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「んっ、んっ、んんっ…ふあっ！あっ！出てるうっ…！」
+            PRINTFORMW 頭上から聞こえてくる嬌声に反応して目覚めると、まさに精液を膣内に放った瞬間だった…
+            PRINTFORMW 「ああっ…とっても、気持ちいいですよ、%CALLNAME:MASTER%…♪」
+            PRINTFORMW 衣玖はこちらが目覚めているのに気付かないまま、膣内射精の快感に浸っている…
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「はっ…はっ…おっきい…んんっ、んっ…」
+            PRINTFORMW 衣玖は必死に声を我慢してあなたを起こさないようにしている…
+            PRINTFORMW あなたは気を遣って、寝たふりをしたまま衣玖の喘ぎ声と膣内の感触を楽しむことにした…
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「ああっ！奥まで、入ったあ…」
+            PRINTFORMW 「えっ、%CALLNAME:MASTER%！？あっ、やっぱり…起きちゃいますよね…」
+            PRINTFORMW 自ら寝起きを襲ってしまったことに、衣玖は今さらながら恥じらっている…
+        ENDIF
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -998,8 +998,8 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE143
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「おはようございます、%CALLNAME:MASTER%…」
-	PRINTFORMW 衣玖が柔らかく微笑み、立ち去って行く。美しい佇まいに、あなたは見蕩れていた…
+    PRINTFORMW 「おはようございます、%CALLNAME:MASTER%…」
+    PRINTFORMW 衣玖が柔らかく微笑み、立ち去って行く。美しい佇まいに、あなたは見蕩れていた…
 ;その他の場合
 ELSE
 ENDIF
@@ -1011,32 +1011,32 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE144
 ;연모
 IF TALENT:연모
-	;助手天子　なんぞこれ
-	IF ASSI > 0 && NO:ASSI == 52 && RAND:19 == 0
-		PRINTFORMW 『んあねむぅ…』
-		PRINTFORMW 『……ちょうどいいところにおっぱいがあるわね、乳でも頂いとこうかしら。コップコップ』
-		PRINTFORMW 『ぷはぁ、ん……そうだ、お手洗い…』
-	;淫乱である
-	ELSEIF TALENT:음란
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 衣玖はあなたの手を自ら乳房へと導くと、そのままぎゅっと握らせる。
-			PRINTFORMW すると新たな母乳が乳首からまた勢いよく溢れ出した…
-			PRINTFORMW 「おかわりもありますから…お好きなだけどうぞ♪」
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「なんだか自分で出すのがクセになってしまって…」
-			PRINTFORMW 「あっ、それとも%CALLNAME:MASTER%が絞ってみたいですか？ふふっ、いいですよ…♪」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「おはようございます%CALLNAME:MASTER%…いかがですか？」
-			PRINTFORMW 「ふふっ、こういうのがお好きかと思いまして…ちょっと多目に用意しましたから、遠慮無くどうぞ？」
-		ENDIF
-	;その他の場合
-	ELSE
-		PRINTFORMW 「おはようございます、%CALLNAME:MASTER%…あの、良ければ飲んでください…」
-		PRINTFORMW 「ちょっと胸が張って苦しかったので、つい…ううっ、やっぱり恥ずかしいです…」
-	ENDIF
+    ;助手天子　なんぞこれ
+    IF ASSI > 0 && NO:ASSI == 52 && RAND:19 == 0
+        PRINTFORMW 『んあねむぅ…』
+        PRINTFORMW 『……ちょうどいいところにおっぱいがあるわね、乳でも頂いとこうかしら。コップコップ』
+        PRINTFORMW 『ぷはぁ、ん……そうだ、お手洗い…』
+    ;淫乱である
+    ELSEIF TALENT:음란
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 衣玖はあなたの手を自ら乳房へと導くと、そのままぎゅっと握らせる。
+            PRINTFORMW すると新たな母乳が乳首からまた勢いよく溢れ出した…
+            PRINTFORMW 「おかわりもありますから…お好きなだけどうぞ♪」
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「なんだか自分で出すのがクセになってしまって…」
+            PRINTFORMW 「あっ、それとも%CALLNAME:MASTER%が絞ってみたいですか？ふふっ、いいですよ…♪」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「おはようございます%CALLNAME:MASTER%…いかがですか？」
+            PRINTFORMW 「ふふっ、こういうのがお好きかと思いまして…ちょっと多目に用意しましたから、遠慮無くどうぞ？」
+        ENDIF
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「おはようございます、%CALLNAME:MASTER%…あの、良ければ飲んでください…」
+        PRINTFORMW 「ちょっと胸が張って苦しかったので、つい…ううっ、やっぱり恥ずかしいです…」
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;朝の新妻プレイ
@@ -1045,30 +1045,30 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE145
 ;乱数分岐:3
 IF RAND:3 == 0
-	PRINTFORMW 
-	PRINTFORMW 「あんっ！あんっ！ああっ！んんっ、あふああっ…！」
-	PRINTFORML 目覚めてから何度目かの射精を衣玖の膣内に解き放つと、
-	PRINTFORMW あなたはようやく衣玖のヴァギナから白濁塗れのペニスを引き抜いた…
-	PRINTFORMW 衣玖は腰が抜けてしまったのか、台所の床に座り込んでしまっている…
-	PRINTFORMW 「あはっ、はあっ、はああ…朝御飯、遅くなっちゃいましたね…ふふっ…あんっ！あっ、勿体ないです…」
-	PRINTFORML 膣内から逆流した精液がドロドロと床に零れ出している。
-	PRINTFORMW その光景を見て再びあなたのペニスは硬さを取り戻していった…
-	RETURN 0
+    PRINTFORMW 
+    PRINTFORMW 「あんっ！あんっ！ああっ！んんっ、あふああっ…！」
+    PRINTFORML 目覚めてから何度目かの射精を衣玖の膣内に解き放つと、
+    PRINTFORMW あなたはようやく衣玖のヴァギナから白濁塗れのペニスを引き抜いた…
+    PRINTFORMW 衣玖は腰が抜けてしまったのか、台所の床に座り込んでしまっている…
+    PRINTFORMW 「あはっ、はあっ、はああ…朝御飯、遅くなっちゃいましたね…ふふっ…あんっ！あっ、勿体ないです…」
+    PRINTFORML 膣内から逆流した精液がドロドロと床に零れ出している。
+    PRINTFORMW その光景を見て再びあなたのペニスは硬さを取り戻していった…
+    RETURN 0
 ;乱数分岐:2
 ELSEIF RAND:2 == 0
-	PRINTFORMW 
-	PRINTFORMW 僅かにエプロンに覆われた形の良いお尻に釣られ、あなたはフラフラと衣玖に背後から近づいた…
-	PRINTFORMW 「…朝からえっちな空気を感じました…」
-	PRINTFORMW 衣玖の尻に伸ばした手がぴたりと止まる。
-	PRINTFORMW 「もう、%CALLNAME:MASTER%ったら本当に、お盛んなんですから…ふふっ」
-	PRINTFORMW 「いいですよ…一度すっきりしてから、朝御飯にしましょうね？」
-	RETURN 0
+    PRINTFORMW 
+    PRINTFORMW 僅かにエプロンに覆われた形の良いお尻に釣られ、あなたはフラフラと衣玖に背後から近づいた…
+    PRINTFORMW 「…朝からえっちな空気を感じました…」
+    PRINTFORMW 衣玖の尻に伸ばした手がぴたりと止まる。
+    PRINTFORMW 「もう、%CALLNAME:MASTER%ったら本当に、お盛んなんですから…ふふっ」
+    PRINTFORMW 「いいですよ…一度すっきりしてから、朝御飯にしましょうね？」
+    RETURN 0
 ;その他の場合
 ELSE
-	PRINTFORMW 
-	PRINTFORMW 料理に集中する衣玖の背後に忍び寄ると、その腰を掴み、一気に後ろから貫いた…
-	PRINTFORMW 「あっ、%CALLNAME:MASTER%、おはようござっ…んあああっ！」
-	PRINTFORMW 「あはああっ…もう少し、少しだけっ、待ってて頂けませんかっ、ふああっ！」
+    PRINTFORMW 
+    PRINTFORMW 料理に集中する衣玖の背後に忍び寄ると、その腰を掴み、一気に後ろから貫いた…
+    PRINTFORMW 「あっ、%CALLNAME:MASTER%、おはようござっ…んあああっ！」
+    PRINTFORMW 「あはああっ…もう少し、少しだけっ、待ってて頂けませんかっ、ふああっ！」
 ENDIF
 
 ;-------------------------------------------------
@@ -1078,41 +1078,41 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE146
 ;연모
 IF TALENT:연모
-	;淫乱である
-	IF TALENT:음란
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 「あら…おはようございます、%CALLNAME:MASTER%…」
-			PRINTFORMW 「ふふっ、いい眺めでしょうか？今日も衣玖の体で、気持ちよくなって下さいね」
-			PRINTFORMW 衣玖はあなたの両手を自らの乳房に押し付け、さらに深く腰を落としてきた…
-			PRINTFORMW 「あふううっ…！私も起きたばかりですけど…これはちょっと、刺激が強過ぎます…」
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「あっ、あっ…おはようございます…%CALLNAME:MASTER%も、してくれるんですね…♪」
-			PRINTFORMW 意識がはっきりすると共に体にも力が入ってくる…
-			PRINTFORMW あなたは衣玖の乳房に指を食い込ませ、強引に揉みしだいた…
-			PRINTFORMW 「んくうっ！…ふふっ、お目覚めみたいです…今日もいっぱい、しましょうね？」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「ふふっ、朝からおっぱい触りたいんですね…♪」
-			PRINTFORMW 「じゃあ…そのまま支えてもらえますか？その代わり好きに触っていいですから」
-			PRINTFORMW そう言って衣玖はあなたに体重を預け、激しく腰を使い始めた…
-			PRINTFORMW 「ううっ、来てるうっ…♪勝手でごめんなさいっ、でもっ、もう少しで、もう少しでイキますから…♪」
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「はっ、ふうっ、んんっ…！いいですっ、そのままもっと…」
-			PRINTFORMW 衣玖はあなたに胸を揉まれているのにも気付かない様子で、
-			PRINTFORMW 性器から快楽を得る事に夢中になっている…
-		;その他の場合
-		ELSE
-			PRINTFORMW 「あっ、起こしてしまって…いいですから、どうか%CALLNAME:MASTER%はそのまま…ひうっ！」
-			PRINTFORMW 「あのっ、私はいいですからあっ…んあっ！あっ、おっぱい、いじめないで下さいっ…！」
-			PRINTFORMW あなたの上で面白いように反応する衣玖をそのまま散々喘がせ続けた…
-		ENDIF
-	ENDIF
+    ;淫乱である
+    IF TALENT:음란
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 「あら…おはようございます、%CALLNAME:MASTER%…」
+            PRINTFORMW 「ふふっ、いい眺めでしょうか？今日も衣玖の体で、気持ちよくなって下さいね」
+            PRINTFORMW 衣玖はあなたの両手を自らの乳房に押し付け、さらに深く腰を落としてきた…
+            PRINTFORMW 「あふううっ…！私も起きたばかりですけど…これはちょっと、刺激が強過ぎます…」
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「あっ、あっ…おはようございます…%CALLNAME:MASTER%も、してくれるんですね…♪」
+            PRINTFORMW 意識がはっきりすると共に体にも力が入ってくる…
+            PRINTFORMW あなたは衣玖の乳房に指を食い込ませ、強引に揉みしだいた…
+            PRINTFORMW 「んくうっ！…ふふっ、お目覚めみたいです…今日もいっぱい、しましょうね？」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「ふふっ、朝からおっぱい触りたいんですね…♪」
+            PRINTFORMW 「じゃあ…そのまま支えてもらえますか？その代わり好きに触っていいですから」
+            PRINTFORMW そう言って衣玖はあなたに体重を預け、激しく腰を使い始めた…
+            PRINTFORMW 「ううっ、来てるうっ…♪勝手でごめんなさいっ、でもっ、もう少しで、もう少しでイキますから…♪」
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「はっ、ふうっ、んんっ…！いいですっ、そのままもっと…」
+            PRINTFORMW 衣玖はあなたに胸を揉まれているのにも気付かない様子で、
+            PRINTFORMW 性器から快楽を得る事に夢中になっている…
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「あっ、起こしてしまって…いいですから、どうか%CALLNAME:MASTER%はそのまま…ひうっ！」
+            PRINTFORMW 「あのっ、私はいいですからあっ…んあっ！あっ、おっぱい、いじめないで下さいっ…！」
+            PRINTFORMW あなたの上で面白いように反応する衣玖をそのまま散々喘がせ続けた…
+        ENDIF
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -1124,39 +1124,39 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE147
 ;연모
 IF TALENT:연모
-	;淫乱である
-	IF TALENT:음란
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 「あふああっ！お尻に、たくさんっ…！」
-			PRINTFORMW アナルのきつい締め付けに精液が搾り取られる…
-			PRINTFORMW 「朝からはこれは…頭がおかしくなってしまいそうです…♪」
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「%CALLNAME:MASTER%が悪いんです…私のお尻ばっかり、苛めるから…」
-			PRINTFORMW 「お返しに、思いっきり締めつけてあげますから…覚悟して下さい…♪」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「はあああっ…起きちゃいましたね…」
-			PRINTFORMW 「少しこっちの穴はきついかもしれませんけど…目覚めはいいと思いますよ？ふふっ」
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 「ごめんなさいっ、ごめんなさい、本当にっ、気持ちよくて…」
-			PRINTFORMW 「お尻でするの好きなんですっ…！ううっ、止まらないっ、ああっ！」
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「どうしても…お尻でしたく、なってしまったんです…」
-			PRINTFORMW 「すいません…せめてもう少し、気持ちよくならせて下さい…！」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「あうっ、これは、その…」
-			PRINTFORMW 「大丈夫です！…ちゃんとここは綺麗にしましたから…」
-			PRINTFORMW アナルでペニスを根元まで咥えながらも、衣玖は恥じらっている…
-		ENDIF
-	ENDIF
+    ;淫乱である
+    IF TALENT:음란
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 「あふああっ！お尻に、たくさんっ…！」
+            PRINTFORMW アナルのきつい締め付けに精液が搾り取られる…
+            PRINTFORMW 「朝からはこれは…頭がおかしくなってしまいそうです…♪」
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「%CALLNAME:MASTER%が悪いんです…私のお尻ばっかり、苛めるから…」
+            PRINTFORMW 「お返しに、思いっきり締めつけてあげますから…覚悟して下さい…♪」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「はあああっ…起きちゃいましたね…」
+            PRINTFORMW 「少しこっちの穴はきついかもしれませんけど…目覚めはいいと思いますよ？ふふっ」
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 「ごめんなさいっ、ごめんなさい、本当にっ、気持ちよくて…」
+            PRINTFORMW 「お尻でするの好きなんですっ…！ううっ、止まらないっ、ああっ！」
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「どうしても…お尻でしたく、なってしまったんです…」
+            PRINTFORMW 「すいません…せめてもう少し、気持ちよくならせて下さい…！」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「あうっ、これは、その…」
+            PRINTFORMW 「大丈夫です！…ちゃんとここは綺麗にしましたから…」
+            PRINTFORMW アナルでペニスを根元まで咥えながらも、衣玖は恥じらっている…
+        ENDIF
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -1169,19 +1169,19 @@ ENDIF
 ;연모
 ;サドっ気がないと発生しないイベントなので内容もそのように
 IF TALENT:연모
-	;乱数分岐:3
-	IF RAND:3 == 0
-		PRINTFORMW 「…ふふっ、可愛い…%CALLNAME:MASTER%のおちんちん…♪」
-		PRINTFORMW 目覚めて最初に目にしたのは、うっとりした表情であなたのペニスを足蹴にする衣玖だった…
-	;乱数分岐:2
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「眠っているのに…私の足が触れる度に、すごくビクビクしてましたよ？」
-		PRINTFORMW 「…このまま最後までしてあげましょうか？もちろん足でですけど…♪」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「あんまり気持ちよさそうに寝ているものですから…」
-		PRINTFORMW 「ちょっと悪戯したくなっちゃったんです、痛かったですか？」
-	ENDIF
+    ;乱数分岐:3
+    IF RAND:3 == 0
+        PRINTFORMW 「…ふふっ、可愛い…%CALLNAME:MASTER%のおちんちん…♪」
+        PRINTFORMW 目覚めて最初に目にしたのは、うっとりした表情であなたのペニスを足蹴にする衣玖だった…
+    ;乱数分岐:2
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「眠っているのに…私の足が触れる度に、すごくビクビクしてましたよ？」
+        PRINTFORMW 「…このまま最後までしてあげましょうか？もちろん足でですけど…♪」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「あんまり気持ちよさそうに寝ているものですから…」
+        PRINTFORMW 「ちょっと悪戯したくなっちゃったんです、痛かったですか？」
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -1196,42 +1196,42 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE150
 ;연모
 IF TALENT:연모
-	;淫乱である
-	IF TALENT:음란
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 激しいセックスを終えた衣玖の全身は大量の精液にまみれている…
-			PRINTFORMW 「お風呂に…入らないと…いけませんね…」
-			PRINTFORMW 「でも、この匂い…%CALLNAME:MASTER%の匂いがいっぱいで、幸せです…ふふっ…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 力無く横たわる衣玖のヴァギナからは大量に注ぎ込まれた精液がとめどなく溢れ続けている…
-			PRINTFORMW 「こんなに、膣出しされちゃいました…♪ああっ、精液こぼれるの、勿体ないのに、ううっ…」
-		ENDIF
-	;妊娠である
-	ELSEIF TALENT:임신
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「愛してますっ、%CALLNAME:MASTER%…♪」
-			PRINTFORMW 「ああっ…お腹の子も、喜んでますよおっ…ひあっ、嬉しい…」
-			PRINTFORMW あなたはゆっくりと衣玖とのセックスを楽しんだ…
-		;その他の場合
-		ELSE
-			PRINTFORMW 「こんなこと言うのは、恥ずかしいんですけど…」
-			PRINTFORMW 「もうちょっとだけ、抱いて頂けませんか…？」
-			PRINTFORMW あなたは大きなお腹を抱えた衣玖を優しく抱いてやった…
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「こんなに、私を愛して頂けるなんて…とっても、幸せです…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「はあっ、はあっ…すごかったですよ、%CALLNAME:MASTER%…」
-			PRINTFORMW 「また、しましょうね…おやすみなさい…」
-		ENDIF
-	ENDIF
+    ;淫乱である
+    IF TALENT:음란
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 激しいセックスを終えた衣玖の全身は大量の精液にまみれている…
+            PRINTFORMW 「お風呂に…入らないと…いけませんね…」
+            PRINTFORMW 「でも、この匂い…%CALLNAME:MASTER%の匂いがいっぱいで、幸せです…ふふっ…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 力無く横たわる衣玖のヴァギナからは大量に注ぎ込まれた精液がとめどなく溢れ続けている…
+            PRINTFORMW 「こんなに、膣出しされちゃいました…♪ああっ、精液こぼれるの、勿体ないのに、ううっ…」
+        ENDIF
+    ;妊娠である
+    ELSEIF TALENT:임신
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「愛してますっ、%CALLNAME:MASTER%…♪」
+            PRINTFORMW 「ああっ…お腹の子も、喜んでますよおっ…ひあっ、嬉しい…」
+            PRINTFORMW あなたはゆっくりと衣玖とのセックスを楽しんだ…
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「こんなこと言うのは、恥ずかしいんですけど…」
+            PRINTFORMW 「もうちょっとだけ、抱いて頂けませんか…？」
+            PRINTFORMW あなたは大きなお腹を抱えた衣玖を優しく抱いてやった…
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「こんなに、私を愛して頂けるなんて…とっても、幸せです…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「はあっ、はあっ…すごかったですよ、%CALLNAME:MASTER%…」
+            PRINTFORMW 「また、しましょうね…おやすみなさい…」
+        ENDIF
+    ENDIF
 ;その他の場合
 ELSE
 ENDIF
@@ -1243,61 +1243,61 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE151
 ;연모
 IF TALENT:연모
-	;妊娠である
-	IF TALENT:임신
-		PRINTFORMW 「体に気を遣わなければいけないのは分かってるんですけど…」
-		PRINTFORMW 「やっぱり少しだけ、物足りないのかも…」
-	;처녀
-	ELSEIF TALENT:처녀
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「あっ！うぁっ、あっ…一人ででこんなことばかりして…」
-			PRINTFORMW 「…早く%CALLNAME:MASTER%が抱いてくれないのが悪いんですよ…！ううっ、くああっ…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「…実際に入れられちゃうのってどんな感じなのでしょう…」
-			PRINTFORMW 試しに少しだけ指を深く入れてみる…が、指の先端が何かに触れた瞬間、鋭い痛みが衣玖を襲った…
-			PRINTFORMW 「はっ！っ痛うう…ううっ…」
-			PRINTFORMW 「はあ…本当に大丈夫なんでしょうか…？」
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:3
-		IF RAND:3 == 0
-			PRINTFORMW 「自分でするのも、結構楽しいですね…ふふっ」
-			PRINTFORMW 「はうっ…気持ちいい…もう、やめられない…くっ、ふああっ…」
-		;乱数分岐:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「はっ、はっ…%CALLNAME:MASTER%の事を考えただけで、こんなに濡れてしまって…」
-			PRINTFORMW 「早く…早くまた、抱いて欲しいです…」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「%CALLNAME:MASTER%…%CALLNAME:MASTER%…！」
-			PRINTFORMW 「これじゃあ足りないです…%CALLNAME:MASTER%の指で、もっと気持ち良くなりたい…！」
-		ENDIF
-	ENDIF
+    ;妊娠である
+    IF TALENT:임신
+        PRINTFORMW 「体に気を遣わなければいけないのは分かってるんですけど…」
+        PRINTFORMW 「やっぱり少しだけ、物足りないのかも…」
+    ;처녀
+    ELSEIF TALENT:처녀
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「あっ！うぁっ、あっ…一人ででこんなことばかりして…」
+            PRINTFORMW 「…早く%CALLNAME:MASTER%が抱いてくれないのが悪いんですよ…！ううっ、くああっ…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「…実際に入れられちゃうのってどんな感じなのでしょう…」
+            PRINTFORMW 試しに少しだけ指を深く入れてみる…が、指の先端が何かに触れた瞬間、鋭い痛みが衣玖を襲った…
+            PRINTFORMW 「はっ！っ痛うう…ううっ…」
+            PRINTFORMW 「はあ…本当に大丈夫なんでしょうか…？」
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:3
+        IF RAND:3 == 0
+            PRINTFORMW 「自分でするのも、結構楽しいですね…ふふっ」
+            PRINTFORMW 「はうっ…気持ちいい…もう、やめられない…くっ、ふああっ…」
+        ;乱数分岐:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「はっ、はっ…%CALLNAME:MASTER%の事を考えただけで、こんなに濡れてしまって…」
+            PRINTFORMW 「早く…早くまた、抱いて欲しいです…」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「%CALLNAME:MASTER%…%CALLNAME:MASTER%…！」
+            PRINTFORMW 「これじゃあ足りないです…%CALLNAME:MASTER%の指で、もっと気持ち良くなりたい…！」
+        ENDIF
+    ENDIF
 ;反発刻印Lv1以上
 ELSEIF MARK:반발각인 >= 1
-	PRINTFORMW 「くっ…あんな人間のせいで、こんな体に…！」
+    PRINTFORMW 「くっ…あんな人間のせいで、こんな体に…！」
 ;自慰中毒Lv3以上
 ELSEIF ABL:자위중독 >= 3
-	;乱数分岐:2
-	IF RAND:2 == 0
-		PRINTFORMW 「もう何回も、何回もしてるのにっ…！」
-		PRINTFORMW 「指が止まらないですよぉ…誰か、助けてえっ…ううっ、くうっ！」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「時間さえあれば、こんな事ばかりして…」
-		PRINTFORMW 「なんてはしたない女なんでしょう…我ながら、呆れてしまいます…」
-	ENDIF
+    ;乱数分岐:2
+    IF RAND:2 == 0
+        PRINTFORMW 「もう何回も、何回もしてるのにっ…！」
+        PRINTFORMW 「指が止まらないですよぉ…誰か、助けてえっ…ううっ、くうっ！」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「時間さえあれば、こんな事ばかりして…」
+        PRINTFORMW 「なんてはしたない女なんでしょう…我ながら、呆れてしまいます…」
+    ENDIF
 ;快楽刻印Lv3以上
 ELSEIF MARK:쾌락각인 >= 3
-	PRINTFORMW 「んううっ！はうっ、あっ、くううっ…気持ち、いいっ…」
-	PRINTFORMW （…駄目なのに…あの強烈な快感が、忘れられません…！）
+    PRINTFORMW 「んううっ！はうっ、あっ、くううっ…気持ち、いいっ…」
+    PRINTFORMW （…駄目なのに…あの強烈な快感が、忘れられません…！）
 ;その他の場合
 ELSE
-	PRINTFORMW 「はっ…はっ…ふっ、んくうっ…」
-	PRINTFORMW 「こんな事をして…私、おかしくなってしまったのでしょうか…」
+    PRINTFORMW 「はっ…はっ…ふっ、んくうっ…」
+    PRINTFORMW 「こんな事をして…私、おかしくなってしまったのでしょうか…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1307,10 +1307,10 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE152
 ;屈服刻印Lv3
 IF MARK:굴복각인 == 3
-	PRINTFORMW 「っくうう…お尻が、お尻が気持ち良くて、やめられない…！」
+    PRINTFORMW 「っくうう…お尻が、お尻が気持ち良くて、やめられない…！」
 ;その他の場合
 ELSE
-	PRINTFORMW 「もう嫌…どうしてこんな変態じみた事、してしまうの…」
+    PRINTFORMW 「もう嫌…どうしてこんな変態じみた事、してしまうの…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1319,42 +1319,42 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE153
 ;연모
 IF TALENT:연모
-	;妊娠である
-	IF TALENT:임신
-		PRINTFORMW 「いっぱい飲んで、%CALLNAME:MASTER%も元気をつけて下さいね？ふふっ」
-	;噴乳中毒Lv3以上
-	ELSEIF ABL:분유중독 >= 3
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「%CALLNAME:MASTER%が十分に絞ってくれなかったからですよ？」
-			PRINTFORMW 「まだまだ出し足りないんです…もっと私のおっぱい、飲んでくださいね…？」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「はっ、はあっ…おっぱい絞るの、やめられない…」
-			PRINTFORMW 「こんなに出してるのに…どうしてまだ溢れてくるの…？んあっ、あふあっ…」
-		ENDIF
-	;その他の場合
-	ELSE
-		;乱数分岐:2
-		IF RAND:2 == 0
-			PRINTFORMW 「黙ってても溢れてきてしまって…もう少し、お付き合いしていただけますか？」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「自分で絞るのがクセになってしまいます…」
-			PRINTFORMW 「せめて%CALLNAME:MASTER%にはしっかり飲んでもらいますよ？ふふっ…」
-		ENDIF
-	ENDIF
+    ;妊娠である
+    IF TALENT:임신
+        PRINTFORMW 「いっぱい飲んで、%CALLNAME:MASTER%も元気をつけて下さいね？ふふっ」
+    ;噴乳中毒Lv3以上
+    ELSEIF ABL:분유중독 >= 3
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「%CALLNAME:MASTER%が十分に絞ってくれなかったからですよ？」
+            PRINTFORMW 「まだまだ出し足りないんです…もっと私のおっぱい、飲んでくださいね…？」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「はっ、はあっ…おっぱい絞るの、やめられない…」
+            PRINTFORMW 「こんなに出してるのに…どうしてまだ溢れてくるの…？んあっ、あふあっ…」
+        ENDIF
+    ;その他の場合
+    ELSE
+        ;乱数分岐:2
+        IF RAND:2 == 0
+            PRINTFORMW 「黙ってても溢れてきてしまって…もう少し、お付き合いしていただけますか？」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「自分で絞るのがクセになってしまいます…」
+            PRINTFORMW 「せめて%CALLNAME:MASTER%にはしっかり飲んでもらいますよ？ふふっ…」
+        ENDIF
+    ENDIF
 ;その他の場合
 ELSE
-	;反発刻印Lv1以上
-	IF MARK:반발각인 >= 1
-		PRINTFORMW 「…毒でも入ってるとは、考えないのですか？」
-		PRINTFORMW 「くっ、その満足そうな顔、やめてください…」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「どうしても、胸が張って苦しくて…」
-		PRINTFORMW 「これでも恥ずかしいんですから…飲むなら、早く飲んでしまって下さい…」
-	ENDIF
+    ;反発刻印Lv1以上
+    IF MARK:반발각인 >= 1
+        PRINTFORMW 「…毒でも入ってるとは、考えないのですか？」
+        PRINTFORMW 「くっ、その満足そうな顔、やめてください…」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「どうしても、胸が張って苦しくて…」
+        PRINTFORMW 「これでも恥ずかしいんですから…飲むなら、早く飲んでしまって下さい…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1364,36 +1364,36 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE154
 ;助手が天子
 IF ASSI > 0 && NO:ASSI == 52
-	;연모
-	IF TALENT:연모
-		IF RAND:4 == 0
-			PRINTFORMW 『ねえ衣玖、ご主人様もう行っちゃったわよ？』
-			PRINTFORMW 「ええ」
-			PRINTFORMW 『まだこんな時間なのね、どうしようかしら…』
-			PRINTFORMW 「そうですね」
-			PRINTFORMW 『…』
-			PRINTFORMW 「…」
-			PRINTFORMW 『もうちょっと…ね？』
-			PRINTFORMW 「私も…ふふ、一緒です」
-		ELSEIF RAND:3 == 0
-			PRINTFORMW 「…後は二人で、よろしく…？あの、思いつきはあまり感心しませんよ？」
-			PRINTFORMW 『この馬鹿ご主人様、あんたの股間にぶら下げてるものは何なのよ全く…』
-			PRINTFORMW 散々な言われようだが…今はそういう気分なのだ。
-			PRINTFORMW なのでここは堂々と二人の絡み合う姿を眺めさせてもらう…！
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 『あの衣玖さん…離れて、もらえませんかね？』
-			PRINTFORMW あなたは部屋を離れようとしたが…衣玖が天子を捕まえて離さない。
-			PRINTFORMW …ここは天子に犠牲になってもらうしかないようだ。
-			PRINTFORMW 『ご主人様…？えっ、ちょっと衣玖…』
-			PRINTFORMW 「ふふふ…ふふ、天子…離しませんよ…♪」
-			PRINTFORMW 『やだ…あんたそんなじゃないでしょ！…んっ！』
-		ELSE
-			PRINTFORMW あなたが立ち去ろうとするなり、衣玖と天子の二人は唇を合わせ、上気した体を絡ませ始めた…
-			PRINTFORMW 「あっ…後片付けはちゃんとしておきますから…ん、天子…」
-			PRINTFORMW 『衣玖、衣玖…んぁ、後は、任せて…ね、ご主人様…』
-		ENDIF
-	ELSE
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        IF RAND:4 == 0
+            PRINTFORMW 『ねえ衣玖、ご主人様もう行っちゃったわよ？』
+            PRINTFORMW 「ええ」
+            PRINTFORMW 『まだこんな時間なのね、どうしようかしら…』
+            PRINTFORMW 「そうですね」
+            PRINTFORMW 『…』
+            PRINTFORMW 「…」
+            PRINTFORMW 『もうちょっと…ね？』
+            PRINTFORMW 「私も…ふふ、一緒です」
+        ELSEIF RAND:3 == 0
+            PRINTFORMW 「…後は二人で、よろしく…？あの、思いつきはあまり感心しませんよ？」
+            PRINTFORMW 『この馬鹿ご主人様、あんたの股間にぶら下げてるものは何なのよ全く…』
+            PRINTFORMW 散々な言われようだが…今はそういう気分なのだ。
+            PRINTFORMW なのでここは堂々と二人の絡み合う姿を眺めさせてもらう…！
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 『あの衣玖さん…離れて、もらえませんかね？』
+            PRINTFORMW あなたは部屋を離れようとしたが…衣玖が天子を捕まえて離さない。
+            PRINTFORMW …ここは天子に犠牲になってもらうしかないようだ。
+            PRINTFORMW 『ご主人様…？えっ、ちょっと衣玖…』
+            PRINTFORMW 「ふふふ…ふふ、天子…離しませんよ…♪」
+            PRINTFORMW 『やだ…あんたそんなじゃないでしょ！…んっ！』
+        ELSE
+            PRINTFORMW あなたが立ち去ろうとするなり、衣玖と天子の二人は唇を合わせ、上気した体を絡ませ始めた…
+            PRINTFORMW 「あっ…後片付けはちゃんとしておきますから…ん、天子…」
+            PRINTFORMW 『衣玖、衣玖…んぁ、後は、任せて…ね、ご主人様…』
+        ENDIF
+    ELSE
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1422,31 +1422,31 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE158
 ;연모
 IF TALENT:연모
-	;乱数分岐:3
-	IF RAND:3 == 0
-		PRINTFORMW 衣玖が騎乗位で何度目かの絶頂を迎え、力を失った体はあなたへと崩れ落ちた…
-		PRINTFORMW 「はああっ…あはっ、はあ…子宮に、たくさん…あぁ…嬉しいです…」
-		PRINTFORMW 互いの股間は精液と愛液が混ざり合って、互いに溶けてしまったかのようだ…
-		PRINTFORMW 「今度は…私の部屋にも、来て下さいね？お待ちしてますから…」
-	;乱数分岐:2
-	ELSEIF RAND:2 == 0
-		PRINTFORMW 「突然押しかけたのに…んあっ、あ…逆にこんなに、犯されちゃいましたぁ…♪」
-		PRINTFORMW 繋がったままの性器からは、膣内に収まらなかった精液がドロドロと零れ落ちている…
-		PRINTFORMW 「ふふっ…こうして、繋がりあったまま…%CALLNAME:MASTER%と一緒に、眠ってみたかったんです…」
-		PRINTFORMW 「ありがとうございます、%CALLNAME:MASTER%…おやすみなさい…」
-	;その他の場合
-	ELSE
-		PRINTFORMW 「もっとっ！もっと私の膣に、%CALLNAME:MASTER%の精子、下さいっ…」
-		PRINTFORMW 「んああっ！ああっ！お腹の中で、いっぱい…はあっ、あはああっ…！」
-		PRINTFORMW 二人が同時に絶頂に昇り詰め、衣玖の震える膣内を再び精液が満たしていった…
-		PRINTFORMW 「セックス気持ちいいです…もっと、もっと%CALLNAME:MASTER%とセックスしたいのに…」
-		PRINTFORMW 「もう、動けま…せん…好きです…%CALLNAME:MASTER%…」
-		PRINTFORMW 衣玖は尚もあなたを貪欲に求めているが、今度こそ体力が限界のようだ…
-	ENDIF
+    ;乱数分岐:3
+    IF RAND:3 == 0
+        PRINTFORMW 衣玖が騎乗位で何度目かの絶頂を迎え、力を失った体はあなたへと崩れ落ちた…
+        PRINTFORMW 「はああっ…あはっ、はあ…子宮に、たくさん…あぁ…嬉しいです…」
+        PRINTFORMW 互いの股間は精液と愛液が混ざり合って、互いに溶けてしまったかのようだ…
+        PRINTFORMW 「今度は…私の部屋にも、来て下さいね？お待ちしてますから…」
+    ;乱数分岐:2
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「突然押しかけたのに…んあっ、あ…逆にこんなに、犯されちゃいましたぁ…♪」
+        PRINTFORMW 繋がったままの性器からは、膣内に収まらなかった精液がドロドロと零れ落ちている…
+        PRINTFORMW 「ふふっ…こうして、繋がりあったまま…%CALLNAME:MASTER%と一緒に、眠ってみたかったんです…」
+        PRINTFORMW 「ありがとうございます、%CALLNAME:MASTER%…おやすみなさい…」
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「もっとっ！もっと私の膣に、%CALLNAME:MASTER%の精子、下さいっ…」
+        PRINTFORMW 「んああっ！ああっ！お腹の中で、いっぱい…はあっ、あはああっ…！」
+        PRINTFORMW 二人が同時に絶頂に昇り詰め、衣玖の震える膣内を再び精液が満たしていった…
+        PRINTFORMW 「セックス気持ちいいです…もっと、もっと%CALLNAME:MASTER%とセックスしたいのに…」
+        PRINTFORMW 「もう、動けま…せん…好きです…%CALLNAME:MASTER%…」
+        PRINTFORMW 衣玖は尚もあなたを貪欲に求めているが、今度こそ体力が限界のようだ…
+    ENDIF
 ;その他の場合
 ELSE
-	PRINTFORMW 「…突然、失礼しました…どうしても、%CALLNAME:MASTER%のが、欲しくなってしまって…」
-	PRINTFORMW 「はしたない女だと思って頂いて構いませんから…今は、ここに居させてください…」
+    PRINTFORMW 「…突然、失礼しました…どうしても、%CALLNAME:MASTER%のが、欲しくなってしまって…」
+    PRINTFORMW 「はしたない女だと思って頂いて構いませんから…今は、ここに居させてください…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1490,84 +1490,84 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE170
 ;主人による
 IF TFLAG:99 == MASTER
-	;初めて
-	IF TFLAG:95 == 1
-		;연모
-		IF TALENT:연모
-			;淫乱である
-			IF TALENT:음란
-				PRINTFORMW 「임신…したようです」
-				PRINTFORMW 衣玖は戸惑いのあまり、自分でもどうしたらいいのかわからないようだ…
-				PRINTFORMW 「竜宮の使いと人間の間に子供ができるとは思ってませんでしたので…」
-				PRINTFORMW 「種族を超えて女性を孕ませるとは…%CALLNAME:MASTER%の精子は一体どうなってるんでしょうか…」
-				PRINTFORMW …衣玖の顔に妖しい笑みが浮かぶ。
-				PRINTFORMW 「臨月までにはまだまだ時間があります…ですから」
-				PRINTFORMW 「今のうちに楽しんでおきましょう？それとも、お腹が大きい方が興奮しますか？ふふっ」
-				PRINTFORMW 「胸も大きくなると言いますし…ほら、%CALLNAME:MASTER%も楽しみでしょう？」
-				PRINTFORMW いやにノリのいい衣玖を見てさすがにあなたも少し不安になった…
-				PRINTFORMW 「ええもちろん。子供は大切にしましょうね？子供は子供、セックスはセックスです」
-				PRINTFORMW 「この子が安心して産まれてこられるように、ちゃんと愛し合い続けましょうね？%CALLNAME:MASTER%…♪」
-				PRINTFORMW お腹をさすりながら衣玖はねっとりとした視線をこちらに向けてくる。
-				PRINTFORMW あなたはやや気圧されながらも、衣玖の性欲に応えていく決心を固めたのだった…
-			;その他の場合
-			ELSE
-				PRINTFORMW 「私が子供を授かることが出来るなんて…」
-				PRINTFORMW 「天女が人間との間に子を儲ける話は聞いた事がありますが、私は一応妖怪ですからね」
-				PRINTFORMW 「…責任、取って下さいね？ふふっ、言ってみたかったんです」
-				PRINTFORMW 朗らかな笑みを崩さない衣玖だが…どことなく違和感を感じる。
-				PRINTFORMW 形はどうあれ、長い時間肌を重ねた仲だ。互いの考えている事も何となく分かる、ような気もする。
-				PRINTFORMW 随分と衣玖は軽い調子で話していたが、妊娠するというのは重大な出来事に違いない。
-				PRINTFORMW 子供を儲けたことで今後の関係が変化することを不安に思って当然だろう…
-				PRINTFORMW 
-				PRINTFORMW あなたは衣玖を真っ直ぐ見据え、安心して子供を産んでくれと、伝えた…
-				PRINTFORMW 「！」
-				PRINTFORMW 「…本当に、本当にいいんですね？子供を、産んでも…」
-				PRINTFORMW 一転して、衣玖の表情が真剣なものとなる…あなたは続く言葉を待った。
-				PRINTFORMW 「…怖かったんです…私が本当に子供を産んでいいのか確かめる事が…」
-				PRINTFORMW 「%CALLNAME:MASTER%が何をしている人間なのかは分かっています…だから、子供が出来ても、かえって負担になってしまうんじゃないかって…」
-				PRINTFORMW 「…%CALLNAME:MASTER%がただ私の体だけが目当てだというなら、子供を産むのを諦める覚悟も、していました…」
-				PRINTFORMW 衣玖の覚悟にあなたは思わず息を飲んだ。
-				PRINTFORMW 置かれている環境の事も考えれば当然かもしれないが、まさかそこまでとは…
-				PRINTFORMW 「でも…良かった…本当に良かった…」
-				PRINTFORMW 「%CALLNAME:MASTER%にそう言って貰えた事が、何よりも嬉しいです…！」
-				PRINTFORMW 「二人で大切にしていきましょうね…ずっと、ずっと…愛してます、%CALLNAME:MASTER%…」
-				PRINTFORMW 目に涙を浮かべて感謝の言葉を伝える衣玖をあなたはしっかりと抱きしめた…
-			ENDIF
-		;屈服刻印Lv3
-		ELSEIF MARK:굴복각인 == 3
-			PRINTFORMW 「毎日のように抱かれていれば、こうなるのは分かっていた事でしょうに…」
-			PRINTFORMW 「こうして子を授かった事に気付いた途端に動揺して…ああ、情けない…」
-			PRINTFORMW 「…竜神様…私は一体、どうしたらいいのですか…？」
-		;その他の場合
-		ELSE
-			PRINTFORMW 「妊娠だなんて…嘘っ、そんなっ…！嫌っ、嫌ああっ！」
-			PRINTFORMW 「どうして…どうして私がこんな目に遭わなければいけないのですかあっ…」
-			PRINTFORMW 「もう嫌…竜神様…総領娘様…誰でもいいですからっ、ここから出して…助けてえ…」
-		ENDIF
-	;2回目以降
-	ELSE
-		;相愛である
-		IF TALENT:상애
-			PRINTFORMW 「ふふっ、また子供を授かりました…♪%CALLNAME:MASTER%の子供だったら、何人いてもいいくらいですよ…」
-			PRINTFORMW 「%CALLNAME:MASTER%からは本当に幸せを貰ってばかりです…」
-			PRINTFORMW 「お返しできるのはもうちょっと先になりますけど…それまで大事にこの子を育てていきましょうね？」
-		;연모
-		ELSEIF TALENT:연모
-			PRINTFORMW 「おめでとうございます、%CALLNAME:MASTER%…妊娠しましたよ」
-			PRINTFORMW 「たくさん愛して頂いたおかげです…今度も元気な赤ちゃん産めるよう頑張りますね？ふふっ」
-			PRINTFORMW 衣玖の幸せそうな笑顔を見てあなたも同じように幸福を感じている…
-			PRINTFORMW だがしかし、衣玖に女性として、母親としての幸せだけなく、
-			PRINTFORMW 生きる上での本当の幸せを与えられないだろうかと、あなたは思い始めていた…
-		;その他の場合
-		ELSE
-			PRINTFORMW 「……子供に罪はありません」
-			PRINTFORMW 「悪いのは私達ですよ…私も子を孕むのが嫌ならいっそ自殺してしまえばいいんです」
-			PRINTFORMW 「…ですがそれも出来ないままこうしてまた…ふふっ、最低の母親ですね、私って…」
-		ENDIF
-	ENDIF
+    ;初めて
+    IF TFLAG:95 == 1
+        ;연모
+        IF TALENT:연모
+            ;淫乱である
+            IF TALENT:음란
+                PRINTFORMW 「임신…したようです」
+                PRINTFORMW 衣玖は戸惑いのあまり、自分でもどうしたらいいのかわからないようだ…
+                PRINTFORMW 「竜宮の使いと人間の間に子供ができるとは思ってませんでしたので…」
+                PRINTFORMW 「種族を超えて女性を孕ませるとは…%CALLNAME:MASTER%の精子は一体どうなってるんでしょうか…」
+                PRINTFORMW …衣玖の顔に妖しい笑みが浮かぶ。
+                PRINTFORMW 「臨月までにはまだまだ時間があります…ですから」
+                PRINTFORMW 「今のうちに楽しんでおきましょう？それとも、お腹が大きい方が興奮しますか？ふふっ」
+                PRINTFORMW 「胸も大きくなると言いますし…ほら、%CALLNAME:MASTER%も楽しみでしょう？」
+                PRINTFORMW いやにノリのいい衣玖を見てさすがにあなたも少し不安になった…
+                PRINTFORMW 「ええもちろん。子供は大切にしましょうね？子供は子供、セックスはセックスです」
+                PRINTFORMW 「この子が安心して産まれてこられるように、ちゃんと愛し合い続けましょうね？%CALLNAME:MASTER%…♪」
+                PRINTFORMW お腹をさすりながら衣玖はねっとりとした視線をこちらに向けてくる。
+                PRINTFORMW あなたはやや気圧されながらも、衣玖の性欲に応えていく決心を固めたのだった…
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「私が子供を授かることが出来るなんて…」
+                PRINTFORMW 「天女が人間との間に子を儲ける話は聞いた事がありますが、私は一応妖怪ですからね」
+                PRINTFORMW 「…責任、取って下さいね？ふふっ、言ってみたかったんです」
+                PRINTFORMW 朗らかな笑みを崩さない衣玖だが…どことなく違和感を感じる。
+                PRINTFORMW 形はどうあれ、長い時間肌を重ねた仲だ。互いの考えている事も何となく分かる、ような気もする。
+                PRINTFORMW 随分と衣玖は軽い調子で話していたが、妊娠するというのは重大な出来事に違いない。
+                PRINTFORMW 子供を儲けたことで今後の関係が変化することを不安に思って当然だろう…
+                PRINTFORMW 
+                PRINTFORMW あなたは衣玖を真っ直ぐ見据え、安心して子供を産んでくれと、伝えた…
+                PRINTFORMW 「！」
+                PRINTFORMW 「…本当に、本当にいいんですね？子供を、産んでも…」
+                PRINTFORMW 一転して、衣玖の表情が真剣なものとなる…あなたは続く言葉を待った。
+                PRINTFORMW 「…怖かったんです…私が本当に子供を産んでいいのか確かめる事が…」
+                PRINTFORMW 「%CALLNAME:MASTER%が何をしている人間なのかは分かっています…だから、子供が出来ても、かえって負担になってしまうんじゃないかって…」
+                PRINTFORMW 「…%CALLNAME:MASTER%がただ私の体だけが目当てだというなら、子供を産むのを諦める覚悟も、していました…」
+                PRINTFORMW 衣玖の覚悟にあなたは思わず息を飲んだ。
+                PRINTFORMW 置かれている環境の事も考えれば当然かもしれないが、まさかそこまでとは…
+                PRINTFORMW 「でも…良かった…本当に良かった…」
+                PRINTFORMW 「%CALLNAME:MASTER%にそう言って貰えた事が、何よりも嬉しいです…！」
+                PRINTFORMW 「二人で大切にしていきましょうね…ずっと、ずっと…愛してます、%CALLNAME:MASTER%…」
+                PRINTFORMW 目に涙を浮かべて感謝の言葉を伝える衣玖をあなたはしっかりと抱きしめた…
+            ENDIF
+        ;屈服刻印Lv3
+        ELSEIF MARK:굴복각인 == 3
+            PRINTFORMW 「毎日のように抱かれていれば、こうなるのは分かっていた事でしょうに…」
+            PRINTFORMW 「こうして子を授かった事に気付いた途端に動揺して…ああ、情けない…」
+            PRINTFORMW 「…竜神様…私は一体、どうしたらいいのですか…？」
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「妊娠だなんて…嘘っ、そんなっ…！嫌っ、嫌ああっ！」
+            PRINTFORMW 「どうして…どうして私がこんな目に遭わなければいけないのですかあっ…」
+            PRINTFORMW 「もう嫌…竜神様…総領娘様…誰でもいいですからっ、ここから出して…助けてえ…」
+        ENDIF
+    ;2回目以降
+    ELSE
+        ;相愛である
+        IF TALENT:상애
+            PRINTFORMW 「ふふっ、また子供を授かりました…♪%CALLNAME:MASTER%の子供だったら、何人いてもいいくらいですよ…」
+            PRINTFORMW 「%CALLNAME:MASTER%からは本当に幸せを貰ってばかりです…」
+            PRINTFORMW 「お返しできるのはもうちょっと先になりますけど…それまで大事にこの子を育てていきましょうね？」
+        ;연모
+        ELSEIF TALENT:연모
+            PRINTFORMW 「おめでとうございます、%CALLNAME:MASTER%…妊娠しましたよ」
+            PRINTFORMW 「たくさん愛して頂いたおかげです…今度も元気な赤ちゃん産めるよう頑張りますね？ふふっ」
+            PRINTFORMW 衣玖の幸せそうな笑顔を見てあなたも同じように幸福を感じている…
+            PRINTFORMW だがしかし、衣玖に女性として、母親としての幸せだけなく、
+            PRINTFORMW 生きる上での本当の幸せを与えられないだろうかと、あなたは思い始めていた…
+        ;その他の場合
+        ELSE
+            PRINTFORMW 「……子供に罪はありません」
+            PRINTFORMW 「悪いのは私達ですよ…私も子を孕むのが嫌ならいっそ自殺してしまえばいいんです」
+            PRINTFORMW 「…ですがそれも出来ないままこうしてまた…ふふっ、最低の母親ですね、私って…」
+        ENDIF
+    ENDIF
 ;主人以外
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1683,13 +1683,13 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE195
 ;売却時
 IF TFLAG:99 == 130
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;狂気脱走した売却時
 ELSEIF TFLAG:99 == 180
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;解放されて去った時
 ELSEIF TFLAG:99 == 196
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -2008,10 +2008,10 @@ PRINTFORMW あなたを真っ直ぐ見据え、衣玖は自ら首輪を身に着
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE311
 ;消去時
 IF TFLAG:99 == 1
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;付加時
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -2020,10 +2020,10 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE312
 ;消去時
 IF TALENT:121 == 2
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;付加時
 ELSEIF TALENT:121 == 1
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -2065,20 +2065,20 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE322
 ;연모
 IF TALENT:연모
-	;噴乳中毒Lv3以上
-	IF ABL:34 >= 3
-		PRINTFORMW 「そんな…もう、いいんですか？私の、おっぱい…」
-		PRINTFORMW 「うう、すっかり%CALLNAME:MASTER%におっぱい飲んでもらうのが好きになってしまっていたのですが…」
-		;噴乳中毒Lv1以上
-		IF ABL:34 >= 1
-			PRINTFORMW 「え、はあ…まあ、この方が自然ですものね…」
-		ELSE
-			PRINTFORMW 「ちょっとだけ、勿体ない気もしますけど…頂きます」
-		ENDIF
-	;その他
-	ELSE
-		PRINTFORMW 「初めから人の体など弄るものではないでしょうに…」
-	ENDIF
+    ;噴乳中毒Lv3以上
+    IF ABL:34 >= 3
+        PRINTFORMW 「そんな…もう、いいんですか？私の、おっぱい…」
+        PRINTFORMW 「うう、すっかり%CALLNAME:MASTER%におっぱい飲んでもらうのが好きになってしまっていたのですが…」
+        ;噴乳中毒Lv1以上
+        IF ABL:34 >= 1
+            PRINTFORMW 「え、はあ…まあ、この方が自然ですものね…」
+        ELSE
+            PRINTFORMW 「ちょっとだけ、勿体ない気もしますけど…頂きます」
+        ENDIF
+    ;その他
+    ELSE
+        PRINTFORMW 「初めから人の体など弄るものではないでしょうに…」
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;尿漏れ改善薬使用
@@ -2086,9 +2086,9 @@ ENDIF
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE323
 ;연모
 IF TALENT:연모
-	PRINTFORMW 「あまり、その…下がゆるいのは、お好きじゃありませんよね…」
-	PRINTFORMW そういうわけではないが…衣玖が体質に苦労しているように見えただけである。
-	PRINTFORMW 「ふふ、お優しいのですね。有難く頂きます…」
+    PRINTFORMW 「あまり、その…下がゆるいのは、お好きじゃありませんよね…」
+    PRINTFORMW そういうわけではないが…衣玖が体質に苦労しているように見えただけである。
+    PRINTFORMW 「ふふ、お優しいのですね。有難く頂きます…」
 ENDIF
 
 ;-------------------------------------------------

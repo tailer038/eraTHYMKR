@@ -16,50 +16,50 @@ PRINTL 사정한다고 명기되어 있지 않아도 파라미터에 따라 사�
 PRINTFORML 설명을 알고 싶은 커맨드의 번호를 입력하길 바란다.  ＜page. {LOCAL + 1}/{LOCAL:1 + 1}＞
 DRAWLINE
 IF LOCAL >= 0 && LOCAL < LOCAL:1
-	FOR LOCAL:3, 0, 60
-		LOCAL:2 = LOCAL:3 + LOCAL * 60
-		SIF STRLENS(TRAINNAME:(LOCAL:2)) > 0
-			PRINTFORMLC [{LOCAL:2, 3}]%TRAINNAME:(LOCAL:2)%
-	NEXT
+    FOR LOCAL:3, 0, 60
+        LOCAL:2 = LOCAL:3 + LOCAL * 60
+        SIF STRLENS(TRAINNAME:(LOCAL:2)) > 0
+            PRINTFORMLC [{LOCAL:2, 3}]%TRAINNAME:(LOCAL:2)%
+    NEXT
 ELSEIF LOCAL == LOCAL:1
-	PRINTLC [700] 능력 표시(노예)
-	PRINTLC [701] 능력 표시(조교자)
-	PRINTLC [702] 능력 표시(촉수)
-	PRINTLC [800] 주인과 교대/조수와 교대
-	PRINTLC [801] 불결 표시
-	PRINTLC [810] 구현화(주인)/구현화 해제(주인)
-	PRINTLC [811] 구현화(조수)/구현화 해제(조수)
-	IF FLAG:999 == 0
-		IF TALENT:MASTER:831
-			PRINTLC [830] Ex모드화
-			PRINTLC [831] Ph모드화
-		ENDIF
-	ENDIF
-	PRINTLC [850] 향을 피운다
-	PRINTLC [876] 표시 형식 변경
-	PRINTLC [888] 커맨드 확장
-	PRINTLC [889] 커맨드 필터
-	PRINTLC [890] V계 조교 필터
-	PRINTLC [891] A계 조교 필터
-	PRINTLC [892] 이상 조교 필터
-	PRINTLC [893] 자동 사정 장소 변경
-	PRINTLC [900] 기생 촉수 영양 방출
-	PRINTLC [901] 거대/축소화(노예)
-	PRINTLC [902] 거대/축소화(주인)
-	PRINTLC [903] 거대/축소화(조수)
-	PRINTLC [911] 성별 변경(노예)
-	PRINTLC [912] 성별 변경(주인)
-	PRINTLC [913] 성별 변경(조수)
-	PRINTLC [990] 조교 메뉴 등록
-	PRINTLC [991] 조교 메뉴 표시
-	PRINTLC [992] 조교 메뉴 실행
-	PRINTLC [994] 조수더러 고르게 한다
-	PRINTLC [997] 동방조교전
-	IF FLAG:999 == 0
-		SIF TALENT:MASTER:998
-			PRINTLC [998] 디버그 메뉴
-	ENDIF
-	PRINTLC [999] 조교 종료
+    PRINTLC [700] 능력 표시(노예)
+    PRINTLC [701] 능력 표시(조교자)
+    PRINTLC [702] 능력 표시(촉수)
+    PRINTLC [800] 주인과 교대/조수와 교대
+    PRINTLC [801] 불결 표시
+    PRINTLC [810] 구현화(주인)/구현화 해제(주인)
+    PRINTLC [811] 구현화(조수)/구현화 해제(조수)
+    IF FLAG:999 == 0
+        IF TALENT:MASTER:831
+            PRINTLC [830] Ex모드화
+            PRINTLC [831] Ph모드화
+        ENDIF
+    ENDIF
+    PRINTLC [850] 향을 피운다
+    PRINTLC [876] 표시 형식 변경
+    PRINTLC [888] 커맨드 확장
+    PRINTLC [889] 커맨드 필터
+    PRINTLC [890] V계 조교 필터
+    PRINTLC [891] A계 조교 필터
+    PRINTLC [892] 이상 조교 필터
+    PRINTLC [893] 자동 사정 장소 변경
+    PRINTLC [900] 기생 촉수 영양 방출
+    PRINTLC [901] 거대/축소화(노예)
+    PRINTLC [902] 거대/축소화(주인)
+    PRINTLC [903] 거대/축소화(조수)
+    PRINTLC [911] 성별 변경(노예)
+    PRINTLC [912] 성별 변경(주인)
+    PRINTLC [913] 성별 변경(조수)
+    PRINTLC [990] 조교 메뉴 등록
+    PRINTLC [991] 조교 메뉴 표시
+    PRINTLC [992] 조교 메뉴 실행
+    PRINTLC [994] 조수더러 고르게 한다
+    PRINTLC [997] 동방조교전
+    IF FLAG:999 == 0
+        SIF TALENT:MASTER:998
+            PRINTLC [998] 디버그 메뉴
+    ENDIF
+    PRINTLC [999] 조교 종료
 ENDIF
 PRINTL 
 DRAWLINE
@@ -69,17 +69,17 @@ PRINTFORMLC \@(LOCAL >= LOCAL:1) ?  %" " * 18% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 1001 && LOCAL > 0
-	LOCAL -= 1
-	GOTO TRAIN_HELP
+    LOCAL -= 1
+    GOTO TRAIN_HELP
 ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-	LOCAL += 1
-	GOTO TRAIN_HELP
+    LOCAL += 1
+    GOTO TRAIN_HELP
 ELSEIF RESULT < 0 || RESULT > 999
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ELSE
-	TRYCALLFORM DICTIONARY_TRAIN_COMMAND_{RESULT}
+    TRYCALLFORM DICTIONARY_TRAIN_COMMAND_{RESULT}
 ENDIF
 GOTO TRAIN_HELP
 
@@ -2562,8 +2562,8 @@ PRINTW 　굴복, 일탈, 성행동, 달성감, 불결, 쾌B, (중독 충족)
 ;파이즈리페라
 @DICTIONARY_TRAIN_COMMAND_209
 PRINTL 【파이즈리펠라】
-	PRINTL 노예에게 가슴으로 페니스를 끼우면서 입으로는
-	PRINTL 페니스에 자극을 주며 봉사하게 시킨다.
+    PRINTL 노예에게 가슴으로 페니스를 끼우면서 입으로는
+    PRINTL 페니스에 자극을 주며 봉사하게 시킨다.
 PRINTL B계 확장 커맨드가 꺼져있으면 실행할 수 없다.
 PRINTL 조교자는 페니스가 필요하다.
 PRINTL 대상이 남자라면 실행할 수 없다.
@@ -4280,7 +4280,7 @@ PRINTL 목욕 플레이중이면 플레이 매트가 있어야 가능하다.
 PRINTL 촉수 조교중에는 실행할 수 없다.
 PRINTL 대상의[처녀]를 빼았는다.
 PRINTL 이 커맨드는 상황에 의해 자색고구마고문이나
-	PRINTW 돌고구마고문으로 파생된다.
+    PRINTW 돌고구마고문으로 파생된다.
 PRINTL 
 PRINTL ·들어갈 가능성이 있는 소스(실행시)
 PRINTL 　노출, 순종 추가, 굴복, 일탈, 쾌V, 아픔
@@ -6605,18 +6605,18 @@ PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되�
 @DICTIONARY_TRAIN_COMMAND_830
 IF FLAG:999 == 1
 ELSEIF TALENT:MASTER:831
-	PRINTL 【Ex모드화】
-	PRINTL YASAI 모드에 대해 야채를 소비해 Ex모드화한다.
-	PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
+    PRINTL 【Ex모드화】
+    PRINTL YASAI 모드에 대해 야채를 소비해 Ex모드화한다.
+    PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
 ENDIF
 
 ;Ph모드화
 @DICTIONARY_TRAIN_COMMAND_831
 IF FLAG:999 == 1
 ELSEIF TALENT:MASTER:831
-	PRINTL 【Ph모드화】
-	PRINTL YASAI 모드가 두어 야채를 소비해 Ph모드화한다.
-	PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
+    PRINTL 【Ph모드화】
+    PRINTL YASAI 모드가 두어 야채를 소비해 Ph모드화한다.
+    PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
 ENDIF
 
 ;향기를 피운다
@@ -6778,11 +6778,11 @@ PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되�
 @DICTIONARY_TRAIN_COMMAND_998
 IF FLAG:999 == 1
 ELSEIF TALENT:MASTER:998
-	PRINTL 【디버그 메뉴】
-	PRINTL 디버그 모드에서만 선택할 수 있다.
-	PRINTL 디버그 힘내라.
-	PRINTL 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않지만,
-	PRINTW 조작에 따라서는, 다양하게 바뀌므로 주의하면 좋겠다.
+    PRINTL 【디버그 메뉴】
+    PRINTL 디버그 모드에서만 선택할 수 있다.
+    PRINTL 디버그 힘내라.
+    PRINTL 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않지만,
+    PRINTW 조작에 따라서는, 다양하게 바뀌므로 주의하면 좋겠다.
 ENDIF
 
 ;조교 종료

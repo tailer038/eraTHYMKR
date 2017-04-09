@@ -18,10 +18,10 @@
 @K13_MESSAGE_COM_300
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 쿠니 강제 말입니다」
+    ;PRINTFORMW 「첫회용 쿠니 강제 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「쿠니 강제 말입니다」
+    ;PRINTFORMW 「쿠니 강제 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -30,16 +30,16 @@ ENDIF
 @K13_MESSAGE_COM_301
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 조개 겹옷 말입니다」
+    ;PRINTFORMW 「첫회용 조개 겹옷 말입니다」
 ;2번째 이후
 ELSE
-	IF TALENT:150 == 1
-		PRINTFORMW 「이봐요 %CALLNAME:MASTER%…봐 …첸 끊어, 저기에서 키스 해 ……」
-	ELSEIF ABL:0 >= 5
-		PRINTFORMW 「아 하아…기분이 좋은 것 …」
-	ELSEIF MARK:9 == 3
-		PRINTFORMW 「…기분 나쁜……이런 건 시키다니%CALLNAME:MASTER%, 머리 이상해!」
-	ENDIF
+    IF TALENT:150 == 1
+        PRINTFORMW 「이봐요 %CALLNAME:MASTER%…봐 …첸 끊어, 저기에서 키스 해 ……」
+    ELSEIF ABL:0 >= 5
+        PRINTFORMW 「아 하아…기분이 좋은 것 …」
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 「…기분 나쁜……이런 건 시키다니%CALLNAME:MASTER%, 머리 이상해!」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -48,10 +48,10 @@ ENDIF
 @K13_MESSAGE_COM_302
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회 볼 일을 봄 코키 하는 말입니다」
+    ;PRINTFORMW 「첫회 볼 일을 봄 코키 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「다리 코키 하는 말입니다」
+    ;PRINTFORMW 「다리 코키 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -61,10 +61,10 @@ ENDIF
 @K13_MESSAGE_COM_303
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 두 명 펠라치오 말입니다」
+    ;PRINTFORMW 「첫회용 두 명 펠라치오 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「두 명 펠라치오 말입니다」
+    ;PRINTFORMW 「두 명 펠라치오 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -74,10 +74,10 @@ ENDIF
 @K13_MESSAGE_COM_304
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 2 개 펠라치오 말입니다」
+    ;PRINTFORMW 「첫회용 2 개 펠라치오 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「2 개 펠라치오 말입니다」
+    ;PRINTFORMW 「2 개 펠라치오 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -86,18 +86,18 @@ ENDIF
 @K13_MESSAGE_COM_305
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 둘이서 가랑이 말입니다」
+    ;PRINTFORMW 「첫회용 둘이서 가랑이 말입니다」
 ;2번째 이후
 ELSE
-	IF TALENT:150 == 1
-		IF RAND:2 == 0
-			PRINTFORMW 「%CALLNAME:MASTER%의는 첸의 것이야 …취하지 마」
-		ELSE
-			PRINTFORMW 「%CALLNAME:ASSI%함께%조사처리(CALLNAME:MASTER,"를")% 기분 좋게 해 주어라」
-		ENDIF
-	ELSE
-		PRINTFORMW 「 어째서 첸이 이런 일……」
-	ENDIF
+    IF TALENT:150 == 1
+        IF RAND:2 == 0
+            PRINTFORMW 「%CALLNAME:MASTER%의는 첸의 것이야 …취하지 마」
+        ELSE
+            PRINTFORMW 「%CALLNAME:ASSI%함께%조사처리(CALLNAME:MASTER,"를")% 기분 좋게 해 주어라」
+        ENDIF
+    ELSE
+        PRINTFORMW 「 어째서 첸이 이런 일……」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -106,10 +106,10 @@ ENDIF
 @K13_MESSAGE_COM_306
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 둘이서 파이즈리 말입니다」
+    ;PRINTFORMW 「첫회용 둘이서 파이즈리 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「둘이서 파이즈리 말입니다」
+    ;PRINTFORMW 「둘이서 파이즈리 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -118,31 +118,31 @@ ENDIF
 @K13_MESSAGE_COM_307
 ;첫회만
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 
-	;복종
-	ELSEIF TALENT:160 == 1
-		PRINTFORMW 
-	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 
+    ;복종
+    ELSEIF TALENT:160 == 1
+        PRINTFORMW 
+    ;그 이외
+    ELSE
+        PRINTFORMW 
+    ENDIF
 ;2번째 이후
 ELSE
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 
-	;복종
-	ELSEIF TALENT:160 == 1
-		PRINTFORMW 
-	;굴복 각인 Lv3
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 
-	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 
+    ;복종
+    ELSEIF TALENT:160 == 1
+        PRINTFORMW 
+    ;굴복 각인 Lv3
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 
+    ;그 이외
+    ELSE
+        PRINTFORMW 
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -152,31 +152,31 @@ ENDIF
 
 ;첫회만
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 
-	;복종
-	ELSEIF TALENT:160 == 1
-		PRINTFORMW 
-	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 
+    ;복종
+    ELSEIF TALENT:160 == 1
+        PRINTFORMW 
+    ;그 이외
+    ELSE
+        PRINTFORMW 
+    ENDIF
 ;2번째 이후
 ELSE
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 
-	;복종
-	ELSEIF TALENT:160 == 1
-		PRINTFORMW 
-	;굴복 각인 Lv3
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 
-	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 
+    ;복종
+    ELSEIF TALENT:160 == 1
+        PRINTFORMW 
+    ;굴복 각인 Lv3
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 
+    ;그 이외
+    ELSE
+        PRINTFORMW 
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -185,31 +185,31 @@ ENDIF
 @K13_MESSAGE_COM_309
 ;첫회만
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 
-	;복종
-	ELSEIF TALENT:160 == 1
-		PRINTFORMW 
-	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 
+    ;복종
+    ELSEIF TALENT:160 == 1
+        PRINTFORMW 
+    ;그 이외
+    ELSE
+        PRINTFORMW 
+    ENDIF
 ;2번째 이후
 ELSE
-	;연모
-	IF TALENT:150 == 1
-		PRINTFORMW 
-	;복종
-	ELSEIF TALENT:160 == 1
-		PRINTFORMW 
-	;굴복 각인 Lv3
-	ELSEIF MARK:2 == 3
-		PRINTFORMW 
-	;그 이외
-	ELSE
-		PRINTFORMW 
-	ENDIF
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 
+    ;복종
+    ELSEIF TALENT:160 == 1
+        PRINTFORMW 
+    ;굴복 각인 Lv3
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 
+    ;그 이외
+    ELSE
+        PRINTFORMW 
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -219,10 +219,10 @@ ENDIF
 @K13_MESSAGE_COM_310
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 두 명이 격려 하는 말입니다」
+    ;PRINTFORMW 「첫회용 두 명이 격려 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「두 명이 격려 하는 말입니다」
+    ;PRINTFORMW 「두 명이 격려 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -232,10 +232,10 @@ ENDIF
 @K13_MESSAGE_COM_311
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 엉덩이를 둘이서 두드리는 말입니다」
+    ;PRINTFORMW 「첫회용 엉덩이를 둘이서 두드리는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「엉덩이를 둘이서 두드리는 말입니다」
+    ;PRINTFORMW 「엉덩이를 둘이서 두드리는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -245,10 +245,10 @@ ENDIF
 @K13_MESSAGE_COM_312
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 두 명의 V를 피스트 말입니다」
+    ;PRINTFORMW 「첫회용 두 명의 V를 피스트 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「두 명의 V를 피스트 말입니다」
+    ;PRINTFORMW 「두 명의 V를 피스트 말입니다」
 ENDIF
 
 
@@ -259,10 +259,10 @@ ENDIF
 @K13_MESSAGE_COM_313
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 두 명의 A를 피스트 말입니다」
+    ;PRINTFORMW 「첫회용 두 명의 A를 피스트 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「두 명의 A를 피스트 말입니다」
+    ;PRINTFORMW 「두 명의 A를 피스트 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -272,10 +272,10 @@ ENDIF
 @K13_MESSAGE_COM_320
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 상냥하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용 상냥하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「상냥하게 하는 말입니다」
+    ;PRINTFORMW 「상냥하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -284,10 +284,10 @@ ENDIF
 @K13_MESSAGE_COM_321
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 자위 하는 말입니다」
+    ;PRINTFORMW 「첫회용 자위 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「자위 하는 말입니다」
+    ;PRINTFORMW 「자위 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -296,10 +296,10 @@ ENDIF
 @K13_MESSAGE_COM_322
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 파이즈리 하는 말입니다」
+    ;PRINTFORMW 「첫회용 파이즈리 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「파이즈리 하는 말입니다」
+    ;PRINTFORMW 「파이즈리 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -308,10 +308,10 @@ ENDIF
 @K13_MESSAGE_COM_323
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 정상위 시키는 말입니다」
+    ;PRINTFORMW 「첫회용 정상위 시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「정상위 시키는 말입니다」
+    ;PRINTFORMW 「정상위 시키는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -320,10 +320,10 @@ ENDIF
 @K13_MESSAGE_COM_324
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 후배위 시키는 말입니다」
+    ;PRINTFORMW 「첫회용 후배위 시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「후배위 시키는 말입니다」
+    ;PRINTFORMW 「후배위 시키는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -332,10 +332,10 @@ ENDIF
 @K13_MESSAGE_COM_325
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 기승위 하는 말입니다」
+    ;PRINTFORMW 「첫회용 기승위 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「기승위 하는 말입니다」
+    ;PRINTFORMW 「기승위 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -344,10 +344,10 @@ ENDIF
 @K13_MESSAGE_COM_326
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 페니반 삽입구상입니다」
+    ;PRINTFORMW 「첫회용 페니반 삽입구상입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「페니반 삽입구상입니다」
+    ;PRINTFORMW 「페니반 삽입구상입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -356,10 +356,10 @@ ENDIF
 @K13_MESSAGE_COM_327
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 손가락 츄파 말입니다」
+    ;PRINTFORMW 「첫회용 손가락 츄파 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「손가락 츄파 말입니다」
+    ;PRINTFORMW 「손가락 츄파 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -368,10 +368,10 @@ ENDIF
 @K13_MESSAGE_COM_328
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 목덜미이리고문 말입니다」
+    ;PRINTFORMW 「첫회용 목덜미이리고문 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「목덜미이리고문 말입니다」
+    ;PRINTFORMW 「목덜미이리고문 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -380,10 +380,10 @@ ENDIF
 @K13_MESSAGE_COM_329
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 구슬 애무 말입니다」
+    ;PRINTFORMW 「첫회용 구슬 애무 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「구슬 애무 말입니다」
+    ;PRINTFORMW 「구슬 애무 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -392,10 +392,10 @@ ENDIF
 @K13_MESSAGE_COM_330
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 구슬을 빠는 말입니다」
+    ;PRINTFORMW 「첫회용 구슬을 빠는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「구슬을 빠는 말입니다」
+    ;PRINTFORMW 「구슬을 빠는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -404,10 +404,10 @@ ENDIF
 @K13_MESSAGE_COM_331
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 둘이서 페라하는 말입니다」
+    ;PRINTFORMW 「첫회용 둘이서 페라하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「둘이서 페라하는 말입니다」
+    ;PRINTFORMW 「둘이서 페라하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -416,10 +416,10 @@ ENDIF
 @K13_MESSAGE_COM_332
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 A정상위 시키는 말입니다」
+    ;PRINTFORMW 「첫회용 A정상위 시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「A정상위 시키는 말입니다」
+    ;PRINTFORMW 「A정상위 시키는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -428,10 +428,10 @@ ENDIF
 @K13_MESSAGE_COM_333
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 A후배위 시키는 말입니다」
+    ;PRINTFORMW 「첫회용 A후배위 시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「A후배위 시키는 말입니다」
+    ;PRINTFORMW 「A후배위 시키는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -440,10 +440,10 @@ ENDIF
 @K13_MESSAGE_COM_334
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 A기승위 하는 말입니다」
+    ;PRINTFORMW 「첫회용 A기승위 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「A기승위 하는 말입니다」
+    ;PRINTFORMW 「A기승위 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -452,10 +452,10 @@ ENDIF
 @K13_MESSAGE_COM_335
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 파이즈리페라 하는 말입니다」
+    ;PRINTFORMW 「첫회용 파이즈리페라 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「파이즈리페라 하는 말입니다」
+    ;PRINTFORMW 「파이즈리페라 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -464,10 +464,10 @@ ENDIF
 @K13_MESSAGE_COM_336
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 바기나를 닦는 말입니다」
+    ;PRINTFORMW 「첫회용 바기나를 닦는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「바기나를 닦는 말입니다」
+    ;PRINTFORMW 「바기나를 닦는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -476,10 +476,10 @@ ENDIF
 @K13_MESSAGE_COM_337
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 둘이서 목덜미이리고문 말입니다」
+    ;PRINTFORMW 「첫회용 둘이서 목덜미이리고문 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「둘이서 목덜미이리고문 말입니다」
+    ;PRINTFORMW 「둘이서 목덜미이리고문 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -488,10 +488,10 @@ ENDIF
 @K13_MESSAGE_COM_338
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 두 명에게 범하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용 두 명에게 범하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「두 명에게 범하게 하는 말입니다」
+    ;PRINTFORMW 「두 명에게 범하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -500,10 +500,10 @@ ENDIF
 @K13_MESSAGE_COM_340
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용말입니다」
+    ;PRINTFORMW 「첫회용말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「말입니다」
+    ;PRINTFORMW 「말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -512,10 +512,10 @@ ENDIF
 @K13_MESSAGE_COM_341
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용흉침말입니다」
+    ;PRINTFORMW 「첫회용흉침말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「흉침말입니다」
+    ;PRINTFORMW 「흉침말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -524,10 +524,10 @@ ENDIF
 @K13_MESSAGE_COM_342
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 서로 밀통하는 말입니다」
+    ;PRINTFORMW 「첫회용 서로 밀통하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「서로 밀통하는 말입니다」
+    ;PRINTFORMW 「서로 밀통하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -536,10 +536,10 @@ ENDIF
 @K13_MESSAGE_COM_343
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용젖따귀 말입니다」
+    ;PRINTFORMW 「첫회용젖따귀 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「젖따귀 말입니다」
+    ;PRINTFORMW 「젖따귀 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -548,10 +548,10 @@ ENDIF
 @K13_MESSAGE_COM_344
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용젖의 몸싸움 말입니다」
+    ;PRINTFORMW 「첫회용젖의 몸싸움 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「젖의 몸싸움 말입니다」
+    ;PRINTFORMW 「젖의 몸싸움 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -560,10 +560,10 @@ ENDIF
 @K13_MESSAGE_COM_345
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 욕실을 즐기는 말입니다」
+    ;PRINTFORMW 「첫회용 욕실을 즐기는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「욕실을 즐기는 말입니다」
+    ;PRINTFORMW 「욕실을 즐기는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -572,10 +572,10 @@ ENDIF
 @K13_MESSAGE_COM_346
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 외를 즐기는 말입니다」
+    ;PRINTFORMW 「첫회용 외를 즐기는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「외를 즐기는 말입니다」
+    ;PRINTFORMW 「외를 즐기는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -584,10 +584,10 @@ ENDIF
 @K13_MESSAGE_COM_347
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 신부로 즐기는 말입니다」
+    ;PRINTFORMW 「첫회용 신부로 즐기는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「신부로 즐기는 말입니다」
+    ;PRINTFORMW 「신부로 즐기는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -596,10 +596,10 @@ ENDIF
 @K13_MESSAGE_COM_348
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 술을 먹이는 말입니다」
+    ;PRINTFORMW 「첫회용 술을 먹이는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「술을 먹이는 말입니다」
+    ;PRINTFORMW 「술을 먹이는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -608,10 +608,10 @@ ENDIF
 @K13_MESSAGE_COM_349
 ;첫회는 아니다
 IF RESULT:1 == 0
-	;PRINTFORMW 「--! 말입니다」
+    ;PRINTFORMW 「--! 말입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「첫회용--! 말입니다」
+    ;PRINTFORMW 「첫회용--! 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -620,13 +620,13 @@ ENDIF
 @K13_MESSAGE_COM_350
 ;플레이 종료
 IF TEQUIP:53 == 0
-	;PRINTFORMW 「목욕탕 플레이 해제 말입니다」
+    ;PRINTFORMW 「목욕탕 플레이 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 목욕탕 플레이 말입니다」
+    ;PRINTFORMW 「첫회용 목욕탕 플레이 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「목욕탕 플레이 말입니다」
+    ;PRINTFORMW 「목욕탕 플레이 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -635,13 +635,13 @@ ENDIF
 @K13_MESSAGE_COM_351
 ;플레이 종료
 IF TEQUIP:54 == 0
-	;PRINTFORMW 「샤워 해제 말입니다」
+    ;PRINTFORMW 「샤워 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 샤워 말입니다」
+    ;PRINTFORMW 「첫회용 샤워 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「샤워 말입니다」
+    ;PRINTFORMW 「샤워 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -650,10 +650,10 @@ ENDIF
 @K13_MESSAGE_COM_352
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 거품 춤말입니다」
+    ;PRINTFORMW 「첫회용 거품 춤말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「거품 춤말입니다」
+    ;PRINTFORMW 「거품 춤말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -662,10 +662,10 @@ ENDIF
 @K13_MESSAGE_COM_353
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 거품 춤추어 하는 말입니다」
+    ;PRINTFORMW 「첫회용 거품 춤추어 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「거품 춤추어 하는 말입니다」
+    ;PRINTFORMW 「거품 춤추어 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -674,10 +674,10 @@ ENDIF
 @K13_MESSAGE_COM_354
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 수세미 세탁 말입니다」
+    ;PRINTFORMW 「첫회용 수세미 세탁 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「수세미 세탁 말입니다」
+    ;PRINTFORMW 「수세미 세탁 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -686,13 +686,13 @@ ENDIF
 @K13_MESSAGE_COM_360
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「충목욕탕 해제 말입니다」
+    ;PRINTFORMW 「충목욕탕 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용충목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용충목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「충목욕탕 말입니다」
+    ;PRINTFORMW 「충목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -701,13 +701,13 @@ ENDIF
 @K13_MESSAGE_COM_361
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「뱀장어 목욕탕 해제 말입니다」
+    ;PRINTFORMW 「뱀장어 목욕탕 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 뱀장어 목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 뱀장어 목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「뱀장어 목욕탕 말입니다」
+    ;PRINTFORMW 「뱀장어 목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -716,13 +716,13 @@ ENDIF
 @K13_MESSAGE_COM_362
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「로션 목욕탕 해제 말입니다」
+    ;PRINTFORMW 「로션 목욕탕 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 로션 목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 로션 목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「로션 목욕탕 말입니다」
+    ;PRINTFORMW 「로션 목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -731,13 +731,13 @@ ENDIF
 @K13_MESSAGE_COM_363
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「슬라임 목욕탕 해제 말입니다」
+    ;PRINTFORMW 「슬라임 목욕탕 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 슬라임 목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 슬라임 목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「슬라임 목욕탕 말입니다」
+    ;PRINTFORMW 「슬라임 목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -746,13 +746,13 @@ ENDIF
 @K13_MESSAGE_COM_364
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「미약목욕탕 해제 말입니다」
+    ;PRINTFORMW 「미약목욕탕 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용미약목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용미약목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「미약목욕탕 말입니다」
+    ;PRINTFORMW 「미약목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -761,13 +761,13 @@ ENDIF
 @K13_MESSAGE_COM_365
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「감옥 해제 말입니다」
+    ;PRINTFORMW 「감옥 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회 용수뇌말입니다」
+    ;PRINTFORMW 「첫회 용수뇌말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「감옥 말입니다」
+    ;PRINTFORMW 「감옥 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -776,13 +776,13 @@ ENDIF
 @K13_MESSAGE_COM_366
 ;플레이 종료
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「정액 목욕탕 해제 말입니다」
+    ;PRINTFORMW 「정액 목욕탕 해제 말입니다」
 ;첫회
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 정액 목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 정액 목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「정액 목욕탕 말입니다」
+    ;PRINTFORMW 「정액 목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -791,13 +791,13 @@ ENDIF
 @K13_MESSAGE_COM_367
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「술목욕탕 해제 말입니다」
+    ;PRINTFORMW 「술목욕탕 해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용술목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용술목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「술목욕탕 말입니다」
+    ;PRINTFORMW 「술목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -806,13 +806,13 @@ ENDIF
 @K13_MESSAGE_COM_368
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「트로로 목욕탕 해제 말입니다」
+    ;PRINTFORMW 「트로로 목욕탕 해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 트로로 목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 트로로 목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「트로로 목욕탕 말입니다」
+    ;PRINTFORMW 「트로로 목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -821,13 +821,13 @@ ENDIF
 @K13_MESSAGE_COM_369
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「털겨울의 북서풍려해제 말입니다」
+    ;PRINTFORMW 「털겨울의 북서풍려해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용털겨울의 북서풍려말입니다」
+    ;PRINTFORMW 「첫회용털겨울의 북서풍려말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「털겨울의 북서풍려말입니다」
+    ;PRINTFORMW 「털겨울의 북서풍려말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -836,13 +836,13 @@ ENDIF
 @K13_MESSAGE_COM_370
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「한증 해제 말입니다」
+    ;PRINTFORMW 「한증 해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 한증 말입니다」
+    ;PRINTFORMW 「첫회용 한증 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「한증 말입니다」
+    ;PRINTFORMW 「한증 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -851,13 +851,13 @@ ENDIF
 @K13_MESSAGE_COM_371
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「국사 무쌍의 약목욕탕 해제 말입니다」
+    ;PRINTFORMW 「국사 무쌍의 약목욕탕 해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 국사 무쌍의 약목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 국사 무쌍의 약목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「국사 무쌍의 약목욕탕 말입니다」
+    ;PRINTFORMW 「국사 무쌍의 약목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -866,13 +866,13 @@ ENDIF
 @K13_MESSAGE_COM_372
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「액독목욕탕 해제 말입니다」
+    ;PRINTFORMW 「액독목욕탕 해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용액독목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용액독목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「액독목욕탕 말입니다」
+    ;PRINTFORMW 「액독목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -881,13 +881,13 @@ ENDIF
 @K13_MESSAGE_COM_373
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「암반 욕해제 말입니다」
+    ;PRINTFORMW 「암반 욕해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 암반 욕말입니다」
+    ;PRINTFORMW 「첫회용 암반 욕말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「암반 욕말입니다」
+    ;PRINTFORMW 「암반 욕말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -896,13 +896,13 @@ ENDIF
 @K13_MESSAGE_COM_374
 ;나온다
 IF TEQUIP:55 == 0
-	;PRINTFORMW 「돈뭉치 목욕탕 해제 말입니다」
+    ;PRINTFORMW 「돈뭉치 목욕탕 해제 말입니다」
 ;첫회만
 ELSEIF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 돈뭉치 목욕탕 말입니다」
+    ;PRINTFORMW 「첫회용 돈뭉치 목욕탕 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「돈뭉치 목욕탕 말입니다」
+    ;PRINTFORMW 「돈뭉치 목욕탕 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -911,10 +911,10 @@ ENDIF
 @K13_MESSAGE_COM_380
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 버터개플레이 말입니다」
+    ;PRINTFORMW 「첫회용 버터개플레이 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「버터개플레이 말입니다」
+    ;PRINTFORMW 「버터개플레이 말입니다」
 ENDIF
 
 
@@ -924,10 +924,10 @@ ENDIF
 @K13_MESSAGE_COM_381
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용개에게 범하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용개에게 범하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「개에게 범하게 하는 말입니다」
+    ;PRINTFORMW 「개에게 범하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -936,10 +936,10 @@ ENDIF
 @K13_MESSAGE_COM_382
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용개를 범하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용개를 범하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「개를 범하게 하는 말입니다」
+    ;PRINTFORMW 「개를 범하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -948,10 +948,10 @@ ENDIF
 @K13_MESSAGE_COM_383
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 돼지에 범하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용 돼지에 범하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「돼지에 범하게 하는 말입니다」
+    ;PRINTFORMW 「돼지에 범하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -960,10 +960,10 @@ ENDIF
 @K13_MESSAGE_COM_384
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 돼지를 범하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용 돼지를 범하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「돼지를 범하게 하는 말입니다」
+    ;PRINTFORMW 「돼지를 범하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -972,10 +972,10 @@ ENDIF
 @K13_MESSAGE_COM_385
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용마의 것을 페라시키는 말입니다」
+    ;PRINTFORMW 「첫회용마의 것을 페라시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「말의 것을 페라시키는 말입니다」
+    ;PRINTFORMW 「말의 것을 페라시키는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -984,10 +984,10 @@ ENDIF
 @K13_MESSAGE_COM_386
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용마에 범하게 하는 말입니다」
+    ;PRINTFORMW 「첫회용마에 범하게 하는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「말에 범하게 하는 말입니다」
+    ;PRINTFORMW 「말에 범하게 하는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -996,10 +996,10 @@ ENDIF
 @K13_MESSAGE_COM_387
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용개와 키스 시키는 말입니다」
+    ;PRINTFORMW 「첫회용개와 키스 시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「개와 키스 시키는 말입니다」
+    ;PRINTFORMW 「개와 키스 시키는 말입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1008,8 +1008,8 @@ ENDIF
 @K13_MESSAGE_COM_388
 ;첫회만
 IF RESULT:1 == 1
-	;PRINTFORMW 「첫회용 돼지와 키스 시키는 말입니다」
+    ;PRINTFORMW 「첫회용 돼지와 키스 시키는 말입니다」
 ;2번째 이후
 ELSE
-	;PRINTFORMW 「돼지와 키스 시키는 말입니다」
+    ;PRINTFORMW 「돼지와 키스 시키는 말입니다」
 ENDIF

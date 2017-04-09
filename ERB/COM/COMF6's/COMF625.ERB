@@ -12,36 +12,36 @@ RETURN 0
 ;이하의 条件を満たしている場合は全身愛撫なローションプレイに変更
 ;아이템을 가지고 있거나, 아이템 없음 설정이 아니면 불가
 SIF ITEM:60 == 0 && NOITEM == 0
-	RETURN 0
+    RETURN 0
 ;조교자가 소인체형のときは기교가 3이상 없으면 안 됨
 IF TALENT:PLAYER:127
-	SIF ABL:PLAYER:12 < 3
-		RETURN 0
+    SIF ABL:PLAYER:12 < 3
+        RETURN 0
 ENDIF
 ;욕실 플레이 중에는 플레이 매트가 없으면 불가
 SIF TEQUIP:53 && ITEM:42 == 0 && NOITEM == 0
-	RETURN 0
+    RETURN 0
 ;샤워 중에는 불가
 SIF TEQUIP:54
-	RETURN 0
+    RETURN 0
 ;○○목욕탕 입욕 중에는 불가
 SIF TEQUIP:55
-	RETURN 0
+    RETURN 0
 ;기저귀 플레이 중에는 불가
 SIF TEQUIP:58
-	RETURN 0
+    RETURN 0
 ;조수가 코스프레 중에는 불가
 SIF ASSI >= 0 && ASSIPLAY && TEQUIP:ASSI:59 > 2
-	RETURN 0
+    RETURN 0
 ;코스프레 중에는 불가
 SIF TEQUIP:59 > 2
-	RETURN 0
+    RETURN 0
 ;나체정식 중에는 불가
 SIF TEQUIP:60
-	RETURN 0
+    RETURN 0
 ;촉수調教中では無い
 SIF TEQUIP:90
-	RETURN 0
+    RETURN 0
 RETURN 1
 
 ;--------------------------------------------------
@@ -67,74 +67,74 @@ SOURCE:12 = 90
 
 ;ABL:C감각을 본다
 IF ABL:0 == 0
-	SOURCE:0 = 10
-	SOURCE:11 = 50
+    SOURCE:0 = 10
+    SOURCE:11 = 50
 ELSEIF ABL:0 == 1
-	SOURCE:0 = 50
-	SOURCE:11 = 100
+    SOURCE:0 = 50
+    SOURCE:11 = 100
 ELSEIF ABL:0 == 2
-	SOURCE:0 = 250
-	SOURCE:11 = 160
+    SOURCE:0 = 250
+    SOURCE:11 = 160
 ELSEIF ABL:0 == 3
-	SOURCE:0 = 600
-	SOURCE:11 = 200
+    SOURCE:0 = 600
+    SOURCE:11 = 200
 ELSEIF ABL:0 == 4
-	SOURCE:0 = 1000
-	SOURCE:11 = 230
+    SOURCE:0 = 1000
+    SOURCE:11 = 230
 ELSE
-	SOURCE:0 = 1500
-	SOURCE:11 = 250
+    SOURCE:0 = 1500
+    SOURCE:11 = 250
 ENDIF
 
 ;ABL:B감각을 본다
 IF ABL:3 == 0
-	SOURCE:3 = 20
-	SOURCE:10 = 50
+    SOURCE:3 = 20
+    SOURCE:10 = 50
 ELSEIF ABL:3 == 1
-	SOURCE:3 = 60
-	SOURCE:10 = 100
+    SOURCE:3 = 60
+    SOURCE:10 = 100
 ELSEIF ABL:3 == 2
-	SOURCE:3 = 210
-	SOURCE:10 = 160
+    SOURCE:3 = 210
+    SOURCE:10 = 160
 ELSEIF ABL:3 == 3
-	SOURCE:3 = 630
-	SOURCE:10 = 200
+    SOURCE:3 = 630
+    SOURCE:10 = 200
 ELSEIF ABL:3 == 4
-	SOURCE:3 = 1260
-	SOURCE:10 = 230
+    SOURCE:3 = 1260
+    SOURCE:10 = 230
 ELSE
-	SOURCE:3 = 1700
-	SOURCE:10 = 250
+    SOURCE:3 = 1700
+    SOURCE:10 = 250
 ENDIF
 
 ;볼 개그 사용중 때 손가락을 노예의 구에 들어갈 수  없다
 IF TEQUIP:42 == 0
-	SOURCE:20 = 100
-	SOURCE:10 += 120
-	;프라이드 높다
-	SIF TALENT:16
-		SOURCE:30 *= 2
-	;악취 둔감
-	IF TALENT:61
-		SOURCE:30 /= 4
-	;악취 민감
-	ELSEIF TALENT:62
-		SOURCE:30 *= 3
-	ENDIF
-	;연모
-	IF TALENT:150 && ASSIPLAY == 0
-		SOURCE:11 *= 2
-		SOURCE:30 /= 10
-	ENDIF
-	;주인의 손가락에 더러움이 있으면(자) 불결150%
-	IF STAIN:PLAYER:1
-		SOURCE:30 *= 3
-		SOURCE:30 /= 2
-	ENDIF
+    SOURCE:20 = 100
+    SOURCE:10 += 120
+    ;프라이드 높다
+    SIF TALENT:16
+        SOURCE:30 *= 2
+    ;악취 둔감
+    IF TALENT:61
+        SOURCE:30 /= 4
+    ;악취 민감
+    ELSEIF TALENT:62
+        SOURCE:30 *= 3
+    ENDIF
+    ;연모
+    IF TALENT:150 && ASSIPLAY == 0
+        SOURCE:11 *= 2
+        SOURCE:30 /= 10
+    ENDIF
+    ;주인의 손가락에 더러움이 있으면(자) 불결150%
+    IF STAIN:PLAYER:1
+        SOURCE:30 *= 3
+        SOURCE:30 /= 2
+    ENDIF
 
-	;노예의 입⇔조교자의 손가락의 불결이 이동
-	STAIN:0 |= STAIN:PLAYER:1
-	STAIN:PLAYER:1 |= STAIN:0
+    ;노예의 입⇔조교자의 손가락의 불결이 이동
+    STAIN:0 |= STAIN:PLAYER:1
+    STAIN:PLAYER:1 |= STAIN:0
 ENDIF
 
 ;노예의 V⇔조교자의 손가락의 불결이 이동
@@ -146,16 +146,16 @@ STAIN:5 |= STAIN:PLAYER:1
 STAIN:PLAYER:1 |= STAIN:5
 
 IF NOITEM == 0
-	ITEM:60 -= 1
-	SIF FLAG:13 & 4 && MONEY:0 >= ITEMPRICE:60
-		CALL FILL_PLURAL_ITEM, 60
+    ITEM:60 -= 1
+    SIF FLAG:13 & 4 && MONEY:0 >= ITEMPRICE:60
+        CALL FILL_PLURAL_ITEM, 60
 ENDIF
 TEQUIP:10 = 1
 
 IF TALENT:120 == 0 && TALENT:PLAYER:120 == 0
-	TCVAR:12 += 5
+    TCVAR:12 += 5
 ELSEIF TALENT:120 && TALENT:PLAYER:120
-	TCVAR:13 += 5
+    TCVAR:13 += 5
 ENDIF
 RETURN 1
 
@@ -165,24 +165,24 @@ RETURN 1
 @TRAIN_MESSAGE_COM625
 CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
-	RETURN 0
+    RETURN 0
 
 PRINTL
 PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 로션을 손에 떠올려 잘 섞은 후, %CALLNAME:TARGET%에게 발랐다.
 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 비소와 
 IF TALENT:110 || TALENT:111
-	PRINT 미 발달된 가슴의 끄트머리의 콩에 
+    PRINT 미 발달된 가슴의 끄트머리의 콩에 
 ELSEIF TALENT:112 || TALENT:113
-	PRINT 체형에 어울리지 않을 정도로 큰 언덕의 정상에 
+    PRINT 체형에 어울리지 않을 정도로 큰 언덕의 정상에 
 ELSE
-	PRINT 작지만 모양이 좋은 언덕에 
+    PRINT 작지만 모양이 좋은 언덕에 
 ENDIF
 PRINT 발라져 오는 로션의 차가운 감촉에 
 IF TEQUIP:42
-	PRINTW 무심코 눈을 감아버렸다….
+    PRINTW 무심코 눈을 감아버렸다….
 ELSE
-	PRINTL 작게 비명을 질렀다….
-	PRINTL
-	PRINTFORML 그 틈을 놓치지 않고 %조사선택(CALLNAME:PLAYER, "는")% 남은 로션을 묻힌 손가락을 %CALLNAME:TARGET%의 입 속에 찔러 넣고,
-	PRINTW 구강을 유린하면서 숨을 쉬려 날뛰는 혀의 감촉을 즐겼다….
+    PRINTL 작게 비명을 질렀다….
+    PRINTL
+    PRINTFORML 그 틈을 놓치지 않고 %조사선택(CALLNAME:PLAYER, "는")% 남은 로션을 묻힌 손가락을 %CALLNAME:TARGET%의 입 속에 찔러 넣고,
+    PRINTW 구강을 유린하면서 숨을 쉬려 날뛰는 혀의 감촉을 즐겼다….
 ENDIF

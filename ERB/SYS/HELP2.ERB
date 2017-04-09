@@ -11,15 +11,15 @@
 VARSET LOCAL, 0
 ;표시시키는 아이템을 추출
 REPEAT 100
-	;존재하지 않는 아이템은 연주한다
-	SIF STRLENS(ITEMNAME:COUNT) > 0
-		LOCAL:2 += 1
-	;술이나 향기계의 판정
-	SIF STRLENS(ITEMNAME:(COUNT+600)) > 0
-		LOCAL:2 += 1
-	;최대 페이지수를 나타낸다
-	SIF (LOCAL:2 % 60) == 1 && LOCAL:2 > 60
-		LOCAL:1 += 1
+    ;존재하지 않는 아이템은 연주한다
+    SIF STRLENS(ITEMNAME:COUNT) > 0
+        LOCAL:2 += 1
+    ;술이나 향기계의 판정
+    SIF STRLENS(ITEMNAME:(COUNT+600)) > 0
+        LOCAL:2 += 1
+    ;최대 페이지수를 나타낸다
+    SIF (LOCAL:2 % 60) == 1 && LOCAL:2 > 60
+        LOCAL:1 += 1
 REND
 $PRINT_LIST
 DRAWLINE
@@ -28,16 +28,16 @@ DRAWLINE
 ;각 표시
 LOCAL:3 = 0
 REPEAT 700
-	;캐릭터 카드계를 제외
-	SIF COUNT > 99 && COUNT < 600
-		CONTINUE
-	;존재하지 않는 아이템 or캐릭터 카드는 제외
-	SIF STRLENS(ITEMNAME:COUNT) == 0
-		CONTINUE
-	;어디에서 어디까지를 진열할까
-	LOCAL:3 += 1
-	SIF LOCAL:3 <= (LOCAL + 1) * 60 && LOCAL:3 > LOCAL * 60
-		PRINTFORMLC [{COUNT, 3}] %ITEMNAME:COUNT%
+    ;캐릭터 카드계를 제외
+    SIF COUNT > 99 && COUNT < 600
+        CONTINUE
+    ;존재하지 않는 아이템 or캐릭터 카드는 제외
+    SIF STRLENS(ITEMNAME:COUNT) == 0
+        CONTINUE
+    ;어디에서 어디까지를 진열할까
+    LOCAL:3 += 1
+    SIF LOCAL:3 <= (LOCAL + 1) * 60 && LOCAL:3 > LOCAL * 60
+        PRINTFORMLC [{COUNT, 3}] %ITEMNAME:COUNT%
 REND
 PRINTL 
 DRAWLINE
@@ -47,16 +47,16 @@ PRINTFORMLC \@(LOCAL >= LOCAL:1) ?  %" " * 18% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 1001 && LOCAL > 0
-	LOCAL -= 1
+    LOCAL -= 1
 ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-	LOCAL += 1
+    LOCAL += 1
 ELSEIF RESULT < 0 || RESULT > 700 || (RESULT > 99 && RESULT < 600) || STRLENS(ITEMNAME:RESULT) == 0
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ELSE
-	PRINTFORML 【%ITEMNAME:RESULT%】
-	TRYCALLFORM DICTIONARY_ITEM_{RESULT}
+    PRINTFORML 【%ITEMNAME:RESULT%】
+    TRYCALLFORM DICTIONARY_ITEM_{RESULT}
 ENDIF
 GOTO PRINT_LIST
 
@@ -722,31 +722,31 @@ PRINTLC [110] 아이템 구입
 PRINTLC [111] 노예 구입
 PRINTLC [112] 노예 매각·해방
 IF FLAG:999 == 1
-	PRINTLC [113] 사역마로 삼는다
+    PRINTLC [113] 사역마로 삼는다
 ELSE
-	PRINTFORMLC [113] \@(NO:MASTER == 21 || NO:MASTER == 22) ? 식신으로 삼는다 # 사역마로 삼는다\@
+    PRINTFORMLC [113] \@(NO:MASTER == 21 || NO:MASTER == 22) ? 식신으로 삼는다 # 사역마로 삼는다\@
 ENDIF
 PRINTLC [120] 비밀 도구점
 PRINTLC [121] 기능훈련사
 PRINTLC [122] 약방
 IF FLAG:999 == 1
-	PRINTLC [130] 요리를 시킨다
+    PRINTLC [130] 요리를 시킨다
 ELSE
-	PRINTFORMLC [130] \@(TARGET >= 0 && TALENT:150) ?  애정요리 # 요리를 시킨다\@
+    PRINTFORMLC [130] \@(TARGET >= 0 && TALENT:150) ?  애정요리 # 요리를 시킨다\@
 ENDIF
 PRINTLC [131] 자기가 요리한다
 PRINTLC [132] 야외 라이브 공연
 PRINTLC [140] 주인 성별 변경
 IF FLAG:999 == 1
-	PRINTLC [150] 전시실에 간다
+    PRINTLC [150] 전시실에 간다
 ELSE
-	PRINTFORMLC [150] \@(FLAG:500 >= 500) ?  환상향 비보관 # 전시실에 간다\@
+    PRINTFORMLC [150] \@(FLAG:500 >= 500) ?  환상향 비보관 # 전시실에 간다\@
 ENDIF
 PRINTLC [160] 촉수개발·배양시설
 IF FLAG:999 == 1
-	PRINTLC [161] 목욕탕을 본다
+    PRINTLC [161] 목욕탕을 본다
 ELSE
-	PRINTFORMLC [161] \@(SPECIALBATH_CHECK() < 16) ? 목욕탕 개장 # 목욕탕을 본다\@
+    PRINTFORMLC [161] \@(SPECIALBATH_CHECK() < 16) ? 목욕탕 개장 # 목욕탕을 본다\@
 ENDIF
 PRINTLC [162] 요정 목욕한다
 PRINTLC [163] 비밀 지하실
@@ -762,17 +762,17 @@ PRINTLC [555] 새 게임 개시
 PRINTLC [666] 캐릭터 정렬
 PRINTLC [777] 컨피그 설정
 IF FLAG:999 == 0
-	IF TALENT:MASTER:831
-		PRINTLC [830] 특수 노예 구입
-		PRINTLC [831] 야채 연성
-		PRINTLC [832] 밭 확장
-		PRINTLC [833] 야채 재생
-	ENDIF
+    IF TALENT:MASTER:831
+        PRINTLC [830] 특수 노예 구입
+        PRINTLC [831] 야채 연성
+        PRINTLC [832] 밭 확장
+        PRINTLC [833] 야채 재생
+    ENDIF
 ENDIF
 PRINTLC [998] 동방조교전
 IF FLAG:999 == 0
-	SIF TALENT:MASTER:998
-		PRINTLC [999] 디버그 메뉴
+    SIF TALENT:MASTER:998
+        PRINTLC [999] 디버그 메뉴
 ENDIF
 PRINTL 
 DRAWLINE
@@ -781,261 +781,261 @@ DRAWLINE
 $INPUT_LOOP
 INPUT
 IF RESULT == 1000
-	RETURN 0
+    RETURN 0
 ELSEIF RESULT == 100
-	PRINTL 【조교한다】
-	PRINTL 조교중인 노예를 가르치기 위한 커맨드로 선택하면 조교화면으로 이행합니다.
-	PRINTW 조교할 수 있는 노예가 없을 경우에는 실행할 수 없습니다.
+    PRINTL 【조교한다】
+    PRINTL 조교중인 노예를 가르치기 위한 커맨드로 선택하면 조교화면으로 이행합니다.
+    PRINTW 조교할 수 있는 노예가 없을 경우에는 실행할 수 없습니다.
 ELSEIF RESULT == 101
-	PRINTL 【능력 표시】
-	PRINTL 주인 및 노예들의 각종 정보를 표시하고 확인하기 위한 커맨드.
-	PRINTW 가끔씩 체크해주는 게 좋을 것 같습니다.
+    PRINTL 【능력 표시】
+    PRINTL 주인 및 노예들의 각종 정보를 표시하고 확인하기 위한 커맨드.
+    PRINTW 가끔씩 체크해주는 게 좋을 것 같습니다.
 ELSEIF RESULT == 102
-	PRINTL 【휴식】
-	PRINTL 조교를 하지 않고 반나절 쉰다. 체력,기력을 회복하기 위해 주로 사용한다.
-	PRINTL 일상생활 관련을 ON 하면 여러가지 일상 이벤트가 일어납니다.
-	PRINTL 또, 그런게 없어도 조교 상황에 따라 이벤트가 일어나기도 합니다.
+    PRINTL 【휴식】
+    PRINTL 조교를 하지 않고 반나절 쉰다. 체력,기력을 회복하기 위해 주로 사용한다.
+    PRINTL 일상생활 관련을 ON 하면 여러가지 일상 이벤트가 일어납니다.
+    PRINTL 또, 그런게 없어도 조교 상황에 따라 이벤트가 일어나기도 합니다.
 ELSEIF RESULT == 103
-	PRINTL 【능력 상승】
-	PRINTL 조교중인 노예의 능력을 상승시키기 위한 커맨드.
-	PRINTL 노예가 없을 경우에는 실행할 수 없고, 주인의 능력은 이것으로 올릴 수 없습니다.
-	PRINTL 또한, 목적한 노예의 능력을 올리고 싶을 때는
-	PRINTW 먼저 [110]조교대상변경을 사용해 올리고 싶은 노예를 조교대상으로 선택하지 않으면 안됩니다.
+    PRINTL 【능력 상승】
+    PRINTL 조교중인 노예의 능력을 상승시키기 위한 커맨드.
+    PRINTL 노예가 없을 경우에는 실행할 수 없고, 주인의 능력은 이것으로 올릴 수 없습니다.
+    PRINTL 또한, 목적한 노예의 능력을 올리고 싶을 때는
+    PRINTW 먼저 [110]조교대상변경을 사용해 올리고 싶은 노예를 조교대상으로 선택하지 않으면 안됩니다.
 ELSEIF RESULT == 105
-	PRINTL 【주인의 호칭】
-	PRINTL 조교중인 노예에게 주인을 부르는 방식을 설정시키기 위한 커맨드.
-	PRINTL 노예가 없을 경우엔 실행할 수 없습니다.또한, 이걸로 명령하는 건 어떤 노예에게도
-	PRINTL 가능하긴 하지만, 그대로 불러줄지 어떨지는 각 노예의 소질과 상황에 따릅니다.
-	PRINTW 전용대사가 들어 있는 경우엔 이 커맨드는 선택할 수 없습니다.
+    PRINTL 【주인의 호칭】
+    PRINTL 조교중인 노예에게 주인을 부르는 방식을 설정시키기 위한 커맨드.
+    PRINTL 노예가 없을 경우엔 실행할 수 없습니다.또한, 이걸로 명령하는 건 어떤 노예에게도
+    PRINTL 가능하긴 하지만, 그대로 불러줄지 어떨지는 각 노예의 소질과 상황에 따릅니다.
+    PRINTW 전용대사가 들어 있는 경우엔 이 커맨드는 선택할 수 없습니다.
 ELSEIF RESULT == 106
-	PRINTL 【노예 칭호 변경】
-	PRINTL 조교중의 노예의 칭호를 변경하는 커맨드.
-	PRINTL 노예가 있어야 하며, 구입시 붙었던 칭호로 되돌리거나 칭호를 직접 붙일 수 있습니다.
-	PRINTL 칭호를 대지 않도록 시키는 것도 가능합니다.
-	PRINTL 단, 칭호를 마음대로 지어주기 위해서는 특정한 함락소질이 필요하며,
-	PRINTW 무명 캐릭터는 원래 칭호로 되돌릴 수 없습니다.
-;	PRINTL 노예가 있어야 하고 전용대사가 없어야 실행가능하다.
-;	PRINTL 또한, 무명 캐릭터는 원래 칭호로 되돌릴 수 없다.
-;	PRINTL 덧붙여 칭호는 마음대로 붙일 수 없고,
-;	PRINTL 현 상태를 유지하거나, 구입시 붙었던 칭호로 되돌리거나
-;	PRINTW 계승 칭호를 쓰거나 , 칭호 그 자체를 지워 버릴 수 밖에 없다.
+    PRINTL 【노예 칭호 변경】
+    PRINTL 조교중의 노예의 칭호를 변경하는 커맨드.
+    PRINTL 노예가 있어야 하며, 구입시 붙었던 칭호로 되돌리거나 칭호를 직접 붙일 수 있습니다.
+    PRINTL 칭호를 대지 않도록 시키는 것도 가능합니다.
+    PRINTL 단, 칭호를 마음대로 지어주기 위해서는 특정한 함락소질이 필요하며,
+    PRINTW 무명 캐릭터는 원래 칭호로 되돌릴 수 없습니다.
+;    PRINTL 노예가 있어야 하고 전용대사가 없어야 실행가능하다.
+;    PRINTL 또한, 무명 캐릭터는 원래 칭호로 되돌릴 수 없다.
+;    PRINTL 덧붙여 칭호는 마음대로 붙일 수 없고,
+;    PRINTL 현 상태를 유지하거나, 구입시 붙었던 칭호로 되돌리거나
+;    PRINTW 계승 칭호를 쓰거나 , 칭호 그 자체를 지워 버릴 수 밖에 없다.
 ELSEIF RESULT == 108
-	PRINTL 【조수 변경】
-	PRINTL 조교 때 조수를 변경하는 커맨드.
-	PRINTL 당연히 조수 후보가 없으면 실행할 수 없습니다.
-	PRINTW 또한 조수를 해임하기 위해서도 이 커맨드를 쓸 필요가 있습니다.
+    PRINTL 【조수 변경】
+    PRINTL 조교 때 조수를 변경하는 커맨드.
+    PRINTL 당연히 조수 후보가 없으면 실행할 수 없습니다.
+    PRINTW 또한 조수를 해임하기 위해서도 이 커맨드를 쓸 필요가 있습니다.
 ELSEIF RESULT == 109
-	PRINTL 【조교 대상 변환】
-	PRINTL 복수의 조교가능 노예가 있을 경우에 선택할 수 있는 커맨드로, 
-	PRINTL 어느 노예를 조교대상으로 할지를 선택하기 위한 커맨드입니다.
-	PRINTL 또한, [103] 능력상승과 [130] 요리를 시킨다나 [132] 야외 라이브 공연을 할 때도
-	PRINTL 조교대상이 된 노예밖에 할 수 없기 때문에, 
-	PRINTW 이 커맨드를 먼저 선택할 필요가 있습니다.
+    PRINTL 【조교 대상 변환】
+    PRINTL 복수의 조교가능 노예가 있을 경우에 선택할 수 있는 커맨드로, 
+    PRINTL 어느 노예를 조교대상으로 할지를 선택하기 위한 커맨드입니다.
+    PRINTL 또한, [103] 능력상승과 [130] 요리를 시킨다나 [132] 야외 라이브 공연을 할 때도
+    PRINTL 조교대상이 된 노예밖에 할 수 없기 때문에, 
+    PRINTW 이 커맨드를 먼저 선택할 필요가 있습니다.
 ELSEIF RESULT == 110
-	PRINTL 【아이템 구입】
-	PRINTL 조교시 사용하는 각종 도구를 사는 커맨드. 돈이 필요합니다.
-	PRINTL 한번 사두면 계속 쓸 수 있는 아이템과 소모품이 있습니다.
-	PRINTL 소모품은 최대 99개까지 가질 수 있습니다.
-	PRINTL 환불 따위는 없으므로 구매시 주의.
-	PRINTW 일부 도구는 특수 조건이 필요합니다.
+    PRINTL 【아이템 구입】
+    PRINTL 조교시 사용하는 각종 도구를 사는 커맨드. 돈이 필요합니다.
+    PRINTL 한번 사두면 계속 쓸 수 있는 아이템과 소모품이 있습니다.
+    PRINTL 소모품은 최대 99개까지 가질 수 있습니다.
+    PRINTL 환불 따위는 없으므로 구매시 주의.
+    PRINTW 일부 도구는 특수 조건이 필요합니다.
 ELSEIF RESULT == 111
-	PRINTL 【노예구입】
-	PRINTL 노예를 구입하기 위한 커맨드.당연히 돈이 필요합니다.
-	PRINTL 유명 캐릭터는 한 명밖에 없기 때문에, 한 번 구입하면
-	PRINTL 기본적으로 더는 구입할 수 없으니 주의하도록.
-	PRINTW 또한 노예구입제한수를 넘게 노예를 살 수는 없습니다.
+    PRINTL 【노예구입】
+    PRINTL 노예를 구입하기 위한 커맨드.당연히 돈이 필요합니다.
+    PRINTL 유명 캐릭터는 한 명밖에 없기 때문에, 한 번 구입하면
+    PRINTL 기본적으로 더는 구입할 수 없으니 주의하도록.
+    PRINTW 또한 노예구입제한수를 넘게 노예를 살 수는 없습니다.
 ELSEIF RESULT == 112
-	PRINTL 【노예 매각·해방】
-	PRINTL 수중의 노예를 매각하거나 해방하기 위한 커맨드입니다.
-	PRINTL 매각할 경우에도 해방할 경우에도 조건이 각자 있으니 주의하세요.
-	PRINTL PROSTITUTE 모드중에는 매각·해방이 불가능합니다
-	PRINTL 한 번 매각·해방시킨 노예는 두 번 다시 돌아오지 않으니 충분히 고려하는 게 나을 겁니다.
-	PRINTW 또한, 노예 매각은 돈벌기의 기본이기도 합니다.
+    PRINTL 【노예 매각·해방】
+    PRINTL 수중의 노예를 매각하거나 해방하기 위한 커맨드입니다.
+    PRINTL 매각할 경우에도 해방할 경우에도 조건이 각자 있으니 주의하세요.
+    PRINTL PROSTITUTE 모드중에는 매각·해방이 불가능합니다
+    PRINTL 한 번 매각·해방시킨 노예는 두 번 다시 돌아오지 않으니 충분히 고려하는 게 나을 겁니다.
+    PRINTW 또한, 노예 매각은 돈벌기의 기본이기도 합니다.
 ELSEIF RESULT == 113
-	PRINTL 【사역마로 삼는다／식으로 삼는다】
-	PRINTL 노예와 사역마의 계약을 맺을지 파기할지를 정하는 커맨드입니다.
-	PRINTL 주인이 [금단의 지식]을 갖고 있고, [사역마]가 될 자격을 갖춘
-	PRINTL 노예가 있거나 이미 [사역마] 상태인 경우에 선택할 수 있습니다.
-	PRINTW [사역마] 특성을 지닌 노예는 매각할 수 없게 됩니다.
-	PRINTW 주인이 란・유카리인 경우엔 네이밍이 바뀝니다. 나머지는 같습니다.
+    PRINTL 【사역마로 삼는다／식으로 삼는다】
+    PRINTL 노예와 사역마의 계약을 맺을지 파기할지를 정하는 커맨드입니다.
+    PRINTL 주인이 [금단의 지식]을 갖고 있고, [사역마]가 될 자격을 갖춘
+    PRINTL 노예가 있거나 이미 [사역마] 상태인 경우에 선택할 수 있습니다.
+    PRINTW [사역마] 특성을 지닌 노예는 매각할 수 없게 됩니다.
+    PRINTW 주인이 란・유카리인 경우엔 네이밍이 바뀝니다. 나머지는 같습니다.
 ELSEIF RESULT == 120
-	PRINTL 【비밀 도구점】
-	PRINTL 어떤 조건을 만족하면 출현하는 도구점으로 여기서밖에 살 수 없는 물건들을 팝니다.
-	PRINTL 딱 까놓고 조건을 말하자면 지금까지 10명 이상의 노예를 매각했거나 아니면 CHALLENGE 모드거나
-	PRINTL 이 둘 중의 하나의 조건을 만족하면 출현합니다. 특히 부동산 관련 상품은 구입하면, 
-	PRINTW 데리고 있을 수 있는 노예의 수가 늘어난다는 큰 메리트가 있습니다.
+    PRINTL 【비밀 도구점】
+    PRINTL 어떤 조건을 만족하면 출현하는 도구점으로 여기서밖에 살 수 없는 물건들을 팝니다.
+    PRINTL 딱 까놓고 조건을 말하자면 지금까지 10명 이상의 노예를 매각했거나 아니면 CHALLENGE 모드거나
+    PRINTL 이 둘 중의 하나의 조건을 만족하면 출현합니다. 특히 부동산 관련 상품은 구입하면, 
+    PRINTW 데리고 있을 수 있는 노예의 수가 늘어난다는 큰 메리트가 있습니다.
 ELSEIF RESULT == 121
-	PRINTL 【기능훈련사】
-	PRINTL 돈을 치르면 주인에게 기능을 가르쳐주는 존재입니다.
-	PRINTL 덤으로 여기 있는 기능들도 게임의 진전에 따라 변화하니, 
-	PRINTL 가끔씩 들어가 보는 것도 좋을 겁니다.
-	PRINTL 다만, CONFIG 항목의 「기능 훈련사를 이용할 수 없게 한다」를
-	PRINTW ON로 하고 있으면, 사용할 수 없습니다.
+    PRINTL 【기능훈련사】
+    PRINTL 돈을 치르면 주인에게 기능을 가르쳐주는 존재입니다.
+    PRINTL 덤으로 여기 있는 기능들도 게임의 진전에 따라 변화하니, 
+    PRINTL 가끔씩 들어가 보는 것도 좋을 겁니다.
+    PRINTL 다만, CONFIG 항목의 「기능 훈련사를 이용할 수 없게 한다」를
+    PRINTW ON로 하고 있으면, 사용할 수 없습니다.
 ELSEIF RESULT == 122
-	PRINTL 【약방】
-	PRINTL 여러 가지 약을 팔고 있는 가게입니다. 조금 가격은 세지만 그만큼의 가치는 있습니다.
-	PRINTW 실제로 어떤 약이 어떤 효과를 가지고 있는지는 사려 하는 그 순강네 다 가르쳐 줍니다.
+    PRINTL 【약방】
+    PRINTL 여러 가지 약을 팔고 있는 가게입니다. 조금 가격은 세지만 그만큼의 가치는 있습니다.
+    PRINTW 실제로 어떤 약이 어떤 효과를 가지고 있는지는 사려 하는 그 순강네 다 가르쳐 줍니다.
 ELSEIF RESULT == 130
-	PRINTL 【요리를 시킨다／애정요리】
-	PRINTL 노예에게 요리를 시켜서 먹거나 판매하는 커맨드입니다.
-	PRINTL 조교대상 노예가 성장하지 않았으면 선택할 수 없지만, 선택할 수 있게 되면 요리경험과
-	PRINTL 여러 가지 구슬 및 판매했을 때는 돈도 벌 수 있습니다.
-	PRINTL 또한, 경우에 따라서는 독을 넣은 음식을 먹게 되어 데미지를 입을 수도 있습니다만
-	PRINTL 독을 넣은 노예의 [약점]을 잡게 되면 조교시에 유리하게 됩니다.
-	PRINTL 애정요리로 버전업했을 경우, 효과는 더욱 올라갑니다.
-	PRINTW 독요리가 아니라면 먹은 시점에서 체력 기력의 회복효과가 있습니다.
+    PRINTL 【요리를 시킨다／애정요리】
+    PRINTL 노예에게 요리를 시켜서 먹거나 판매하는 커맨드입니다.
+    PRINTL 조교대상 노예가 성장하지 않았으면 선택할 수 없지만, 선택할 수 있게 되면 요리경험과
+    PRINTL 여러 가지 구슬 및 판매했을 때는 돈도 벌 수 있습니다.
+    PRINTL 또한, 경우에 따라서는 독을 넣은 음식을 먹게 되어 데미지를 입을 수도 있습니다만
+    PRINTL 독을 넣은 노예의 [약점]을 잡게 되면 조교시에 유리하게 됩니다.
+    PRINTL 애정요리로 버전업했을 경우, 효과는 더욱 올라갑니다.
+    PRINTW 독요리가 아니라면 먹은 시점에서 체력 기력의 회복효과가 있습니다.
 ELSEIF RESULT == 131
-	PRINTL 【자기가 요리한다】
-	PRINTL 이쪽은 주인이 요리를 해서 판매하거나 노예에게 선보이는 커맨드입니다.
-	PRINTL 이쪽 또한 하면 할수록, 주인의 요리경험과 기능이 올라가고
-	PRINTL 판매할 때는 돈도 벌 수 있습니다.
-	PRINTW 또한 노예에게 먹였을 경우엔, 체력과 기력의 회복효과가 있습니다.
+    PRINTL 【자기가 요리한다】
+    PRINTL 이쪽은 주인이 요리를 해서 판매하거나 노예에게 선보이는 커맨드입니다.
+    PRINTL 이쪽 또한 하면 할수록, 주인의 요리경험과 기능이 올라가고
+    PRINTL 판매할 때는 돈도 벌 수 있습니다.
+    PRINTW 또한 노예에게 먹였을 경우엔, 체력과 기력의 회복효과가 있습니다.
 ELSEIF RESULT == 132
-	PRINTL 【야외 라이브 공연】
-	PRINTL 노예에게 야외 라이브를 열게 하는 커맨드로, 상응하는 조건이 안 되면 선택할 수 없습니다.
-	PRINTL 또한, 연속해서 이 커맨드를 실시하는데는 제한이 있는 것도 주의할 사항.
-	PRINTL 성공하면 돈을 벌거나 술을 선물로 받을 수 있습니다만, 
-	PRINTW 처음 할 때는 계속 실패해가면서 경험을 쌓게 될 겁니다.
+    PRINTL 【야외 라이브 공연】
+    PRINTL 노예에게 야외 라이브를 열게 하는 커맨드로, 상응하는 조건이 안 되면 선택할 수 없습니다.
+    PRINTL 또한, 연속해서 이 커맨드를 실시하는데는 제한이 있는 것도 주의할 사항.
+    PRINTL 성공하면 돈을 벌거나 술을 선물로 받을 수 있습니다만, 
+    PRINTW 처음 할 때는 계속 실패해가면서 경험을 쌓게 될 겁니다.
 ELSEIF RESULT == 140
-	PRINTL 【주인 성별 변경】
-	PRINTL [성별 교체]를 가진 경우 선택할 수 있는 커맨드로,
-	PRINTL 주인의 성별을 변경할 수가 있다.
-	PRINTW 덧붙여 조수나 노예는 조교중에 가능합니다.
+    PRINTL 【주인 성별 변경】
+    PRINTL [성별 교체]를 가진 경우 선택할 수 있는 커맨드로,
+    PRINTL 주인의 성별을 변경할 수가 있다.
+    PRINTW 덧붙여 조수나 노예는 조교중에 가능합니다.
 ELSEIF RESULT == 150
-	PRINTL 【전시실로 간다／환상향비보관】
-	PRINTL 전시실에 가서 수집한 수집품들을 감상할 수 있습니다.
-	PRINTL 당연히, 전시실 기능을 ON으로 해놓지 않았으면 의미가 없습니다.
-	PRINTW 또한, 수집품을 500종류 이상 모으면 전시실의 이름이 환상향비보관이 됩니다.
+    PRINTL 【전시실로 간다／환상향비보관】
+    PRINTL 전시실에 가서 수집한 수집품들을 감상할 수 있습니다.
+    PRINTL 당연히, 전시실 기능을 ON으로 해놓지 않았으면 의미가 없습니다.
+    PRINTW 또한, 수집품을 500종류 이상 모으면 전시실의 이름이 환상향비보관이 됩니다.
 ELSEIF RESULT == 160
-	PRINTL 【촉수개발·배양시설】
-	PRINTL 촉수관련된 여러가지 커맨드를 하기 위해 선택하는 커맨드입니다.
-	PRINTL 촉수를 사용하지 않는 사람에게 있어선 선택할 의미가 없습니다.
-	PRINTL 또한, 선택하기 위해선 진화의 비법을 구입한 뒤, 신사적인 촉수라는
-	PRINTW 컨피그 항목을 ON으로 해놓지 않으면 안됩니다.
+    PRINTL 【촉수개발·배양시설】
+    PRINTL 촉수관련된 여러가지 커맨드를 하기 위해 선택하는 커맨드입니다.
+    PRINTL 촉수를 사용하지 않는 사람에게 있어선 선택할 의미가 없습니다.
+    PRINTL 또한, 선택하기 위해선 진화의 비법을 구입한 뒤, 신사적인 촉수라는
+    PRINTW 컨피그 항목을 ON으로 해놓지 않으면 안됩니다.
 ELSEIF RESULT == 161
-	PRINTL 【목욕탕개장／목욕탕을 본다】
-	PRINTL 특수목욕이라는 컨피그 항목을 ON으로 하면 선택할 수 있는 커맨드로, 
-	PRINTL 여러가지 특수목욕탕을 설치할 수 있습니다.
-	PRINTL 대량의 돈과 여러 조건은 있습니다만, 한 번 개장하면 거기에 상응하는 효과가 있습니다.
-	PRINTL 또한 목욕이라고는 해도, 소위 공중목욕탕같이 큰 데에 여러가지 욕조가 있다고 생각하는 편이 좋을 듯해서, 
-	PRINTW 복수의 기능을 동시에 갖출 수도 있습니다.
+    PRINTL 【목욕탕개장／목욕탕을 본다】
+    PRINTL 특수목욕이라는 컨피그 항목을 ON으로 하면 선택할 수 있는 커맨드로, 
+    PRINTL 여러가지 특수목욕탕을 설치할 수 있습니다.
+    PRINTL 대량의 돈과 여러 조건은 있습니다만, 한 번 개장하면 거기에 상응하는 효과가 있습니다.
+    PRINTL 또한 목욕이라고는 해도, 소위 공중목욕탕같이 큰 데에 여러가지 욕조가 있다고 생각하는 편이 좋을 듯해서, 
+    PRINTW 복수의 기능을 동시에 갖출 수도 있습니다.
 ELSEIF RESULT == 162
-	PRINTL 【요정목욕을 한다】
-	PRINTL 특수목욕의 한 종류지만 이쪽은 별개 커맨드로 요정목욕을 하기 위한 커맨드입니다.
-	PRINTL 지금까지 함락시킨 요정이 30명 이상 필요합니다만, 
-	PRINTW 요정 애호가에게 있어 이건 그야말로 극락이라 할 수 있습니다.
+    PRINTL 【요정목욕을 한다】
+    PRINTL 특수목욕의 한 종류지만 이쪽은 별개 커맨드로 요정목욕을 하기 위한 커맨드입니다.
+    PRINTL 지금까지 함락시킨 요정이 30명 이상 필요합니다만, 
+    PRINTW 요정 애호가에게 있어 이건 그야말로 극락이라 할 수 있습니다.
 ELSEIF RESULT == 163
-	PRINTL 【비밀 지하실】
-	PRINTL [120] 비밀 도구점에서 비밀 지하실을 구입한 경우에만 선택할 수 있는 커맨드로, 
-	PRINTL 비밀 지하실에서 관련 커맨드를 실행하기 위한 명령입니다.
-	PRINTL 조건만 충족하면, 노예를 지하소굴에 감금하거나 고문을 하거나
-	PRINTW 다양한 종족으로 환생시키거나 마법 의식을 할 수 있다.
+    PRINTL 【비밀 지하실】
+    PRINTL [120] 비밀 도구점에서 비밀 지하실을 구입한 경우에만 선택할 수 있는 커맨드로, 
+    PRINTL 비밀 지하실에서 관련 커맨드를 실행하기 위한 명령입니다.
+    PRINTL 조건만 충족하면, 노예를 지하소굴에 감금하거나 고문을 하거나
+    PRINTW 다양한 종족으로 환생시키거나 마법 의식을 할 수 있다.
 ELSEIF RESULT == 165
-	PRINTL 【허브농장】
-	PRINTL [120]비밀의 도구점에서 허브농장을 설치했을 경우에만 선택할 수 있는 커맨드로,
-	PRINTL 허브농장에서, 허브의 개발 혹은 생산을 노예에게 지시 가능합니다.
-	PRINTW 주인 외 노예가 없거나 주인이 만취했다면 실행불가능.
+    PRINTL 【허브농장】
+    PRINTL [120]비밀의 도구점에서 허브농장을 설치했을 경우에만 선택할 수 있는 커맨드로,
+    PRINTL 허브농장에서, 허브의 개발 혹은 생산을 노예에게 지시 가능합니다.
+    PRINTW 주인 외 노예가 없거나 주인이 만취했다면 실행불가능.
 ELSEIF RESULT == 166
-	PRINTL 【창관에 간다】
-	PRINTL 창관에 나가, 창관에 관한 설정 변경이나 매춘에 관한 배치 변경 및,
-	PRINTL 창관 설비 투자 등을 할 수 있는 커맨드입니다. 창관이 있어야 합니다.
-	PRINTL PROSTITUE 모드이면 자주 쓰게 될 것입니다.
-	PRINTW 덧붙여 PROSTITUE 모드 이외에서, 창관을 사용하기 위해서는,
-	PRINTW [777]콘피그의[1]아이템 확장안의 해당 항목을 바꿀 필요가 있다.
+    PRINTL 【창관에 간다】
+    PRINTL 창관에 나가, 창관에 관한 설정 변경이나 매춘에 관한 배치 변경 및,
+    PRINTL 창관 설비 투자 등을 할 수 있는 커맨드입니다. 창관이 있어야 합니다.
+    PRINTL PROSTITUE 모드이면 자주 쓰게 될 것입니다.
+    PRINTW 덧붙여 PROSTITUE 모드 이외에서, 창관을 사용하기 위해서는,
+    PRINTW [777]콘피그의[1]아이템 확장안의 해당 항목을 바꿀 필요가 있다.
 ELSEIF RESULT == 170
-	PRINTL 【육아실로 간다】
-	PRINTL 출산이 임박 혹은 출산후에 육아중인 노예가 있는 방으로 찾아가는 커맨드입니다.
-	PRINTL 해당하는 노예는 조교할 수도 없고 매각·해방할 수도 없으니, 
-	PRINTW 어디까지나 이 커맨드로 교류할 수밖에 없습니다.
+    PRINTL 【육아실로 간다】
+    PRINTL 출산이 임박 혹은 출산후에 육아중인 노예가 있는 방으로 찾아가는 커맨드입니다.
+    PRINTL 해당하는 노예는 조교할 수도 없고 매각·해방할 수도 없으니, 
+    PRINTW 어디까지나 이 커맨드로 교류할 수밖에 없습니다.
 ELSEIF RESULT == 200
-	PRINTL 【세이브】
-	PRINTL 게임 데이터를 세이브하기 위한 커맨드입니다.
-	PRINTW 꼬박꼬박 세이브하는 건 승리의 열쇠입니다만, 경솔히 덮어씌우고 우는 일 없도록.
+    PRINTL 【세이브】
+    PRINTL 게임 데이터를 세이브하기 위한 커맨드입니다.
+    PRINTW 꼬박꼬박 세이브하는 건 승리의 열쇠입니다만, 경솔히 덮어씌우고 우는 일 없도록.
 ELSEIF RESULT == 300
-	PRINTL 【로드】
-	PRINTL 게임 데이터를 로드하기 위한 커맨드입니다.
-	PRINTL 덧붙이자면 Ver.이 다른 데이터도 로드할 수 있는 경우가 있긴 한데, 
-	PRINTW 상황에 따라서 오작동할 경우도 있으니 주의하도록.
+    PRINTL 【로드】
+    PRINTL 게임 데이터를 로드하기 위한 커맨드입니다.
+    PRINTL 덧붙이자면 Ver.이 다른 데이터도 로드할 수 있는 경우가 있긴 한데, 
+    PRINTW 상황에 따라서 오작동할 경우도 있으니 주의하도록.
 ELSEIF RESULT == 400
-	PRINTL 【캐릭터 검색】
-	PRINTL 조교하고 있는 노예 중에, 특정 능력·소질·경험·각인을 갖고 있는 자를
-	PRINTL 검색해서 일람 표시할 수 있는 커맨드로, 사용하기에 따라서는 많이 편리합니다.
-	PRINTW 특히 조교하고 있는 노예가 상당히 많을 경우엔 위력을 발휘합니다.
-	PRINTW 컨피그의 「변동 스테이터스 강조 패치」와 병용하는 방법도 있을지 모르겠네요.
+    PRINTL 【캐릭터 검색】
+    PRINTL 조교하고 있는 노예 중에, 특정 능력·소질·경험·각인을 갖고 있는 자를
+    PRINTL 검색해서 일람 표시할 수 있는 커맨드로, 사용하기에 따라서는 많이 편리합니다.
+    PRINTW 특히 조교하고 있는 노예가 상당히 많을 경우엔 위력을 발휘합니다.
+    PRINTW 컨피그의 「변동 스테이터스 강조 패치」와 병용하는 방법도 있을지 모르겠네요.
 ELSEIF RESULT == 500
-	PRINTL 【엔딩 일람】
-	PRINTL 주차 플레이에서 지금까지 봐 온 엔딩의 일람을 표시해주는 커맨드입니다.
-	PRINTW 주차 플레이에선 중요하겠지만 매번 확인할 만큼 중요한 건 아닐지도 모릅니다.
+    PRINTL 【엔딩 일람】
+    PRINTL 주차 플레이에서 지금까지 봐 온 엔딩의 일람을 표시해주는 커맨드입니다.
+    PRINTW 주차 플레이에선 중요하겠지만 매번 확인할 만큼 중요한 건 아닐지도 모릅니다.
 ELSEIF RESULT == 543
-	PRINTL 【때는 무르익었다】
-	PRINTL 기한까지 기다릴 필요 없이 엔딩을 바로 볼 수 있는 커맨드입니다.
-	PRINTL eratohoYM나 ABNORMAL이외의 게임 모드로 하고 있을 때나, 
-	PRINTL 소지금이 100만원 미만인 경우, 이미 엔딩을 보고 난 뒤에는 실행할 수 없습니다.
-	PRINTL 내용은 기한을 다 채웠을 때 처리와 거의 같으므로, 
-	PRINTW 후딱 엔딩을 보고 싶거나 주차 플레이 하고 싶을 때는 편리할지도 모릅니다.
+    PRINTL 【때는 무르익었다】
+    PRINTL 기한까지 기다릴 필요 없이 엔딩을 바로 볼 수 있는 커맨드입니다.
+    PRINTL eratohoYM나 ABNORMAL이외의 게임 모드로 하고 있을 때나, 
+    PRINTL 소지금이 100만원 미만인 경우, 이미 엔딩을 보고 난 뒤에는 실행할 수 없습니다.
+    PRINTL 내용은 기한을 다 채웠을 때 처리와 거의 같으므로, 
+    PRINTW 후딱 엔딩을 보고 싶거나 주차 플레이 하고 싶을 때는 편리할지도 모릅니다.
 ELSEIF RESULT == 555
-	PRINTL 【새 게임 개시】
-	PRINTL 주차 플레이에서 강하게 뉴 게임을 할 경우 선택하는 커맨드입니다.
-	PRINTW 당연히 조건은 있습니다.
+    PRINTL 【새 게임 개시】
+    PRINTL 주차 플레이에서 강하게 뉴 게임을 할 경우 선택하는 커맨드입니다.
+    PRINTW 당연히 조건은 있습니다.
 ELSEIF RESULT == 666
-	PRINTL 【캐릭터 정렬】
-	PRINTL 조교하고 있는 노예들에게 순서를 정해주거나, 특정 항목에 의거해
-	PRINTL 자동정렬을 시키거나 할 수 있는 커맨드입니다.
-	PRINTW 조교인수가 많아졌을 때 이걸 잘 활용하면 좋을 것입니다.
+    PRINTL 【캐릭터 정렬】
+    PRINTL 조교하고 있는 노예들에게 순서를 정해주거나, 특정 항목에 의거해
+    PRINTL 자동정렬을 시키거나 할 수 있는 커맨드입니다.
+    PRINTW 조교인수가 많아졌을 때 이걸 잘 활용하면 좋을 것입니다.
 ELSEIF RESULT == 777
-	PRINTL 【컨피그】
-	PRINTL 게임 설정을 선택하기 위한 커맨드입니다.
-	PRINTL 여러가지 항목이 있습니다만, 가급적 제일 처음에 제대로 설정해줘야 할 겁니다.
-	PRINTL 또한 항목에 따라선 난이도에 커다란 변동을 줄 가능성도 있으니 주의해야 합니다.
-	PRINTW 내용을 알고 싶은 경우엔 YM에 동봉된 txt 파일 참조.
+    PRINTL 【컨피그】
+    PRINTL 게임 설정을 선택하기 위한 커맨드입니다.
+    PRINTL 여러가지 항목이 있습니다만, 가급적 제일 처음에 제대로 설정해줘야 할 겁니다.
+    PRINTL 또한 항목에 따라선 난이도에 커다란 변동을 줄 가능성도 있으니 주의해야 합니다.
+    PRINTW 내용을 알고 싶은 경우엔 YM에 동봉된 txt 파일 참조.
 ELSEIF RESULT == 830 && FLAG:999 == 0
-	IF TALENT:MASTER:831
-		PRINTL 【특수노예구입】
-		PRINTL YASAI모드에서만 선택할 수 있는 커맨드로, 특수한 노예를 구입하기 위한 커맨드입니다.
-		PRINTW 이 소재 이해를 못하면 이해할 수 없습니다.
-	ELSE
-		GOTO INPUT_LOOP
-	ENDIF
+    IF TALENT:MASTER:831
+        PRINTL 【특수노예구입】
+        PRINTL YASAI모드에서만 선택할 수 있는 커맨드로, 특수한 노예를 구입하기 위한 커맨드입니다.
+        PRINTW 이 소재 이해를 못하면 이해할 수 없습니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
 ELSEIF RESULT == 831 && FLAG:999 == 0
-	IF TALENT:MASTER:831
-		PRINTL 【야채연성】
-		PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
-		PRINTL 야채를 연성하는 커맨드입니다.야채의 수는 YASAI 모드에서는 
-		PRINTW 아주 중요한 요소이니, 이 커맨드는 자주 사용하게 될 겁니다.
-	ELSE
-		GOTO INPUT_LOOP
-	ENDIF
+    IF TALENT:MASTER:831
+        PRINTL 【야채연성】
+        PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
+        PRINTL 야채를 연성하는 커맨드입니다.야채의 수는 YASAI 모드에서는 
+        PRINTW 아주 중요한 요소이니, 이 커맨드는 자주 사용하게 될 겁니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
 ELSEIF RESULT == 832 && FLAG:999 == 0
-	IF TALENT:MASTER:831
-		PRINTL 【밭 확장】
-		PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
-		PRINTL 돈을 써서 밭을 확장할 수 있는 커맨드입니다.밭의 넓이는 수확할 수 있는 
-		PRINTW 야채의 수와 직결되므로 아주 중요합니다.
-	ELSE
-		GOTO INPUT_LOOP
-	ENDIF
+    IF TALENT:MASTER:831
+        PRINTL 【밭 확장】
+        PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
+        PRINTL 돈을 써서 밭을 확장할 수 있는 커맨드입니다.밭의 넓이는 수확할 수 있는 
+        PRINTW 야채의 수와 직결되므로 아주 중요합니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
 ELSEIF RESULT == 833 && FLAG:999 == 0
-	IF TALENT:MASTER:831
-		PRINTL 【야채재생】
-		PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
-		PRINTW 야채를 소비해서 체력을 회복시키는 커맨드입니다.
-	ELSE
-		GOTO INPUT_LOOP
-	ENDIF
+    IF TALENT:MASTER:831
+        PRINTL 【야채재생】
+        PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
+        PRINTW 야채를 소비해서 체력을 회복시키는 커맨드입니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
 ELSEIF RESULT == 998
-	PRINTL 【동방조교전】
-	PRINTL SHOP 커맨드와 용어설명을 하기 위한 커맨드입니다. 랄까 지금 보고 있잖수.
-	PRINTW 이 설명이 도움이 되었기를 기원합니다.
+    PRINTL 【동방조교전】
+    PRINTL SHOP 커맨드와 용어설명을 하기 위한 커맨드입니다. 랄까 지금 보고 있잖수.
+    PRINTW 이 설명이 도움이 되었기를 기원합니다.
 ELSEIF RESULT == 999 && FLAG:999 == 0
-	IF TALENT:MASTER:998
-		PRINTL 【디버그 메뉴】
-		PRINTL DEBUG 커맨드를 넣어 DEBUG 모드로 들어왔을 때만 선택할 수 있는
-		PRINTL 영광의 커맨드입니다. 자아, 그대도 이 커맨드를 구사하여 갖은 장소에
-		PRINTW 파고든 버그를 퇴치해 영웅이 되어보지 않겠는가!
-	ELSE
-		GOTO INPUT_LOOP
-	ENDIF
+    IF TALENT:MASTER:998
+        PRINTL 【디버그 메뉴】
+        PRINTL DEBUG 커맨드를 넣어 DEBUG 모드로 들어왔을 때만 선택할 수 있는
+        PRINTL 영광의 커맨드입니다. 자아, 그대도 이 커맨드를 구사하여 갖은 장소에
+        PRINTW 파고든 버그를 퇴치해 영웅이 되어보지 않겠는가!
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
 ELSE
-	GOTO INPUT_LOOP
+    GOTO INPUT_LOOP
 ENDIF
 RESTART

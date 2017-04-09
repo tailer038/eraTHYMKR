@@ -6,23 +6,23 @@
 PRINTL □ 능력
 LOCAL:1 = 0
 REPEAT 25
-	LOCAL = PRINT_ABL_COUNT(ARG)
-	IF LOCAL < 0
-		CONTINUE
-	ELSEIF ABL:ARG:LOCAL > 0
-		PRINTFORM %ABLNAME:LOCAL, 8%:LV{ABL:ARG:LOCAL}
-		LOCAL:1 += 1
-		;改行するのか？ 続けて出力するのか？
-		IF LOCAL:1 >= 5
-			PRINTL 
-			LOCAL:1 = 0
-		ELSE
-			PRINT 　
-		ENDIF
-	ENDIF
+    LOCAL = PRINT_ABL_COUNT(ARG)
+    IF LOCAL < 0
+        CONTINUE
+    ELSEIF ABL:ARG:LOCAL > 0
+        PRINTFORM %ABLNAME:LOCAL, 8%:LV{ABL:ARG:LOCAL}
+        LOCAL:1 += 1
+        ;改行するのか？ 続けて出力するのか？
+        IF LOCAL:1 >= 5
+            PRINTL 
+            LOCAL:1 = 0
+        ELSE
+            PRINT 　
+        ENDIF
+    ENDIF
 REND
 SIF LOCAL:1 != 0
-	PRINTL 
+    PRINTL 
 CUSTOMDRAWLINE ･
 
 ;=============================================================================
@@ -37,32 +37,32 @@ LOCAL = 0
 ;素質の最大番号が増えたときに書き換える手間が減るが、
 ;増やしすぎると処理速度に影響するので要注意
 REPEAT 270
-	IF TALENT:ARG:COUNT
-		CALL SHOW_INFO_EACH_TALENT, ARG
-		SIF (++LOCAL % 6) == 0
-			PRINTL 
-	ENDIF
+    IF TALENT:ARG:COUNT
+        CALL SHOW_INFO_EACH_TALENT, ARG
+        SIF (++LOCAL % 6) == 0
+            PRINTL 
+    ENDIF
 REND
 REPEAT 10
-	IF TALENT:ARG:(830+COUNT)
-		PRINTFORM [%TALENTNAME:(830+COUNT)%] 
-		SIF (++LOCAL % 6) == 0
-			PRINTL 
-	ENDIF
+    IF TALENT:ARG:(830+COUNT)
+        PRINTFORM [%TALENTNAME:(830+COUNT)%] 
+        SIF (++LOCAL % 6) == 0
+            PRINTL 
+    ENDIF
 REND
 IF TALENT:ARG:998
-	PRINTFORM [%TALENTNAME:998%] 
-	SIF (++LOCAL % 6) == 0
-		PRINTL 
+    PRINTFORM [%TALENTNAME:998%] 
+    SIF (++LOCAL % 6) == 0
+        PRINTL 
 ENDIF
 IF CFLAG:ARG:0
-	PRINTFORM [\@(EQUIP:ARG:0 == 1) ? ｅｘ # ＥＸ\@] 
-	SIF (++LOCAL % 6) == 0
-		PRINTL 
+    PRINTFORM [\@(EQUIP:ARG:0 == 1) ? ｅｘ # ＥＸ\@] 
+    SIF (++LOCAL % 6) == 0
+        PRINTL 
 ENDIF
 
 SIF LOCAL % 6 != 0
-	PRINTL 
+    PRINTL 
 CUSTOMDRAWLINE ･
 
 ;=============================================================================
@@ -73,58 +73,58 @@ CUSTOMDRAWLINE ･
 PRINTL □ 각인
 LOCAL = 0
 REPEAT 11
-	SIF COUNT >= 5 && COUNT < 8
-		CONTINUE
-	IF FLAG:3998 & 1 && ((COUNT == 8 && MARK:ARG:96) || (COUNT == 9 && MARK:ARG:97))
-		FONTBOLD
-		PRINTFORM %MARKNAME:COUNT%:LV{MARK:ARG:COUNT} [
-		;오리지날
-		;BAR MARK:ARG:COUNT, 3, 3
-		;개수판
-		CALL PRINT_COLORBAR, MARK:(ARG:0):(LOCAL:0), 3, 3,  0XFFC0CB, 0X240725, UNICODE(0x258A), UNICODE(0x258A)
-		PRINT ]
-		FONTREGULAR
-	ELSE
-		PRINTFORM %MARKNAME:COUNT%:LV{MARK:ARG:COUNT} [
-		;오리지날
-		;BAR MARK:ARG:COUNT, 3, 3
-		;개수판
-		CALL PRINT_COLORBAR, MARK:(ARG:0):(LOCAL:0), 3, 3,  0XFF1493, 0X240725, UNICODE(0x258A), UNICODE(0x258A)
-		PRINT ]
-	ENDIF
+    SIF COUNT >= 5 && COUNT < 8
+        CONTINUE
+    IF FLAG:3998 & 1 && ((COUNT == 8 && MARK:ARG:96) || (COUNT == 9 && MARK:ARG:97))
+        FONTBOLD
+        PRINTFORM %MARKNAME:COUNT%:LV{MARK:ARG:COUNT} [
+        ;오리지날
+        ;BAR MARK:ARG:COUNT, 3, 3
+        ;개수판
+        CALL PRINT_COLORBAR, MARK:(ARG:0):(LOCAL:0), 3, 3,  0XFFC0CB, 0X240725, UNICODE(0x258A), UNICODE(0x258A)
+        PRINT ]
+        FONTREGULAR
+    ELSE
+        PRINTFORM %MARKNAME:COUNT%:LV{MARK:ARG:COUNT} [
+        ;오리지날
+        ;BAR MARK:ARG:COUNT, 3, 3
+        ;개수판
+        CALL PRINT_COLORBAR, MARK:(ARG:0):(LOCAL:0), 3, 3,  0XFF1493, 0X240725, UNICODE(0x258A), UNICODE(0x258A)
+        PRINT ]
+    ENDIF
 
-	LOCAL += 1
-	;마지막의 루프 말고는 간격을 벌려둔다
-	IF LOCAL%4 == 0
-		PRINTL 
-	ELSE
-		PRINT 　
-	ENDIF
+    LOCAL += 1
+    ;마지막의 루프 말고는 간격을 벌려둔다
+    IF LOCAL%4 == 0
+        PRINTL 
+    ELSE
+        PRINT 　
+    ENDIF
 REND
 
 ;Debug 모드(무조건) 또는 주인이 [초상계산]을 가지고 있으며 난이도 EASY～HARD일 때는 각인 취득 이력도 표시
 IF TALENT:MASTER:998 || (TALENT:MASTER:198 && (FLAG:3 >= 1 && FLAG:3 <= 3)) 
-	FOR COUNT, 96, 98
-		PRINTFORM \@(COUNT == 96) ? 공포이력 # 반발이력\@:LV{MARK:ARG:COUNT} [
-		;오리지날
-		;BAR MARK:ARG:COUNT, 3, 3
-		;개수판
-		CALL PRINT_COLORBAR, MARK:(ARG:0):(LOCAL:0), 3, 3,  0XFF1493, 0X240725, UNICODE(0x258A), UNICODE(0x258A)
-		PRINT ]
+    FOR COUNT, 96, 98
+        PRINTFORM \@(COUNT == 96) ? 공포이력 # 반발이력\@:LV{MARK:ARG:COUNT} [
+        ;오리지날
+        ;BAR MARK:ARG:COUNT, 3, 3
+        ;개수판
+        CALL PRINT_COLORBAR, MARK:(ARG:0):(LOCAL:0), 3, 3,  0XFF1493, 0X240725, UNICODE(0x258A), UNICODE(0x258A)
+        PRINT ]
 
-		LOCAL += 1
-		;마지막의 루프 말고는 간격을 벌려둔다
-		IF LOCAL%3 == 0
-			PRINTL 
-		ELSE
-			PRINT 　
-		ENDIF
-	NEXT
+        LOCAL += 1
+        ;마지막의 루프 말고는 간격을 벌려둔다
+        IF LOCAL%3 == 0
+            PRINTL 
+        ELSE
+            PRINT 　
+        ENDIF
+    NEXT
 ENDIF
 
 ;마지막 루프에서 개행하지 않았으면, 여기서 개행해둔다
 SIF LOCAL%3 != 0
-	PRINTL 
+    PRINTL 
 CUSTOMDRAWLINE ･
 
 ;=============================================================================
@@ -150,18 +150,18 @@ PRINTL □ 구슬
 VARSET LOCALS,""
 SPLIT "2,3,0,1,12,13,14,11,15,16,17,30,31,32,100,198", ",", LOCALS
 REPEAT 15 + (ARG == MASTER)
-	LOCAL = TOINT(LOCALS:COUNT)
-	PRINTFORM 　%PALAMNAME:LOCAL%의 구슬:{JUEL:ARG:LOCAL, 7}
+    LOCAL = TOINT(LOCALS:COUNT)
+    PRINTFORM 　%PALAMNAME:LOCAL%의 구슬:{JUEL:ARG:LOCAL, 7}
 
-	;改行or表示位置あけ
-	IF COUNT%4 == 3
-		PRINTL 
-	ELSE
-		PRINT  
-	ENDIF
+    ;改行or表示位置あけ
+    IF COUNT%4 == 3
+        PRINTL 
+    ELSE
+        PRINT  
+    ENDIF
 REND
 
 ;마지막 루프에서 개행하지 않았으면, 여기서 개행해둔다
 SIF COUNT%4 != 0
-	PRINTL 
+    PRINTL 
 CUSTOMDRAWLINE ･

@@ -9,34 +9,34 @@
 @COM_ABLE65
 ;개별 설정 커맨드 필터
 SIF DITEMTYPE:999:65 > 0
-	RETURN 0
+    RETURN 0
 ;약품계 확장 커맨드를 유효하게 하지 않으면 안 됨
 SIF (FLAG:15 & 32) == 0
-	RETURN 0
+    RETURN 0
 ;현자의 피를 가지고 있는지, 아이템 없음 설정이 아니면 안 됨
 SIF ITEM:66 == 0 && NOITEM == 0
-	RETURN 0
+    RETURN 0
 ;약물내성이라면 안 됨
 SIF TALENT:44
-	RETURN 0
+    RETURN 0
 ;기계라면 안 됨
 SIF TALENT:206
-	RETURN 0
+    RETURN 0
 ;산란 촉진제를 사용하고 있으면(자) 사용할 수 없다
 SIF TEQUIP:9
-	RETURN 0
+    RETURN 0
 ;효과 발휘중·반동 중에는 불가
 SIF TEQUIP:13
-	RETURN 0
+    RETURN 0
 ;수면 중에는 불가
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;강제개구기 외에 다른 걸로 입이 막혀 있으면 불가
 SIF TEQUIP:42 && TEQUIP:42 != 3
-	RETURN 0
+    RETURN 0
 ;촉수 조교 중에는 불가
 SIF TEQUIP:90
-	RETURN 0
+    RETURN 0
 RETURN 1
 
 ;--------------------------------------------------
@@ -54,9 +54,9 @@ SOURCE:26 = 2500
 SOURCE:31 = 3000
 
 IF NOITEM == 0
-	ITEM:66 -= 1
-	SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:66
-		CALL FILL_PLURAL_ITEM, 66
+    ITEM:66 -= 1
+    SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:66
+        CALL FILL_PLURAL_ITEM, 66
 ENDIF
 TEQUIP:13 = 8
 
@@ -70,15 +70,15 @@ RETURN 1
 ;--------------------------------------------------
 @EQUIP_COM65
 IF TEQUIP:13 > 2
-	PRINTL <현자의 피 효과 발휘 중>
-	TEQUIP:13 -= 1
+    PRINTL <현자의 피 효과 발휘 중>
+    TEQUIP:13 -= 1
 ELSEIF TEQUIP:13 == 2
-	PRINTL <현자의 피 반동 중>
-	TEQUIP:13 = 1
-	CALL EQUIP_MESSAGE_COM065
-	CALL SELF_KOJO, TARGET, 2
+    PRINTL <현자의 피 반동 중>
+    TEQUIP:13 = 1
+    CALL EQUIP_MESSAGE_COM065
+    CALL SELF_KOJO, TARGET, 2
 ELSEIF TEQUIP:13 == 1
-	PRINTL <현자의 피 반동 중>
+    PRINTL <현자의 피 반동 중>
 ENDIF
 RETURN 1
 
@@ -91,69 +91,69 @@ VARSET LOCAL, 0
 
 ;절정 C
 IF UP:0 + PALAM:0 >= PALAMLV:7 * 2
-	LOCAL:0 = 4
-	DOWN:0 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:0 = 4
+    DOWN:0 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:0 + PALAM:0 >= PALAMLV:4 * 2
-	LOCAL:0 = 2
-	DOWN:0 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:0 = 2
+    DOWN:0 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:0 + PALAM:0 >= PALAMLV:4
-	LOCAL:0 = 1
-	PALAM:0 = 5000
-	UP:0 = 0
+    LOCAL:0 = 1
+    PALAM:0 = 5000
+    UP:0 = 0
 ENDIF
 ;DOWN:1으로 내려도 절정 이상이라면
 ;그 값-1이 되도록(듯이) 조정(10000으로 절정이라면 9999)(감각 증폭 약효과중은 캔슬)
 SIF UP:0 + PALAM:0 - DOWN:0 >= PALAMLV:4 && TEQUIP:7 == 0
-	DOWN:0 = UP:0 + PALAM:0 - PALAMLV:4 + 1
+    DOWN:0 = UP:0 + PALAM:0 - PALAMLV:4 + 1
 
 ;절정 V
 IF UP:1 + PALAM:1 >= PALAMLV:7 * 2
-	LOCAL:1 = 4
-	DOWN:1 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:1 = 4
+    DOWN:1 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:1 + PALAM:1 >= PALAMLV:4 * 2
-	LOCAL:1 = 2
-	DOWN:1 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:1 = 2
+    DOWN:1 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:1 + PALAM:1 >= PALAMLV:4
-	LOCAL:1 = 1
-	DOWN:1 = (PALAMLV:4 - 1000)
+    LOCAL:1 = 1
+    DOWN:1 = (PALAMLV:4 - 1000)
 ENDIF
 ;DOWN:1으로 내려도 절정 이상이라면
 ;그 값-1이 되도록(듯이) 조정(10000으로 절정이라면 9999)(감각 증폭 약효과중은 캔슬)
 SIF UP:1 + PALAM:1 - DOWN:1 >= PALAMLV:4 && TEQUIP:7 == 0
-	DOWN:1 = UP:1 + PALAM:1 - PALAMLV:4 + 1
+    DOWN:1 = UP:1 + PALAM:1 - PALAMLV:4 + 1
 
 ;절정 A
 IF UP:2 + PALAM:2 >= PALAMLV:7 * 2
-	LOCAL:2 = 4
-	DOWN:2 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:2 = 4
+    DOWN:2 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:2 + PALAM:2 >= PALAMLV:4 * 2
-	LOCAL:2 = 2
-	DOWN:2 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:2 = 2
+    DOWN:2 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:2 + PALAM:2 >= PALAMLV:4
-	LOCAL:2 = 1
-	DOWN:2 = (PALAMLV:4 - 1000)
+    LOCAL:2 = 1
+    DOWN:2 = (PALAMLV:4 - 1000)
 ENDIF
 ;DOWN:2로 내려도 절정 이상이라면
 ;그 값-1이 되도록(듯이) 조정(10000으로 절정이라면 9999)(감각 증폭 약효과중은 캔슬)
 SIF UP:2 + PALAM:2 - DOWN:2 >= PALAMLV:4 && TEQUIP:7 == 0
-	DOWN:2 = UP:2 + PALAM:2 - PALAMLV:4 + 1
+    DOWN:2 = UP:2 + PALAM:2 - PALAMLV:4 + 1
 
 ;절정 B
 IF UP:3 + PALAM:3 >= PALAMLV:7 * 2
-	LOCAL:3 = 4
-	DOWN:3 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:3 = 4
+    DOWN:3 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:3 + PALAM:3 >= PALAMLV:4 * 2
-	LOCAL:3 = 2
-	DOWN:3 = (PALAMLV:4 * 2 - 1000)
+    LOCAL:3 = 2
+    DOWN:3 = (PALAMLV:4 * 2 - 1000)
 ELSEIF UP:3 + PALAM:3 >= PALAMLV:4
-	LOCAL:3 = 1
-	DOWN:3 = (PALAMLV:4 - 1000)
+    LOCAL:3 = 1
+    DOWN:3 = (PALAMLV:4 - 1000)
 ENDIF
 ;DOWN:3으로 내려도 절정 이상이라면
 ;그 값-1이 되도록(듯이) 조정(10000으로 절정이라면 9999)(감각 증폭 약효과중은 캔슬)
 SIF UP:3 + PALAM:3 - DOWN:3 >= PALAMLV:4 && TEQUIP:7 == 0
-	DOWN:3 = UP:3 + PALAM:3 - PALAMLV:4 + 1
-	
+    DOWN:3 = UP:3 + PALAM:3 - PALAMLV:4 + 1
+    
 ;제지당한 절정 회수를 TFLAG:110~TFLAG:113에 기록
 TFLAG:110 += LOCAL:0
 TFLAG:111 += LOCAL:1
@@ -175,27 +175,27 @@ RETURN 1
 @REACT_DRUG
 ;쾌C의 처리
 IF TFLAG:110 > 0 && UP:0 > 0
-	UP:0 *= 2
-	TFLAG:110 -= 1
+    UP:0 *= 2
+    TFLAG:110 -= 1
 ENDIF
 ;쾌V의 처리
 IF TFLAG:111 > 0 && UP:1 > 0
-	UP:1 *= 2
-	TFLAG:111 -= 1
+    UP:1 *= 2
+    TFLAG:111 -= 1
 ENDIF
 ;쾌A의 처리
 IF TFLAG:112 > 0 && UP:2 > 0
-	UP:2 *= 2
-	TFLAG:112 -= 1
+    UP:2 *= 2
+    TFLAG:112 -= 1
 ENDIF
 ;쾌B의 처리
 IF TFLAG:113 > 0 && UP:3 > 0
-	UP:3 *= 2
-	TFLAG:113 -= 1
+    UP:3 *= 2
+    TFLAG:113 -= 1
 ENDIF
 ;반동의 종료 체크
 SIF TFLAG:110 + TFLAG:111 + TFLAG:112 + TFLAG:113 == 0
-	TEQUIP:13 = 0
+    TEQUIP:13 = 0
 
 RETURN 1
 
@@ -209,16 +209,16 @@ RETURN 1
 VARSET LOCAL, 0
 
 SIF TFLAG:110
-	LOCAL:99 += 1
+    LOCAL:99 += 1
 SIF TFLAG:111
-	LOCAL:99 += 1
+    LOCAL:99 += 1
 SIF TFLAG:112
-	LOCAL:99 += 1
+    LOCAL:99 += 1
 SIF TFLAG:113
-	LOCAL:99 += 1
+    LOCAL:99 += 1
 
 REPEAT 4
-	LOCAL:COUNT = LOCAL:99 * TFLAG:(110 + COUNT)
+    LOCAL:COUNT = LOCAL:99 * TFLAG:(110 + COUNT)
 REND
 
 ;절정 경험
@@ -252,22 +252,22 @@ RETURN 1
 @TRAIN_MESSAGE_COM065
 CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
-	RETURN 0
+    RETURN 0
 
 PRINTL
 PRINTFORM %조사선택(CALLNAME:MASTER, "는")% %CALLNAME:TARGET%에게 
 SIF ABL:PLAYER:12 >= 3
-	PRINT 입으로 
+    PRINT 입으로 
 SIF ABL:10 == 0
-	PRINT 억지로 
+    PRINT 억지로 
 PRINTL 현자의 피를 먹였다.
 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
 IF ABL:10 > 3 && MARK:9 < 3
-	PRINTFORML 곤혹한 표정을 지으며 능글능글 웃는 %조사선택(CALLNAME:MASTER, "를")% 불안하게 보고 있다.
+    PRINTFORML 곤혹한 표정을 지으며 능글능글 웃는 %조사선택(CALLNAME:MASTER, "를")% 불안하게 보고 있다.
 ELSEIF MARK:9 >= 3
-	PRINTFORML 경계심을 띠며 능글능글 웃는 %조사선택(CALLNAME:MASTER, "를")% 째려보고 있다.
+    PRINTFORML 경계심을 띠며 능글능글 웃는 %조사선택(CALLNAME:MASTER, "를")% 째려보고 있다.
 ELSE
-	PRINTFORML 놀란 표정을 지으며 능글능글 웃는 %조사선택(CALLNAME:MASTER, "를")% 보고 있다.
+    PRINTFORML 놀란 표정을 지으며 능글능글 웃는 %조사선택(CALLNAME:MASTER, "를")% 보고 있다.
 ENDIF
 PRINTW
 
@@ -277,7 +277,7 @@ PRINTW
 @EQUIP_MESSAGE_COM065
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
-	RETURN 0
+    RETURN 0
 
 PRINTL
 PRINTFORML %CALLNAME:TARGET%의 현자의 피의 효과가 끊어진 것 같다.

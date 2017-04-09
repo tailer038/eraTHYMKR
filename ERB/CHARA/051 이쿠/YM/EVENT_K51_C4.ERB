@@ -29,10 +29,10 @@
 @KOJO_51_TRAIN_MESSAGE_S_COM_401
 ;解除時
 IF TEQUIP:70 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -50,10 +50,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_403
 ;解除時
 IF TEQUIP:20 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -64,10 +64,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_404
 ;解除時
 IF TEQUIP:25 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -78,10 +78,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_405
 ;解除時
 IF TEQUIP:32 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -92,10 +92,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_406
 ;解除時
 IF TEQUIP:40 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -141,10 +141,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_412
 ;解除時
 IF TEQUIP:77 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -170,10 +170,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_415
 ;解除時
 IF TEQUIP:74 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -200,10 +200,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_418
 ;解除時
 IF TEQUIP:71 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -215,10 +215,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_419
 ;解除時
 IF TEQUIP:73 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -292,10 +292,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_432
 ;解除時
 IF TEQUIP:26 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -334,10 +334,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_437
 ;解除時
 IF TEQUIP:20 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -348,10 +348,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_438
 ;解除時
 IF TEQUIP:25 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -362,10 +362,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_439
 ;解除時
 IF TEQUIP:20 == 0 && TEQUIP:25 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -401,10 +401,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_443
 ;解除時
 IF TEQUIP:72 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -444,10 +444,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_448
 ;解除時
 IF TEQUIP:79 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 [SKIPEND]
 
@@ -458,22 +458,22 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_449
 ;初回実行時
 IF RESULT:1 == 1
-	PRINTFORMW 「あら…私の事を、よく御存じなのですね…？」
-	PRINTFORMW 「ですが…そんな真似ではとても、空気を読むことは出来ないでしょうね…」
-	PRINTFORMW 衣玖の評価は辛辣だった…
+    PRINTFORMW 「あら…私の事を、よく御存じなのですね…？」
+    PRINTFORMW 「ですが…そんな真似ではとても、空気を読むことは出来ないでしょうね…」
+    PRINTFORMW 衣玖の評価は辛辣だった…
 ;2回目以降
 ELSE
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「およよ…私の真似、好きなんですね…」
-		PRINTFORMW 「それで私は、空気を読んでどうすればいいのでしょうか…」
-		PRINTFORMW 衣玖は困惑している…当たり前である。
-	;その他の場合
-	ELSE
-		PRINTFORMW 「およよ…またですか？」
-		PRINTFORMW 「雷にでも当たって、出直してください」
-		PRINTFORMW 冷たい駄目出しを受けた…
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「およよ…私の真似、好きなんですね…」
+        PRINTFORMW 「それで私は、空気を読んでどうすればいいのでしょうか…」
+        PRINTFORMW 衣玖は困惑している…当たり前である。
+    ;その他の場合
+    ELSE
+        PRINTFORMW 「およよ…またですか？」
+        PRINTFORMW 「雷にでも当たって、出直してください」
+        PRINTFORMW 冷たい駄目出しを受けた…
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -499,10 +499,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_452
 ;解除時
 IF TEQUIP:80 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------

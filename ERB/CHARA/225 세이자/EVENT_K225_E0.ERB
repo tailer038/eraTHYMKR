@@ -16,29 +16,29 @@
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_1
 IF TALENT:150
-	IF RAND:5 == 0
-	PRINTFORMW 「아무리 그래도 그건…」
-	ELSEIF RAND:4 == 0
-	PRINTFORMW 「히, 히익…」
-	ELSEIF RAND:3 == 0
-	PRINTFORMW 「알고 있었지만 그 정도로 변태라니…」
-	ELSEIF RAND:2 == 0
-	PRINTFORMW 「정말 바보아냐?! 휴…」
-	ELSE
-	PRINTFORMW 「…변태」
-	ENDIF
+    IF RAND:5 == 0
+    PRINTFORMW 「아무리 그래도 그건…」
+    ELSEIF RAND:4 == 0
+    PRINTFORMW 「히, 히익…」
+    ELSEIF RAND:3 == 0
+    PRINTFORMW 「알고 있었지만 그 정도로 변태라니…」
+    ELSEIF RAND:2 == 0
+    PRINTFORMW 「정말 바보아냐?! 휴…」
+    ELSE
+    PRINTFORMW 「…변태」
+    ENDIF
 ELSE
-	IF RAND:5 == 0
-	PRINTFORMW 「하, 싫거든-」
-	ELSEIF RAND:4 == 0
-	PRINTFORMW 「헹…, 너 어딘가 맛이 가버린거 아니냐?」
-	ELSEIF RAND:3 == 0
-	PRINTFORMW 「하는 짓도 참 쓰레기답구만…」
-	ELSEIF RAND:2 == 0
-	PRINTFORMW 「뭐?! 그걸 왜 날 시켜?!」
-	ELSE
-	PRINTFORMW 「…왜 내가 네 명령을 들어야 하는데?」
-	ENDIF
+    IF RAND:5 == 0
+    PRINTFORMW 「하, 싫거든-」
+    ELSEIF RAND:4 == 0
+    PRINTFORMW 「헹…, 너 어딘가 맛이 가버린거 아니냐?」
+    ELSEIF RAND:3 == 0
+    PRINTFORMW 「하는 짓도 참 쓰레기답구만…」
+    ELSEIF RAND:2 == 0
+    PRINTFORMW 「뭐?! 그걸 왜 날 시켜?!」
+    ELSE
+    PRINTFORMW 「…왜 내가 네 명령을 들어야 하는데?」
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;강정신약의 반동(조교 중)
@@ -59,10 +59,10 @@ ENDIF
 @K225_MESSAGE_EVENT_4
 ;성공
 IF TFLAG:99 == 3
-	;PRINTFORMW 「공개 노출 라이브 성공시의 대사입니다」
+    ;PRINTFORMW 「공개 노출 라이브 성공시의 대사입니다」
 ;난교
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「공개 노출 라이브에서 난교했을 때의 대사입니다」
+    ;PRINTFORMW 「공개 노출 라이브에서 난교했을 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -159,15 +159,15 @@ ENDIF
 ;-------------------------------------------------
 ;@K225_MESSAGE_EVENT_19
 ;SIF CFLAG:60 >= 1000 && TALENT:100 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;SIF CFLAG:61 >= 2000 && TALENT:102 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;SIF CFLAG:62 >= 2500 && TALENT:104 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;SIF CFLAG:63 >= 5000 && TALENT:106 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;IF CFLAG:64 >= 10000 && TALENT:66 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;ENDIF
 
 ;-------------------------------------------------
@@ -376,7 +376,7 @@ ENDIF
 ;솔직 취득 이벤트(순애 모드)
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_61
-	;PRINTFORMW 「솔직함 취득 이벤트 시의 대사입니다」
+    ;PRINTFORMW 「솔직함 취득 이벤트 시의 대사입니다」
 
 ;-------------------------------------------------
 ;질투 소멸 이벤트(순애 모드)
@@ -396,13 +396,13 @@ ENDIF
 @K225_MESSAGE_EVENT_69
 ;억압과 저항 양쪽이 소멸
 IF TALENT:32 && TALENT:34
-	;PRINTFORMW 「억압과 저항 양쪽이 소멸했을 때의 대사입니다」
+    ;PRINTFORMW 「억압과 저항 양쪽이 소멸했을 때의 대사입니다」
 ;저항만 소멸
 ELSEIF TALENT:34
-	;PRINTFORMW 「저항이 소멸했을 때의 대사입니다」
+    ;PRINTFORMW 「저항이 소멸했을 때의 대사입니다」
 ;억압만 소멸
 ELSEIF TALENT:32
-	;PRINTFORMW 「억압이 소멸했을 때의 대사입니다」
+    ;PRINTFORMW 「억압이 소멸했을 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -453,10 +453,10 @@ ENDIF
 @K225_MESSAGE_EVENT_81
 ;페니스 있음
 IF TALENT:120 || TALENT:121
-	;PRINTFORMW 「음경 취득 이벤트시의 대사입니다」
+    ;PRINTFORMW 「음경 취득 이벤트시의 대사입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「음핵 취득 이벤트시의 대사입니다」
+    ;PRINTFORMW 「음핵 취득 이벤트시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -526,9 +526,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_99
 SIF TFLAG:224 == 555 || ASSIPLAY != 0
-	RETURN 0
+    RETURN 0
 IF RAND:20 < 0
-	;PRINTFORML 「조교 전 조르기 대사입니다」
+    ;PRINTFORML 「조교 전 조르기 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -588,13 +588,13 @@ ENDIF
 @K225_MESSAGE_EVENT_110
 ;이번에 [인기] 취득
 IF TFLAG:99 == 2
-	;PRINTFORMW 「야외 라이브로 인기를 취득했을 때의 대사입니다」
+    ;PRINTFORMW 「야외 라이브로 인기를 취득했을 때의 대사입니다」
 ;성공
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「야외 라이브가 성공했을 때의 대사입니다」
+    ;PRINTFORMW 「야외 라이브가 성공했을 때의 대사입니다」
 ;실패
 ELSE
-	;PRINTFORMW 「야외 라이브가 실패했을 때의 대사입니다」
+    ;PRINTFORMW 「야외 라이브가 실패했을 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -603,9 +603,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_111
 IF TFLAG:99 == 0
-	;PRINTFORMW 「특기 요리 제작시의 대사입니다」
+    ;PRINTFORMW 「특기 요리 제작시의 대사입니다」
 ELSE
-	;PRINTFORMW 「도시락 제작시의 대사입니다」
+    ;PRINTFORMW 「도시락 제작시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -942,10 +942,10 @@ ENDIF
 @K225_MESSAGE_EVENT_170
 ;주인에게
 IF CFLAG:70 == 1
-	;PRINTFORMW 「주인이 임신시켰을 시의 대사입니다」
+    ;PRINTFORMW 「주인이 임신시켰을 시의 대사입니다」
 ;주인 외
 ELSE
-	;PRINTFORMW 「주인 말고 다른 사람이 임신시켰을 시의 대사입니다」
+    ;PRINTFORMW 「주인 말고 다른 사람이 임신시켰을 시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1067,13 +1067,13 @@ ENDIF
 @K225_MESSAGE_EVENT_195
 ;매각시
 IF TFLAG:99 == 130
-	;PRINTFORMW 「노예를 매각해, 소멸할 때의 대사입니다」
+    ;PRINTFORMW 「노예를 매각해, 소멸할 때의 대사입니다」
 ;광기 탈주한 매각시
 ELSEIF TFLAG:99 == 180
-	;PRINTFORMW 「광기 노예를 매각해, 소멸할 때의 대사입니다」
+    ;PRINTFORMW 「광기 노예를 매각해, 소멸할 때의 대사입니다」
 ;해방되어 떠날 때
 ELSEIF TFLAG:99 == 196
-	;PRINTFORMW 「노예를 해방해, 소멸할 때의 대사입니다」
+    ;PRINTFORMW 「노예를 해방해, 소멸할 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1358,9 +1358,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_280
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(좀비페어리)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(좀비페어리)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(좀비페어리)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(좀비페어리)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1369,9 +1369,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_281
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(흡혈귀)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(흡혈귀)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(흡혈귀)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(흡혈귀)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1380,9 +1380,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_282
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(기계)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(기계)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(기계)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(기계)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1391,9 +1391,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_283
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(유령)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(유령)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(유령)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(유령)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1402,9 +1402,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_284
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(인형)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(인형)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(인형)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(인형)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1430,9 +1430,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_309
 IF TFLAG:99 == 0
-	;PRINTFORMW 「진정차 사용 전의 대사입니다」
+    ;PRINTFORMW 「진정차 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「진정차 사용 후의 대사입니다」
+    ;PRINTFORMW 「진정차 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1440,9 +1440,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_310
 IF TFLAG:99 == 0
-	;PRINTFORMW 「영양제 사용 전의 대사입니다」
+    ;PRINTFORMW 「영양제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「영양제 사용 후의 대사입니다」
+    ;PRINTFORMW 「영양제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1450,13 +1450,13 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_311
 IF TFLAG:99 == 0
-	;PRINTFORMW 「후타나리 소거 전의 대사입니다」
+    ;PRINTFORMW 「후타나리 소거 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「후타나리 소거 후의 대사입니다」
+    ;PRINTFORMW 「후타나리 소거 후의 대사입니다」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「후타나리 부가 전의 대사입니다」
+    ;PRINTFORMW 「후타나리 부가 전의 대사입니다」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「후타나리 부가 후의 대사입니다」
+    ;PRINTFORMW 「후타나리 부가 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1464,13 +1464,13 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_312
 IF TFLAG:99 == 0
-	;PRINTFORMW 「후타타마 소거 전의 대사입니다」
+    ;PRINTFORMW 「후타타마 소거 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「후타타마 소거 후의 대사입니다」
+    ;PRINTFORMW 「후타타마 소거 후의 대사입니다」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「후타타마 부가 전의 대사입니다」
+    ;PRINTFORMW 「후타타마 부가 전의 대사입니다」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「후타타마 부가 후의 대사입니다」
+    ;PRINTFORMW 「후타타마 부가 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1496,9 +1496,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_320
 IF TFLAG:99 == 0
-	;PRINTFORMW 「풍유제 사용 전의 대사입니다」
+    ;PRINTFORMW 「풍유제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「풍유제 사용 후의 대사입니다」
+    ;PRINTFORMW 「풍유제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1506,9 +1506,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_321
 IF TFLAG:99 == 0
-	;PRINTFORMW 「축유제 사용 전의 대사입니다」
+    ;PRINTFORMW 「축유제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「축유제 사용 후의 대사입니다」
+    ;PRINTFORMW 「축유제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1516,9 +1516,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_322
 IF TFLAG:99 == 0
-	;PRINTFORMW 「지유제 사용 전의 대사입니다」
+    ;PRINTFORMW 「지유제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「지유제 사용 후의 대사입니다」
+    ;PRINTFORMW 「지유제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1526,9 +1526,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_323
 IF TFLAG:99 == 0
-	;PRINTFORMW 「요실금 개선약 사용 전의 대사입니다」
+    ;PRINTFORMW 「요실금 개선약 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「요실금 개선약 사용 후의 대사입니다」
+    ;PRINTFORMW 「요실금 개선약 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1542,9 +1542,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_330
 IF TFLAG:99 == 0
-	;PRINTFORMW 「빨강 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「빨강 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「빨강 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「빨강 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1552,9 +1552,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_331
 IF TFLAG:99 == 0
-	;PRINTFORMW 「파랑 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「파랑 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「파랑 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「파랑 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1574,9 +1574,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_334
 IF TFLAG:99 == 0
-	;PRINTFORMW 「하양 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「하양 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「하양 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「하양 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1584,9 +1584,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_335
 IF TFLAG:99 == 0
-	;PRINTFORMW 「검정 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「검정 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「검정 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「검정 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1594,9 +1594,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_336
 IF TFLAG:99 == 0
-	;PRINTFORMW 「잿빛 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「잿빛 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「잿빛 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「잿빛 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1622,9 +1622,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_340
 IF TFLAG:99 == 0
-	;PRINTFORMW 「비취빛 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「비취빛 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「비취빛 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「비취빛 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1632,9 +1632,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_341
 IF TFLAG:99 == 0
-	;PRINTFORMW 「감색 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「감색 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「감색 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「감색 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1642,9 +1642,9 @@ ENDIF
 ;-------------------------------------------------
 @K225_MESSAGE_EVENT_342
 IF TFLAG:99 == 0
-	;PRINTFORMW 「분홍빛 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「분홍빛 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「분홍빛 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「분홍빛 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------

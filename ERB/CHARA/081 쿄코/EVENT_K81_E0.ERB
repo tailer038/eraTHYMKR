@@ -36,10 +36,10 @@
 @K81_MESSAGE_EVENT_4
 ;성공
 IF TFLAG:99 == 3
-	;PRINTFORMW 「공개 노출 라이브 성공시의 대사입니다」
+    ;PRINTFORMW 「공개 노출 라이브 성공시의 대사입니다」
 ;난교
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「공개 노출 라이브에서 난교했을 때의 대사입니다」
+    ;PRINTFORMW 「공개 노출 라이브에서 난교했을 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -132,15 +132,15 @@ ENDIF
 ;-------------------------------------------------
 ;@K81_MESSAGE_EVENT_19
 ;SIF CFLAG:60 >= 1000 && TALENT:100 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;SIF CFLAG:61 >= 2000 && TALENT:102 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;SIF CFLAG:62 >= 2500 && TALENT:104 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;SIF CFLAG:63 >= 5000 && TALENT:106 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;IF CFLAG:64 >= 10000 && TALENT:66 == 0
-	;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
+    ;PRINTFORML 「개발도 관련을 지원하는 이벤트시의 대사입니다」
 ;ENDIF
 
 ;-------------------------------------------------
@@ -320,7 +320,7 @@ ENDIF
 ;솔직 취득 이벤트(순애 모드)
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_61
-	;PRINTFORMW 「솔직함 취득 이벤트 시의 대사입니다」
+    ;PRINTFORMW 「솔직함 취득 이벤트 시의 대사입니다」
 
 ;-------------------------------------------------
 ;질투 소멸 이벤트(순애 모드)
@@ -340,13 +340,13 @@ ENDIF
 @K81_MESSAGE_EVENT_69
 ;억압과 저항 양쪽이 소멸
 IF TALENT:32 && TALENT:34
-	;PRINTFORMW 「억압과 저항 양쪽이 소멸했을 때의 대사입니다」
+    ;PRINTFORMW 「억압과 저항 양쪽이 소멸했을 때의 대사입니다」
 ;저항만 소멸
 ELSEIF TALENT:34
-	;PRINTFORMW 「저항이 소멸했을 때의 대사입니다」
+    ;PRINTFORMW 「저항이 소멸했을 때의 대사입니다」
 ;억압만 소멸
 ELSEIF TALENT:32
-	;PRINTFORMW 「억압이 소멸했을 때의 대사입니다」
+    ;PRINTFORMW 「억압이 소멸했을 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -397,10 +397,10 @@ ENDIF
 @K81_MESSAGE_EVENT_81
 ;페니스 있음
 IF TALENT:120 || TALENT:121
-	;PRINTFORMW 「음경 취득 이벤트시의 대사입니다」
+    ;PRINTFORMW 「음경 취득 이벤트시의 대사입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「음핵 취득 이벤트시의 대사입니다」
+    ;PRINTFORMW 「음핵 취득 이벤트시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -470,9 +470,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_99
 SIF TFLAG:224 == 555 || ASSIPLAY != 0
-	RETURN 0
+    RETURN 0
 IF RAND:20 < 0
-	;PRINTFORML 「조교 전 조르기 대사입니다」
+    ;PRINTFORML 「조교 전 조르기 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -532,159 +532,159 @@ ENDIF
 @K81_MESSAGE_EVENT_110
 ;이번에 [인기] 취득
 IF TFLAG:99 == 2
-	;ミスティアが助手で二人が연모
-	IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-		PRINTFORMW 「…お疲れ様でした！」
-		PRINTFORMW 『今日は…いつもより盛り上がってなかった？』
-		PRINTFORMW 「人気が出たって事なのかなぁ」
-		PRINTFORMW 二人は手ごたえを感じながら帰路に付いた。
-	ELSEIF TALENT:연모
-		PRINTFORMW 「今日はいつもより盛り上がっていましたね」
-		PRINTFORMW 「人気者になったって事かなぁ？」
-	;その他
-	ELSE
-		PRINTFORMW 「今日は人多かったですね」
-		PRINTFORMW 「ライブも盛り上がって来て本当に…良かったです！」
-	ENDIF
+    ;ミスティアが助手で二人が연모
+    IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
+        PRINTFORMW 「…お疲れ様でした！」
+        PRINTFORMW 『今日は…いつもより盛り上がってなかった？』
+        PRINTFORMW 「人気が出たって事なのかなぁ」
+        PRINTFORMW 二人は手ごたえを感じながら帰路に付いた。
+    ELSEIF TALENT:연모
+        PRINTFORMW 「今日はいつもより盛り上がっていましたね」
+        PRINTFORMW 「人気者になったって事かなぁ？」
+    ;その他
+    ELSE
+        PRINTFORMW 「今日は人多かったですね」
+        PRINTFORMW 「ライブも盛り上がって来て本当に…良かったです！」
+    ENDIF
 ;성공
 ELSEIF TFLAG:99 == 1
-	;初回実行時
-	IF CFLAG:9901 == 0
-		;ミスティアが助手で二人が연모
-		IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-			PRINTFORMW 『…やった！』
-			PRINTFORMW 「良かった…%CALLNAME:MASTER%さんに変なとこ見られなくて…」
-			PRINTFORMW ライブの成功を噛み締め二人は岐路に着く。
-			PRINTFORMW 慢心すれば次に繋がらないが…
-			PRINTFORMW 今日の所は二人の成功を祝うことにしよう。
-		;연모
-		ELSEIF TALENT:연모
-			PRINTFORMW 「…大成功ですね！」
-			PRINTFORMW 「やっぱり盛り上がるって楽しいなぁ…」
-		;その他
-		ELSE
-			PRINTFORMW 「よかった…失敗しなくて…！」
-			PRINTFORMW どうやらライブに成功したことで喜んでいるようだ。
-		ENDIF
-		CFLAG:9901++
-	ELSE
-	;2回目以降
-		;ミスティアが助手で二人が연모
-		IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모 
-			IF RAND:3 == 0
-				PRINTFORMW 『…今日は成功したねぇ…！』
-				PRINTFORMW 「成功したね！」
-				PRINTFORMW 成功の喜びを噛み締めながら帰路に着いた。
-				PRINTFORMW 次も成功させる、二人ともそう思っているようだ。
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『おつかれー次も頑張ろ！』
-				PRINTFORMW 「おつかれー打ち上げ行こう！」
-				PRINTFORMW 二人とも達成感で胸いっぱいなようだ。
-			ELSE
-				PRINTFORMW 「…おつかれ」
-				PRINTFORMW 『次も盛り上がるといいなぁ…』
-				PRINTFORMW 次のライブのことを考えながら三人は帰路に着く。
-			ENDIF
-		;연모
-		ELSEIF TALENT:연모
-			IF RAND:3 == 0
-				PRINTFORMW 「ふふふ…」
-				PRINTFORMW 「やった！今日も盛り上がりましたね！」
-			ELSEIF RAND:2 == 0 
-				PRINTFORMW 「………」
-				PRINTFORMW 響子は疲労困憊、されど満足したといった表情でぼうっとしている。
-				PRINTFORMW 今日はお疲れ様、そう言うと響子は
-				PRINTFORMW 「はい、ありがとうございます…！」
-				PRINTFORMW 次も盛り上がればいいな、そう呟きながら帰路に付いた。
-			ELSE
-				PRINTFORMW 「ん…今日も…成功して…良かった…」
-				PRINTFORMW 響子は疲労困憊といった様子で肩で息しながら胸をなでおろしている。
-				PRINTFORMW この調子で頼むぞ、と頭を撫でてやると
-				PRINTFORMW 「…ありがとうございます…！」
-				PRINTFORMW 響子は飛びっきりの笑顔を見せながら感謝の言葉をかけてきた。
-			ENDIF	
-		;その他
-		ELSE
-			PRINTFORMW 「盛り上がってよかった…」
-		ENDIF
-	ENDIF
+    ;初回実行時
+    IF CFLAG:9901 == 0
+        ;ミスティアが助手で二人が연모
+        IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
+            PRINTFORMW 『…やった！』
+            PRINTFORMW 「良かった…%CALLNAME:MASTER%さんに変なとこ見られなくて…」
+            PRINTFORMW ライブの成功を噛み締め二人は岐路に着く。
+            PRINTFORMW 慢心すれば次に繋がらないが…
+            PRINTFORMW 今日の所は二人の成功を祝うことにしよう。
+        ;연모
+        ELSEIF TALENT:연모
+            PRINTFORMW 「…大成功ですね！」
+            PRINTFORMW 「やっぱり盛り上がるって楽しいなぁ…」
+        ;その他
+        ELSE
+            PRINTFORMW 「よかった…失敗しなくて…！」
+            PRINTFORMW どうやらライブに成功したことで喜んでいるようだ。
+        ENDIF
+        CFLAG:9901++
+    ELSE
+    ;2回目以降
+        ;ミスティアが助手で二人が연모
+        IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모 
+            IF RAND:3 == 0
+                PRINTFORMW 『…今日は成功したねぇ…！』
+                PRINTFORMW 「成功したね！」
+                PRINTFORMW 成功の喜びを噛み締めながら帰路に着いた。
+                PRINTFORMW 次も成功させる、二人ともそう思っているようだ。
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『おつかれー次も頑張ろ！』
+                PRINTFORMW 「おつかれー打ち上げ行こう！」
+                PRINTFORMW 二人とも達成感で胸いっぱいなようだ。
+            ELSE
+                PRINTFORMW 「…おつかれ」
+                PRINTFORMW 『次も盛り上がるといいなぁ…』
+                PRINTFORMW 次のライブのことを考えながら三人は帰路に着く。
+            ENDIF
+        ;연모
+        ELSEIF TALENT:연모
+            IF RAND:3 == 0
+                PRINTFORMW 「ふふふ…」
+                PRINTFORMW 「やった！今日も盛り上がりましたね！」
+            ELSEIF RAND:2 == 0 
+                PRINTFORMW 「………」
+                PRINTFORMW 響子は疲労困憊、されど満足したといった表情でぼうっとしている。
+                PRINTFORMW 今日はお疲れ様、そう言うと響子は
+                PRINTFORMW 「はい、ありがとうございます…！」
+                PRINTFORMW 次も盛り上がればいいな、そう呟きながら帰路に付いた。
+            ELSE
+                PRINTFORMW 「ん…今日も…成功して…良かった…」
+                PRINTFORMW 響子は疲労困憊といった様子で肩で息しながら胸をなでおろしている。
+                PRINTFORMW この調子で頼むぞ、と頭を撫でてやると
+                PRINTFORMW 「…ありがとうございます…！」
+                PRINTFORMW 響子は飛びっきりの笑顔を見せながら感謝の言葉をかけてきた。
+            ENDIF    
+        ;その他
+        ELSE
+            PRINTFORMW 「盛り上がってよかった…」
+        ENDIF
+    ENDIF
 ;실패
 ELSE
-	;初回実行時
-	IF CFLAG:9900 == 0
-		;ミスティアが助手で二人が연모
-		IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-			PRINTFORMW 『…う～ん…』
-			PRINTFORMW 「…何がダメだったんだろう…」
-			PRINTFORMW 二人は反省しながら帰路に着く。
-			PRINTFORMW この分なら二人はどんどん成長していくだろう、そう思った。
-		;연모
-		ELSEIF TALENT:연모
-			PRINTFORMW 「ごめんなさい…修行不足でした…」
-			PRINTFORMW 「つ、次はもっとうまくやります！」
-		;その他
-		ELSE
-			PRINTFORMW 「………」
-			PRINTFORMW どうやらライブに失敗したのを相当堪えているらしい。
-		ENDIF
-		CFLAG:9900++
-	ELSE
-	;2回目以降
-		;ミスティアが助手で二人が연모
-		IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-			IF RAND:3 == 0
-				PRINTFORMW 『…』
-				PRINTFORMW 「…」
-				PRINTFORMW 二人とも押し黙ったまま帰路に着いた。
-				PRINTFORMW しかし二人とも次は成功させる、そう思っているようだ。
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『…ダメだったね…』
-				PRINTFORMW 「ダメだったね…」
-				PRINTFORMW 帰ったら悪かったところを洗い出して次に生かそう、そう二人に伝えた。
-			ELSE
-				PRINTFORMW 「…無念…」
-				PRINTFORMW 『つ、次は、がんばろ！』
-				PRINTFORMW ミスティアは響子を元気付けている。
-			ENDIF
-		;연모
-		ELSEIF TALENT:연모
-			IF RAND:3 == 0
-				PRINTFORMW 「ん…」
-				PRINTFORMW 「ごめんなさい…もっと頑張らないと…」
-			ELSEIF RAND:2 == 0 
-				PRINTFORMW 「………」
-				PRINTFORMW 響子は意気消沈、といった表情で涙ぐんでいる。
-				PRINTFORMW 次があるさ、こういう時こそ笑おう、そう言うと響子は
-				PRINTFORMW 「はい、頑張ります…！」
-				PRINTFORMW 今度は必ず成功させる、そう誓ったようだ。
-			ELSE
-				PRINTFORMW 「あううう…盛り上がらなかったなぁ…」
-				PRINTFORMW 響子は反省点の多いライブイベントからも色々学んだようだ。
-				PRINTFORMW 次に生かせばいい、反省できるのは良い妖怪だ、と頭を撫でてやると
-				PRINTFORMW 「ん…分かりました、練習して次は、必ず…」
-				PRINTFORMW 響子はリベンジを誓っているようだ。
-			ENDIF	
-		;その他
-		ELSE
-			PRINTFORMW 「うまくいかないなぁ…」
-		ENDIF
-	ENDIF
+    ;初回実行時
+    IF CFLAG:9900 == 0
+        ;ミスティアが助手で二人が연모
+        IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
+            PRINTFORMW 『…う～ん…』
+            PRINTFORMW 「…何がダメだったんだろう…」
+            PRINTFORMW 二人は反省しながら帰路に着く。
+            PRINTFORMW この分なら二人はどんどん成長していくだろう、そう思った。
+        ;연모
+        ELSEIF TALENT:연모
+            PRINTFORMW 「ごめんなさい…修行不足でした…」
+            PRINTFORMW 「つ、次はもっとうまくやります！」
+        ;その他
+        ELSE
+            PRINTFORMW 「………」
+            PRINTFORMW どうやらライブに失敗したのを相当堪えているらしい。
+        ENDIF
+        CFLAG:9900++
+    ELSE
+    ;2回目以降
+        ;ミスティアが助手で二人が연모
+        IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
+            IF RAND:3 == 0
+                PRINTFORMW 『…』
+                PRINTFORMW 「…」
+                PRINTFORMW 二人とも押し黙ったまま帰路に着いた。
+                PRINTFORMW しかし二人とも次は成功させる、そう思っているようだ。
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『…ダメだったね…』
+                PRINTFORMW 「ダメだったね…」
+                PRINTFORMW 帰ったら悪かったところを洗い出して次に生かそう、そう二人に伝えた。
+            ELSE
+                PRINTFORMW 「…無念…」
+                PRINTFORMW 『つ、次は、がんばろ！』
+                PRINTFORMW ミスティアは響子を元気付けている。
+            ENDIF
+        ;연모
+        ELSEIF TALENT:연모
+            IF RAND:3 == 0
+                PRINTFORMW 「ん…」
+                PRINTFORMW 「ごめんなさい…もっと頑張らないと…」
+            ELSEIF RAND:2 == 0 
+                PRINTFORMW 「………」
+                PRINTFORMW 響子は意気消沈、といった表情で涙ぐんでいる。
+                PRINTFORMW 次があるさ、こういう時こそ笑おう、そう言うと響子は
+                PRINTFORMW 「はい、頑張ります…！」
+                PRINTFORMW 今度は必ず成功させる、そう誓ったようだ。
+            ELSE
+                PRINTFORMW 「あううう…盛り上がらなかったなぁ…」
+                PRINTFORMW 響子は反省点の多いライブイベントからも色々学んだようだ。
+                PRINTFORMW 次に生かせばいい、反省できるのは良い妖怪だ、と頭を撫でてやると
+                PRINTFORMW 「ん…分かりました、練習して次は、必ず…」
+                PRINTFORMW 響子はリベンジを誓っているようだ。
+            ENDIF    
+        ;その他
+        ELSE
+            PRINTFORMW 「うまくいかないなぁ…」
+        ENDIF
+    ENDIF
 ENDIF
 
 ;선물 받을 때의 대사도 있습니다만 현 시스템에선 출력이 안 됩니다. T
 [SKIPSTART]
 ;ミスティアが助手で二人が연모
 IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-	PRINTFORMW 「ありがとーみんなありがとー！」
-	PRINTFORMW 『応援ありがとう！みんなに貰ったの、大事にするね！』
-	PRINTFORMW 二人はプレゼント以外にも大切なモノを貰っているようだ。
+    PRINTFORMW 「ありがとーみんなありがとー！」
+    PRINTFORMW 『応援ありがとう！みんなに貰ったの、大事にするね！』
+    PRINTFORMW 二人はプレゼント以外にも大切なモノを貰っているようだ。
 ELSEIF TALENT:연모
-	PRINTFORMW 「ありがとう！みんな！」
-	PRINTFORMW 「こんなにいっぱい…ありがとう！」
+    PRINTFORMW 「ありがとう！みんな！」
+    PRINTFORMW 「こんなにいっぱい…ありがとう！」
 ;その他
 ELSE
-	PRINTFORMW 「あ…ありがとうございました！」
-	PRINTFORMW 「ライブも盛り上がって…本当に…ありがとう！」
+    PRINTFORMW 「あ…ありがとうございました！」
+    PRINTFORMW 「ライブも盛り上がって…本当に…ありがとう！」
 ENDIF
 [SKIPEND]
 
@@ -694,9 +694,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_111
 IF TFLAG:99 == 0
-	;PRINTFORMW 「특기 요리 제작시의 대사입니다」
+    ;PRINTFORMW 「특기 요리 제작시의 대사입니다」
 ELSE
-	;PRINTFORMW 「도시락 제작시의 대사입니다」
+    ;PRINTFORMW 「도시락 제작시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -880,10 +880,10 @@ ENDIF
 @K81_MESSAGE_EVENT_140
 ;연모
 IF TALENT:연모
-		PRINTFORMW 「じゅる…れろ…ん…おはよーございま～す！」
+        PRINTFORMW 「じゅる…れろ…ん…おはよーございま～す！」
 ;その他
 ELSE
-	PRINTFORMW 「ん…じゅる…元気ですか～？」
+    PRINTFORMW 「ん…じゅる…元気ですか～？」
 ENDIF
 
 ;-------------------------------------------------
@@ -893,13 +893,13 @@ ENDIF
 @K81_MESSAGE_EVENT_141
 ;연모
 IF TALENT:연모
-		PRINTFORMW 「おはよーございま～す！」
-		PRINTFORMW 「今日も元気ですか～？」
-		PRINTFORMW そう言いながら薄っぺらい胸で陰茎を扱いてくる。
+        PRINTFORMW 「おはよーございま～す！」
+        PRINTFORMW 「今日も元気ですか～？」
+        PRINTFORMW そう言いながら薄っぺらい胸で陰茎を扱いてくる。
 ;その他
 ELSE
-	PRINTFORMW 「ん～うまくできないよぉ…」
-	PRINTFORMW 響子は布団の中で必死に陰茎を胸で擦り上げている。
+    PRINTFORMW 「ん～うまくできないよぉ…」
+    PRINTFORMW 響子は布団の中で必死に陰茎を胸で擦り上げている。
 ENDIF
 
 ;-------------------------------------------------
@@ -909,12 +909,12 @@ ENDIF
 @K81_MESSAGE_EVENT_142
 ;연모
 IF TALENT:연모
-		PRINTFORMW 「んあ…朝から頂いてます…♪」
-		PRINTFORMW そう言いながら響子は騎乗位で精液を搾り取ってくる。
+        PRINTFORMW 「んあ…朝から頂いてます…♪」
+        PRINTFORMW そう言いながら響子は騎乗位で精液を搾り取ってくる。
 ;その他
 ELSE
-	PRINTFORMW 「ん…おはよーございまーす！」
-	PRINTFORMW そう言いながら響子は騎乗位で精液を搾り取っている。
+    PRINTFORMW 「ん…おはよーございまーす！」
+    PRINTFORMW そう言いながら響子は騎乗位で精液を搾り取っている。
 ENDIF
 
 ;-------------------------------------------------
@@ -924,12 +924,12 @@ ENDIF
 @K81_MESSAGE_EVENT_143
 ;연모
 IF TALENT:연모
-		PRINTFORMW 「んちゅ…♪」
-		PRINTFORMW 「えへへ、おはようのキスですよ！」
+        PRINTFORMW 「んちゅ…♪」
+        PRINTFORMW 「えへへ、おはようのキスですよ！」
 ;その他
 ELSE
-	PRINTFORMW 「ん…ちゅ…」
-	PRINTFORMW 「おはよ～ございます！」
+    PRINTFORMW 「ん…ちゅ…」
+    PRINTFORMW 「おはよ～ございます！」
 ENDIF
 
 ;-------------------------------------------------
@@ -960,10 +960,10 @@ ENDIF
 @K81_MESSAGE_EVENT_147
 ;연모
 IF TALENT:연모
-		PRINTFORMW 「お尻にいっぱい…入ってる…」
+        PRINTFORMW 「お尻にいっぱい…入ってる…」
 ;その他
 ELSE
-	PRINTFORMW 「ん…お尻…大きいの入ってくる…！」
+    PRINTFORMW 「ん…お尻…大きいの入ってくる…！」
 ENDIF
 
 ;-------------------------------------------------
@@ -1070,10 +1070,10 @@ ENDIF
 @K81_MESSAGE_EVENT_170
 ;주인에게
 IF CFLAG:70 == 1
-	;PRINTFORMW 「주인이 임신시켰을 시의 대사입니다」
+    ;PRINTFORMW 「주인이 임신시켰을 시의 대사입니다」
 ;주인 외
 ELSE
-	;PRINTFORMW 「주인 말고 다른 사람이 임신시켰을 시의 대사입니다」
+    ;PRINTFORMW 「주인 말고 다른 사람이 임신시켰을 시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1195,13 +1195,13 @@ ENDIF
 @K81_MESSAGE_EVENT_195
 ;매각시
 IF TFLAG:99 == 130
-	;PRINTFORMW 「노예를 매각해, 소멸할 때의 대사입니다」
+    ;PRINTFORMW 「노예를 매각해, 소멸할 때의 대사입니다」
 ;광기 탈주한 매각시
 ELSEIF TFLAG:99 == 180
-	;PRINTFORMW 「광기 노예를 매각해, 소멸할 때의 대사입니다」
+    ;PRINTFORMW 「광기 노예를 매각해, 소멸할 때의 대사입니다」
 ;해방되어 떠날 때
 ELSEIF TFLAG:99 == 196
-	;PRINTFORMW 「노예를 해방해, 소멸할 때의 대사입니다」
+    ;PRINTFORMW 「노예를 해방해, 소멸할 때의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1486,9 +1486,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_280
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(좀비페어리)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(좀비페어리)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(좀비페어리)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(좀비페어리)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1497,9 +1497,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_281
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(흡혈귀)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(흡혈귀)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(흡혈귀)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(흡혈귀)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1508,9 +1508,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_282
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(기계)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(기계)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(기계)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(기계)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1519,9 +1519,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_283
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(유령)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(유령)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(유령)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(유령)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1530,9 +1530,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_284
 IF TFLAG:99 == 0
-	;PRINTFORMW 「종족 개조 이벤트 전(인형)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 전(인형)의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「종족 개조 이벤트 후(인형)의 대사입니다」
+    ;PRINTFORMW 「종족 개조 이벤트 후(인형)의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1558,9 +1558,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_309
 IF TFLAG:99 == 0
-	;PRINTFORMW 「진정차 사용 전의 대사입니다」
+    ;PRINTFORMW 「진정차 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「진정차 사용 후의 대사입니다」
+    ;PRINTFORMW 「진정차 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1568,9 +1568,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_310
 IF TFLAG:99 == 0
-	;PRINTFORMW 「영양제 사용 전의 대사입니다」
+    ;PRINTFORMW 「영양제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「영양제 사용 후의 대사입니다」
+    ;PRINTFORMW 「영양제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1578,13 +1578,13 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_311
 IF TFLAG:99 == 0
-	;PRINTFORMW 「후타나리 소거 전의 대사입니다」
+    ;PRINTFORMW 「후타나리 소거 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「후타나리 소거 후의 대사입니다」
+    ;PRINTFORMW 「후타나리 소거 후의 대사입니다」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「후타나리 부가 전의 대사입니다」
+    ;PRINTFORMW 「후타나리 부가 전의 대사입니다」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「후타나리 부가 후의 대사입니다」
+    ;PRINTFORMW 「후타나리 부가 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1592,13 +1592,13 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_312
 IF TFLAG:99 == 0
-	;PRINTFORMW 「후타타마 소거 전의 대사입니다」
+    ;PRINTFORMW 「후타타마 소거 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「후타타마 소거 후의 대사입니다」
+    ;PRINTFORMW 「후타타마 소거 후의 대사입니다」
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「후타타마 부가 전의 대사입니다」
+    ;PRINTFORMW 「후타타마 부가 전의 대사입니다」
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「후타타마 부가 후의 대사입니다」
+    ;PRINTFORMW 「후타타마 부가 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1624,9 +1624,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_320
 IF TFLAG:99 == 0
-	;PRINTFORMW 「풍유제 사용 전의 대사입니다」
+    ;PRINTFORMW 「풍유제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「풍유제 사용 후의 대사입니다」
+    ;PRINTFORMW 「풍유제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1634,9 +1634,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_321
 IF TFLAG:99 == 0
-	;PRINTFORMW 「축유제 사용 전의 대사입니다」
+    ;PRINTFORMW 「축유제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「축유제 사용 후의 대사입니다」
+    ;PRINTFORMW 「축유제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1644,9 +1644,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_322
 IF TFLAG:99 == 0
-	;PRINTFORMW 「지유제 사용 전의 대사입니다」
+    ;PRINTFORMW 「지유제 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「지유제 사용 후의 대사입니다」
+    ;PRINTFORMW 「지유제 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1654,9 +1654,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_323
 IF TFLAG:99 == 0
-	;PRINTFORMW 「요실금 개선약 사용 전의 대사입니다」
+    ;PRINTFORMW 「요실금 개선약 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「요실금 개선약 사용 후의 대사입니다」
+    ;PRINTFORMW 「요실금 개선약 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1670,9 +1670,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_330
 IF TFLAG:99 == 0
-	;PRINTFORMW 「빨강 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「빨강 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「빨강 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「빨강 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1680,9 +1680,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_331
 IF TFLAG:99 == 0
-	;PRINTFORMW 「파랑 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「파랑 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「파랑 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「파랑 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1702,9 +1702,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_334
 IF TFLAG:99 == 0
-	;PRINTFORMW 「하양 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「하양 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「하양 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「하양 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1712,9 +1712,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_335
 IF TFLAG:99 == 0
-	;PRINTFORMW 「검정 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「검정 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「검정 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「검정 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1722,9 +1722,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_336
 IF TFLAG:99 == 0
-	;PRINTFORMW 「잿빛 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「잿빛 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「잿빛 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「잿빛 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1750,9 +1750,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_340
 IF TFLAG:99 == 0
-	;PRINTFORMW 「비취빛 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「비취빛 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「비취빛 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「비취빛 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1760,9 +1760,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_341
 IF TFLAG:99 == 0
-	;PRINTFORMW 「감색 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「감색 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「감색 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「감색 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -1770,9 +1770,9 @@ ENDIF
 ;-------------------------------------------------
 @K81_MESSAGE_EVENT_342
 IF TFLAG:99 == 0
-	;PRINTFORMW 「분홍빛 사탕 사용 전의 대사입니다」
+    ;PRINTFORMW 「분홍빛 사탕 사용 전의 대사입니다」
 ELSEIF TFLAG:99 == 1
-	;PRINTFORMW 「분홍빛 사탕 사용 후의 대사입니다」
+    ;PRINTFORMW 「분홍빛 사탕 사용 후의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------

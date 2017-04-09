@@ -31,14 +31,14 @@ PRINTL [1] 아니오
 $INPUT_LOOP_1
 INPUT
 IF RESULT == 0
-	PRINTFORMW 순종 Lv이 0이 되었습니다.
-	PRINTFORMW 봉사정신 Lv이 0이 되었습니다.
-	ABL:10 = 0
-	ABL:13 = 0
+    PRINTFORMW 순종 Lv이 0이 되었습니다.
+    PRINTFORMW 봉사정신 Lv이 0이 되었습니다.
+    ABL:10 = 0
+    ABL:13 = 0
 ELSEIF RESULT == 1
-	PRINTFORMW 통상 모드로 구입합니다.
+    PRINTFORMW 통상 모드로 구입합니다.
 ELSE
-	GOTO INPUT_LOOP_1
+    GOTO INPUT_LOOP_1
 ENDIF
 
 ;==================================================
@@ -47,28 +47,28 @@ ENDIF
 @EVENTTRAIN
 ;말표시를 OFF의 경우는 돌아온다
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 15
-	RETURN 0
+    RETURN 0
 ;자고 있는 경우는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;구가가 있는 경우도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절중도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;정신 붕괴하면(자) 말해 주지 않는다
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 DRAWLINE
 
 ;조교 개시 말분기
 IF CFLAG:5201 == 0
-	TRYCALL K15_MESSAGE_START_1
+    TRYCALL K15_MESSAGE_START_1
 ELSE
-	TRYCALL K15_MESSAGE_START_2
+    TRYCALL K15_MESSAGE_START_2
 ENDIF
 
 ;-------------------------------------------------
@@ -85,25 +85,25 @@ CFLAG:5201 = 1
 ;-------------------------------------------------
 @K15_MESSAGE_START_2
 IF TALENT:150 && CFLAG:7000 == 2
-	PRINTFORMW 「주인님, 오늘은 무엇을 합니까?」
+    PRINTFORMW 「주인님, 오늘은 무엇을 합니까?」
 ELSEIF TALENT:150
-	PRINTFORMW 「주인님, 와 주셨네요」
-	PRINTFORMW 「저, 당신을 좋아하게 된 것 같아요」
-	PRINTFORMW 「이제 여기로부터 나가고 싶단 말도, 주인님에게 반항도 하지 않을게요」
-	PRINTFORMW 「노예로 있어도 좋으니까, 여기에 두어 주세요……」
-	CFLAG:7000 = 2
+    PRINTFORMW 「주인님, 와 주셨네요」
+    PRINTFORMW 「저, 당신을 좋아하게 된 것 같아요」
+    PRINTFORMW 「이제 여기로부터 나가고 싶단 말도, 주인님에게 반항도 하지 않을게요」
+    PRINTFORMW 「노예로 있어도 좋으니까, 여기에 두어 주세요……」
+    CFLAG:7000 = 2
 ELSEIF MARK:2 >= 3 && CFLAG:7000 == 1
-	PRINTFORMW 「네, 조교의 시간이군요……부탁합니다」
+    PRINTFORMW 「네, 조교의 시간이군요……부탁합니다」
 ELSEIF MARK:2 >= 3
-	PRINTFORMW 「……이제, 저항은 하지 않을 테니까」
-	PRINTFORMW 「빨리……기분 좋게 해주세요」
-	CFLAG:7000 = 1
+    PRINTFORMW 「……이제, 저항은 하지 않을 테니까」
+    PRINTFORMW 「빨리……기분 좋게 해주세요」
+    CFLAG:7000 = 1
 ELSEIF MARK:2 == 2
-	PRINTFORMW 「당신이 오는 걸, 기, 기대한 게 아녜요……」
+    PRINTFORMW 「당신이 오는 걸, 기, 기대한 게 아녜요……」
 ELSEIF MARK:2 == 1
-	PRINTFORMW 「……무엇을 생각하고 있는 건가요」
+    PRINTFORMW 「……무엇을 생각하고 있는 건가요」
 ELSE
-	PRINTFORMW 「제게는 할 일이 있어요, 놓아 주세요!」
+    PRINTFORMW 「제게는 할 일이 있어요, 놓아 주세요!」
 ENDIF
 ;==================================================
 ;조교 종료시의 말
@@ -111,21 +111,21 @@ ENDIF
 @EVENTEND
 ;말표시를 OFF의 경우는 돌아온다
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 15
-	RETURN 0
+    RETURN 0
 ;자고 있는 경우는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;구가가 있는 경우도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절중도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;정신 붕괴하면(자) 말해 주지 않는다
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 DRAWLINE
 TRYCALL K15_MESSAGE_END
 
@@ -134,31 +134,31 @@ TRYCALL K15_MESSAGE_END
 ;--------------------------------------------------
 @K15_MESSAGE_END
 IF TALENT:150 && CFLAG:7000 == 2
-	SELECTCASE RAND:3
-		CASE 0
-			PRINTFORMW 「다음에도, 야한 일 많이 해요」
-		CASE 1
-			PRINTFORMW 「후후, 또 오실 거죠?」
-		CASE 2
-			PRINTFORMW 「벌써 끝인가요? 좀 더 하고 싶어요-」
-	ENDSELECT
+    SELECTCASE RAND:3
+        CASE 0
+            PRINTFORMW 「다음에도, 야한 일 많이 해요」
+        CASE 1
+            PRINTFORMW 「후후, 또 오실 거죠?」
+        CASE 2
+            PRINTFORMW 「벌써 끝인가요? 좀 더 하고 싶어요-」
+    ENDSELECT
 ELSEIF TALENT:150
-	PRINTFORMW 「저, 당신을 만날 수 있어서 좋았어요」
-	PRINTFORMW 「이렇게 멋진 일이 생길 줄 몰랐어요」
-	PRINTFORMW 「앞으로도, 야한 일 많이 해주세요……」
-	CFLAG:7001 = 2
+    PRINTFORMW 「저, 당신을 만날 수 있어서 좋았어요」
+    PRINTFORMW 「이렇게 멋진 일이 생길 줄 몰랐어요」
+    PRINTFORMW 「앞으로도, 야한 일 많이 해주세요……」
+    CFLAG:7001 = 2
 ELSEIF MARK:2 >= 3 && CFLAG:7001 == 1
-	PRINTFORMW 「벌써 끝났나요? 다음엔 좀 더 노력할게요」
+    PRINTFORMW 「벌써 끝났나요? 다음엔 좀 더 노력할게요」
 ELSEIF MARK:2 >= 3
-	PRINTFORMW 「괜찮습니다, 이제 도망칠 생각은 없어요」
-	PRINTFORMW 「……다음에도, 잘 부탁드립니다」
-	CFLAG:7001 = 1
+    PRINTFORMW 「괜찮습니다, 이제 도망칠 생각은 없어요」
+    PRINTFORMW 「……다음에도, 잘 부탁드립니다」
+    CFLAG:7001 = 1
 ELSEIF MARK:2 == 2
-	PRINTFORMW 「다음엔 무엇을 할 생각입니까?」
+    PRINTFORMW 「다음엔 무엇을 할 생각입니까?」
 ELSEIF MARK:2 == 1
-	PRINTFORMW 「빨리 이런 일 그만두어 주세요!」
+    PRINTFORMW 「빨리 이런 일 그만두어 주세요!」
 ELSE
-	PRINTFORMW 「저에게, 무엇을 기대하는 건가요……?」
+    PRINTFORMW 「저에게, 무엇을 기대하는 건가요……?」
 ENDIF
 
 ;==================================================
@@ -169,30 +169,30 @@ ENDIF
 @KOJO_MESSAGE_PALAMCNG_15
 ;자고 있는 경우는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;구가가 있는 경우도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절중도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;정신 붕괴하면(자) 말해 주지 않는다
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 ;처음으로 PALAM가 LV2 넘었을 때의 말호출
 FOR LOCAL, 0, 35
-	SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
-		TRYCALLFORM K15_MESSAGE_OVERLV2_{LOCAL}
+    SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
+        TRYCALLFORM K15_MESSAGE_OVERLV2_{LOCAL}
 NEXT
 ;절정시의 말호출
 FOR LOCAL, 0, 50
-	SIF NOWEX:LOCAL
-		TRYCALLFORM K15_MESSAGE_ORGASM_{LOCAL}
+    SIF NOWEX:LOCAL
+        TRYCALLFORM K15_MESSAGE_ORGASM_{LOCAL}
 NEXT
 ;사정시켰다
 FOR LOCAL, 8, 30
-	SIF TFLAG:LOCAL
-		TRYCALLFORM K15_MESSAGE_EJAC_PLAYER_{LOCAL}
+    SIF TFLAG:LOCAL
+        TRYCALLFORM K15_MESSAGE_EJAC_PLAYER_{LOCAL}
 NEXT
 
 ;==================================================
@@ -235,16 +235,16 @@ CFLAG:5337 = 1
 @K15_MESSAGE_ORGASM_0
 ;처음
 IF CFLAG:5300 == 0
-	PRINTFORMW 「앗, 싫어어!」
-	CFLAG:5300 = 1
+    PRINTFORMW 「앗, 싫어어!」
+    CFLAG:5300 = 1
 ;2번째 이후
 ELSE
-	;C절정 50이상
-	IF EX:0 >= 50
-		PRINTFORMW 「그, 그렇게 만지면, 아, 아아앙!!!」
-	ELSEIF RAND:5 == 0
-		PRINTFORMW 「아아, 안됏, 나 가버려……엇!!」
-	ENDIF
+    ;C절정 50이상
+    IF EX:0 >= 50
+        PRINTFORMW 「그, 그렇게 만지면, 아, 아아앙!!!」
+    ELSEIF RAND:5 == 0
+        PRINTFORMW 「아아, 안됏, 나 가버려……엇!!」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -253,16 +253,16 @@ ENDIF
 @K15_MESSAGE_ORGASM_1
 ;처음
 IF CFLAG:5301 == 0
-	PRINTFORMW 「아앗, 더 이상 참을 수 없, 엇!」
-	CFLAG:5301 = 1
+    PRINTFORMW 「아앗, 더 이상 참을 수 없, 엇!」
+    CFLAG:5301 = 1
 ;2번째 이후
 ELSE
-	;V절정 50이상
-	IF EX:1 >= 50
-		PRINTFORMW 「으아아앗, 가버려, 가버려어엇!!」
-	ELSEIF RAND:5 == 0
-		PRINTFORMW 「응, 응아앗, 아아아아앗!」
-	ENDIF
+    ;V절정 50이상
+    IF EX:1 >= 50
+        PRINTFORMW 「으아아앗, 가버려, 가버려어엇!!」
+    ELSEIF RAND:5 == 0
+        PRINTFORMW 「응, 응아앗, 아아아아앗!」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -271,16 +271,16 @@ ENDIF
 @K15_MESSAGE_ORGASM_2
 ;처음
 IF CFLAG:5302 == 0
-	PRINTFORMW 「히익, 어, 엉덩이로……가버려어!」
-	CFLAG:5302 = 1
+    PRINTFORMW 「히익, 어, 엉덩이로……가버려어!」
+    CFLAG:5302 = 1
 ;2번째 이후
 ELSE
-	;A절정 50이상
-	IF EX:2 >= 50
-		PRINTFORMW 「엉덩이 망가져버려, 시러어어엇!」
-	ELSEIF RAND:5 == 0
-		PRINTFORMW 「아하앙, 아, 안돼! 엉덩이 좋아앗!」
-	ENDIF
+    ;A절정 50이상
+    IF EX:2 >= 50
+        PRINTFORMW 「엉덩이 망가져버려, 시러어어엇!」
+    ELSEIF RAND:5 == 0
+        PRINTFORMW 「아하앙, 아, 안돼! 엉덩이 좋아앗!」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -289,16 +289,16 @@ ENDIF
 @K15_MESSAGE_ORGASM_3
 ;처음
 IF CFLAG:5303 == 0
-	PRINTFORMW 「젖가슴 안돼엣……아하아앗!」
-	CFLAG:5303 = 1
+    PRINTFORMW 「젖가슴 안돼엣……아하아앗!」
+    CFLAG:5303 = 1
 ;2번째 이후
 ELSE
-	;B절정 50이상
-	IF EX:3 >= 50
-		PRINTFORMW 「아앗, 또 젖가슴 가버려……!」
-	ELSEIF RAND:5 == 0
-		PRINTFORMW 「그렇게 가슴 만지면 안돼……후아, 아아앙!」
-	ENDIF
+    ;B절정 50이상
+    IF EX:3 >= 50
+        PRINTFORMW 「아앗, 또 젖가슴 가버려……!」
+    ELSEIF RAND:5 == 0
+        PRINTFORMW 「그렇게 가슴 만지면 안돼……후아, 아아앙!」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -307,23 +307,23 @@ ENDIF
 @K15_MESSAGE_ORGASM_10
 ;처음
 IF CFLAG:5304 == 0
-	PRINTFORMW 「아니, 뭐야, 이거……나, 어떻게 된 거야……」
-	CFLAG:5304 = 1
+    PRINTFORMW 「아니, 뭐야, 이거……나, 어떻게 된 거야……」
+    CFLAG:5304 = 1
 ;2번째 이후
 ELSE
-	IF TALENT:170
-		IF RAND:2 == 0
-			PRINTFORMW 「아웃, 하웃, 젖가슴, 나와 버려엇……!」
-		ELSE
-			PRINTFORMW 「주인님, 잔뜩 젖가슴 와버려어어엇!」
-		ENDIF
-	ELSE
-		IF RAND:2 == 0
-			PRINTFORMW 「아앗, 젖가슴 멈추지 않아욧!」
-		ELSE
-			PRINTFORMW 「하앗, 젖가슴 나와 버렷!」
-		ENDIF
-	ENDIF
+    IF TALENT:170
+        IF RAND:2 == 0
+            PRINTFORMW 「아웃, 하웃, 젖가슴, 나와 버려엇……!」
+        ELSE
+            PRINTFORMW 「주인님, 잔뜩 젖가슴 와버려어어엇!」
+        ENDIF
+    ELSE
+        IF RAND:2 == 0
+            PRINTFORMW 「아앗, 젖가슴 멈추지 않아욧!」
+        ELSE
+            PRINTFORMW 「하앗, 젖가슴 나와 버렷!」
+        ENDIF
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -332,24 +332,24 @@ ENDIF
 @K15_MESSAGE_ORGASM_11
 ;처음
 IF CFLAG:5305 == 0
-	PRINTFORMW 「아, 뭔가 오고 있어, 후앗, 아하아아아앗!!」
-	CFLAG:5305 = 1
+    PRINTFORMW 「아, 뭔가 오고 있어, 후앗, 아하아아아앗!!」
+    CFLAG:5305 = 1
 ;2번째 이후
 ELSE
-	SELECTCASE RAND:(TALENT:170 ? 6 # 2)
-		CASE 0
-			PRINTFORMW 「후아앗, 또 하얀 거 나와아아앗!!」
-		CASE 1
-			PRINTFORMW 「안됏, 자지 멈추지 않아, 멈출 수 없어엇!!」
-		CASE 2
-			PRINTFORMW 「주인님, 하얀 거 나와요오옷!!」
-		CASE 3
-			PRINTFORMW 「하이잇, 자지 가버렷, 우아아아아앗!!」
-		CASE 4
-			PRINTFORMW 「우아앗! 사정- 멈출 수 없엇!」
-		CASE 5
-			PRINTFORMW 「안됏, 사정해버렷, 멈출 수 없어엇!」
-	ENDSELECT
+    SELECTCASE RAND:(TALENT:170 ? 6 # 2)
+        CASE 0
+            PRINTFORMW 「후아앗, 또 하얀 거 나와아아앗!!」
+        CASE 1
+            PRINTFORMW 「안됏, 자지 멈추지 않아, 멈출 수 없어엇!!」
+        CASE 2
+            PRINTFORMW 「주인님, 하얀 거 나와요오옷!!」
+        CASE 3
+            PRINTFORMW 「하이잇, 자지 가버렷, 우아아아아앗!!」
+        CASE 4
+            PRINTFORMW 「우아앗! 사정- 멈출 수 없엇!」
+        CASE 5
+            PRINTFORMW 「안됏, 사정해버렷, 멈출 수 없어엇!」
+    ENDSELECT
 ENDIF
 
 ;-------------------------------------------------
@@ -358,14 +358,14 @@ ENDIF
 ;-------------------------------------------------
 @K15_MESSAGE_ORGASM_12
 SIF SELECTCOM == 111 || SELECTCOM == 620
-	RETURN 0
+    RETURN 0
 ;처음
 IF CFLAG:5306 == 0
-	PRINTFORMW 「싫엇, 흘려, 버렸어……」
-	CFLAG:5306 = 1
+    PRINTFORMW 「싫엇, 흘려, 버렸어……」
+    CFLAG:5306 = 1
 ;2번째 이후
 ELSEIF RAND:3 == 0
-	PRINTFORMW 「안돼, 또 흘려 버려……」
+    PRINTFORMW 「안돼, 또 흘려 버려……」
 ENDIF
 
 ;-------------------------------------------------
@@ -380,14 +380,14 @@ PRINTFORMW 「안돼, 아…… 안에는, 아니구나……」
 @K15_MESSAGE_EJAC_PLAYER_9
 ;주인의 페니스
 IF TFLAG:35
-	IF TALENT:150
-		PRINTFORMW 「저, 할 수 있으면 앞으로 갖고 싶은데요……안 되나요?」
-	ELSE
-		PRINTFORMW 「그, 그런 곳에서 내지 말고 밖에 내 주세요!」
-	ENDIF
+    IF TALENT:150
+        PRINTFORMW 「저, 할 수 있으면 앞으로 갖고 싶은데요……안 되나요?」
+    ELSE
+        PRINTFORMW 「그, 그런 곳에서 내지 말고 밖에 내 주세요!」
+    ENDIF
 ;그 이외
 ELSE
-	PRINTFORMW 「우우, 엉덩이가 뜨거워요……」
+    PRINTFORMW 「우우, 엉덩이가 뜨거워요……」
 ENDIF
 
 ;-------------------------------------------------
@@ -396,18 +396,18 @@ ENDIF
 @K15_MESSAGE_EJAC_PLAYER_10
 ;주인의 페니스
 IF TFLAG:35
-	IF TALENT:150
-		IF RAND:2 == 0
-			PRINTFORMW 「좀 더, 가득, 사정해 주세요……」
-		ELSE
-			PRINTFORMW 「앙, 흘러넘쳐 버렸네요」
-		ENDIF
-	ELSE
-		PRINTFORMW 「아, 안돼, 안에다 내면!」
-	ENDIF
+    IF TALENT:150
+        IF RAND:2 == 0
+            PRINTFORMW 「좀 더, 가득, 사정해 주세요……」
+        ELSE
+            PRINTFORMW 「앙, 흘러넘쳐 버렸네요」
+        ENDIF
+    ELSE
+        PRINTFORMW 「아, 안돼, 안에다 내면!」
+    ENDIF
 ;그 이외
 ELSE
-	PRINTFORMW 「아, 안돼, 안에 내면 안돼엣!」
+    PRINTFORMW 「아, 안돼, 안에 내면 안돼엣!」
 ENDIF
 
 ;-------------------------------------------------
@@ -415,31 +415,31 @@ ENDIF
 ;-------------------------------------------------
 @K15_MESSAGE_EJAC_PLAYER_11
 IF TALENT:150
-	PRINTFORMW 「응구읏, 어때요, 잘 됐어요?」
+    PRINTFORMW 「응구읏, 어때요, 잘 됐어요?」
 ELSE
-	PRINTFORMW 「응구읏, 브하아…… 나오고 있네요」
+    PRINTFORMW 「응구읏, 브하아…… 나오고 있네요」
 ENDIF
 
 ;페라로 사정 후, 더러운 걸 핥을 때
 IF TFLAG:10 > 0
-	IF TALENT:150
-		IF RAND:2 == 0
-			PRINTFORMW 「……후후, 깨끗하게 해줄게요」
-		ELSE
-			PRINTFORMW 「또, 나오고 있네요, 넘쳐버리겠어요」
-		ENDIF
-	ELSE
-		PRINTFORMW 「응구, 더 하고 싶어요?」
-	ENDIF
+    IF TALENT:150
+        IF RAND:2 == 0
+            PRINTFORMW 「……후후, 깨끗하게 해줄게요」
+        ELSE
+            PRINTFORMW 「또, 나오고 있네요, 넘쳐버리겠어요」
+        ENDIF
+    ELSE
+        PRINTFORMW 「응구, 더 하고 싶어요?」
+    ENDIF
 ENDIF
 ;-------------------------------------------------
 ;손으로 사정
 ;-------------------------------------------------
 @K15_MESSAGE_EJAC_PLAYER_12
 IF TALENT:150
-	PRINTFORMW 「후후, 변함 없이 주인님의 것은 바닥나지 않네요」
+    PRINTFORMW 「후후, 변함 없이 주인님의 것은 바닥나지 않네요」
 ELSE
-	PRINTFORMW 「히얏, 가득 나오고 있어……」
+    PRINTFORMW 「히얏, 가득 나오고 있어……」
 ENDIF
 
 ;-------------------------------------------------
@@ -459,9 +459,9 @@ PRINTFORMW 「응……이 정도로 가다니 변태로군요」
 ;-------------------------------------------------
 @K15_MESSAGE_EJAC_PLAYER_15
 IF TALENT:150
-	PRINTFORMW 「만약 이런 걸 안에 냈다면, 저 임신했겠죠, 후후」
+    PRINTFORMW 「만약 이런 걸 안에 냈다면, 저 임신했겠죠, 후후」
 ELSE
-	PRINTFORMW 「가득 나오네요……기분 좋았어요?」
+    PRINTFORMW 「가득 나오네요……기분 좋았어요?」
 ENDIF
 
 ;-------------------------------------------------
@@ -499,13 +499,13 @@ PRINTFORMW 「이거, 정말로 기분이 좋은가요?」
 ;-------------------------------------------------
 @K15_MESSAGE_EJAC_PLAYER_21
 IF TALENT:150
-	IF RAND:2 == 0
-		PRINTFORMW 「……후후, 깨끗하게 해줄게요」
-	ELSE
-		PRINTFORMW 「또, 나오고 있네요, 넘쳐버리겠어요」
-	ENDIF
+    IF RAND:2 == 0
+        PRINTFORMW 「……후후, 깨끗하게 해줄게요」
+    ELSE
+        PRINTFORMW 「또, 나오고 있네요, 넘쳐버리겠어요」
+    ENDIF
 ELSE
-	PRINTFORMW 「응구, 더 하고 싶어요?」
+    PRINTFORMW 「응구, 더 하고 싶어요?」
 ENDIF
 
 ;-------------------------------------------------
@@ -540,22 +540,22 @@ PRINTFORMW 「아앙, 끈적끈적거려……」
 @KOJO_MESSAGE_MARKCNG_15
 ;자고 있는 경우는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;구가가 있는 경우도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절중도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;정신 붕괴하면(자) 말해 주지 않는다
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 ;각인 취득 말호출
 FOR LOCAL, 0, 7
-	FOR LOCAL:1, 1, 4
-		SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
-			TRYCALLFORM K15_MESSAGE_MARK{LOCAL}_{LOCAL:1}
-	NEXT
+    FOR LOCAL:1, 1, 4
+        SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
+            TRYCALLFORM K15_MESSAGE_MARK{LOCAL}_{LOCAL:1}
+    NEXT
 NEXT
 
 ;==================================================
@@ -567,19 +567,19 @@ NEXT
 @K15_MESSAGE_MARK0_1
 CFLAG:5310 = 1
 SIF TALENT:150
-	RETURN 0
+    RETURN 0
 PRINTFORMW 「앗, 아파요……」
 
 @K15_MESSAGE_MARK0_2
 CFLAG:5310 = 2
 SIF TALENT:150
-	RETURN 0
+    RETURN 0
 PRINTFORMW 「히익!! 머, 멈춰……」
 
 @K15_MESSAGE_MARK0_3
 CFLAG:5310 = 3
 SIF TALENT:150
-	RETURN 0
+    RETURN 0
 PRINTFORMW 「아기이이잇, 으기야아앗!!」
 PRINTFORMW 「우, 아아아……이제, 이제 멈추어 주세요……」
 
@@ -621,19 +621,19 @@ CFLAG:5312 = 3
 @K15_MESSAGE_MARK3_1
 CFLAG:5313 = 1
 SIF TALENT:150
-	RETURN 0
+    RETURN 0
 PRINTFORMW 「아니, 어째서 이런 일을……」
 
 @K15_MESSAGE_MARK3_2
 CFLAG:5313 = 2
 SIF TALENT:150
-	RETURN 0
+    RETURN 0
 PRINTFORMW 「시, 싫어……오지 마……다가오지 마……」
 
 @K15_MESSAGE_MARK3_3
 CFLAG:5313 = 3
 SIF TALENT:150
-	RETURN 0
+    RETURN 0
 PRINTFORMW 「미, 미안해요, 미안해요……」
 PRINTFORMW 「나쁜 짓을 했다면 죄송해요……더 이상, 심한 일 하지 마세요……」
 
@@ -642,25 +642,25 @@ PRINTFORMW 「나쁜 짓을 했다면 죄송해요……더 이상, 심한 일 �
 ;-------------------------------------------------
 @K15_MESSAGE_MARK4_1
 IF TALENT:150 && TEQUIP:90 == 0
-	PRINTFORMW 「무-, 좀 심하잖아요」
+    PRINTFORMW 「무-, 좀 심하잖아요」
 ELSE
-	PRINTFORMW 「저는, 당신의 장난감이 아닙니다……!」
+    PRINTFORMW 「저는, 당신의 장난감이 아닙니다……!」
 ENDIF
 CFLAG:5314 = 1
 
 @K15_MESSAGE_MARK4_2
 IF TALENT:150 && TEQUIP:90 == 0
-	PRINTFORMW 「저도 참을 수 없는 게 있다고요」
+    PRINTFORMW 「저도 참을 수 없는 게 있다고요」
 ELSE
-	PRINTFORMW 「너, 너무해요, 조금 전부터……」
+    PRINTFORMW 「너, 너무해요, 조금 전부터……」
 ENDIF
 CFLAG:5314 = 2
 
 @K15_MESSAGE_MARK4_3
 IF TALENT:150 && TEQUIP:90 == 0
-	PRINTFORMW 「죄송하지만, 조금 떨어져 있어 주시겠어요?」
+    PRINTFORMW 「죄송하지만, 조금 떨어져 있어 주시겠어요?」
 ELSE
-	PRINTFORMW 「……말을 건네지 말아 주세요……!」
+    PRINTFORMW 「……말을 건네지 말아 주세요……!」
 ENDIF
 CFLAG:5314 = 3
 
@@ -687,32 +687,32 @@ CFLAG:5316 = 3
 @KOJO_MESSAGE_COM_15
 ;자고 있는 경우는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;구가가 있어, 구가를 붙이는 커멘드가 아닌 경우도 돌아온다
 SIF (TEQUIP:42 && (SELECTCOM != 226 && SELECTCOM != 229 && SELECTCOM != 506 && SELECTCOM != 509 && SELECTCOM != 583))
-	RETURN 0
+    RETURN 0
 ;기절중도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;정신 붕괴하면(자) 말해 주지 않는다
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 
 ;커멘드 첫회 판정을 갱신
 CALL COM_FLAG
 ;PANCTION내의 장비품 말보완 함수를 사용한다
 SIF FLAG:10 == 1
-	TRYCALL EQUIPTEXT
+    TRYCALL EQUIPTEXT
 ;처녀 상실시의 메세지 호출
 SIF TALENT:0 && TFLAG:1
-	TRYCALL K15_MESSAGE_LOST_VIRGIN
+    TRYCALL K15_MESSAGE_LOST_VIRGIN
 ;커멘드 말호출
 TRYCALLFORM K15_MESSAGE_COM_{SELECTCOM}
 
 ;말이 없는 커멘드로 범용천를 불러 본다
 ;위화감이 있을지도
 SIF RESULT == 0
-	TRYCALL TRAINVOICE, 1
+    TRYCALL TRAINVOICE, 1
 
 ;-------------------------------------------------
 ;처녀 상실
@@ -720,13 +720,13 @@ SIF RESULT == 0
 @K15_MESSAGE_LOST_VIRGIN
 ;연모시 또한 주인의 페니스
 IF TFLAG:2
-	PRINTFORMW 「주인님, 저, 처음이에요」
-	PRINTFORMW 「그렇지만, 주인님에게라면 기쁜 마음으로 처음을 바칠 수 있어요……」
-	PRINTFORMW 「괜찮아요, 아무리 아파도, 견딜 수 있습니다」
+    PRINTFORMW 「주인님, 저, 처음이에요」
+    PRINTFORMW 「그렇지만, 주인님에게라면 기쁜 마음으로 처음을 바칠 수 있어요……」
+    PRINTFORMW 「괜찮아요, 아무리 아파도, 견딜 수 있습니다」
 ;그 이외
 ELSE
-	PRINTFORMW 「저, 처음이에요」
-	PRINTFORMW 「……그렇지만, 그런 거 당신에게는 관계없겠지요, 미안해요」
+    PRINTFORMW 「저, 처음이에요」
+    PRINTFORMW 「……그렇지만, 그런 거 당신에게는 관계없겠지요, 미안해요」
 ENDIF
 
 ;==================================================
@@ -737,16 +737,16 @@ ENDIF
 @SELF_KOJO_K15
 ;자고 있는 경우는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;조교중 또한 구가 다하고도 돌아온다
 SIF TFLAG:999 && TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;조교중 또한 기절중도 돌아온다
 SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-	RETURN 0
+    RETURN 0
 ;정신 붕괴하면(자) 말해 주지 않는다
 SIF TALENT:167
-	RETURN 0
+    RETURN 0
 
 ;이벤트 말호출
 TRYCALLFORM K15_MESSAGE_EVENT_{(TFLAG:200)}
@@ -761,9 +761,9 @@ TRYCALLFORM K15_MESSAGE_EVENT_{(TFLAG:200)}
 ;==================================================
 @LOOK_VIDEO_KOJO_K15
 IF TALENT:150
-	PRINTFORMW 「새삼 제 자신을 보면, 창피하네요」
+    PRINTFORMW 「새삼 제 자신을 보면, 창피하네요」
 ELSE
-	PRINTFORMW 「이, 이게, 저……인가요……」
+    PRINTFORMW 「이, 이게, 저……인가요……」
 ENDIF
 
 ;==================================================
@@ -781,27 +781,27 @@ PRINTFORMW 「에, 오늘은 아무것도 하지 않나요?」
 ;==================================================
 @IMPRESSION_K15
 IF TALENT:150
-	SELECTCASE RAND:4
-		CASE 0
-			PRINTSINGLEFORM 　　　「주인님, 뭐하고 계시려나」
-		CASE 1
-			PRINTSINGLEFORM 　　　「아무도 없고…… 혼자서 해버릴까……」
-		CASE 2
-			PRINTSINGLEFORM 　　　「오늘은 주인님 와 주시려나」
-		CASE 3
-			PRINTSINGLEFORM 　　　「주인님은 날 얼마나 좋아하는 걸까……」
-	ENDSELECT
+    SELECTCASE RAND:4
+        CASE 0
+            PRINTSINGLEFORM 　　　「주인님, 뭐하고 계시려나」
+        CASE 1
+            PRINTSINGLEFORM 　　　「아무도 없고…… 혼자서 해버릴까……」
+        CASE 2
+            PRINTSINGLEFORM 　　　「오늘은 주인님 와 주시려나」
+        CASE 3
+            PRINTSINGLEFORM 　　　「주인님은 날 얼마나 좋아하는 걸까……」
+    ENDSELECT
 ELSE
-	SELECTCASE RAND:4
-		CASE 0
-			PRINTSINGLEFORM 　　　「하아, 밖에 나가고 싶어라……」
-		CASE 1
-			PRINTSINGLEFORM 　　　「그 사람, 오늘은 무슨 짓을 할 셈이람」
-		CASE 2
-			PRINTSINGLEFORM 　　　「졸려라」
-		CASE 3
-			PRINTSINGLEFORM 　　　「나, 구해주러 올 사람 없구나……. 흑」
-	ENDSELECT
+    SELECTCASE RAND:4
+        CASE 0
+            PRINTSINGLEFORM 　　　「하아, 밖에 나가고 싶어라……」
+        CASE 1
+            PRINTSINGLEFORM 　　　「그 사람, 오늘은 무슨 짓을 할 셈이람」
+        CASE 2
+            PRINTSINGLEFORM 　　　「졸려라」
+        CASE 3
+            PRINTSINGLEFORM 　　　「나, 구해주러 올 사람 없구나……. 흑」
+    ENDSELECT
 ENDIF
 
 ;=============================================================================
@@ -913,13 +913,13 @@ TARGET = TFLAG:710
 
 ;정신 붕괴하고 있는 경우 그 후가 존재하지 않는다
 IF TALENT:167
-	LOCAL:1 = 0
+    LOCAL:1 = 0
 ;연모
 ELSEIF TALENT:150
-	LOCAL:1 = 1
+    LOCAL:1 = 1
 ;그 외
 ELSE
-	LOCAL:1 = 2
+    LOCAL:1 = 2
 ENDIF
 
 ;퇴피한 대상을 바탕으로 되돌린다
@@ -933,12 +933,12 @@ PRINTFORMW 　%CSVCALLNAME(15,0)%의 그 이후
 DRAWLINE
 ;연모
 IF ARG == 1
-	PRINTFORMW 「뭘까……. 중요한 걸 까먹은 기분이야」
-	PRINTFORMW 「조금 막무가내에, 엉큼하고, 하지만 얼굴도 떠올릴 수 없는 누구……」
+    PRINTFORMW 「뭘까……. 중요한 걸 까먹은 기분이야」
+    PRINTFORMW 「조금 막무가내에, 엉큼하고, 하지만 얼굴도 떠올릴 수 없는 누구……」
 ;그 외
 ELSEIF ARG == 2
-	PRINTFORMW 「나, 언제가 되어야 밖에 나갈 수 있담……」
-	PRINTFORMW 「애초에 어째서 노예가 되어버렸더라……」
+    PRINTFORMW 「나, 언제가 되어야 밖에 나갈 수 있담……」
+    PRINTFORMW 「애초에 어째서 노예가 되어버렸더라……」
 ENDIF
 DRAWLINE
 RETURN 0

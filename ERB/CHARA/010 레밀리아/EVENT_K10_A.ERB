@@ -16,13 +16,13 @@
 @KOJO_MESSAGE_PLAYERCHANGE_10
 ;만약 유아퇴행 중이면 돌아감
 ;SIF TALENT:ASSI:152 == 1
-;	RETURN 1
+;    RETURN 1
 ;주인→레밀리아
 ;IF ASSIPLAY == 0
-;	PRINTFORMW 『어머, 내 차례?』
+;    PRINTFORMW 『어머, 내 차례?』
 ;레밀리아→주인
 ;ELSE
-;	PRINTFORMW 『벌써 끝? %조사처리(CALLNAME:TARGET,"를")% 더 지분거리고 싶었는데』
+;    PRINTFORMW 『벌써 끝? %조사처리(CALLNAME:TARGET,"를")% 더 지분거리고 싶었는데』
 ;ENDIF
 
 ;==================================================
@@ -33,13 +33,13 @@
 @KOJO_MESSAGE_CHANGEASSI_10
 ;만약 유아퇴행 중이면 돌아감
 ;SIF TALENT:152 == 1
-;	RETURN 1
+;    RETURN 1
 ;주인→조수
 ;IF ASSIPLAY == 0
-;	PRINTFORMW 「%조사처리(CALLNAME:ASSI,"가")% 상대야…?」
+;    PRINTFORMW 「%조사처리(CALLNAME:ASSI,"가")% 상대야…?」
 ;조수→주인
 ;ELSE
-;	PRINTFORMW 「미안하지만 %CALLNAME:ASSI%보다는 역시 주인님이 좋아」
+;    PRINTFORMW 「미안하지만 %CALLNAME:ASSI%보다는 역시 주인님이 좋아」
 ;ENDIF
 
 ;==================================================
@@ -49,7 +49,7 @@
 @KOJO_MESSAGE_COM_ASSI_10
 ;만약 유아퇴행 중이면 돌아감
 ;SIF TALENT:ASSI:152 == 1
-;	RETURN 1
+;    RETURN 1
 ;IF SELECTCOM == 
-;	PRINTFORMW 『너의 피는… 무슨 맛일까』
+;    PRINTFORMW 『너의 피는… 무슨 맛일까』
 

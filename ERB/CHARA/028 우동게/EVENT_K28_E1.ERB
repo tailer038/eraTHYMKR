@@ -25,36 +25,36 @@
 @K28_MESSAGE_EVENT_401
 ;夜這い騎乗位(失敗)
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「夜這い騎乗位(失敗)時の口上です」
+    ;PRINTFORMW 「夜這い騎乗位(失敗)時の口上です」
 ;夜這い騎乗位(成功)
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「夜這い騎乗位(成功)時の口上です」
+    ;PRINTFORMW 「夜這い騎乗位(成功)時の口上です」
 ;夜這い騎乗位(思いとどまる)
 ELSEIF GET_NIGHT_KOJO(0) == 3
-	;PRINTFORMW 「夜這いでフェラした時の口上です」
+    ;PRINTFORMW 「夜這いでフェラした時の口上です」
 ;夜這い騎乗位(オナニー)
 ELSEIF GET_NIGHT_KOJO(0) == 4
-	;PRINTFORMW 「夜這いでオナニーした時の口上です」
+    ;PRINTFORMW 「夜這いでオナニーした時の口上です」
 ;夜這い騎乗位(貞操帯防御)
 ELSEIF GET_NIGHT_KOJO(0) == 5
-	;PRINTFORMW 「夜這い騎乗位(貞操帯防御)の時の口上です」
+    ;PRINTFORMW 「夜這い騎乗位(貞操帯防御)の時の口上です」
 ;夜這い騎乗位(主人が犯される系)
 ELSEIF GET_NIGHT_KOJO(0) == 6 
 ;主人が処女の場合素股に変更. 処女素股は浪漫らしいので. 
-	IF TALENT:MASTER:0 >= 1
-		;主人がふたなりなら尻に突っ込む. 例え経験が無くとも. 
-		IF TALENT:MASTER:121
-			;PRINTFORMW 「夜這いで尻を犯される時の口上です」
-		;処女素股
-		ELSE
-			;PRINTFORMW 「夜這いで素股させられる時の口上です」
-		ENDIF
-	ELSE
-		;PRINTFORMW 「夜這いで前を犯される時の口上です」
-	ENDIF
+    IF TALENT:MASTER:0 >= 1
+        ;主人がふたなりなら尻に突っ込む. 例え経験が無くとも. 
+        IF TALENT:MASTER:121
+            ;PRINTFORMW 「夜這いで尻を犯される時の口上です」
+        ;処女素股
+        ELSE
+            ;PRINTFORMW 「夜這いで素股させられる時の口上です」
+        ENDIF
+    ELSE
+        ;PRINTFORMW 「夜這いで前を犯される時の口上です」
+    ENDIF
 ;夜這い騎乗位(貝あわせ)
 ELSEIF GET_NIGHT_KOJO(0) == 7
-	;PRINTFORMW 「夜這い騎乗位(貝あわせ)時の口上です」
+    ;PRINTFORMW 「夜這い騎乗位(貝あわせ)時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -79,13 +79,13 @@ ENDIF
 @K28_MESSAGE_EVENT_404
 ;夜食の招待された後, そのまま嫁も食べます
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「夜食の招待された後の口上です」
+    ;PRINTFORMW 「夜食の招待された後の口上です」
 ;普通の嫁とのセックスです
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「ノックのあと, 押し倒された時の口上です」
+    ;PRINTFORMW 「ノックのあと, 押し倒された時の口上です」
 ;嫁が一緒にいたいとやってきたので
 ELSE
-	;PRINTFORMW 「嫁が一緒にいたいとやってきた時の口上です」
+    ;PRINTFORMW 「嫁が一緒にいたいとやってきた時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -95,13 +95,13 @@ ENDIF
 @K28_MESSAGE_EVENT_405
 ;普通の夜這い
 IF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「普通の夜這い時の口上です」
+    ;PRINTFORMW 「普通の夜這い時の口上です」
 ;搾り取る気満々の積極的やる夜這い
 ELSEIF GET_NIGHT_KOJO(0) == 3
-	;PRINTFORMW 「積極的夜這い時の口上です」
+    ;PRINTFORMW 「積極的夜這い時の口上です」
 ;処女を捧げる夜這い
 ELSEIF GET_NIGHT_KOJO(0) == 4
-	;PRINTFORMW 「処女夜這い時の口上です」
+    ;PRINTFORMW 「処女夜這い時の口上です」
 
 ENDIF
 
@@ -113,10 +113,10 @@ ENDIF
 @K28_MESSAGE_EVENT_406
 ;３人で激しく混ざり合う(TARGETが喋る, GET_CHARA_M(0)が同伴)
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「夜イベント時の３Ｐ口上です」
+    ;PRINTFORMW 「夜イベント時の３Ｐ口上です」
 ;２人で激しく混ざり合う, 同伴者GET_CHARA_M(0)は見てるだけ
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「夜イベント時の３Ｐ口上２です」
+    ;PRINTFORMW 「夜イベント時の３Ｐ口上２です」
 ENDIF
 
 ;-------------------------------------------------
@@ -138,10 +138,10 @@ ENDIF
 @K28_MESSAGE_EVENT_408
 ;分身乱交, 一人で一回のみ発言, 実質フランのみ
 IF TFLAG:99 == 2
-	;PRINTFORMW 「一人で多人数PT乱交の口上です」
+    ;PRINTFORMW 「一人で多人数PT乱交の口上です」
 ;通常の乱交
 ELSE
-	;PRINTFORMW 「多人数PT乱交の口上です」
+    ;PRINTFORMW 「多人数PT乱交の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -152,10 +152,10 @@ ENDIF
 @K28_MESSAGE_EVENT_409
 ;貞操帯があるので自慰できない
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「覗き見オナニーで貞操帯がある場合時の口上です」
+    ;PRINTFORMW 「覗き見オナニーで貞操帯がある場合時の口上です」
 ;その場で自慰を始める
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「覗き見オナニーの時の口上です」
+    ;PRINTFORMW 「覗き見オナニーの時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -176,10 +176,10 @@ ENDIF
 @K28_MESSAGE_EVENT_411
 ;鞭打ち
 IF GET_NIGHT_KOJO(0) == 1
-	;PRINTFORMW 「マゾ奴隷の夜這いで鞭打ち時の口上です」
+    ;PRINTFORMW 「マゾ奴隷の夜這いで鞭打ち時の口上です」
 ;スパンキング
 ELSEIF GET_NIGHT_KOJO(0) == 2
-	;PRINTFORMW 「マゾ奴隷の夜這いでスパンキング時の口上です」
+    ;PRINTFORMW 「マゾ奴隷の夜這いでスパンキング時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -224,9 +224,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_417
 IF TFLAG:99 == 0
-	;PRINTFORMW 「触手が暴走している触手姦の口上です」
+    ;PRINTFORMW 「触手が暴走している触手姦の口上です」
 ELSE
-	;PRINTFORMW 「奴隷による善意の触手姦の口上です」
+    ;PRINTFORMW 「奴隷による善意の触手姦の口上です」
 ENDIF
 ;-------------------------------------------------
 ;襲撃異性間プレイ(襲撃側)
@@ -409,16 +409,16 @@ ENDIF
 @K28_MESSAGE_EVENT_465
 ;女性とする
 IF TFLAG:99 == 1
-	;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
+    ;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
 ;男性とする
 ELSEIF TFLAG:99 == 2
-	;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
+    ;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
 ;複数人とする
 ELSEIF TFLAG:99 == 3
-	;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
+    ;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
 ;ベンチのいいオトコとする
 ELSEIF TFLAG:99 == 9
-	;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
+    ;PRINTFORMW 「助手と里で第三者を交えてウフフする時の口上です」
 ENDIF
 
 ;-------------------------------------------------
@@ -443,39 +443,39 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_480
 SELECTCASE GET_NIGHT_KOJO(0)
-	;素股強制
-	CASE 0
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;セックス
-	CASE 1
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;アナルセックス
-	CASE 2
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;乳ファック
-	CASE 3
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;イマラチオ
-	CASE 4
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;自慰
-	CASE 19
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;逆レイプ
-	CASE 100
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;逆アナルレイプ
-	CASE 200
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;強制素股(主人が女性)
-	CASE 300
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;強制貝あわせ
-	CASE 301
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
-	;クンニ強制＆自慰
-	CASE 302
-		;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;素股強制
+    CASE 0
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;セックス
+    CASE 1
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;アナルセックス
+    CASE 2
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;乳ファック
+    CASE 3
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;イマラチオ
+    CASE 4
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;自慰
+    CASE 19
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;逆レイプ
+    CASE 100
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;逆アナルレイプ
+    CASE 200
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;強制素股(主人が女性)
+    CASE 300
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;強制貝あわせ
+    CASE 301
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
+    ;クンニ強制＆自慰
+    CASE 302
+        ;PRINTFORMW 「奴隷主体の夜這いの口上です」
 ENDSELECT
 
 ;-------------------------------------------------
@@ -484,54 +484,54 @@ ENDSELECT
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_481
 SELECTCASE GET_NIGHT_KOJO(0)
-	;素股してやる
-	CASE 10
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;セックスさせてやる
-	CASE 11
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;アナルセックスさせてやる
-	CASE 12
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;パイズリしてやる
-	CASE 13
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;フェラチオしてやる
-	CASE 14
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;手淫してやる
-	CASE 15
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;自慰強制(竿あり)
-	CASE 19
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;セックスする
-	CASE 110
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;指差し入れ
-	CASE 115
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;自慰強制(竿なし)
-	CASE 119
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;アナルセックスする
-	CASE 210
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;アナル愛撫してやる
-	CASE 215
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;アナニー強制
-	CASE 219
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;相互愛撫
-	CASE 310
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;愛撫してやる
-	CASE 311
-		;PRINTFORMW 「主人主体の夜這いの口上です」
-	;胸自慰強制
-	CASE 319
-		;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;素股してやる
+    CASE 10
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;セックスさせてやる
+    CASE 11
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;アナルセックスさせてやる
+    CASE 12
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;パイズリしてやる
+    CASE 13
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;フェラチオしてやる
+    CASE 14
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;手淫してやる
+    CASE 15
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;自慰強制(竿あり)
+    CASE 19
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;セックスする
+    CASE 110
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;指差し入れ
+    CASE 115
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;自慰強制(竿なし)
+    CASE 119
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;アナルセックスする
+    CASE 210
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;アナル愛撫してやる
+    CASE 215
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;アナニー強制
+    CASE 219
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;相互愛撫
+    CASE 310
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;愛撫してやる
+    CASE 311
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
+    ;胸自慰強制
+    CASE 319
+        ;PRINTFORMW 「主人主体の夜這いの口上です」
 ENDSELECT
 
 ;-------------------------------------------------
@@ -674,24 +674,24 @@ ENDSELECT
 ;TFLAG:99で弁当製作者の番号を取得可能
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_605
-	;えーりんかてゐ
-	IF TFLAG:99 == 29 || TFLAG:99 == 27
-		PRINTFORM 「…………하아. 
-		;えーりん
-		IF TFLAG:99 == 29
-			PRINTFORMW 또에요, 스승님ー」
-		;てゐ
-		ELSEIF TFLAG:99 == 27
-			PRINTFORMW 또야, 테위」
-		ENDIF
-		PRINTFORMW …………또?
-	ELSE
-		IF TALENT:150
-			PRINTFORMW 「주인님…… 이런 걸 먹도록 하다니」
-		ELSE
-			PRINTFORMW 「저를 끌어들이지 마세요……!」
-		ENDIF
-	ENDIF
+    ;えーりんかてゐ
+    IF TFLAG:99 == 29 || TFLAG:99 == 27
+        PRINTFORM 「…………하아. 
+        ;えーりん
+        IF TFLAG:99 == 29
+            PRINTFORMW 또에요, 스승님ー」
+        ;てゐ
+        ELSEIF TFLAG:99 == 27
+            PRINTFORMW 또야, 테위」
+        ENDIF
+        PRINTFORMW …………또?
+    ELSE
+        IF TALENT:150
+            PRINTFORMW 「주인님…… 이런 걸 먹도록 하다니」
+        ELSE
+            PRINTFORMW 「저를 끌어들이지 마세요……!」
+        ENDIF
+    ENDIF
 
 ;-------------------------------------------------
 ;日常イベントの休養時
@@ -706,13 +706,13 @@ ENDSELECT
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_801
 IF TFLAG:99 <= 7
-	;PRINTFORMW 「割れ目責めイベント時の口上１です」
+    ;PRINTFORMW 「割れ目責めイベント時の口上１です」
 ELSEIF TFLAG:99 <= 14
-	;PRINTFORMW 「割れ目責めイベント時の口上２です」
+    ;PRINTFORMW 「割れ目責めイベント時の口上２です」
 ELSEIF TFLAG:99 <= 22
-	;PRINTFORMW 「割れ目責めイベント時の口上３です」
+    ;PRINTFORMW 「割れ目責めイベント時の口上３です」
 ELSE
-	;PRINTFORMW 「割れ目責めイベント時の口上４です」
+    ;PRINTFORMW 「割れ目責めイベント時の口上４です」
 ENDIF
 
 ;-------------------------------------------------
@@ -722,13 +722,13 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_802
 IF TFLAG:99 <= 9
-	;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上１です」
+    ;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上１です」
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上２です」
+    ;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上２です」
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上３です」
+    ;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上３です」
 ELSE
-	;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上４です」
+    ;PRINTFORMW 「バイブを入れて通りを歩くイベント時の口上４です」
 ENDIF
 
 ;-------------------------------------------------
@@ -738,13 +738,13 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_803
 IF TFLAG:99 <= 9
-	;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上１です」
+    ;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上１です」
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上２です」
+    ;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上２です」
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上３です」
+    ;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上３です」
 ELSE
-	;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上４です」
+    ;PRINTFORMW 「Ａバイブを入れて通りを歩くイベント時の口上４です」
 ENDIF
 
 ;-------------------------------------------------
@@ -754,9 +754,9 @@ ENDIF
 ;-------------------------------------------------
 @K28_MESSAGE_EVENT_804
 IF TFLAG:99 <= 25
-	;PRINTFORMW 「街頭自慰強制イベント時の口上１です」
+    ;PRINTFORMW 「街頭自慰強制イベント時の口上１です」
 ELSEIF TFLAG:99 <= 29
-	;PRINTFORMW 「街頭自慰強制イベント時の口上２です」
+    ;PRINTFORMW 「街頭自慰強制イベント時の口上２です」
 ELSE
-	;PRINTFORMW 「街頭自慰強制イベント時の口上３です」
+    ;PRINTFORMW 「街頭自慰強制イベント時の口上３です」
 ENDIF

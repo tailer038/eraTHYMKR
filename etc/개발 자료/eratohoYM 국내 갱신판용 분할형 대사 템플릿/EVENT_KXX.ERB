@@ -26,11 +26,11 @@ RETURN 1
 ;$INPUT_LOOP_1
 ;INPUT
 ;IF RESULT == 0
-	;PRINTFORMW 엑스트라 모드 실행
+    ;PRINTFORMW 엑스트라 모드 실행
 ;ELSEIF RESULT == 1
-	;PRINTFORMW 엑스트라 모드 무시
+    ;PRINTFORMW 엑스트라 모드 무시
 ;ELSE
-	;GOTO INPUT_LOOP_1
+    ;GOTO INPUT_LOOP_1
 ;ENDIF
 
 ;==================================================
@@ -39,26 +39,26 @@ RETURN 1
 @EVENTTRAIN
 ;대사 표시를 OFF했을 경우에는 돌아온다
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != X1
-	RETURN 0
+    RETURN 0
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 
 DRAWLINE
 
 ;조교 개시 대사 분기
 IF CFLAG:5201 == 0
-	TRYCALL KX1_MESSAGE_START_1
+    TRYCALL KX1_MESSAGE_START_1
 ELSE
-	TRYCALL KX1_MESSAGE_START_2
+    TRYCALL KX1_MESSAGE_START_2
 ENDIF
 
 ;-------------------------------------------------
@@ -80,18 +80,18 @@ ENDIF
 @EVENTEND
 ;대사 표시를 OFF했을 경우에는 돌아온다
 SIF FLAG:11 <= 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != X1
-	RETURN 0
+    RETURN 0
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 DRAWLINE
 TRYCALL KX1_MESSAGE_END
 
@@ -109,27 +109,27 @@ TRYCALL KX1_MESSAGE_END
 @KOJO_MESSAGE_PALAMCNG_X1
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;처음으로 PALAM이 LV2 넘었을 때의 대사 호출
 FOR LOCAL, 0, 35
-	SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
-		TRYCALLFORM KX1_MESSAGE_OVERLV2_{LOCAL}
+    SIF PALAM:LOCAL + UP:LOCAL > PALAMLV:2 && CFLAG:(5320 + LOCAL) == 0
+        TRYCALLFORM KX1_MESSAGE_OVERLV2_{LOCAL}
 NEXT
 ;절정시의 대사 호출
 FOR LOCAL, 0, 50
-	SIF NOWEX:LOCAL
-		TRYCALLFORM KX1_MESSAGE_ORGASM_{LOCAL}
+    SIF NOWEX:LOCAL
+        TRYCALLFORM KX1_MESSAGE_ORGASM_{LOCAL}
 NEXT
 ;사정시켰다
 FOR LOCAL, 8, 30
-	SIF TFLAG:LOCAL
-		TRYCALLFORM KX1_MESSAGE_EJAC_PLAYER_{LOCAL}
+    SIF TFLAG:LOCAL
+        TRYCALLFORM KX1_MESSAGE_EJAC_PLAYER_{LOCAL}
 NEXT
 
 ;==================================================
@@ -172,16 +172,16 @@ NEXT
 @KX1_MESSAGE_ORGASM_0
 ;처음
 IF CFLAG:5300 == 0
-	;PRINTFORMW 「첫Ｃ절정시의 대사입니다」
-	;CFLAG:5300 = 1
+    ;PRINTFORMW 「첫Ｃ절정시의 대사입니다」
+    ;CFLAG:5300 = 1
 ;2회째 이후
 ELSE
-	;Ｃ절정 50 이상
-	IF EX:0 >= 50
-		;PRINTFORMW 「Ｃ절정 50 이상시의 대사입니다」
-	ELSE
-		;PRINTFORMW 「Ｃ절정시의 대사입니다」
-	ENDIF
+    ;Ｃ절정 50 이상
+    IF EX:0 >= 50
+        ;PRINTFORMW 「Ｃ절정 50 이상시의 대사입니다」
+    ELSE
+        ;PRINTFORMW 「Ｃ절정시의 대사입니다」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -190,16 +190,16 @@ ENDIF
 @KX1_MESSAGE_ORGASM_1
 ;처음
 IF CFLAG:5301 == 0
-	;PRINTFORMW 「첫Ｖ절정시의 대사입니다」
-	;CFLAG:5301 = 1
+    ;PRINTFORMW 「첫Ｖ절정시의 대사입니다」
+    ;CFLAG:5301 = 1
 ;2회째 이후
 ELSE
-	;Ｖ절정 50 이상
-	IF EX:1 >= 50
-		;PRINTFORMW 「Ｖ절정 50 이상시의 대사입니다」
-	ELSE
-		;PRINTFORMW 「Ｖ절정시의 대사입니다」
-	ENDIF
+    ;Ｖ절정 50 이상
+    IF EX:1 >= 50
+        ;PRINTFORMW 「Ｖ절정 50 이상시의 대사입니다」
+    ELSE
+        ;PRINTFORMW 「Ｖ절정시의 대사입니다」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -208,16 +208,16 @@ ENDIF
 @KX1_MESSAGE_ORGASM_2
 ;처음
 IF CFLAG:5302 == 0
-	;PRINTFORMW 「첫Ａ절정시의 대사입니다」
-	;CFLAG:5302 = 1
+    ;PRINTFORMW 「첫Ａ절정시의 대사입니다」
+    ;CFLAG:5302 = 1
 ;2회째 이후
 ELSE
-	;Ａ절정 50 이상
-	IF EX:2 >= 50
-		;PRINTFORMW 「Ａ절정 50 이상시의 대사입니다」
-	ELSE
-		;PRINTFORMW 「Ａ절정시의 대사입니다」
-	ENDIF
+    ;Ａ절정 50 이상
+    IF EX:2 >= 50
+        ;PRINTFORMW 「Ａ절정 50 이상시의 대사입니다」
+    ELSE
+        ;PRINTFORMW 「Ａ절정시의 대사입니다」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -226,16 +226,16 @@ ENDIF
 @KX1_MESSAGE_ORGASM_3
 ;처음
 IF CFLAG:5303 == 0
-	;PRINTFORMW 「첫Ｂ절정시의 대사입니다」
-	;CFLAG:5303 = 1
+    ;PRINTFORMW 「첫Ｂ절정시의 대사입니다」
+    ;CFLAG:5303 = 1
 ;2회째 이후
 ELSE
-	;Ｂ절정 50 이상
-	IF EX:3 >= 50
-		;PRINTFORMW 「Ｂ절정 50 이상시의 대사입니다」
-	ELSE
-		;PRINTFORMW 「Ｂ절정시의 대사입니다」
-	ENDIF
+    ;Ｂ절정 50 이상
+    IF EX:3 >= 50
+        ;PRINTFORMW 「Ｂ절정 50 이상시의 대사입니다」
+    ELSE
+        ;PRINTFORMW 「Ｂ절정시의 대사입니다」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -244,11 +244,11 @@ ENDIF
 @KX1_MESSAGE_ORGASM_10
 ;처음
 IF CFLAG:5304 == 0
-	;PRINTFORMW 「첫분유시의 대사입니다」
-	;CFLAG:5304 = 1
+    ;PRINTFORMW 「첫분유시의 대사입니다」
+    ;CFLAG:5304 = 1
 ;2회째 이후
 ELSE
-	;PRINTFORMW 「분유시의 대사입니다」
+    ;PRINTFORMW 「분유시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -257,11 +257,11 @@ ENDIF
 @KX1_MESSAGE_ORGASM_11
 ;처음
 IF CFLAG:5305 == 0
-	;PRINTFORMW 「첫사정시의 대사입니다」
-	;CFLAG:5305 = 1
+    ;PRINTFORMW 「첫사정시의 대사입니다」
+    ;CFLAG:5305 = 1
 ;2회째 이후
 ELSE
-	;PRINTFORMW 「사정시의 대사입니다」
+    ;PRINTFORMW 「사정시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -270,14 +270,14 @@ ENDIF
 ;-------------------------------------------------
 @KX1_MESSAGE_ORGASM_12
 SIF SELECTCOM == 111 || SELECTCOM == 620
-	RETURN 0
+    RETURN 0
 ;처음
 IF CFLAG:5306 == 0
-	;PRINTFORMW 「첫방뇨시의 대사입니다」
-	;CFLAG:5306 = 1
+    ;PRINTFORMW 「첫방뇨시의 대사입니다」
+    ;CFLAG:5306 = 1
 ;2회째 이후
 ELSE
-	;PRINTFORMW 「방뇨시의 대사입니다」
+    ;PRINTFORMW 「방뇨시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -292,10 +292,10 @@ ENDIF
 @KX1_MESSAGE_EJAC_PLAYER_9
 ;주인의 페니스
 IF TFLAG:35
-	;PRINTFORMW 「주인이 애널 섹스로 사정했을 시의 대사입니다」
+    ;PRINTFORMW 「주인이 애널 섹스로 사정했을 시의 대사입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「주인 말고 다른 사람이 애널 섹스로 사정했을 시의 대사입니다」
+    ;PRINTFORMW 「주인 말고 다른 사람이 애널 섹스로 사정했을 시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -304,10 +304,10 @@ ENDIF
 @KX1_MESSAGE_EJAC_PLAYER_10
 ;주인의 페니스
 IF TFLAG:35
-	;PRINTFORMW 「주인이 섹스로 사정했을 시의 대사입니다」
+    ;PRINTFORMW 「주인이 섹스로 사정했을 시의 대사입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「주인 말고 다른 사람이 섹스로 사정했을 시의 대사입니다」
+    ;PRINTFORMW 「주인 말고 다른 사람이 섹스로 사정했을 시의 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
@@ -408,19 +408,19 @@ ENDIF
 @KOJO_MESSAGE_MARKCNG_X1
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있을 경우에도 돌아온다
 SIF TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 ;각인 취득 대사 호출
 FOR LOCAL, 0, 7
-	FOR LOCAL:1, 1, 4
-		SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
-			TRYCALLFORM KX1_MESSAGE_MARK{LOCAL}_{LOCAL:1}
-	NEXT
+    FOR LOCAL:1, 1, 4
+        SIF TFLAG:(LOCAL + 40) == LOCAL:1 && CFLAG:(LOCAL + 5310) < LOCAL:1
+            TRYCALLFORM KX1_MESSAGE_MARK{LOCAL}_{LOCAL:1}
+    NEXT
 NEXT
 
 ;==================================================
@@ -524,22 +524,22 @@ NEXT
 @KOJO_MESSAGE_COM_X1
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;재갈이 있고, 재갈을 채우는 커맨드가 아닐 경우에도 돌아온다
 SIF (TEQUIP:42 && (SELECTCOM != 226 && SELECTCOM != 229 && SELECTCOM != 506 && SELECTCOM != 509 && SELECTCOM != 583))
-	RETURN 0
+    RETURN 0
 ;기절 중에도 돌아온다
 SIF TFLAG:899 >= 1
-	RETURN 0
+    RETURN 0
 
 ;커맨드 첫회 판정을 갱신
 CALL COM_FLAG
 ;PANCTION 내의 장비품 대사 보완 함수를 사용한다
 SIF FLAG:10 == 1
-	TRYCALL EQUIPTEXT
+    TRYCALL EQUIPTEXT
 ;처녀 상실시의 메시지 호출
 SIF TALENT:0 && TFLAG:1
-	TRYCALL KX1_MESSAGE_LOST_VIRGIN
+    TRYCALL KX1_MESSAGE_LOST_VIRGIN
 ;커맨드 대사 호출
 TRYCALLFORM KX1_MESSAGE_COM_{SELECTCOM}
 
@@ -549,10 +549,10 @@ TRYCALLFORM KX1_MESSAGE_COM_{SELECTCOM}
 @KX1_MESSAGE_LOST_VIRGIN
 ;연모시에다 주인의 페니스
 IF TFLAG:2
-	;PRINTFORMW 「주인의 페니스로 처녀 상실했을 때의 대사입니다」
+    ;PRINTFORMW 「주인의 페니스로 처녀 상실했을 때의 대사입니다」
 ;그 외
 ELSE
-	;PRINTFORMW 「처녀 상실했을 때의 대사입니다」
+    ;PRINTFORMW 「처녀 상실했을 때의 대사입니다」
 ENDIF
 
 ;==================================================
@@ -563,13 +563,13 @@ ENDIF
 @SELF_KOJO_KX1
 ;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-	RETURN 0
+    RETURN 0
 ;조교 중에다 재갈을 물렸을 때에도 돌아온다
 SIF TFLAG:999 && TEQUIP:42
-	RETURN 0
+    RETURN 0
 ;조교 중에다 기절 중일 때에도 돌아온다
 SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-	RETURN 0
+    RETURN 0
 
 ;이벤트 대사 호출
 TRYCALLFORM KX1_MESSAGE_EVENT_{(TFLAG:200)}
@@ -597,28 +597,28 @@ TRYCALLFORM KX1_MESSAGE_EVENT_{(TFLAG:200)}
 @IMPRESSION_KX1
 ;아직 한 번도 조교하지 않았음
 ;IF CFLAG:1610 == 0
-;	PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
-;	RETURN 1
+;    PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
+;    RETURN 1
 ;반발각인 3
 ;ELSEIF MARK:9 >= 3
-;	PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
-;	RETURN 1
+;    PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
+;    RETURN 1
 ;상애
 ;ELSEIF TALENT:153
-;	PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
-;	RETURN 1
+;    PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
+;    RETURN 1
 ;연모
 ;ELSEIF TALENT:150
-;	PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
-;	RETURN 1
+;    PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
+;    RETURN 1
 ;굴복각인 3
 ;ELSEIF MARK:2 >= 3
-;	PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
-;	RETURN 1
+;    PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
+;    RETURN 1
 ;그 외
 ;ELSE
-;	PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
-;	RETURN 1
+;    PRINTSINGLEFORM 　　　「(이 안에 대사를 넣는다)」
+;    RETURN 1
 ;ENDIF
 
 ;=============================================================================
@@ -682,10 +682,10 @@ RETURN 0
 
 ;음란
 ;IF TALENT:170
-;	LOCAL:1 = 1
+;    LOCAL:1 = 1
 ;에피소드 없음
 ;ELSE
-;	LOCAL:1 = 0
+;    LOCAL:1 = 0
 ;ENDIF
 
 ;퇴피한 대상을 원래대로 되돌린다
@@ -701,7 +701,7 @@ RETURN 0
 ;PRINTFORMW 　%CSVCALLNAME(X1,0)%의 그 이후
 ;DRAWLINE
 ;IF ARG == 1
-	;PRINTFORMW 음란 에피소드
+    ;PRINTFORMW 음란 에피소드
 ;ENDIF
 ;DRAWLINE
 ;RETURN 0
