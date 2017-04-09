@@ -23,17 +23,17 @@ CALL FLAG_SET_TRY_0
 #PRI
 RESULT = 0
 IF ASSIPLAY
-	TRYCALLFORM TRY_0_{NO:ASSI}
+    TRYCALLFORM TRY_0_{NO:ASSI}
 ELSE
-	TRYCALLFORM TRY_0_{NO:MASTER}
+    TRYCALLFORM TRY_0_{NO:MASTER}
 ENDIF
 CALL FLAG_SET_TRY_0
 
 @FLAG_SET_TRY_0
 IF FLAG:20
-	LOCAL@TRY_0 = RESULT
+    LOCAL@TRY_0 = RESULT
 ELSE
-	LOCAL@TRY_0 = 1
+    LOCAL@TRY_0 = 1
 ENDIF
 
 ;--------------------------------------------------
@@ -41,26 +41,26 @@ ENDIF
 ;-------------------------------------------------
 @EVENTTRAIN
 SIF FLAG:11 == 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 0
-	RETURN 0
+    RETURN 0
 
 ;대사 존재 판정
 CALL TRY_0
 SIF !RESULT
-	RETURN 0
+    RETURN 0
 
 ;대사 호출
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_EVENTTRAIN_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_EVENTTRAIN_K0_MX
+    TRYCALLFORM LES_EVENTTRAIN_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_EVENTTRAIN_K0_MX
 ELSE
-	TRYCALLFORM LES_EVENTTRAIN_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_EVENTTRAIN_K0_MX
+    TRYCALLFORM LES_EVENTTRAIN_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_EVENTTRAIN_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -69,26 +69,26 @@ ENDIF
 ;-------------------------------------------------
 @EVENTEND
 SIF FLAG:11 == 0
-	RETURN 0
+    RETURN 0
 SIF NO:TARGET != 0
-	RETURN 0
+    RETURN 0
 
 ;대사 존재 판정
 CALL TRY_0
 SIF !RESULT
-	RETURN 0
+    RETURN 0
 
 ;대사 호출
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_EVENTEND_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_EVENTEND_K0_MX
+    TRYCALLFORM LES_EVENTEND_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_EVENTEND_K0_MX
 ELSE
-	TRYCALLFORM LES_EVENTEND_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_EVENTEND_K0_MX
+    TRYCALLFORM LES_EVENTEND_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_EVENTEND_K0_MX
 ENDIF
 
 ;--------------------------------------------------
@@ -98,19 +98,19 @@ ENDIF
 @KOJO_MESSAGE_COM_0
 ;助手が調教した時に口上をスキップする（好みに応じて使う、行頭の;を消すとスキップするようになる）
 ;SIF ASSI > 0 && ASSIPLAY
-;	RETURN 0
+;    RETURN 0
 
 ;대사 호출
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_MESSAGE_COM_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_MESSAGE_COM_K0_MX
+    TRYCALLFORM LES_MESSAGE_COM_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_MESSAGE_COM_K0_MX
 ELSE
-	TRYCALLFORM LES_MESSAGE_COM_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_MESSAGE_COM_K0_MX
+    TRYCALLFORM LES_MESSAGE_COM_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_MESSAGE_COM_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -121,19 +121,19 @@ ENDIF
 @KOJO_MESSAGE_PALAMCNG_0
 ;助手が調教した時に口上をスキップする（好みに応じて使う、行頭の;を消すとスキップするようになる）
 ;SIF ASSI > 0 && ASSIPLAY
-;	RETURN 0
+;    RETURN 0
 
 ;대사 호출
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_MESSAGE_PALAMCNG_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_MESSAGE_PALAMCNG_K0_MX
+    TRYCALLFORM LES_MESSAGE_PALAMCNG_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_MESSAGE_PALAMCNG_K0_MX
 ELSE
-	TRYCALLFORM LES_MESSAGE_PALAMCNG_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_MESSAGE_PALAMCNG_K0_MX
+    TRYCALLFORM LES_MESSAGE_PALAMCNG_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_MESSAGE_PALAMCNG_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -144,19 +144,19 @@ ENDIF
 @KOJO_MESSAGE_MARKCNG_0
 ;助手が調教した時に口上をスキップする（好みに応じて使う、行頭の;を消すとスキップするようになる）
 ;SIF ASSI > 0 && ASSIPLAY
-;	RETURN 0
+;    RETURN 0
 
 ;대사 호출
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_MESSAGE_MARKCNG_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_MESSAGE_MARKCNG_K0_MX
+    TRYCALLFORM LES_MESSAGE_MARKCNG_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_MESSAGE_MARKCNG_K0_MX
 ELSE
-	TRYCALLFORM LES_MESSAGE_MARKCNG_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_MESSAGE_MARKCNG_K0_MX
+    TRYCALLFORM LES_MESSAGE_MARKCNG_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_MESSAGE_MARKCNG_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -164,15 +164,15 @@ ENDIF
 ;-------------------------------------------------
 @SELF_KOJO_K0
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_SELF_KOJO_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_SELF_KOJO_K0_MX
+    TRYCALLFORM LES_SELF_KOJO_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_SELF_KOJO_K0_MX
 ELSE
-	TRYCALLFORM LES_SELF_KOJO_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_SELF_KOJO_K0_MX
+    TRYCALLFORM LES_SELF_KOJO_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_SELF_KOJO_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -182,15 +182,15 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_EVENT_COM_0
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_EVENT_COM_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_EVENT_COM_K0_MX
+    TRYCALLFORM LES_EVENT_COM_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_EVENT_COM_K0_MX
 ELSE
-	TRYCALLFORM LES_EVENT_COM_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_EVENT_COM_K0_MX
+    TRYCALLFORM LES_EVENT_COM_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_EVENT_COM_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -199,15 +199,15 @@ ENDIF
 ;-------------------------------------------------
 @LOOK_VIDEO_KOJO_K0
 IF ASSI > 0 && ASSIPLAY
-	TRYCALLFORM LES_LOOK_VIDEO_KOJO_K0_M{NO:ASSI}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_LOOK_VIDEO_KOJO_K0_MX
+    TRYCALLFORM LES_LOOK_VIDEO_KOJO_K0_M{NO:ASSI}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_LOOK_VIDEO_KOJO_K0_MX
 ELSE
-	TRYCALLFORM LES_LOOK_VIDEO_KOJO_K0_M{NO:MASTER}
-	;범용 역조교 대사
-	SIF FLAG:22 == 0
-		TRYCALL LES_LOOK_VIDEO_KOJO_K0_MX
+    TRYCALLFORM LES_LOOK_VIDEO_KOJO_K0_M{NO:MASTER}
+    ;범용 역조교 대사
+    SIF FLAG:22 == 0
+        TRYCALL LES_LOOK_VIDEO_KOJO_K0_MX
 ENDIF
 
 ;-------------------------------------------------
@@ -218,11 +218,11 @@ RESULT = -1
 TRYCALLFORM LES_SINGLE_ENDING_K0_M{NO:MASTER}
 
 IF RESULT == -1
-	DRAWLINE
-	PRINTW ―――단독 엔딩 조건 달성―――
-	PRINTW ………………
-	PRINTW …………
-	PRINTW ……
+    DRAWLINE
+    PRINTW ―――단독 엔딩 조건 달성―――
+    PRINTW ………………
+    PRINTW …………
+    PRINTW ……
 ENDIF
 
 ;PRINTW  
@@ -236,11 +236,11 @@ RESULT = -1
 TRYCALLFORM LES_SINGLE_ENDING_K0_M{NO:MASTER}
 
 IF RESULT == -1
-	DRAWLINE
-	PRINTW ―――노예 엔딩 조건 달성―――
-	PRINTW ………………
-	PRINTW …………
-	PRINTW ……
+    DRAWLINE
+    PRINTW ―――노예 엔딩 조건 달성―――
+    PRINTW ………………
+    PRINTW …………
+    PRINTW ……
 ENDIF
 
 ;PRINTW  
@@ -252,7 +252,7 @@ ENDIF
 
 @TRY_0
 IF LOCAL
-	RETURN 1
+    RETURN 1
 ELSE
-	RETURN 0
+    RETURN 0
 ENDIF
